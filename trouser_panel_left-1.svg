@@ -1,0 +1,14 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" id="trouser_panel_left" data-name="trouser_panel_left" width="494" height="1008" viewBox="8 22 494 1008" role="img" aria-labelledby="title desc">
+  <ns0:title id="title">trouser_panel_left</ns0:title>
+  <ns0:desc id="desc">Exact standalone left trouser panel extracted from section_3_layout.svg. Contains only the panel shape and its inner outline. Transparent outside area.</ns0:desc>
+  <ns0:defs>
+    <ns0:linearGradient xmlns:xlink="http://www.w3.org/1999/xlink" id="orangeFlat" x1="0" x2="1" y1="0" y2="1">
+      <ns0:stop offset="0" stop-color="#ff7a12" id="stop8"/>
+      <ns0:stop offset="1" stop-color="#ec4a00" id="stop9"/>
+    </ns0:linearGradient>
+  </ns0:defs>
+  <ns0:g id="trouser_panel_left_group" data-label="trouser_panel_left_group">
+    <ns0:path xmlns:xlink="http://www.w3.org/1999/xlink" id="trouser_panel_left_outer_shape" d="m 8,22 h 439 l 55,1008 H 8 Z" fill="url(#orangeFlat)" stroke="#111111" stroke-width="6" style="fill:url(#linearGradient1)" data-label="trouser_panel_left_outer_shape"/>
+    <ns0:path xmlns:xlink="http://www.w3.org/1999/xlink" d="m 30,50 h 390 l 50,950 H 30 Z" fill="none" stroke="#151515" stroke-width="3" stroke-dasharray="10, 9" id="trouser_panel_left_inner_outline" data-label="trouser_panel_left_inner_outline"/>
+  </ns0:g>
+</ns0:svg>
