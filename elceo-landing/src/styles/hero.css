@@ -1,0 +1,438 @@
+/* ============================================================
+   ELCEO — Hero Section Styles
+   ============================================================ */
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: var(--hero-min-h);
+  background: var(--clr-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cinematic radial glow — subtle warm centre */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 42%,
+      rgba(80,30,0,0.30) 0%,
+      rgba(30,10,0,0.18) 45%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Dot-matrix market-data texture */
+.hero__texture {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,106,0,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Navigation ───────────────────────────────────────────── */
+.hero__nav {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 28px 48px 0;
+}
+
+.hero__nav-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero__nav-item {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--clr-offwhite);
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.hero__nav-item:hover {
+  color: var(--clr-orange-bright);
+}
+
+/* HOME active state — orange underline */
+.hero__nav-item--active {
+  color: var(--clr-white);
+}
+
+.hero__nav-item--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--clr-orange);
+  border-radius: 1px;
+  box-shadow: 0 0 6px var(--clr-orange);
+}
+
+/* ── Main Stage ───────────────────────────────────────────── */
+.hero__stage {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  width: 100%;
+  max-width: var(--hero-max-w);
+  margin: 0 auto;
+  display: grid;
+  /* 3-column: logo | centre | retro-computer */
+  grid-template-columns: 120px 1fr 180px;
+  grid-template-rows: 1fr auto;
+  align-items: center;
+  padding: 20px 56px 0;
+  gap: 0;
+}
+
+/* ── Vertical ELCEO Logo ──────────────────────────────────── */
+.hero__logo {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  user-select: none;
+  align-self: center;
+}
+
+.hero__logo-letters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+}
+
+.hero__logo-letter {
+  font-family: var(--font-dot);
+  font-size: clamp(28px, 3.6vw, 52px);
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: 0;
+  line-height: 0.9;
+  /* Double-dot pixel feel via text-shadow */
+  text-shadow:
+    0 0 0 var(--clr-white),
+    2px  2px 0 rgba(255,255,255,0.12),
+    -2px -2px 0 rgba(255,255,255,0.08);
+}
+
+/* Dots between letters — orange double-dot separator */
+.hero__logo-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--clr-orange);
+  margin: 3px 0;
+  box-shadow: 0 0 6px var(--clr-orange), 0 8px 0 var(--clr-orange);
+  flex-shrink: 0;
+}
+
+/* ── Centre Wheel ─────────────────────────────────────────── */
+.hero__centre {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero__wheel-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__wheel-no-cta {
+  width: clamp(480px, 56vw, 720px);
+  height: auto;
+  display: block;
+  /* subtle drop glow */
+  filter: drop-shadow(0 0 40px rgba(255,106,0,0.18));
+}
+
+/* CTA button floats over the wheel centre */
+.hero__wheel-cta {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(180px, 22vw, 260px);
+  height: auto;
+  cursor: pointer;
+  transition: filter 0.25s, transform 0.25s;
+  filter: drop-shadow(0 0 8px rgba(255,106,0,0.35));
+}
+
+.hero__wheel-cta:hover {
+  filter: drop-shadow(0 0 18px rgba(255,130,30,0.7));
+  transform: translateX(-50%) scale(1.04);
+}
+
+/* ── Retro Computer (Top-Right) ───────────────────────────── */
+.hero__retro-wrap {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 48px;
+  position: relative;
+  gap: 8px;
+}
+
+.hero__retro-img {
+  width: clamp(90px, 10vw, 140px);
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255,106,0,0.3));
+}
+
+/* Hand-drawn "CLICK HERE" arrow label */
+.hero__click-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-top: 4px;
+}
+
+.hero__click-text {
+  font-family: var(--font-dot);
+  font-size: 11px;
+  color: var(--clr-orange);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  filter: drop-shadow(0 0 4px rgba(255,106,0,0.5));
+}
+
+/* SVG arrow drawn with CSS */
+.hero__click-arrow {
+  display: block;
+  width: 48px;
+  height: 32px;
+  align-self: flex-end;
+  margin-right: 12px;
+}
+
+/* ── HUD Annotations ──────────────────────────────────────── */
+.hero__hud-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hud-box {
+  position: absolute;
+  background: var(--clr-hud-bg);
+  border: 1px solid var(--clr-hud-border);
+  border-radius: 3px;
+  padding: 10px 13px;
+  max-width: 220px;
+  pointer-events: auto;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.hud-box:hover {
+  border-color: var(--clr-orange-bright);
+  background: rgba(12,5,0,0.95);
+}
+
+/* Orange top-left corner accent */
+.hud-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--clr-orange);
+  border-left: 2px solid var(--clr-orange);
+}
+
+.hud-box__title {
+  font-family: var(--font-dot);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: var(--clr-orange);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.hud-box__body {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: rgba(244,237,228,0.72);
+  line-height: 1.55;
+}
+
+/* Connector line — pure CSS border */
+.hud-connector {
+  position: absolute;
+  border: 1px solid var(--clr-connector);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Individual HUD placements — all positions relative to .hero__stage */
+
+/* 1 – Top-left: MARKET REASONING */
+.hud-box--1 {
+  top: 8%;
+  left: 8%;
+}
+
+/* 2 – Top-centre-left: MACRO CONTEXT */
+.hud-box--2 {
+  top: 5%;
+  left: 28%;
+}
+
+/* 3 – Top-centre-right: EXECUTION INTELLIGENCE */
+.hud-box--3 {
+  top: 5%;
+  right: 28%;
+}
+
+/* 4 – Bottom-left: ADAPTIVE RISK */
+.hud-box--4 {
+  bottom: 18%;
+  left: 5%;
+}
+
+/* 5 – Bottom-right: INSTITUTIONAL-GRADE REASONING */
+.hud-box--5 {
+  bottom: 18%;
+  right: 2%;
+  max-width: 200px;
+}
+
+/* 6 – Right-mid: CROSS-ASSET AWARENESS */
+.hud-box--6 {
+  top: 42%;
+  right: 3%;
+}
+
+/* ── Warning Tape ─────────────────────────────────────────── */
+.hero__tape {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  /* diagonal stripe background — hazard tape */
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--clr-tape-bg)           0px,
+      var(--clr-tape-bg)           14px,
+      rgba(255,106,0,0.20)         14px,
+      rgba(255,106,0,0.20)         18px
+    );
+  border-top: 1.5px solid rgba(255,106,0,0.55);
+  border-bottom: 1.5px solid rgba(255,106,0,0.55);
+  padding: 9px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 0;
+}
+
+.hero__tape-track {
+  display: inline-flex;
+  gap: 0;
+  /* Simple CSS marquee via animation */
+  animation: tape-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes tape-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.hero__tape-segment {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 24px;
+}
+
+.hero__tape-word {
+  font-family: var(--font-dot);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-orange);
+  white-space: nowrap;
+}
+
+.hero__tape-bullet {
+  color: rgba(255,106,0,0.6);
+  font-size: 10px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .hero__stage {
+    grid-template-columns: 80px 1fr 120px;
+    padding: 16px 24px 0;
+  }
+  .hero__hud-grid {
+    display: none; /* collapse HUD on smaller viewports */
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__stage {
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: auto auto;
+    padding: 12px 16px 0;
+  }
+  .hero__retro-wrap {
+    display: none;
+  }
+  .hero__wheel-no-cta {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__nav-list {
+    gap: 18px;
+  }
+  .hero__nav-item {
+    font-size: 10px;
+  }
+  .hero__logo-letter {
+    font-size: 22px;
+  }
+}
