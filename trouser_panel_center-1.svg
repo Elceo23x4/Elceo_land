@@ -1,9 +1,0 @@
-<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" id="trouser_panel_center" data-name="trouser_panel_center" width="500" height="1008" viewBox="470 22 500 1008" role="img" aria-labelledby="title desc">
-  <ns0:title id="title">trouser_panel_center</ns0:title>
-  <ns0:desc id="desc">Exact standalone center trouser panel extracted from section_3_layout.svg. Contains only the panel shape and its inner outline. Transparent outside area.</ns0:desc>
-  <ns0:defs/>
-  <ns0:g id="trouser_panel_center_group" data-label="trouser_panel_center_group">
-    <ns0:path xmlns:xlink="http://www.w3.org/1999/xlink" id="trouser_panel_center_outer_shape" d="M 470,22 H 970 L 910,1030 H 530 Z" fill="#030303" stroke="#ff4d00" stroke-width="4" data-label="trouser_panel_center_outer_shape"/>
-    <ns0:path xmlns:xlink="http://www.w3.org/1999/xlink" d="M 500,55 H 940 L 884,998 H 556 Z" fill="none" stroke="#ff6a00" stroke-width="2.4" stroke-dasharray="10, 10" opacity="0.8" id="trouser_panel_center_inner_outline" data-label="trouser_panel_center_inner_outline"/>
-  </ns0:g>
-</ns0:svg>
