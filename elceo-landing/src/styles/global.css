@@ -1,0 +1,94 @@
+/* ============================================================
+   ELCEO — Global Styles
+   Font declarations + hard reset + design tokens
+   ============================================================ */
+
+/* ---------- Custom Fonts ---------- */
+@font-face {
+  font-family: 'Tribes Regular';
+  src: url('/assets/fonts/Tribes-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OffBit DotBold';
+  src: url('/assets/fonts/OffBit-DotBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Colours */
+  --clr-bg:            #000000;
+  --clr-bg-subtle:     #080500;
+  --clr-orange:        #ff6a00;
+  --clr-orange-bright: #ff8c2a;
+  --clr-orange-dim:    #7a3000;
+  --clr-cream:         #f4ede4;
+  --clr-white:         #ffffff;
+  --clr-offwhite:      #f8f4ef;
+  --clr-tape-bg:       #1a0d00;
+  --clr-tape-stripe:   #ff6a00;
+  --clr-hud-border:    rgba(255,106,0,0.55);
+  --clr-hud-bg:        rgba(6,3,0,0.88);
+  --clr-connector:     rgba(255,106,0,0.45);
+
+  /* Typography */
+  --font-ui:  'Tribes Regular', 'Space Mono', 'Share Tech Mono', monospace;
+  --font-dot: 'OffBit DotBold', 'Courier New', monospace;
+
+  /* Spacing */
+  --hero-max-w: 1440px;
+  --hero-min-h: 100svh;
+}
+
+/* ---------- Hard Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background: var(--clr-bg);
+  color: var(--clr-offwhite);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
