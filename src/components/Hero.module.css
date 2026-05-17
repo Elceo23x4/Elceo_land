@@ -1,0 +1,582 @@
+/* =============================================================
+   ELCEO Hero — CSS Module
+   1920 × 1080 coordinate stage. All px values are stage-space.
+   ============================================================= */
+
+/* ── Viewport shell ────────────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ── Cinematic background ──────────────────────────────────── */
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 38% 55%, rgba(255, 90, 0, 0.09) 0%, transparent 72%),
+    radial-gradient(ellipse 40% 40% at 62% 80%, rgba(255, 60, 0, 0.05) 0%, transparent 60%),
+    #000;
+}
+
+/* Faint orange dot-grid overlay */
+.heroBg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 106, 0, 0.2) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.2;
+}
+
+/* ── 1920 × 1080 coordinate stage ─────────────────────────── */
+.heroStage {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  /* --heroScale injected via React inline style */
+  transform: translate(-50%, -50%) scale(var(--heroScale, 1));
+  overflow: visible;
+  z-index: 1;
+}
+
+/* ── Generic asset wrapper ─────────────────────────────────── */
+/*   Each layer is an absolutely-positioned div.               */
+/*   The SVG component inside fills the wrapper exactly.       */
+.asset {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* Every inline SVG must fill its parent wrapper */
+.asset > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Layer 3 & 4 — Vertical logos ─────────────────────────── */
+/*   Both logos share the same left/top (z-index separates).  */
+.verticalLogo1 {
+  width: 104px;
+  height: 823px;
+  left: -299px;
+  top: 8px;
+  z-index: 3;
+  opacity: 0.95;
+}
+
+.verticalLogo2 {
+  width: 104px;
+  height: 823px;
+  left: -299px;  /* SAME as logo 1 — intentional stacking */
+  top: 8px;
+  z-index: 4;
+  opacity: 0.6;
+}
+
+/* ── Layer 5 — Main wheel ──────────────────────────────────── */
+.wheel {
+  width: 987px;
+  height: 964px;
+  left: 171px;
+  top: 3px;
+  z-index: 5;
+  filter: contrast(1.14) saturate(1.2);
+}
+
+.wheel > svg {
+  filter: drop-shadow(0 0 40px rgba(255, 106, 0, 0.25));
+}
+
+/* ── Layer 6 — Wheel-side city panel ──────────────────────── */
+/*   overflow:hidden strictly contains the 332×294 viewport.  */
+/*   mix-blend-mode:lighten dissolves the #F8F8F8 bg path.    */
+.wheelSide {
+  width: 332px;
+  height: 294px;
+  left: 855px;
+  top: 17px;
+  z-index: 6;
+  overflow: hidden;       /* strict containment */
+}
+
+.wheelSide > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  mix-blend-mode: lighten; /* removes white/light-gray background */
+  opacity: 0.88;
+}
+
+/* ── Layer 7 — HUD annotation lines ───────────────────────── */
+.hud3 {
+  width: 427px;
+  height: 330px;
+  left: 1083px;
+  top: 117px;
+  z-index: 7;
+}
+
+.hud4 {
+  width: 642px;
+  height: 243px;
+  left: -192.23px;
+  top: 529px;
+  transform: rotate(180.36deg);
+  transform-origin: center center;
+  z-index: 7;
+}
+
+.hud5 {
+  width: 440px;
+  height: 517px;
+  left: -101.22px;
+  top: 9.17px;
+  transform: rotate(90.07deg);
+  transform-origin: center center;
+  z-index: 7;
+}
+
+.hud6 {
+  width: 438px;
+  height: 496px;
+  left: 1036.15px;
+  top: 231.17px;
+  transform: rotate(270.04deg);
+  transform-origin: center center;
+  z-index: 7;
+}
+
+/* ── Layer 8 — HUD text overlays ──────────────────────────── */
+.hudText {
+  position: absolute;
+  pointer-events: none;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 10px;
+  overflow: hidden; /* text stays inside measured box */
+}
+
+.hudText3 {
+  width: 250px;
+  height: 105px;
+  left: 1244px;
+  top: 137px;
+}
+
+.hudText4 {
+  width: 256px;
+  height: 126px;
+  left: -119px;
+  top: 595px;
+}
+
+.hudText5 {
+  width: 140px;
+  height: 289px;
+  left: -87px;
+  top: 88px;
+  /* HUD 5 is taller — use column direction with top-align */
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+
+.hudText6 {
+  width: 134px;
+  height: 297px;
+  left: 1304px;
+  top: 337px;
+  justify-content: flex-start;
+  padding-top: 14px;
+}
+
+/* HUD typography */
+.hudTitle {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: #ff6a00;
+  line-height: 1.2;
+}
+
+.hudBody {
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #e8e4df;
+  line-height: 1.45;
+}
+
+/* 50%-height orange editorial marker — sits on lower half of word */
+.mark {
+  background: linear-gradient(to top, rgba(255, 106, 0, 0.82) 50%, transparent 50%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 1px;
+}
+
+/* ── Layer 9 — CTA button ──────────────────────────────────── */
+.cta {
+  width: 300px;
+  height: 97px;
+  left: 513px;
+  top: 425px;
+  z-index: 9;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+  display: block;
+}
+
+.cta > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 14px rgba(255, 106, 0, 0.55));
+  transition: filter 0.2s ease;
+}
+
+.cta:hover > svg,
+.cta:focus-visible > svg {
+  filter: drop-shadow(0 0 26px rgba(255, 106, 0, 0.9));
+}
+
+/* ── Layer 10 — Nav bar SVG ────────────────────────────────── */
+.navBarSvg {
+  width: 797px;
+  height: 43px;
+  left: 262px;
+  top: -72px;
+  z-index: 10;
+}
+
+/* HTML nav overlay — same bounding box, interactive layer on top */
+.navOverlay {
+  position: absolute;
+  width: 797px;
+  height: 43px;
+  left: 262px;
+  top: -72px;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.navItem {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #d8d4cf;
+  padding: 4px 18px;
+  position: relative;
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.navItem:hover {
+  color: #ff9a3c;
+}
+
+.navItemActive {
+  color: #ffffff;
+}
+
+.navItemActive::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: #ff6a00;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 106, 0, 0.75);
+}
+
+/* ── Layer 11 — Retro computer button ─────────────────────── */
+.retroBtn {
+  width: 123px;
+  height: 95px;
+  left: 1448px;
+  top: -82px;
+  z-index: 11;
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.retroBtn > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(255, 106, 0, 0.4));
+  transition: filter 0.2s ease;
+}
+
+.retroBtn:hover > svg,
+.retroBtn:focus-visible > svg {
+  filter: drop-shadow(0 0 18px rgba(255, 106, 0, 0.85));
+}
+
+/* ── Layer 12 — Click-here arrow ───────────────────────────── */
+.clickHere {
+  position: absolute;
+  left: 1388px;
+  top: -36px;
+  z-index: 12;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  transform: rotate(-8deg);
+  transform-origin: left top;
+}
+
+.clickHereText {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  color: #ff6a00;
+  text-transform: lowercase;
+  opacity: 0.88;
+}
+
+/* ── Layer 13 — Yellow tape SVG ────────────────────────────── */
+.tapeSvg {
+  width: 1948px;
+  height: 300px;
+  left: -353.4px;
+  top: 727px;
+  transform: rotate(356.8deg);
+  transform-origin: center center;
+  z-index: 50; /* topmost layer */
+}
+
+.tapeSvg > svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Layer 14 — Tape marquee text ──────────────────────────── */
+.tapeMarqueeWrap {
+  position: absolute;
+  width: 1948px;
+  height: 120px;
+  left: -353.4px;
+  /* vertical center of tape: top(727) + half height(150) - half wrap(60) = 817 */
+  top: 817px;
+  transform: rotate(356.8deg);
+  transform-origin: left center;
+  z-index: 51;
+  overflow: hidden;
+  pointer-events: none;
+  /* flex to vertically center the marquee text */
+  display: flex;
+  align-items: center;
+}
+
+.tapeMarquee {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #1a1200;
+  line-height: 1;
+  animation: tapeScroll 26s linear infinite;
+  will-change: transform;
+}
+
+@keyframes tapeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =============================================================
+   RETRO COMPUTER POPUP
+   ============================================================= */
+
+.popupOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.84);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.16s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.popupScreen {
+  position: relative;
+  width: min(760px, 90vw);
+  height: min(480px, 70vh);
+  background: #030905;
+  border: 2px solid #00ff41;
+  border-radius: 3px;
+  box-shadow:
+    0 0 0 1px #00c832,
+    0 0 32px rgba(0, 255, 65, 0.3),
+    0 0 90px rgba(0, 255, 65, 0.1),
+    inset 0 0 60px rgba(0, 255, 65, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* CRT scanlines */
+.popupScreen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.16) 2px,
+    rgba(0, 0, 0, 0.16) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Screen flicker */
+.popupScreen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 255, 65, 0.012);
+  pointer-events: none;
+  z-index: 9;
+  animation: crtFlicker 4s steps(1) infinite;
+}
+
+@keyframes crtFlicker {
+  0%   { opacity: 1; }
+  92%  { opacity: 1; }
+  93%  { opacity: 0.82; }
+  94%  { opacity: 1; }
+  97%  { opacity: 1; }
+  98%  { opacity: 0.88; }
+  100% { opacity: 1; }
+}
+
+.popupTitlebar {
+  position: relative;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 16px;
+  border-bottom: 1px solid rgba(0, 255, 65, 0.28);
+  background: rgba(0, 255, 65, 0.05);
+  flex-shrink: 0;
+}
+
+.popupTitleText {
+  font-family: var(--font-dot);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: #00ff41;
+  text-transform: uppercase;
+}
+
+.popupCloseBtn {
+  background: none;
+  border: 1px solid rgba(0, 255, 65, 0.45);
+  color: #00ff41;
+  font-family: var(--font-dot);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 2px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.popupCloseBtn:hover {
+  background: rgba(0, 255, 65, 0.1);
+  box-shadow: 0 0 8px rgba(0, 255, 65, 0.35);
+}
+
+.popupBody {
+  position: relative;
+  z-index: 11;
+  flex: 1;
+  padding: 22px 28px;
+  overflow-y: auto;
+}
+
+.termLine {
+  font-family: var(--font-dot);
+  font-size: 12.5px;
+  letter-spacing: 0.07em;
+  color: #00ff41;
+  line-height: 1.95;
+  white-space: pre;
+  display: block;
+}
+
+.termLineDim {
+  color: rgba(0, 255, 65, 0.45);
+}
+
+.termLinePrompt::before {
+  content: "> ";
+  color: #ff6a00;
+}
+
+.termCursor {
+  display: inline-block;
+  width: 8px;
+  height: 13px;
+  background: #00ff41;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: cursorBlink 1.1s steps(1) infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
