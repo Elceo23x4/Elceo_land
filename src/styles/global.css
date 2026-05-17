@@ -1,0 +1,65 @@
+/* =========================================================
+   ELCEO Global Styles
+   ========================================================= */
+
+@font-face {
+  font-family: "Tribes Regular";
+  src: url("/assets/fonts/Tribes-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/assets/fonts/BebasNeue-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "OffBit DotBold";
+  src: url("/assets/fonts/OffBit-DotBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-ui: "Tribes Regular", "Space Mono", "Share Tech Mono", "IBM Plex Mono",
+    monospace;
+  --font-display: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact,
+    sans-serif;
+  --font-dot: "OffBit DotBold", "Courier New", monospace;
+
+  --color-bg: #000000;
+  --color-orange: #ff6a00;
+  --color-orange-light: #ff9a3c;
+  --color-white: #f8f4ef;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--color-bg);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
