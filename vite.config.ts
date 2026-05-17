@@ -1,10 +1,7 @@
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig({
-  // Vanilla JS build — no React plugin needed
-  // SVGs imported as ?raw strings and injected as innerHTML
-  // This keeps all SVGs as inline DOM SVGs for Batch 2 animation targeting
-  build: {
-    target: "es2020",
-  },
+  plugins: [react(), svgr()]
 });
