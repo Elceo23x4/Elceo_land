@@ -1,0 +1,115 @@
+/* =========================================================
+   ELCEO Hero Section — 1920×1080 Coordinate Stage
+   ========================================================= */
+
+/* ── Viewport wrapper ─────────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ── Subtle background texture layer ─────────────────── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 38% 55%,
+      rgba(255, 90, 0, 0.08) 0%,
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 40% 40% at 62% 80%,
+      rgba(255, 60, 0, 0.05) 0%,
+      transparent 60%
+    ),
+    #000;
+}
+
+/* Faint dot grid overlay */
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 106, 0, 0.18) 1px,
+    transparent 1px
+  );
+  background-size: 48px 48px;
+  opacity: 0.22;
+}
+
+/* ── The 1920×1080 coordinate stage ───────────────────── */
+.hero-stage {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(var(--hero-scale, 1));
+  overflow: visible;
+  z-index: 1;
+}
+
+/* ── Generic positioned asset wrapper ─────────────────── */
+.positioned-asset {
+  position: absolute;
+  pointer-events: none;
+}
+
+.positioned-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Layer-specific styles ────────────────────────────── */
+.asset-vertical-logo {
+  opacity: 0.92;
+}
+
+.asset-vertical-logo-2 {
+  opacity: 0.65;
+}
+
+.asset-hero-wheel {
+  filter: contrast(1.05) saturate(1.1);
+}
+
+.asset-wheel-side {
+  opacity: 0.85;
+}
+
+.asset-hero-wheel-cta {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.asset-hero-wheel-cta svg {
+  filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.55));
+}
+
+.asset-yellow-tape svg {
+  overflow: visible;
+}
+
+.asset-nav-bar {
+  pointer-events: auto;
+}
+
+.asset-retro-computer {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.asset-retro-computer svg {
+  filter: drop-shadow(0 0 8px rgba(255, 106, 0, 0.4));
+}
