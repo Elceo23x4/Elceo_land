@@ -1,7 +1,8 @@
-/* =========================================================
-   ELCEO Global Styles
-   ========================================================= */
+/* =============================================================
+   ELCEO — Global Styles
+   ============================================================= */
 
+/* ── Fonts ─────────────────────────────────────────────────── */
 @font-face {
   font-family: "Tribes Regular";
   src: url("/assets/fonts/Tribes-Regular.woff2") format("woff2");
@@ -26,25 +27,25 @@
   font-display: swap;
 }
 
+/* ── CSS Custom Properties ─────────────────────────────────── */
+:root {
+  --font-ui:      "Tribes Regular", "Space Mono", "Share Tech Mono", monospace;
+  --font-display: "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  --font-dot:     "OffBit DotBold", "Courier New", monospace;
+
+  --color-bg:           #000000;
+  --color-orange:       #ff6a00;
+  --color-orange-light: #ff9a3c;
+  --color-white:        #f8f4ef;
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-:root {
-  --font-ui: "Tribes Regular", "Space Mono", "Share Tech Mono", "IBM Plex Mono",
-    monospace;
-  --font-display: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact,
-    sans-serif;
-  --font-dot: "OffBit DotBold", "Courier New", monospace;
-
-  --color-bg: #000000;
-  --color-orange: #ff6a00;
-  --color-orange-light: #ff9a3c;
-  --color-white: #f8f4ef;
 }
 
 html,
@@ -62,4 +63,9 @@ body {
 #root {
   width: 100%;
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
