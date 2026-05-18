@@ -340,7 +340,7 @@ export default function HeroSection() {
         <PositionedSvgAsset
           className="asset-yellow-tape"
           width={tapeWidth}
-          height={120}
+          height={70}
           left={tapeLeft}
           top={905}
           rotation={356.8}
