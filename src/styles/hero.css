@@ -31,21 +31,16 @@
     #000;
 }
 
-/* Faint dot grid overlay */
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 106, 0, 0.18) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(255, 106, 0, 0.18) 1px, transparent 1px);
   background-size: 48px 48px;
   opacity: 0.22;
 }
 
-/* ── The 1920×1080 coordinate stage (contain-fit, top-aligned) */
+/* ── The 1920×1080 coordinate stage ───────────────────── */
 .hero-stage {
   position: absolute;
   width: 1920px;
@@ -73,27 +68,12 @@
 }
 
 /* ── Layer-specific styles ────────────────────────────── */
-.asset-vertical-logo {
-  opacity: 0.92;
-}
+.asset-vertical-logo { opacity: 0.92; }
+.asset-vertical-logo-2 { opacity: 0.65; }
+.asset-hero-wheel { filter: contrast(1.05) saturate(1.1); }
 
-.asset-vertical-logo-2 {
-  opacity: 0.65;
-}
-
-.asset-hero-wheel {
-  filter: contrast(1.05) saturate(1.1);
-}
-
-/* Wheel side — visible overflow, no clipping */
-.asset-wheel-side {
-  overflow: visible;
-  opacity: 0.85;
-}
-
-.asset-wheel-side svg {
-  overflow: visible;
-}
+.asset-wheel-side { overflow: visible; opacity: 0.85; }
+.asset-wheel-side svg { overflow: visible; }
 
 /* ── Wheel Occlusion Shield ───────────────────────────── */
 .wheel-occlusion-shield {
@@ -105,56 +85,51 @@
   z-index: 5;
   pointer-events: none;
   border-radius: 50%;
-  background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(0, 0, 0, 0.98) 48%,
-      rgba(0, 0, 0, 0.92) 62%,
-      rgba(0, 0, 0, 0.0) 74%
-    );
+  background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.98) 48%, rgba(0,0,0,0.92) 62%, rgba(0,0,0,0) 74%);
 }
 
+/* ── CTA ──────────────────────────────────────────────── */
 .asset-hero-wheel-cta {
   pointer-events: auto;
   cursor: pointer;
+  position: absolute;
+  overflow: visible;
 }
 
 .asset-hero-wheel-cta svg {
   filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.55));
+  transition: filter 0.25s ease;
 }
 
-/* ── Yellow Tape — increased opacity ──────────────────── */
-.asset-yellow-tape {
-  overflow: visible;
-  opacity: 0.85;
-}
+/* ── Yellow Tape ──────────────────────────────────────── */
+.asset-yellow-tape { overflow: visible; opacity: 0.85; }
+.asset-yellow-tape svg { overflow: visible; }
 
-.asset-yellow-tape svg {
-  overflow: visible;
-}
-
-/* ── Nav (legacy SVG class, kept for compat) ──────────── */
-.asset-nav-bar {
-  pointer-events: auto;
-}
+/* ── Nav ──────────────────────────────────────────────── */
+.asset-nav-bar { pointer-events: auto; }
 
 /* ── Retro Computer ───────────────────────────────────── */
-.asset-retro-computer {
-  pointer-events: none;
-  cursor: pointer;
-}
-
+.asset-retro-computer { pointer-events: none; cursor: pointer; }
 .asset-retro-computer svg {
   filter: drop-shadow(0 0 8px rgba(255, 106, 0, 0.4));
+  transition: filter 0.2s ease, transform 0.2s ease;
 }
 
 .retro-computer-btn {
   pointer-events: auto;
+  transition: transform 0.2s ease;
+}
+
+.retro-computer-btn:hover {
+  transform: scale(1.04);
 }
 
 .retro-computer-btn:hover .asset-retro-computer svg {
-  filter: drop-shadow(0 0 14px rgba(255, 106, 0, 0.8));
+  filter: drop-shadow(0 0 18px rgba(255, 106, 0, 0.85)) drop-shadow(0 0 4px rgba(255,200,80,0.5));
+}
+
+.retro-computer-btn:active {
+  transform: scale(0.97);
 }
 
 /* ── HUD Textboxes ────────────────────────────────────── */
@@ -170,24 +145,8 @@
   font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", sans-serif;
 }
 
-.hud-title {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #fff;
-  line-height: 1.2;
-}
-
-.hud-body {
-  margin: 0;
-  font-size: 11px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.88);
-  line-height: 1.35;
-  letter-spacing: 0.01em;
-}
+.hud-title { margin: 0; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; line-height: 1.2; }
+.hud-body { margin: 0; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.35; letter-spacing: 0.01em; }
 
 .marker-highlight {
   background: linear-gradient(to top, rgba(255, 106, 0, 0.85) 52%, transparent 52%);
@@ -202,380 +161,183 @@
   background: #020202;
   border: 3px solid #ff6a00;
   opacity: 1;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.32),
-    0 0 10px rgba(255, 106, 0, 0.18);
-  clip-path: polygon(
-    8px 0,
-    100% 0,
-    100% calc(100% - 12px),
-    calc(100% - 14px) 100%,
-    0 100%,
-    0 10px
-  );
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32), 0 0 10px rgba(255,106,0,0.18);
+  clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 14px) 100%, 0 100%, 0 10px);
   pointer-events: none;
 }
+.hud3-content-frame::before { content: ""; position: absolute; left: 10px; bottom: 9px; width: 30px; height: 4px; background: #ff6a00; }
+.hud3-content-frame::after { content: ""; position: absolute; right: 10px; top: 9px; width: 42px; height: 4px; background: #ff6a00; }
+.hud-textbox-3 .hud-body { font-size: 10px; line-height: 1.25; }
 
-.hud3-content-frame::before {
-  content: "";
-  position: absolute;
-  left: 10px;
-  bottom: 9px;
-  width: 30px;
-  height: 4px;
-  background: #ff6a00;
-}
-
-.hud3-content-frame::after {
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: 9px;
-  width: 42px;
-  height: 4px;
-  background: #ff6a00;
-}
-
-.hud-textbox-3 .hud-body {
-  font-size: 10px;
-  line-height: 1.25;
-}
-
-/* ── Yellow Tape Text Overlay ─────────────────────────── */
-.tape-text-overlay {
-  position: absolute;
-  pointer-events: none;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.tape-marquee-track {
-  display: flex;
-  width: max-content;
-}
-
-.tape-text-content {
-  font-family: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact, sans-serif;
-  font-size: 38px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #000;
-  line-height: 1;
-  display: inline-block;
-  flex-shrink: 0;
-}
+/* ── Yellow Tape Text ─────────────────────────────────── */
+.tape-text-overlay { position: absolute; pointer-events: none; overflow: hidden; display: flex; align-items: center; white-space: nowrap; }
+.tape-marquee-track { display: flex; width: max-content; }
+.tape-text-content { font-family: "Bebas Neue","Tribes Regular","Arial Narrow",Impact,sans-serif; font-size: 38px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #000; line-height: 1; display: inline-block; flex-shrink: 0; }
 
 /* ── Click-Here Arrow ─────────────────────────────────── */
-.click-here-arrow {
-  position: absolute;
-  left: 1710px;
-  top: 100px;
-  width: 120px;
-  height: 70px;
-  z-index: 11;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
+.click-here-arrow { position: absolute; left: 1710px; top: 100px; width: 120px; height: 70px; z-index: 11; pointer-events: none; display: flex; flex-direction: column; align-items: flex-start; }
+.click-here-svg { width: 100%; height: 48px; }
+.click-here-text { font-family: "Tribes Regular","Bebas Neue",cursive,sans-serif; font-size: 13px; color: rgba(255,106,0,0.9); letter-spacing: 0.04em; margin-top: -2px; padding-left: 2px; }
 
-.click-here-svg {
-  width: 100%;
-  height: 48px;
-}
-
-.click-here-text {
-  font-family: "Tribes Regular", "Bebas Neue", cursive, sans-serif;
-  font-size: 13px;
-  color: rgba(255, 106, 0, 0.9);
-  letter-spacing: 0.04em;
-  margin-top: -2px;
-  padding-left: 2px;
-}
-
-/* ── Hero Nav (real links) ────────────────────────────── */
-.hero-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 64px;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-}
+/* ── Hero Nav ─────────────────────────────────────────── */
+.hero-nav { display: flex; align-items: center; justify-content: center; gap: 64px; width: 100%; height: 100%; pointer-events: auto; }
 
 .hero-nav-link {
-  font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", sans-serif;
+  font-family: "Tribes Regular","Bebas Neue","Arial Narrow",sans-serif;
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255,255,255,0.92);
   text-decoration: none;
   cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
+  overflow: visible;
+  padding: 6px 12px;
 }
 
 .hero-nav-link::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 106, 0, 0.7);
+  left: 0; bottom: 0;
+  width: 100%; height: 2px;
+  background: rgba(255,106,0,0.7);
   transform: scaleX(0);
   transform-origin: center;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s ease;
 }
 
-.hero-nav-link:hover {
-  color: #fff;
-}
+.hero-nav-link:hover { color: #fff; }
+.hero-nav-link:hover::after { transform: scaleX(1); }
+.hero-nav-link:active { color: rgba(255,106,0,0.95); }
 
-.hero-nav-link:hover::after {
-  transform: scaleX(1);
-}
-
-.hero-nav-link:active {
-  color: rgba(255, 106, 0, 0.95);
-}
-
-/* ── Retro Computer Popup ─────────────────────────────── */
-.retro-popup-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.82);
-  backdrop-filter: blur(4px);
-}
-
-.retro-popup-terminal {
-  position: relative;
-  width: 480px;
-  max-width: 90vw;
-  padding: 32px 28px;
-  background: #0a0a0a;
-  border: 2px solid rgba(255, 106, 0, 0.6);
-  border-radius: 6px;
-  box-shadow:
-    0 0 40px rgba(255, 106, 0, 0.15),
-    inset 0 0 60px rgba(0, 20, 0, 0.2);
-  overflow: hidden;
-}
-
-.retro-popup-scanlines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0, 255, 60, 0.03) 2px,
-    rgba(0, 255, 60, 0.03) 4px
-  );
-  z-index: 1;
-}
-
-.retro-popup-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  color: rgba(255, 106, 0, 0.9);
-  font-family: monospace;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 2;
-  padding: 4px 8px;
-}
-
-.retro-popup-close:hover {
-  color: #fff;
-}
-
-.retro-popup-content {
-  position: relative;
-  z-index: 2;
-}
-
-.retro-line {
-  margin: 0 0 8px;
-  font-family: monospace;
-  font-size: 14px;
-  color: rgba(0, 255, 60, 0.88);
-  line-height: 1.5;
-}
-
-.retro-title {
-  font-size: 16px;
-  color: rgba(255, 106, 0, 0.95);
-  margin-bottom: 16px;
-  letter-spacing: 0.08em;
-}
-
-.retro-ready {
-  color: rgba(255, 106, 0, 0.95);
-  margin-top: 12px;
-  font-weight: bold;
-}
-
-/* =========================================================
-   BATCH 2A — CORE MOTION SYSTEM
-   ========================================================= */
-
-/* ── Keyframes ────────────────────────────────────────── */
-
-/* Wheel ring rotation via stroke-dashoffset */
-@keyframes ring-drift-cw {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -2200; }
-}
-
-@keyframes ring-drift-ccw {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: 2200; }
-}
-
-@keyframes ring-drift-cw-slow {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -1600; }
-}
-
-/* Globe glow pulse */
-@keyframes globe-glow-pulse {
-  0%, 100% {
-    filter: drop-shadow(0 0 18px rgba(255, 106, 0, 0.35)) brightness(1);
-  }
-  50% {
-    filter: drop-shadow(0 0 32px rgba(255, 106, 0, 0.55)) brightness(1.06);
-  }
-}
-
-/* Tape marquee */
-@keyframes tape-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Nav ripple */
-@keyframes nav-ripple-expand {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0.6;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(2.5);
-    opacity: 0;
-  }
-}
-
-/* CTA spark lines */
-@keyframes cta-spark-left {
-  0% { transform: scaleX(0); opacity: 0; }
-  30% { transform: scaleX(1); opacity: 1; }
-  100% { transform: scaleX(0); opacity: 0; }
-}
-
-@keyframes cta-spark-right {
-  0% { transform: scaleX(0); opacity: 0; }
-  40% { transform: scaleX(1); opacity: 1; }
-  100% { transform: scaleX(0); opacity: 0; }
-}
-
-/* CTA glitch micro-shift */
-@keyframes cta-glitch-micro {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-1px, 1px); }
-  50% { transform: translate(1px, -1px); }
-  75% { transform: translate(-1px, 0); }
-}
-
-/* ── Animation 1: Wheel Ring Motion ───────────────────── */
-.motion-enabled .asset-hero-wheel #circle148 {
-  animation: ring-drift-cw 42s linear infinite;
-}
-
-.motion-enabled .asset-hero-wheel #circle150 {
-  animation: ring-drift-ccw 36s linear infinite;
-}
-
-.motion-enabled .asset-hero-wheel #circle151 {
-  animation: ring-drift-cw-slow 54s linear infinite;
-}
-
-.motion-enabled .asset-hero-wheel #circle152 {
-  animation: ring-drift-ccw 48s linear infinite;
-}
-
-.motion-enabled .asset-hero-wheel #circle153 {
-  animation: ring-drift-cw 60s linear infinite;
-}
-
-/* ── Animation 2: Globe Glow Pulse ────────────────────── */
-.motion-enabled .asset-hero-wheel #orange_world_globe_animatable {
-  animation: globe-glow-pulse 5.5s ease-in-out infinite alternate;
-}
-
-/* ── Animation 3: Tape Text Marquee ───────────────────── */
-.motion-enabled .tape-marquee-track {
-  animation: tape-marquee 24s linear infinite;
-}
-
-/* ── Animation 4: Nav Hover Ripple/Splash ─────────────── */
-.hero-nav-link {
-  overflow: hidden;
-}
-
-.hero-nav-link-text {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.2s ease;
-}
-
-.hero-nav-link:hover .hero-nav-link-text {
-  transform: scale(1.04);
-}
+.hero-nav-link-text { position: relative; z-index: 1; display: inline-block; transition: transform 0.2s ease; }
+.hero-nav-link:hover .hero-nav-link-text { transform: scale(1.06); }
 
 .hero-nav-ripple {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 40px;
-  height: 40px;
+  left: 50%; top: 50%;
+  width: 60px; height: 60px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 106, 0, 0.5) 0%,
-    rgba(255, 106, 0, 0.2) 40%,
-    transparent 70%
-  );
-  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, rgba(255,106,0,0.55) 0%, rgba(255,106,0,0.18) 45%, transparent 72%);
+  transform: translate(-50%,-50%) scale(0);
   opacity: 0;
   pointer-events: none;
+  z-index: 0;
 }
 
+/* ── Globe Breathing Aura ─────────────────────────────── */
+.globe-breathing-aura {
+  position: absolute;
+  left: 770px;
+  top: 330px;
+  width: 500px;
+  height: 500px;
+  z-index: 6;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,130,0,0.22) 0%, rgba(255,80,0,0.08) 45%, transparent 70%);
+  mix-blend-mode: screen;
+  opacity: 0;
+}
+
+/* ── Retro Popup (unchanged) ──────────────────────────── */
+.retro-popup-overlay { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.82); backdrop-filter: blur(4px); }
+.retro-popup-terminal { position: relative; width: 480px; max-width: 90vw; padding: 32px 28px; background: #0a0a0a; border: 2px solid rgba(255,106,0,0.6); border-radius: 6px; box-shadow: 0 0 40px rgba(255,106,0,0.15), inset 0 0 60px rgba(0,20,0,0.2); overflow: hidden; }
+.retro-popup-scanlines { position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,60,0.03) 2px,rgba(0,255,60,0.03) 4px); z-index: 1; }
+.retro-popup-close { position: absolute; top: 12px; right: 16px; background: none; border: none; color: rgba(255,106,0,0.9); font-family: monospace; font-size: 14px; cursor: pointer; z-index: 2; padding: 4px 8px; }
+.retro-popup-close:hover { color: #fff; }
+.retro-popup-content { position: relative; z-index: 2; }
+.retro-line { margin: 0 0 8px; font-family: monospace; font-size: 14px; color: rgba(0,255,60,0.88); line-height: 1.5; }
+.retro-title { font-size: 16px; color: rgba(255,106,0,0.95); margin-bottom: 16px; letter-spacing: 0.08em; }
+.retro-ready { color: rgba(255,106,0,0.95); margin-top: 12px; font-weight: bold; }
+
+/* =========================================================
+   BATCH 2A — CORE MOTION SYSTEM (REFINED)
+   ========================================================= */
+
+/* ── Keyframes ────────────────────────────────────────── */
+@keyframes ring-drift-cw { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -2200; } }
+@keyframes ring-drift-ccw { from { stroke-dashoffset: 0; } to { stroke-dashoffset: 2200; } }
+@keyframes ring-drift-cw-slow { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -1600; } }
+
+@keyframes globe-glow-pulse {
+  0%, 100% { filter: drop-shadow(0 0 22px rgba(255,106,0,0.4)) brightness(1.02); }
+  50% { filter: drop-shadow(0 0 38px rgba(255,106,0,0.65)) brightness(1.1); }
+}
+
+@keyframes globe-aura-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.03); }
+}
+
+@keyframes tape-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+@keyframes nav-ripple-expand {
+  0% { transform: translate(-50%,-50%) scale(0.3); opacity: 0.7; }
+  100% { transform: translate(-50%,-50%) scale(2.8); opacity: 0; }
+}
+
+@keyframes cta-spark-left { 0% { transform: scaleX(0); opacity: 0; } 30% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0); opacity: 0; } }
+@keyframes cta-spark-right { 0% { transform: scaleX(0); opacity: 0; } 40% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(0); opacity: 0; } }
+@keyframes cta-glitch-micro { 0%,100% { transform: translate(0,0); } 25% { transform: translate(-2px,1px); } 50% { transform: translate(2px,-1px); } 75% { transform: translate(-1px,0); } }
+
+@keyframes hud-current-flow { from { stroke-dashoffset: 64; } to { stroke-dashoffset: 0; } }
+
+@keyframes retro-flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.7; }
+  94% { opacity: 1; }
+  96% { opacity: 0.85; }
+  97% { opacity: 1; }
+}
+
+/* ── Animation 1: Wheel Ring Motion ───────────────────── */
+.motion-enabled .asset-hero-wheel #circle148 { animation: ring-drift-cw 34s linear infinite; }
+.motion-enabled .asset-hero-wheel #circle150 { animation: ring-drift-ccw 28s linear infinite; }
+.motion-enabled .asset-hero-wheel #circle151 { animation: ring-drift-cw-slow 46s linear infinite; }
+.motion-enabled .asset-hero-wheel #circle152 { animation: ring-drift-ccw 40s linear infinite; }
+.motion-enabled .asset-hero-wheel #circle153 { animation: ring-drift-cw 52s linear infinite; }
+
+/* ── Animation 2: Globe Glow + Aura ──────────────────── */
+.motion-enabled .asset-hero-wheel #orange_world_globe_animatable {
+  animation: globe-glow-pulse 5s ease-in-out infinite alternate;
+}
+
+.motion-enabled .globe-breathing-aura {
+  animation: globe-aura-breathe 6s ease-in-out infinite alternate;
+}
+
+/* ── Animation 3: Tape Text Marquee (80s) ─────────────── */
+.motion-enabled .tape-marquee-track {
+  animation: tape-marquee 80s linear infinite;
+}
+
+/* ── Animation 4: Nav Paint Splash ────────────────────── */
 .motion-enabled .hero-nav-link:hover .hero-nav-ripple {
-  animation: nav-ripple-expand 0.5s ease-out forwards;
+  animation: nav-ripple-expand 0.55s ease-out forwards;
+}
+
+.hero-nav-link::before {
+  content: "";
+  position: absolute;
+  inset: -6px -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,106,0,0.28) 0%, transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.motion-enabled .hero-nav-link:hover::before {
+  opacity: 1;
 }
 
 /* ── Animation 5: CTA Hover Spark/Glitch ──────────────── */
-.motion-enabled .asset-hero-wheel-cta {
-  transition: filter 0.2s ease;
-}
-
 .motion-enabled .asset-hero-wheel-cta:hover svg {
-  filter: drop-shadow(0 0 20px rgba(255, 106, 0, 0.8))
-          drop-shadow(0 0 4px rgba(255, 200, 80, 0.4));
+  filter: drop-shadow(0 0 22px rgba(255,106,0,0.85)) drop-shadow(0 0 6px rgba(255,200,80,0.5)) brightness(1.08);
 }
 
 .asset-hero-wheel-cta::before,
@@ -584,55 +346,60 @@
   position: absolute;
   top: 50%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #ff6a00, transparent);
+  background: linear-gradient(90deg, transparent, #ff6a00, rgba(255,200,80,0.8), transparent);
   opacity: 0;
   pointer-events: none;
 }
 
-.asset-hero-wheel-cta::before {
-  left: -12px;
-  width: 24px;
-  transform-origin: right center;
+.asset-hero-wheel-cta::before { left: -16px; width: 32px; transform-origin: right center; }
+.asset-hero-wheel-cta::after { right: -16px; width: 32px; transform-origin: left center; }
+
+.motion-enabled .asset-hero-wheel-cta:hover::before { animation: cta-spark-left 0.45s ease-out 0.08s forwards; }
+.motion-enabled .asset-hero-wheel-cta:hover::after { animation: cta-spark-right 0.45s ease-out 0.12s forwards; }
+.motion-enabled .asset-hero-wheel-cta:active { animation: cta-glitch-micro 0.12s steps(4) 1; }
+
+/* ── Animation 6: Retro Computer Hover ────────────────── */
+.motion-enabled .retro-computer-btn:hover .asset-retro-computer svg {
+  animation: retro-flicker 2s steps(1) infinite;
 }
 
-.asset-hero-wheel-cta::after {
-  right: -12px;
-  width: 24px;
-  transform-origin: left center;
+/* ── Animation 7: HUD Electric Current ────────────────── */
+.motion-enabled .asset-hud-annotation-3 #hud_annotation_3_link_path,
+.motion-enabled .asset-hud-annotation-4 #hud_annotation_4_link_path,
+.motion-enabled .asset-hud-annotation-5 #hud_annotation_5_link_path,
+.motion-enabled .asset-hud-annotation-6 #hud_annotation_6_link_path {
+  stroke-dasharray: 18 14;
+  filter: drop-shadow(0 0 5px rgba(255,106,0,0.8));
 }
 
-.motion-enabled .asset-hero-wheel-cta:hover::before {
-  animation: cta-spark-left 0.4s ease-out 0.1s;
+.motion-enabled .asset-hud-annotation-3 #hud_annotation_3_link_path {
+  animation: hud-current-flow 2.8s linear infinite;
+}
+.motion-enabled .asset-hud-annotation-4 #hud_annotation_4_link_path {
+  animation: hud-current-flow 2.8s linear 0.25s infinite;
+}
+.motion-enabled .asset-hud-annotation-5 #hud_annotation_5_link_path {
+  animation: hud-current-flow 2.8s linear 0.5s infinite;
+}
+.motion-enabled .asset-hud-annotation-6 #hud_annotation_6_link_path {
+  animation: hud-current-flow 2.8s linear 0.75s infinite;
 }
 
-.motion-enabled .asset-hero-wheel-cta:hover::after {
-  animation: cta-spark-right 0.4s ease-out 0.15s;
-}
-
-.motion-enabled .asset-hero-wheel-cta:active {
-  animation: cta-glitch-micro 0.15s steps(4) 1;
-}
-
-/* ── Reduced Motion ───────────────────────────────────── */
+/* ── Reduced Motion — disable all loops ───────────────── */
 .motion-reduced .asset-hero-wheel #circle148,
 .motion-reduced .asset-hero-wheel #circle150,
 .motion-reduced .asset-hero-wheel #circle151,
 .motion-reduced .asset-hero-wheel #circle152,
 .motion-reduced .asset-hero-wheel #circle153,
-.motion-reduced .asset-hero-wheel #orange_world_globe_animatable {
-  animation: none !important;
-}
-
-.motion-reduced .tape-marquee-track {
-  animation: none !important;
-}
-
-.motion-reduced .hero-nav-link:hover .hero-nav-ripple {
-  animation: none !important;
-}
-
+.motion-reduced .asset-hero-wheel #orange_world_globe_animatable { animation: none !important; }
+.motion-reduced .globe-breathing-aura { animation: none !important; opacity: 0.3; }
+.motion-reduced .tape-marquee-track { animation: none !important; }
+.motion-reduced .hero-nav-link:hover .hero-nav-ripple { animation: none !important; }
 .motion-reduced .asset-hero-wheel-cta:hover::before,
 .motion-reduced .asset-hero-wheel-cta:hover::after,
-.motion-reduced .asset-hero-wheel-cta:active {
-  animation: none !important;
-}
+.motion-reduced .asset-hero-wheel-cta:active { animation: none !important; }
+.motion-reduced .retro-computer-btn:hover .asset-retro-computer svg { animation: none !important; }
+.motion-reduced .asset-hud-annotation-3 #hud_annotation_3_link_path,
+.motion-reduced .asset-hud-annotation-4 #hud_annotation_4_link_path,
+.motion-reduced .asset-hud-annotation-5 #hud_annotation_5_link_path,
+.motion-reduced .asset-hud-annotation-6 #hud_annotation_6_link_path { animation: none !important; }

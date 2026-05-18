@@ -109,7 +109,7 @@ export default function HeroSection() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   // Dynamic tape sizing: tape spans full viewport width inside the stage
-  const tapeBleed = 120;
+  const tapeBleed = 520;
   const tapeWidth = viewportWidth / scale + tapeBleed;
   const tapeLeft = (1920 - tapeWidth) / 2;
 
@@ -120,7 +120,11 @@ export default function HeroSection() {
   const motionClass = prefersReducedMotion ? "motion-reduced" : "motion-enabled";
 
   return (
-    <section className={`hero ${motionClass}`} aria-label="ELCEO Hero">
+    <section
+      className={`hero ${motionClass}`}
+      aria-label="ELCEO Hero"
+      data-motion={prefersReducedMotion ? "reduced" : "enabled"}
+    >
       {/* Background texture */}
       <div className="hero-bg" aria-hidden="true" />
 
@@ -180,8 +184,12 @@ export default function HeroSection() {
           <HeroWheelNoCta />
         </PositionedSvgAsset>
 
+        {/* Globe breathing aura overlay */}
+        <div className="globe-breathing-aura" aria-hidden="true" />
+
         {/* Layer 7: HUD Annotations */}
         <PositionedSvgAsset
+          className="asset-hud-annotation-3"
           width={500}
           height={350}
           left={1396}
@@ -193,6 +201,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-4"
           width={642}
           height={243}
           left={155.77}
@@ -205,6 +214,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-5"
           width={440}
           height={517}
           left={246.78}
@@ -217,6 +227,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-6"
           width={438}
           height={496}
           left={1384.15}
@@ -347,6 +358,7 @@ export default function HeroSection() {
           top={905}
           rotation={356.8}
           zIndex={12}
+          preserveAspectRatio="none"
         >
           <YellowTape />
         </PositionedSvgAsset>
@@ -366,8 +378,8 @@ export default function HeroSection() {
           aria-hidden="true"
         >
           <div className="tape-marquee-track">
-            <span className="tape-text-content">{TAPE_TEXT.repeat(8)}</span>
-            <span className="tape-text-content">{TAPE_TEXT.repeat(8)}</span>
+            <span className="tape-text-content">{TAPE_TEXT.repeat(10)}</span>
+            <span className="tape-text-content">{TAPE_TEXT.repeat(10)}</span>
           </div>
         </div>
       </div>
