@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, isValidElement, cloneElement } from "react";
 import "../styles/hero.css";
 
 // SVGR imports — each SVG is imported as a React component
@@ -47,22 +47,28 @@ function PositionedSvgAsset({
     transformOrigin: rotation !== undefined ? "center center" : undefined,
   };
 
+  // Force SVG children to fill the wrapper exactly
+  const svgChild = isValidElement(children)
+    ? cloneElement(children as React.ReactElement<Record<string, unknown>>, {
+        preserveAspectRatio: "none",
+        focusable: "false",
+      })
+    : children;
+
   return (
     <div className={`positioned-asset ${className}`} style={style}>
-      {children}
+      {svgChild}
     </div>
   );
 }
 
-// ── Scale hook ───────────────────────────────────────────────────────────────
+// ── Scale hook (width-fit) ───────────────────────────────────────────────────
 function useHeroScale() {
-  const [scale, setScale] = useState(() =>
-    Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
-  );
+  const [scale, setScale] = useState(() => window.innerWidth / 1920);
 
   useEffect(() => {
     function handleResize() {
-      setScale(Math.min(window.innerWidth / 1920, window.innerHeight / 1080));
+      setScale(window.innerWidth / 1920);
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
