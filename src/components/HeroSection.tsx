@@ -105,6 +105,10 @@ export default function HeroSection() {
   const tapeWidth = viewportWidth / scale + tapeBleed;
   const tapeLeft = (1920 - tapeWidth) / 2;
 
+  // Nav centering on desktop
+  const NAV_WIDTH = 797;
+  const navLeft = (1920 - NAV_WIDTH) / 2;
+
   return (
     <section className="hero" aria-label="ELCEO Hero">
       {/* Background texture */}
@@ -120,7 +124,7 @@ export default function HeroSection() {
           className="asset-vertical-logo"
           width={104}
           height={823}
-          left={49}
+          left={24}
           top={109}
           zIndex={3}
         >
@@ -132,7 +136,7 @@ export default function HeroSection() {
           className="asset-vertical-logo asset-vertical-logo-2"
           width={104}
           height={823}
-          left={58}
+          left={33}
           top={118}
           zIndex={4}
         >
@@ -151,14 +155,14 @@ export default function HeroSection() {
           <HeroWheelNoCta />
         </PositionedSvgAsset>
 
-        {/* Layer 6: Wheel Side */}
+        {/* Layer 4: Wheel Side (behind hero wheel) */}
         <PositionedSvgAsset
           className="asset-wheel-side"
           width={332}
           height={294}
           left={1203}
           top={84}
-          zIndex={6}
+          zIndex={4}
         >
           <WheelSide />
         </PositionedSvgAsset>
@@ -228,7 +232,7 @@ export default function HeroSection() {
           className="asset-nav-bar"
           width={797}
           height={43}
-          left={610}
+          left={navLeft}
           top={29}
           zIndex={9}
         >
@@ -251,9 +255,9 @@ export default function HeroSection() {
         <PositionedSvgAsset
           className="asset-yellow-tape"
           width={tapeWidth}
-          height={300}
+          height={120}
           left={tapeLeft}
-          top={828}
+          top={905}
           rotation={356.8}
           zIndex={11}
         >
