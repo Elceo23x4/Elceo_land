@@ -124,18 +124,22 @@
   filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.55));
 }
 
+/* ── Yellow Tape — increased opacity ──────────────────── */
 .asset-yellow-tape {
   overflow: visible;
+  opacity: 0.85;
 }
 
 .asset-yellow-tape svg {
   overflow: visible;
 }
 
+/* ── Nav (legacy SVG class, kept for compat) ──────────── */
 .asset-nav-bar {
   pointer-events: auto;
 }
 
+/* ── Retro Computer ───────────────────────────────────── */
 .asset-retro-computer {
   pointer-events: none;
   cursor: pointer;
@@ -205,8 +209,10 @@
 
 .tape-text-content {
   font-family: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact, sans-serif;
-  font-size: 32px;
+  font-size: 38px;
+  font-weight: 800;
   letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: #000;
   line-height: 1;
   display: inline-block;
@@ -238,6 +244,55 @@
   letter-spacing: 0.04em;
   margin-top: -2px;
   padding-left: 2px;
+}
+
+/* ── Hero Nav (real links) ────────────────────────────── */
+.hero-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 64px;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.hero-nav-link {
+  font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.hero-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 106, 0, 0.7);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.hero-nav-link:hover {
+  color: #fff;
+}
+
+.hero-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.hero-nav-link:active {
+  color: rgba(255, 106, 0, 0.95);
 }
 
 /* ── Retro Computer Popup ─────────────────────────────── */

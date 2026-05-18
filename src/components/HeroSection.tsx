@@ -1,6 +1,7 @@
 import { useEffect, useState, isValidElement, cloneElement } from "react";
 import "../styles/hero.css";
 import RetroComputerPopup from "./RetroComputerPopup";
+import HeroNav from "./HeroNav";
 
 // SVGR imports — each SVG is imported as a React component
 import VerticalLogo1 from "../assets/source/hero/vertical_logo_1.svg?react";
@@ -12,7 +13,6 @@ import HudAnnotation4 from "../assets/source/hero/hud_annotation_4.svg?react";
 import HudAnnotation5 from "../assets/source/hero/hud_annotation_5.svg?react";
 import HudAnnotation6 from "../assets/source/hero/hud_annotation_6.svg?react";
 import HeroWheelCta from "../assets/source/hero/hero_wheel_cta.svg?react";
-import NavBar from "../assets/source/hero/nav_bar.svg?react";
 import RetroComputerLogo from "../assets/source/hero/retro_computer_logo.svg?react";
 import YellowTape from "../assets/source/hero/yellow_tape.svg?react";
 
@@ -178,10 +178,10 @@ export default function HeroSection() {
 
         {/* Layer 7: HUD Annotations */}
         <PositionedSvgAsset
-          width={427}
-          height={330}
-          left={1431}
-          top={218}
+          width={500}
+          height={350}
+          left={1396}
+          top={210}
           zIndex={7}
           preserveAspectRatio="none"
         >
@@ -235,7 +235,7 @@ export default function HeroSection() {
           <p className="hud-body">See volatility, invalidation, <span className="marker-highlight">exposure pressure</span>, and market uncertainty before acting.</p>
         </div>
 
-        <div className="hud-textbox hud-textbox-5" style={{ left: 281, top: 189, width: 144, height: 289, zIndex: 8 }}>
+        <div className="hud-textbox hud-textbox-5" style={{ left: 281, top: 203, width: 144, height: 289, zIndex: 8 }}>
           <p className="hud-title"><span className="marker-highlight">MARKET</span> COGNITION</p>
           <p className="hud-body">ELCEO turns scattered market evidence into <span className="marker-highlight">readable</span> trader context.</p>
         </div>
@@ -257,17 +257,23 @@ export default function HeroSection() {
           <HeroWheelCta />
         </PositionedSvgAsset>
 
-        {/* Layer 10: Nav Bar */}
-        <PositionedSvgAsset
-          className="asset-nav-bar"
-          width={797}
-          height={43}
-          left={navLeft}
-          top={29}
-          zIndex={10}
+        {/* Layer 10: Nav (real interactive links) */}
+        <div
+          className="hero-nav-wrapper"
+          style={{
+            position: "absolute",
+            left: `${navLeft}px`,
+            top: "29px",
+            width: `${NAV_WIDTH}px`,
+            height: "43px",
+            zIndex: 10,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
-          <NavBar />
-        </PositionedSvgAsset>
+          <HeroNav />
+        </div>
 
         {/* Layer 11: Retro Computer Logo (clickable) */}
         <button
@@ -347,7 +353,7 @@ export default function HeroSection() {
             top: "930px",
             width: `${tapeWidth}px`,
             height: "60px",
-            transform: "rotate(356.8deg)",
+            transform: "rotate(356.8deg) scaleY(1.18)",
             transformOrigin: "center center",
             zIndex: 13,
           }}
