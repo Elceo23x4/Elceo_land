@@ -95,6 +95,26 @@
   overflow: visible;
 }
 
+/* ── Wheel Occlusion Shield ───────────────────────────── */
+.wheel-occlusion-shield {
+  position: absolute;
+  left: 519px;
+  top: 104px;
+  width: 987px;
+  height: 964px;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(0, 0, 0, 0.98) 0%,
+      rgba(0, 0, 0, 0.98) 48%,
+      rgba(0, 0, 0, 0.92) 62%,
+      rgba(0, 0, 0, 0.0) 74%
+    );
+}
+
 .asset-hero-wheel-cta {
   pointer-events: auto;
   cursor: pointer;
@@ -117,10 +137,189 @@
 }
 
 .asset-retro-computer {
-  pointer-events: auto;
+  pointer-events: none;
   cursor: pointer;
 }
 
 .asset-retro-computer svg {
   filter: drop-shadow(0 0 8px rgba(255, 106, 0, 0.4));
+}
+
+.retro-computer-btn {
+  pointer-events: auto;
+}
+
+.retro-computer-btn:hover .asset-retro-computer svg {
+  filter: drop-shadow(0 0 14px rgba(255, 106, 0, 0.8));
+}
+
+/* ── HUD Textboxes ────────────────────────────────────── */
+.hud-textbox {
+  position: absolute;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 6px 8px;
+  font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", sans-serif;
+}
+
+.hud-title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.hud-body {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.marker-highlight {
+  background: linear-gradient(to top, rgba(255, 106, 0, 0.85) 52%, transparent 52%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 2px;
+  color: #fff;
+}
+
+/* ── Yellow Tape Text Overlay ─────────────────────────── */
+.tape-text-overlay {
+  position: absolute;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.tape-text-content {
+  font-family: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact, sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.06em;
+  color: #000;
+  line-height: 1;
+  display: inline-block;
+}
+
+/* ── Click-Here Arrow ─────────────────────────────────── */
+.click-here-arrow {
+  position: absolute;
+  left: 1710px;
+  top: 100px;
+  width: 120px;
+  height: 70px;
+  z-index: 11;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.click-here-svg {
+  width: 100%;
+  height: 48px;
+}
+
+.click-here-text {
+  font-family: "Tribes Regular", "Bebas Neue", cursive, sans-serif;
+  font-size: 13px;
+  color: rgba(255, 106, 0, 0.9);
+  letter-spacing: 0.04em;
+  margin-top: -2px;
+  padding-left: 2px;
+}
+
+/* ── Retro Computer Popup ─────────────────────────────── */
+.retro-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.retro-popup-terminal {
+  position: relative;
+  width: 480px;
+  max-width: 90vw;
+  padding: 32px 28px;
+  background: #0a0a0a;
+  border: 2px solid rgba(255, 106, 0, 0.6);
+  border-radius: 6px;
+  box-shadow:
+    0 0 40px rgba(255, 106, 0, 0.15),
+    inset 0 0 60px rgba(0, 20, 0, 0.2);
+  overflow: hidden;
+}
+
+.retro-popup-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 60, 0.03) 2px,
+    rgba(0, 255, 60, 0.03) 4px
+  );
+  z-index: 1;
+}
+
+.retro-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: rgba(255, 106, 0, 0.9);
+  font-family: monospace;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 2;
+  padding: 4px 8px;
+}
+
+.retro-popup-close:hover {
+  color: #fff;
+}
+
+.retro-popup-content {
+  position: relative;
+  z-index: 2;
+}
+
+.retro-line {
+  margin: 0 0 8px;
+  font-family: monospace;
+  font-size: 14px;
+  color: rgba(0, 255, 60, 0.88);
+  line-height: 1.5;
+}
+
+.retro-title {
+  font-size: 16px;
+  color: rgba(255, 106, 0, 0.95);
+  margin-bottom: 16px;
+  letter-spacing: 0.08em;
+}
+
+.retro-ready {
+  color: rgba(255, 106, 0, 0.95);
+  margin-top: 12px;
+  font-weight: bold;
 }
