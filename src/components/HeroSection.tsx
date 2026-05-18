@@ -151,14 +151,14 @@ export default function HeroSection() {
           <HeroWheelNoCta />
         </PositionedSvgAsset>
 
-        {/* Layer 6: Wheel Side */}
+        {/* Layer 4: Wheel Side (behind hero wheel) */}
         <PositionedSvgAsset
           className="asset-wheel-side"
           width={332}
           height={294}
           left={1203}
           top={84}
-          zIndex={6}
+          zIndex={4}
         >
           <WheelSide />
         </PositionedSvgAsset>
@@ -251,9 +251,9 @@ export default function HeroSection() {
         <PositionedSvgAsset
           className="asset-yellow-tape"
           width={tapeWidth}
-          height={300}
+          height={190}
           left={tapeLeft}
-          top={828}
+          top={860}
           rotation={356.8}
           zIndex={11}
         >
