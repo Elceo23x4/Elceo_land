@@ -2,6 +2,7 @@ import { useEffect, useState, isValidElement, cloneElement } from "react";
 import "../styles/hero.css";
 import RetroComputerPopup from "./RetroComputerPopup";
 import HeroNav from "./HeroNav";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 
 // SVGR imports — each SVG is imported as a React component
 import VerticalLogo1 from "../assets/source/hero/vertical_logo_1.svg?react";
@@ -105,6 +106,7 @@ export default function HeroSection() {
   const scale = useHeroScale();
   const viewportWidth = useViewportWidth();
   const [popupOpen, setPopupOpen] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   // Dynamic tape sizing: tape spans full viewport width inside the stage
   const tapeBleed = 120;
@@ -115,8 +117,10 @@ export default function HeroSection() {
   const NAV_WIDTH = 797;
   const navLeft = (1920 - NAV_WIDTH) / 2;
 
+  const motionClass = prefersReducedMotion ? "motion-reduced" : "motion-enabled";
+
   return (
-    <section className="hero" aria-label="ELCEO Hero">
+    <section className={`hero ${motionClass}`} aria-label="ELCEO Hero">
       {/* Background texture */}
       <div className="hero-bg" aria-hidden="true" />
 
@@ -225,8 +229,6 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         {/* Layer 8: HUD Textboxes */}
-
-        {/* Annotation 3: visible content frame */}
         <div className="hud3-content-frame" aria-hidden="true" style={{ position: "absolute", left: 1580, top: 222, width: 292, height: 138, zIndex: 8 }} />
 
         <div className="hud-textbox hud-textbox-3" style={{ left: 1600, top: 246, width: 250, height: 96, zIndex: 9 }}>
@@ -349,7 +351,7 @@ export default function HeroSection() {
           <YellowTape />
         </PositionedSvgAsset>
 
-        {/* Layer 13: Tape Text Overlay */}
+        {/* Layer 13: Tape Text Marquee */}
         <div
           className="tape-text-overlay"
           style={{
@@ -363,9 +365,10 @@ export default function HeroSection() {
           }}
           aria-hidden="true"
         >
-          <span className="tape-text-content">
-            {TAPE_TEXT.repeat(6)}
-          </span>
+          <div className="tape-marquee-track">
+            <span className="tape-text-content">{TAPE_TEXT.repeat(8)}</span>
+            <span className="tape-text-content">{TAPE_TEXT.repeat(8)}</span>
+          </div>
         </div>
       </div>
 

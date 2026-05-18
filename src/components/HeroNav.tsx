@@ -13,7 +13,8 @@ export default function HeroNav() {
     <nav className="hero-nav" aria-label="Primary">
       {NAV_LINKS.map((link) => (
         <a key={link.href} href={link.href} className="hero-nav-link">
-          {link.label}
+          <span className="hero-nav-link-text">{link.label}</span>
+          <span className="hero-nav-ripple" aria-hidden="true" />
         </a>
       ))}
     </nav>

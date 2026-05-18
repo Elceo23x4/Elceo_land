@@ -251,6 +251,11 @@
   white-space: nowrap;
 }
 
+.tape-marquee-track {
+  display: flex;
+  width: max-content;
+}
+
 .tape-text-content {
   font-family: "Bebas Neue", "Tribes Regular", "Arial Narrow", Impact, sans-serif;
   font-size: 38px;
@@ -260,6 +265,7 @@
   color: #000;
   line-height: 1;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 /* ── Click-Here Arrow ─────────────────────────────────── */
@@ -421,4 +427,212 @@
   color: rgba(255, 106, 0, 0.95);
   margin-top: 12px;
   font-weight: bold;
+}
+
+/* =========================================================
+   BATCH 2A — CORE MOTION SYSTEM
+   ========================================================= */
+
+/* ── Keyframes ────────────────────────────────────────── */
+
+/* Wheel ring rotation via stroke-dashoffset */
+@keyframes ring-drift-cw {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -2200; }
+}
+
+@keyframes ring-drift-ccw {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 2200; }
+}
+
+@keyframes ring-drift-cw-slow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -1600; }
+}
+
+/* Globe glow pulse */
+@keyframes globe-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 18px rgba(255, 106, 0, 0.35)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 32px rgba(255, 106, 0, 0.55)) brightness(1.06);
+  }
+}
+
+/* Tape marquee */
+@keyframes tape-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Nav ripple */
+@keyframes nav-ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* CTA spark lines */
+@keyframes cta-spark-left {
+  0% { transform: scaleX(0); opacity: 0; }
+  30% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+@keyframes cta-spark-right {
+  0% { transform: scaleX(0); opacity: 0; }
+  40% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0; }
+}
+
+/* CTA glitch micro-shift */
+@keyframes cta-glitch-micro {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0); }
+}
+
+/* ── Animation 1: Wheel Ring Motion ───────────────────── */
+.motion-enabled .asset-hero-wheel #circle148 {
+  animation: ring-drift-cw 42s linear infinite;
+}
+
+.motion-enabled .asset-hero-wheel #circle150 {
+  animation: ring-drift-ccw 36s linear infinite;
+}
+
+.motion-enabled .asset-hero-wheel #circle151 {
+  animation: ring-drift-cw-slow 54s linear infinite;
+}
+
+.motion-enabled .asset-hero-wheel #circle152 {
+  animation: ring-drift-ccw 48s linear infinite;
+}
+
+.motion-enabled .asset-hero-wheel #circle153 {
+  animation: ring-drift-cw 60s linear infinite;
+}
+
+/* ── Animation 2: Globe Glow Pulse ────────────────────── */
+.motion-enabled .asset-hero-wheel #orange_world_globe_animatable {
+  animation: globe-glow-pulse 5.5s ease-in-out infinite alternate;
+}
+
+/* ── Animation 3: Tape Text Marquee ───────────────────── */
+.motion-enabled .tape-marquee-track {
+  animation: tape-marquee 24s linear infinite;
+}
+
+/* ── Animation 4: Nav Hover Ripple/Splash ─────────────── */
+.hero-nav-link {
+  overflow: hidden;
+}
+
+.hero-nav-link-text {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+.hero-nav-link:hover .hero-nav-link-text {
+  transform: scale(1.04);
+}
+
+.hero-nav-ripple {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 106, 0, 0.5) 0%,
+    rgba(255, 106, 0, 0.2) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.motion-enabled .hero-nav-link:hover .hero-nav-ripple {
+  animation: nav-ripple-expand 0.5s ease-out forwards;
+}
+
+/* ── Animation 5: CTA Hover Spark/Glitch ──────────────── */
+.motion-enabled .asset-hero-wheel-cta {
+  transition: filter 0.2s ease;
+}
+
+.motion-enabled .asset-hero-wheel-cta:hover svg {
+  filter: drop-shadow(0 0 20px rgba(255, 106, 0, 0.8))
+          drop-shadow(0 0 4px rgba(255, 200, 80, 0.4));
+}
+
+.asset-hero-wheel-cta::before,
+.asset-hero-wheel-cta::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6a00, transparent);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.asset-hero-wheel-cta::before {
+  left: -12px;
+  width: 24px;
+  transform-origin: right center;
+}
+
+.asset-hero-wheel-cta::after {
+  right: -12px;
+  width: 24px;
+  transform-origin: left center;
+}
+
+.motion-enabled .asset-hero-wheel-cta:hover::before {
+  animation: cta-spark-left 0.4s ease-out 0.1s;
+}
+
+.motion-enabled .asset-hero-wheel-cta:hover::after {
+  animation: cta-spark-right 0.4s ease-out 0.15s;
+}
+
+.motion-enabled .asset-hero-wheel-cta:active {
+  animation: cta-glitch-micro 0.15s steps(4) 1;
+}
+
+/* ── Reduced Motion ───────────────────────────────────── */
+.motion-reduced .asset-hero-wheel #circle148,
+.motion-reduced .asset-hero-wheel #circle150,
+.motion-reduced .asset-hero-wheel #circle151,
+.motion-reduced .asset-hero-wheel #circle152,
+.motion-reduced .asset-hero-wheel #circle153,
+.motion-reduced .asset-hero-wheel #orange_world_globe_animatable {
+  animation: none !important;
+}
+
+.motion-reduced .tape-marquee-track {
+  animation: none !important;
+}
+
+.motion-reduced .hero-nav-link:hover .hero-nav-ripple {
+  animation: none !important;
+}
+
+.motion-reduced .asset-hero-wheel-cta:hover::before,
+.motion-reduced .asset-hero-wheel-cta:hover::after,
+.motion-reduced .asset-hero-wheel-cta:active {
+  animation: none !important;
 }
