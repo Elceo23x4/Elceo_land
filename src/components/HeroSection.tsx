@@ -127,7 +127,7 @@ export default function HeroSection() {
           width={332}
           height={294}
           left={855}
-          top={17}
+          top={-17}
           zIndex={6}
         >
           <WheelSide />

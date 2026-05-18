@@ -280,11 +280,11 @@
        data-label="hud_annotation_3_link_group">
       <path
          id="hud_annotation_3_link_path"
-         d="M 1085,405 L 1110,405 L 1130,267 L 1150,267"
+         d="M 1045,405 L 1110,405 L 1130,267 L 1150,267"
          class="hud-link" />
       <circle
          id="hud_annotation_3_wheel_node"
-         cx="1085"
+         cx="1045"
          cy="405"
          r="7"
          class="hud-node" />
