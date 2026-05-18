@@ -45,7 +45,7 @@
   opacity: 0.22;
 }
 
-/* ── The 1920×1080 coordinate stage (width-fit, top-aligned) */
+/* ── The 1920×1080 coordinate stage (contain-fit, top-aligned) */
 .hero-stage {
   position: absolute;
   width: 1920px;
@@ -62,14 +62,14 @@
 .positioned-asset {
   position: absolute;
   pointer-events: none;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .positioned-asset svg {
   width: 100%;
   height: 100%;
   display: block;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* ── Layer-specific styles ────────────────────────────── */
@@ -85,15 +85,14 @@
   filter: contrast(1.05) saturate(1.1);
 }
 
-/* Wheel side — strict clipping to prevent spill */
+/* Wheel side — visible overflow, no clipping */
 .asset-wheel-side {
-  overflow: hidden;
-  clip-path: inset(0);
+  overflow: visible;
   opacity: 0.85;
 }
 
 .asset-wheel-side svg {
-  overflow: hidden;
+  overflow: visible;
 }
 
 .asset-hero-wheel-cta {
@@ -105,7 +104,6 @@
   filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.55));
 }
 
-/* Yellow tape may need visible edge overflow for texture */
 .asset-yellow-tape {
   overflow: visible;
 }

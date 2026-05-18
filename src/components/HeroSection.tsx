@@ -25,6 +25,7 @@ interface PositionedSvgAssetProps {
   top: number;
   rotation?: number;
   zIndex: number;
+  preserveAspectRatio?: string;
 }
 
 function PositionedSvgAsset({
@@ -36,6 +37,7 @@ function PositionedSvgAsset({
   top,
   rotation,
   zIndex,
+  preserveAspectRatio = "xMidYMid meet",
 }: PositionedSvgAssetProps) {
   const style: React.CSSProperties = {
     width: `${width}px`,
@@ -47,10 +49,9 @@ function PositionedSvgAsset({
     transformOrigin: rotation !== undefined ? "center center" : undefined,
   };
 
-  // Force SVG children to fill the wrapper exactly
   const svgChild = isValidElement(children)
     ? cloneElement(children as React.ReactElement<Record<string, unknown>>, {
-        preserveAspectRatio: "none",
+        preserveAspectRatio,
         focusable: "false",
       })
     : children;
@@ -62,13 +63,15 @@ function PositionedSvgAsset({
   );
 }
 
-// ── Scale hook (width-fit) ───────────────────────────────────────────────────
+// ── Scale hook (safe contain-fit) ────────────────────────────────────────────
 function useHeroScale() {
-  const [scale, setScale] = useState(() => window.innerWidth / 1920);
+  const [scale, setScale] = useState(() =>
+    Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
+  );
 
   useEffect(() => {
     function handleResize() {
-      setScale(window.innerWidth / 1920);
+      setScale(Math.min(window.innerWidth / 1920, window.innerHeight / 1080));
     }
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -77,9 +80,30 @@ function useHeroScale() {
   return scale;
 }
 
+// ── Viewport width hook (for dynamic tape sizing) ────────────────────────────
+function useViewportWidth() {
+  const [vw, setVw] = useState(() => window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setVw(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return vw;
+}
+
 // ── Hero Section Component ───────────────────────────────────────────────────
 export default function HeroSection() {
   const scale = useHeroScale();
+  const viewportWidth = useViewportWidth();
+
+  // Dynamic tape sizing: tape spans full viewport width inside the stage
+  const tapeBleed = 120;
+  const tapeWidth = viewportWidth / scale + tapeBleed;
+  const tapeLeft = (1920 - tapeWidth) / 2;
 
   return (
     <section className="hero" aria-label="ELCEO Hero">
@@ -146,6 +170,7 @@ export default function HeroSection() {
           left={1431}
           top={218}
           zIndex={7}
+          preserveAspectRatio="none"
         >
           <HudAnnotation3 />
         </PositionedSvgAsset>
@@ -157,6 +182,7 @@ export default function HeroSection() {
           top={630}
           rotation={180.36}
           zIndex={7}
+          preserveAspectRatio="none"
         >
           <HudAnnotation4 />
         </PositionedSvgAsset>
@@ -168,6 +194,7 @@ export default function HeroSection() {
           top={110.17}
           rotation={90.07}
           zIndex={7}
+          preserveAspectRatio="none"
         >
           <HudAnnotation5 />
         </PositionedSvgAsset>
@@ -179,6 +206,7 @@ export default function HeroSection() {
           top={332.17}
           rotation={270.04}
           zIndex={7}
+          preserveAspectRatio="none"
         >
           <HudAnnotation6 />
         </PositionedSvgAsset>
@@ -219,12 +247,12 @@ export default function HeroSection() {
           <RetroComputerLogo />
         </PositionedSvgAsset>
 
-        {/* Layer 11: Yellow Tape */}
+        {/* Layer 11: Yellow Tape (dynamic width to span viewport) */}
         <PositionedSvgAsset
           className="asset-yellow-tape"
-          width={1948}
+          width={tapeWidth}
           height={300}
-          left={-5.4}
+          left={tapeLeft}
           top={828}
           rotation={356.8}
           zIndex={11}
