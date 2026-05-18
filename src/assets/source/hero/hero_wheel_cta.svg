@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="hero_wheel_cta" width="280" height="72" viewBox="0 0 280 72" role="img" aria-labelledby="title desc" version="1.1" data-name="hero_wheel_cta">
+  <title id="title">hero_wheel_cta</title>
+  <desc id="desc">Editable standalone CTA button for the hero wheel.</desc>
+  <defs>
+    <style id="cta-style">:root { --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; } .cta-text { font-family: var(--font-dot); letter-spacing: .08em; }</style>
+  </defs>
+  <g id="hero_wheel_cta_group" data-label="hero_wheel_cta_group">
+    <rect id="cta_button_background" x="2.5" y="2.5" width="275" height="67" rx="10" fill="#080300" stroke="#ff6a00" stroke-width="3"/>
+    <text id="cta_button_label" x="140" y="43" fill="#fff4e8" font-size="22px" text-anchor="middle" font-weight="700" class="cta-text">EXPLORE ELCEO</text>
+  </g>
+</svg>
