@@ -90,8 +90,8 @@ export default function HeroSection() {
           className="asset-vertical-logo"
           width={104}
           height={823}
-          left={-299}
-          top={8}
+          left={49}
+          top={109}
           zIndex={3}
         >
           <VerticalLogo1 />
@@ -102,8 +102,8 @@ export default function HeroSection() {
           className="asset-vertical-logo asset-vertical-logo-2"
           width={104}
           height={823}
-          left={-290}
-          top={17}
+          left={58}
+          top={118}
           zIndex={4}
         >
           <VerticalLogo2 />
@@ -114,8 +114,8 @@ export default function HeroSection() {
           className="asset-hero-wheel"
           width={987}
           height={964}
-          left={171}
-          top={3}
+          left={519}
+          top={104}
           zIndex={5}
         >
           <HeroWheelNoCta />
@@ -126,8 +126,8 @@ export default function HeroSection() {
           className="asset-wheel-side"
           width={332}
           height={294}
-          left={855}
-          top={-17}
+          left={1203}
+          top={84}
           zIndex={6}
         >
           <WheelSide />
@@ -137,8 +137,8 @@ export default function HeroSection() {
         <PositionedSvgAsset
           width={427}
           height={330}
-          left={1083}
-          top={117}
+          left={1431}
+          top={218}
           zIndex={7}
         >
           <HudAnnotation3 />
@@ -147,8 +147,8 @@ export default function HeroSection() {
         <PositionedSvgAsset
           width={642}
           height={243}
-          left={-192.23}
-          top={529}
+          left={155.77}
+          top={630}
           rotation={180.36}
           zIndex={7}
         >
@@ -158,8 +158,8 @@ export default function HeroSection() {
         <PositionedSvgAsset
           width={440}
           height={517}
-          left={-101.22}
-          top={9.17}
+          left={246.78}
+          top={110.17}
           rotation={90.07}
           zIndex={7}
         >
@@ -169,8 +169,8 @@ export default function HeroSection() {
         <PositionedSvgAsset
           width={438}
           height={496}
-          left={1036.15}
-          top={231.17}
+          left={1384.15}
+          top={332.17}
           rotation={270.04}
           zIndex={7}
         >
@@ -182,8 +182,8 @@ export default function HeroSection() {
           className="asset-hero-wheel-cta"
           width={300}
           height={97}
-          left={513}
-          top={425}
+          left={861}
+          top={526}
           zIndex={8}
         >
           <HeroWheelCta />
@@ -194,8 +194,8 @@ export default function HeroSection() {
           className="asset-nav-bar"
           width={797}
           height={43}
-          left={262}
-          top={-72}
+          left={610}
+          top={29}
           zIndex={9}
         >
           <NavBar />
@@ -206,8 +206,8 @@ export default function HeroSection() {
           className="asset-retro-computer"
           width={123}
           height={95}
-          left={1448}
-          top={-82}
+          left={1796}
+          top={19}
           zIndex={10}
         >
           <RetroComputerLogo />
@@ -218,8 +218,8 @@ export default function HeroSection() {
           className="asset-yellow-tape"
           width={1948}
           height={300}
-          left={-353.4}
-          top={727}
+          left={-5.4}
+          top={828}
           rotation={356.8}
           zIndex={11}
         >
