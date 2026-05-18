@@ -197,6 +197,22 @@
   color: #fff;
 }
 
+/* ── HUD 3 Content Frame ──────────────────────────────── */
+.hud3-content-frame {
+  background: rgba(0, 0, 0, 0.92);
+  border: 1.5px solid rgba(255, 106, 0, 0.7);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 0 0 1px rgba(80, 80, 80, 0.35),
+    0 0 8px rgba(255, 106, 0, 0.12);
+  clip-path: polygon(0 8px, 8px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.hud-textbox-3 .hud-body {
+  font-size: 10px;
+  line-height: 1.25;
+}
+
 /* ── Yellow Tape Text Overlay ─────────────────────────── */
 .tape-text-overlay {
   position: absolute;

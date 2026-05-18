@@ -225,7 +225,11 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         {/* Layer 8: HUD Textboxes */}
-        <div className="hud-textbox hud-textbox-3" style={{ left: 1592, top: 238, width: 250, height: 105, zIndex: 8 }}>
+
+        {/* Annotation 3: visible content frame */}
+        <div className="hud3-content-frame" aria-hidden="true" style={{ position: "absolute", left: 1580, top: 222, width: 292, height: 138, zIndex: 8 }} />
+
+        <div className="hud-textbox hud-textbox-3" style={{ left: 1600, top: 246, width: 250, height: 96, zIndex: 9 }}>
           <p className="hud-title"><span className="marker-highlight">MARKET</span> PRESSURE</p>
           <p className="hud-body">Price action, macro flow, <span className="marker-highlight">liquidity</span>, and risk context in one reasoning layer.</p>
         </div>
