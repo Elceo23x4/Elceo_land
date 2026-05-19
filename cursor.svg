@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="1536"
+   height="1536"
+   viewBox="0 0 1536 1536"
+   fill="none"
+   version="1.1"
+   id="svg49"
+   sodipodi:docname="0c4dde1e-429f-4190-bc7c-aa46ab8ae989.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview49"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <title
+     id="title1">Gold bar between bullish and bearish candlesticks cursor vector</title>
+  <desc
+     id="desc1">Editable SVG vector graphic with transparent background: flat green/red candlesticks and a 3D-style 24k gold bar.</desc>
+  <defs
+     id="defs49">
+    <linearGradient
+       id="goldOuter"
+       x1="602"
+       y1="145"
+       x2="936"
+       y2="1238"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FFD84D"
+         id="stop1" />
+      <stop
+         offset="0.08"
+         stop-color="#FFE98F"
+         id="stop2" />
+      <stop
+         offset="0.18"
+         stop-color="#D08A00"
+         id="stop3" />
+      <stop
+         offset="0.36"
+         stop-color="#F9B800"
+         id="stop4" />
+      <stop
+         offset="0.55"
+         stop-color="#8A5200"
+         id="stop5" />
+      <stop
+         offset="0.77"
+         stop-color="#FFCB24"
+         id="stop6" />
+      <stop
+         offset="1"
+         stop-color="#A15C00"
+         id="stop7" />
+    </linearGradient>
+    <linearGradient
+       id="goldFace"
+       x1="676"
+       y1="210"
+       x2="829"
+       y2="1122"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FFF5A2"
+         id="stop8" />
+      <stop
+         offset="0.12"
+         stop-color="#FFE04C"
+         id="stop9" />
+      <stop
+         offset="0.32"
+         stop-color="#FFD000"
+         id="stop10" />
+      <stop
+         offset="0.58"
+         stop-color="#D39200"
+         id="stop11" />
+      <stop
+         offset="0.72"
+         stop-color="#9E6500"
+         id="stop12" />
+      <stop
+         offset="0.86"
+         stop-color="#E9A900"
+         id="stop13" />
+      <stop
+         offset="1"
+         stop-color="#FFE06B"
+         id="stop14" />
+    </linearGradient>
+    <linearGradient
+       id="goldFaceSoft"
+       x1="656"
+       y1="205"
+       x2="872"
+       y2="1125"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FFF8B4"
+         id="stop15" />
+      <stop
+         offset="0.19"
+         stop-color="#FFE33D"
+         id="stop16" />
+      <stop
+         offset="0.41"
+         stop-color="#F2B400"
+         id="stop17" />
+      <stop
+         offset="0.63"
+         stop-color="#B87800"
+         id="stop18" />
+      <stop
+         offset="0.8"
+         stop-color="#EBA900"
+         id="stop19" />
+      <stop
+         offset="1"
+         stop-color="#FFC812"
+         id="stop20" />
+    </linearGradient>
+    <linearGradient
+       id="goldLeftBevel"
+       x1="568"
+       y1="210"
+       x2="642"
+       y2="1150"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FFE37A"
+         id="stop21" />
+      <stop
+         offset="0.22"
+         stop-color="#B36B00"
+         id="stop22" />
+      <stop
+         offset="0.42"
+         stop-color="#FFD33C"
+         id="stop23" />
+      <stop
+         offset="0.65"
+         stop-color="#7C4700"
+         id="stop24" />
+      <stop
+         offset="0.86"
+         stop-color="#F7B300"
+         id="stop25" />
+      <stop
+         offset="1"
+         stop-color="#6D3B00"
+         id="stop26" />
+    </linearGradient>
+    <linearGradient
+       id="goldRightBevel"
+       x1="879"
+       y1="185"
+       x2="940"
+       y2="1165"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#FFEB8B"
+         id="stop27" />
+      <stop
+         offset="0.17"
+         stop-color="#F4B000"
+         id="stop28" />
+      <stop
+         offset="0.39"
+         stop-color="#8A4D00"
+         id="stop29" />
+      <stop
+         offset="0.68"
+         stop-color="#F2A600"
+         id="stop30" />
+      <stop
+         offset="0.83"
+         stop-color="#7A3F00"
+         id="stop31" />
+      <stop
+         offset="1"
+         stop-color="#FFCB25"
+         id="stop32" />
+    </linearGradient>
+    <linearGradient
+       id="goldTop"
+       x1="606"
+       y1="129"
+       x2="886"
+       y2="226"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#C77B00"
+         id="stop33" />
+      <stop
+         offset="0.2"
+         stop-color="#FFDA42"
+         id="stop34" />
+      <stop
+         offset="0.48"
+         stop-color="#B56E00"
+         id="stop35" />
+      <stop
+         offset="0.74"
+         stop-color="#F5AF00"
+         id="stop36" />
+      <stop
+         offset="1"
+         stop-color="#784200"
+         id="stop37" />
+    </linearGradient>
+    <linearGradient
+       id="goldBottom"
+       x1="580"
+       y1="1110"
+       x2="930"
+       y2="1238"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0"
+         stop-color="#714000"
+         id="stop38" />
+      <stop
+         offset="0.22"
+         stop-color="#F1A700"
+         id="stop39" />
+      <stop
+         offset="0.52"
+         stop-color="#AA6900"
+         id="stop40" />
+      <stop
+         offset="0.78"
+         stop-color="#F8B900"
+         id="stop41" />
+      <stop
+         offset="1"
+         stop-color="#5E3300"
+         id="stop42" />
+    </linearGradient>
+    <radialGradient
+       id="goldGlow"
+       cx="0"
+       cy="0"
+       r="1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(818 276) rotate(86) scale(725 230)">
+      <stop
+         offset="0"
+         stop-color="#FFF7AD"
+         stop-opacity="0.92"
+         id="stop43" />
+      <stop
+         offset="0.24"
+         stop-color="#FFE054"
+         stop-opacity="0.75"
+         id="stop44" />
+      <stop
+         offset="0.54"
+         stop-color="#FFC000"
+         stop-opacity="0.18"
+         id="stop45" />
+      <stop
+         offset="1"
+         stop-color="#FFC000"
+         stop-opacity="0"
+         id="stop46" />
+    </radialGradient>
+    <filter
+       id="goldDrop"
+       x="515"
+       y="102"
+       width="470"
+       height="1185"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feDropShadow
+         dx="0"
+         dy="5"
+         stdDeviation="5"
+         flood-color="#1b1100"
+         flood-opacity="0.24" />
+    </filter>
+    <filter
+       id="softGlow"
+       x="-40%"
+       y="-40%"
+       width="180%"
+       height="180%"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="4"
+         result="blur"
+         id="feGaussianBlur46" />
+      <feMerge
+         id="feMerge47">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode46" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode47" />
+      </feMerge>
+    </filter>
+    <filter
+       id="sparkleGlow"
+       x="760"
+       y="140"
+       width="190"
+       height="190"
+       filterUnits="userSpaceOnUse"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         stdDeviation="2.4"
+         result="blur"
+         id="feGaussianBlur47" />
+      <feMerge
+         id="feMerge49">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode48" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode49" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     id="cursor-icon"
+     transform="translate(0 0)">
+    <g
+       id="flat-bullish-green-candlestick"
+       opacity="1">
+      <rect
+         id="green-candle-wick"
+         x="493"
+         y="268"
+         width="29"
+         height="1046"
+         rx="14.5"
+         fill="#0AB72E" />
+      <rect
+         id="green-candle-body"
+         x="421"
+         y="464"
+         width="178"
+         height="699"
+         rx="19"
+         fill="#08B42D" />
+    </g>
+    <g
+       id="flat-bearish-red-candlestick"
+       opacity="1">
+      <rect
+         id="red-candle-wick"
+         x="1002"
+         y="317"
+         width="29"
+         height="1053"
+         rx="14.5"
+         fill="#FF1616" />
+      <rect
+         id="red-candle-body"
+         x="922"
+         y="464"
+         width="183"
+         height="700"
+         rx="19"
+         fill="#F71313" />
+    </g>
+    <g
+       id="realistic-24k-gold-bar"
+       filter="url(#goldDrop)">
+      <path
+         id="gold-bar-outer-silhouette"
+         d="M622 132C603 133 594 151 592 181L566 1143C564 1195 581 1234 613 1238H901C936 1238 949 1197 943 1150L916 190C915 163 901 148 875 145L622 132Z"
+         fill="url(#goldOuter)" />
+      <path
+         id="gold-bar-left-bevel"
+         d="M592 181L641 232L616 1109L566 1143L592 181Z"
+         fill="url(#goldLeftBevel)" />
+      <path
+         id="gold-bar-right-bevel"
+         d="M875 145L916 190L943 1150L905 1111L883 228L858 197L875 145Z"
+         fill="url(#goldRightBevel)" />
+      <path
+         id="gold-bar-top-bevel"
+         d="M622 132L875 145L858 197L664 188L641 232L592 181C594 151 603 133 622 132Z"
+         fill="url(#goldTop)" />
+      <path
+         id="gold-bar-bottom-bevel"
+         d="M566 1143L616 1109L651 1154H864L905 1111L943 1150C949 1197 936 1238 901 1238H613C581 1234 564 1195 566 1143Z"
+         fill="url(#goldBottom)" />
+      <path
+         id="gold-bar-main-front-face"
+         d="M664 188L858 197C873 198 882 209 883 228L905 1111C906 1139 889 1154 864 1154H651C625 1154 613 1137 616 1109L641 232C642 203 649 188 664 188Z"
+         fill="url(#goldFace)" />
+      <path
+         id="gold-bar-front-soft-glow"
+         d="M684 223L840 228C856 229 864 239 864 257L886 1095C887 1112 876 1120 861 1120H661C646 1120 638 1111 640 1093L668 243C669 230 676 223 684 223Z"
+         fill="url(#goldFaceSoft)" />
+      <path
+         id="gold-bar-center-light-wash"
+         d="M695 230C753 226 825 229 842 232C857 235 861 247 861 263L878 1067C879 1085 868 1097 852 1097H678C663 1097 654 1088 656 1072L681 251C682 239 687 231 695 230Z"
+         fill="url(#goldGlow)"
+         opacity="0.9" />
+      <path
+         id="gold-bar-inner-left-bright-rim"
+         d="M661 199C652 222 651 241 650 264L624 1093C623 1119 630 1136 648 1146"
+         stroke="#FFF4A4"
+         stroke-width="11"
+         stroke-linecap="round"
+         opacity="0.88" />
+      <path
+         id="gold-bar-inner-left-dark-rim"
+         d="M645 233L620 1100"
+         stroke="#4E2B00"
+         stroke-width="8"
+         stroke-linecap="round"
+         opacity="0.45" />
+      <path
+         id="gold-bar-inner-right-bright-rim"
+         d="M858 204C873 219 873 241 874 264L896 1097C897 1123 884 1138 864 1147"
+         stroke="#FFF0A0"
+         stroke-width="9"
+         stroke-linecap="round"
+         opacity="0.82" />
+      <path
+         id="gold-bar-inner-right-dark-rim"
+         d="M880 234L899 1099"
+         stroke="#6B3B00"
+         stroke-width="7"
+         stroke-linecap="round"
+         opacity="0.45" />
+      <path
+         id="gold-bar-top-inner-highlight"
+         d="M670 194L852 202"
+         stroke="#FFF6A3"
+         stroke-width="10"
+         stroke-linecap="round"
+         opacity="0.88" />
+      <path
+         id="gold-bar-bottom-inner-highlight"
+         d="M651 1149C704 1150 810 1150 864 1149"
+         stroke="#FFE06B"
+         stroke-width="10"
+         stroke-linecap="round"
+         opacity="0.7" />
+      <path
+         id="gold-bar-left-edge-shine"
+         d="M601 180C618 199 631 215 641 232"
+         stroke="#FFF1A6"
+         stroke-width="7"
+         stroke-linecap="round"
+         opacity="0.78" />
+      <path
+         id="gold-bar-top-left-white-glint"
+         d="M617 137C633 153 649 171 666 188"
+         stroke="#FFF5B0"
+         stroke-width="9"
+         stroke-linecap="round"
+         opacity="0.8" />
+      <path
+         id="gold-bar-top-right-gold-rim"
+         d="M856 197C878 189 895 186 916 190"
+         stroke="#FFC000"
+         stroke-width="9"
+         stroke-linecap="round"
+         opacity="0.85" />
+      <path
+         id="gold-bar-bottom-left-dark-fold"
+         d="M568 1143L616 1109L651 1154"
+         stroke="#4B2A00"
+         stroke-width="8"
+         stroke-linejoin="round"
+         opacity="0.42" />
+      <path
+         id="gold-bar-bottom-right-dark-fold"
+         d="M864 1154L905 1111L943 1150"
+         stroke="#5A3000"
+         stroke-width="8"
+         stroke-linejoin="round"
+         opacity="0.5" />
+      <ellipse
+         id="gold-bar-center-shadow-reflection"
+         cx="729"
+         cy="912"
+         rx="90"
+         ry="170"
+         fill="#6F4300"
+         opacity="0.16" />
+    </g>
+    <g
+       id="gold-bar-sparkle-highlight"
+       filter="url(#sparkleGlow)">
+      <circle
+         id="sparkle-core"
+         cx="863"
+         cy="199"
+         r="13"
+         fill="#FFFFFF"
+         opacity="0.95" />
+      <path
+         id="sparkle-vertical-ray"
+         d="M863 145V256"
+         stroke="#FFFFFF"
+         stroke-width="6"
+         stroke-linecap="round"
+         opacity="0.75" />
+      <path
+         id="sparkle-horizontal-ray"
+         d="M806 199H920"
+         stroke="#FFFFFF"
+         stroke-width="5"
+         stroke-linecap="round"
+         opacity="0.72" />
+      <path
+         id="sparkle-diagonal-ray-a"
+         d="M823 158L904 240"
+         stroke="#FFFFFF"
+         stroke-width="4"
+         stroke-linecap="round"
+         opacity="0.58" />
+      <path
+         id="sparkle-diagonal-ray-b"
+         d="M904 158L823 240"
+         stroke="#FFFFFF"
+         stroke-width="4"
+         stroke-linecap="round"
+         opacity="0.58" />
+      <circle
+         id="sparkle-warm-center"
+         cx="863"
+         cy="199"
+         r="7"
+         fill="#FFF6B6"
+         opacity="0.95" />
+    </g>
+  </g>
+</svg>
