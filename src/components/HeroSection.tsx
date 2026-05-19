@@ -361,22 +361,33 @@ export default function HeroSection() {
         {/* Click-here arrow with typing text */}
         <div className="click-here-arrow" aria-hidden="true">
           <svg
-            viewBox="0 0 130 100"
+            viewBox="0 0 80 62"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="click-here-svg"
           >
+            {/* Hand-drawn imperfect curve stroke 1 */}
             <path
-              d="M10 90 C 30 75, 60 45, 100 18 C 105 14, 110 11, 118 8"
-              stroke="rgba(255,106,0,0.85)"
-              strokeWidth="2.2"
+              d="M6 56 C 14 48, 28 34, 44 22 C 52 16, 60 12, 68 8"
+              stroke="#F6C343"
+              strokeWidth="3.6"
               strokeLinecap="round"
               fill="none"
             />
+            {/* Offset imperfect second line for hand-drawn feel */}
             <path
-              d="M108 3 L120 8 L110 16"
-              stroke="rgba(255,106,0,0.85)"
-              strokeWidth="2.2"
+              d="M8 54 C 16 47, 30 33, 46 21 C 53 15, 61 11, 69 7"
+              stroke="#FFD700"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              fill="none"
+              opacity="0.5"
+            />
+            {/* Irregular arrowhead */}
+            <path
+              d="M60 4 L72 7 L64 15"
+              stroke="#F6C343"
+              strokeWidth="3.4"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
