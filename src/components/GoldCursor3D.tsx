@@ -7,20 +7,19 @@ import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 function GoldIngot() {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  // Create trapezoid gold bar shape via useMemo
   const geometry = useMemo(() => {
     const shape = new THREE.Shape();
-    shape.moveTo(-0.38, 0.09);
-    shape.lineTo(0.38, 0.09);
-    shape.lineTo(0.32, -0.09);
-    shape.lineTo(-0.32, -0.09);
+    shape.moveTo(-0.62, 0.14);
+    shape.lineTo(0.62, 0.14);
+    shape.lineTo(0.52, -0.14);
+    shape.lineTo(-0.52, -0.14);
     shape.closePath();
 
     const extrudeSettings: THREE.ExtrudeGeometryOptions = {
-      depth: 0.22,
+      depth: 0.32,
       bevelEnabled: true,
-      bevelThickness: 0.02,
-      bevelSize: 0.015,
+      bevelThickness: 0.03,
+      bevelSize: 0.02,
       bevelSegments: 3,
     };
 
@@ -32,13 +31,13 @@ function GoldIngot() {
   }, [geometry]);
 
   return (
-    <mesh ref={meshRef} geometry={geometry} position={[0, 0.14, -0.11]} rotation={[0.1, 0, 0]}>
+    <mesh ref={meshRef} geometry={geometry} position={[0, 0.18, -0.16]} rotation={[0.1, 0, 0]}>
       <meshStandardMaterial
         color="#FFD700"
-        metalness={0.92}
-        roughness={0.08}
-        emissive="#B8860B"
-        emissiveIntensity={0.2}
+        metalness={1}
+        roughness={0.05}
+        emissive="#FFB000"
+        emissiveIntensity={0.35}
       />
     </mesh>
   );
@@ -48,20 +47,17 @@ function GoldIngot() {
 function WoodStick({ position, rotation, color }: { position: [number, number, number]; rotation: [number, number, number]; color: string }) {
   return (
     <group position={position} rotation={rotation}>
-      {/* Main stick */}
       <mesh>
-        <cylinderGeometry args={[0.022, 0.028, 0.52, 8]} />
-        <meshStandardMaterial color={color} roughness={0.82} metalness={0.02} />
+        <cylinderGeometry args={[0.028, 0.036, 1.04, 8]} />
+        <meshStandardMaterial color={color} roughness={0.78} metalness={0.03} />
       </mesh>
-      {/* Knot ring 1 */}
-      <mesh position={[0, 0.08, 0]}>
-        <torusGeometry args={[0.03, 0.006, 6, 12]} />
-        <meshStandardMaterial color="#3B2005" roughness={0.9} metalness={0} />
+      <mesh position={[0, 0.14, 0]}>
+        <torusGeometry args={[0.038, 0.007, 6, 12]} />
+        <meshStandardMaterial color="#6B3A1A" roughness={0.85} metalness={0} />
       </mesh>
-      {/* Knot ring 2 */}
-      <mesh position={[0, -0.14, 0]}>
-        <torusGeometry args={[0.028, 0.005, 6, 12]} />
-        <meshStandardMaterial color="#4A2910" roughness={0.9} metalness={0} />
+      <mesh position={[0, -0.22, 0]}>
+        <torusGeometry args={[0.035, 0.006, 6, 12]} />
+        <meshStandardMaterial color="#7A431C" roughness={0.85} metalness={0} />
       </mesh>
     </group>
   );
@@ -81,25 +77,18 @@ function GoldBarModel() {
 
   return (
     <group ref={groupRef} position={[0, 0, 0]} scale={0.7}>
-      {/* Gold ingot bar */}
       <GoldIngot />
-
-      {/* Left support stick */}
-      <WoodStick position={[-0.18, -0.16, 0]} rotation={[0, 0, 0.1]} color="#5C3317" />
-
-      {/* Right support stick */}
-      <WoodStick position={[0.18, -0.16, 0]} rotation={[0, 0, -0.1]} color="#4A2910" />
+      <WoodStick position={[-0.28, -0.32, 0]} rotation={[0, 0, 0.1]} color="#8B5A2B" />
+      <WoodStick position={[0.28, -0.32, 0]} rotation={[0, 0, -0.1]} color="#A86B32" />
     </group>
   );
 }
 
 // ── Main Cursor Component ────────────────────────────────────────────────────
 export default function GoldCursor3D() {
-  const [pos, setPos] = useState({ x: -200, y: -200 });
   const [visible, setVisible] = useState(false);
   const [isCoarse, setIsCoarse] = useState(false);
   const [webGLSupported, setWebGLSupported] = useState(true);
-  const smoothPos = useRef({ x: -200, y: -200 });
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReduced = usePrefersReducedMotion();
 
@@ -125,8 +114,10 @@ export default function GoldCursor3D() {
     if (isCoarse || !webGLSupported) return;
 
     function handleMouseMove(e: MouseEvent) {
-      setPos({ x: e.clientX, y: e.clientY });
       setVisible(true);
+      if (containerRef.current) {
+        containerRef.current.style.transform = `translate(${e.clientX - 28}px, ${e.clientY - 26}px)`;
+      }
     }
 
     function handleMouseLeave() {
@@ -145,26 +136,6 @@ export default function GoldCursor3D() {
     };
   }, [isCoarse, webGLSupported]);
 
-  useEffect(() => {
-    if (isCoarse || !webGLSupported) return;
-    let raf: number;
-
-    function animate() {
-      const lerp = prefersReduced ? 1 : 0.14;
-      smoothPos.current.x += (pos.x - smoothPos.current.x) * lerp;
-      smoothPos.current.y += (pos.y - smoothPos.current.y) * lerp;
-
-      if (containerRef.current) {
-        containerRef.current.style.transform = `translate(${smoothPos.current.x - 48}px, ${smoothPos.current.y - 36}px)`;
-      }
-
-      raf = requestAnimationFrame(animate);
-    }
-
-    animate();
-    return () => cancelAnimationFrame(raf);
-  }, [pos, isCoarse, webGLSupported, prefersReduced]);
-
   if (isCoarse || !webGLSupported) return null;
 
   return (
@@ -178,23 +149,23 @@ export default function GoldCursor3D() {
           position: "fixed",
           top: 0,
           left: 0,
-          width: 96,
-          height: 72,
+          width: 150,
+          height: 110,
           zIndex: 99999,
           pointerEvents: "none",
           opacity: visible ? 1 : 0,
-          transition: "opacity 0.2s ease",
+          transition: "opacity 0.15s ease",
         }}
       >
         <Canvas
-          camera={{ position: [0, 0.1, 1.8], fov: 38 }}
+          camera={{ position: [0, 0.1, 2.4], fov: 36 }}
           gl={{ alpha: true, antialias: true }}
           style={{ width: "100%", height: "100%", background: "transparent" }}
         >
-          <ambientLight intensity={0.5} />
-          <directionalLight position={[3, 4, 2]} intensity={1.8} color="#FFF8DC" />
-          <directionalLight position={[-2, 1, 3]} intensity={0.6} color="#FFD700" />
-          <pointLight position={[0, -0.5, 1]} intensity={0.4} color="#FFA500" />
+          <ambientLight intensity={0.6} />
+          <directionalLight position={[3, 4, 2]} intensity={2.0} color="#FFF8DC" />
+          <directionalLight position={[-2, 1, 3]} intensity={0.7} color="#FFD700" />
+          <pointLight position={[0, -0.5, 1.5]} intensity={0.5} color="#FFA500" />
           <GoldBarModel />
         </Canvas>
       </div>

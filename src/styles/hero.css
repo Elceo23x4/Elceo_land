@@ -146,7 +146,7 @@
 }
 
 .hud-title { margin: 0; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; line-height: 1.15; }
-.hud-body { margin: 0; font-family: "Bebas Neue","Tribes Regular","Arial Narrow",Impact,sans-serif; font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.18; letter-spacing: 0.045em; }
+.hud-body { margin: 0; font-family: "Bebas Neue","Tribes Regular","Arial Narrow",Impact,sans-serif; font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.18; letter-spacing: 0.075em; }
 
 .marker-highlight {
   background: linear-gradient(to top, rgba(255, 106, 0, 0.85) 52%, transparent 52%);
@@ -167,8 +167,8 @@
 }
 .hud3-content-frame::before { content: ""; position: absolute; left: 10px; bottom: 9px; width: 30px; height: 4px; background: #ff6a00; }
 .hud3-content-frame::after { content: ""; position: absolute; right: 10px; top: 9px; width: 42px; height: 4px; background: #ff6a00; }
-.hud-textbox-3 .hud-body { font-size: 13px; line-height: 1.16; }
-.hud-textbox-5 .hud-body { font-size: 13.5px; line-height: 1.16; }
+.hud-textbox-3 .hud-body { font-size: 13px; line-height: 1.16; letter-spacing: 0.06em; }
+.hud-textbox-5 .hud-body { font-size: 13.5px; line-height: 1.16; letter-spacing: 0.06em; }
 
 /* ── Yellow Tape Text ─────────────────────────────────── */
 .tape-text-overlay { position: absolute; pointer-events: none; overflow: hidden; display: flex; align-items: center; white-space: nowrap; }
