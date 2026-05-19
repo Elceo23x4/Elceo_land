@@ -146,7 +146,7 @@
 }
 
 .hud-title { margin: 0; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; line-height: 1.15; }
-.hud-body { margin: 0; font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.28; letter-spacing: 0.01em; }
+.hud-body { margin: 0; font-family: "Bebas Neue","Tribes Regular","Arial Narrow",Impact,sans-serif; font-size: 14.5px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.18; letter-spacing: 0.075em; }
 
 .marker-highlight {
   background: linear-gradient(to top, rgba(255, 106, 0, 0.85) 52%, transparent 52%);
@@ -167,8 +167,8 @@
 }
 .hud3-content-frame::before { content: ""; position: absolute; left: 10px; bottom: 9px; width: 30px; height: 4px; background: #ff6a00; }
 .hud3-content-frame::after { content: ""; position: absolute; right: 10px; top: 9px; width: 42px; height: 4px; background: #ff6a00; }
-.hud-textbox-3 .hud-body { font-size: 11px; line-height: 1.22; }
-.hud-textbox-5 .hud-body { font-size: 12px; line-height: 1.22; }
+.hud-textbox-3 .hud-body { font-size: 13px; line-height: 1.16; letter-spacing: 0.06em; }
+.hud-textbox-5 .hud-body { font-size: 13.5px; line-height: 1.16; letter-spacing: 0.06em; }
 
 /* ── Yellow Tape Text ─────────────────────────────────── */
 .tape-text-overlay { position: absolute; pointer-events: none; overflow: hidden; display: flex; align-items: center; white-space: nowrap; }
@@ -176,9 +176,9 @@
 .tape-text-content { font-family: "Bebas Neue","Tribes Regular","Arial Narrow",Impact,sans-serif; font-size: 38px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #000; line-height: 1; display: inline-block; flex-shrink: 0; }
 
 /* ── Click-Here Arrow ─────────────────────────────────── */
-.click-here-arrow { position: absolute; left: 1710px; top: 100px; width: 120px; height: 70px; z-index: 11; pointer-events: none; display: flex; flex-direction: column; align-items: flex-start; }
-.click-here-svg { width: 100%; height: 48px; }
-.click-here-text { font-family: "Tribes Regular","Bebas Neue",cursive,sans-serif; font-size: 13px; color: rgba(255,106,0,0.9); letter-spacing: 0.04em; margin-top: -2px; padding-left: 2px; }
+.click-here-arrow { position: absolute; left: 1688px; top: 108px; width: 115px; height: 72px; z-index: 11; pointer-events: none; }
+.click-here-svg { position: absolute; left: 48px; top: -28px; width: 92px; height: 74px; overflow: visible; }
+.click-here-text { position: absolute; left: 0; top: 46px; font-family: "Tribes Regular","Bebas Neue",cursive,sans-serif; font-size: 13px; color: rgba(255,206,0,0.92); letter-spacing: 0.04em; padding-left: 2px; }
 
 /* ── Hero Nav ─────────────────────────────────────────── */
 .hero-nav { display: flex; align-items: center; justify-content: center; gap: 64px; width: 100%; height: 100%; pointer-events: auto; }
@@ -313,7 +313,7 @@
 
 /* ── Animation 3: Tape Text Marquee (80s) ─────────────── */
 .motion-enabled .tape-marquee-track {
-  animation: tape-marquee 80s linear infinite;
+  animation: tape-marquee 130s linear infinite;
 }
 
 /* ── Animation 4: Nav Paint Splash ────────────────────── */
@@ -507,7 +507,7 @@
   width: 36px;
   height: 14px;
   opacity: 0;
-  filter: drop-shadow(0 0 4px rgba(200, 220, 255, 0.6));
+  filter: none;
 }
 
 @keyframes airplane-fly {
@@ -521,18 +521,7 @@
   animation: airplane-fly 18s ease-in-out infinite;
 }
 
-/* ── Wheel Side color tint overlay ────────────────────── */
-.asset-wheel-side::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border-radius: inherit;
-  background:
-    linear-gradient(135deg, rgba(11, 31, 58, 0.18) 0%, transparent 40%),
-    linear-gradient(225deg, rgba(178, 34, 34, 0.1) 0%, transparent 35%);
-  mix-blend-mode: overlay;
-}
+/* ── Wheel Side color tint — removed to prevent background block ── */
 
 /* ── Globe Dot Twinkle ────────────────────────────────── */
 @keyframes dot-twinkle-a {

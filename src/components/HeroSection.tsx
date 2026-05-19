@@ -101,7 +101,7 @@ function useViewportWidth() {
 
 // ── Tape text content (wider dot spacing) ────────────────────────────────────
 const TAPE_TEXT =
-  "DATA DRIVES THE MARKET   \u2022   TRADE SMART   \u2022   STAY INFORMED   \u2022   DON\u2019T GAMBLE   \u2022   ";
+  "DATA DRIVES THE MARKET\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0TRADE SMART\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0STAY INFORMED\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0DON\u2019T GAMBLE\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0";
 
 // ── Hero Section Component ───────────────────────────────────────────────────
 export default function HeroSection() {
@@ -361,22 +361,33 @@ export default function HeroSection() {
         {/* Click-here arrow with typing text */}
         <div className="click-here-arrow" aria-hidden="true">
           <svg
-            viewBox="0 0 120 70"
+            viewBox="0 0 80 62"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="click-here-svg"
           >
+            {/* Hand-drawn imperfect curve stroke 1 */}
             <path
-              d="M10 58 C 30 52, 60 38, 90 20 C 95 17, 100 14, 108 12"
-              stroke="rgba(255,106,0,0.85)"
-              strokeWidth="2.2"
+              d="M6 56 C 14 48, 28 34, 44 22 C 52 16, 60 12, 68 8"
+              stroke="#F6C343"
+              strokeWidth="3.6"
               strokeLinecap="round"
               fill="none"
             />
+            {/* Offset imperfect second line for hand-drawn feel */}
             <path
-              d="M98 8 L110 12 L100 20"
-              stroke="rgba(255,106,0,0.85)"
-              strokeWidth="2.2"
+              d="M8 54 C 16 47, 30 33, 46 21 C 53 15, 61 11, 69 7"
+              stroke="#FFD700"
+              strokeWidth="1.4"
+              strokeLinecap="round"
+              fill="none"
+              opacity="0.5"
+            />
+            {/* Irregular arrowhead */}
+            <path
+              d="M60 4 L72 7 L64 15"
+              stroke="#F6C343"
+              strokeWidth="3.4"
               strokeLinecap="round"
               strokeLinejoin="round"
               fill="none"
@@ -395,7 +406,7 @@ export default function HeroSection() {
         <PositionedSvgAsset
           className="asset-yellow-tape"
           width={tapeWidth}
-          height={70}
+          height={120}
           left={tapeLeft}
           top={905}
           rotation={356.8}
