@@ -2,6 +2,9 @@ import { useEffect, useState, isValidElement, cloneElement } from "react";
 import "../styles/hero.css";
 import RetroComputerPopup from "./RetroComputerPopup";
 import HeroNav from "./HeroNav";
+import TypingText from "./TypingText";
+import GoldCursor3D from "./GoldCursor3D";
+import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 
 // SVGR imports — each SVG is imported as a React component
 import VerticalLogo1 from "../assets/source/hero/vertical_logo_1.svg?react";
@@ -96,18 +99,19 @@ function useViewportWidth() {
   return vw;
 }
 
-// ── Tape text content ────────────────────────────────────────────────────────
+// ── Tape text content (wider dot spacing) ────────────────────────────────────
 const TAPE_TEXT =
-  "DATA DRIVES THE MARKET \u2022 TRADE SMART \u2022 STAY INFORMED \u2022 DON\u2019T GAMBLE \u2022 ";
+  "DATA DRIVES THE MARKET   \u2022   TRADE SMART   \u2022   STAY INFORMED   \u2022   DON\u2019T GAMBLE   \u2022   ";
 
 // ── Hero Section Component ───────────────────────────────────────────────────
 export default function HeroSection() {
   const scale = useHeroScale();
   const viewportWidth = useViewportWidth();
   const [popupOpen, setPopupOpen] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   // Dynamic tape sizing: tape spans full viewport width inside the stage
-  const tapeBleed = 120;
+  const tapeBleed = 520;
   const tapeWidth = viewportWidth / scale + tapeBleed;
   const tapeLeft = (1920 - tapeWidth) / 2;
 
@@ -115,8 +119,14 @@ export default function HeroSection() {
   const NAV_WIDTH = 797;
   const navLeft = (1920 - NAV_WIDTH) / 2;
 
+  const motionClass = prefersReducedMotion ? "motion-reduced" : "motion-enabled";
+
   return (
-    <section className="hero" aria-label="ELCEO Hero">
+    <section
+      className={`hero ${motionClass}`}
+      aria-label="ELCEO Hero"
+      data-motion={prefersReducedMotion ? "reduced" : "enabled"}
+    >
       {/* Background texture */}
       <div className="hero-bg" aria-hidden="true" />
 
@@ -161,6 +171,29 @@ export default function HeroSection() {
           <WheelSide />
         </PositionedSvgAsset>
 
+        {/* Wheel Side micro-life: overlay cars */}
+        <div className="wheel-side-cars" aria-hidden="true">
+          <svg viewBox="0 0 80 16" className="city-car city-car-1" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="28" height="10" rx="3" fill="#FDDF75" />
+            <rect x="8" y="1" width="18" height="7" rx="2" fill="#FDDF75" opacity="0.85" />
+            <circle cx="10" cy="14" r="3" fill="#333" /><circle cx="26" cy="14" r="3" fill="#333" />
+          </svg>
+          <svg viewBox="0 0 80 16" className="city-car city-car-2" xmlns="http://www.w3.org/2000/svg">
+            <rect x="4" y="4" width="24" height="9" rx="3" fill="#FDDF74" />
+            <rect x="7" y="1" width="15" height="6" rx="2" fill="#FDDF74" opacity="0.85" />
+            <circle cx="9" cy="13" r="2.5" fill="#333" /><circle cx="23" cy="13" r="2.5" fill="#333" />
+          </svg>
+        </div>
+
+        {/* Airplane flying across wheel_side area */}
+        <div className="city-airplane" aria-hidden="true">
+          <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg" className="airplane-svg">
+            <path d="M4 12 L20 10 L28 4 L32 4 L26 10 L52 8 L56 4 L58 5 L54 10 L58 10 L58 12 L54 13 L58 18 L56 19 L52 15 L26 13 L32 19 L28 19 L20 13 L4 12 Z" fill="#fff" />
+            <path d="M28 4 L32 4 L26 10 L20 10 Z" fill="#3B7DD8" opacity="0.8" />
+            <path d="M56 4 L58 5 L54 10 L52 8 Z" fill="#3B7DD8" opacity="0.7" />
+          </svg>
+        </div>
+
         {/* Layer 5: Wheel Occlusion Shield */}
         <div className="wheel-occlusion-shield" aria-hidden="true" />
 
@@ -176,8 +209,12 @@ export default function HeroSection() {
           <HeroWheelNoCta />
         </PositionedSvgAsset>
 
+        {/* Globe breathing aura overlay */}
+        <div className="globe-breathing-aura" aria-hidden="true" />
+
         {/* Layer 7: HUD Annotations */}
         <PositionedSvgAsset
+          className="asset-hud-annotation-3"
           width={500}
           height={350}
           left={1396}
@@ -189,6 +226,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-4"
           width={642}
           height={243}
           left={155.77}
@@ -201,6 +239,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-5"
           width={440}
           height={517}
           left={246.78}
@@ -213,6 +252,7 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         <PositionedSvgAsset
+          className="asset-hud-annotation-6"
           width={438}
           height={496}
           left={1384.15}
@@ -225,8 +265,6 @@ export default function HeroSection() {
         </PositionedSvgAsset>
 
         {/* Layer 8: HUD Textboxes */}
-
-        {/* Annotation 3: visible content frame */}
         <div className="hud3-content-frame" aria-hidden="true" style={{ position: "absolute", left: 1580, top: 222, width: 292, height: 138, zIndex: 8 }} />
 
         <div className="hud-textbox hud-textbox-3" style={{ left: 1600, top: 246, width: 250, height: 96, zIndex: 9 }}>
@@ -260,6 +298,17 @@ export default function HeroSection() {
         >
           <HeroWheelCta />
         </PositionedSvgAsset>
+
+        {/* CTA Typing Text Overlay */}
+        <div className="cta-typing-overlay" style={{ position: "absolute", left: 861, top: 526, width: 300, height: 97, zIndex: 10, display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
+          <TypingText
+            text="EXPLORE ELCEO"
+            className="cta-typing-text"
+            speedMs={90}
+            pauseMs={1200}
+            loop
+          />
+        </div>
 
         {/* Layer 10: Nav (real interactive links) */}
         <div
@@ -309,7 +358,7 @@ export default function HeroSection() {
           </PositionedSvgAsset>
         </button>
 
-        {/* Click-here arrow */}
+        {/* Click-here arrow with typing text */}
         <div className="click-here-arrow" aria-hidden="true">
           <svg
             viewBox="0 0 120 70"
@@ -333,7 +382,13 @@ export default function HeroSection() {
               fill="none"
             />
           </svg>
-          <span className="click-here-text">click here</span>
+          <TypingText
+            text="click here"
+            className="click-here-text"
+            speedMs={110}
+            pauseMs={900}
+            loop
+          />
         </div>
 
         {/* Layer 12: Yellow Tape (dynamic width to span viewport) */}
@@ -345,11 +400,12 @@ export default function HeroSection() {
           top={905}
           rotation={356.8}
           zIndex={12}
+          preserveAspectRatio="none"
         >
           <YellowTape />
         </PositionedSvgAsset>
 
-        {/* Layer 13: Tape Text Overlay */}
+        {/* Layer 13: Tape Text Marquee */}
         <div
           className="tape-text-overlay"
           style={{
@@ -363,14 +419,18 @@ export default function HeroSection() {
           }}
           aria-hidden="true"
         >
-          <span className="tape-text-content">
-            {TAPE_TEXT.repeat(6)}
-          </span>
+          <div className="tape-marquee-track">
+            <span className="tape-text-content">{TAPE_TEXT.repeat(10)}</span>
+            <span className="tape-text-content">{TAPE_TEXT.repeat(10)}</span>
+          </div>
         </div>
       </div>
 
       {/* Retro Computer Popup */}
       {popupOpen && <RetroComputerPopup onClose={() => setPopupOpen(false)} />}
+
+      {/* 3D Gold Cursor */}
+      <GoldCursor3D />
     </section>
   );
 }
