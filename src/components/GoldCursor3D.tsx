@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
@@ -7,17 +7,16 @@ import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 function GoldIngot() {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  // Create trapezoid gold bar shape via BufferGeometry
-  const geometry = useRef(() => {
+  // Create trapezoid gold bar shape via useMemo
+  const geometry = useMemo(() => {
     const shape = new THREE.Shape();
-    // Top face (wider)
     shape.moveTo(-0.38, 0.09);
     shape.lineTo(0.38, 0.09);
     shape.lineTo(0.32, -0.09);
     shape.lineTo(-0.32, -0.09);
     shape.closePath();
 
-    const extrudeSettings = {
+    const extrudeSettings: THREE.ExtrudeGeometryOptions = {
       depth: 0.22,
       bevelEnabled: true,
       bevelThickness: 0.02,
@@ -26,10 +25,14 @@ function GoldIngot() {
     };
 
     return new THREE.ExtrudeGeometry(shape, extrudeSettings);
-  })();
+  }, []);
+
+  useEffect(() => {
+    return () => geometry.dispose();
+  }, [geometry]);
 
   return (
-    <mesh ref={meshRef} geometry={geometry.current} position={[0, 0.14, -0.11]} rotation={[0.1, 0, 0]}>
+    <mesh ref={meshRef} geometry={geometry} position={[0, 0.14, -0.11]} rotation={[0.1, 0, 0]}>
       <meshStandardMaterial
         color="#FFD700"
         metalness={0.92}
