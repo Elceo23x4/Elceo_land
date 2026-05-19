@@ -104,7 +104,11 @@ const TAPE_TEXT =
   "DATA DRIVES THE MARKET\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0TRADE SMART\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0STAY INFORMED\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0DON\u2019T GAMBLE\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0";
 
 // ── Hero Section Component ───────────────────────────────────────────────────
-export default function HeroSection() {
+interface HeroSectionProps {
+  onAboutClick?: () => void;
+}
+
+export default function HeroSection({ onAboutClick }: HeroSectionProps) {
   const scale = useHeroScale();
   const viewportWidth = useViewportWidth();
   const [popupOpen, setPopupOpen] = useState(false);
@@ -325,7 +329,7 @@ export default function HeroSection() {
             justifyContent: "center",
           }}
         >
-          <HeroNav />
+          <HeroNav onAboutClick={onAboutClick} />
         </div>
 
         {/* Layer 11: Retro Computer Logo (clickable) */}

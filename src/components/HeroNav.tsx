@@ -8,11 +8,27 @@ const NAV_LINKS = [
   { label: "Login", href: "#login" },
 ];
 
-export default function HeroNav() {
+interface HeroNavProps {
+  onAboutClick?: () => void;
+}
+
+export default function HeroNav({ onAboutClick }: HeroNavProps) {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, label: string) => {
+    if (label === "About" && onAboutClick) {
+      e.preventDefault();
+      onAboutClick();
+    }
+  };
+
   return (
     <nav className="hero-nav" aria-label="Primary">
       {NAV_LINKS.map((link) => (
-        <a key={link.href} href={link.href} className="hero-nav-link">
+        <a
+          key={link.href}
+          href={link.href}
+          className="hero-nav-link"
+          onClick={(e) => handleClick(e, link.label)}
+        >
           <span className="hero-nav-link-text">{link.label}</span>
           <span className="hero-nav-ripple" aria-hidden="true" />
         </a>
