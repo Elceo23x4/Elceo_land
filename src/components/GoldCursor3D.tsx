@@ -7,10 +7,10 @@ import cursorUrl from "../../cursor.svg?url";
  * hotspot aligns perfectly with the real pointer position.
  *
  * Hotspot calculation:
- *   cursor.svg viewBox is 0 0 1536 1536, rendered at 32×32.
+ *   cursor.svg viewBox is 0 0 1536 1536, rendered at 96×96.
  *   The gold bar top center is at approx (748, 132) in viewBox coords.
- *   Scaled to 32px: x = 748/1536*32 ≈ 16, y = 132/1536*32 ≈ 3
- *   Hotspot: (16, 3) — top-center of the gold bar.
+ *   Scaled to 96px: x = 748/1536*96 ≈ 47, y = 132/1536*96 ≈ 8
+ *   Hotspot: (47, 8) — top-center of the gold bar.
  */
 export default function GoldCursor3D() {
   return (
@@ -20,7 +20,7 @@ export default function GoldCursor3D() {
         .hero *,
         .hero a,
         .hero button {
-          cursor: url("${cursorUrl}") 16 3, auto !important;
+          cursor: url("${cursorUrl}") 47 8, auto !important;
         }
       `}
     </style>
