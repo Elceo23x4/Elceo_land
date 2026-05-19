@@ -7,7 +7,7 @@
   src: url("/assets/fonts/Tribes-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -15,7 +15,7 @@
   src: url("/assets/fonts/BebasNeue-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -23,7 +23,7 @@
   src: url("/assets/fonts/OffBit-DotBold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 *,
