@@ -101,7 +101,7 @@ function useViewportWidth() {
 
 // ── Tape text content (wider dot spacing) ────────────────────────────────────
 const TAPE_TEXT =
-  "DATA DRIVES THE MARKET   \u2022   TRADE SMART   \u2022   STAY INFORMED   \u2022   DON\u2019T GAMBLE   \u2022   ";
+  "DATA DRIVES THE MARKET\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0TRADE SMART\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0STAY INFORMED\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0DON\u2019T GAMBLE\u00A0\u00A0\u00A0\u2022\u00A0\u00A0\u00A0";
 
 // ── Hero Section Component ───────────────────────────────────────────────────
 export default function HeroSection() {
@@ -361,20 +361,20 @@ export default function HeroSection() {
         {/* Click-here arrow with typing text */}
         <div className="click-here-arrow" aria-hidden="true">
           <svg
-            viewBox="0 0 120 70"
+            viewBox="0 0 130 100"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="click-here-svg"
           >
             <path
-              d="M10 58 C 30 52, 60 38, 90 20 C 95 17, 100 14, 108 12"
+              d="M10 90 C 30 75, 60 45, 100 18 C 105 14, 110 11, 118 8"
               stroke="rgba(255,106,0,0.85)"
               strokeWidth="2.2"
               strokeLinecap="round"
               fill="none"
             />
             <path
-              d="M98 8 L110 12 L100 20"
+              d="M108 3 L120 8 L110 16"
               stroke="rgba(255,106,0,0.85)"
               strokeWidth="2.2"
               strokeLinecap="round"
@@ -395,7 +395,7 @@ export default function HeroSection() {
         <PositionedSvgAsset
           className="asset-yellow-tape"
           width={tapeWidth}
-          height={70}
+          height={120}
           left={tapeLeft}
           top={905}
           rotation={356.8}
