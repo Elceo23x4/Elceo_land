@@ -145,8 +145,8 @@
   font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", sans-serif;
 }
 
-.hud-title { margin: 0; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; line-height: 1.2; }
-.hud-body { margin: 0; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.35; letter-spacing: 0.01em; }
+.hud-title { margin: 0; font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; line-height: 1.15; }
+.hud-body { margin: 0; font-size: 12.5px; font-weight: 400; color: rgba(255,255,255,0.88); line-height: 1.28; letter-spacing: 0.01em; }
 
 .marker-highlight {
   background: linear-gradient(to top, rgba(255, 106, 0, 0.85) 52%, transparent 52%);
@@ -167,7 +167,8 @@
 }
 .hud3-content-frame::before { content: ""; position: absolute; left: 10px; bottom: 9px; width: 30px; height: 4px; background: #ff6a00; }
 .hud3-content-frame::after { content: ""; position: absolute; right: 10px; top: 9px; width: 42px; height: 4px; background: #ff6a00; }
-.hud-textbox-3 .hud-body { font-size: 10px; line-height: 1.25; }
+.hud-textbox-3 .hud-body { font-size: 11px; line-height: 1.22; }
+.hud-textbox-5 .hud-body { font-size: 12px; line-height: 1.22; }
 
 /* ── Yellow Tape Text ─────────────────────────────────── */
 .tape-text-overlay { position: absolute; pointer-events: none; overflow: hidden; display: flex; align-items: center; white-space: nowrap; }
@@ -403,3 +404,186 @@
 .motion-reduced .asset-hud-annotation-4 #hud_annotation_4_link_path,
 .motion-reduced .asset-hud-annotation-5 #hud_annotation_5_link_path,
 .motion-reduced .asset-hud-annotation-6 #hud_annotation_6_link_path { animation: none !important; }
+
+
+/* =========================================================
+   BATCH 2B — MICRO-LIFE, TYPING, TWINKLE, CURSOR
+   ========================================================= */
+
+/* ── Typing Cursor ────────────────────────────────────── */
+.typing-cursor {
+  display: inline-block;
+  animation: blink-cursor 0.75s step-end infinite;
+  color: rgba(255, 106, 0, 0.9);
+  font-weight: 300;
+  margin-left: 1px;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── CTA Typing Overlay ──────────────────────────────── */
+.cta-typing-overlay {
+  pointer-events: none;
+}
+
+.cta-typing-text {
+  font-family: "Tribes Regular", "Bebas Neue", "Arial Narrow", Impact, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 106, 0, 0.5);
+}
+
+/* Hide original CTA text inside SVG */
+.asset-hero-wheel-cta svg text {
+  opacity: 0;
+}
+
+/* ── Wheel Side Cars ──────────────────────────────────── */
+.wheel-side-cars {
+  position: absolute;
+  left: 1220px;
+  top: 280px;
+  width: 300px;
+  height: 80px;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.city-car {
+  position: absolute;
+  width: 32px;
+  height: 8px;
+}
+
+.city-car-1 {
+  top: 10px;
+  left: -40px;
+}
+
+.city-car-2 {
+  top: 42px;
+  left: 320px;
+}
+
+@keyframes car-drive-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(340px); }
+}
+
+@keyframes car-drive-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-340px); }
+}
+
+.motion-enabled .city-car-1 {
+  animation: car-drive-right 18s linear infinite;
+}
+
+.motion-enabled .city-car-2 {
+  animation: car-drive-left 22s linear infinite;
+}
+
+/* ── Airplane ─────────────────────────────────────────── */
+.city-airplane {
+  position: absolute;
+  left: 1180px;
+  top: 70px;
+  width: 320px;
+  height: 60px;
+  z-index: 5;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.airplane-svg {
+  position: absolute;
+  width: 36px;
+  height: 14px;
+  opacity: 0;
+  filter: drop-shadow(0 0 4px rgba(200, 220, 255, 0.6));
+}
+
+@keyframes airplane-fly {
+  0% { left: 310px; top: 50px; opacity: 0; transform: rotate(-4deg); }
+  8% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { left: 0px; top: 10px; opacity: 0; transform: rotate(-2deg); }
+}
+
+.motion-enabled .airplane-svg {
+  animation: airplane-fly 18s ease-in-out infinite;
+}
+
+/* ── Wheel Side color tint overlay ────────────────────── */
+.asset-wheel-side::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(11, 31, 58, 0.18) 0%, transparent 40%),
+    linear-gradient(225deg, rgba(178, 34, 34, 0.1) 0%, transparent 35%);
+  mix-blend-mode: overlay;
+}
+
+/* ── Globe Dot Twinkle ────────────────────────────────── */
+@keyframes dot-twinkle-a {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; filter: drop-shadow(0 0 3px rgba(255,180,60,0.9)); }
+}
+
+@keyframes dot-twinkle-b {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; filter: drop-shadow(0 0 4px rgba(255,106,0,0.8)); }
+}
+
+@keyframes dot-twinkle-c {
+  0%, 100% { opacity: 0.85; }
+  40% { opacity: 0.3; }
+  80% { opacity: 1; filter: drop-shadow(0 0 2px rgba(255,200,80,0.7)); }
+}
+
+/* Target globe map dots inside #land_dots-denseglobe */
+.motion-enabled .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(7n) {
+  animation: dot-twinkle-a 4.5s ease-in-out infinite;
+}
+
+.motion-enabled .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(11n) {
+  animation: dot-twinkle-b 5.8s ease-in-out 0.4s infinite;
+}
+
+.motion-enabled .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(17n) {
+  animation: dot-twinkle-c 6.2s ease-in-out 1.1s infinite;
+}
+
+.motion-enabled .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(23n) {
+  animation: dot-twinkle-a 3.8s ease-in-out 2s infinite;
+}
+
+.motion-enabled .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(31n) {
+  animation: dot-twinkle-b 7s ease-in-out 0.8s infinite;
+}
+
+/* ── Reduced Motion — Batch 2B additions ──────────────── */
+.motion-reduced .city-car-1,
+.motion-reduced .city-car-2 { animation: none !important; }
+
+.motion-reduced .airplane-svg { animation: none !important; opacity: 0 !important; }
+
+.motion-reduced .typing-cursor { animation: none !important; opacity: 1; }
+
+.motion-reduced .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(7n),
+.motion-reduced .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(11n),
+.motion-reduced .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(17n),
+.motion-reduced .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(23n),
+.motion-reduced .asset-hero-wheel #land_dots-denseglobe circle:nth-of-type(31n) {
+  animation: none !important;
+}
