@@ -1,0 +1,580 @@
+/* =========================================================
+   Section 3 — Belt Divider, Trouser Panels, Footer
+   ========================================================= */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+.section-three {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+}
+
+.section-three-stage {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  margin: 0;
+  transform-origin: top center;
+  transform: translateX(-50%) scale(var(--s3-scale, 1));
+}
+
+/* ── SVG asset layers ─────────────────────────────────────── */
+.s3-belt-divider,
+.s3-buckle-block,
+.s3-buckle-content,
+.s3-trouser-left,
+.s3-trouser-center,
+.s3-trouser-right,
+.s3-tree,
+.s3-footer {
+  position: absolute;
+  pointer-events: none;
+}
+
+.s3-belt-divider svg,
+.s3-buckle-content svg,
+.s3-trouser-left svg,
+.s3-trouser-center svg,
+.s3-trouser-right svg,
+.s3-tree svg,
+.s3-footer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Belt divider */
+.s3-belt-divider {
+  width: 1920px;
+  height: 174px;
+  left: 0;
+  top: -1px;
+  z-index: 10;
+}
+
+/* Buckle block overlay */
+.s3-buckle-block {
+  width: 335px;
+  height: 131px;
+  left: 791.67px;
+  top: 20px;
+  z-index: 11;
+  background: #e33b1f;
+  border-radius: 4px;
+}
+
+/* Buckle content (bb.svg) */
+.s3-buckle-content {
+  width: 138px;
+  height: 73px;
+  left: 891px;
+  top: 49px;
+  z-index: 12;
+}
+
+/* Trouser panels */
+.s3-trouser-left {
+  width: 711px;
+  height: 769px;
+  left: 0;
+  top: 172px;
+  z-index: 2;
+}
+
+.s3-trouser-center {
+  width: 644px;
+  height: 768px;
+  left: 641px;
+  top: 173px;
+  z-index: 2;
+}
+
+.s3-trouser-right {
+  width: 703px;
+  height: 774px;
+  left: 1216px;
+  top: 168px;
+  z-index: 2;
+}
+
+/* Tree overlay */
+.s3-tree {
+  width: 108px;
+  height: 120px;
+  left: 0;
+  top: 843px;
+  opacity: 0.7;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Footer */
+.s3-footer {
+  width: 1920px;
+  height: 138px;
+  left: 0;
+  top: 942px;
+  z-index: 4;
+}
+
+/* ── Content overlay panels ───────────────────────────────── */
+.s3-content-left,
+.s3-content-center,
+.s3-content-right {
+  position: absolute;
+  pointer-events: auto;
+  z-index: 6;
+}
+
+.s3-content-left {
+  width: 550px;
+  height: 708px;
+  left: 43px;
+  top: 205px;
+}
+
+.s3-content-center {
+  width: 433px;
+  height: 704px;
+  left: 744px;
+  top: 205px;
+}
+
+.s3-content-right {
+  width: 550px;
+  height: 708px;
+  left: 1326px;
+  top: 201px;
+}
+
+/* =========================================================
+   Trouser Left — Why Choose ELCEO
+   ========================================================= */
+
+.s3-left-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 28px 24px 24px 24px;
+}
+
+/* Minimal modern scrollbar */
+.s3-left-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.s3-left-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+}
+
+.s3-left-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 106, 0, 0.45);
+  border-radius: 2px;
+}
+
+.s3-left-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 106, 0, 0.7);
+}
+
+.s3-left-heading {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ff6a00;
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+
+.s3-left-body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 18px;
+}
+
+.s3-left-subsection {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #ff6a00;
+  margin-bottom: 4px;
+  margin-top: 14px;
+}
+
+.s3-left-sub-body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+  margin-bottom: 10px;
+}
+
+/* Media stack cards */
+.s3-media-stack {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s3-media-card {
+  position: absolute;
+  width: 140px;
+  height: 100px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 106, 0, 0.35);
+  background: linear-gradient(135deg, rgba(20, 16, 12, 0.95), rgba(10, 8, 6, 0.98));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s, box-shadow 0.3s;
+}
+
+.s3-media-card:nth-child(1) { transform: rotate(-6deg) translate(-30px, -10px); z-index: 1; }
+.s3-media-card:nth-child(2) { transform: rotate(3deg) translate(10px, 5px); z-index: 2; }
+.s3-media-card:nth-child(3) { transform: rotate(-2deg) translate(40px, -15px); z-index: 3; }
+.s3-media-card:nth-child(4) { transform: rotate(5deg) translate(-20px, 20px); z-index: 4; }
+.s3-media-card:nth-child(5) { transform: rotate(-1deg) translate(25px, 15px); z-index: 5; }
+
+.s3-media-card:hover {
+  transform: scale(2.2) rotate(0deg) translate(0, 0) !important;
+  z-index: 100 !important;
+  box-shadow: 0 16px 48px rgba(255, 106, 0, 0.25), 0 0 0 1px rgba(255, 106, 0, 0.5);
+}
+
+.s3-media-card-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.s3-media-card-label {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* =========================================================
+   Trouser Center — Reviews Carousel
+   ========================================================= */
+
+.s3-reviews-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 16px;
+}
+
+.s3-reviews-title {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ff6a00;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.s3-reviews-slider {
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 12px;
+}
+
+.s3-reviews-slider::-webkit-scrollbar {
+  height: 3px;
+}
+
+.s3-reviews-slider::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+}
+
+.s3-reviews-slider::-webkit-scrollbar-thumb {
+  background: rgba(255, 106, 0, 0.5);
+  border-radius: 2px;
+}
+
+.s3-reviews-column {
+  min-width: 100%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.s3-review-card {
+  background: linear-gradient(135deg, rgba(18, 15, 12, 0.95), rgba(8, 6, 4, 0.98));
+  border: 1px solid rgba(255, 106, 0, 0.2);
+  border-left: 3px solid #ff6a00;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.s3-review-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.s3-review-star {
+  width: 12px;
+  height: 12px;
+  color: #ff6a00;
+}
+
+.s3-review-text {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.s3-review-author {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+}
+
+.s3-reviews-progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding-top: 10px;
+}
+
+.s3-reviews-dot {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+}
+
+.s3-reviews-dot.active {
+  background: #ff6a00;
+}
+
+/* =========================================================
+   Trouser Right — VS Section
+   ========================================================= */
+
+.s3-vs-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Top fighter (ELCEO) */
+.s3-vs-top {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 106, 0, 0.08) 0%, rgba(0, 0, 0, 0.9) 100%);
+  padding: 24px 22px 40px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+/* Bottom fighter (Others) */
+.s3-vs-bottom {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(0deg, rgba(80, 20, 20, 0.08) 0%, rgba(0, 0, 0, 0.9) 100%);
+  padding: 40px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+/* Diagonal slice */
+.s3-vs-diagonal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 60px;
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.s3-vs-diagonal::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95));
+  transform: skewY(-3deg);
+  border-top: 2px solid rgba(255, 106, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 106, 0, 0.4);
+}
+
+/* VS text metallic silver */
+.s3-vs-text {
+  position: relative;
+  z-index: 4;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  background: linear-gradient(180deg, #ffffff 0%, #c0c0c0 30%, #808080 50%, #c0c0c0 70%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.2));
+}
+
+.s3-vs-fighter-label {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.s3-vs-fighter-label-elceo {
+  color: #ff6a00;
+}
+
+.s3-vs-fighter-label-others {
+  color: #666;
+}
+
+.s3-vs-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.s3-vs-point {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.72);
+  padding-left: 14px;
+  position: relative;
+}
+
+.s3-vs-point::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.s3-vs-top .s3-vs-point::before {
+  background: #ff6a00;
+}
+
+.s3-vs-bottom .s3-vs-point::before {
+  background: #444;
+}
+
+/* Fighter silhouette cards */
+.s3-vs-silhouette {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  align-self: center;
+}
+
+.s3-vs-silhouette-top {
+  background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(255, 60, 0, 0.05));
+  border: 2px solid rgba(255, 106, 0, 0.4);
+  box-shadow: 0 0 20px rgba(255, 106, 0, 0.15);
+}
+
+.s3-vs-silhouette-bottom {
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.15), rgba(50, 50, 50, 0.05));
+  border: 2px solid rgba(100, 100, 100, 0.3);
+}
+
+/* =========================================================
+   Section 2 → Section 3 Parallax Wrapper
+   ========================================================= */
+
+.magazine-section-two-panel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  perspective: 1400px;
+}
+
+.magazine-section-two-motion {
+  height: 100%;
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .s3-media-card:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+  }
+  .magazine-section-two-motion {
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}

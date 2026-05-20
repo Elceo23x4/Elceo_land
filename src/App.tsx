@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "./components/HeroSection";
 import SectionTwo from "./components/SectionTwo";
+import SectionThree from "./components/SectionThree";
 import ScrollCue from "./components/ScrollCue";
 import AboutPopup from "./components/AboutPopup";
 import PricingPopup from "./components/PricingPopup";
@@ -19,6 +20,8 @@ export default function App() {
 
   const heroPanelRef = useRef<HTMLDivElement>(null);
   const heroMotionRef = useRef<HTMLDivElement>(null);
+  const sectionTwoPanelRef = useRef<HTMLDivElement>(null);
+  const sectionTwoMotionRef = useRef<HTMLDivElement>(null);
 
   const handleAboutOpen = useCallback(() => setIsAboutOpen(true), []);
   const handleAboutClose = useCallback(() => setIsAboutOpen(false), []);
@@ -75,6 +78,52 @@ export default function App() {
     };
   }, []);
 
+  // GSAP parallax on Section Two (recedes as Section Three enters)
+  useLayoutEffect(() => {
+    const s2Panel = sectionTwoPanelRef.current;
+    const s2Motion = sectionTwoMotionRef.current;
+    if (!s2Panel || !s2Motion) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(s2Motion, {
+        transformPerspective: 1400,
+        transformOrigin: "center bottom",
+        scale: 1,
+        yPercent: 0,
+        rotateX: 0,
+        opacity: 1,
+        filter: "brightness(1) saturate(1) blur(0px)",
+      });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: s2Panel,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.9,
+          invalidateOnRefresh: true,
+        },
+      }).to(s2Motion, {
+        scale: 0.88,
+        yPercent: -8,
+        rotateX: 6,
+        opacity: 0.45,
+        filter: "brightness(0.62) saturate(0.88) blur(0.35px)",
+        ease: "none",
+      }, 0);
+    }, s2Panel);
+
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <>
       <div className="landing-page">
@@ -87,7 +136,12 @@ export default function App() {
             />
           </div>
         </div>
-        <SectionTwo />
+        <div className="magazine-section-two-panel" ref={sectionTwoPanelRef}>
+          <div className="magazine-section-two-motion" ref={sectionTwoMotionRef}>
+            <SectionTwo />
+          </div>
+        </div>
+        <SectionThree />
       </div>
       <FloatingElceoFigure dimmed={anyPopupOpen} />
       <ScrollCue />
