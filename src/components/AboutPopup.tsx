@@ -111,6 +111,7 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
           height: `${contentHeight * scale}px`,
           zIndex: 2,
           overflow: "auto",
+          padding: "clamp(24px, 2.4vw, 44px) clamp(28px, 2.8vw, 52px)",
         }}
       >
         <span className="popup-kicker">ABOUT ELCEO</span>

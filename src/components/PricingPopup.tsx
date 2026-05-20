@@ -129,28 +129,29 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           height: `${cardHeight * scale}px`,
           zIndex: 2,
           overflow: "auto",
-          fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
+          fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
           color: "#ffffff",
+          padding: "clamp(18px, 1.8vw, 36px)",
         }}
       >
         <h2
           id="pricing-popup-title"
-          style={{ fontSize: "68px", fontWeight: 900, marginBottom: "12px", lineHeight: 0.95, color: "#ffffff" }}
+          style={{ fontSize: "clamp(24px, 1.9vw, 38px)", fontWeight: 800, marginBottom: "10px", lineHeight: 1.05, color: "#ffffff" }}
         >
           Choose your <span className="popup-marker-orange">reasoning layer</span>
         </h2>
-        <p style={{ fontSize: "32px", fontWeight: 700, color: "rgba(255,255,255,0.75)", marginBottom: "20px", lineHeight: 1.1 }}>
+        <p style={{ fontSize: "clamp(14px, 1vw, 18px)", fontWeight: 600, color: "rgba(255,255,255,0.78)", marginBottom: "16px", lineHeight: 1.4 }}>
           Start with market context. Upgrade when you need deeper{" "}
           <span className="popup-marker-red">focus</span> and stronger decision discipline.
         </p>
 
         {/* Plan comparison table */}
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "30px", fontWeight: 700, lineHeight: 1.2, color: "#ffffff" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "clamp(12px, 0.85vw, 16px)", fontWeight: 650, lineHeight: 1.35, color: "#ffffff" }}>
           <thead>
             <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.2)" }}>
-              <th style={{ textAlign: "left", padding: "8px 6px", fontWeight: 800, color: "rgba(255,255,255,0.6)" }}>Feature</th>
-              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 900 }}>Free</th>
-              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 900, color: "#e02020" }}>Focus</th>
+              <th style={{ textAlign: "left", padding: "8px 6px", fontWeight: 800, fontSize: "clamp(14px, 1vw, 20px)", color: "rgba(255,255,255,0.6)" }}>Feature</th>
+              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 800, fontSize: "clamp(16px, 1.2vw, 24px)" }}>Free</th>
+              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 800, fontSize: "clamp(16px, 1.2vw, 24px)", color: "#e02020" }}>Focus</th>
             </tr>
           </thead>
           <tbody>
@@ -166,25 +167,26 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
               <tr key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <td style={{ padding: "7px 6px" }}>{feature}</td>
                 <td style={{ textAlign: "center", padding: "7px 6px", color: "rgba(255,255,255,0.6)" }}>{free}</td>
-                <td style={{ textAlign: "center", padding: "7px 6px", fontWeight: 800 }}>{focus}</td>
+                <td style={{ textAlign: "center", padding: "7px 6px", fontWeight: 700 }}>{focus}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
         {/* CTA buttons */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "20px" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "18px", marginTop: "18px" }}>
           <button
             type="button"
             style={{
-              padding: "10px 28px",
-              border: "2px solid rgba(255,255,255,0.4)",
-              borderRadius: "6px",
+              padding: "9px 22px",
+              border: "2px solid rgba(255,255,255,0.35)",
+              borderRadius: "5px",
               background: "transparent",
               color: "#ffffff",
-              fontSize: "28px",
-              fontWeight: 800,
+              fontSize: "clamp(13px, 0.9vw, 17px)",
+              fontWeight: 700,
               cursor: "pointer",
+              fontFamily: "inherit",
             }}
           >
             Start Free
@@ -192,14 +194,15 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           <button
             type="button"
             style={{
-              padding: "10px 28px",
+              padding: "9px 22px",
               border: "none",
-              borderRadius: "6px",
+              borderRadius: "5px",
               background: "#e02020",
               color: "#ffffff",
-              fontSize: "28px",
-              fontWeight: 900,
+              fontSize: "clamp(13px, 0.9vw, 17px)",
+              fontWeight: 800,
               cursor: "pointer",
+              fontFamily: "inherit",
             }}
           >
             Enter Focus

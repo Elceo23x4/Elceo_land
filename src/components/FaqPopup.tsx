@@ -108,6 +108,7 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
           height: `${contentHeight * scale}px`,
           zIndex: 2,
           overflow: "auto",
+          padding: "clamp(24px, 2.4vw, 44px) clamp(30px, 3vw, 56px)",
         }}
       >
         <h2 id="faq-popup-title" className="popup-heading">
