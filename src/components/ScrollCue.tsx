@@ -7,8 +7,7 @@ export default function ScrollCue() {
     const check = () => {
       const scrollY = window.scrollY;
       const viewH = window.innerHeight;
-      // If scrolled past 40% of first viewport, consider "at bottom section"
-      setAtBottom(scrollY > viewH * 0.55);
+      setAtBottom(scrollY >= viewH * 0.55);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
@@ -16,10 +15,18 @@ export default function ScrollCue() {
   }, []);
 
   const handleClick = () => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const behavior = prefersReduced ? "auto" as const : "smooth" as const;
+
     if (atBottom) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior });
     } else {
-      window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+      const s2 = document.querySelector(".section-two");
+      if (s2) {
+        s2.scrollIntoView({ behavior, block: "start" });
+      } else {
+        window.scrollTo({ top: window.innerHeight, behavior });
+      }
     }
   };
 
@@ -37,7 +44,6 @@ export default function ScrollCue() {
         className="scroll-cue-arrow"
         style={{ transform: atBottom ? "rotate(180deg)" : undefined }}
       >
-        {/* Hand-drawn arrow */}
         <path
           d="M19 4 C18 8, 17 14, 18 22 C19 30, 20 36, 19 44"
           stroke="#e02020"
@@ -53,7 +59,6 @@ export default function ScrollCue() {
           strokeLinejoin="round"
           fill="none"
         />
-        {/* Imperfect second stroke */}
         <path
           d="M18 6 C17 12, 18 20, 19 28 C20 34, 19 40, 18 45"
           stroke="#ff1f1f"
