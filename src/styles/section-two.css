@@ -412,58 +412,49 @@
   to { transform: translateX(-50%); }
 }
 
-/* ── Hero Flip Sheet Overlay ──────────────────────────────── */
-.hero-flip-sheet {
-  position: fixed;
-  inset: 0;
-  z-index: 4500;
-  pointer-events: none;
+/* ── Landing Deck (GSAP ScrollTrigger driven) ────────────── */
+.landing-deck {
+  position: relative;
+  height: 200vh;
   background: #000;
+}
+
+.landing-deck-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  perspective: 1600px;
   transform-style: preserve-3d;
+  background: #000;
+}
+
+.deck-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.deck-section-two-under {
+  z-index: 1;
+}
+
+.deck-hero-sheet {
+  z-index: 2;
+  transform-origin: top center;
+  will-change: transform, opacity, filter;
   backface-visibility: hidden;
 }
 
-.hero-flip-sheet::after {
-  content: "";
+.deck-page-edge {
   position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 106, 0, 0.12) 1px, transparent 1px);
-  background-size: 48px 48px;
-  opacity: 0.18;
+  inset: auto 0 0 0;
+  height: 28px;
+  z-index: 3;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   pointer-events: none;
-}
-
-.hero-flip-sheet::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: linear-gradient(to top, rgba(255,255,255,0.06), transparent);
-  pointer-events: none;
-}
-
-.hero-flip-sheet.flip-up {
-  transform-origin: top center;
-  animation: heroSheetFlipUp 900ms cubic-bezier(.2,.9,.2,1) both;
-}
-
-.hero-flip-sheet.flip-down {
-  transform-origin: top center;
-  animation: heroSheetFlipDown 900ms cubic-bezier(.2,.9,.2,1) both;
-}
-
-@keyframes heroSheetFlipUp {
-  0% { opacity: 1; transform: perspective(1300px) rotateX(0deg) translateY(0); filter: brightness(1); }
-  55% { opacity: .92; transform: perspective(1300px) rotateX(62deg) translateY(-8vh); filter: brightness(.72); }
-  100% { opacity: 0; transform: perspective(1300px) rotateX(88deg) translateY(-30vh); filter: brightness(.45); }
-}
-
-@keyframes heroSheetFlipDown {
-  0% { opacity: 0; transform: perspective(1300px) rotateX(88deg) translateY(-30vh); filter: brightness(.45); }
-  45% { opacity: .95; transform: perspective(1300px) rotateX(35deg) translateY(-8vh); filter: brightness(.75); }
-  100% { opacity: 1; transform: perspective(1300px) rotateX(0deg) translateY(0); filter: brightness(1); }
+  opacity: 0;
 }
 
 /* ── Scroll Cue ───────────────────────────────────────────── */
@@ -507,7 +498,6 @@
   .s2-page { transition: opacity 0.2s ease; transform: none !important; }
   .s2-marquee-track { animation: none !important; }
   .s2-gallery-slide { transition: none; }
-  .hero-flip-sheet { display: none !important; }
   .s2-gallery-main::before { animation: none !important; }
 }
 
