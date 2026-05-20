@@ -47,13 +47,13 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
   const bgWidth = 1389;
   const bgHeight = 890;
 
-  // Content: 1313×593, left 307, top 216
-  const contentLeft = 307;
+  // Content: 1167×593, left 368, top 216
+  const contentLeft = 368;
   const contentTop = 216;
-  const contentWidth = 1313;
+  const contentWidth = 1167;
   const contentHeight = 593;
 
-  // Close button: top-right of background
+  // Close: top-right of background
   const closeLeft = bgLeft + bgWidth - 64 - 24; // 1567
   const closeTop = bgTop + 18; // 208
 
@@ -81,7 +81,7 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
         <FaqBg style={{ width: "100%", height: "100%" }} aria-hidden="true" />
       </div>
 
-      {/* Close button at top-right of background */}
+      {/* Close button */}
       <button
         className="popup-close-btn"
         onClick={onClose}
@@ -108,31 +108,14 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
           height: `${contentHeight * scale}px`,
           zIndex: 2,
           overflow: "auto",
-          fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
-          color: "rgba(30, 15, 5, 0.92)",
-          padding: `${16 * scale}px`,
         }}
       >
-        <h2
-          id="faq-popup-title"
-          style={{
-            fontSize: `${Math.max(18, 28 * scale)}px`,
-            fontWeight: 700,
-            color: "rgba(30, 15, 5, 0.95)",
-            marginBottom: `${16 * scale}px`,
-          }}
-        >
-          Frequently Asked Questions
+        <h2 id="faq-popup-title" className="popup-heading">
+          Frequently Asked <span className="popup-marker-red">Questions</span>
         </h2>
-        <p
-          style={{
-            fontSize: `${Math.max(12, 15 * scale)}px`,
-            color: "rgba(50, 30, 10, 0.7)",
-            lineHeight: 1.6,
-          }}
-        >
-          FAQ content coming soon.
-        </p>
+        <div className="popup-body">
+          <p>FAQ content coming soon.</p>
+        </div>
       </div>
     </div>
   );

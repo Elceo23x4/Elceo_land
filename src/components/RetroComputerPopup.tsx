@@ -105,13 +105,17 @@ export default function RetroComputerPopup({ onClose }: RetroComputerPopupProps)
         }}
       >
         <div className="retro-popup-scanlines" aria-hidden="true" />
-        <div className="retro-popup-content">
-          <p className="retro-line retro-title">ELCEO MARKET REASONING OS</p>
-          <p className="retro-line">BOOTING CONTEXT ENGINE...</p>
-          <p className="retro-line">LOADING MACRO PRESSURE...</p>
-          <p className="retro-line">SCANNING LIQUIDITY MAP...</p>
-          <p className="retro-line">RISK MODEL ONLINE</p>
-          <p className="retro-line retro-ready">SESSION READY</p>
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <h2 className="popup-heading" style={{ fontSize: "72px", color: "#00ff3c" }}>
+            ELCEO MARKET REASONING OS
+          </h2>
+          <div className="popup-body" style={{ fontSize: "42px", color: "#00ff3c", fontFamily: "monospace" }}>
+            <p>BOOTING CONTEXT ENGINE...</p>
+            <p>LOADING <span className="popup-marker-orange">MACRO PRESSURE</span>...</p>
+            <p>SCANNING LIQUIDITY MAP...</p>
+            <p>RISK MODEL ONLINE</p>
+            <p style={{ color: "#e02020", fontWeight: 900 }}>SESSION READY</p>
+          </div>
         </div>
       </div>
     </div>

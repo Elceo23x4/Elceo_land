@@ -60,11 +60,9 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
   const cardWidth = 660;
   const cardHeight = 455;
 
-  // Close button: top-right of background
+  // Close: top-right of background
   const closeLeft = bgLeft + bgWidth - 64 - 24; // 1293
   const closeTop = bgTop + 18; // 144
-
-  const fs = (base: number) => `${Math.max(10, base * scale)}px`;
 
   return (
     <div
@@ -105,7 +103,7 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
         <OfferBadge style={{ width: "100%", height: "100%" }} aria-hidden="true" />
       </div>
 
-      {/* Close button at top-right of background */}
+      {/* Close button */}
       <button
         className="popup-close-btn"
         onClick={onClose}
@@ -132,67 +130,60 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           zIndex: 2,
           overflow: "auto",
           fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
-          color: "rgba(30, 15, 5, 0.92)",
-          padding: `${16 * scale}px`,
+          color: "#ffffff",
         }}
       >
         <h2
           id="pricing-popup-title"
-          style={{ fontSize: fs(22), fontWeight: 700, marginBottom: `${8 * scale}px`, letterSpacing: "-0.01em" }}
+          style={{ fontSize: "68px", fontWeight: 900, marginBottom: "12px", lineHeight: 0.95, color: "#ffffff" }}
         >
-          Choose your reasoning layer
+          Choose your <span className="popup-marker-orange">reasoning layer</span>
         </h2>
-        <p style={{ fontSize: fs(13), color: "rgba(50, 30, 10, 0.72)", marginBottom: `${18 * scale}px`, lineHeight: 1.5 }}>
-          Start with market context. Upgrade when you need deeper focus, cleaner evidence, and stronger decision discipline.
+        <p style={{ fontSize: "32px", fontWeight: 700, color: "rgba(255,255,255,0.75)", marginBottom: "20px", lineHeight: 1.1 }}>
+          Start with market context. Upgrade when you need deeper{" "}
+          <span className="popup-marker-red">focus</span> and stronger decision discipline.
         </p>
 
         {/* Plan comparison table */}
-        <table
-          style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            fontSize: fs(12),
-            lineHeight: 1.4,
-          }}
-        >
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "30px", fontWeight: 700, lineHeight: 1.2, color: "#ffffff" }}>
           <thead>
-            <tr style={{ borderBottom: "2px solid rgba(180, 80, 10, 0.2)" }}>
-              <th style={{ textAlign: "left", padding: `${6 * scale}px ${4 * scale}px`, fontWeight: 600, color: "rgba(30, 15, 5, 0.6)" }}>Feature</th>
-              <th style={{ textAlign: "center", padding: `${6 * scale}px ${4 * scale}px`, fontWeight: 700 }}>Free</th>
-              <th style={{ textAlign: "center", padding: `${6 * scale}px ${4 * scale}px`, fontWeight: 700, color: "#e02020" }}>Focus</th>
+            <tr style={{ borderBottom: "2px solid rgba(255,255,255,0.2)" }}>
+              <th style={{ textAlign: "left", padding: "8px 6px", fontWeight: 800, color: "rgba(255,255,255,0.6)" }}>Feature</th>
+              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 900 }}>Free</th>
+              <th style={{ textAlign: "center", padding: "8px 6px", fontWeight: 900, color: "#e02020" }}>Focus</th>
             </tr>
           </thead>
           <tbody>
             {[
               ["Market overview", "Included", "Included"],
               ["Core watchlist", "Limited", "Expanded"],
-              ["Macro context", "Basic", "Deeper context"],
+              ["Macro context", "Basic", "Deeper"],
               ["Evidence stack", "Preview", "Full access"],
               ["Risk notes", "Limited", "Focus view"],
               ["Alerts", "—", "Included"],
-              ["Workspace tools", "Starter", "Full focus tools"],
+              ["Workspace tools", "Starter", "Full tools"],
             ].map(([feature, free, focus], i) => (
-              <tr key={i} style={{ borderBottom: "1px solid rgba(180, 80, 10, 0.1)" }}>
-                <td style={{ padding: `${6 * scale}px ${4 * scale}px`, color: "rgba(30, 15, 5, 0.82)" }}>{feature}</td>
-                <td style={{ textAlign: "center", padding: `${6 * scale}px ${4 * scale}px`, color: "rgba(50, 30, 10, 0.65)" }}>{free}</td>
-                <td style={{ textAlign: "center", padding: `${6 * scale}px ${4 * scale}px`, color: "rgba(30, 15, 5, 0.88)", fontWeight: 500 }}>{focus}</td>
+              <tr key={i} style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                <td style={{ padding: "7px 6px" }}>{feature}</td>
+                <td style={{ textAlign: "center", padding: "7px 6px", color: "rgba(255,255,255,0.6)" }}>{free}</td>
+                <td style={{ textAlign: "center", padding: "7px 6px", fontWeight: 800 }}>{focus}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
         {/* CTA buttons */}
-        <div style={{ display: "flex", justifyContent: "center", gap: `${20 * scale}px`, marginTop: `${20 * scale}px` }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "20px" }}>
           <button
             type="button"
             style={{
-              padding: `${8 * scale}px ${22 * scale}px`,
-              border: "1px solid rgba(30, 15, 5, 0.3)",
-              borderRadius: "4px",
+              padding: "10px 28px",
+              border: "2px solid rgba(255,255,255,0.4)",
+              borderRadius: "6px",
               background: "transparent",
-              color: "rgba(30, 15, 5, 0.8)",
-              fontSize: fs(12),
-              fontWeight: 600,
+              color: "#ffffff",
+              fontSize: "28px",
+              fontWeight: 800,
               cursor: "pointer",
             }}
           >
@@ -201,13 +192,13 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           <button
             type="button"
             style={{
-              padding: `${8 * scale}px ${22 * scale}px`,
+              padding: "10px 28px",
               border: "none",
-              borderRadius: "4px",
+              borderRadius: "6px",
               background: "#e02020",
-              color: "#fff",
-              fontSize: fs(12),
-              fontWeight: 700,
+              color: "#ffffff",
+              fontSize: "28px",
+              fontWeight: 900,
               cursor: "pointer",
             }}
           >
