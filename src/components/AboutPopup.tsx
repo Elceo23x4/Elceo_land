@@ -80,7 +80,7 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
         }}
       >
         <div className="about-scroll-frame">
-          <ScrollGraphic className="about-scroll-svg" aria-hidden="true" />
+          <ScrollGraphic className="about-scroll-svg" preserveAspectRatio="none" aria-hidden="true" />
         </div>
       </div>
 
