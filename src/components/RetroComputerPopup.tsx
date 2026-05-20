@@ -38,26 +38,21 @@ export default function RetroComputerPopup({ onClose }: RetroComputerPopupProps)
     if (e.target === overlayRef.current) onClose();
   }
 
-  const bgStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 287 * scale}px`,
-    top: `${stageTop + 147 * scale}px`,
-    width: `${1320 * scale}px`,
-    height: `${830 * scale}px`,
-    pointerEvents: "none",
-    zIndex: 1,
-  };
+  // Background: retro_bg.svg 1320×830, left 287, top 147
+  const bgLeft = 287;
+  const bgTop = 147;
+  const bgWidth = 1320;
+  const bgHeight = 830;
 
-  const contentStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 309 * scale}px`,
-    top: `${stageTop + 182 * scale}px`,
-    width: `${868 * scale}px`,
-    height: `${578 * scale}px`,
-    zIndex: 2,
-    overflow: "hidden",
-    padding: "32px 28px",
-  };
+  // Content area: 868×578, left 309, top 182
+  const contentLeft = 309;
+  const contentTop = 182;
+  const contentWidth = 868;
+  const contentHeight = 578;
+
+  // Close button: top-right of background
+  const closeLeft = bgLeft + bgWidth - 64 - 24; // 1519
+  const closeTop = bgTop + 18; // 165
 
   return (
     <div
@@ -66,16 +61,50 @@ export default function RetroComputerPopup({ onClose }: RetroComputerPopupProps)
       onClick={handleOverlayClick}
     >
       {/* Background SVG */}
-      <div style={bgStyle}>
+      <div
+        style={{
+          position: "fixed",
+          left: `${stageLeft + bgLeft * scale}px`,
+          top: `${stageTop + bgTop * scale}px`,
+          width: `${bgWidth * scale}px`,
+          height: `${bgHeight * scale}px`,
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      >
         <RetroBg style={{ width: "100%", height: "100%" }} aria-hidden="true" />
       </div>
 
+      {/* Close button at top-right of background */}
+      <button
+        className="popup-close-btn"
+        onClick={onClose}
+        aria-label="Close Retro"
+        type="button"
+        style={{
+          position: "fixed",
+          left: `${stageLeft + closeLeft * scale}px`,
+          top: `${stageTop + closeTop * scale}px`,
+          zIndex: 10,
+        }}
+      >
+        &times;
+      </button>
+
       {/* Content area */}
-      <div style={contentStyle}>
+      <div
+        style={{
+          position: "fixed",
+          left: `${stageLeft + contentLeft * scale}px`,
+          top: `${stageTop + contentTop * scale}px`,
+          width: `${contentWidth * scale}px`,
+          height: `${contentHeight * scale}px`,
+          zIndex: 2,
+          overflow: "hidden",
+          padding: `${24 * scale}px`,
+        }}
+      >
         <div className="retro-popup-scanlines" aria-hidden="true" />
-        <button className="popup-close-btn" onClick={onClose} aria-label="Close Retro" type="button">
-          &times;
-        </button>
         <div className="retro-popup-content">
           <p className="retro-line retro-title">ELCEO MARKET REASONING OS</p>
           <p className="retro-line">BOOTING CONTEXT ENGINE...</p>

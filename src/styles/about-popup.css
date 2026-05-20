@@ -17,27 +17,24 @@
   to { opacity: 1; }
 }
 
-/* ── Unified Popup Close Button ───────────────────────────── */
+/* ── Unified Popup Close Button (3× size, bg-relative) ────── */
 .popup-close-btn {
-  position: absolute;
-  top: 10px;
-  right: 12px;
   z-index: 10;
   background: none;
   border: none;
   color: #e02020;
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 54px;
+  font-weight: 900;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 10px;
+  padding: 0;
   border-radius: 4px;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .popup-close-btn:hover {
   color: #ff1f1f;
-  background: rgba(224, 32, 32, 0.1);
+  text-shadow: 0 0 12px rgba(224, 32, 32, 0.4);
 }
 
 /* ── Scroll Stage Container ───────────────────────────────── */

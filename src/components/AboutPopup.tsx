@@ -43,23 +43,21 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
 
   if (!isOpen) return null;
 
-  const scrollStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 305 * scale}px`,
-    top: `${stageTop + 139 * scale}px`,
-    width: `${1294 * scale}px`,
-    height: `${803 * scale}px`,
-  };
+  // Background: scroll.svg at 1294×803, left 305, top 139
+  const bgLeft = 305;
+  const bgTop = 139;
+  const bgWidth = 1294;
+  const bgHeight = 803;
 
-  const contentStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 635 * scale}px`,
-    top: `${stageTop + 247 * scale}px`,
-    width: `${650 * scale}px`,
-    height: `${592 * scale}px`,
-    zIndex: 2,
-    overflow: "auto",
-  };
+  // Content: 650×592, left 635, top 247
+  const contentLeft = 635;
+  const contentTop = 247;
+  const contentWidth = 650;
+  const contentHeight = 592;
+
+  // Close button: top-right of background
+  const closeLeft = bgLeft + bgWidth - 64 - 24; // 1511
+  const closeTop = bgTop + 18; // 157
 
   return (
     <div
@@ -70,27 +68,51 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
       aria-labelledby="about-popup-title"
       onClick={handleBackdropClick}
     >
-      {/* Scroll SVG background at exact stage coordinates */}
+      {/* Scroll SVG background */}
       <div
         className={`about-scroll-stage ${prefersReduced ? "about-scroll-reduced" : "about-scroll-reveal"}`}
-        style={scrollStyle}
+        style={{
+          position: "fixed",
+          left: `${stageLeft + bgLeft * scale}px`,
+          top: `${stageTop + bgTop * scale}px`,
+          width: `${bgWidth * scale}px`,
+          height: `${bgHeight * scale}px`,
+        }}
       >
         <div className="about-scroll-frame">
           <ScrollGraphic className="about-scroll-svg" aria-hidden="true" />
         </div>
       </div>
 
-      {/* Content area at exact stage coordinates — no background */}
-      <div style={contentStyle} className="about-content-area">
-        <button
-          className="popup-close-btn"
-          onClick={onClose}
-          aria-label="Close About"
-          type="button"
-        >
-          &times;
-        </button>
+      {/* Close button at top-right of background */}
+      <button
+        className="popup-close-btn"
+        onClick={onClose}
+        aria-label="Close About"
+        type="button"
+        style={{
+          position: "fixed",
+          left: `${stageLeft + closeLeft * scale}px`,
+          top: `${stageTop + closeTop * scale}px`,
+          zIndex: 10,
+        }}
+      >
+        &times;
+      </button>
 
+      {/* Content area — no background */}
+      <div
+        className="about-content-area"
+        style={{
+          position: "fixed",
+          left: `${stageLeft + contentLeft * scale}px`,
+          top: `${stageTop + contentTop * scale}px`,
+          width: `${contentWidth * scale}px`,
+          height: `${contentHeight * scale}px`,
+          zIndex: 2,
+          overflow: "auto",
+        }}
+      >
         <div className="about-content">
           <span className="about-kicker">ABOUT ELCEO</span>
 

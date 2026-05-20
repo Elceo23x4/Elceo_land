@@ -41,25 +41,21 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
 
   if (!isOpen) return null;
 
-  const bgStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 266 * scale}px`,
-    top: `${stageTop + 190 * scale}px`,
-    width: `${1389 * scale}px`,
-    height: `${890 * scale}px`,
-    pointerEvents: "none",
-    zIndex: 1,
-  };
+  // Background: faq_bg.svg 1389×890, left 266, top 190
+  const bgLeft = 266;
+  const bgTop = 190;
+  const bgWidth = 1389;
+  const bgHeight = 890;
 
-  const contentStyle: React.CSSProperties = {
-    position: "fixed",
-    left: `${stageLeft + 307 * scale}px`,
-    top: `${stageTop + 216 * scale}px`,
-    width: `${1313 * scale}px`,
-    height: `${593 * scale}px`,
-    zIndex: 2,
-    overflow: "auto",
-  };
+  // Content: 1313×593, left 307, top 216
+  const contentLeft = 307;
+  const contentTop = 216;
+  const contentWidth = 1313;
+  const contentHeight = 593;
+
+  // Close button: top-right of background
+  const closeLeft = bgLeft + bgWidth - 64 - 24; // 1567
+  const closeTop = bgTop + 18; // 208
 
   return (
     <div
@@ -71,44 +67,72 @@ export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
       onClick={handleBackdropClick}
     >
       {/* Background SVG */}
-      <div style={bgStyle}>
+      <div
+        style={{
+          position: "fixed",
+          left: `${stageLeft + bgLeft * scale}px`,
+          top: `${stageTop + bgTop * scale}px`,
+          width: `${bgWidth * scale}px`,
+          height: `${bgHeight * scale}px`,
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      >
         <FaqBg style={{ width: "100%", height: "100%" }} aria-hidden="true" />
       </div>
 
-      {/* Content area */}
-      <div style={contentStyle} className="about-content-area">
-        <button
-          className="popup-close-btn"
-          onClick={onClose}
-          aria-label="Close FAQ"
-          type="button"
-        >
-          &times;
-        </button>
+      {/* Close button at top-right of background */}
+      <button
+        className="popup-close-btn"
+        onClick={onClose}
+        aria-label="Close FAQ"
+        type="button"
+        style={{
+          position: "fixed",
+          left: `${stageLeft + closeLeft * scale}px`,
+          top: `${stageTop + closeTop * scale}px`,
+          zIndex: 10,
+        }}
+      >
+        &times;
+      </button>
 
-        <div className="about-content">
-          <h2
-            id="faq-popup-title"
-            style={{
-              fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-              fontSize: `${Math.max(18, 28 * scale)}px`,
-              fontWeight: 700,
-              color: "rgba(30, 15, 5, 0.95)",
-              marginBottom: "16px",
-            }}
-          >
-            Frequently Asked Questions
-          </h2>
-          <p
-            style={{
-              fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
-              fontSize: `${Math.max(12, 15 * scale)}px`,
-              color: "rgba(50, 30, 10, 0.7)",
-            }}
-          >
-            FAQ content coming soon.
-          </p>
-        </div>
+      {/* Content area */}
+      <div
+        className="about-content-area"
+        style={{
+          position: "fixed",
+          left: `${stageLeft + contentLeft * scale}px`,
+          top: `${stageTop + contentTop * scale}px`,
+          width: `${contentWidth * scale}px`,
+          height: `${contentHeight * scale}px`,
+          zIndex: 2,
+          overflow: "auto",
+          fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, sans-serif",
+          color: "rgba(30, 15, 5, 0.92)",
+          padding: `${16 * scale}px`,
+        }}
+      >
+        <h2
+          id="faq-popup-title"
+          style={{
+            fontSize: `${Math.max(18, 28 * scale)}px`,
+            fontWeight: 700,
+            color: "rgba(30, 15, 5, 0.95)",
+            marginBottom: `${16 * scale}px`,
+          }}
+        >
+          Frequently Asked Questions
+        </h2>
+        <p
+          style={{
+            fontSize: `${Math.max(12, 15 * scale)}px`,
+            color: "rgba(50, 30, 10, 0.7)",
+            lineHeight: 1.6,
+          }}
+        >
+          FAQ content coming soon.
+        </p>
       </div>
     </div>
   );
