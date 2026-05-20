@@ -27,7 +27,7 @@
   <desc
      id="desc">Editable standalone HUD annotation 3 containing a separate link-line group and content-box group.</desc>
   <defs
-     id="defs19">
+     id="defs">
     <style
        id="style1">
     :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }

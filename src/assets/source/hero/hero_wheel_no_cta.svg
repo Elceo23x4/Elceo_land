@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="hero_wheel_no_cta" width="840" height="820" viewBox="300 110 840 820" role="img" aria-labelledby="title desc" version="1.1" data-name="hero_wheel_no_cta"><title id="title">hero_wheel_no_cta</title><desc id="desc">Editable hero wheel without CTA; globe group id is orange_world_globe_animatable.</desc><defs id="defs19">
+<svg xmlns="http://www.w3.org/2000/svg" id="hero_wheel_no_cta" width="840" height="820" viewBox="300 110 840 820" role="img" aria-labelledby="title desc" version="1.1" data-name="hero_wheel_no_cta"><title id="title">hero_wheel_no_cta</title><desc id="desc">Editable hero wheel without CTA; globe group id is orange_world_globe_animatable.</desc><defs id="defs">
     <style id="style1">
     :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }
     .ui { font-family: var(--font-ui); letter-spacing: .04em; }

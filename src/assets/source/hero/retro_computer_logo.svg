@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" id="retro_computer_logo" width="179.74799" height="148.32001" viewBox="0 0 179.74799 148.32001" role="img" aria-labelledby="title desc" version="1.1" data-name="retro_computer_logo">
   <title id="title">retro_computer_logo</title>
   <desc id="desc">Editable standalone SVG element: retro_computer_logo</desc>
-  <defs id="defs19">
+  <defs id="defs">
     <style id="style1">
     :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }
     .ui { font-family: var(--font-ui); letter-spacing: .04em; }

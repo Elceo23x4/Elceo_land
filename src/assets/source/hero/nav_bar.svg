@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" id="nav_bar" width="662.33997" height="24" viewBox="0 0 662.33997 24" role="img" aria-labelledby="title desc" version="1.1" data-name="nav_bar">
   <title id="title">nav_bar</title>
   <desc id="desc">Editable standalone SVG element: nav_bar</desc>
-  <defs id="defs19">
+  <defs id="defs">
     <style id="style1">
     :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }
     .ui { font-family: var(--font-ui); letter-spacing: .04em; }
