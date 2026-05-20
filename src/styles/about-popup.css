@@ -1,0 +1,276 @@
+/* =========================================================
+   About Popup — Scroll Reveal Modal
+   ========================================================= */
+
+/* ── Backdrop ─────────────────────────────────────────────── */
+.about-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(4px);
+  animation: aboutBackdropIn 0.4s ease-out both;
+}
+
+@keyframes aboutBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Scroll Wrapper ───────────────────────────────────────── */
+.about-scroll-wrapper {
+  position: relative;
+  width: clamp(340px, 78vw, 1320px);
+  height: clamp(400px, 80vh, 860px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reveal animation */
+.about-scroll-reveal {
+  animation: scrollReveal 1100ms cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+
+@keyframes scrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-24px) scaleY(0.08);
+    clip-path: inset(0 0 92% 0 round 28px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-8px) scaleY(0.6);
+    clip-path: inset(0 0 40% 0 round 20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    clip-path: inset(0 0 0 0 round 12px);
+  }
+}
+
+/* Reduced motion */
+.about-scroll-reduced {
+  animation: scrollRevealReduced 0.3s ease-out both;
+}
+
+@keyframes scrollRevealReduced {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Scroll SVG Frame ─────────────────────────────────────── */
+.about-scroll-frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.13;
+  z-index: 1;
+}
+
+.about-scroll-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ── Parchment Panel ──────────────────────────────────────── */
+.about-parchment {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  height: 88%;
+  padding: clamp(24px, 4vw, 56px);
+  overflow-y: auto;
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      168deg,
+      #3d2b1a 0%,
+      #2e1f10 18%,
+      #4a3520 40%,
+      #3a2815 62%,
+      #2b1c0e 85%,
+      #1f1409 100%
+    );
+  box-shadow:
+    inset 0 0 80px rgba(0, 0, 0, 0.5),
+    inset 0 2px 0 rgba(255, 200, 100, 0.06),
+    0 24px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 160, 60, 0.08);
+}
+
+/* Subtle noise/grain via pseudo-element */
+.about-parchment::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+/* Warm edge vignette */
+.about-parchment::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(20, 10, 0, 0.45) 100%
+  );
+}
+
+/* ── Close Button ─────────────────────────────────────────── */
+.about-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  z-index: 10;
+  background: none;
+  border: none;
+  color: rgba(255, 200, 120, 0.85);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.about-close-btn:hover {
+  color: #fff;
+  background: rgba(255, 106, 0, 0.2);
+}
+
+/* ── Content ──────────────────────────────────────────────── */
+.about-content {
+  position: relative;
+  z-index: 3;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: rgba(255, 245, 230, 0.92);
+}
+
+.about-kicker {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 160, 60, 0.75);
+  margin-bottom: 14px;
+}
+
+.about-heading {
+  font-size: clamp(22px, 3.2vw, 36px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  color: rgba(255, 250, 240, 0.96);
+}
+
+.about-intro {
+  font-size: clamp(15px, 1.8vw, 19px);
+  line-height: 1.6;
+  margin-bottom: 22px;
+  color: rgba(255, 240, 210, 0.88);
+}
+
+.about-body p {
+  font-size: clamp(13px, 1.4vw, 16px);
+  line-height: 1.7;
+  margin-bottom: 14px;
+  color: rgba(255, 235, 200, 0.8);
+}
+
+.about-blocks {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.about-blocks li {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: rgba(255, 106, 0, 0.06);
+  border: 1px solid rgba(255, 106, 0, 0.15);
+  color: rgba(255, 220, 170, 0.9);
+}
+
+.about-closing {
+  font-size: clamp(13px, 1.4vw, 16px);
+  line-height: 1.7;
+  margin-top: 8px;
+  color: rgba(255, 235, 200, 0.78);
+}
+
+/* ── Orange Marker Highlight ──────────────────────────────── */
+.about-marker {
+  background: linear-gradient(
+    to top,
+    rgba(255, 106, 0, 0.82) 48%,
+    transparent 48%
+  );
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 3px;
+}
+
+/* ── Scrollbar styling ────────────────────────────────────── */
+.about-parchment::-webkit-scrollbar {
+  width: 6px;
+}
+
+.about-parchment::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.about-parchment::-webkit-scrollbar-thumb {
+  background: rgba(255, 160, 60, 0.25);
+  border-radius: 3px;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .about-scroll-wrapper {
+    width: 95vw;
+    height: 90vh;
+  }
+
+  .about-parchment {
+    width: 95%;
+    height: 92%;
+    padding: 20px 16px;
+  }
+
+  .about-blocks {
+    grid-template-columns: 1fr;
+  }
+}
