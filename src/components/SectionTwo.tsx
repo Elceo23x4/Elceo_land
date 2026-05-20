@@ -27,24 +27,6 @@ function useViewportWidth() {
   return vw;
 }
 
-// ── Dotted Outline Overlay ───────────────────────────────────────────────────
-function DottedOutline({ left, top, width, height }: { left: number; top: number; width: number; height: number }) {
-  return (
-    <div className="s2-dotted-overlay" style={{ position: "absolute", left, top, width, height }}>
-      <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none">
-        <path
-          d={`M 20,0 L ${width - 20},0 L ${width},${height * 0.18} L ${width},${height} L ${width - 20},${height} L 20,${height} L 0,${height * 0.18} Z`}
-          fill="none"
-          stroke="rgba(255,255,255,0.82)"
-          strokeWidth="4"
-          strokeDasharray="22 18"
-          strokeLinecap="round"
-        />
-      </svg>
-    </div>
-  );
-}
-
 // ── Flipbook Panel ───────────────────────────────────────────────────────────
 function FlipPanel({ pages }: { pages: React.ReactNode[] }) {
   const [idx, setIdx] = useState(0);
@@ -60,8 +42,8 @@ function FlipPanel({ pages }: { pages: React.ReactNode[] }) {
     <>
       <div className={`s2-page ${anim}`}>{pages[idx]}</div>
       <div className="s2-flip-controls">
-        <button className="s2-flip-btn s2-flip-btn-prev" onClick={() => flip(-1)} aria-label="Previous" type="button">&rsaquo;</button>
-        <button className="s2-flip-btn" onClick={() => flip(1)} aria-label="Next" type="button">&rsaquo;</button>
+        <button className="s2-flip-btn s2-flip-btn-prev" onClick={() => flip(-1)} aria-label="Previous" type="button"><span>&lsaquo;</span></button>
+        <button className="s2-flip-btn" onClick={() => flip(1)} aria-label="Next" type="button"><span>&rsaquo;</span></button>
       </div>
     </>
   );
@@ -109,8 +91,8 @@ function GalleryViewer() {
       <div className="s2-gallery-main">
         <div className="s2-gallery-slide"><ChartVisual type={active} /></div>
         <div className="s2-gallery-arrows">
-          <button className="s2-gallery-arrow s2-gallery-arrow-prev" onClick={() => setActive((a) => (a - 1 + 4) % 4)} type="button">&rsaquo;</button>
-          <button className="s2-gallery-arrow" onClick={() => setActive((a) => (a + 1) % 4)} type="button">&rsaquo;</button>
+          <button className="s2-gallery-arrow s2-gallery-arrow-prev" onClick={() => setActive((a) => (a - 1 + 4) % 4)} type="button"><span>&lsaquo;</span></button>
+          <button className="s2-gallery-arrow" onClick={() => setActive((a) => (a + 1) % 4)} type="button"><span>&rsaquo;</span></button>
         </div>
       </div>
       <div className="s2-gallery-thumbs">
@@ -207,17 +189,11 @@ export default function SectionTwo() {
         {/* Pocket Left */}
         <div className="s2-pocket-l" style={{ position: "absolute", left: 24, top: -34, width: 830, height: 997 }}>
           <PocketLeft preserveAspectRatio="none" />
-          {/* Dotted inner outlines */}
-          <DottedOutline left={54.5} top={96.23} width={313} height={761.99} />
-          <DottedOutline left={367.5} top={96.23} width={313} height={761.99} />
         </div>
 
         {/* Pocket Right */}
         <div className="s2-pocket-r" style={{ position: "absolute", left: 1081, top: -33, width: 830, height: 996 }}>
           <PocketRight preserveAspectRatio="none" />
-          {/* Dotted inner outlines */}
-          <DottedOutline left={54.5} top={96.13} width={313} height={761.22} />
-          <DottedOutline left={367.5} top={96.13} width={313} height={761.99} />
         </div>
 
         {/* Tie */}

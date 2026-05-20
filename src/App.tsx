@@ -8,59 +8,46 @@ import FaqPopup from "./components/FaqPopup";
 import FloatingElceoFigure from "./components/FloatingElceoFigure";
 import GoldCursor3D from "./components/GoldCursor3D";
 
-// ── Sketchboard sheet observer hook ──────────────────────────────────────────
-function useSheetObserver(ref: React.RefObject<HTMLDivElement | null>) {
+// ── Hero flip sheet overlay ──────────────────────────────────────────────────
+function HeroFlipSheet() {
+  const [flipClass, setFlipClass] = useState("");
+  const lastSection = useRef(0);
+  const prefersReduced = useRef(false);
+
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    prefersReduced.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const sheets = el.querySelectorAll(".landing-sheet");
-    if (!sheets.length) return;
+    const handleScroll = () => {
+      if (prefersReduced.current) return;
+      const scrollY = window.scrollY;
+      const viewH = window.innerHeight;
+      const currentSection = scrollY > viewH * 0.35 ? 1 : 0;
 
-    // Check reduced motion
-    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) {
-      sheets.forEach((s) => s.classList.add("sheet-visible"));
-      return;
-    }
+      if (currentSection !== lastSection.current) {
+        if (currentSection === 1 && lastSection.current === 0) {
+          setFlipClass("flip-up");
+          setTimeout(() => setFlipClass(""), 950);
+        } else if (currentSection === 0 && lastSection.current === 1) {
+          setFlipClass("flip-down");
+          setTimeout(() => setFlipClass(""), 950);
+        }
+        lastSection.current = currentSection;
+      }
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove("sheet-entering");
-            entry.target.classList.add("sheet-visible");
-          } else {
-            entry.target.classList.remove("sheet-visible");
-            entry.target.classList.add("sheet-entering");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    sheets.forEach((s) => {
-      s.classList.add("sheet-entering");
-      observer.observe(s);
-    });
+  if (!flipClass) return null;
 
-    // Mark first sheet visible immediately
-    if (sheets[0]) {
-      sheets[0].classList.remove("sheet-entering");
-      sheets[0].classList.add("sheet-visible");
-    }
-
-    return () => observer.disconnect();
-  }, [ref]);
+  return <div className={`hero-flip-sheet ${flipClass}`} aria-hidden="true" />;
 }
 
 export default function App() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isPricingOpen, setIsPricingOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
-  const landingRef = useRef<HTMLDivElement>(null);
-
-  useSheetObserver(landingRef);
 
   const handleAboutOpen = useCallback(() => setIsAboutOpen(true), []);
   const handleAboutClose = useCallback(() => setIsAboutOpen(false), []);
@@ -73,18 +60,15 @@ export default function App() {
 
   return (
     <>
-      <div className="landing-page" ref={landingRef}>
-        <div className="landing-sheet">
-          <HeroSection
-            onAboutClick={handleAboutOpen}
-            onPricingClick={handlePricingOpen}
-            onFaqClick={handleFaqOpen}
-          />
-        </div>
-        <div className="landing-sheet">
-          <SectionTwo />
-        </div>
+      <div className="landing-page">
+        <HeroSection
+          onAboutClick={handleAboutOpen}
+          onPricingClick={handlePricingOpen}
+          onFaqClick={handleFaqOpen}
+        />
+        <SectionTwo />
       </div>
+      <HeroFlipSheet />
       <FloatingElceoFigure dimmed={anyPopupOpen} />
       <ScrollCue />
       <AboutPopup isOpen={isAboutOpen} onClose={handleAboutClose} />
