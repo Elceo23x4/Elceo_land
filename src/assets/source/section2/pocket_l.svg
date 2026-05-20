@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="pocket_plain_reference_699x861" xmlns="http://www.w3.org/2000/svg" width="699" height="861" viewBox="0 0 699 861" role="img" aria-labelledby="title desc">
+  <title id="title">ELCEO reference-style pocket frame 699 by 861</title>
+  <desc id="desc">Flattened editable SVG pocket frame matched to the supplied reference image proportions. Direct paths only, no symbol or use references.</desc>
+
+  <g id="pocket_frame" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main black pocket body -->
+    <path id="pocket_body_fill" d="M 40 68 H 646 V 786 L 349.5 858 L 40 786 Z" fill="#030303" stroke="none"/>
+
+    <!-- Soft white outer glow built from editable duplicate strokes for UI-tool compatibility -->
+    <path id="pocket_outer_glow_wide" d="M 40 68 H 646 V 786 L 349.5 858 L 40 786 Z" fill="none" stroke="#f7f7f7" stroke-width="12" opacity="0.18"/>
+    <path id="pocket_outer_glow_mid" d="M 40 68 H 646 V 786 L 349.5 858 L 40 786 Z" fill="none" stroke="#f7f7f7" stroke-width="7" opacity="0.32"/>
+    <path id="pocket_outer_shape" d="M 40 68 H 646 V 786 L 349.5 858 L 40 786 Z" fill="none" stroke="#f4f4f4" stroke-width="4.5"/>
+    <path id="pocket_outer_highlight" d="M 42.5 71 H 643.5 V 783.5 L 349.5 853.5 L 42.5 783.5 Z" fill="none" stroke="#ffffff" stroke-width="1.35" opacity="0.9"/>
+
+    <!-- Inner dashed stitch/seam, separated so the orange rings stay clean and visible -->
+    <path id="pocket_inner_top_stitch" d="M 122 128 H 577" stroke="#f1f1f1" stroke-width="5.2" stroke-dasharray="21 18" opacity="0.95"/>
+    <path id="pocket_inner_left_stitch" d="M 86 151 V 766 L 349.5 842" stroke="#f1f1f1" stroke-width="5.2" stroke-dasharray="21 18" opacity="0.95"/>
+    <path id="pocket_inner_right_stitch" d="M 613 151 V 766 L 349.5 842" stroke="#f1f1f1" stroke-width="5.2" stroke-dasharray="21 18" opacity="0.95"/>
+
+    <!-- Orange top pins -->
+    <circle id="pocket_pin_left_glow" cx="90" cy="128" r="30" fill="none" stroke="#ff9300" stroke-width="7" opacity="0.18"/>
+    <circle id="pocket_pin_left" cx="90" cy="128" r="21" fill="#030303" stroke="#ff9300" stroke-width="8"/>
+    <circle id="pocket_pin_left_inner" cx="90" cy="128" r="14" fill="#030303" stroke="#ffb000" stroke-width="1" opacity="0.3"/>
+
+    <circle id="pocket_pin_right_glow" cx="609" cy="128" r="30" fill="none" stroke="#ff9300" stroke-width="7" opacity="0.18"/>
+    <circle id="pocket_pin_right" cx="609" cy="128" r="21" fill="#030303" stroke="#ff9300" stroke-width="8"/>
+    <circle id="pocket_pin_right_inner" cx="609" cy="128" r="14" fill="#030303" stroke="#ffb000" stroke-width="1" opacity="0.3"/>
+  </g>
+</svg>
