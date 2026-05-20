@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import HeroSection from "./HeroSection";
@@ -21,7 +21,7 @@ export default function LandingDeck({ onAboutClick, onPricingClick, onFaqClick }
     typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (reduced) return;
     const deck = deckRef.current;
     const hero = heroRef.current;
@@ -30,28 +30,44 @@ export default function LandingDeck({ onAboutClick, onPricingClick, onFaqClick }
     if (!deck || !hero || !s2 || !edge) return;
 
     const ctx = gsap.context(() => {
-      // Initial state: Section 2 slightly recessed underneath
-      gsap.set(s2, { scale: 1.04, yPercent: 2, filter: "brightness(0.74) saturate(0.88)" });
+      // Initial states
+      gsap.set(hero, {
+        transformPerspective: 1600,
+        rotateX: 0,
+        yPercent: 0,
+        z: 0,
+        scale: 1,
+        opacity: 1,
+        filter: "brightness(1) blur(0px)",
+      });
+
+      gsap.set(s2, {
+        scale: 1.035,
+        yPercent: 1.5,
+        opacity: 1,
+        filter: "brightness(0.72) saturate(0.9)",
+      });
+
       gsap.set(edge, { opacity: 0 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: deck,
           start: "top top",
-          end: "bottom bottom",
-          scrub: 0.8,
+          end: "+=100%",
+          scrub: 0.75,
           invalidateOnRefresh: true,
         },
       });
 
-      // Hero sheet recedes/flips upward
+      // Hero recedes/flips upward
       tl.to(hero, {
-        rotateX: -68,
-        yPercent: -16,
-        z: -200,
+        rotateX: -62,
+        yPercent: -14,
+        z: -180,
         scale: 0.88,
-        opacity: 0.02,
-        filter: "brightness(0.4) blur(1px)",
+        opacity: 0,
+        filter: "brightness(0.42) blur(0.8px)",
         ease: "none",
       }, 0);
 
@@ -59,16 +75,22 @@ export default function LandingDeck({ onAboutClick, onPricingClick, onFaqClick }
       tl.to(s2, {
         scale: 1,
         yPercent: 0,
+        opacity: 1,
         filter: "brightness(1) saturate(1)",
         ease: "none",
       }, 0);
 
-      // Paper edge shadow grows during flip
-      tl.fromTo(edge, { opacity: 0 }, { opacity: 1, ease: "none" }, 0);
-      tl.to(edge, { opacity: 0, ease: "none" }, 0.7);
+      // Paper edge shadow appears mid-transition
+      tl.fromTo(edge, { opacity: 0 }, { opacity: 0.8, ease: "none", duration: 0.5 }, 0);
+      tl.to(edge, { opacity: 0, ease: "none", duration: 0.5 }, 0.5);
     }, deck);
 
-    return () => ctx.revert();
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ctx.revert();
+    };
   }, [reduced]);
 
   // Reduced motion: simple stacked flow

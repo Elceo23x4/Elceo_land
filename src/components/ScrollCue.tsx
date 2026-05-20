@@ -8,7 +8,7 @@ export default function ScrollCue() {
       const scrollY = window.scrollY;
       const viewH = window.innerHeight;
       // If scrolled past 40% of first viewport, consider "at bottom section"
-      setAtBottom(scrollY > viewH * 0.4);
+      setAtBottom(scrollY > viewH * 0.55);
     };
     check();
     window.addEventListener("scroll", check, { passive: true });
