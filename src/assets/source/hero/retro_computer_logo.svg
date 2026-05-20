@@ -74,10 +74,11 @@
     <g id="retro-computer-market-reasoning-os" transform="translate(1222,42)">
       <rect x="0" y="0" width="86" height="60" rx="2" fill="none" stroke="#ff6a00" stroke-width="4" opacity="1" id="rect25"/>
       <rect x="13" y="10" width="60" height="34" rx="1" fill="none" stroke="#ff6a00" stroke-width="3" opacity="1" id="rect26"/>
+      <rect x="13" y="10" width="60" height="34" rx="1" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.85" id="rect26_spotlight" stroke-dasharray="28 160" stroke-dashoffset="0"/>
       <rect x="0" y="72" width="86" height="34" rx="1" fill="none" stroke="#ff6a00" stroke-width="4" opacity="1" id="rect27"/>
-      <line x1="12" y1="86" x2="46" y2="86" stroke="#ff6a00" stroke-width="4" opacity="1" id="line27"/>
-      <circle cx="62" cy="86" r="4" fill="#ff6a00" opacity="1" id="circle27"/>
-      <circle cx="73" cy="86" r="4" fill="#ff6a00" opacity="1" id="circle28"/>
+      <line x1="12" y1="86" x2="46" y2="86" stroke="#ffffff" stroke-width="4" opacity="1" id="line27"/>
+      <circle cx="62" cy="86" r="4" fill="#00c853" opacity="1" id="circle27"/>
+      <circle cx="73" cy="86" r="4" fill="#e02020" opacity="1" id="circle28"/>
       <text x="43" y="142" fill="#f8f4ef" font-size="18px" text-anchor="middle" font-weight="400" font-family="'var(--font-ui)'" id="text28">Market Reasoning OS</text>
     </g>
   </g>

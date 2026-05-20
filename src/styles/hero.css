@@ -132,6 +132,21 @@
   transform: scale(0.97);
 }
 
+/* ── Retro Computer rect26 Spotlight ──────────────────── */
+.asset-retro-computer #rect26_spotlight {
+  animation: retro-rect-spotlight 2.8s linear infinite;
+}
+
+@keyframes retro-rect-spotlight {
+  to {
+    stroke-dashoffset: -188;
+  }
+}
+
+.motion-reduced .asset-retro-computer #rect26_spotlight {
+  animation: none;
+}
+
 /* ── HUD Textboxes ────────────────────────────────────── */
 .hud-textbox {
   position: absolute;
