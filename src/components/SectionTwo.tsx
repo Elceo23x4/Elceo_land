@@ -4,7 +4,7 @@ import PocketRight from "../assets/source/section2/pocket_r.svg?react";
 import TieGraphic from "../assets/source/section2/tie.svg?react";
 import "../styles/section-two.css";
 
-// ── Stage scale hook ─────────────────────────────────────────────────────────
+// ── Hooks ────────────────────────────────────────────────────────────────────
 function useStageScale() {
   const [scale, setScale] = useState(() =>
     Math.min(window.innerWidth / 1920, window.innerHeight / 1080)
@@ -15,6 +15,34 @@ function useStageScale() {
     return () => window.removeEventListener("resize", h);
   }, []);
   return scale;
+}
+
+function useViewportWidth() {
+  const [vw, setVw] = useState(() => window.innerWidth);
+  useEffect(() => {
+    const h = () => setVw(window.innerWidth);
+    window.addEventListener("resize", h);
+    return () => window.removeEventListener("resize", h);
+  }, []);
+  return vw;
+}
+
+// ── Dotted Outline Overlay ───────────────────────────────────────────────────
+function DottedOutline({ left, top, width, height }: { left: number; top: number; width: number; height: number }) {
+  return (
+    <div className="s2-dotted-overlay" style={{ position: "absolute", left, top, width, height }}>
+      <svg viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="none">
+        <path
+          d={`M 20,0 L ${width - 20},0 L ${width},${height * 0.18} L ${width},${height} L ${width - 20},${height} L 20,${height} L 0,${height * 0.18} Z`}
+          fill="none"
+          stroke="rgba(255,255,255,0.82)"
+          strokeWidth="4"
+          strokeDasharray="22 18"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  );
 }
 
 // ── Flipbook Panel ───────────────────────────────────────────────────────────
@@ -32,14 +60,14 @@ function FlipPanel({ pages }: { pages: React.ReactNode[] }) {
     <>
       <div className={`s2-page ${anim}`}>{pages[idx]}</div>
       <div className="s2-flip-controls">
-        <button className="s2-flip-btn" onClick={() => flip(-1)} aria-label="Previous" type="button">&lsaquo;</button>
+        <button className="s2-flip-btn s2-flip-btn-prev" onClick={() => flip(-1)} aria-label="Previous" type="button">&rsaquo;</button>
         <button className="s2-flip-btn" onClick={() => flip(1)} aria-label="Next" type="button">&rsaquo;</button>
       </div>
     </>
   );
 }
 
-// ── Gallery Chart Visuals (no external images) ───────────────────────────────
+// ── Gallery Chart Visuals ────────────────────────────────────────────────────
 function ChartVisual({ type }: { type: number }) {
   if (type === 0) return (
     <svg viewBox="0 0 200 100" style={{ width: "85%", height: "70%" }}>
@@ -50,14 +78,14 @@ function ChartVisual({ type }: { type: number }) {
   );
   if (type === 1) return (
     <svg viewBox="0 0 200 100" style={{ width: "85%", height: "70%" }}>
-      {Array.from({length:40},(_,i)=><circle key={i} cx={20+Math.random()*160} cy={15+Math.random()*70} r={1.5+Math.random()} fill="#ff6a00" opacity={0.2+Math.random()*0.5} />)}
+      {Array.from({length:40},(_,i)=><circle key={i} cx={20+(i*4)%160} cy={15+(i*7)%70} r={1.5+(i%3)*0.5} fill="#ff6a00" opacity={0.2+(i%5)*0.12} />)}
       <circle cx="100" cy="50" r="30" fill="none" stroke="rgba(255,106,0,0.3)" strokeWidth="1" />
       <circle cx="100" cy="50" r="18" fill="none" stroke="rgba(255,106,0,0.2)" strokeWidth="0.8" />
     </svg>
   );
   if (type === 2) return (
     <svg viewBox="0 0 200 100" style={{ width: "85%", height: "70%" }}>
-      {[20,50,80,110,140,170].map((x,i)=><rect key={i} x={x} y={60-i*6-Math.random()*20} width="14" height={20+i*6+Math.random()*15} fill="#ff6a00" opacity={0.3+i*0.1} rx="2" />)}
+      {[20,50,80,110,140,170].map((x,i)=><rect key={i} x={x} y={60-i*6} width="14" height={20+i*8} fill="#ff6a00" opacity={0.3+i*0.1} rx="2" />)}
       <line x1="15" y1="85" x2="190" y2="85" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
     </svg>
   );
@@ -81,7 +109,7 @@ function GalleryViewer() {
       <div className="s2-gallery-main">
         <div className="s2-gallery-slide"><ChartVisual type={active} /></div>
         <div className="s2-gallery-arrows">
-          <button className="s2-gallery-arrow" onClick={() => setActive((a) => (a - 1 + 4) % 4)} type="button">&lsaquo;</button>
+          <button className="s2-gallery-arrow s2-gallery-arrow-prev" onClick={() => setActive((a) => (a - 1 + 4) % 4)} type="button">&rsaquo;</button>
           <button className="s2-gallery-arrow" onClick={() => setActive((a) => (a + 1) % 4)} type="button">&rsaquo;</button>
         </div>
       </div>
@@ -97,17 +125,22 @@ function GalleryViewer() {
 }
 
 // ── Marquee ──────────────────────────────────────────────────────────────────
-const INSTITUTIONS = "HSBC • Barclays • JPMorgan • Goldman Sachs • Morgan Stanley • Citigroup • Deutsche Bank • UBS • BNP Paribas • Société Générale • Bank of America • Wells Fargo • BlackRock • Vanguard • State Street • ";
+const INST = ["HSBC","Barclays","JPMorgan","Goldman Sachs","Morgan Stanley","Citigroup","Deutsche Bank","UBS","BNP Paribas","Société Générale","Bank of America","Wells Fargo","BlackRock","Vanguard","State Street"];
 
 function InstitutionMarquee() {
+  const items = [...INST, ...INST, ...INST, ...INST];
   return (
     <div className="s2-marquee-track">
-      <span className="s2-marquee-text">{INSTITUTIONS.repeat(4)}</span>
+      {items.map((name, i) => (
+        <span className="s2-marquee-item" key={i}>
+          {name}<span className="s2-marquee-dot" />
+        </span>
+      ))}
     </div>
   );
 }
 
-// ── Pocket Left Content ──────────────────────────────────────────────────────
+// ── Pocket Content Pages ─────────────────────────────────────────────────────
 function PocketLeftTopPage1() {
   return (<>
     <p className="s2-panel-title">PREMIUM MACRO EVENTS</p>
@@ -118,7 +151,7 @@ function PocketLeftTopPage1() {
       <div className="s2-event-row"><span className="s2-event-date">MAY 23</span><span className="s2-event-label">US PMI Manufacturing</span><span className="s2-event-badge s2-badge-medium">MEDIUM</span></div>
       <div className="s2-event-row"><span className="s2-event-date">MAY 28</span><span className="s2-event-label">GDP Growth Rate (QoQ)</span><span className="s2-event-badge s2-badge-medium">MEDIUM</span></div>
     </div>
-    <p className="s2-panel-footer">Markets price the future. We decode the why behind the move so you can trade ahead of the crowd.</p>
+    <p className="s2-panel-footer">Markets price the future. We decode the why behind the move.</p>
   </>);
 }
 
@@ -131,7 +164,7 @@ function PocketLeftTopPage2() {
       <div className="s2-event-row"><span className="s2-event-date">BOJ</span><span className="s2-event-label">Rate normalization</span><span className="s2-event-badge s2-badge-medium">PIVOT</span></div>
       <div className="s2-event-row"><span className="s2-event-date">BOE</span><span className="s2-event-label">Data-dependent pause</span><span className="s2-event-badge s2-badge-medium">HOLD</span></div>
     </div>
-    <p className="s2-panel-footer">Central bank divergence creates opportunity. Track policy shifts before they hit price.</p>
+    <p className="s2-panel-footer">Track policy shifts before they hit price.</p>
   </>);
 }
 
@@ -162,6 +195,11 @@ function PocketLeftBottomPage2() {
 // ── Main Section Component ───────────────────────────────────────────────────
 export default function SectionTwo() {
   const scale = useStageScale();
+  const vw = useViewportWidth();
+
+  // Dynamic marquee width to span viewport edges
+  const marqueeWidth = vw / scale + 240;
+  const marqueeLeft = (1920 - marqueeWidth) / 2;
 
   return (
     <section className="section-two" aria-label="Market Reasoning">
@@ -169,11 +207,17 @@ export default function SectionTwo() {
         {/* Pocket Left */}
         <div className="s2-pocket-l" style={{ position: "absolute", left: 24, top: -34, width: 830, height: 997 }}>
           <PocketLeft preserveAspectRatio="none" />
+          {/* Dotted inner outlines */}
+          <DottedOutline left={54.5} top={96.23} width={313} height={761.99} />
+          <DottedOutline left={367.5} top={96.23} width={313} height={761.99} />
         </div>
 
         {/* Pocket Right */}
         <div className="s2-pocket-r" style={{ position: "absolute", left: 1081, top: -33, width: 830, height: 996 }}>
           <PocketRight preserveAspectRatio="none" />
+          {/* Dotted inner outlines */}
+          <DottedOutline left={54.5} top={96.13} width={313} height={761.22} />
+          <DottedOutline left={367.5} top={96.13} width={313} height={761.99} />
         </div>
 
         {/* Tie */}
@@ -193,22 +237,22 @@ export default function SectionTwo() {
         </div>
 
         {/* Pocket Left Top Content */}
-        <div className="s2-content-panel" style={{ left: 149, top: 139, width: 582, height: 335, padding: "14px 18px" }}>
+        <div className="s2-content-panel" style={{ left: 149, top: 139, width: 582, height: 335, padding: "12px 16px" }}>
           <FlipPanel pages={[<PocketLeftTopPage1 />, <PocketLeftTopPage2 />]} />
         </div>
 
         {/* Pocket Left Bottom Content */}
-        <div className="s2-content-panel" style={{ left: 147, top: 481, width: 584, height: 328, padding: "14px 18px" }}>
+        <div className="s2-content-panel" style={{ left: 147, top: 481, width: 584, height: 328, padding: "12px 16px" }}>
           <FlipPanel pages={[<PocketLeftBottomPage1 />, <PocketLeftBottomPage2 />]} />
         </div>
 
         {/* Pocket Right Content — Gallery */}
-        <div className="s2-content-panel" style={{ left: 1204, top: 141, width: 582, height: 670, padding: "14px 18px" }}>
+        <div className="s2-content-panel" style={{ left: 1204, top: 141, width: 582, height: 670, padding: "12px 16px" }}>
           <GalleryViewer />
         </div>
 
-        {/* Institution Marquee */}
-        <div className="s2-marquee-wrap" style={{ left: -0.03, top: 965.83, width: 1952, height: 102, transform: "rotate(-1.42deg)" }}>
+        {/* Institution Marquee — dynamic full-bleed */}
+        <div className="s2-marquee-wrap" style={{ left: marqueeLeft, top: 965.83, width: marqueeWidth, height: 102, transform: "rotate(-1.42deg)" }}>
           <InstitutionMarquee />
         </div>
       </div>

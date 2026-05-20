@@ -103,3 +103,11 @@ body {
     display: none;
   }
 }
+
+
+
+/* ── Landing page wrapper ─────────────────────────────────── */
+.landing-page {
+  width: 100%;
+  background: #000;
+}

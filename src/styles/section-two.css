@@ -2,21 +2,25 @@
    Section 2 — Market Reasoning Panels
    ========================================================= */
 
+/* ── Section wrapper ──────────────────────────────────────── */
 .section-two {
   position: relative;
   width: 100%;
+  height: 100vh;
   min-height: 100vh;
   background: #000;
   overflow: hidden;
 }
 
 .section-two-stage {
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 0;
   width: 1920px;
   height: 1080px;
-  margin: 0 auto;
+  margin: 0;
   transform-origin: top center;
-  transform: scale(var(--s2-scale, 1));
+  transform: translateX(-50%) scale(var(--s2-scale, 1));
 }
 
 /* ── Pocket SVG containers ────────────────────────────────── */
@@ -31,6 +35,18 @@
   display: block;
 }
 
+/* ── Dotted inner outline overlays ────────────────────────── */
+.s2-dotted-overlay {
+  position: absolute;
+  pointer-events: none;
+}
+
+.s2-dotted-overlay svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 /* ── Content overlay panels ───────────────────────────────── */
 .s2-content-panel {
   position: absolute;
@@ -40,29 +56,30 @@
 
 .s2-panel-title {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 13px;
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #ff6a00;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  line-height: 1.08;
 }
 
 .s2-panel-body {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 12.5px;
-  line-height: 1.55;
+  font-size: 23px;
+  line-height: 1.18;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.88);
 }
 
 .s2-panel-footer {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 20px;
+  line-height: 1.22;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.5);
-  margin-top: 10px;
+  margin-top: 8px;
   font-style: italic;
 }
 
@@ -70,28 +87,29 @@
 .s2-event-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 5px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  font-size: 12px;
+  font-size: 21px;
+  line-height: 1.15;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .s2-event-date {
   font-weight: 700;
   color: rgba(255, 255, 255, 0.6);
-  min-width: 52px;
-  font-size: 11px;
+  min-width: 80px;
+  font-size: 19px;
 }
 
 .s2-event-label { flex: 1; }
 
 .s2-event-badge {
-  font-size: 9px;
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  padding: 2px 6px;
-  border-radius: 3px;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
   text-transform: uppercase;
 }
 
@@ -102,52 +120,63 @@
 .s2-headline-row {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 10px;
   padding: 6px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .s2-headline-time {
-  font-size: 10px;
+  font-size: 18px;
   font-weight: 700;
   color: #ff6a00;
-  min-width: 38px;
+  min-width: 64px;
   padding-top: 2px;
 }
 
 .s2-headline-text {
-  font-size: 11.5px;
-  line-height: 1.4;
+  font-size: 21px;
+  line-height: 1.22;
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* ── Flipbook controls ────────────────────────────────────── */
+/* ── Flipbook controls — creative paper-tab style ─────────── */
 .s2-flip-controls {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 8px;
+  gap: 18px;
+  margin-top: 10px;
 }
 
 .s2-flip-btn {
-  background: none;
-  border: 1px solid rgba(255, 106, 0, 0.4);
-  color: rgba(255, 106, 0, 0.9);
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  font-size: 14px;
+  width: 58px;
+  height: 50px;
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(14% 0, 100% 0, 86% 50%, 100% 100%, 14% 100%, 0 50%);
+  background: linear-gradient(135deg, rgba(255,106,0,0.18), rgba(255,255,255,0.05));
+  color: #ff6a00;
+  font-size: 32px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
 }
 
 .s2-flip-btn:hover {
-  background: rgba(255, 106, 0, 0.12);
-  border-color: #ff6a00;
+  background: linear-gradient(135deg, rgba(255,106,0,0.32), rgba(255,255,255,0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.45);
+}
+
+.s2-flip-btn-prev {
+  transform: scaleX(-1);
+}
+
+.s2-flip-btn-prev:hover {
+  transform: scaleX(-1) translateY(-2px);
 }
 
 /* ── Flipbook page transition ─────────────────────────────── */
@@ -210,16 +239,16 @@
 
 .s2-gallery-title {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 13px;
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #ff6a00;
   margin-bottom: 4px;
 }
 
 .s2-gallery-sub {
-  font-size: 11px;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 12px;
 }
@@ -252,42 +281,53 @@
   right: 0;
   display: flex;
   justify-content: space-between;
-  padding: 0 8px;
+  padding: 0 10px;
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .s2-gallery-arrow {
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 106, 0, 0.4);
+  width: 54px;
+  height: 46px;
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(14% 0, 100% 0, 86% 50%, 100% 100%, 14% 100%, 0 50%);
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(255,106,0,0.12));
   color: #ff6a00;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: background 0.2s, transform 0.15s;
 }
 
 .s2-gallery-arrow:hover {
-  background: rgba(255, 106, 0, 0.15);
+  background: linear-gradient(135deg, rgba(255,106,0,0.25), rgba(0,0,0,0.6));
+  transform: translateY(-1px);
+}
+
+.s2-gallery-arrow-prev {
+  transform: scaleX(-1);
+}
+
+.s2-gallery-arrow-prev:hover {
+  transform: scaleX(-1) translateY(-1px);
 }
 
 .s2-gallery-thumbs {
   display: flex;
-  gap: 8px;
-  margin-top: 10px;
+  gap: 10px;
+  margin-top: 12px;
   justify-content: center;
 }
 
 .s2-gallery-thumb {
-  width: 52px;
-  height: 36px;
+  width: 64px;
+  height: 44px;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: pointer;
@@ -301,21 +341,6 @@
   border-color: #ff6a00;
 }
 
-/* ── Chart placeholder visuals ────────────────────────────── */
-.s2-chart-placeholder {
-  width: 90%;
-  height: 80%;
-  position: relative;
-}
-
-.s2-chart-line {
-  position: absolute;
-  bottom: 20%;
-  left: 5%;
-  width: 90%;
-  height: 60%;
-}
-
 /* ── Institution marquee ──────────────────────────────────── */
 .s2-marquee-wrap {
   position: absolute;
@@ -327,29 +352,33 @@
 .s2-marquee-track {
   display: flex;
   width: max-content;
-  animation: s2marquee 160s linear infinite;
+  animation: s2marquee 180s linear infinite;
 }
 
-.s2-marquee-text {
+.s2-marquee-item {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 52px;
+  font-size: 72px;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.08);
-  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.075);
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   white-space: nowrap;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
+  transform: scaleY(1.35);
+  transform-origin: center;
+  line-height: 0.85;
 }
 
 .s2-marquee-dot {
   display: inline-block;
-  margin: 0 28px;
-  width: 8px;
-  height: 8px;
+  margin: 0 32px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-  vertical-align: middle;
+  flex-shrink: 0;
 }
 
 @keyframes s2marquee {
@@ -357,9 +386,77 @@
   to { transform: translateX(-50%); }
 }
 
+/* ── Sketchboard scroll transition ────────────────────────── */
+.landing-sheet {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.7s ease, filter 0.7s ease;
+  transform-origin: bottom center;
+}
+
+.landing-sheet.sheet-entering {
+  transform: perspective(1400px) rotateX(-6deg) translateY(40px);
+  opacity: 0.7;
+  filter: brightness(0.85);
+}
+
+.landing-sheet.sheet-visible {
+  transform: perspective(1400px) rotateX(0deg) translateY(0);
+  opacity: 1;
+  filter: brightness(1);
+}
+
+/* Faint top-edge shadow for paper feel */
+.landing-sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.04), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Scroll Cue ───────────────────────────────────────────── */
+.scroll-cue {
+  position: fixed;
+  right: clamp(22px, 3vw, 52px);
+  bottom: clamp(22px, 3vh, 44px);
+  z-index: 5000;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+.scroll-cue:hover {
+  transform: translateY(-3px);
+}
+
+.scroll-cue-arrow {
+  width: 28px;
+  height: 38px;
+  transition: transform 0.3s ease;
+}
+
+.scroll-cue-text {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #e02020;
+  text-transform: uppercase;
+}
+
 /* ── Reduced motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .s2-page { transition: opacity 0.2s ease; transform: none !important; }
   .s2-marquee-track { animation: none !important; }
   .s2-gallery-slide { transition: none; }
+  .landing-sheet { transition: none !important; transform: none !important; filter: none !important; opacity: 1 !important; }
 }
