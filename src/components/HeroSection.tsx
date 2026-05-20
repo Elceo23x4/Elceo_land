@@ -3,7 +3,6 @@ import "../styles/hero.css";
 import RetroComputerPopup from "./RetroComputerPopup";
 import HeroNav from "./HeroNav";
 import TypingText from "./TypingText";
-import GoldCursor3D from "./GoldCursor3D";
 import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
 
 // SVGR imports — each SVG is imported as a React component
@@ -445,9 +444,6 @@ export default function HeroSection({ onAboutClick, onPricingClick, onFaqClick }
 
       {/* Retro Computer Popup */}
       {popupOpen && <RetroComputerPopup onClose={() => setPopupOpen(false)} />}
-
-      {/* 3D Gold Cursor */}
-      <GoldCursor3D />
     </section>
   );
 }

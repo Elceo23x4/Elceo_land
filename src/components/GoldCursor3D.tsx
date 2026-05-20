@@ -16,10 +16,10 @@ export default function GoldCursor3D() {
   return (
     <style>
       {`
-        .hero,
-        .hero *,
-        .hero a,
-        .hero button {
+        body,
+        body *,
+        a,
+        button {
           cursor: url("${cursorUrl}") 47 8, auto !important;
         }
       `}
