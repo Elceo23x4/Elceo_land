@@ -11,9 +11,10 @@ const NAV_LINKS = [
 interface HeroNavProps {
   onAboutClick?: () => void;
   onPricingClick?: () => void;
+  onFaqClick?: () => void;
 }
 
-export default function HeroNav({ onAboutClick, onPricingClick }: HeroNavProps) {
+export default function HeroNav({ onAboutClick, onPricingClick, onFaqClick }: HeroNavProps) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, label: string) => {
     if (label === "About" && onAboutClick) {
       e.preventDefault();
@@ -22,6 +23,10 @@ export default function HeroNav({ onAboutClick, onPricingClick }: HeroNavProps) 
     if (label === "Pricing" && onPricingClick) {
       e.preventDefault();
       onPricingClick();
+    }
+    if (label === "FAQ" && onFaqClick) {
+      e.preventDefault();
+      onFaqClick();
     }
   };
 

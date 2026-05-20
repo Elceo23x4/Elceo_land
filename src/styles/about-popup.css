@@ -1,8 +1,8 @@
 /* =========================================================
-   About Popup — Scroll Reveal Modal
+   Popup Styles — Shared + About Scroll Reveal
    ========================================================= */
 
-/* ── Backdrop ─────────────────────────────────────────────── */
+/* ── Backdrop (shared by all popups) ──────────────────────── */
 .about-backdrop {
   position: fixed;
   inset: 0;
@@ -15,6 +15,29 @@
 @keyframes aboutBackdropIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* ── Unified Popup Close Button ───────────────────────────── */
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 10;
+  background: none;
+  border: none;
+  color: #e02020;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.popup-close-btn:hover {
+  color: #ff1f1f;
+  background: rgba(224, 32, 32, 0.1);
 }
 
 /* ── Scroll Stage Container ───────────────────────────────── */
@@ -67,57 +90,9 @@
   display: block;
 }
 
-/* ── Parchment Panel (content overlay inside scroll body) ─── */
-.about-parchment {
-  position: absolute;
-  z-index: 2;
-  top: 14%;
-  left: 22%;
-  right: 20%;
-  bottom: 12%;
-  padding: clamp(18px, 3vw, 40px);
-  overflow-y: auto;
-  border-radius: 4px;
-  background: linear-gradient(
-    168deg,
-    rgba(61, 43, 26, 0.88) 0%,
-    rgba(46, 31, 16, 0.92) 40%,
-    rgba(43, 28, 14, 0.9) 100%
-  );
-}
-
-/* Subtle noise/grain */
-.about-parchment::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 4px;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 128px 128px;
-}
-
-/* ── Close Button ─────────────────────────────────────────── */
-.about-close-btn {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  z-index: 10;
-  background: none;
-  border: none;
-  color: rgba(255, 200, 120, 0.85);
-  font-size: 26px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 4px 10px;
-  border-radius: 4px;
-  transition: color 0.2s ease, background 0.2s ease;
-}
-
-.about-close-btn:hover {
-  color: #fff;
-  background: rgba(255, 106, 0, 0.2);
+/* ── About Content Area — no background ───────────────────── */
+.about-content-area {
+  position: relative;
 }
 
 /* ── Content ──────────────────────────────────────────────── */
@@ -126,7 +101,7 @@
   z-index: 3;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: rgba(255, 245, 230, 0.92);
+  color: rgba(40, 20, 5, 0.92);
 }
 
 .about-kicker {
@@ -135,7 +110,7 @@
   font-weight: 600;
   letter-spacing: 2.5px;
   text-transform: uppercase;
-  color: rgba(255, 160, 60, 0.75);
+  color: rgba(180, 80, 10, 0.85);
   margin-bottom: 14px;
 }
 
@@ -144,21 +119,21 @@
   font-weight: 700;
   line-height: 1.25;
   margin-bottom: 16px;
-  color: rgba(255, 250, 240, 0.96);
+  color: rgba(30, 15, 5, 0.95);
 }
 
 .about-intro {
   font-size: clamp(13px, 1.6vw, 17px);
   line-height: 1.6;
   margin-bottom: 18px;
-  color: rgba(255, 240, 210, 0.88);
+  color: rgba(50, 30, 10, 0.88);
 }
 
 .about-body p {
   font-size: clamp(12px, 1.3vw, 15px);
   line-height: 1.7;
   margin-bottom: 12px;
-  color: rgba(255, 235, 200, 0.8);
+  color: rgba(50, 30, 10, 0.8);
 }
 
 .about-blocks {
@@ -176,27 +151,27 @@
   letter-spacing: 0.3px;
   padding: 8px 12px;
   border-radius: 4px;
-  background: rgba(255, 106, 0, 0.06);
-  border: 1px solid rgba(255, 106, 0, 0.15);
-  color: rgba(255, 220, 170, 0.9);
+  background: rgba(180, 80, 10, 0.06);
+  border: 1px solid rgba(180, 80, 10, 0.2);
+  color: rgba(50, 30, 10, 0.88);
 }
 
 .about-closing {
   font-size: clamp(12px, 1.3vw, 15px);
   line-height: 1.7;
   margin-top: 6px;
-  color: rgba(255, 235, 200, 0.78);
+  color: rgba(50, 30, 10, 0.78);
 }
 
 /* ── Orange Marker Highlight ──────────────────────────────── */
 .about-marker {
-  background: linear-gradient(to top, rgba(255, 106, 0, 0.82) 48%, transparent 48%);
+  background: linear-gradient(to top, rgba(255, 106, 0, 0.72) 48%, transparent 48%);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   padding: 0 3px;
 }
 
 /* ── Scrollbar ────────────────────────────────────────────── */
-.about-parchment::-webkit-scrollbar { width: 5px; }
-.about-parchment::-webkit-scrollbar-track { background: transparent; }
-.about-parchment::-webkit-scrollbar-thumb { background: rgba(255, 160, 60, 0.25); border-radius: 3px; }
+.about-content-area::-webkit-scrollbar { width: 5px; }
+.about-content-area::-webkit-scrollbar-track { background: transparent; }
+.about-content-area::-webkit-scrollbar-thumb { background: rgba(180, 80, 10, 0.2); border-radius: 3px; }

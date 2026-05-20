@@ -88,18 +88,28 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           left: `${stageLeft + 580 * scale}px`,
           top: `${stageTop + 300 * scale}px`,
           width: `${740 * scale}px`,
+          height: `${600 * scale}px`,
           zIndex: 3,
           textAlign: "center",
           pointerEvents: "auto",
         }}
       >
+        <button
+          className="popup-close-btn"
+          onClick={onClose}
+          aria-label="Close Pricing"
+          type="button"
+        >
+          &times;
+        </button>
         <h2
           id="pricing-popup-title"
           style={{
             fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
             fontSize: `${Math.max(18, 28 * scale)}px`,
-            color: "rgba(255, 245, 230, 0.92)",
+            color: "rgba(30, 15, 5, 0.92)",
             marginBottom: "16px",
+            marginTop: "32px",
           }}
         >
           Pricing
@@ -108,27 +118,11 @@ export default function PricingPopup({ isOpen, onClose }: PricingPopupProps) {
           style={{
             fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
             fontSize: `${Math.max(12, 16 * scale)}px`,
-            color: "rgba(255, 235, 200, 0.7)",
+            color: "rgba(50, 30, 10, 0.7)",
           }}
         >
           Pricing details coming soon.
         </p>
-        <button
-          onClick={onClose}
-          aria-label="Close Pricing"
-          style={{
-            marginTop: "24px",
-            background: "none",
-            border: "1px solid rgba(255, 106, 0, 0.5)",
-            color: "rgba(255, 200, 120, 0.9)",
-            padding: "8px 20px",
-            borderRadius: "4px",
-            cursor: "pointer",
-            fontSize: "14px",
-          }}
-        >
-          Close
-        </button>
       </div>
     </div>
   );

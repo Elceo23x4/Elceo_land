@@ -107,9 +107,10 @@ const TAPE_TEXT =
 interface HeroSectionProps {
   onAboutClick?: () => void;
   onPricingClick?: () => void;
+  onFaqClick?: () => void;
 }
 
-export default function HeroSection({ onAboutClick, onPricingClick }: HeroSectionProps) {
+export default function HeroSection({ onAboutClick, onPricingClick, onFaqClick }: HeroSectionProps) {
   const scale = useHeroScale();
   const viewportWidth = useViewportWidth();
   const [popupOpen, setPopupOpen] = useState(false);
@@ -330,7 +331,7 @@ export default function HeroSection({ onAboutClick, onPricingClick }: HeroSectio
             justifyContent: "center",
           }}
         >
-          <HeroNav onAboutClick={onAboutClick} onPricingClick={onPricingClick} />
+          <HeroNav onAboutClick={onAboutClick} onPricingClick={onPricingClick} onFaqClick={onFaqClick} />
         </div>
 
         {/* Layer 11: Retro Computer Logo (clickable) */}

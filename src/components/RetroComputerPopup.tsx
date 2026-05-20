@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import RetroBg from "../assets/source/global/retro_bg.svg?react";
 import "../styles/hero.css";
+import "../styles/about-popup.css";
 
 interface RetroComputerPopupProps {
   onClose: () => void;
@@ -72,8 +73,8 @@ export default function RetroComputerPopup({ onClose }: RetroComputerPopupProps)
       {/* Content area */}
       <div style={contentStyle}>
         <div className="retro-popup-scanlines" aria-hidden="true" />
-        <button className="retro-popup-close" onClick={onClose} aria-label="Close">
-          [X]
+        <button className="popup-close-btn" onClick={onClose} aria-label="Close Retro" type="button">
+          &times;
         </button>
         <div className="retro-popup-content">
           <p className="retro-line retro-title">ELCEO MARKET REASONING OS</p>
