@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import ScrollGraphic from "../assets/source/global/scroll.svg?react";
-import usePrefersReducedMotion from "../hooks/usePrefersReducedMotion";
+import FaqBg from "../assets/source/global/faq_bg.svg?react";
 import "../styles/about-popup.css";
 
-interface AboutPopupProps {
+interface FaqPopupProps {
   isOpen: boolean;
   onClose: () => void;
 }
@@ -23,9 +22,8 @@ function useStageLayout() {
   return layout;
 }
 
-export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
+export default function FaqPopup({ isOpen, onClose }: FaqPopupProps) {
   const backdropRef = useRef<HTMLDivElement>(null);
-  const prefersReduced = usePrefersReducedMotion();
   const { scale, stageLeft, stageTop } = useStageLayout();
 
   useEffect(() => {
@@ -43,21 +41,21 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
 
   if (!isOpen) return null;
 
-  // Background: scroll.svg 1586×836, left 173, top 157
-  const bgLeft = 173;
-  const bgTop = 157;
-  const bgWidth = 1586;
-  const bgHeight = 836;
+  // Background: faq_bg.svg 1389×890, left 266, top 190
+  const bgLeft = 266;
+  const bgTop = 190;
+  const bgWidth = 1389;
+  const bgHeight = 890;
 
-  // Content: 820×587, left 561, top 287
-  const contentLeft = 561;
-  const contentTop = 287;
-  const contentWidth = 820;
-  const contentHeight = 587;
+  // Content: 1167×593, left 368, top 216
+  const contentLeft = 368;
+  const contentTop = 216;
+  const contentWidth = 1167;
+  const contentHeight = 593;
 
   // Close: top-right of background
-  const closeLeft = bgLeft + bgWidth - 64 - 24; // 1671
-  const closeTop = bgTop + 18; // 175
+  const closeLeft = bgLeft + bgWidth - 64 - 24; // 1567
+  const closeTop = bgTop + 18; // 208
 
   return (
     <div
@@ -65,30 +63,29 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
       className="about-backdrop"
       role="dialog"
       aria-modal="true"
-      aria-labelledby="about-popup-title"
+      aria-labelledby="faq-popup-title"
       onClick={handleBackdropClick}
     >
-      {/* Scroll SVG background */}
+      {/* Background SVG */}
       <div
-        className={`about-scroll-stage ${prefersReduced ? "about-scroll-reduced" : "about-scroll-reveal"}`}
         style={{
           position: "fixed",
           left: `${stageLeft + bgLeft * scale}px`,
           top: `${stageTop + bgTop * scale}px`,
           width: `${bgWidth * scale}px`,
           height: `${bgHeight * scale}px`,
+          pointerEvents: "none",
+          zIndex: 1,
         }}
       >
-        <div className="about-scroll-frame">
-          <ScrollGraphic className="about-scroll-svg" preserveAspectRatio="none" aria-hidden="true" />
-        </div>
+        <FaqBg style={{ width: "100%", height: "100%" }} aria-hidden="true" />
       </div>
 
       {/* Close button */}
       <button
         className="popup-close-btn"
         onClick={onClose}
-        aria-label="Close About"
+        aria-label="Close FAQ"
         type="button"
         style={{
           position: "fixed",
@@ -100,7 +97,7 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
         &times;
       </button>
 
-      {/* Content — no background */}
+      {/* Content area */}
       <div
         className="about-content-area"
         style={{
@@ -111,38 +108,15 @@ export default function AboutPopup({ isOpen, onClose }: AboutPopupProps) {
           height: `${contentHeight * scale}px`,
           zIndex: 2,
           overflow: "auto",
-          padding: "clamp(24px, 2.4vw, 44px) clamp(28px, 2.8vw, 52px)",
+          padding: "clamp(24px, 2.4vw, 44px) clamp(30px, 3vw, 56px)",
         }}
       >
-        <span className="popup-kicker">ABOUT ELCEO</span>
-
-        <h2 id="about-popup-title" className="popup-heading">
-          A market reasoning interface for traders who need{" "}
-          <span className="popup-marker-orange">context before conviction</span>.
+        <h2 id="faq-popup-title" className="popup-heading">
+          Frequently Asked <span className="popup-marker-red">Questions</span>
         </h2>
-
         <div className="popup-body">
-          <p>
-            ELCEO brings price action,{" "}
-            <span className="popup-marker-red">macro pressure</span>, cross-asset
-            awareness, and{" "}
-            <span className="popup-marker-orange">risk context</span> into one visual
-            reasoning environment.
-          </p>
-          <p>
-            It does not replace judgment. It sharpens it. The interface is
-            built to make{" "}
-            <span className="popup-marker-red">market evidence</span> easier to
-            interpret, compare, and act on with discipline.
-          </p>
+          <p>FAQ content coming soon.</p>
         </div>
-
-        <ul className="about-blocks">
-          <li>Context before conviction</li>
-          <li>Macro pressure made visible</li>
-          <li>Cross-asset reasoning in one view</li>
-          <li>Risk awareness before execution</li>
-        </ul>
       </div>
     </div>
   );

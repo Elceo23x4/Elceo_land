@@ -27,7 +27,7 @@
   <desc
      id="desc">Editable standalone SVG element: vertical_logo</desc>
   <defs
-     id="defs19">
+     id="defs">
     <style
        id="style1">
     :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }
