@@ -1,50 +1,185 @@
 /* =========================================================
-   Page Preloader — Theatre Curtain + Trading Candlestick Reveal
+   Page Preloader — Luxury Velvet Curtain + Trading Candlestick Reveal
    ========================================================= */
 
 .page-preloader {
   position: fixed;
   inset: 0;
   z-index: 50000;
-  background: #000;
+  overflow: hidden;
+  background: #020202;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: all;
-  overflow: hidden;
+  isolation: isolate;
 }
 
 /* ── Curtain panels ───────────────────────────────────────── */
 
-.preloader-curtain {
+.curtain-panel {
   position: absolute;
   top: 0;
-  bottom: 0;
-  width: 50%;
+  width: 50.25%;
+  height: 100%;
+  overflow: hidden;
   will-change: transform;
   opacity: 0.94;
 }
 
-.preloader-curtain-left {
+.curtain-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.34;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 20% 18%, rgba(255,255,255,0.14), transparent 1.4px),
+    radial-gradient(circle at 78% 36%, rgba(255,255,255,0.08), transparent 1.2px),
+    radial-gradient(circle at 42% 71%, rgba(0,0,0,0.32), transparent 1.5px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 4px);
+  background-size: 9px 13px, 12px 17px, 10px 16px, 6px 100%;
+  animation: curtainGrainDrift 7s ease-in-out infinite alternate;
+}
+
+.curtain-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,0.42), transparent 18%, transparent 76%, rgba(0,0,0,0.55)),
+    radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+}
+
+/* Left curtain — luxury emerald */
+.curtain-left {
   left: 0;
+  transform-origin: left center;
+  background:
+    radial-gradient(ellipse at 63% 38%, rgba(67,199,160,0.34) 0%, rgba(11,107,77,0.18) 18%, transparent 44%),
+    repeating-linear-gradient(90deg, #000805 0%, #02140f 5%, #063d2d 10%, #0b6b4d 15%, #042f22 21%, #010a07 27%, #063725 34%, #43c7a0 38%, #04291f 43%, #000805 50%),
+    linear-gradient(180deg, #02140f 0%, #053827 22%, #06422f 48%, #031c14 76%, #010705 100%);
+  box-shadow: inset -24px 0 34px rgba(0,0,0,0.78), inset 12px 0 28px rgba(67,199,160,0.08);
+  animation: emeraldVelvetSheen 5.4s ease-in-out infinite alternate;
 }
 
-.preloader-curtain-right {
+/* Right curtain — luxury ruby */
+.curtain-right {
   right: 0;
+  transform-origin: right center;
+  background:
+    radial-gradient(ellipse at 37% 39%, rgba(217,54,46,0.36) 0%, rgba(139,13,16,0.2) 20%, transparent 46%),
+    repeating-linear-gradient(90deg, #060000 0%, #170203 5%, #4a0507 10%, #8b0d10 15%, #d9362e 19%, #4f0608 24%, #130101 31%, #7c0a0d 36%, #c72823 41%, #3b0305 47%, #060000 52%),
+    linear-gradient(180deg, #170203 0%, #5b0709 24%, #8b0d10 49%, #3d0305 78%, #080000 100%);
+  box-shadow: inset 24px 0 34px rgba(0,0,0,0.8), inset -12px 0 28px rgba(217,54,46,0.1);
+  animation: rubyVelvetSheen 5.8s ease-in-out infinite alternate;
 }
 
-.preloader-curtain-svg {
+/* SVG fold overlay — transparent base, fold lines only */
+.curtain-fold-svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: block;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ── Center seam shadow ───────────────────────────────────── */
+
+.curtain-center-shadow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 22px;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: 4;
+  background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.95) 34%, #000 50%, rgba(0,0,0,0.95) 66%, rgba(0,0,0,0));
+  box-shadow: 0 0 32px rgba(0,0,0,0.95), 0 0 80px rgba(0,0,0,0.8);
+}
+
+/* ── Gold emblem at center ────────────────────────────────── */
+
+.curtain-emblem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid rgba(212,165,79,0.68);
+  box-shadow: 0 0 18px rgba(212,165,79,0.22), inset 0 0 8px rgba(212,165,79,0.12);
+  opacity: 0.76;
+}
+
+.curtain-emblem span {
+  position: absolute;
+  inset: 7px;
+  border: 1px solid rgba(184,135,58,0.7);
+  border-radius: 999px;
+}
+
+.curtain-emblem::before,
+.curtain-emblem::after {
+  content: "";
+  position: absolute;
+  background: rgba(212,165,79,0.72);
+}
+
+.curtain-emblem::before {
+  width: 1px;
+  height: 17px;
+  left: 50%;
+  top: 5px;
+  transform: translateX(-50%);
+}
+
+.curtain-emblem::after {
+  width: 17px;
+  height: 1px;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
 }
 
 /* ── Center trading candlesticks SVG ──────────────────────── */
 
 .preloader-candles {
   position: relative;
-  z-index: 2;
+  z-index: 8;
   width: clamp(280px, 32vw, 420px);
   height: auto;
   will-change: opacity;
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+
+@keyframes emeraldVelvetSheen {
+  0% { filter: brightness(0.92) contrast(1.08) saturate(1.08); background-position: 0 0, 0 0, 0 0; }
+  100% { filter: brightness(1.06) contrast(1.16) saturate(1.18); background-position: 18px 0, 28px 0, 0 0; }
+}
+
+@keyframes rubyVelvetSheen {
+  0% { filter: brightness(0.9) contrast(1.1) saturate(1.12); background-position: 0 0, 0 0, 0 0; }
+  100% { filter: brightness(1.07) contrast(1.18) saturate(1.2); background-position: -18px 0, -26px 0, 0 0; }
+}
+
+@keyframes curtainGrainDrift {
+  0% { opacity: 0.25; transform: translate3d(0, 0, 0); }
+  100% { opacity: 0.38; transform: translate3d(0, -18px, 0); }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain-panel,
+  .curtain-panel::before,
+  .curtain-left,
+  .curtain-right { animation: none; }
+  .curtain-panel { transition-duration: 0.01ms; }
+  .curtain-center-shadow { transition-duration: 0.01ms; }
+  .curtain-emblem { transition-duration: 0.01ms; }
 }
