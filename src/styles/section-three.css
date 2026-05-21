@@ -57,24 +57,29 @@
   z-index: 10;
 }
 
-/* Buckle block overlay */
+/* Buckle block overlay — no visible fill, relies on belt_divider SVG buckle */
 .s3-buckle-block {
   width: 335px;
   height: 131px;
   left: 791.67px;
   top: 20px;
   z-index: 11;
-  background: #e33b1f;
-  border-radius: 4px;
+  background: none;
+  border: none;
+  outline: none;
 }
 
-/* Buckle content (bb.svg) */
+/* Buckle content (bb.svg) — no background/border/outline */
 .s3-buckle-content {
   width: 138px;
   height: 73px;
   left: 891px;
   top: 49px;
   z-index: 12;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* Trouser panels */
@@ -122,13 +127,17 @@
   z-index: 4;
 }
 
-/* ── Content overlay panels ───────────────────────────────── */
+/* ── Content overlay panels — NO background/border/outline ── */
 .s3-content-left,
 .s3-content-center,
 .s3-content-right {
   position: absolute;
   pointer-events: auto;
   z-index: 6;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .s3-content-left {
@@ -189,7 +198,7 @@
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #ff6a00;
+  color: #000000;
   margin-bottom: 16px;
   line-height: 1.1;
 }
@@ -225,7 +234,7 @@
   position: relative;
   width: 100%;
   height: 180px;
-  margin: 20px 0;
+  margin: 20px 0 6px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,7 +261,8 @@
 .s3-media-card:nth-child(4) { transform: rotate(5deg) translate(-20px, 20px); z-index: 4; }
 .s3-media-card:nth-child(5) { transform: rotate(-1deg) translate(25px, 15px); z-index: 5; }
 
-.s3-media-card:hover {
+.s3-media-card:hover,
+.s3-media-card-active {
   transform: scale(2.2) rotate(0deg) translate(0, 0) !important;
   z-index: 100 !important;
   box-shadow: 0 16px 48px rgba(255, 106, 0, 0.25), 0 0 0 1px rgba(255, 106, 0, 0.5);
@@ -274,6 +284,31 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
+/* ── Media slider indicator ───────────────────────────────── */
+.s3-media-slider {
+  width: 190px;
+  height: 6px;
+  margin: 10px auto 0;
+}
+
+.s3-media-slider-track {
+  display: block;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.s3-media-slider-thumb {
+  display: block;
+  height: 100%;
+  width: 20%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #e02020, #ff6a00);
+  transition: transform 0.25s ease;
+}
+
 /* =========================================================
    Trouser Center — Reviews Carousel
    ========================================================= */
@@ -283,28 +318,30 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 24px 16px 16px;
+  padding: 20px 14px 12px;
+  overflow: hidden;
 }
 
 .s3-reviews-title {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #ff6a00;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .s3-reviews-slider {
   flex: 1;
+  min-height: 0;
   overflow-x: auto;
   overflow-y: hidden;
   display: flex;
-  gap: 16px;
+  gap: 14px;
   scroll-snap-type: x mandatory;
-  padding-bottom: 12px;
+  padding-bottom: 8px;
 }
 
 .s3-reviews-slider::-webkit-scrollbar {
@@ -327,7 +364,7 @@
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .s3-review-card {
@@ -335,10 +372,10 @@
   border: 1px solid rgba(255, 106, 0, 0.2);
   border-left: 3px solid #ff6a00;
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .s3-review-stars {
@@ -347,33 +384,48 @@
 }
 
 .s3-review-star {
-  width: 12px;
-  height: 12px;
+  width: 11px;
+  height: 11px;
   color: #ff6a00;
 }
 
 .s3-review-text {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 12.5px;
-  line-height: 1.5;
+  font-size: 11.5px;
+  line-height: 1.45;
   color: rgba(255, 255, 255, 0.8);
   font-style: italic;
 }
 
-.s3-review-author {
+.s3-review-name {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.88);
+  margin-top: 2px;
+}
+
+.s3-review-location {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.s3-review-role {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: #ff6a00;
+  opacity: 0.7;
 }
 
 .s3-reviews-progress {
   display: flex;
   justify-content: center;
   gap: 8px;
-  padding-top: 10px;
+  padding: 8px 0 6px;
 }
 
 .s3-reviews-dot {
@@ -391,8 +443,104 @@
   background: #ff6a00;
 }
 
+/* ── Connect Section ──────────────────────────────────────── */
+.s3-connect-section {
+  padding-top: 8px;
+}
+
+.s3-connect-title {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 8px;
+}
+
+.s3-connect-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+  justify-items: start;
+}
+
+.s3-connect-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.s3-connect-item:hover {
+  color: #ff6a00;
+}
+
+.s3-connect-item svg {
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* ── Retro red stamp ──────────────────────────────────────── */
+.s3-retro-stamp {
+  position: absolute;
+  right: 8px;
+  bottom: 38px;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-10deg);
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.s3-stamp-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(180, 28, 28, 0.82);
+}
+
+.s3-stamp-ring-inner {
+  inset: 5px;
+  border-width: 1.5px;
+  border-style: dashed;
+  border-color: rgba(180, 28, 28, 0.55);
+}
+
+.s3-stamp-text-top,
+.s3-stamp-text-bottom {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b41c1c;
+  line-height: 1;
+}
+
+.s3-stamp-text-main {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #c02020;
+  line-height: 1.3;
+}
+
 /* =========================================================
-   Trouser Right — VS Section
+   Trouser Right — VS Section (Editorial Bulletin)
    ========================================================= */
 
 .s3-vs-container {
@@ -402,29 +550,87 @@
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
 }
 
-/* Top fighter (ELCEO) */
+/* ── Peeled paper right-to-left reveal ────────────────────── */
+.s3-vs-peel-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.s3-vs-peel-layer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -5%;
+  width: 55%;
+  height: 100%;
+  background:
+    linear-gradient(245deg,
+      rgba(255, 246, 226, 0.09) 0%,
+      rgba(200, 180, 140, 0.06) 20%,
+      rgba(120, 90, 50, 0.04) 40%,
+      transparent 70%
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 2px,
+      rgba(180, 150, 100, 0.02) 2px,
+      rgba(180, 150, 100, 0.02) 4px
+    );
+  clip-path: polygon(35% 0%, 100% 0%, 100% 100%, 20% 100%);
+  transform: skewX(-3deg);
+}
+
+.s3-vs-peel-layer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 38%;
+  width: 28px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(255, 245, 220, 0.08) 70%,
+    rgba(255, 255, 255, 0.12) 82%,
+    rgba(255, 245, 220, 0.05) 92%,
+    transparent 100%
+  );
+  transform: skewX(-3deg);
+  filter: blur(0.5px);
+}
+
+/* Top fighter (ELCEO) — editorial bulletin, no background panel */
 .s3-vs-top {
   flex: 1;
   position: relative;
-  background: linear-gradient(180deg, rgba(255, 106, 0, 0.08) 0%, rgba(0, 0, 0, 0.9) 100%);
-  padding: 24px 22px 40px;
+  background: none;
+  padding: 28px 24px 44px;
   display: flex;
   flex-direction: column;
   z-index: 1;
 }
 
-/* Bottom fighter (Others) */
+/* Bottom fighter (Others) — editorial bulletin, no background panel */
 .s3-vs-bottom {
   flex: 1;
   position: relative;
-  background: linear-gradient(0deg, rgba(80, 20, 20, 0.08) 0%, rgba(0, 0, 0, 0.9) 100%);
-  padding: 40px 22px 24px;
+  background: none;
+  padding: 44px 24px 28px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   z-index: 1;
 }
 
@@ -450,35 +656,49 @@
   right: -10px;
   top: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(20, 20, 20, 0.95));
+  background:
+    linear-gradient(135deg, rgba(30, 25, 18, 0.92), rgba(10, 8, 5, 0.96)),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(200, 160, 100, 0.03) 3px, rgba(200, 160, 100, 0.03) 6px);
   transform: skewY(-3deg);
-  border-top: 2px solid rgba(255, 106, 0, 0.4);
-  border-bottom: 2px solid rgba(255, 106, 0, 0.4);
+  border-top: 1.5px solid rgba(255, 106, 0, 0.3);
+  border-bottom: 1.5px solid rgba(255, 106, 0, 0.3);
+  box-shadow:
+    0 -8px 20px rgba(0, 0, 0, 0.4),
+    0 8px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* VS text metallic silver */
+/* VS text metallic silver — improved */
 .s3-vs-text {
   position: relative;
   z-index: 4;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 42px;
+  font-size: 44px;
   font-weight: 900;
-  letter-spacing: 0.12em;
-  background: linear-gradient(180deg, #ffffff 0%, #c0c0c0 30%, #808080 50%, #c0c0c0 70%, #ffffff 100%);
+  letter-spacing: 0.14em;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #e8e8e8 15%,
+    #b0b0b0 35%,
+    #707070 50%,
+    #b0b0b0 65%,
+    #e8e8e8 85%,
+    #ffffff 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-shadow: none;
-  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 1px 3px rgba(255, 255, 255, 0.15)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.6));
 }
 
 .s3-vs-fighter-label {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .s3-vs-fighter-label-elceo {
@@ -489,32 +709,50 @@
   color: #666;
 }
 
+/* VS sublines */
+.s3-vs-subline {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+
+.s3-vs-subline-elceo {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.s3-vs-subline-others {
+  color: rgba(255, 255, 255, 0.35);
+}
+
 .s3-vs-points {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
 }
 
 .s3-vs-point {
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-  font-size: 12px;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.72);
-  padding-left: 14px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+  padding-left: 32px;
   position: relative;
 }
 
 .s3-vs-point::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  left: 22px;
+  top: 8px;
+  width: 5px;
+  height: 1.5px;
+  border-radius: 1px;
 }
 
 .s3-vs-top .s3-vs-point::before {
@@ -522,30 +760,23 @@
 }
 
 .s3-vs-bottom .s3-vs-point::before {
-  background: #444;
+  background: #555;
 }
 
-/* Fighter silhouette cards */
-.s3-vs-silhouette {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 10px;
-  align-self: center;
+/* Numbered bullet */
+.s3-vs-bullet-num {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(255, 106, 0, 0.5);
+  font-variant-numeric: tabular-nums;
 }
 
-.s3-vs-silhouette-top {
-  background: linear-gradient(135deg, rgba(255, 106, 0, 0.2), rgba(255, 60, 0, 0.05));
-  border: 2px solid rgba(255, 106, 0, 0.4);
-  box-shadow: 0 0 20px rgba(255, 106, 0, 0.15);
-}
-
-.s3-vs-silhouette-bottom {
-  background: linear-gradient(135deg, rgba(100, 100, 100, 0.15), rgba(50, 50, 50, 0.05));
-  border: 2px solid rgba(100, 100, 100, 0.3);
+.s3-vs-bottom .s3-vs-bullet-num {
+  color: rgba(150, 150, 150, 0.4);
 }
 
 /* =========================================================
@@ -569,7 +800,8 @@
 
 /* ── Reduced motion ───────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .s3-media-card:hover {
+  .s3-media-card:hover,
+  .s3-media-card-active {
     transform: scale(1.1) rotate(0deg) !important;
   }
   .magazine-section-two-motion {

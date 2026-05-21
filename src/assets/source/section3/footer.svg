@@ -83,7 +83,7 @@
     <circle cx="877.5" cy="58" r="5" fill="#ff6a00" opacity="1" id="circle238"/>
     <text x="970" y="62" fill="#f3f0eb" font-size="26px" text-anchor="middle" font-weight="400" font-family="'var(--font-ui)'" id="text239">Terms</text>
     <circle cx="1080" cy="58" r="5" fill="#ff6a00" opacity="1" id="circle239"/>
-    <text x="1190" y="62" fill="#f3f0eb" font-size="26px" text-anchor="middle" font-weight="400" font-family="'var(--font-ui)'" id="text240">Telegram</text>
+    <text x="1190" y="62" fill="#f3f0eb" font-size="26px" text-anchor="middle" font-weight="400" font-family="'var(--font-ui)'" id="text240">Affiliates</text>
     <text x="615" y="135" fill="#e3ddd7" font-size="24px" text-anchor="end" font-weight="400" font-family="'var(--font-ui)'" id="text241">© 2026 ELCEO</text>
     <text x="642" y="135" fill="#e3ddd7" font-size="24px" text-anchor="middle" font-weight="400" font-family="'var(--font-ui)'" id="text242">|</text>
     <text x="765" y="135" fill="#e3ddd7" font-size="24px" text-anchor="start" font-weight="400" font-family="'var(--font-ui)'" id="text243">Made with</text>
