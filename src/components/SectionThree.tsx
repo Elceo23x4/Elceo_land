@@ -11,11 +11,11 @@ import "../styles/section-three.css";
 /* ── Static data (outside render to avoid re-creation) ────── */
 
 const MEDIA_CARDS = [
-  { label: "Chart Still", icon: "chart" },
-  { label: "Macro Dashboard", icon: "dashboard" },
-  { label: "Video Play", icon: "play" },
-  { label: "Evidence Board", icon: "evidence" },
-  { label: "Risk Context", icon: "risk" },
+  { label: "Chart Still", icon: "chart", desc: "Price behavior becomes easier to read when zones, pressure, and reaction history are placed in one visual layer." },
+  { label: "Macro Dashboard", icon: "dashboard", desc: "Macro pressure, calendar risk, and cross-asset tension are gathered into one reasoning surface." },
+  { label: "Video Play", icon: "play", desc: "Short-form visual explainers help traders understand why a setup matters before emotion takes over." },
+  { label: "Evidence Board", icon: "evidence", desc: "Evidence is grouped and compared so contradiction becomes visible." },
+  { label: "Risk Context", icon: "risk", desc: "Risk remains present before execution, not buried after the decision." },
 ] as const;
 
 const REVIEWS = [
@@ -102,7 +102,7 @@ function IconTwitterX() {
 function IconDiscord() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.36.698.772 1.362 1.226 1.993a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.12.098.246.198.372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
     </svg>
   );
 }
@@ -140,17 +140,16 @@ export default function SectionThree() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const mediaSliderRef = useRef<HTMLDivElement>(null);
 
   /* Responsive scale */
   useLayoutEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
-
     const updateScale = () => {
       const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
       stage.style.setProperty("--s3-scale", String(s));
     };
-
     updateScale();
     window.addEventListener("resize", updateScale);
     return () => window.removeEventListener("resize", updateScale);
@@ -167,14 +166,29 @@ export default function SectionThree() {
     }
   }, []);
 
-  /* Track active slide via scroll */
   const handleSliderScroll = useCallback(() => {
     const slider = sliderRef.current;
     if (!slider) return;
-    const scrollLeft = slider.scrollLeft;
-    const width = slider.clientWidth;
-    const idx = Math.round(scrollLeft / width);
+    const idx = Math.round(slider.scrollLeft / slider.clientWidth);
     setActiveSlide(idx);
+  }, []);
+
+  /* Media detail slider navigation */
+  const scrollToMedia = useCallback((index: number) => {
+    const slider = mediaSliderRef.current;
+    if (!slider) return;
+    const slides = slider.querySelectorAll(".s3-media-slide");
+    if (slides[index]) {
+      slides[index].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+      setActiveMediaIndex(index);
+    }
+  }, []);
+
+  const handleMediaSliderScroll = useCallback(() => {
+    const slider = mediaSliderRef.current;
+    if (!slider) return;
+    const idx = Math.round(slider.scrollLeft / slider.clientWidth);
+    setActiveMediaIndex(idx);
   }, []);
 
   return (
@@ -186,7 +200,7 @@ export default function SectionThree() {
           <BeltDivider preserveAspectRatio="none" />
         </div>
 
-        {/* Buckle block overlay — kept for positioning but no visible fill */}
+        {/* Buckle block overlay */}
         <div className="s3-buckle-block" />
 
         {/* Buckle content (bb.svg) */}
@@ -194,7 +208,7 @@ export default function SectionThree() {
           <BuckleContent preserveAspectRatio="xMidYMid meet" />
         </div>
 
-        {/* Trouser panels (background SVGs) */}
+        {/* Trouser panels */}
         <div className="s3-trouser-left">
           <TrouserLeft preserveAspectRatio="none" />
         </div>
@@ -215,6 +229,12 @@ export default function SectionThree() {
           <FooterGraphic preserveAspectRatio="none" />
         </div>
 
+        {/* Footer premium text overlay */}
+        <div className="s3-footer-overlay">
+          <div className="s3-footer-row">ELCEO &middot; Market Reasoning OS &middot; Evidence Stack &middot; Risk Context &middot; Portfolio Pulse</div>
+          <div className="s3-footer-row s3-footer-row-secondary">About &middot; Pricing &middot; FAQ &middot; Affiliates &middot; Contact &middot; Terms &middot; Privacy</div>
+        </div>
+
         {/* ── Content: Trouser Left — Why Choose ELCEO ─────── */}
         <div className="s3-content-left">
           <div className="s3-left-scroll">
@@ -231,14 +251,15 @@ export default function SectionThree() {
               about what you see, not react to what you feel.
             </p>
 
-            {/* Media stack */}
+            {/* Media stack — hover/focus only enlarges */}
             <div className="s3-media-stack">
               {MEDIA_CARDS.map((card, idx) => (
                 <div
-                  className={`s3-media-card${activeMediaIndex === idx ? " s3-media-card-active" : ""}`}
+                  className="s3-media-card"
                   key={card.icon}
-                  onClick={() => setActiveMediaIndex(idx)}
-                  onMouseEnter={() => setActiveMediaIndex(idx)}
+                  tabIndex={0}
+                  onMouseEnter={() => scrollToMedia(idx)}
+                  onFocus={() => scrollToMedia(idx)}
                 >
                   <div className="s3-media-card-icon">
                     <MediaIcon type={card.icon} />
@@ -248,14 +269,27 @@ export default function SectionThree() {
               ))}
             </div>
 
-            {/* Media slider indicator */}
-            <div className="s3-media-slider">
-              <span className="s3-media-slider-track">
-                <span
-                  className="s3-media-slider-thumb"
-                  style={{ transform: `translateX(${activeMediaIndex * 100}%)` }}
+            {/* Sideways media detail slider */}
+            <div className="s3-media-detail-slider" ref={mediaSliderRef} onScroll={handleMediaSliderScroll}>
+              {MEDIA_CARDS.map((card) => (
+                <article className="s3-media-slide" key={card.icon}>
+                  <span className="s3-media-slide-label">{card.label}</span>
+                  <p className="s3-media-slide-desc">{card.desc}</p>
+                </article>
+              ))}
+            </div>
+
+            {/* Media progress dots */}
+            <div className="s3-media-progress">
+              {MEDIA_CARDS.map((card, idx) => (
+                <button
+                  key={card.icon}
+                  className={`s3-media-dot${activeMediaIndex === idx ? " active" : ""}`}
+                  onClick={() => scrollToMedia(idx)}
+                  type="button"
+                  aria-label={`Media ${idx + 1}`}
                 />
-              </span>
+              ))}
             </div>
 
             <div className="s3-left-subsection">Compare evidence instead of chasing noise.</div>
@@ -279,7 +313,7 @@ export default function SectionThree() {
               present — not buried in a separate menu.
             </p>
 
-            <p className="s3-left-body" style={{ marginTop: 16, opacity: 0.6, fontSize: 12 }}>
+            <p className="s3-left-body" style={{ marginTop: 16, opacity: 0.55, fontSize: 12 }}>
               ELCEO is a reasoning surface for serious market participants who value clarity
               over noise, discipline over impulse, and evidence over emotion. It is not a
               signal provider and does not guarantee outcomes.
@@ -291,19 +325,12 @@ export default function SectionThree() {
         <div className="s3-content-center">
           <div className="s3-reviews-container">
             <h2 className="s3-reviews-title">Reviews</h2>
-            <div
-              className="s3-reviews-slider"
-              ref={sliderRef}
-              onScroll={handleSliderScroll}
-            >
-              {/* Column 1 */}
+            <div className="s3-reviews-slider" ref={sliderRef} onScroll={handleSliderScroll}>
               <div className="s3-reviews-column">
                 {REVIEWS.slice(0, 3).map((review, i) => (
                   <div className="s3-review-card" key={i}>
                     <div className="s3-review-stars">
-                      {Array.from({ length: review.stars }).map((_, si) => (
-                        <StarIcon key={si} />
-                      ))}
+                      {Array.from({ length: review.stars }).map((_, si) => <StarIcon key={si} />)}
                     </div>
                     <p className="s3-review-text">&ldquo;{review.text}&rdquo;</p>
                     <span className="s3-review-name">{review.name}</span>
@@ -312,14 +339,11 @@ export default function SectionThree() {
                   </div>
                 ))}
               </div>
-              {/* Column 2 */}
               <div className="s3-reviews-column">
                 {REVIEWS.slice(3, 6).map((review, i) => (
                   <div className="s3-review-card" key={i + 3}>
                     <div className="s3-review-stars">
-                      {Array.from({ length: review.stars }).map((_, si) => (
-                        <StarIcon key={si} />
-                      ))}
+                      {Array.from({ length: review.stars }).map((_, si) => <StarIcon key={si} />)}
                     </div>
                     <p className="s3-review-text">&ldquo;{review.text}&rdquo;</p>
                     <span className="s3-review-name">{review.name}</span>
@@ -330,42 +354,19 @@ export default function SectionThree() {
               </div>
             </div>
 
-            {/* Slider progress — above Connect */}
             <div className="s3-reviews-progress">
-              <button
-                className={`s3-reviews-dot${activeSlide === 0 ? " active" : ""}`}
-                onClick={() => scrollToSlide(0)}
-                aria-label="Slide 1"
-                type="button"
-              />
-              <button
-                className={`s3-reviews-dot${activeSlide === 1 ? " active" : ""}`}
-                onClick={() => scrollToSlide(1)}
-                aria-label="Slide 2"
-                type="button"
-              />
+              <button className={`s3-reviews-dot${activeSlide === 0 ? " active" : ""}`} onClick={() => scrollToSlide(0)} aria-label="Slide 1" type="button" />
+              <button className={`s3-reviews-dot${activeSlide === 1 ? " active" : ""}`} onClick={() => scrollToSlide(1)} aria-label="Slide 2" type="button" />
             </div>
 
             {/* Connect area */}
             <div className="s3-connect-section">
               <h3 className="s3-connect-title">Connect</h3>
               <div className="s3-connect-grid">
-                <div className="s3-connect-item">
-                  <IconTwitterX />
-                  <span>X / Twitter</span>
-                </div>
-                <div className="s3-connect-item">
-                  <IconDiscord />
-                  <span>Discord</span>
-                </div>
-                <div className="s3-connect-item">
-                  <IconInstagram />
-                  <span>Instagram</span>
-                </div>
-                <div className="s3-connect-item">
-                  <IconTelegram />
-                  <span>Telegram</span>
-                </div>
+                <div className="s3-connect-item"><IconTwitterX /><span>X / Twitter</span></div>
+                <div className="s3-connect-item"><IconDiscord /><span>Discord</span></div>
+                <div className="s3-connect-item"><IconInstagram /><span>Instagram</span></div>
+                <div className="s3-connect-item"><IconTelegram /><span>Telegram</span></div>
               </div>
             </div>
 
@@ -380,49 +381,32 @@ export default function SectionThree() {
           </div>
         </div>
 
-        {/* ── Content: Trouser Right — VS Section ─────────── */}
+        {/* ── Content: Trouser Right — VS Section (pure bulletin) ── */}
         <div className="s3-content-right">
           <div className="s3-vs-container">
-            {/* Peeled paper effect layer */}
-            <div className="s3-vs-peel-layer" />
-
             {/* Top: ELCEO */}
             <div className="s3-vs-top">
-              <span className="s3-vs-fighter-label s3-vs-fighter-label-elceo">
-                ELCEO Market Reasoning OS
-              </span>
-              <span className="s3-vs-subline s3-vs-subline-elceo">
-                Evidence-led context before conviction.
-              </span>
+              <span className="s3-vs-fighter-label s3-vs-fighter-label-elceo">ELCEO Market Reasoning OS</span>
+              <span className="s3-vs-subline s3-vs-subline-elceo">Evidence-led context before conviction.</span>
               <ul className="s3-vs-points">
-                {ELCEO_POINTS.map((point, i) => (
-                  <li className="s3-vs-point" key={point}>
-                    <span className="s3-vs-bullet-num">{String(i + 1).padStart(2, "0")}</span>
-                    {point}
-                  </li>
+                {ELCEO_POINTS.map((point) => (
+                  <li className="s3-vs-point" key={point}>{point}</li>
                 ))}
               </ul>
             </div>
 
-            {/* Diagonal slice + VS */}
+            {/* VS */}
             <div className="s3-vs-diagonal">
               <span className="s3-vs-text">VS</span>
             </div>
 
             {/* Bottom: Others */}
             <div className="s3-vs-bottom">
-              <span className="s3-vs-fighter-label s3-vs-fighter-label-others">
-                Others
-              </span>
-              <span className="s3-vs-subline s3-vs-subline-others">
-                Noise-led tools that push traders into reaction loops.
-              </span>
+              <span className="s3-vs-fighter-label s3-vs-fighter-label-others">Others</span>
+              <span className="s3-vs-subline s3-vs-subline-others">Noise-led tools that push traders into reaction loops.</span>
               <ul className="s3-vs-points">
-                {OTHERS_POINTS.map((point, i) => (
-                  <li className="s3-vs-point" key={point}>
-                    <span className="s3-vs-bullet-num">{String(i + 1).padStart(2, "0")}</span>
-                    {point}
-                  </li>
+                {OTHERS_POINTS.map((point) => (
+                  <li className="s3-vs-point" key={point}>{point}</li>
                 ))}
               </ul>
             </div>
