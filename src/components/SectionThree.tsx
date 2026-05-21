@@ -159,14 +159,14 @@ export default function SectionThree() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const mediaSliderRef = useRef<HTMLDivElement>(null);
 
-  /* Responsive scale — cover-fit (fills viewport completely) */
+  /* Responsive scale — contain-fit (full stage visible, no crop) */
   useLayoutEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
     const updateScale = () => {
-      const s = Math.max(window.innerWidth / 1920, window.innerHeight / 1080);
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
       const stageLeft = (window.innerWidth - 1920 * s) / 2;
-      const stageTop = (window.innerHeight - 1080 * s) / 2;
+      const stageTop = Math.max(0, (window.innerHeight - 1080 * s) / 2);
       stage.style.setProperty("--s3-scale", String(s));
       stage.style.setProperty("--s3-left", `${stageLeft}px`);
       stage.style.setProperty("--s3-top", `${stageTop}px`);
