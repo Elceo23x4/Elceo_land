@@ -1,22 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" id="footer" width="1440" height="201" viewBox="0 0 1440 201" role="img" aria-labelledby="title desc" version="1.1" data-name="footer">
+<svg xmlns="http://www.w3.org/2000/svg" id="footer" width="1440" height="201" viewBox="0 0 1440 201" role="img" aria-labelledby="title desc" version="1.1" data-name="footer">
   <title id="title">footer</title>
-  <desc id="desc">Editable standalone SVG element: footer</desc>
-  <defs>
-    <style id="style1">
-    :root { --font-ui: 'Tribes Regular','Tribes','Space Mono','Share Tech Mono','IBM Plex Mono',monospace; --font-dot: 'OffBit DotBold','OffBit','Courier New',monospace; }
-    .ui { font-family: var(--font-ui); letter-spacing: .04em; }
-    </style>
-  </defs>
-  <g id="footer-group" class="ui" transform="translate(0,1)">
-    <rect x="0" y="0" width="1440" height="200" rx="0" fill="#030303" opacity="1" id="rect234"/>
-    <line x1="0" y1="0" x2="1440" y2="0" stroke="#ff5a00" stroke-width="2" opacity="0.95" id="line235"/>
-    <!-- Row 1: links -->
-    <text x="720" y="72" fill="#f3f0eb" font-size="24px" text-anchor="middle" font-weight="400" font-family="var(--font-ui)" id="text-row1">Contact    Privacy    Disclaimer    Legal    Terms    Affiliates</text>
-    <!-- Row 2: copyright -->
-    <text x="720" y="140" fill="#e3ddd7" font-size="22px" text-anchor="middle" font-weight="400" font-family="var(--font-ui)" id="text-row2">© 2026 ELCEO</text>
-    <text x="720" y="170" fill="#9a9590" font-size="16px" text-anchor="middle" font-weight="400" font-family="var(--font-ui)" id="text-row3">Made with</text>
-    <path id="footer-heart-icon" d="m 771,155 c 0,-7 11,-10 17,-2 6,-8 17,-5 17,2 0,12 -17,21 -17,21 0,0 -17,-9 -17,-21 z" fill="#ff5a00"/>
-    <text x="806" y="170" fill="#9a9590" font-size="16px" text-anchor="start" font-weight="400" font-family="var(--font-ui)" id="text-row4">by 8DAT</text>
+  <desc id="desc">Footer section</desc>
+  <g id="footer-group" transform="translate(0,1)">
+    <rect x="0" y="0" width="1440" height="200" rx="0" fill="#030303" opacity="1"/>
+    <line x1="0" y1="0" x2="1440" y2="0" stroke="#ff5a00" stroke-width="2" opacity="0.85"/>
   </g>
 </svg>

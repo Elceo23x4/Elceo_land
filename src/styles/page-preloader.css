@@ -1,5 +1,5 @@
 /* =========================================================
-   Page Preloader — Theatre Curtain + Candlestick Reveal
+   Page Preloader — Theatre Curtain + Trading Candlestick Reveal
    ========================================================= */
 
 .page-preloader {
@@ -22,6 +22,7 @@
   bottom: 0;
   width: 50%;
   will-change: transform;
+  opacity: 0.94;
 }
 
 .preloader-curtain-left {
@@ -38,7 +39,7 @@
   display: block;
 }
 
-/* ── Center candlesticks SVG ──────────────────────────────── */
+/* ── Center trading candlesticks SVG ──────────────────────── */
 
 .preloader-candles {
   position: relative;

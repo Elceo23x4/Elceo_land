@@ -123,6 +123,23 @@ function IconTelegram() {
   );
 }
 
+/* ── Footer paint link component ───────────────────────────── */
+
+function FooterPaintLink({ children }: { children: string }) {
+  return (
+    <a className="s3-footer-link" href="#" aria-label={children}>
+      <span className="s3-footer-link-text">{children}</span>
+      <span className="s3-paint-splash" aria-hidden="true">
+        <span className="s3-paint-blob b1" />
+        <span className="s3-paint-blob b2" />
+        <span className="s3-paint-blob b3" />
+        <span className="s3-paint-blob b4" />
+        <span className="s3-paint-blob b5" />
+      </span>
+    </a>
+  );
+}
+
 /* ── Star icon ────────────────────────────────────────────── */
 
 function StarIcon() {
@@ -229,7 +246,32 @@ export default function SectionThree() {
           <FooterGraphic preserveAspectRatio="none" />
         </div>
 
+        {/* Footer premium overlay — system font, paint hover */}
+        <div className="s3-footer-overlay">
+          <nav className="s3-footer-links">
+            <FooterPaintLink>Contact</FooterPaintLink>
+            <FooterPaintLink>Privacy</FooterPaintLink>
+            <FooterPaintLink>Disclaimer</FooterPaintLink>
+            <FooterPaintLink>Legal</FooterPaintLink>
+            <FooterPaintLink>Terms</FooterPaintLink>
+            <FooterPaintLink>Affiliates</FooterPaintLink>
+          </nav>
+          <div className="s3-footer-meta">
+            <span className="s3-footer-copy">&copy; 2026 ELCEO</span>
+            <span className="s3-footer-made">Made with <span style={{ color: "#ff5a00" }}>&hearts;</span> by 8DAT</span>
+          </div>
+        </div>
 
+        {/* SVG paint goo filter (hidden, used by footer links) */}
+        <svg className="s3-paint-filter" aria-hidden="true" focusable="false" style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }}>
+          <defs>
+            <filter id="s3-orange-paint-goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur" />
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+              <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
 
         {/* ── Content: Trouser Left — Why Choose ELCEO ─────── */}
         <div className="s3-content-left">

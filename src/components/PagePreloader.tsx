@@ -39,7 +39,6 @@ export default function PagePreloader() {
 
     if (!leftCurtain || !rightCurtain || !candles || !redCandle || !greenCandle || !redTop || !redBottom || !greenTop || !greenBottom || !scratch) return;
 
-    // Initial state: halves hidden
     gsap.set([redTop, redBottom, greenTop, greenBottom], { opacity: 0 });
     gsap.set(scratch, { opacity: 0 });
 
@@ -74,116 +73,146 @@ export default function PagePreloader() {
 
   return (
     <div className="page-preloader" ref={overlayRef} aria-hidden="true">
-      {/* Left curtain — green */}
+      {/* Left curtain — green with enhanced fabric detail */}
       <div className="preloader-curtain preloader-curtain-left" ref={leftCurtainRef}>
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="preloader-curtain-svg">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" className="preloader-curtain-svg">
           <defs>
             <linearGradient id="curtainGreenGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#006838" />
-              <stop offset="18%" stopColor="#00a35a" />
-              <stop offset="35%" stopColor="#007a44" />
-              <stop offset="52%" stopColor="#00b15d" />
-              <stop offset="68%" stopColor="#008a4a" />
-              <stop offset="84%" stopColor="#00a35a" />
-              <stop offset="100%" stopColor="#005c30" />
+              <stop offset="0%" stopColor="#004420" />
+              <stop offset="10%" stopColor="#006838" />
+              <stop offset="22%" stopColor="#00a35a" />
+              <stop offset="34%" stopColor="#006d3a" />
+              <stop offset="46%" stopColor="#00b15d" />
+              <stop offset="56%" stopColor="#007a44" />
+              <stop offset="68%" stopColor="#00a35a" />
+              <stop offset="78%" stopColor="#008a4a" />
+              <stop offset="88%" stopColor="#00a35a" />
+              <stop offset="100%" stopColor="#003d1c" />
             </linearGradient>
+            <filter id="greenNoise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="3" result="noise" />
+              <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+              <feComponentTransfer in="grayNoise" result="fadedNoise">
+                <feFuncA type="linear" slope="0.06" />
+              </feComponentTransfer>
+              <feBlend mode="overlay" in="SourceGraphic" in2="fadedNoise" />
+            </filter>
           </defs>
-          <rect x="0" y="0" width="100" height="100" fill="url(#curtainGreenGrad)" />
-          {/* Fold ridges */}
-          <line x1="20" y1="0" x2="20" y2="100" stroke="rgba(0,0,0,0.15)" strokeWidth="0.4" />
-          <line x1="40" y1="0" x2="40" y2="100" stroke="rgba(255,255,255,0.06)" strokeWidth="0.3" />
-          <line x1="60" y1="0" x2="60" y2="100" stroke="rgba(0,0,0,0.12)" strokeWidth="0.4" />
-          <line x1="80" y1="0" x2="80" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.3" />
-          {/* Rolled edge at right */}
-          <ellipse cx="99" cy="50" rx="3" ry="50" fill="rgba(0,60,20,0.7)" />
-          <ellipse cx="100" cy="50" rx="1.5" ry="50" fill="rgba(0,40,15,0.9)" />
+          <rect x="0" y="0" width="200" height="200" fill="url(#curtainGreenGrad)" filter="url(#greenNoise)" />
+          {/* Deep fold shadows */}
+          <path d="M30 0 Q32 100 28 200" stroke="rgba(0,0,0,0.22)" strokeWidth="2.5" fill="none" />
+          <path d="M31 0 Q33 100 29 200" stroke="rgba(0,80,30,0.15)" strokeWidth="1" fill="none" />
+          <path d="M60 0 Q58 100 62 200" stroke="rgba(0,0,0,0.18)" strokeWidth="2" fill="none" />
+          <path d="M61 0 Q59 100 63 200" stroke="rgba(200,255,200,0.04)" strokeWidth="1" fill="none" />
+          <path d="M95 0 Q97 100 93 200" stroke="rgba(0,0,0,0.2)" strokeWidth="2.2" fill="none" />
+          <path d="M96 0 Q98 100 94 200" stroke="rgba(150,255,180,0.03)" strokeWidth="0.8" fill="none" />
+          <path d="M130 0 Q128 100 132 200" stroke="rgba(0,0,0,0.16)" strokeWidth="1.8" fill="none" />
+          <path d="M160 0 Q162 100 158 200" stroke="rgba(0,0,0,0.14)" strokeWidth="1.5" fill="none" />
+          <path d="M161 0 Q163 100 159 200" stroke="rgba(255,255,255,0.03)" strokeWidth="0.8" fill="none" />
+          {/* Rolled edge at right with cylindrical shading */}
+          <ellipse cx="196" cy="100" rx="6" ry="100" fill="rgba(0,50,18,0.8)" />
+          <ellipse cx="198" cy="100" rx="3" ry="100" fill="rgba(0,30,10,0.95)" />
+          <ellipse cx="199.5" cy="100" rx="1" ry="100" fill="rgba(0,90,35,0.4)" />
         </svg>
       </div>
 
-      {/* Right curtain — red */}
+      {/* Right curtain — red with enhanced fabric detail */}
       <div className="preloader-curtain preloader-curtain-right" ref={rightCurtainRef}>
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="preloader-curtain-svg">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="none" className="preloader-curtain-svg">
           <defs>
             <linearGradient id="curtainRedGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#5c0010" />
-              <stop offset="16%" stopColor="#b00020" />
-              <stop offset="33%" stopColor="#8a0018" />
-              <stop offset="50%" stopColor="#c5162e" />
-              <stop offset="67%" stopColor="#950020" />
-              <stop offset="83%" stopColor="#b00020" />
-              <stop offset="100%" stopColor="#6a0014" />
+              <stop offset="0%" stopColor="#3d000a" />
+              <stop offset="12%" stopColor="#6a0014" />
+              <stop offset="24%" stopColor="#b00020" />
+              <stop offset="36%" stopColor="#7a0016" />
+              <stop offset="48%" stopColor="#c5162e" />
+              <stop offset="58%" stopColor="#8a0018" />
+              <stop offset="70%" stopColor="#b00020" />
+              <stop offset="80%" stopColor="#950020" />
+              <stop offset="90%" stopColor="#b00020" />
+              <stop offset="100%" stopColor="#4a000e" />
             </linearGradient>
+            <filter id="redNoise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="11" result="noise" />
+              <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise" />
+              <feComponentTransfer in="grayNoise" result="fadedNoise">
+                <feFuncA type="linear" slope="0.06" />
+              </feComponentTransfer>
+              <feBlend mode="overlay" in="SourceGraphic" in2="fadedNoise" />
+            </filter>
           </defs>
-          <rect x="0" y="0" width="100" height="100" fill="url(#curtainRedGrad)" />
-          {/* Fold ridges */}
-          <line x1="20" y1="0" x2="20" y2="100" stroke="rgba(0,0,0,0.15)" strokeWidth="0.4" />
-          <line x1="40" y1="0" x2="40" y2="100" stroke="rgba(255,255,255,0.05)" strokeWidth="0.3" />
-          <line x1="60" y1="0" x2="60" y2="100" stroke="rgba(0,0,0,0.12)" strokeWidth="0.4" />
-          <line x1="80" y1="0" x2="80" y2="100" stroke="rgba(255,255,255,0.04)" strokeWidth="0.3" />
-          {/* Rolled edge at left */}
-          <ellipse cx="1" cy="50" rx="3" ry="50" fill="rgba(60,0,10,0.7)" />
-          <ellipse cx="0" cy="50" rx="1.5" ry="50" fill="rgba(40,0,8,0.9)" />
+          <rect x="0" y="0" width="200" height="200" fill="url(#curtainRedGrad)" filter="url(#redNoise)" />
+          {/* Deep fold shadows */}
+          <path d="M40 0 Q38 100 42 200" stroke="rgba(0,0,0,0.2)" strokeWidth="2.2" fill="none" />
+          <path d="M41 0 Q39 100 43 200" stroke="rgba(255,200,200,0.03)" strokeWidth="0.8" fill="none" />
+          <path d="M75 0 Q77 100 73 200" stroke="rgba(0,0,0,0.18)" strokeWidth="2" fill="none" />
+          <path d="M105 0 Q103 100 107 200" stroke="rgba(0,0,0,0.22)" strokeWidth="2.5" fill="none" />
+          <path d="M106 0 Q104 100 108 200" stroke="rgba(255,180,180,0.03)" strokeWidth="0.8" fill="none" />
+          <path d="M140 0 Q142 100 138 200" stroke="rgba(0,0,0,0.16)" strokeWidth="1.8" fill="none" />
+          <path d="M141 0 Q143 100 139 200" stroke="rgba(255,255,255,0.025)" strokeWidth="0.7" fill="none" />
+          <path d="M170 0 Q168 100 172 200" stroke="rgba(0,0,0,0.14)" strokeWidth="1.5" fill="none" />
+          {/* Rolled edge at left with cylindrical shading */}
+          <ellipse cx="4" cy="100" rx="6" ry="100" fill="rgba(50,0,8,0.8)" />
+          <ellipse cx="2" cy="100" rx="3" ry="100" fill="rgba(30,0,5,0.95)" />
+          <ellipse cx="0.5" cy="100" rx="1" ry="100" fill="rgba(90,0,15,0.4)" />
         </svg>
       </div>
 
-      {/* Center candlesticks */}
+      {/* Center trading candlesticks — flat chart style, no flames */}
       <svg className="preloader-candles" viewBox="0 0 420 260" ref={candlesRef}>
-        {/* Red candle (sits on green/left side) */}
+        {/* Red trading candlestick (bearish — on green/left side) */}
         <g ref={redCandleRef}>
-          {/* Wick */}
-          <line x1="168" y1="62" x2="168" y2="48" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="168" cy="46" r="3" fill="#ff6a00" opacity="0.8" />
+          {/* Upper wick */}
+          <line x1="168" y1="38" x2="168" y2="72" stroke="#f0f0f0" strokeWidth="2.5" />
           {/* Body */}
-          <rect x="158" y="62" width="20" height="110" rx="2" fill="#c5162e" />
-          <rect x="160" y="62" width="4" height="110" fill="rgba(255,255,255,0.08)" rx="1" />
+          <rect x="156" y="72" width="24" height="86" rx="1" fill="#c5162e" />
+          {/* Lower wick */}
+          <line x1="168" y1="158" x2="168" y2="188" stroke="#f0f0f0" strokeWidth="2.5" />
         </g>
 
-        {/* Green candle (sits on red/right side) */}
+        {/* Green trading candlestick (bullish — on red/right side) */}
         <g ref={greenCandleRef}>
-          {/* Wick */}
-          <line x1="252" y1="88" x2="252" y2="74" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="252" cy="72" r="3" fill="#ff6a00" opacity="0.8" />
+          {/* Upper wick */}
+          <line x1="252" y1="56" x2="252" y2="98" stroke="#f0f0f0" strokeWidth="2.5" />
           {/* Body */}
-          <rect x="242" y="88" width="20" height="84" rx="2" fill="#00a35a" />
-          <rect x="244" y="88" width="4" height="84" fill="rgba(255,255,255,0.08)" rx="1" />
+          <rect x="240" y="98" width="24" height="52" rx="1" fill="#00a35a" />
+          {/* Lower wick */}
+          <line x1="252" y1="150" x2="252" y2="178" stroke="#f0f0f0" strokeWidth="2.5" />
         </g>
 
-        {/* Red candle halves (hidden initially) */}
+        {/* Red candlestick halves (hidden initially) */}
         <g ref={redTopRef} opacity="0">
-          <line x1="168" y1="62" x2="168" y2="48" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="168" cy="46" r="3" fill="#ff6a00" opacity="0.8" />
-          <rect x="158" y="62" width="20" height="55" rx="2" fill="#c5162e" />
-          <rect x="160" y="62" width="4" height="55" fill="rgba(255,255,255,0.08)" rx="1" />
-          {/* Crack edge */}
-          <path d="M158 117 L163 114 L168 118 L173 113 L178 117" fill="none" stroke="#1a0005" strokeWidth="1.5" />
+          {/* Upper wick + top body half */}
+          <line x1="168" y1="38" x2="168" y2="72" stroke="#f0f0f0" strokeWidth="2.5" />
+          <rect x="156" y="72" width="24" height="43" rx="1" fill="#c5162e" />
+          <path d="M156 115 L162 112 L168 116 L174 111 L180 115" fill="none" stroke="#200005" strokeWidth="1.5" />
         </g>
         <g ref={redBottomRef} opacity="0">
-          <rect x="158" y="117" width="20" height="55" rx="2" fill="#c5162e" />
-          <rect x="160" y="117" width="4" height="55" fill="rgba(255,255,255,0.08)" rx="1" />
-          <path d="M158 117 L163 120 L168 116 L173 121 L178 117" fill="none" stroke="#1a0005" strokeWidth="1.5" />
+          {/* Bottom body half + lower wick */}
+          <rect x="156" y="115" width="24" height="43" rx="1" fill="#c5162e" />
+          <path d="M156 115 L162 118 L168 114 L174 119 L180 115" fill="none" stroke="#200005" strokeWidth="1.5" />
+          <line x1="168" y1="158" x2="168" y2="188" stroke="#f0f0f0" strokeWidth="2.5" />
         </g>
 
-        {/* Green candle halves (hidden initially) */}
+        {/* Green candlestick halves (hidden initially) */}
         <g ref={greenTopRef} opacity="0">
-          <line x1="252" y1="88" x2="252" y2="74" stroke="#333" strokeWidth="2" strokeLinecap="round" />
-          <circle cx="252" cy="72" r="3" fill="#ff6a00" opacity="0.8" />
-          <rect x="242" y="88" width="20" height="42" rx="2" fill="#00a35a" />
-          <rect x="244" y="88" width="4" height="42" fill="rgba(255,255,255,0.08)" rx="1" />
-          <path d="M242 130 L247 127 L252 131 L257 126 L262 130" fill="none" stroke="#002a10" strokeWidth="1.5" />
+          {/* Upper wick + top body half */}
+          <line x1="252" y1="56" x2="252" y2="98" stroke="#f0f0f0" strokeWidth="2.5" />
+          <rect x="240" y="98" width="24" height="26" rx="1" fill="#00a35a" />
+          <path d="M240 124 L246 121 L252 125 L258 120 L264 124" fill="none" stroke="#002a10" strokeWidth="1.5" />
         </g>
         <g ref={greenBottomRef} opacity="0">
-          <rect x="242" y="130" width="20" height="42" rx="2" fill="#00a35a" />
-          <rect x="244" y="130" width="4" height="42" fill="rgba(255,255,255,0.08)" rx="1" />
-          <path d="M242 130 L247 133 L252 129 L257 134 L262 130" fill="none" stroke="#002a10" strokeWidth="1.5" />
+          {/* Bottom body half + lower wick */}
+          <rect x="240" y="124" width="24" height="26" rx="1" fill="#00a35a" />
+          <path d="M240 124 L246 127 L252 123 L258 128 L264 124" fill="none" stroke="#002a10" strokeWidth="1.5" />
+          <line x1="252" y1="150" x2="252" y2="178" stroke="#f0f0f0" strokeWidth="2.5" />
         </g>
 
-        {/* Scratch sparks */}
+        {/* Scratch sparks — subtle */}
         <g ref={scratchRef} opacity="0">
-          <line x1="195" y1="118" x2="225" y2="108" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" opacity="0.9" />
-          <line x1="200" y1="126" x2="220" y2="114" stroke="#ffcc00" strokeWidth="1.2" strokeLinecap="round" opacity="0.7" />
-          <line x1="205" y1="110" x2="218" y2="122" stroke="#fff" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
-          <circle cx="210" cy="118" r="4" fill="#ffdd44" opacity="0.5" />
-          <circle cx="208" cy="115" r="2" fill="#fff" opacity="0.7" />
+          <line x1="192" y1="120" x2="228" y2="110" stroke="rgba(255,255,255,0.85)" strokeWidth="1.5" strokeLinecap="round" />
+          <line x1="198" y1="128" x2="222" y2="116" stroke="rgba(255,200,60,0.6)" strokeWidth="1" strokeLinecap="round" />
+          <line x1="204" y1="112" x2="216" y2="124" stroke="rgba(255,255,255,0.5)" strokeWidth="0.8" strokeLinecap="round" />
         </g>
       </svg>
     </div>
