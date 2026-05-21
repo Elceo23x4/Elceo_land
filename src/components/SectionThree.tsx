@@ -229,11 +229,7 @@ export default function SectionThree() {
           <FooterGraphic preserveAspectRatio="none" />
         </div>
 
-        {/* Footer premium text overlay */}
-        <div className="s3-footer-overlay">
-          <div className="s3-footer-row">ELCEO &middot; Market Reasoning OS &middot; Evidence Stack &middot; Risk Context &middot; Portfolio Pulse</div>
-          <div className="s3-footer-row s3-footer-row-secondary">About &middot; Pricing &middot; FAQ &middot; Affiliates &middot; Contact &middot; Terms &middot; Privacy</div>
-        </div>
+
 
         {/* ── Content: Trouser Left — Why Choose ELCEO ─────── */}
         <div className="s3-content-left">

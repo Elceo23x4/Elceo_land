@@ -1,6 +1,7 @@
 import { useState, useCallback, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PagePreloader from "./components/PagePreloader";
 import HeroSection from "./components/HeroSection";
 import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
@@ -149,6 +150,7 @@ export default function App() {
       <PricingPopup isOpen={isPricingOpen} onClose={handlePricingClose} />
       <FaqPopup isOpen={isFaqOpen} onClose={handleFaqClose} />
       <GoldCursor3D />
+      <PagePreloader />
     </>
   );
 }
