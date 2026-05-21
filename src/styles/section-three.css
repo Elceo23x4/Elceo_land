@@ -3,8 +3,8 @@
    ========================================================= */
 
 /* ── Section wrapper ──────────────────────────────────────── */
-.section-three { position: relative; width: 100%; min-height: 100vh; height: calc(1080px * var(--s3-scale, 1)); background: #000; overflow: hidden; }
-.section-three-stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: top left; transform: scale(var(--s3-scale, 1)); }
+.section-three { position: relative; width: 100%; height: 100vh; min-height: 100vh; background: #000; overflow: hidden; }
+.section-three-stage { position: absolute; left: var(--s3-left, 0px); top: var(--s3-top, 0px); width: 1920px; height: 1080px; transform-origin: top left; transform: scale(var(--s3-scale, 1)); }
 
 /* ── SVG asset layers ─────────────────────────────────────── */
 .s3-belt-divider,.s3-buckle-block,.s3-buckle-content,.s3-trouser-left,.s3-trouser-center,.s3-trouser-right,.s3-tree,.s3-footer { position: absolute; pointer-events: none; }

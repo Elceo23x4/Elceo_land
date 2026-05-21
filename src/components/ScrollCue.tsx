@@ -26,24 +26,13 @@ export default function ScrollCue() {
     const behavior = prefersReduced ? "auto" as const : "smooth" as const;
 
     if (currentSection === 2) {
-      // On Section 3: scroll back to top
       window.scrollTo({ top: 0, behavior });
     } else if (currentSection === 1) {
-      // On Section 2: scroll to Section 3
-      const s3 = document.querySelector(".section-three");
-      if (s3) {
-        s3.scrollIntoView({ behavior, block: "start" });
-      } else {
-        window.scrollTo({ top: window.innerHeight * 2, behavior });
-      }
+      const s3 = document.querySelector<HTMLElement>(".section-three");
+      window.scrollTo({ top: s3 ? s3.offsetTop : window.innerHeight * 2, behavior });
     } else {
-      // On Hero: scroll to Section 2
-      const s2 = document.querySelector(".section-two");
-      if (s2) {
-        s2.scrollIntoView({ behavior, block: "start" });
-      } else {
-        window.scrollTo({ top: window.innerHeight, behavior });
-      }
+      const s2 = document.querySelector<HTMLElement>(".magazine-section-two-panel");
+      window.scrollTo({ top: s2 ? s2.offsetTop : window.innerHeight, behavior });
     }
   };
 

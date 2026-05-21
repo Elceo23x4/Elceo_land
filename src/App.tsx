@@ -153,6 +153,72 @@ function LandingPage() {
     };
   }, []);
 
+  // Section-by-section wheel scroll guard
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let locked = false;
+
+    function isInsideScrollable(target: EventTarget | null): boolean {
+      let el = target as HTMLElement | null;
+      while (el && el !== document.body) {
+        const style = window.getComputedStyle(el);
+        const canScrollY = /(auto|scroll)/.test(style.overflowY) && el.scrollHeight > el.clientHeight;
+        const canScrollX = /(auto|scroll)/.test(style.overflowX) && el.scrollWidth > el.clientWidth;
+        if (canScrollY || canScrollX) return true;
+        el = el.parentElement;
+      }
+      return false;
+    }
+
+    function getSections(): HTMLElement[] {
+      const s: HTMLElement[] = [];
+      if (heroPanelRef.current) s.push(heroPanelRef.current);
+      if (sectionTwoPanelRef.current) s.push(sectionTwoPanelRef.current);
+      const s3 = document.querySelector<HTMLElement>(".section-three");
+      if (s3) s.push(s3);
+      return s;
+    }
+
+    function getCurrentIndex(sections: HTMLElement[]): number {
+      const scrollY = window.scrollY;
+      let closest = 0;
+      let minDist = Infinity;
+      for (let i = 0; i < sections.length; i++) {
+        const dist = Math.abs(sections[i].offsetTop - scrollY);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      }
+      return closest;
+    }
+
+    function onWheel(e: WheelEvent) {
+      if (locked) { e.preventDefault(); return; }
+      if (isInsideScrollable(e.target)) return;
+      if (Math.abs(e.deltaY) < 18) return;
+
+      const sections = getSections();
+      if (sections.length < 2) return;
+
+      const current = getCurrentIndex(sections);
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const next = Math.max(0, Math.min(sections.length - 1, current + direction));
+
+      if (next === current) return;
+
+      e.preventDefault();
+      locked = true;
+
+      window.scrollTo({
+        top: sections[next].offsetTop,
+        behavior: prefersReduced ? "auto" : "smooth",
+      });
+
+      setTimeout(() => { locked = false; }, 950);
+    }
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <>
       <div className="landing-page">

@@ -159,13 +159,17 @@ export default function SectionThree() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const mediaSliderRef = useRef<HTMLDivElement>(null);
 
-  /* Responsive scale — width-fill */
+  /* Responsive scale — cover-fit (fills viewport completely) */
   useLayoutEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
     const updateScale = () => {
-      const s = window.innerWidth / 1920;
+      const s = Math.max(window.innerWidth / 1920, window.innerHeight / 1080);
+      const stageLeft = (window.innerWidth - 1920 * s) / 2;
+      const stageTop = (window.innerHeight - 1080 * s) / 2;
       stage.style.setProperty("--s3-scale", String(s));
+      stage.style.setProperty("--s3-left", `${stageLeft}px`);
+      stage.style.setProperty("--s3-top", `${stageTop}px`);
     };
     updateScale();
     window.addEventListener("resize", updateScale);
@@ -210,7 +214,7 @@ export default function SectionThree() {
 
   return (
     <section className="section-three">
-      <div className="section-three-stage" ref={stageRef} style={{ transform: "scale(var(--s3-scale, 1))" }}>
+      <div className="section-three-stage" ref={stageRef}>
 
         {/* Belt Divider */}
         <div className="s3-belt-divider">
