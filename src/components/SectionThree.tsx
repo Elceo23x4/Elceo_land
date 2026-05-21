@@ -159,12 +159,12 @@ export default function SectionThree() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const mediaSliderRef = useRef<HTMLDivElement>(null);
 
-  /* Responsive scale */
+  /* Responsive scale — width-fill */
   useLayoutEffect(() => {
     const stage = stageRef.current;
     if (!stage) return;
     const updateScale = () => {
-      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      const s = window.innerWidth / 1920;
       stage.style.setProperty("--s3-scale", String(s));
     };
     updateScale();
@@ -210,7 +210,7 @@ export default function SectionThree() {
 
   return (
     <section className="section-three">
-      <div className="section-three-stage" ref={stageRef} style={{ transform: "translateX(-50%) scale(var(--s3-scale, 1))" }}>
+      <div className="section-three-stage" ref={stageRef} style={{ transform: "scale(var(--s3-scale, 1))" }}>
 
         {/* Belt Divider */}
         <div className="s3-belt-divider">
@@ -293,7 +293,7 @@ export default function SectionThree() {
             <div className="s3-media-stack">
               {MEDIA_CARDS.map((card, idx) => (
                 <div
-                  className="s3-media-card"
+                  className={`s3-media-card${activeMediaIndex === idx ? " s3-media-card-current" : ""}`}
                   key={card.icon}
                   tabIndex={0}
                   onMouseEnter={() => scrollToMedia(idx)}

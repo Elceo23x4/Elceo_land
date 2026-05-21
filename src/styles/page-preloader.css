@@ -100,50 +100,7 @@
   box-shadow: 0 0 32px rgba(0,0,0,0.95), 0 0 80px rgba(0,0,0,0.8);
 }
 
-/* ── Gold emblem at center ────────────────────────────────── */
 
-.curtain-emblem {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 5;
-  width: 28px;
-  height: 28px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  border: 1px solid rgba(212,165,79,0.68);
-  box-shadow: 0 0 18px rgba(212,165,79,0.22), inset 0 0 8px rgba(212,165,79,0.12);
-  opacity: 0.76;
-}
-
-.curtain-emblem span {
-  position: absolute;
-  inset: 7px;
-  border: 1px solid rgba(184,135,58,0.7);
-  border-radius: 999px;
-}
-
-.curtain-emblem::before,
-.curtain-emblem::after {
-  content: "";
-  position: absolute;
-  background: rgba(212,165,79,0.72);
-}
-
-.curtain-emblem::before {
-  width: 1px;
-  height: 17px;
-  left: 50%;
-  top: 5px;
-  transform: translateX(-50%);
-}
-
-.curtain-emblem::after {
-  width: 17px;
-  height: 1px;
-  top: 50%;
-  left: 5px;
-  transform: translateY(-50%);
-}
 
 /* ── Center trading candlesticks SVG ──────────────────────── */
 
@@ -181,5 +138,4 @@
   .curtain-right { animation: none; }
   .curtain-panel { transition-duration: 0.01ms; }
   .curtain-center-shadow { transition-duration: 0.01ms; }
-  .curtain-emblem { transition-duration: 0.01ms; }
 }

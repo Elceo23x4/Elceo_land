@@ -1,7 +1,8 @@
-import { useState, useCallback, useLayoutEffect, useRef } from "react";
+import { useState, useCallback, useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import PagePreloader from "./components/PagePreloader";
+import MobileBlocker from "./components/MobileBlocker";
 import HeroSection from "./components/HeroSection";
 import SectionTwo from "./components/SectionTwo";
 import SectionThree from "./components/SectionThree";
@@ -14,7 +15,34 @@ import GoldCursor3D from "./components/GoldCursor3D";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function useIsSupportedViewport(minWidth = 768) {
+  const [supported, setSupported] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return window.innerWidth >= minWidth;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia(`(min-width: ${minWidth}px)`);
+    const update = () => setSupported(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, [minWidth]);
+
+  return supported;
+}
+
 export default function App() {
+  const isSupportedViewport = useIsSupportedViewport(768);
+
+  if (!isSupportedViewport) {
+    return <MobileBlocker />;
+  }
+
+  return <LandingPage />;
+}
+
+function LandingPage() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isPricingOpen, setIsPricingOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
@@ -79,7 +107,7 @@ export default function App() {
     };
   }, []);
 
-  // GSAP parallax on Section Two (recedes as Section Three enters)
+  // GSAP parallax on Section Two
   useLayoutEffect(() => {
     const s2Panel = sectionTwoPanelRef.current;
     const s2Motion = sectionTwoMotionRef.current;

@@ -180,7 +180,7 @@ export default function SectionTwo() {
   const vw = useViewportWidth();
 
   // Dynamic marquee width to span viewport edges
-  const marqueeWidth = vw / scale + 240;
+  const marqueeWidth = vw / scale + 800;
   const marqueeLeft = (1920 - marqueeWidth) / 2;
 
   return (
