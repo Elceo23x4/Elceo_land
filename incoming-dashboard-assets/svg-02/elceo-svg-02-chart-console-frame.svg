@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_02_reva_chart_console_frame" width="680" height="450" viewBox="0 0 680 450" fill="none" role="img" aria-label="ELCEO SVG-02 Rev-A blank chart console frame only">
+<defs>
+  <linearGradient id="svg02a_orange_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd18a" stop-opacity="0.92"/>
+    <stop offset="18%" stop-color="#ff9c2e" stop-opacity="0.92"/>
+    <stop offset="58%" stop-color="#ff6d0a" stop-opacity="0.72"/>
+    <stop offset="100%" stop-color="#6f2a04" stop-opacity="0.45"/>
+  </linearGradient>
+  <linearGradient id="svg02a_edge_horizontal" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#542000" stop-opacity="0.22"/>
+    <stop offset="13%" stop-color="#ff7f18" stop-opacity="0.72"/>
+    <stop offset="50%" stop-color="#ffb140" stop-opacity="0.90"/>
+    <stop offset="87%" stop-color="#ff7a18" stop-opacity="0.72"/>
+    <stop offset="100%" stop-color="#542000" stop-opacity="0.22"/>
+  </linearGradient>
+  <linearGradient id="svg02a_console_fill" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#0b0703" stop-opacity="0.96"/>
+    <stop offset="44%" stop-color="#030201" stop-opacity="0.98"/>
+    <stop offset="100%" stop-color="#090402" stop-opacity="0.96"/>
+  </linearGradient>
+  <radialGradient id="svg02a_corner_glow" cx="50%" cy="50%" r="60%">
+    <stop offset="0%" stop-color="#ff9d2d" stop-opacity="0.34"/>
+    <stop offset="56%" stop-color="#ff6d00" stop-opacity="0.12"/>
+    <stop offset="100%" stop-color="#ff6d00" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="svg02a_outer_shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.78"/>
+    <feDropShadow dx="0" dy="0" stdDeviation="5" flood-color="#ff6d00" flood-opacity="0.10"/>
+  </filter>
+  <filter id="svg02a_tight_glow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="1.35" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <style>
+    .svg02a-primary { fill:none; stroke:url(#svg02a_orange_edge); stroke-width:1.45; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-heavy { fill:none; stroke:#ff861b; stroke-width:3.2; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-medium { fill:none; stroke:#ff8a18; stroke-width:1.65; stroke-opacity:.64; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-fine { fill:none; stroke:#ff9d2d; stroke-width:.78; stroke-opacity:.34; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-hair { fill:none; stroke:#ff7a18; stroke-width:.45; stroke-opacity:.20; stroke-linejoin:round; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-footer-line { fill:none; stroke:#ff8a18; stroke-width:1.05; stroke-opacity:.54; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+    .svg02a-footer-divider { fill:none; stroke:#ff8a18; stroke-width:.75; stroke-opacity:.36; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+  </style>
+</defs>
+<g id="svg02a_blank_chart_console_frame" data-role="blank-chart-container">
+  <ellipse id="svg02a_console_shadow_aura" cx="340" cy="225" rx="355" ry="232" fill="#ff6d00" opacity="0.045"/>
+  <path id="svg02a_outer_beveled_body" d="M38 16 H618 L660 58 V394 L620 434 H38 L0 396 V58 Z" fill="url(#svg02a_console_fill)" fill-opacity="0.96" stroke="url(#svg02a_orange_edge)" stroke-width="1.35" filter="url(#svg02a_outer_shadow)"/>
+
+  <!-- Reference-like unequal corner weight: stronger bracket segments at the four corners. -->
+  <g id="svg02a_corner_thickness_system" filter="url(#svg02a_tight_glow)">
+    <path id="svg02a_corner_top_left_outer_heavy" d="M39 16 H124" class="svg02a-heavy" opacity="0.86"/>
+    <path id="svg02a_corner_top_left_diagonal_heavy" d="M2 58 L39 16" class="svg02a-heavy" opacity="0.72"/>
+    <path id="svg02a_corner_top_right_outer_heavy" d="M556 16 H618" class="svg02a-heavy" opacity="0.72"/>
+    <path id="svg02a_corner_top_right_diagonal_heavy" d="M618 16 L660 58" class="svg02a-heavy" opacity="0.68"/>
+    <path id="svg02a_corner_bottom_left_outer_heavy" d="M1 396 L38 434 H112" class="svg02a-heavy" opacity="0.70"/>
+    <path id="svg02a_corner_bottom_right_outer_heavy" d="M568 434 H620 L660 394" class="svg02a-heavy" opacity="0.74"/>
+  </g>
+
+  <path id="svg02a_outer_top_long_fine" d="M150 16 H530" class="svg02a-fine" opacity="0.50"/>
+  <path id="svg02a_outer_left_long_fine" d="M0 84 V362" class="svg02a-fine" opacity="0.34"/>
+  <path id="svg02a_outer_right_long_fine" d="M660 86 V356" class="svg02a-fine" opacity="0.36"/>
+  <path id="svg02a_outer_bottom_long_fine" d="M140 434 H542" class="svg02a-fine" opacity="0.32"/>
+
+  <path id="svg02a_inner_chart_viewport" d="M42 48 H619 L632 61 V352 L618 366 H43 L29 352 V62 Z" fill="#010101" fill-opacity="0.80" stroke="#ff8a18" stroke-width="0.82" stroke-opacity="0.42"/>
+  <path id="svg02a_inner_top_edge_strength" d="M51 50 H608" class="svg02a-medium" opacity="0.34"/>
+  <path id="svg02a_inner_left_edge_dim" d="M31 70 V344" class="svg02a-hair"/>
+  <path id="svg02a_inner_right_edge_dim" d="M630 74 V340" class="svg02a-hair"/>
+
+  <!-- Corner inset brackets, deliberately unequal like the reference. -->
+  <g id="svg02a_inset_corner_brackets">
+    <path id="svg02a_inset_corner_tl" d="M42 70 V53 H62" class="svg02a-medium" opacity="0.62"/>
+    <path id="svg02a_inset_corner_tr" d="M599 53 H619 V73" class="svg02a-medium" opacity="0.46"/>
+    <path id="svg02a_inset_corner_bl" d="M42 343 V364 H67" class="svg02a-medium" opacity="0.45"/>
+    <path id="svg02a_inset_corner_br" d="M595 364 H618 V341" class="svg02a-medium" opacity="0.56"/>
+  </g>
+</g>
+
+</svg>
