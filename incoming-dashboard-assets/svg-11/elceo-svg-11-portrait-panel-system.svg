@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="940" viewBox="0 0 1040 940" fill="none">
+<defs>
+
+<filter id="softOrangeGlow" x="-50%" y="-50%" width="200%" height="200%">
+  <feGaussianBlur stdDeviation="3.5" result="blur"/>
+  <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.38  0 0 0.05 0 0  0 0 0 0.72 0" result="glow"/>
+  <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<filter id="subtleOrangeGlow" x="-30%" y="-30%" width="160%" height="160%">
+  <feGaussianBlur stdDeviation="1.4" result="blur"/>
+  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<linearGradient id="panelFade" x1="0" x2="1" y1="0" y2="1">
+  <stop offset="0" stop-color="#050806" stop-opacity="0.96"/>
+  <stop offset="1" stop-color="#000000" stop-opacity="0.90"/>
+</linearGradient>
+<radialGradient id="ringWarm" cx="50%" cy="50%" r="50%">
+  <stop offset="0" stop-color="#ff8a00" stop-opacity="0.05"/>
+  <stop offset="0.62" stop-color="#ff8a00" stop-opacity="0.11"/>
+  <stop offset="1" stop-color="#ff8a00" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="navTabFill" x1="0" x2="1">
+  <stop offset="0" stop-color="#150800" stop-opacity="0.98"/>
+  <stop offset="1" stop-color="#030201" stop-opacity="0.92"/>
+</linearGradient>
+
+
+</defs>
+<rect id="import_bounds" x="0" y="0" width="100%" height="100%" fill="#000" opacity="0.001"/>
+<path id="compact_panel_left_top_fill" d="M 28.00 10.00 L 492.00 10.00 L 510.00 28.00 L 510.00 262.00 L 492.00 280.00 L 28.00 280.00 L 10.00 262.00 L 10.00 28.00 Z" fill="url(#panelFade)" opacity="0.92"/>
+<path id="compact_panel_left_top_outer_low" d="M 28.00 10.00 L 492.00 10.00 L 510.00 28.00 L 510.00 262.00 L 492.00 280.00 L 28.00 280.00 L 10.00 262.00 L 10.00 28.00 Z" stroke="#7a3f11" stroke-width="1.2" opacity="0.7"/>
+<path id="compact_panel_left_top_corner_tl" d="M28,10 H125 M10,28 V122" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_left_top_corner_tr" d="M395,10 H492 M510,28 V122" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_left_top_corner_bl" d="M28,280 H125 M10,262 V168" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<path id="compact_panel_left_top_corner_br" d="M395,280 H492 M510,262 V168" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<line id="compact_panel_left_top_top_inner_rule" x1="52" y1="58" x2="468" y2="58" stroke="#7a3f11" stroke-width="0.8" opacity="0.35"/>
+<line id="compact_panel_left_top_bottom_inner_left" x1="58" y1="250" x2="185" y2="250" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<line id="compact_panel_left_top_bottom_inner_right" x1="335" y1="250" x2="462" y2="250" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<path id="compact_panel_left_top_badge_holder" d="M 36.00 27.00 L 52.00 27.00 L 60.00 35.00 L 60.00 51.00 L 52.00 59.00 L 36.00 59.00 L 28.00 51.00 L 28.00 35.00 Z" stroke="#ff8a00" stroke-width="1.5" opacity="0.95"/>
+<path id="compact_panel_right_top_fill" d="M 548.00 10.00 L 1012.00 10.00 L 1030.00 28.00 L 1030.00 262.00 L 1012.00 280.00 L 548.00 280.00 L 530.00 262.00 L 530.00 28.00 Z" fill="url(#panelFade)" opacity="0.92"/>
+<path id="compact_panel_right_top_outer_low" d="M 548.00 10.00 L 1012.00 10.00 L 1030.00 28.00 L 1030.00 262.00 L 1012.00 280.00 L 548.00 280.00 L 530.00 262.00 L 530.00 28.00 Z" stroke="#7a3f11" stroke-width="1.2" opacity="0.7"/>
+<path id="compact_panel_right_top_corner_tl" d="M548,10 H645 M530,28 V122" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_right_top_corner_tr" d="M915,10 H1012 M1030,28 V122" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_right_top_corner_bl" d="M548,280 H645 M530,262 V168" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<path id="compact_panel_right_top_corner_br" d="M915,280 H1012 M1030,262 V168" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<line id="compact_panel_right_top_top_inner_rule" x1="572" y1="58" x2="988" y2="58" stroke="#7a3f11" stroke-width="0.8" opacity="0.35"/>
+<line id="compact_panel_right_top_bottom_inner_left" x1="578" y1="250" x2="705" y2="250" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<line id="compact_panel_right_top_bottom_inner_right" x1="855" y1="250" x2="982" y2="250" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<path id="compact_panel_right_top_badge_holder" d="M 556.00 27.00 L 572.00 27.00 L 580.00 35.00 L 580.00 51.00 L 572.00 59.00 L 556.00 59.00 L 548.00 51.00 L 548.00 35.00 Z" stroke="#ff8a00" stroke-width="1.5" opacity="0.95"/>
+<path id="compact_panel_left_bottom_fill" d="M 28.00 305.00 L 492.00 305.00 L 510.00 323.00 L 510.00 582.00 L 492.00 600.00 L 28.00 600.00 L 10.00 582.00 L 10.00 323.00 Z" fill="url(#panelFade)" opacity="0.92"/>
+<path id="compact_panel_left_bottom_outer_low" d="M 28.00 305.00 L 492.00 305.00 L 510.00 323.00 L 510.00 582.00 L 492.00 600.00 L 28.00 600.00 L 10.00 582.00 L 10.00 323.00 Z" stroke="#7a3f11" stroke-width="1.2" opacity="0.7"/>
+<path id="compact_panel_left_bottom_corner_tl" d="M28,305 H125 M10,323 V417" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_left_bottom_corner_tr" d="M395,305 H492 M510,323 V417" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_left_bottom_corner_bl" d="M28,600 H125 M10,582 V488" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<path id="compact_panel_left_bottom_corner_br" d="M395,600 H492 M510,582 V488" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<line id="compact_panel_left_bottom_top_inner_rule" x1="52" y1="353" x2="468" y2="353" stroke="#7a3f11" stroke-width="0.8" opacity="0.35"/>
+<line id="compact_panel_left_bottom_bottom_inner_left" x1="58" y1="570" x2="185" y2="570" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<line id="compact_panel_left_bottom_bottom_inner_right" x1="335" y1="570" x2="462" y2="570" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<path id="compact_panel_left_bottom_badge_holder" d="M 36.00 322.00 L 52.00 322.00 L 60.00 330.00 L 60.00 346.00 L 52.00 354.00 L 36.00 354.00 L 28.00 346.00 L 28.00 330.00 Z" stroke="#ff8a00" stroke-width="1.5" opacity="0.95"/>
+<path id="compact_panel_right_bottom_fill" d="M 548.00 305.00 L 1012.00 305.00 L 1030.00 323.00 L 1030.00 582.00 L 1012.00 600.00 L 548.00 600.00 L 530.00 582.00 L 530.00 323.00 Z" fill="url(#panelFade)" opacity="0.92"/>
+<path id="compact_panel_right_bottom_outer_low" d="M 548.00 305.00 L 1012.00 305.00 L 1030.00 323.00 L 1030.00 582.00 L 1012.00 600.00 L 548.00 600.00 L 530.00 582.00 L 530.00 323.00 Z" stroke="#7a3f11" stroke-width="1.2" opacity="0.7"/>
+<path id="compact_panel_right_bottom_corner_tl" d="M548,305 H645 M530,323 V417" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_right_bottom_corner_tr" d="M915,305 H1012 M1030,323 V417" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_right_bottom_corner_bl" d="M548,600 H645 M530,582 V488" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<path id="compact_panel_right_bottom_corner_br" d="M915,600 H1012 M1030,582 V488" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<line id="compact_panel_right_bottom_top_inner_rule" x1="572" y1="353" x2="988" y2="353" stroke="#7a3f11" stroke-width="0.8" opacity="0.35"/>
+<line id="compact_panel_right_bottom_bottom_inner_left" x1="578" y1="570" x2="705" y2="570" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<line id="compact_panel_right_bottom_bottom_inner_right" x1="855" y1="570" x2="982" y2="570" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<path id="compact_panel_right_bottom_badge_holder" d="M 556.00 322.00 L 572.00 322.00 L 580.00 330.00 L 580.00 346.00 L 572.00 354.00 L 556.00 354.00 L 548.00 346.00 L 548.00 330.00 Z" stroke="#ff8a00" stroke-width="1.5" opacity="0.95"/>
+<path id="compact_panel_wide_market_strip_fill" d="M 32.00 630.00 L 1008.00 630.00 L 1030.00 652.00 L 1030.00 898.00 L 1008.00 920.00 L 32.00 920.00 L 10.00 898.00 L 10.00 652.00 Z" fill="url(#panelFade)" opacity="0.92"/>
+<path id="compact_panel_wide_market_strip_outer_low" d="M 32.00 630.00 L 1008.00 630.00 L 1030.00 652.00 L 1030.00 898.00 L 1008.00 920.00 L 32.00 920.00 L 10.00 898.00 L 10.00 652.00 Z" stroke="#7a3f11" stroke-width="1.2" opacity="0.7"/>
+<path id="compact_panel_wide_market_strip_corner_tl" d="M32,630 H125 M10,652 V742" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_wide_market_strip_corner_tr" d="M915,630 H1008 M1030,652 V742" stroke="#ff8a00" stroke-width="2.3" stroke-linecap="round" filter="url(#subtleOrangeGlow)"/>
+<path id="compact_panel_wide_market_strip_corner_bl" d="M32,920 H125 M10,898 V808" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<path id="compact_panel_wide_market_strip_corner_br" d="M915,920 H1008 M1030,898 V808" stroke="#ff8a00" stroke-width="1.8" stroke-linecap="round" filter="url(#subtleOrangeGlow)" opacity="0.9"/>
+<line id="compact_panel_wide_market_strip_top_inner_rule" x1="52" y1="678" x2="988" y2="678" stroke="#7a3f11" stroke-width="0.8" opacity="0.35"/>
+<line id="compact_panel_wide_market_strip_bottom_inner_left" x1="58" y1="890" x2="185" y2="890" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<line id="compact_panel_wide_market_strip_bottom_inner_right" x1="855" y1="890" x2="982" y2="890" stroke="#ff8a00" stroke-width="0.8" opacity="0.32"/>
+<path id="compact_panel_wide_market_strip_badge_holder" d="M 36.00 647.00 L 52.00 647.00 L 60.00 655.00 L 60.00 671.00 L 52.00 679.00 L 36.00 679.00 L 28.00 671.00 L 28.00 655.00 Z" stroke="#ff8a00" stroke-width="1.5" opacity="0.95"/>
+<line id="wide_strip_subdivider_1" x1="180" y1="675" x2="180" y2="875" stroke="#7a3f11" stroke-width="1" opacity="0.45"/>
+<line id="wide_strip_subdivider_2" x1="350" y1="675" x2="350" y2="875" stroke="#7a3f11" stroke-width="1" opacity="0.45"/>
+<line id="wide_strip_subdivider_3" x1="520" y1="675" x2="520" y2="875" stroke="#7a3f11" stroke-width="1" opacity="0.45"/>
+<line id="wide_strip_subdivider_4" x1="690" y1="675" x2="690" y2="875" stroke="#7a3f11" stroke-width="1" opacity="0.45"/>
+<line id="wide_strip_subdivider_5" x1="860" y1="675" x2="860" y2="875" stroke="#7a3f11" stroke-width="1" opacity="0.45"/>
+</svg>

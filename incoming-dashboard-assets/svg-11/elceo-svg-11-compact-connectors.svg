@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="620" viewBox="0 0 1000 620" fill="none">
+<defs>
+
+<filter id="softOrangeGlow" x="-50%" y="-50%" width="200%" height="200%">
+  <feGaussianBlur stdDeviation="3.5" result="blur"/>
+  <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.38  0 0 0.05 0 0  0 0 0 0.72 0" result="glow"/>
+  <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<filter id="subtleOrangeGlow" x="-30%" y="-30%" width="160%" height="160%">
+  <feGaussianBlur stdDeviation="1.4" result="blur"/>
+  <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<linearGradient id="panelFade" x1="0" x2="1" y1="0" y2="1">
+  <stop offset="0" stop-color="#050806" stop-opacity="0.96"/>
+  <stop offset="1" stop-color="#000000" stop-opacity="0.90"/>
+</linearGradient>
+<radialGradient id="ringWarm" cx="50%" cy="50%" r="50%">
+  <stop offset="0" stop-color="#ff8a00" stop-opacity="0.05"/>
+  <stop offset="0.62" stop-color="#ff8a00" stop-opacity="0.11"/>
+  <stop offset="1" stop-color="#ff8a00" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="navTabFill" x1="0" x2="1">
+  <stop offset="0" stop-color="#150800" stop-opacity="0.98"/>
+  <stop offset="1" stop-color="#030201" stop-opacity="0.92"/>
+</linearGradient>
+
+
+</defs>
+<rect id="import_bounds" x="0" y="0" width="100%" height="100%" fill="#000" opacity="0.001"/>
+<path id="compact_top_long_connector_left" d="M110 72 H360 L390 90 H470" stroke="#ff8a00" stroke-width="1.2" opacity="0.76"/>
+<path id="compact_top_long_connector_right" d="M890 72 H640 L610 90 H530" stroke="#ff8a00" stroke-width="1.2" opacity="0.76"/>
+<circle id="compact_top_connector_node_110" cx="110" cy="72" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<circle id="compact_top_connector_node_890" cx="890" cy="72" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<circle id="compact_top_connector_node_500" cx="500" cy="72" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<path id="compact_bottom_long_connector_left" d="M110 548 H360 L390 530 H470" stroke="#ff8a00" stroke-width="1.2" opacity="0.76"/>
+<path id="compact_bottom_long_connector_right" d="M890 548 H640 L610 530 H530" stroke="#ff8a00" stroke-width="1.2" opacity="0.76"/>
+<circle id="compact_bottom_connector_node_110" cx="110" cy="548" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<circle id="compact_bottom_connector_node_890" cx="890" cy="548" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<circle id="compact_bottom_connector_node_500" cx="500" cy="548" r="6" stroke="#ff8a00" stroke-width="1.6" opacity="0.85"/>
+<path id="compact_connector_micro_diamond_1" d="M60 303 L67 310 L60 317 L53 310 Z" stroke="#ff8a00" stroke-width="1.3" opacity="0.84"/>
+<path id="compact_connector_micro_diamond_2" d="M940 303 L947 310 L940 317 L933 310 Z" stroke="#ff8a00" stroke-width="1.3" opacity="0.84"/>
+<path id="compact_connector_micro_diamond_3" d="M500 29 L507 36 L500 43 L493 36 Z" stroke="#ff8a00" stroke-width="1.3" opacity="0.84"/>
+<path id="compact_connector_micro_diamond_4" d="M500 577 L507 584 L500 591 L493 584 Z" stroke="#ff8a00" stroke-width="1.3" opacity="0.84"/>
+</svg>
