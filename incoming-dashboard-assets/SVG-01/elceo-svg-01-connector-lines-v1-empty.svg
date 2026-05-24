@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_01_approved_connector_lines_v1_empty" width="1000" height="720" viewBox="0 0 1000 720" fill="none" role="img" aria-label="ELCEO approved connector lines from SVG-01 v1 with labels removed"><defs>
+  <linearGradient id="elceo_orange_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd07a" stop-opacity="0.98"/>
+    <stop offset="24%" stop-color="#ff9b2f" stop-opacity="0.95"/>
+    <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.85"/>
+    <stop offset="100%" stop-color="#733000" stop-opacity="0.65"/>
+  </linearGradient>
+  <linearGradient id="elceo_dim_orange_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff8a18" stop-opacity="0"/>
+    <stop offset="14%" stop-color="#ff8a18" stop-opacity="0.55"/>
+    <stop offset="50%" stop-color="#ff8a18" stop-opacity="0.95"/>
+    <stop offset="86%" stop-color="#ff8a18" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#ff8a18" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="elceo_node_grad">
+    <stop offset="0%" stop-color="#fff0b8" stop-opacity="1"/>
+    <stop offset="35%" stop-color="#ff9b2f" stop-opacity=".98"/>
+    <stop offset="72%" stop-color="#ff6a00" stop-opacity=".28"/>
+    <stop offset="100%" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="elceo_orange_glow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="2.2" result="blur1"/>
+    <feGaussianBlur stdDeviation="7" in="SourceGraphic" result="blur2"/>
+    <feColorMatrix in="blur2" type="matrix" values="1 0 0 0 1  0 .42 0 0 .35  0 0 .05 0 0  0 0 0 .7 0" result="glow"/>
+    <feMerge>
+      <feMergeNode in="glow"/>
+      <feMergeNode in="blur1"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="elceo_soft_haze" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="16"/>
+  </filter>
+  <filter id="elceo_tight_glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="1.4" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <pattern id="elceo_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#ff7a11" stroke-width=".45" opacity=".10"/>
+  </pattern>
+  <style>
+    :root {
+      --elceo-orange: #ff8a18;
+      --elceo-amber: #ffbf4a;
+      --elceo-dim: #8f3f0a;
+      --elceo-black: #020100;
+      --elceo-green: #22ff74;
+      --elceo-red: #ff3b32;
+    }
+    .hud-main { fill: none; stroke: url(#elceo_orange_grad); stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+    .hud-thin { fill: none; stroke: #ff8a18; stroke-width: .75; opacity: .58; vector-effect: non-scaling-stroke; }
+    .hud-faint { fill: none; stroke: #ff8a18; stroke-width: .55; opacity: .22; vector-effect: non-scaling-stroke; }
+    .hud-bold { fill: none; stroke: #ff8a18; stroke-width: 2.3; opacity: .94; vector-effect: non-scaling-stroke; }
+    .hud-fill-dark { fill: rgba(2, 1, 0, .60); stroke: #ff8a18; stroke-width: 1.1; opacity: .9; vector-effect: non-scaling-stroke; }
+    .hud-text { font-family: 'Share Tech Mono','IBM Plex Mono','JetBrains Mono',monospace; font-weight: 700; letter-spacing: 1.2px; fill: #ff9b2f; }
+    .hud-text-small { font-family: 'Share Tech Mono','IBM Plex Mono','JetBrains Mono',monospace; font-weight: 700; letter-spacing: 1px; fill: #ff9b2f; font-size: 11px; }
+    .hud-node { fill: url(#elceo_node_grad); filter: url(#elceo_orange_glow); }
+    .anim-rotate-slow { transform-origin: center; }
+    .anim-pulse { transform-origin: center; }
+  </style>
+</defs>
+
+<g id="connector_line_system" data-layer="connector lines and labels">
+<path id="connector_outer_perimeter" d="M 53 45 L 947 45 L 975 73 L 975 627 L 947 655 L 53 655 L 25 627 L 25 73 Z" class="hud-thin" opacity=".50"/>
+<g id="connector_liquidity_scan" filter="url(#elceo_orange_glow)">
+<path id="liquidity_scan_line" d="M 92 132 L 250 132 L 318 229" fill="none" stroke="#ff8a18" stroke-width="1.6" opacity=".86" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="liquidity_scan_ghost_line" d="M 104 148 L 250 148 L 318 229" fill="none" stroke="#ff8a18" stroke-width=".65" opacity=".25" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="liquidity_scan_label_plate" d="M 112 108 L 246 108 L 256 118 L 256 132 L 246 142 L 112 142 L 102 132 L 102 118 Z" fill="#070301" stroke="#ff8a18" stroke-width=".9" opacity=".7"/>
+<circle id="liquidity_scan_label_icon_outer" cx="122" cy="125" r="10" fill="none" stroke="#ff8a18" stroke-width="1.1" opacity=".86"/>
+<circle id="liquidity_scan_label_icon_inner" cx="122" cy="125" r="3.2" fill="#ff8a18" opacity=".9"/>
+<circle id="liquidity_scan_terminal_glow" cx="92" cy="132" r="22.4" class="hud-node" opacity=".75"/>
+<circle id="liquidity_scan_terminal" cx="92" cy="132" r="8" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="liquidity_scan_joint_glow" cx="250" cy="132" r="14.0" class="hud-node" opacity=".75"/>
+<circle id="liquidity_scan_joint" cx="250" cy="132" r="5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="liquidity_scan_ring_anchor_glow" cx="318" cy="229" r="18.2" class="hud-node" opacity=".75"/>
+<circle id="liquidity_scan_ring_anchor" cx="318" cy="229" r="6.5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+</g>
+<g id="connector_order_flow" filter="url(#elceo_orange_glow)">
+<path id="order_flow_line" d="M 908 132 L 750 132 L 682 229" fill="none" stroke="#ff8a18" stroke-width="1.6" opacity=".86" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="order_flow_ghost_line" d="M 896 148 L 750 148 L 682 229" fill="none" stroke="#ff8a18" stroke-width=".65" opacity=".25" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="order_flow_label_plate" d="M 786 108 L 888 108 L 898 118 L 898 132 L 888 142 L 786 142 L 776 132 L 776 118 Z" fill="#070301" stroke="#ff8a18" stroke-width=".9" opacity=".7"/>
+<circle id="order_flow_label_icon_outer" cx="796" cy="125" r="10" fill="none" stroke="#ff8a18" stroke-width="1.1" opacity=".86"/>
+<circle id="order_flow_label_icon_inner" cx="796" cy="125" r="3.2" fill="#ff8a18" opacity=".9"/>
+<circle id="order_flow_terminal_glow" cx="908" cy="132" r="22.4" class="hud-node" opacity=".75"/>
+<circle id="order_flow_terminal" cx="908" cy="132" r="8" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="order_flow_joint_glow" cx="750" cy="132" r="14.0" class="hud-node" opacity=".75"/>
+<circle id="order_flow_joint" cx="750" cy="132" r="5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="order_flow_ring_anchor_glow" cx="682" cy="229" r="18.2" class="hud-node" opacity=".75"/>
+<circle id="order_flow_ring_anchor" cx="682" cy="229" r="6.5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+</g>
+<g id="connector_sentiment_feed" filter="url(#elceo_orange_glow)">
+<path id="sentiment_feed_line" d="M 92 590 L 250 590 L 318 491" fill="none" stroke="#ff8a18" stroke-width="1.6" opacity=".86" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="sentiment_feed_ghost_line" d="M 104 574 L 250 574 L 318 491" fill="none" stroke="#ff8a18" stroke-width=".65" opacity=".25" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="sentiment_feed_label_plate" d="M 112 566 L 246 566 L 256 576 L 256 590 L 246 600 L 112 600 L 102 590 L 102 576 Z" fill="#070301" stroke="#ff8a18" stroke-width=".9" opacity=".7"/>
+<circle id="sentiment_feed_label_icon_outer" cx="122" cy="583" r="10" fill="none" stroke="#ff8a18" stroke-width="1.1" opacity=".86"/>
+<circle id="sentiment_feed_label_icon_inner" cx="122" cy="583" r="3.2" fill="#ff8a18" opacity=".9"/>
+<circle id="sentiment_feed_terminal_glow" cx="92" cy="590" r="22.4" class="hud-node" opacity=".75"/>
+<circle id="sentiment_feed_terminal" cx="92" cy="590" r="8" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="sentiment_feed_joint_glow" cx="250" cy="590" r="14.0" class="hud-node" opacity=".75"/>
+<circle id="sentiment_feed_joint" cx="250" cy="590" r="5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="sentiment_feed_ring_anchor_glow" cx="318" cy="491" r="18.2" class="hud-node" opacity=".75"/>
+<circle id="sentiment_feed_ring_anchor" cx="318" cy="491" r="6.5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+</g>
+<g id="connector_news_impact" filter="url(#elceo_orange_glow)">
+<path id="news_impact_line" d="M 908 590 L 750 590 L 682 491" fill="none" stroke="#ff8a18" stroke-width="1.6" opacity=".86" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="news_impact_ghost_line" d="M 896 574 L 750 574 L 682 491" fill="none" stroke="#ff8a18" stroke-width=".65" opacity=".25" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="news_impact_label_plate" d="M 778 566 L 888 566 L 898 576 L 898 590 L 888 600 L 778 600 L 768 590 L 768 576 Z" fill="#070301" stroke="#ff8a18" stroke-width=".9" opacity=".7"/>
+<circle id="news_impact_label_icon_outer" cx="788" cy="583" r="10" fill="none" stroke="#ff8a18" stroke-width="1.1" opacity=".86"/>
+<circle id="news_impact_label_icon_inner" cx="788" cy="583" r="3.2" fill="#ff8a18" opacity=".9"/>
+<circle id="news_impact_terminal_glow" cx="908" cy="590" r="22.4" class="hud-node" opacity=".75"/>
+<circle id="news_impact_terminal" cx="908" cy="590" r="8" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="news_impact_joint_glow" cx="750" cy="590" r="14.0" class="hud-node" opacity=".75"/>
+<circle id="news_impact_joint" cx="750" cy="590" r="5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+<circle id="news_impact_ring_anchor_glow" cx="682" cy="491" r="18.2" class="hud-node" opacity=".75"/>
+<circle id="news_impact_ring_anchor" cx="682" cy="491" r="6.5" fill="#090301" stroke="#ff8a18" stroke-width="1.2" opacity=".95"/>
+</g>
+<line id="center_horizontal_energy_360" x1="0" y1="360" x2="1000" y2="360" stroke="url(#elceo_dim_orange_grad)" stroke-width="1.4" opacity="0.72" filter="url(#elceo_orange_glow)"/>
+<line id="center_horizontal_energy_355" x1="0" y1="355" x2="1000" y2="355" stroke="url(#elceo_dim_orange_grad)" stroke-width="0.8" opacity="0.2" filter="url(#elceo_orange_glow)"/>
+<line id="center_horizontal_energy_365" x1="0" y1="365" x2="1000" y2="365" stroke="url(#elceo_dim_orange_grad)" stroke-width="0.8" opacity="0.2" filter="url(#elceo_orange_glow)"/>
+<g id="connector_diamond_markers">
+<path id="diamond_marker_00" d="M 500 42 L 508 50 L 500 58 L 492 50 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_00" cx="500" cy="50" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_01" d="M 500 662 L 508 670 L 500 678 L 492 670 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_01" cx="500" cy="670" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_02" d="M 72 352 L 80 360 L 72 368 L 64 360 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_02" cx="72" cy="360" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_03" d="M 928 352 L 936 360 L 928 368 L 920 360 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_03" cx="928" cy="360" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_04" d="M 315 124 L 323 132 L 315 140 L 307 132 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_04" cx="315" cy="132" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_05" d="M 685 124 L 693 132 L 685 140 L 677 132 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_05" cx="685" cy="132" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_06" d="M 315 582 L 323 590 L 315 598 L 307 590 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_06" cx="315" cy="590" r="2.4" fill="#ffbf4a"/>
+<path id="diamond_marker_07" d="M 685 582 L 693 590 L 685 598 L 677 590 Z" fill="#090301" stroke="#ff8a18" stroke-width="1.1" filter="url(#elceo_orange_glow)"/>
+<circle id="diamond_marker_core_07" cx="685" cy="590" r="2.4" fill="#ffbf4a"/>
+</g>
+</g></svg>
