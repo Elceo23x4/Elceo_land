@@ -1,4 +1,4 @@
-import { Route, Routes } from "../lib/router";
+import { Route, Routes } from "react-router-dom";
 import LandingExperience from "../landing/LandingExperience";
 import DashboardApp from "../dashboard/DashboardApp";
 import NotFound from "./NotFound";
