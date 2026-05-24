@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="600" viewBox="0 0 760 600" fill="none">
+
+    <defs>
+      <filter id="elceo_soft_orange_glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="2.2" result="blur"/>
+        <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.35  0 0 0.08 0 0.02  0 0 0 0.72 0" result="glow"/>
+        <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="elceo_micro_glow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="1.1" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <linearGradient id="elceo_panel_fade" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#0a0704" stop-opacity="0.96"/>
+        <stop offset="0.55" stop-color="#020202" stop-opacity="0.92"/>
+        <stop offset="1" stop-color="#130804" stop-opacity="0.86"/>
+      </linearGradient>
+      <radialGradient id="elceo_icon_core" cx="50%" cy="50%" r="62%">
+        <stop offset="0" stop-color="#ffb34a" stop-opacity="0.16"/>
+        <stop offset="0.55" stop-color="#ff8a12" stop-opacity="0.055"/>
+        <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+<rect id="display_safe_bounds" x="0" y="0" width="760" height="600" fill="#000" opacity="0.001"/>
+<g id="evidence_icons_display_safe" transform="translate(20,30)"><g id="evidence_icon_macro" data-role="macro_evidence_icon">
+    
+    <g id="macro_badge">
+      <path id="macro_badge_outer_octagon" d="M 33 20 H 93 L 106 33 V 93 L 93 106 H 33 L 20 93 V 33 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="macro_badge_inner_ring" cx="63.0" cy="63.0" r="26.66" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="macro_badge_core_dot" cx="63.0" cy="63.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <circle cx="63.0" cy="63.0" r="17" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.3" stroke-opacity="0.85"/>
+    <path id="macro_wave" d="M 53.0 69.0 C 61.0 62.0, 67.0 64.0, 73.0 56.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.4" stroke-opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="macro_latitudes" d="M 52.0 54.0 H 74.0 M 52.0 72.0 H 74.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.58" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="macro_longitudes" d="M 63.0 46.0 C 55.0 58.0, 55.0 68.0, 63.0 80.0 M 63.0 46.0 C 71.0 58.0, 71.0 68.0, 63.0 80.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.52" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_icon_technical" data-role="technical_evidence_icon">
+    
+    <g id="technical_badge">
+      <path id="technical_badge_outer_octagon" d="M 171 20 H 231 L 244 33 V 93 L 231 106 H 171 L 158 93 V 33 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="technical_badge_inner_ring" cx="201.0" cy="63.0" r="26.66" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="technical_badge_core_dot" cx="201.0" cy="63.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <polygon id="technical_compass_star" points="201.0,45.0 205.9,58.1 219.0,63.0 205.9,67.9 201.0,81.0 196.1,67.9 183.0,63.0 196.1,58.1" fill="none" stroke="#ffb23a" stroke-width="1.4" stroke-opacity="0.9"/>
+    <path id="technical_structure_line" d="M 187.0 73.0 L 196.0 64.0 L 203.0 68.0 L 215.0 54.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.5" stroke-opacity="0.78" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle id="technical_p1" cx="187.0" cy="73.0" r="2" fill="#22e46f" fill-opacity="0.7" stroke="#22e46f" stroke-width="1" stroke-opacity="1"/>
+    <circle id="technical_p2" cx="215.0" cy="54.0" r="2" fill="#22e46f" fill-opacity="0.7" stroke="#22e46f" stroke-width="1" stroke-opacity="1"/>
+    </g><g id="evidence_icon_event" data-role="event_evidence_icon">
+    
+    <g id="event_badge">
+      <path id="event_badge_outer_octagon" d="M 309 20 H 369 L 382 33 V 93 L 369 106 H 309 L 296 93 V 33 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="event_badge_inner_ring" cx="339.0" cy="63.0" r="26.66" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="event_badge_core_dot" cx="339.0" cy="63.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <rect id="event_calendar_frame" x="324.0" y="49.0" width="30" height="28" rx="3" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.35" stroke-opacity="0.9"/>
+    <line id="event_calendar_divider" x1="324.0" y1="57.0" x2="354.0" y2="57.0" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.65" stroke-linecap="round"/>
+    <line id="event_calendar_pin_left" x1="331.0" y1="45.0" x2="331.0" y2="53.0" stroke="#ffb23a" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round"/>
+    <line id="event_calendar_pin_right" x1="347.0" y1="45.0" x2="347.0" y2="53.0" stroke="#ffb23a" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round"/>
+    <path id="event_check_signal" d="M 334.0 68.0 L 338.0 72.0 L 347.0 61.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.6" stroke-opacity="0.82" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_icon_sentiment" data-role="sentiment_positioning_icon">
+    
+    <g id="sentiment_badge">
+      <path id="sentiment_badge_outer_octagon" d="M 447 20 H 507 L 520 33 V 93 L 507 106 H 447 L 434 93 V 33 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="sentiment_badge_inner_ring" cx="477.0" cy="63.0" r="26.66" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="sentiment_badge_core_dot" cx="477.0" cy="63.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <circle cx="477.0" cy="63.0" r="18" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.1" stroke-opacity="0.65"/>
+    <circle cx="477.0" cy="63.0" r="9" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.55"/>
+    <path id="sentiment_axis" d="M 477.0 42.0 V 50.0 M 477.0 76.0 V 84.0 M 456.0 63.0 H 464.0 M 490.0 63.0 H 498.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.2" stroke-opacity="0.78" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sentiment_flow" d="M 465.0 70.0 C 471.0 56.0, 482.0 75.0, 490.0 58.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.45" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_icon_risk" data-role="volatility_risk_icon">
+    
+    <g id="risk_badge">
+      <path id="risk_badge_outer_octagon" d="M 585 20 H 645 L 658 33 V 93 L 645 106 H 585 L 572 93 V 33 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="risk_badge_inner_ring" cx="615.0" cy="63.0" r="26.66" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="risk_badge_core_dot" cx="615.0" cy="63.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <path id="risk_triangle" d="M 615.0 43.0 L 633.0 74.0 H 597.0 Z" fill="#3d0806" fill-opacity="0.18" stroke="#ff3e3e" stroke-width="1.5" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line id="risk_alert_stem" x1="615.0" y1="55.0" x2="615.0" y2="66.0" stroke="#ff3e3e" stroke-width="1.8" stroke-opacity="0.85" stroke-linecap="round"/>
+    <circle id="risk_alert_dot" cx="615.0" cy="72.0" r="2.2" fill="#ff3e3e" fill-opacity="0.8" stroke="#ff3e3e" stroke-width="1" stroke-opacity="1"/>
+    <path id="risk_lateral_ticks" d="M 592.0 63.0 H 598.0 M 632.0 63.0 H 638.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.55" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_rows_preview" transform="translate(10,140)"><g id="evidence_row_1"><path id="evidence_row_1_divider" d="M 86 70 H 532" stroke="#3b210c" stroke-width="1" stroke-opacity="0.65"/><g id="evidence_icon_macro" data-role="macro_evidence_icon">
+    
+    <g id="macro_badge">
+      <path id="macro_badge_outer_octagon" d="M 21 7 H 59 L 72 20 V 58 L 59 71 H 21 L 8 58 V 20 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="macro_badge_inner_ring" cx="40.0" cy="39.0" r="19.84" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="macro_badge_core_dot" cx="40.0" cy="39.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <circle cx="40.0" cy="39.0" r="17" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.3" stroke-opacity="0.85"/>
+    <path id="macro_wave" d="M 30.0 45.0 C 38.0 38.0, 44.0 40.0, 50.0 32.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.4" stroke-opacity="0.95" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="macro_latitudes" d="M 29.0 30.0 H 51.0 M 29.0 48.0 H 51.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.58" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="macro_longitudes" d="M 40.0 22.0 C 32.0 34.0, 32.0 44.0, 40.0 56.0 M 40.0 22.0 C 48.0 34.0, 48.0 44.0, 40.0 56.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.52" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_row_1_signal_meter"><rect id="evidence_row_1_meter_1" x="108" y="28" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_2" x="126" y="28" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_3" x="144" y="28" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_4" x="162" y="28" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_5" x="180" y="28" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_6" x="198" y="28" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_7" x="216" y="28" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_1_meter_8" x="234" y="28" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/></g><g id="evidence_row_1_score_ring"><circle cx="568" cy="38" r="24" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="1.3" stroke-opacity="0.68"/><path id="evidence_row_1_score_arc" d="M 568.00 14.00 A 24 24 0 0 1 587.66 51.77" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.4" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="568" cy="38" r="16" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="0.8" stroke-opacity="0.26"/></g></g><g id="evidence_row_2"><path id="evidence_row_2_divider" d="M 86 152 H 532" stroke="#3b210c" stroke-width="1" stroke-opacity="0.65"/><g id="evidence_icon_technical" data-role="technical_evidence_icon">
+    
+    <g id="technical_badge">
+      <path id="technical_badge_outer_octagon" d="M 21 89 H 59 L 72 102 V 140 L 59 153 H 21 L 8 140 V 102 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="technical_badge_inner_ring" cx="40.0" cy="121.0" r="19.84" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="technical_badge_core_dot" cx="40.0" cy="121.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <polygon id="technical_compass_star" points="40.0,103.0 44.9,116.1 58.0,121.0 44.9,125.9 40.0,139.0 35.1,125.9 22.0,121.0 35.1,116.1" fill="none" stroke="#ffb23a" stroke-width="1.4" stroke-opacity="0.9"/>
+    <path id="technical_structure_line" d="M 26.0 131.0 L 35.0 122.0 L 42.0 126.0 L 54.0 112.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.5" stroke-opacity="0.78" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle id="technical_p1" cx="26.0" cy="131.0" r="2" fill="#22e46f" fill-opacity="0.7" stroke="#22e46f" stroke-width="1" stroke-opacity="1"/>
+    <circle id="technical_p2" cx="54.0" cy="112.0" r="2" fill="#22e46f" fill-opacity="0.7" stroke="#22e46f" stroke-width="1" stroke-opacity="1"/>
+    </g><g id="evidence_row_2_signal_meter"><rect id="evidence_row_2_meter_1" x="108" y="110" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_2" x="126" y="110" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_3" x="144" y="110" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_4" x="162" y="110" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_5" x="180" y="110" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_6" x="198" y="110" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_7" x="216" y="110" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_2_meter_8" x="234" y="110" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/></g><g id="evidence_row_2_score_ring"><circle cx="568" cy="120" r="24" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="1.3" stroke-opacity="0.68"/><path id="evidence_row_2_score_arc" d="M 568.00 96.00 A 24 24 0 0 1 581.07 140.13" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.4" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="568" cy="120" r="16" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="0.8" stroke-opacity="0.26"/></g></g><g id="evidence_row_3"><path id="evidence_row_3_divider" d="M 86 234 H 532" stroke="#3b210c" stroke-width="1" stroke-opacity="0.65"/><g id="evidence_icon_event" data-role="event_evidence_icon">
+    
+    <g id="event_badge">
+      <path id="event_badge_outer_octagon" d="M 21 171 H 59 L 72 184 V 222 L 59 235 H 21 L 8 222 V 184 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="event_badge_inner_ring" cx="40.0" cy="203.0" r="19.84" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="event_badge_core_dot" cx="40.0" cy="203.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <rect id="event_calendar_frame" x="25.0" y="189.0" width="30" height="28" rx="3" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.35" stroke-opacity="0.9"/>
+    <line id="event_calendar_divider" x1="25.0" y1="197.0" x2="55.0" y2="197.0" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.65" stroke-linecap="round"/>
+    <line id="event_calendar_pin_left" x1="32.0" y1="185.0" x2="32.0" y2="193.0" stroke="#ffb23a" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round"/>
+    <line id="event_calendar_pin_right" x1="48.0" y1="185.0" x2="48.0" y2="193.0" stroke="#ffb23a" stroke-width="1.8" stroke-opacity="0.8" stroke-linecap="round"/>
+    <path id="event_check_signal" d="M 35.0 208.0 L 39.0 212.0 L 48.0 201.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.6" stroke-opacity="0.82" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_row_3_signal_meter"><rect id="evidence_row_3_meter_1" x="108" y="192" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_2" x="126" y="192" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_3" x="144" y="192" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_4" x="162" y="192" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_5" x="180" y="192" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_6" x="198" y="192" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_7" x="216" y="192" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_3_meter_8" x="234" y="192" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/></g><g id="evidence_row_3_score_ring"><circle cx="568" cy="202" r="24" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="1.3" stroke-opacity="0.68"/><path id="evidence_row_3_score_arc" d="M 568.00 178.00 A 24 24 0 0 1 572.58 225.56" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.4" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="568" cy="202" r="16" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="0.8" stroke-opacity="0.26"/></g></g><g id="evidence_row_4"><path id="evidence_row_4_divider" d="M 86 316 H 532" stroke="#3b210c" stroke-width="1" stroke-opacity="0.65"/><g id="evidence_icon_sentiment" data-role="sentiment_positioning_icon">
+    
+    <g id="sentiment_badge">
+      <path id="sentiment_badge_outer_octagon" d="M 21 253 H 59 L 72 266 V 304 L 59 317 H 21 L 8 304 V 266 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="sentiment_badge_inner_ring" cx="40.0" cy="285.0" r="19.84" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="sentiment_badge_core_dot" cx="40.0" cy="285.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <circle cx="40.0" cy="285.0" r="18" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.1" stroke-opacity="0.65"/>
+    <circle cx="40.0" cy="285.0" r="9" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.55"/>
+    <path id="sentiment_axis" d="M 40.0 264.0 V 272.0 M 40.0 298.0 V 306.0 M 19.0 285.0 H 27.0 M 53.0 285.0 H 61.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.2" stroke-opacity="0.78" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="sentiment_flow" d="M 28.0 292.0 C 34.0 278.0, 45.0 297.0, 53.0 280.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.45" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_row_4_signal_meter"><rect id="evidence_row_4_meter_1" x="108" y="274" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_2" x="126" y="274" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_3" x="144" y="274" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_4" x="162" y="274" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_5" x="180" y="274" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_6" x="198" y="274" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_7" x="216" y="274" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_4_meter_8" x="234" y="274" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/></g><g id="evidence_row_4_score_ring"><circle cx="568" cy="284" r="24" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="1.3" stroke-opacity="0.68"/><path id="evidence_row_4_score_arc" d="M 568.00 260.00 A 24 24 0 1 1 563.42 307.56" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.4" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="568" cy="284" r="16" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="0.8" stroke-opacity="0.26"/></g></g><g id="evidence_row_5"><path id="evidence_row_5_divider" d="M 86 398 H 532" stroke="#3b210c" stroke-width="1" stroke-opacity="0.65"/><g id="evidence_icon_risk" data-role="volatility_risk_icon">
+    
+    <g id="risk_badge">
+      <path id="risk_badge_outer_octagon" d="M 21 335 H 59 L 72 348 V 386 L 59 399 H 21 L 8 386 V 348 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="risk_badge_inner_ring" cx="40.0" cy="367.0" r="19.84" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="risk_badge_core_dot" cx="40.0" cy="367.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <path id="risk_triangle" d="M 40.0 347.0 L 58.0 378.0 H 22.0 Z" fill="#3d0806" fill-opacity="0.18" stroke="#ff3e3e" stroke-width="1.5" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line id="risk_alert_stem" x1="40.0" y1="359.0" x2="40.0" y2="370.0" stroke="#ff3e3e" stroke-width="1.8" stroke-opacity="0.85" stroke-linecap="round"/>
+    <circle id="risk_alert_dot" cx="40.0" cy="376.0" r="2.2" fill="#ff3e3e" fill-opacity="0.8" stroke="#ff3e3e" stroke-width="1" stroke-opacity="1"/>
+    <path id="risk_lateral_ticks" d="M 17.0 367.0 H 23.0 M 57.0 367.0 H 63.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.0" stroke-opacity="0.55" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="evidence_row_5_signal_meter"><rect id="evidence_row_5_meter_1" x="108" y="356" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_2" x="126" y="356" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_3" x="144" y="356" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_4" x="162" y="356" width="12" height="3" rx="1" fill="#ffb23a" fill-opacity="0.85" stroke="#ffb23a" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_5" x="180" y="356" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_6" x="198" y="356" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_7" x="216" y="356" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/><rect id="evidence_row_5_meter_8" x="234" y="356" width="12" height="3" rx="1" fill="#3b2613" fill-opacity="0.55" stroke="#3b2613" stroke-width="0.0" stroke-opacity="0"/></g><g id="evidence_row_5_score_ring"><circle cx="568" cy="366" r="24" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="1.3" stroke-opacity="0.68"/><path id="evidence_row_5_score_arc" d="M 568.00 342.00 A 24 24 0 1 1 554.93 386.13" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.4" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="568" cy="366" r="16" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="0.8" stroke-opacity="0.26"/></g></g></g></g>
+</svg>

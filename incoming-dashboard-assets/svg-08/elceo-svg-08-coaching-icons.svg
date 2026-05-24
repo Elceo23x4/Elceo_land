@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="270" viewBox="0 0 690 270" fill="none">
+
+    <defs>
+      <filter id="elceo_soft_orange_glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="2.2" result="blur"/>
+        <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.35  0 0 0.08 0 0.02  0 0 0 0.72 0" result="glow"/>
+        <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="elceo_micro_glow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="1.1" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <linearGradient id="elceo_panel_fade" x1="0" x2="1" y1="0" y2="1">
+        <stop offset="0" stop-color="#0a0704" stop-opacity="0.96"/>
+        <stop offset="0.55" stop-color="#020202" stop-opacity="0.92"/>
+        <stop offset="1" stop-color="#130804" stop-opacity="0.86"/>
+      </linearGradient>
+      <radialGradient id="elceo_icon_core" cx="50%" cy="50%" r="62%">
+        <stop offset="0" stop-color="#ffb34a" stop-opacity="0.16"/>
+        <stop offset="0.55" stop-color="#ff8a12" stop-opacity="0.055"/>
+        <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+<rect id="display_safe_bounds" x="0" y="0" width="690" height="270" fill="#000" opacity="0.001"/>
+<g id="coaching_icons_display_safe" transform="translate(24,24)"><g id="coaching_ai_hub_icon" data-role="coaching_hub_orbit_no_text"><circle id="coach_hub_outer" cx="73.0" cy="73.0" r="50" fill="url(#elceo_icon_core)" fill-opacity="1" stroke="#ff8a12" stroke-width="1.4" stroke-opacity="0.78"/><circle id="coach_hub_ring_42" cx="73.0" cy="73.0" r="42" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="0.9" stroke-opacity="0.42"/><circle id="coach_hub_ring_34" cx="73.0" cy="73.0" r="34" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.1" stroke-opacity="0.5"/><circle id="coach_hub_ring_23" cx="73.0" cy="73.0" r="23" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="0.9" stroke-opacity="0.36"/><circle id="coach_hub_orbit_dot_1" cx="50.000000000000014" cy="33.16283142591582" r="2.8" fill="#ffb23a" fill-opacity="0.75" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/><circle id="coach_hub_orbit_dot_2" cx="104.95428504111388" cy="39.91036918442205" r="2.8" fill="#ffb23a" fill-opacity="0.75" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/><circle id="coach_hub_orbit_dot_3" cx="116.22586055615179" cy="88.73292659298076" r="2.8" fill="#ffb23a" fill-opacity="0.75" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/><circle id="coach_hub_orbit_dot_4" cx="68.99083583360772" cy="118.82495611222029" r="2.8" fill="#ffb23a" fill-opacity="0.75" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/><circle id="coach_hub_orbit_dot_5" cx="31.309841796314103" cy="92.44044004007218" r="2.8" fill="#ffb23a" fill-opacity="0.75" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/><path id="coach_hub_bright_arc" d="M 109.37 52.00 A 42 42 0 0 1 80.29 114.36" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="2.6" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/><path id="coach_hub_secondary_arc" d="M 56.00 102.44 A 34 34 0 0 1 42.19 58.63" fill="none" fill-opacity="1" stroke="#ff8a12" stroke-width="2.0" stroke-opacity="0.7" stroke-linecap="round" stroke-linejoin="round"/><circle id="coach_hub_core_no_text" cx="73.0" cy="73.0" r="12" fill="#120804" fill-opacity="0.82" stroke="#ff8a12" stroke-width="1.2" stroke-opacity="0.8"/></g><g id="coaching_icon_patience" data-role="patience_hourglass_icon">
+    
+    <g id="patience_badge">
+      <path id="patience_badge_outer_octagon" d="M 203 32 H 259 L 272 45 V 101 L 259 114 H 203 L 190 101 V 45 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="patience_badge_inner_ring" cx="231.0" cy="73.0" r="25.419999999999998" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="patience_badge_core_dot" cx="231.0" cy="73.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <path id="patience_hourglass_body" d="M 219.0 55.0 H 243.0 M 219.0 91.0 H 243.0 M 222.0 58.0 C 225.0 68.0, 237.0 68.0, 240.0 58.0 M 222.0 88.0 C 225.0 78.0, 237.0 78.0, 240.0 88.0" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.4" stroke-opacity="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle id="patience_sand_core" cx="231.0" cy="73.0" r="2" fill="#ffb23a" fill-opacity="0.7" stroke="#ffb23a" stroke-width="1" stroke-opacity="0.9"/>
+    </g><g id="coaching_icon_avoidance" data-role="avoidance_warning_icon">
+    
+    <g id="avoidance_badge">
+      <path id="avoidance_badge_outer_octagon" d="M 315 32 H 371 L 384 45 V 101 L 371 114 H 315 L 302 101 V 45 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="avoidance_badge_inner_ring" cx="343.0" cy="73.0" r="25.419999999999998" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="avoidance_badge_core_dot" cx="343.0" cy="73.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <path id="avoidance_triangle" d="M 343.0 54.0 L 362.0 89.0 H 324.0 Z" fill="#241003" fill-opacity="0.18" stroke="#ffb23a" stroke-width="1.45" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <line id="avoidance_stem" x1="343.0" y1="66.0" x2="343.0" y2="78.0" stroke="#ffb23a" stroke-width="1.7" stroke-opacity="0.88" stroke-linecap="round"/>
+    <circle id="avoidance_dot" cx="343.0" cy="84.0" r="2" fill="#ffb23a" fill-opacity="0.82" stroke="#ffb23a" stroke-width="1" stroke-opacity="1"/>
+    </g><g id="coaching_icon_manage_risk" data-role="manage_risk_shield_icon">
+    
+    <g id="manage_risk_badge">
+      <path id="manage_risk_badge_outer_octagon" d="M 427 32 H 483 L 496 45 V 101 L 483 114 H 427 L 414 101 V 45 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="manage_risk_badge_inner_ring" cx="455.0" cy="73.0" r="25.419999999999998" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="manage_risk_badge_core_dot" cx="455.0" cy="73.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <path id="risk_shield_outline" d="M 455.0 53.0 L 471.0 60.0 V 74.0 C 468.0 85.0, 461.0 91.0, 455.0 94.0 C 449.0 91.0, 442.0 85.0, 439.0 74.0 V 60.0 Z" fill="#1b0b03" fill-opacity="0.2" stroke="#ffb23a" stroke-width="1.45" stroke-opacity="0.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <path id="risk_shield_check" d="M 448.0 74.0 L 454.0 80.0 L 465.0 65.0" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="1.7" stroke-opacity="0.78" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><g id="coaching_icon_setup_window" data-role="best_setup_window_icon">
+    
+    <g id="setup_badge">
+      <path id="setup_badge_outer_octagon" d="M 539 32 H 595 L 608 45 V 101 L 595 114 H 539 L 526 101 V 45 Z" fill="url(#elceo_icon_core)" stroke="#ff8a12" stroke-width="1.9" stroke-opacity="0.9" filter="url(#elceo_soft_orange_glow)"/>
+      <circle id="setup_badge_inner_ring" cx="567.0" cy="73.0" r="25.419999999999998" fill="none" stroke="#ff8a12" stroke-width="1.15" stroke-opacity="0.65"/>
+      <circle id="setup_badge_core_dot" cx="567.0" cy="73.0" r="2.2" fill="#ff8a12" opacity="0.75"/>
+    </g>
+    <circle id="setup_clock_ring" cx="567.0" cy="73.0" r="19" fill="none" fill-opacity="1" stroke="#ffb23a" stroke-width="1.2" stroke-opacity="0.72"/>
+    <line id="setup_clock_hand_vertical" x1="567.0" y1="73.0" x2="567.0" y2="62.0" stroke="#ffb23a" stroke-width="1.5" stroke-opacity="0.88" stroke-linecap="round"/>
+    <line id="setup_clock_hand_diag" x1="567.0" y1="73.0" x2="577.0" y2="78.0" stroke="#ffb23a" stroke-width="1.5" stroke-opacity="0.88" stroke-linecap="round"/>
+    <path id="setup_active_window_arc" d="M 586.66 59.23 A 24 24 0 0 1 580.77 92.66" fill="none" fill-opacity="1" stroke="#22e46f" stroke-width="2" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g><path id="coach_micro_card_1" d="M 184 150 H 278 L 290 162 V 210 L 278 222 H 184 L 172 210 V 162 Z" fill="#060403" fill-opacity="0.58" stroke="#3b210c" stroke-width="1" stroke-opacity="0.7"/><line id="coach_micro_card_1_top_rule" x1="189" y1="174" x2="265" y2="174" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/><line id="coach_micro_card_1_lower_rule" x1="189" y1="196" x2="240" y2="196" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.25" stroke-linecap="round"/><path id="coach_micro_card_2" d="M 296 150 H 390 L 402 162 V 210 L 390 222 H 296 L 284 210 V 162 Z" fill="#060403" fill-opacity="0.58" stroke="#3b210c" stroke-width="1" stroke-opacity="0.7"/><line id="coach_micro_card_2_top_rule" x1="301" y1="174" x2="377" y2="174" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/><line id="coach_micro_card_2_lower_rule" x1="301" y1="196" x2="352" y2="196" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.25" stroke-linecap="round"/><path id="coach_micro_card_3" d="M 408 150 H 502 L 514 162 V 210 L 502 222 H 408 L 396 210 V 162 Z" fill="#060403" fill-opacity="0.58" stroke="#3b210c" stroke-width="1" stroke-opacity="0.7"/><line id="coach_micro_card_3_top_rule" x1="413" y1="174" x2="489" y2="174" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/><line id="coach_micro_card_3_lower_rule" x1="413" y1="196" x2="464" y2="196" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.25" stroke-linecap="round"/><path id="coach_micro_card_4" d="M 520 150 H 614 L 626 162 V 210 L 614 222 H 520 L 508 210 V 162 Z" fill="#060403" fill-opacity="0.58" stroke="#3b210c" stroke-width="1" stroke-opacity="0.7"/><line id="coach_micro_card_4_top_rule" x1="525" y1="174" x2="601" y2="174" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.4" stroke-linecap="round"/><line id="coach_micro_card_4_lower_rule" x1="525" y1="196" x2="576" y2="196" stroke="#ff8a12" stroke-width="1" stroke-opacity="0.25" stroke-linecap="round"/></g>
+</svg>
