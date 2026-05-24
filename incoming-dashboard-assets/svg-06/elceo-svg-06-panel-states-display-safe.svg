@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_06_panel_states_display_safe" width="1600" height="300" viewBox="0 0 1600 300" fill="none" role="img" aria-label="ELCEO SVG 06 panel border system">
+
+<defs>
+  <linearGradient id="elceo06_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#7a2b05" stop-opacity="0.35"/>
+    <stop offset="18%" stop-color="#ff7414" stop-opacity="0.95"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.88"/>
+    <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.82"/>
+    <stop offset="100%" stop-color="#642100" stop-opacity="0.38"/>
+  </linearGradient>
+  <linearGradient id="elceo06_vertical_edge" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#ff9e2a" stop-opacity="0.80"/>
+    <stop offset="42%" stop-color="#b94608" stop-opacity="0.38"/>
+    <stop offset="100%" stop-color="#ff7a18" stop-opacity="0.68"/>
+  </linearGradient>
+  <linearGradient id="elceo06_panel_fill" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#120803" stop-opacity="0.66"/>
+    <stop offset="45%" stop-color="#050302" stop-opacity="0.42"/>
+    <stop offset="100%" stop-color="#110602" stop-opacity="0.56"/>
+  </linearGradient>
+  <radialGradient id="elceo06_panel_aura" cx="50%" cy="42%" r="67%">
+    <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.12"/>
+    <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.035"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="elceo06_soft_orange" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.6" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.32  0 0 0.12 0 0  0 0 0 0.72 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="elceo06_panel_shadow" x="-18%" y="-18%" width="136%" height="136%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#ff7a18" flood-opacity="0.12"/>
+  </filter>
+  <pattern id="elceo06_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M28 0H0V28" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.055"/>
+  </pattern>
+</defs>
+
+<rect id="elceo_svg_06_panel_states_display_safe_import_bounds" width="1600" height="300" fill="#000000" opacity="0.001"/>
+
+<g id="panel_state_idle" data-component="elceo-panel-border" data-non-uniform-stroke="true">
+<path id="panel_state_idle_fill" d="M 46.0 60.0 H 344.0 L 360.0 76.0 V 214.0 L 344.0 230.0 H 46.0 L 30.0 214.0 V 76.0 L 46.0 60.0 Z" fill="url(#elceo06_panel_fill)" fill-opacity="0.72" filter="url(#elceo06_panel_shadow)"/>
+<path id="panel_state_idle_soft_inner_aura" d="M 46.0 62.0 H 344.0 L 358.0 76.0 V 214.0 L 344.0 228.0 H 46.0 L 32.0 214.0 V 76.0 L 46.0 62.0 Z" fill="url(#elceo06_panel_aura)" fill-opacity="1"/>
+<path id="panel_state_idle_primary_top_heavy" d="M 46.0 60.0 H 148.3" stroke="url(#elceo06_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_state_idle_secondary_top_medium" d="M 156.6 60.0 H 344.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_right_edge_fine" d="M 360.0 76.0 V 214.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_bottom_left_accent" d="M 46.0 230.0 H 121.9" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_bottom_main_medium" d="M 139.9 230.0 H 237.6" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_bottom_right_accent" d="M 251.6 230.0 H 344.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_left_edge_upper_fine" d="M 30.0 76.0 V 126.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_left_edge_lower_hair" d="M 30.0 150.5 V 214.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_corner_diagonal_emphasis" d="M 46.0 60.0 L 30.0 76.0 M 344.0 60.0 L 360.0 76.0 M 360.0 214.0 L 344.0 230.0 M 46.0 230.0 L 30.0 214.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_inner_top_hairline" d="M 56.0 70.0 H 334.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_inner_bottom_hairline" d="M 56.0 220.0 H 334.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_title_separator_faint" d="M 62.0 98.0 H 332.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_title_notch_left" d="M 64.0 99.0 H 158.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_title_notch_right" d="M 208.0 99.0 H 326.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_number_badge_empty" d="M 54 72 H 68 L 74 78 V 92 L 68 98 H 54 L 48 92 V 78 L 54 72 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+<path id="panel_state_idle_number_badge_inner_glow" d="M 57 77 H 65 L 69 81 V 89 L 65 93 H 57 L 53 89 V 81 L 57 77 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24"/>
+<path id="panel_state_idle_left_inner_vertical_accent" d="M 44.0 116.0 V 196.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_idle_lower_micro_accents" d="M 66.0 206.0 H 180.0 M 200.0 206.0 H 324.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="panel_state_hover" data-component="elceo-panel-border" data-non-uniform-stroke="true">
+<path id="panel_state_hover_fill" d="M 446.0 60.0 H 744.0 L 760.0 76.0 V 214.0 L 744.0 230.0 H 446.0 L 430.0 214.0 V 76.0 L 446.0 60.0 Z" fill="url(#elceo06_panel_fill)" fill-opacity="0.72" filter="url(#elceo06_panel_shadow)"/>
+<path id="panel_state_hover_soft_inner_aura" d="M 446.0 62.0 H 744.0 L 758.0 76.0 V 214.0 L 744.0 228.0 H 446.0 L 432.0 214.0 V 76.0 L 446.0 62.0 Z" fill="url(#elceo06_panel_aura)" fill-opacity="1"/>
+<path id="panel_state_hover_primary_top_heavy" d="M 446.0 60.0 H 548.3" stroke="url(#elceo06_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_state_hover_secondary_top_medium" d="M 556.5 60.0 H 744.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_right_edge_fine" d="M 760.0 76.0 V 214.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_bottom_left_accent" d="M 446.0 230.0 H 521.9" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_bottom_main_medium" d="M 539.9 230.0 H 637.6" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_bottom_right_accent" d="M 651.6 230.0 H 744.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_left_edge_upper_fine" d="M 430.0 76.0 V 126.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_left_edge_lower_hair" d="M 430.0 150.5 V 214.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_corner_diagonal_emphasis" d="M 446.0 60.0 L 430.0 76.0 M 744.0 60.0 L 760.0 76.0 M 760.0 214.0 L 744.0 230.0 M 446.0 230.0 L 430.0 214.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_inner_top_hairline" d="M 456.0 70.0 H 734.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_inner_bottom_hairline" d="M 456.0 220.0 H 734.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_title_separator_faint" d="M 462.0 98.0 H 732.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_title_notch_left" d="M 464.0 99.0 H 558.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_title_notch_right" d="M 608.0 99.0 H 726.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_number_badge_empty" d="M 454 72 H 468 L 474 78 V 92 L 468 98 H 454 L 448 92 V 78 L 454 72 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+<path id="panel_state_hover_number_badge_inner_glow" d="M 457 77 H 465 L 469 81 V 89 L 465 93 H 457 L 453 89 V 81 L 457 77 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24"/>
+<path id="panel_state_hover_left_inner_vertical_accent" d="M 444.0 116.0 V 196.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_lower_micro_accents" d="M 466.0 206.0 H 580.0 M 600.0 206.0 H 724.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_hover_hover_state_outer_breath" d="M 444.0 56.0 H 746.0 L 764.0 74.0 V 216.0 L 746.0 234.0 H 444.0 L 426.0 216.0 V 74.0 L 444.0 56.0 Z" stroke="#ffb13b" stroke-opacity="0.22" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
+</g>
+<g id="panel_state_active" data-component="elceo-panel-border" data-non-uniform-stroke="true">
+<path id="panel_state_active_fill" d="M 846.0 60.0 H 1144.0 L 1160.0 76.0 V 214.0 L 1144.0 230.0 H 846.0 L 830.0 214.0 V 76.0 L 846.0 60.0 Z" fill="url(#elceo06_panel_fill)" fill-opacity="0.72" filter="url(#elceo06_panel_shadow)"/>
+<path id="panel_state_active_soft_inner_aura" d="M 846.0 62.0 H 1144.0 L 1158.0 76.0 V 214.0 L 1144.0 228.0 H 846.0 L 832.0 214.0 V 76.0 L 846.0 62.0 Z" fill="url(#elceo06_panel_aura)" fill-opacity="1"/>
+<path id="panel_state_active_primary_top_heavy" d="M 846.0 60.0 H 948.3" stroke="url(#elceo06_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_state_active_secondary_top_medium" d="M 956.5 60.0 H 1144.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_right_edge_fine" d="M 1160.0 76.0 V 214.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_bottom_left_accent" d="M 846.0 230.0 H 921.9" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_bottom_main_medium" d="M 939.9 230.0 H 1037.6" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_bottom_right_accent" d="M 1051.6 230.0 H 1144.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_left_edge_upper_fine" d="M 830.0 76.0 V 126.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_left_edge_lower_hair" d="M 830.0 150.5 V 214.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_corner_diagonal_emphasis" d="M 846.0 60.0 L 830.0 76.0 M 1144.0 60.0 L 1160.0 76.0 M 1160.0 214.0 L 1144.0 230.0 M 846.0 230.0 L 830.0 214.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_inner_top_hairline" d="M 856.0 70.0 H 1134.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_inner_bottom_hairline" d="M 856.0 220.0 H 1134.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_title_separator_faint" d="M 862.0 98.0 H 1132.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_title_notch_left" d="M 864.0 99.0 H 958.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_title_notch_right" d="M 1008.0 99.0 H 1126.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_number_badge_empty" d="M 854 72 H 868 L 874 78 V 92 L 868 98 H 854 L 848 92 V 78 L 854 72 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+<path id="panel_state_active_number_badge_inner_glow" d="M 857 77 H 865 L 869 81 V 89 L 865 93 H 857 L 853 89 V 81 L 857 77 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24"/>
+<path id="panel_state_active_left_inner_vertical_accent" d="M 844.0 116.0 V 196.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_lower_micro_accents" d="M 866.0 206.0 H 980.0 M 1000.0 206.0 H 1124.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_active_active_state_upper_lift" d="M 868.0 53.0 H 1120.0" stroke="#ffb13b" stroke-opacity="0.82" stroke-width="2.8" fill="none" stroke-linecap="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_state_active_active_state_corner_charge" d="M 838.0 78.0 V 122.0 M 1152.0 78.0 V 122.0" stroke="#ff9e2a" stroke-opacity="0.52" stroke-width="1.55" fill="none" stroke-linecap="round"/>
+</g>
+<g id="panel_state_alert" data-component="elceo-panel-border" data-non-uniform-stroke="true">
+<path id="panel_state_alert_fill" d="M 1246.0 60.0 H 1544.0 L 1560.0 76.0 V 214.0 L 1544.0 230.0 H 1246.0 L 1230.0 214.0 V 76.0 L 1246.0 60.0 Z" fill="url(#elceo06_panel_fill)" fill-opacity="0.72" filter="url(#elceo06_panel_shadow)"/>
+<path id="panel_state_alert_soft_inner_aura" d="M 1246.0 62.0 H 1544.0 L 1558.0 76.0 V 214.0 L 1544.0 228.0 H 1246.0 L 1232.0 214.0 V 76.0 L 1246.0 62.0 Z" fill="url(#elceo06_panel_aura)" fill-opacity="1"/>
+<path id="panel_state_alert_primary_top_heavy" d="M 1246.0 60.0 H 1348.3" stroke="url(#elceo06_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_state_alert_secondary_top_medium" d="M 1356.5 60.0 H 1544.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_right_edge_fine" d="M 1560.0 76.0 V 214.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_bottom_left_accent" d="M 1246.0 230.0 H 1321.9" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_bottom_main_medium" d="M 1339.9 230.0 H 1437.6" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_bottom_right_accent" d="M 1451.6 230.0 H 1544.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_left_edge_upper_fine" d="M 1230.0 76.0 V 126.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_left_edge_lower_hair" d="M 1230.0 150.5 V 214.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_corner_diagonal_emphasis" d="M 1246.0 60.0 L 1230.0 76.0 M 1544.0 60.0 L 1560.0 76.0 M 1560.0 214.0 L 1544.0 230.0 M 1246.0 230.0 L 1230.0 214.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_inner_top_hairline" d="M 1256.0 70.0 H 1534.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_inner_bottom_hairline" d="M 1256.0 220.0 H 1534.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_title_separator_faint" d="M 1262.0 98.0 H 1532.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_title_notch_left" d="M 1264.0 99.0 H 1358.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_title_notch_right" d="M 1408.0 99.0 H 1526.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_number_badge_empty" d="M 1254 72 H 1268 L 1274 78 V 92 L 1268 98 H 1254 L 1248 92 V 78 L 1254 72 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+<path id="panel_state_alert_number_badge_inner_glow" d="M 1257 77 H 1265 L 1269 81 V 89 L 1265 93 H 1257 L 1253 89 V 81 L 1257 77 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24"/>
+<path id="panel_state_alert_left_inner_vertical_accent" d="M 1244.0 116.0 V 196.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_lower_micro_accents" d="M 1266.0 206.0 H 1380.0 M 1400.0 206.0 H 1524.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_state_alert_alert_state_dashed_inset" d="M 1250.0 72.0 H 1540.0 L 1548.0 80.0 V 210.0 L 1540.0 218.0 H 1250.0 L 1242.0 210.0 V 80.0 L 1250.0 72.0 Z" stroke="#ffb13b" stroke-width="1.05" stroke-opacity="0.58" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 9"/>
+</g>
+</svg>

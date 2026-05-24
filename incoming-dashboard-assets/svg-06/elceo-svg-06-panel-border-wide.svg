@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_06_panel_border_wide" width="820" height="280" viewBox="0 0 820 280" fill="none" role="img" aria-label="ELCEO SVG 06 panel border system">
+
+<defs>
+  <linearGradient id="elceo06_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#7a2b05" stop-opacity="0.35"/>
+    <stop offset="18%" stop-color="#ff7414" stop-opacity="0.95"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.88"/>
+    <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.82"/>
+    <stop offset="100%" stop-color="#642100" stop-opacity="0.38"/>
+  </linearGradient>
+  <linearGradient id="elceo06_vertical_edge" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#ff9e2a" stop-opacity="0.80"/>
+    <stop offset="42%" stop-color="#b94608" stop-opacity="0.38"/>
+    <stop offset="100%" stop-color="#ff7a18" stop-opacity="0.68"/>
+  </linearGradient>
+  <linearGradient id="elceo06_panel_fill" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#120803" stop-opacity="0.66"/>
+    <stop offset="45%" stop-color="#050302" stop-opacity="0.42"/>
+    <stop offset="100%" stop-color="#110602" stop-opacity="0.56"/>
+  </linearGradient>
+  <radialGradient id="elceo06_panel_aura" cx="50%" cy="42%" r="67%">
+    <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.12"/>
+    <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.035"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="elceo06_soft_orange" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.6" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.32  0 0 0.12 0 0  0 0 0 0.72 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="elceo06_panel_shadow" x="-18%" y="-18%" width="136%" height="136%">
+    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#ff7a18" flood-opacity="0.12"/>
+  </filter>
+  <pattern id="elceo06_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M28 0H0V28" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.055"/>
+  </pattern>
+</defs>
+
+<rect id="elceo_svg_06_panel_border_wide_import_bounds" width="820" height="280" fill="#000000" opacity="0.001"/>
+
+<g id="panel_border_wide_display_safe" data-component="elceo-panel-border" data-non-uniform-stroke="true">
+<path id="panel_border_wide_display_safe_fill" d="M 58.0 36.0 H 762.0 L 780.0 54.0 V 208.0 L 762.0 226.0 H 58.0 L 40.0 208.0 V 54.0 L 58.0 36.0 Z" fill="url(#elceo06_panel_fill)" fill-opacity="0.72" filter="url(#elceo06_panel_shadow)"/>
+<path id="panel_border_wide_display_safe_soft_inner_aura" d="M 58.0 38.0 H 762.0 L 778.0 54.0 V 208.0 L 762.0 224.0 H 58.0 L 42.0 208.0 V 54.0 L 58.0 38.0 Z" fill="url(#elceo06_panel_aura)" fill-opacity="1"/>
+<path id="panel_border_wide_display_safe_primary_top_heavy" d="M 58.0 36.0 H 287.4" stroke="url(#elceo06_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#elceo06_soft_orange)"/>
+<path id="panel_border_wide_display_safe_secondary_top_medium" d="M 305.9 36.0 H 762.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_right_edge_fine" d="M 780.0 54.0 V 208.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_bottom_left_accent" d="M 58.0 226.0 H 228.2" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_bottom_main_medium" d="M 257.8 226.0 H 532.6" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_bottom_right_accent" d="M 554.8 226.0 H 762.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_left_edge_upper_fine" d="M 40.0 54.0 V 111.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_left_edge_lower_hair" d="M 40.0 135.5 V 208.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_corner_diagonal_emphasis" d="M 58.0 36.0 L 40.0 54.0 M 762.0 36.0 L 780.0 54.0 M 780.0 208.0 L 762.0 226.0 M 58.0 226.0 L 40.0 208.0" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_inner_top_hairline" d="M 68.0 46.0 H 752.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_inner_bottom_hairline" d="M 68.0 216.0 H 752.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_title_separator_faint" d="M 72.0 84.0 H 752.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_title_notch_left" d="M 74.0 85.0 H 168.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_title_notch_right" d="M 628.0 85.0 H 746.0" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_number_badge_empty" d="M 64 48 H 78 L 84 54 V 68 L 78 74 H 64 L 58 68 V 54 L 64 48 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_number_badge_inner_glow" d="M 67 53 H 75 L 79 57 V 65 L 75 69 H 67 L 63 65 V 57 L 67 53 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24"/>
+<path id="panel_border_wide_display_safe_left_inner_vertical_accent" d="M 54.0 102.0 V 192.0" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="panel_border_wide_display_safe_lower_micro_accents" d="M 76.0 202.0 H 190.0 M 620.0 202.0 H 744.0" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>
