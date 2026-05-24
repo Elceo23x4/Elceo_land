@@ -1,0 +1,136 @@
+.asset-inventory {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: "Courier New", monospace;
+  padding: 2rem 2.5rem;
+}
+
+.asset-inventory__header {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #d4790a33;
+  padding-bottom: 1.5rem;
+}
+
+.asset-inventory__title {
+  font-size: 1.4rem;
+  color: #d4790a;
+  margin: 0 0 0.4rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.asset-inventory__subtitle {
+  font-size: 0.82rem;
+  color: #777;
+  margin: 0;
+}
+
+.asset-inventory__section {
+  margin-bottom: 2rem;
+}
+
+.asset-inventory__section-title {
+  font-size: 0.95rem;
+  color: #d4790a;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 0.4rem;
+}
+
+.asset-inventory__count {
+  font-size: 0.72rem;
+  color: #666;
+  margin-left: 0.5rem;
+}
+
+.asset-inventory__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.72rem;
+}
+
+.asset-inventory__table th {
+  text-align: left;
+  color: #999;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #222;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.asset-inventory__table td {
+  padding: 0.35rem 0.6rem;
+  border-bottom: 1px solid #141414;
+  color: #bbb;
+  vertical-align: top;
+}
+
+.asset-inventory__badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  font-size: 0.65rem;
+  letter-spacing: 0.03em;
+}
+
+.asset-inventory__badge--approved {
+  background: #0d2a0d;
+  color: #4caf50;
+  border: 1px solid #4caf5033;
+}
+
+.asset-inventory__badge--partial {
+  background: #2a1f0d;
+  color: #ffa726;
+  border: 1px solid #ffa72633;
+}
+
+.asset-inventory__badge--pending {
+  background: #2a0d0d;
+  color: #ef5350;
+  border: 1px solid #ef535033;
+}
+
+.asset-inventory__smoke-section {
+  margin-top: 2.5rem;
+  border-top: 1px solid #d4790a22;
+  padding-top: 1.5rem;
+}
+
+.asset-inventory__smoke-title {
+  font-size: 0.9rem;
+  color: #d4790a;
+  margin: 0 0 1rem;
+}
+
+.asset-inventory__smoke-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.asset-inventory__smoke-card {
+  border: 1px solid #222;
+  border-radius: 4px;
+  padding: 0.75rem;
+  background: #0d0d0d;
+  width: 160px;
+  text-align: center;
+}
+
+.asset-inventory__smoke-card svg {
+  max-width: 120px;
+  max-height: 80px;
+  display: block;
+  margin: 0 auto 0.5rem;
+  opacity: 0.85;
+}
+
+.asset-inventory__smoke-label {
+  font-size: 0.62rem;
+  color: #888;
+  word-break: break-word;
+}
