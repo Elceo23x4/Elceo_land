@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" role="img" aria-label="ELCEO SVG-13 bottom ring connector lines and nodes only">
+
+<defs>
+  <linearGradient id="grad_orange" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ffd28a" stop-opacity="0.98"/>
+    <stop offset="36%" stop-color="#ff9b2f" stop-opacity="0.96"/>
+    <stop offset="78%" stop-color="#ff6a00" stop-opacity="0.84"/>
+    <stop offset="100%" stop-color="#733000" stop-opacity="0.62"/>
+  </linearGradient>
+  <radialGradient id="grad_node" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff0bd" stop-opacity="1"/>
+    <stop offset="45%" stop-color="#ffab36" stop-opacity="0.95"/>
+    <stop offset="80%" stop-color="#ff6a00" stop-opacity="0.34"/>
+    <stop offset="100%" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="glow_sm" x="-100%" y="-100%" width="300%" height="300%">
+    <feGaussianBlur stdDeviation="1.6" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glow_md" x="-160%" y="-160%" width="420%" height="420%">
+    <feGaussianBlur stdDeviation="5.8" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <style>
+    .main { fill:none; stroke:url(#grad_orange); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+    .thin { fill:none; stroke:#ff8a18; stroke-opacity:.28; stroke-width:1.0; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke; }
+    .node-core { fill:#090301; stroke:#ff9b2f; stroke-width:1.8; vector-effect:non-scaling-stroke; }
+    .node-glow { fill:url(#grad_node); }
+    .diamond { fill:#090301; stroke:#ff9b2f; stroke-width:1.7; vector-effect:non-scaling-stroke; }
+  </style>
+</defs>
+
+<rect x="0.5" y="0.5" width="1919" height="1079" fill="none" stroke="transparent" stroke-width="1"/>
+<g id="svg13_bottom_ring_connectors">
+<path id="bottom_center_stem_ghost" d="M 960 790 L 960 742" class="thin"/>
+<path id="bottom_center_stem" d="M 960 790 L 960 742" class="main" filter="url(#glow_sm)"/>
+<path id="bottom_left_stem_ghost" d="M 844 756 L 872 700" class="thin"/>
+<path id="bottom_left_stem" d="M 844 756 L 872 700" class="main" filter="url(#glow_sm)"/>
+<path id="bottom_right_stem_ghost" d="M 1076 756 L 1048 700" class="thin"/>
+<path id="bottom_right_stem" d="M 1076 756 L 1048 700" class="main" filter="url(#glow_sm)"/>
+<path id="bottom_left_outer_stem_ghost" d="M 740 770 L 770 708" class="thin"/>
+<path id="bottom_left_outer_stem" d="M 740 770 L 770 708" class="main" filter="url(#glow_sm)"/>
+<path id="bottom_right_outer_stem_ghost" d="M 1180 770 L 1150 708" class="thin"/>
+<path id="bottom_right_outer_stem" d="M 1180 770 L 1150 708" class="main" filter="url(#glow_sm)"/>
+<g id="svg13_bottom_ring_connectors_node_960_790"><circle class="node-glow" cx="960.0" cy="790.0" r="13" filter="url(#glow_md)"/><circle class="node-core" cx="960.0" cy="790.0" r="4.8" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_960_742"><circle class="node-glow" cx="960.0" cy="742.0" r="13" filter="url(#glow_md)"/><circle class="node-core" cx="960.0" cy="742.0" r="4.8" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_844_756"><circle class="node-glow" cx="844.0" cy="756.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="844.0" cy="756.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_872_700"><circle class="node-glow" cx="872.0" cy="700.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="872.0" cy="700.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_1076_756"><circle class="node-glow" cx="1076.0" cy="756.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="1076.0" cy="756.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_1048_700"><circle class="node-glow" cx="1048.0" cy="700.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="1048.0" cy="700.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_740_770"><circle class="node-glow" cx="740.0" cy="770.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="740.0" cy="770.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_770_708"><circle class="node-glow" cx="770.0" cy="708.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="770.0" cy="708.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_1180_770"><circle class="node-glow" cx="1180.0" cy="770.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="1180.0" cy="770.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_node_1150_708"><circle class="node-glow" cx="1150.0" cy="708.0" r="11" filter="url(#glow_md)"/><circle class="node-core" cx="1150.0" cy="708.0" r="4.6" filter="url(#glow_sm)"/></g>
+<g id="svg13_bottom_ring_connectors_diamond_960_734"><polygon points="960,725 969,734 960,743 951,734" class="diamond" filter="url(#glow_sm)"/><circle cx="960" cy="734" r="2.6" fill="#ffbf4a"/></g>
+<g id="svg13_bottom_ring_connectors_diamond_906_704"><polygon points="906,695 915,704 906,713 897,704" class="diamond" filter="url(#glow_sm)"/><circle cx="906" cy="704" r="2.6" fill="#ffbf4a"/></g>
+<g id="svg13_bottom_ring_connectors_diamond_1014_704"><polygon points="1014,695 1023,704 1014,713 1005,704" class="diamond" filter="url(#glow_sm)"/><circle cx="1014" cy="704" r="2.6" fill="#ffbf4a"/></g>
+</g>
+</svg>
