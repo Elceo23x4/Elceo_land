@@ -1,0 +1,72 @@
+<svg id="elceo-svg-10-scan-arcs" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+
+  <defs>
+    <radialGradient id="elceo-bg-radial-core" cx="50%" cy="44%" r="60%">
+      <stop offset="0%" stop-color="#241004" stop-opacity="0.58"/>
+      <stop offset="38%" stop-color="#080403" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="elceo-bg-side-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7a00" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#ff7a00" stop-opacity="0.025"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="elceo-horizontal-streak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.28" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="0.50" stop-color="#ff9a21" stop-opacity="0.50"/>
+      <stop offset="0.72" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="elceo-soft-grid-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff7a00" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="elceo-soft-glow-sm" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo-soft-glow-md" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+<rect id="display_safe_dark_canvas" x="0" y="0" width="1920" height="1080" fill="#020302"/>
+<g id="background_scan_arcs_and_hazes">
+<path id="scan_arc_00" d="M 539.40 430.60 A 430.00 430.00 0 0 1 1380.60 430.60" stroke="#ff7a00" stroke-opacity="0.16" stroke-width="0.9" fill="none"/>
+<path id="scan_arc_01" d="M 514.91 375.38 A 468.00 468.00 0 0 1 1405.09 375.38" stroke="#ff9d25" stroke-opacity="0.12" stroke-width="0.7" fill="none"/>
+<path id="scan_arc_02" d="M 502.31 306.58 A 505.00 505.00 0 0 1 1417.69 306.58" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.5" fill="none"/>
+<path id="scan_arc_03" d="M 622.25 325.00 A 390.00 390.00 0 0 1 1297.75 325.00" stroke="#ffb24a" stroke-opacity="0.1" stroke-width="0.45" fill="none"/>
+<path id="scan_arc_04" d="M 434.71 286.13 A 575.00 575.00 0 0 1 1485.29 286.13" stroke="#ff7a00" stroke-opacity="0.07" stroke-width="0.35" fill="none"/>
+<path id="scan_arc_05" d="M 454.29 178.89 A 610.00 610.00 0 0 1 1465.71 178.89" stroke="#ff7a00" stroke-opacity="0.055" stroke-width="0.35" fill="none"/>
+<path id="scan_arc_06" d="M 1465.71 861.11 A 610.00 610.00 0 0 1 454.29 861.11" stroke="#ff7a00" stroke-opacity="0.055" stroke-width="0.35" fill="none"/>
+<path id="scan_arc_07" d="M 1485.29 753.87 A 575.00 575.00 0 0 1 434.71 753.87" stroke="#ff7a00" stroke-opacity="0.07" stroke-width="0.35" fill="none"/>
+<line id="scan_arc_micro_tick_00" x1="421.0" y1="280.0" x2="408.2" y2="274.3" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_01" x1="482.7" y1="173.2" x2="476.2" y2="168.5" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_02" x1="565.2" y1="81.5" x2="555.8" y2="71.1" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_03" x1="665.0" y1="9.0" x2="661.0" y2="2.1" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_04" x1="777.7" y1="-41.1" x2="773.4" y2="-54.4" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_05" x1="898.3" y1="-66.8" x2="897.5" y2="-74.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_06" x1="1021.7" y1="-66.8" x2="1023.1" y2="-80.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_07" x1="1142.3" y1="-41.1" x2="1144.8" y2="-48.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_08" x1="1255.0" y1="9.0" x2="1262.0" y2="-3.1" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_09" x1="1354.8" y1="81.5" x2="1360.1" y2="75.6" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_10" x1="1437.3" y1="173.2" x2="1448.6" y2="165.0" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_11" x1="1499.0" y1="280.0" x2="1506.3" y2="276.8" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_12" x1="1499.0" y1="760.0" x2="1511.8" y2="765.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_13" x1="1437.3" y1="866.8" x2="1443.8" y2="871.5" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_14" x1="1354.8" y1="958.5" x2="1364.2" y2="968.9" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_15" x1="1255.0" y1="1031.0" x2="1259.0" y2="1037.9" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_16" x1="1142.3" y1="1081.1" x2="1146.6" y2="1094.4" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_17" x1="1021.7" y1="1106.8" x2="1022.5" y2="1114.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_18" x1="898.3" y1="1106.8" x2="896.9" y2="1120.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_19" x1="777.7" y1="1081.1" x2="775.2" y2="1088.7" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_20" x1="665.0" y1="1031.0" x2="658.0" y2="1043.1" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_21" x1="565.2" y1="958.5" x2="559.9" y2="964.4" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_22" x1="482.7" y1="866.8" x2="471.4" y2="875.0" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<line id="scan_arc_micro_tick_23" x1="421.0" y1="760.0" x2="413.7" y2="763.2" stroke="#ff7a00" stroke-opacity="0.09" stroke-width="0.65"/>
+<ellipse id="left_background_orange_haze" cx="420" cy="520" rx="260" ry="360" fill="url(#elceo-bg-side-glow)" opacity="0.38"/>
+<ellipse id="right_background_orange_haze" cx="1510" cy="520" rx="260" ry="360" fill="url(#elceo-bg-side-glow)" opacity="0.30"/>
+</g>
+</svg>

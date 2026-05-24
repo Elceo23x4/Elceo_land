@@ -1,0 +1,290 @@
+<svg id="elceo-svg-10-particle-glow-field" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+
+  <defs>
+    <radialGradient id="elceo-bg-radial-core" cx="50%" cy="44%" r="60%">
+      <stop offset="0%" stop-color="#241004" stop-opacity="0.58"/>
+      <stop offset="38%" stop-color="#080403" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="elceo-bg-side-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7a00" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#ff7a00" stop-opacity="0.025"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="elceo-horizontal-streak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.28" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="0.50" stop-color="#ff9a21" stop-opacity="0.50"/>
+      <stop offset="0.72" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="elceo-soft-grid-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff7a00" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="elceo-soft-glow-sm" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo-soft-glow-md" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+<rect id="display_safe_dark_canvas" x="0" y="0" width="1920" height="1080" fill="#020302"/>
+<g id="particle_glow_field_micro_only">
+<circle id="particle_micro_000" cx="1050.8" cy="134.9" r="1.0" fill="#ffffff" opacity="0.033"/>
+<circle id="particle_micro_001" cx="1222.8" cy="505.2" r="1.0" fill="#ff7a00" opacity="0.169"/>
+<circle id="particle_micro_002" cx="1560.6" cy="467.1" r="0.85" fill="#ffffff" opacity="0.073"/>
+<circle id="particle_micro_003" cx="1078.0" cy="357.4" r="0.45" fill="#ff9d25" opacity="0.151"/>
+<circle id="particle_micro_004" cx="1397.5" cy="573.7" r="0.7" fill="#c15b00" opacity="0.099"/>
+<circle id="particle_micro_005" cx="298.2" cy="766.6" r="0.45" fill="#c15b00" opacity="0.200"/>
+<circle id="particle_micro_006" cx="1758.6" cy="385.5" r="0.55" fill="#ff9d25" opacity="0.154"/>
+<circle id="particle_micro_007" cx="797.9" cy="659.3" r="0.85" fill="#ff9d25" opacity="0.058"/>
+<circle id="particle_micro_008" cx="765.1" cy="517.1" r="0.85" fill="#ffffff" opacity="0.069"/>
+<circle id="particle_micro_009" cx="1536.6" cy="107.0" r="0.7" fill="#ff9d25" opacity="0.132"/>
+<circle id="particle_micro_010" cx="1652.5" cy="216.8" r="1.0" fill="#ff9d25" opacity="0.074"/>
+<circle id="particle_micro_011" cx="538.9" cy="535.2" r="0.85" fill="#c15b00" opacity="0.094"/>
+<circle id="particle_micro_012" cx="858.5" cy="154.6" r="1.0" fill="#ff7a00" opacity="0.201"/>
+<circle id="particle_micro_013" cx="1075.7" cy="879.0" r="1.0" fill="#ffffff" opacity="0.043"/>
+<circle id="particle_micro_014" cx="144.4" cy="729.9" r="1.0" fill="#ff7a00" opacity="0.189"/>
+<circle id="particle_micro_015" cx="206.0" cy="935.5" r="0.45" fill="#ff9d25" opacity="0.217"/>
+<circle id="particle_micro_016" cx="1870.4" cy="674.3" r="0.45" fill="#ff7a00" opacity="0.187"/>
+<circle id="particle_micro_017" cx="1354.0" cy="232.1" r="1.0" fill="#ff9d25" opacity="0.131"/>
+<circle id="particle_micro_018" cx="132.1" cy="920.7" r="1.0" fill="#c15b00" opacity="0.190"/>
+<circle id="particle_micro_019" cx="1728.4" cy="487.0" r="0.85" fill="#ff9d25" opacity="0.174"/>
+<circle id="particle_micro_020" cx="1045.0" cy="251.0" r="0.45" fill="#ffffff" opacity="0.058"/>
+<circle id="particle_micro_021" cx="186.5" cy="652.3" r="0.85" fill="#ffffff" opacity="0.022"/>
+<circle id="particle_micro_022" cx="1721.0" cy="231.8" r="0.55" fill="#ff7a00" opacity="0.160"/>
+<circle id="particle_micro_023" cx="694.7" cy="407.6" r="0.55" fill="#ffffff" opacity="0.047"/>
+<circle id="particle_micro_024" cx="431.7" cy="881.7" r="0.7" fill="#ff7a00" opacity="0.082"/>
+<circle id="particle_micro_025" cx="1836.3" cy="687.0" r="0.7" fill="#ff9d25" opacity="0.141"/>
+<circle id="particle_micro_026" cx="1628.5" cy="536.8" r="0.7" fill="#ffffff" opacity="0.022"/>
+<circle id="particle_micro_027" cx="1691.7" cy="325.7" r="0.55" fill="#ff9d25" opacity="0.060"/>
+<circle id="particle_micro_028" cx="1373.4" cy="727.6" r="0.85" fill="#c15b00" opacity="0.053"/>
+<circle id="particle_micro_029" cx="568.6" cy="429.6" r="0.85" fill="#ffffff" opacity="0.018"/>
+<circle id="particle_micro_030" cx="590.5" cy="372.8" r="0.85" fill="#ffffff" opacity="0.056"/>
+<circle id="particle_micro_031" cx="441.7" cy="967.9" r="1.0" fill="#ff9d25" opacity="0.094"/>
+<circle id="particle_micro_032" cx="1316.3" cy="214.6" r="1.0" fill="#c15b00" opacity="0.071"/>
+<circle id="particle_micro_033" cx="1236.3" cy="793.4" r="1.0" fill="#ff7a00" opacity="0.191"/>
+<circle id="particle_micro_034" cx="488.5" cy="328.3" r="1.0" fill="#ff9d25" opacity="0.182"/>
+<circle id="particle_micro_035" cx="836.5" cy="682.9" r="0.55" fill="#c15b00" opacity="0.201"/>
+<circle id="particle_micro_036" cx="1742.4" cy="400.1" r="0.45" fill="#c15b00" opacity="0.188"/>
+<circle id="particle_micro_037" cx="1335.4" cy="822.6" r="0.55" fill="#ffffff" opacity="0.032"/>
+<circle id="particle_micro_038" cx="1507.4" cy="553.6" r="0.85" fill="#ffffff" opacity="0.032"/>
+<circle id="particle_micro_039" cx="100.9" cy="696.7" r="0.45" fill="#ffffff" opacity="0.063"/>
+<circle id="particle_micro_040" cx="1011.1" cy="918.8" r="0.55" fill="#ff7a00" opacity="0.087"/>
+<circle id="particle_micro_041" cx="671.1" cy="378.8" r="0.55" fill="#ff9d25" opacity="0.138"/>
+<circle id="particle_micro_042" cx="816.7" cy="642.4" r="0.85" fill="#ff9d25" opacity="0.152"/>
+<circle id="particle_micro_043" cx="153.8" cy="695.6" r="0.7" fill="#ffffff" opacity="0.041"/>
+<circle id="particle_micro_044" cx="238.7" cy="498.3" r="0.7" fill="#ffffff" opacity="0.064"/>
+<circle id="particle_micro_045" cx="854.4" cy="862.7" r="0.45" fill="#c15b00" opacity="0.053"/>
+<circle id="particle_micro_046" cx="306.4" cy="306.5" r="0.7" fill="#ffffff" opacity="0.064"/>
+<circle id="particle_micro_047" cx="1054.2" cy="727.1" r="0.7" fill="#ff9d25" opacity="0.069"/>
+<circle id="particle_micro_048" cx="777.0" cy="999.8" r="0.55" fill="#ff7a00" opacity="0.066"/>
+<circle id="particle_micro_049" cx="750.1" cy="728.8" r="0.7" fill="#ffffff" opacity="0.049"/>
+<circle id="particle_micro_050" cx="1730.7" cy="446.7" r="0.45" fill="#ffffff" opacity="0.055"/>
+<circle id="particle_micro_051" cx="1687.3" cy="850.0" r="0.85" fill="#ff7a00" opacity="0.194"/>
+<circle id="particle_micro_052" cx="566.6" cy="277.5" r="0.7" fill="#c15b00" opacity="0.190"/>
+<circle id="particle_micro_053" cx="1314.7" cy="993.2" r="1.0" fill="#c15b00" opacity="0.216"/>
+<circle id="particle_micro_054" cx="631.4" cy="518.3" r="0.45" fill="#ff9d25" opacity="0.207"/>
+<circle id="particle_micro_055" cx="61.9" cy="473.4" r="0.7" fill="#ff7a00" opacity="0.182"/>
+<circle id="particle_micro_056" cx="1673.6" cy="109.2" r="0.45" fill="#ffffff" opacity="0.061"/>
+<circle id="particle_micro_057" cx="1433.0" cy="324.2" r="0.55" fill="#ff9d25" opacity="0.087"/>
+<circle id="particle_micro_058" cx="1848.8" cy="615.6" r="0.45" fill="#ff9d25" opacity="0.172"/>
+<circle id="particle_micro_059" cx="1817.2" cy="932.6" r="0.7" fill="#ff7a00" opacity="0.181"/>
+<circle id="particle_micro_060" cx="1305.5" cy="868.6" r="1.0" fill="#ff7a00" opacity="0.180"/>
+<circle id="particle_micro_061" cx="518.1" cy="429.7" r="1.0" fill="#ffffff" opacity="0.035"/>
+<circle id="particle_micro_062" cx="156.3" cy="801.4" r="0.55" fill="#ff9d25" opacity="0.165"/>
+<circle id="particle_micro_063" cx="1272.8" cy="445.0" r="0.7" fill="#c15b00" opacity="0.203"/>
+<circle id="particle_micro_064" cx="1789.6" cy="398.5" r="0.55" fill="#ffffff" opacity="0.057"/>
+<circle id="particle_micro_065" cx="1144.3" cy="307.1" r="1.0" fill="#ff7a00" opacity="0.180"/>
+<circle id="particle_micro_066" cx="181.8" cy="555.4" r="0.7" fill="#ffffff" opacity="0.033"/>
+<circle id="particle_micro_067" cx="1487.5" cy="284.9" r="0.55" fill="#c15b00" opacity="0.146"/>
+<circle id="particle_micro_068" cx="1503.5" cy="583.9" r="0.45" fill="#c15b00" opacity="0.095"/>
+<circle id="particle_micro_069" cx="380.7" cy="286.5" r="0.45" fill="#ff7a00" opacity="0.218"/>
+<circle id="particle_micro_070" cx="1864.4" cy="186.4" r="0.45" fill="#ff7a00" opacity="0.066"/>
+<circle id="particle_micro_071" cx="1718.4" cy="104.6" r="0.7" fill="#ff9d25" opacity="0.190"/>
+<circle id="particle_micro_072" cx="749.4" cy="308.9" r="0.55" fill="#ffffff" opacity="0.047"/>
+<circle id="particle_micro_073" cx="770.2" cy="176.1" r="0.7" fill="#c15b00" opacity="0.183"/>
+<circle id="particle_micro_074" cx="415.5" cy="188.4" r="0.45" fill="#ff7a00" opacity="0.165"/>
+<circle id="particle_micro_075" cx="744.0" cy="398.5" r="0.45" fill="#ff9d25" opacity="0.098"/>
+<circle id="particle_micro_076" cx="1329.1" cy="228.0" r="0.55" fill="#ffffff" opacity="0.048"/>
+<circle id="particle_micro_077" cx="704.7" cy="92.9" r="0.85" fill="#ffffff" opacity="0.061"/>
+<circle id="particle_micro_078" cx="265.0" cy="656.6" r="0.85" fill="#ffffff" opacity="0.051"/>
+<circle id="particle_micro_079" cx="1811.9" cy="785.5" r="0.45" fill="#ff7a00" opacity="0.205"/>
+<circle id="particle_micro_080" cx="1677.1" cy="688.6" r="0.45" fill="#ff7a00" opacity="0.145"/>
+<circle id="particle_micro_081" cx="489.3" cy="606.6" r="0.45" fill="#c15b00" opacity="0.149"/>
+<circle id="particle_micro_082" cx="849.7" cy="855.5" r="0.85" fill="#ffffff" opacity="0.040"/>
+<circle id="particle_micro_083" cx="752.2" cy="366.4" r="1.0" fill="#ff7a00" opacity="0.136"/>
+<circle id="particle_micro_084" cx="836.1" cy="603.3" r="0.7" fill="#c15b00" opacity="0.156"/>
+<circle id="particle_micro_085" cx="1199.1" cy="814.7" r="0.45" fill="#ff7a00" opacity="0.179"/>
+<circle id="particle_micro_086" cx="414.5" cy="713.8" r="0.45" fill="#c15b00" opacity="0.082"/>
+<circle id="particle_micro_087" cx="1825.8" cy="343.9" r="0.55" fill="#ffffff" opacity="0.029"/>
+<circle id="particle_micro_088" cx="1743.2" cy="246.9" r="1.0" fill="#ff7a00" opacity="0.122"/>
+<circle id="particle_micro_089" cx="758.8" cy="735.1" r="1.0" fill="#c15b00" opacity="0.126"/>
+<circle id="particle_micro_090" cx="1467.2" cy="115.2" r="0.45" fill="#c15b00" opacity="0.212"/>
+<circle id="particle_micro_091" cx="1135.1" cy="724.2" r="0.7" fill="#ff9d25" opacity="0.081"/>
+<circle id="particle_micro_092" cx="1457.4" cy="650.9" r="0.7" fill="#ff7a00" opacity="0.137"/>
+<circle id="particle_micro_093" cx="208.4" cy="206.5" r="1.0" fill="#ff9d25" opacity="0.196"/>
+<circle id="particle_micro_094" cx="1254.4" cy="699.4" r="0.45" fill="#ff9d25" opacity="0.188"/>
+<circle id="particle_micro_095" cx="468.2" cy="982.4" r="0.7" fill="#ffffff" opacity="0.032"/>
+<circle id="particle_micro_096" cx="1721.4" cy="116.5" r="0.85" fill="#ff7a00" opacity="0.176"/>
+<circle id="particle_micro_097" cx="1848.5" cy="145.6" r="0.45" fill="#ffffff" opacity="0.075"/>
+<circle id="particle_micro_098" cx="1297.3" cy="849.5" r="0.55" fill="#ffffff" opacity="0.019"/>
+<circle id="particle_micro_099" cx="152.6" cy="197.0" r="1.0" fill="#ffffff" opacity="0.018"/>
+<circle id="particle_micro_100" cx="775.7" cy="1008.5" r="0.7" fill="#ffffff" opacity="0.069"/>
+<circle id="particle_micro_101" cx="1428.5" cy="253.8" r="0.85" fill="#ffffff" opacity="0.041"/>
+<circle id="particle_micro_102" cx="525.8" cy="293.4" r="0.85" fill="#ffffff" opacity="0.031"/>
+<circle id="particle_micro_103" cx="1162.9" cy="220.7" r="0.45" fill="#ff7a00" opacity="0.180"/>
+<circle id="particle_micro_104" cx="1062.5" cy="272.1" r="1.0" fill="#ff7a00" opacity="0.138"/>
+<circle id="particle_micro_105" cx="474.0" cy="922.0" r="0.45" fill="#c15b00" opacity="0.189"/>
+<circle id="particle_micro_106" cx="1822.5" cy="135.4" r="0.7" fill="#ff9d25" opacity="0.095"/>
+<circle id="particle_micro_107" cx="1688.9" cy="257.0" r="0.55" fill="#c15b00" opacity="0.080"/>
+<circle id="particle_micro_108" cx="680.3" cy="636.1" r="0.85" fill="#ff7a00" opacity="0.206"/>
+<circle id="particle_micro_109" cx="433.3" cy="153.0" r="0.55" fill="#c15b00" opacity="0.088"/>
+<circle id="particle_micro_110" cx="1212.0" cy="942.5" r="0.7" fill="#ffffff" opacity="0.026"/>
+<circle id="particle_micro_111" cx="1340.0" cy="472.5" r="0.55" fill="#ff9d25" opacity="0.130"/>
+<circle id="particle_micro_112" cx="577.4" cy="671.1" r="1.0" fill="#ff7a00" opacity="0.161"/>
+<circle id="particle_micro_113" cx="219.0" cy="843.4" r="0.7" fill="#ff9d25" opacity="0.168"/>
+<circle id="particle_micro_114" cx="1351.4" cy="702.9" r="0.7" fill="#ff9d25" opacity="0.194"/>
+<circle id="particle_micro_115" cx="1221.0" cy="190.4" r="0.45" fill="#ff7a00" opacity="0.087"/>
+<circle id="particle_micro_116" cx="930.1" cy="304.0" r="0.7" fill="#ffffff" opacity="0.056"/>
+<circle id="particle_micro_117" cx="1273.7" cy="933.0" r="1.0" fill="#ff7a00" opacity="0.146"/>
+<circle id="particle_micro_118" cx="1079.9" cy="312.7" r="0.7" fill="#ff9d25" opacity="0.210"/>
+<circle id="particle_micro_119" cx="1270.7" cy="219.9" r="1.0" fill="#ff7a00" opacity="0.178"/>
+<circle id="particle_micro_120" cx="120.6" cy="983.6" r="0.45" fill="#ff9d25" opacity="0.065"/>
+<circle id="particle_micro_121" cx="1865.3" cy="570.7" r="0.55" fill="#ff7a00" opacity="0.219"/>
+<circle id="particle_micro_122" cx="240.8" cy="279.7" r="1.0" fill="#ffffff" opacity="0.076"/>
+<circle id="particle_micro_123" cx="52.3" cy="235.0" r="0.45" fill="#ff9d25" opacity="0.208"/>
+<circle id="particle_micro_124" cx="1455.1" cy="601.3" r="0.85" fill="#ff7a00" opacity="0.176"/>
+<circle id="particle_micro_125" cx="1166.0" cy="375.0" r="0.7" fill="#ff7a00" opacity="0.196"/>
+<circle id="particle_micro_126" cx="850.6" cy="216.6" r="0.45" fill="#ff9d25" opacity="0.056"/>
+<circle id="particle_micro_127" cx="509.1" cy="110.7" r="0.7" fill="#ffffff" opacity="0.064"/>
+<circle id="particle_micro_128" cx="1540.6" cy="884.1" r="0.85" fill="#c15b00" opacity="0.142"/>
+<circle id="particle_micro_129" cx="183.9" cy="394.1" r="1.0" fill="#c15b00" opacity="0.106"/>
+<circle id="particle_micro_130" cx="1832.3" cy="468.9" r="0.85" fill="#c15b00" opacity="0.135"/>
+<circle id="particle_micro_131" cx="1275.4" cy="412.6" r="0.45" fill="#c15b00" opacity="0.053"/>
+<circle id="particle_micro_132" cx="1171.0" cy="744.9" r="0.85" fill="#ff7a00" opacity="0.168"/>
+<circle id="particle_micro_133" cx="719.5" cy="803.5" r="0.7" fill="#ff9d25" opacity="0.204"/>
+<circle id="particle_micro_134" cx="833.1" cy="889.3" r="0.55" fill="#ffffff" opacity="0.062"/>
+<circle id="particle_micro_135" cx="774.8" cy="900.1" r="1.0" fill="#ffffff" opacity="0.059"/>
+<circle id="particle_micro_136" cx="1599.6" cy="766.4" r="0.45" fill="#ff9d25" opacity="0.087"/>
+<circle id="particle_micro_137" cx="874.1" cy="526.8" r="1.0" fill="#ff9d25" opacity="0.207"/>
+<circle id="particle_micro_138" cx="266.6" cy="630.5" r="0.85" fill="#ff9d25" opacity="0.198"/>
+<circle id="particle_micro_139" cx="850.7" cy="501.3" r="0.7" fill="#ffffff" opacity="0.031"/>
+<circle id="particle_micro_140" cx="336.1" cy="863.0" r="0.55" fill="#ffffff" opacity="0.075"/>
+<circle id="particle_micro_141" cx="953.8" cy="566.0" r="0.85" fill="#c15b00" opacity="0.186"/>
+<circle id="particle_micro_142" cx="248.9" cy="194.4" r="0.55" fill="#c15b00" opacity="0.110"/>
+<circle id="particle_micro_143" cx="922.3" cy="254.2" r="0.45" fill="#c15b00" opacity="0.159"/>
+<circle id="particle_micro_144" cx="1789.0" cy="693.6" r="1.0" fill="#c15b00" opacity="0.190"/>
+<circle id="particle_micro_145" cx="210.6" cy="773.0" r="0.55" fill="#ffffff" opacity="0.056"/>
+<circle id="particle_micro_146" cx="550.6" cy="705.3" r="0.45" fill="#ff7a00" opacity="0.206"/>
+<circle id="particle_micro_147" cx="370.8" cy="585.5" r="0.85" fill="#ff9d25" opacity="0.084"/>
+<circle id="particle_micro_148" cx="821.6" cy="847.8" r="0.7" fill="#ff9d25" opacity="0.088"/>
+<circle id="particle_micro_149" cx="1283.7" cy="1007.5" r="0.85" fill="#ffffff" opacity="0.043"/>
+<circle id="particle_micro_150" cx="1223.1" cy="334.8" r="0.7" fill="#ffffff" opacity="0.076"/>
+<circle id="particle_micro_151" cx="1642.8" cy="853.1" r="0.45" fill="#c15b00" opacity="0.081"/>
+<circle id="particle_micro_152" cx="339.7" cy="412.1" r="0.55" fill="#ff9d25" opacity="0.072"/>
+<circle id="particle_micro_153" cx="749.2" cy="404.7" r="1.0" fill="#ffffff" opacity="0.029"/>
+<circle id="particle_micro_154" cx="1321.7" cy="251.6" r="0.55" fill="#c15b00" opacity="0.053"/>
+<circle id="particle_micro_155" cx="870.3" cy="888.5" r="0.7" fill="#ffffff" opacity="0.058"/>
+<circle id="particle_micro_156" cx="696.4" cy="995.5" r="0.7" fill="#c15b00" opacity="0.160"/>
+<circle id="particle_micro_157" cx="1488.3" cy="781.3" r="0.7" fill="#c15b00" opacity="0.183"/>
+<circle id="particle_micro_158" cx="1469.1" cy="386.7" r="0.55" fill="#ff9d25" opacity="0.068"/>
+<circle id="particle_micro_159" cx="786.1" cy="332.5" r="1.0" fill="#ff7a00" opacity="0.116"/>
+<circle id="particle_micro_160" cx="101.9" cy="269.3" r="0.45" fill="#ff7a00" opacity="0.077"/>
+<circle id="particle_micro_161" cx="1836.8" cy="528.4" r="0.55" fill="#ffffff" opacity="0.048"/>
+<circle id="particle_micro_162" cx="1547.0" cy="977.9" r="0.7" fill="#ff7a00" opacity="0.166"/>
+<circle id="particle_micro_163" cx="1618.5" cy="568.2" r="0.7" fill="#ff9d25" opacity="0.177"/>
+<circle id="particle_micro_164" cx="1096.2" cy="947.7" r="0.55" fill="#ff7a00" opacity="0.194"/>
+<circle id="particle_micro_165" cx="270.6" cy="888.6" r="0.7" fill="#ffffff" opacity="0.020"/>
+<circle id="particle_micro_166" cx="692.0" cy="802.0" r="0.45" fill="#ff9d25" opacity="0.110"/>
+<circle id="particle_micro_167" cx="117.4" cy="446.0" r="0.85" fill="#ffffff" opacity="0.020"/>
+<circle id="particle_micro_168" cx="315.4" cy="252.0" r="1.0" fill="#ffffff" opacity="0.031"/>
+<circle id="particle_micro_169" cx="1489.0" cy="208.1" r="1.0" fill="#c15b00" opacity="0.210"/>
+<circle id="particle_micro_170" cx="196.4" cy="834.6" r="1.0" fill="#ffffff" opacity="0.050"/>
+<circle id="particle_micro_171" cx="328.1" cy="607.5" r="1.0" fill="#ff9d25" opacity="0.115"/>
+<circle id="particle_micro_172" cx="1643.5" cy="663.4" r="0.7" fill="#ff7a00" opacity="0.162"/>
+<circle id="particle_micro_173" cx="421.7" cy="211.9" r="0.7" fill="#c15b00" opacity="0.070"/>
+<circle id="particle_micro_174" cx="1866.5" cy="724.5" r="1.0" fill="#ff9d25" opacity="0.176"/>
+<circle id="particle_micro_175" cx="256.6" cy="399.0" r="0.45" fill="#ff9d25" opacity="0.135"/>
+<circle id="particle_micro_176" cx="355.0" cy="810.5" r="0.85" fill="#ffffff" opacity="0.046"/>
+<circle id="particle_micro_177" cx="146.5" cy="807.5" r="1.0" fill="#c15b00" opacity="0.143"/>
+<circle id="particle_micro_178" cx="1157.1" cy="207.8" r="0.45" fill="#ffffff" opacity="0.063"/>
+<circle id="particle_micro_179" cx="266.8" cy="604.6" r="0.7" fill="#ff9d25" opacity="0.127"/>
+<circle id="particle_micro_180" cx="1747.2" cy="479.8" r="1.0" fill="#ff9d25" opacity="0.111"/>
+<circle id="particle_micro_181" cx="953.6" cy="542.4" r="0.55" fill="#ff9d25" opacity="0.164"/>
+<circle id="particle_micro_182" cx="211.9" cy="261.5" r="0.7" fill="#c15b00" opacity="0.120"/>
+<circle id="particle_micro_183" cx="1315.2" cy="911.6" r="0.55" fill="#c15b00" opacity="0.189"/>
+<circle id="particle_micro_184" cx="546.6" cy="623.3" r="0.55" fill="#ffffff" opacity="0.050"/>
+<circle id="particle_micro_185" cx="1171.8" cy="384.5" r="0.45" fill="#ff9d25" opacity="0.066"/>
+<circle id="particle_micro_186" cx="339.6" cy="300.8" r="1.0" fill="#ffffff" opacity="0.029"/>
+<circle id="particle_micro_187" cx="466.6" cy="748.7" r="1.0" fill="#ff9d25" opacity="0.185"/>
+<circle id="particle_micro_188" cx="210.7" cy="123.1" r="0.85" fill="#ffffff" opacity="0.073"/>
+<circle id="particle_micro_189" cx="991.9" cy="521.6" r="0.45" fill="#ff9d25" opacity="0.141"/>
+<circle id="particle_micro_190" cx="1237.2" cy="226.6" r="1.0" fill="#ff7a00" opacity="0.163"/>
+<circle id="particle_micro_191" cx="1748.2" cy="546.6" r="1.0" fill="#ffffff" opacity="0.023"/>
+<circle id="particle_micro_192" cx="1036.1" cy="780.9" r="0.7" fill="#ff7a00" opacity="0.067"/>
+<circle id="particle_micro_193" cx="1316.5" cy="851.0" r="1.0" fill="#ff7a00" opacity="0.159"/>
+<circle id="particle_micro_194" cx="249.7" cy="717.0" r="0.45" fill="#ff7a00" opacity="0.220"/>
+<circle id="particle_micro_195" cx="1158.6" cy="562.4" r="1.0" fill="#ff9d25" opacity="0.109"/>
+<circle id="particle_micro_196" cx="1686.8" cy="936.4" r="0.55" fill="#ffffff" opacity="0.067"/>
+<circle id="particle_micro_197" cx="1482.5" cy="306.1" r="0.85" fill="#ffffff" opacity="0.028"/>
+<circle id="particle_micro_198" cx="1048.9" cy="108.6" r="0.85" fill="#ff7a00" opacity="0.108"/>
+<circle id="particle_micro_199" cx="514.1" cy="493.8" r="0.45" fill="#c15b00" opacity="0.090"/>
+<circle id="particle_micro_200" cx="1591.3" cy="396.2" r="0.45" fill="#ffffff" opacity="0.044"/>
+<circle id="particle_micro_201" cx="640.1" cy="1002.2" r="0.55" fill="#c15b00" opacity="0.150"/>
+<circle id="particle_micro_202" cx="1603.8" cy="213.8" r="0.45" fill="#c15b00" opacity="0.162"/>
+<circle id="particle_micro_203" cx="918.1" cy="300.5" r="0.7" fill="#ff7a00" opacity="0.203"/>
+<circle id="particle_micro_204" cx="668.0" cy="619.6" r="0.7" fill="#c15b00" opacity="0.152"/>
+<circle id="particle_micro_205" cx="63.3" cy="618.6" r="0.55" fill="#c15b00" opacity="0.133"/>
+<circle id="particle_micro_206" cx="912.9" cy="757.4" r="0.7" fill="#ff9d25" opacity="0.179"/>
+<circle id="particle_micro_207" cx="722.1" cy="326.0" r="0.45" fill="#ff9d25" opacity="0.096"/>
+<circle id="particle_micro_208" cx="304.3" cy="666.3" r="0.45" fill="#ff9d25" opacity="0.176"/>
+<circle id="particle_micro_209" cx="1621.4" cy="367.8" r="1.0" fill="#ff9d25" opacity="0.158"/>
+<circle id="particle_micro_210" cx="1239.3" cy="211.3" r="1.0" fill="#ff7a00" opacity="0.127"/>
+<circle id="particle_micro_211" cx="1402.8" cy="868.0" r="1.0" fill="#ff7a00" opacity="0.069"/>
+<circle id="particle_micro_212" cx="1184.8" cy="568.3" r="1.0" fill="#ffffff" opacity="0.062"/>
+<circle id="particle_micro_213" cx="930.5" cy="275.5" r="0.85" fill="#ff7a00" opacity="0.160"/>
+<circle id="particle_micro_214" cx="1334.0" cy="330.1" r="1.0" fill="#c15b00" opacity="0.113"/>
+<circle id="particle_micro_215" cx="1068.9" cy="218.8" r="1.0" fill="#ff7a00" opacity="0.076"/>
+<circle id="particle_micro_216" cx="1716.5" cy="401.8" r="0.55" fill="#c15b00" opacity="0.105"/>
+<circle id="particle_micro_217" cx="1093.2" cy="936.2" r="0.55" fill="#ff9d25" opacity="0.166"/>
+<circle id="particle_micro_218" cx="868.9" cy="146.1" r="0.85" fill="#ff9d25" opacity="0.216"/>
+<circle id="particle_micro_219" cx="1809.0" cy="392.8" r="0.7" fill="#ff7a00" opacity="0.149"/>
+<circle id="particle_micro_220" cx="1313.2" cy="462.8" r="1.0" fill="#ff7a00" opacity="0.119"/>
+<circle id="particle_micro_221" cx="1279.9" cy="327.4" r="0.7" fill="#ff9d25" opacity="0.150"/>
+<circle id="particle_micro_222" cx="371.0" cy="504.6" r="0.85" fill="#ffffff" opacity="0.028"/>
+<circle id="particle_micro_223" cx="1318.9" cy="477.0" r="0.85" fill="#ff9d25" opacity="0.072"/>
+<circle id="particle_micro_224" cx="1249.6" cy="552.9" r="1.0" fill="#ffffff" opacity="0.025"/>
+<circle id="particle_micro_225" cx="1182.2" cy="442.8" r="0.7" fill="#c15b00" opacity="0.144"/>
+<circle id="particle_micro_226" cx="1646.9" cy="645.3" r="1.0" fill="#ff9d25" opacity="0.110"/>
+<circle id="particle_micro_227" cx="446.0" cy="564.4" r="0.55" fill="#ff7a00" opacity="0.087"/>
+<circle id="particle_micro_228" cx="552.3" cy="505.1" r="1.0" fill="#ff9d25" opacity="0.166"/>
+<circle id="particle_micro_229" cx="1538.9" cy="877.0" r="0.7" fill="#ffffff" opacity="0.051"/>
+<g id="micro_glint_00" opacity="0.118"><line x1="1789.5" y1="606.9" x2="1802.3" y2="606.9" stroke="#ff8a12" stroke-width="0.55"/><line x1="1795.9" y1="600.5" x2="1795.9" y2="613.3" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_01" opacity="0.180"><line x1="133.3" y1="181.7" x2="140.0" y2="181.7" stroke="#ff8a12" stroke-width="0.55"/><line x1="136.7" y1="178.4" x2="136.7" y2="185.1" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_02" opacity="0.166"><line x1="376.3" y1="588.7" x2="384.0" y2="588.7" stroke="#ff8a12" stroke-width="0.55"/><line x1="380.2" y1="584.8" x2="380.2" y2="592.5" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_03" opacity="0.152"><line x1="825.1" y1="582.4" x2="836.1" y2="582.4" stroke="#ff8a12" stroke-width="0.55"/><line x1="830.6" y1="576.9" x2="830.6" y2="587.9" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_04" opacity="0.135"><line x1="1685.8" y1="763.9" x2="1694.3" y2="763.9" stroke="#ff8a12" stroke-width="0.55"/><line x1="1690.1" y1="759.7" x2="1690.1" y2="768.1" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_05" opacity="0.149"><line x1="959.2" y1="302.2" x2="971.3" y2="302.2" stroke="#ff8a12" stroke-width="0.55"/><line x1="965.2" y1="296.2" x2="965.2" y2="308.3" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_06" opacity="0.145"><line x1="285.2" y1="244.1" x2="295.1" y2="244.1" stroke="#ff8a12" stroke-width="0.55"/><line x1="290.1" y1="239.2" x2="290.1" y2="249.1" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_07" opacity="0.133"><line x1="1600.8" y1="475.6" x2="1612.8" y2="475.6" stroke="#ff8a12" stroke-width="0.55"/><line x1="1606.8" y1="469.6" x2="1606.8" y2="481.6" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_08" opacity="0.168"><line x1="784.8" y1="163.4" x2="798.8" y2="163.4" stroke="#ff8a12" stroke-width="0.55"/><line x1="791.8" y1="156.4" x2="791.8" y2="170.4" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_09" opacity="0.091"><line x1="1389.6" y1="782.8" x2="1402.9" y2="782.8" stroke="#ff8a12" stroke-width="0.55"/><line x1="1396.2" y1="776.2" x2="1396.2" y2="789.5" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_10" opacity="0.096"><line x1="1356.7" y1="219.7" x2="1372.0" y2="219.7" stroke="#ff8a12" stroke-width="0.55"/><line x1="1364.3" y1="212.1" x2="1364.3" y2="227.4" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_11" opacity="0.150"><line x1="1032.4" y1="361.4" x2="1038.5" y2="361.4" stroke="#ff8a12" stroke-width="0.55"/><line x1="1035.5" y1="358.4" x2="1035.5" y2="364.5" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_12" opacity="0.137"><line x1="1126.5" y1="443.1" x2="1140.0" y2="443.1" stroke="#ff8a12" stroke-width="0.55"/><line x1="1133.2" y1="436.4" x2="1133.2" y2="449.9" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_13" opacity="0.152"><line x1="1119.3" y1="674.1" x2="1126.4" y2="674.1" stroke="#ff8a12" stroke-width="0.55"/><line x1="1122.8" y1="670.6" x2="1122.8" y2="677.7" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_14" opacity="0.181"><line x1="1637.7" y1="252.1" x2="1644.1" y2="252.1" stroke="#ff8a12" stroke-width="0.55"/><line x1="1640.9" y1="248.9" x2="1640.9" y2="255.4" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_15" opacity="0.147"><line x1="1242.8" y1="554.0" x2="1253.2" y2="554.0" stroke="#ff8a12" stroke-width="0.55"/><line x1="1248.0" y1="548.9" x2="1248.0" y2="559.2" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_16" opacity="0.095"><line x1="1496.6" y1="923.4" x2="1511.9" y2="923.4" stroke="#ff8a12" stroke-width="0.55"/><line x1="1504.2" y1="915.8" x2="1504.2" y2="931.1" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_17" opacity="0.083"><line x1="1521.3" y1="873.8" x2="1533.5" y2="873.8" stroke="#ff8a12" stroke-width="0.55"/><line x1="1527.4" y1="867.7" x2="1527.4" y2="879.9" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_18" opacity="0.123"><line x1="98.6" y1="392.9" x2="114.0" y2="392.9" stroke="#ff8a12" stroke-width="0.55"/><line x1="106.3" y1="385.2" x2="106.3" y2="400.7" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_19" opacity="0.121"><line x1="1771.5" y1="248.7" x2="1786.7" y2="248.7" stroke="#ff8a12" stroke-width="0.55"/><line x1="1779.1" y1="241.2" x2="1779.1" y2="256.3" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_20" opacity="0.130"><line x1="1362.3" y1="331.2" x2="1371.0" y2="331.2" stroke="#ff8a12" stroke-width="0.55"/><line x1="1366.6" y1="326.8" x2="1366.6" y2="335.5" stroke="#ff8a12" stroke-width="0.55"/></g>
+<g id="micro_glint_21" opacity="0.082"><line x1="430.1" y1="693.6" x2="438.2" y2="693.6" stroke="#ff8a12" stroke-width="0.55"/><line x1="434.2" y1="689.5" x2="434.2" y2="697.7" stroke="#ff8a12" stroke-width="0.55"/></g>
+</g>
+</svg>

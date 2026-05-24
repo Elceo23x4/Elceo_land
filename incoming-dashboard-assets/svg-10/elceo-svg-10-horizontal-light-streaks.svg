@@ -1,0 +1,50 @@
+<svg id="elceo-svg-10-horizontal-light-streaks" xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none">
+
+  <defs>
+    <radialGradient id="elceo-bg-radial-core" cx="50%" cy="44%" r="60%">
+      <stop offset="0%" stop-color="#241004" stop-opacity="0.58"/>
+      <stop offset="38%" stop-color="#080403" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="elceo-bg-side-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff7a00" stop-opacity="0.20"/>
+      <stop offset="70%" stop-color="#ff7a00" stop-opacity="0.025"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="elceo-horizontal-streak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.28" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="0.50" stop-color="#ff9a21" stop-opacity="0.50"/>
+      <stop offset="0.72" stop-color="#ff7a00" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="elceo-soft-grid-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff7a00" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ff7a00" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="elceo-soft-glow-sm" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo-soft-glow-md" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+<rect id="display_safe_dark_canvas" x="0" y="0" width="1920" height="1080" fill="#020302"/>
+<g id="horizontal_light_streaks_subtle">
+<rect id="light_streak_00" x="60" y="352" width="1790" height="1.2" fill="url(#elceo-horizontal-streak)" opacity="0.28"/>
+<circle id="light_streak_hotspot_00" cx="1267.2" cy="352.6" r="2.2" fill="#ff9a20" opacity="0.420" filter="url(#elceo-soft-glow-sm)"/>
+<rect id="light_streak_01" x="420" y="428" width="1055" height="0.8" fill="url(#elceo-horizontal-streak)" opacity="0.16"/>
+<circle id="light_streak_hotspot_01" cx="717.6" cy="428.4" r="2.2" fill="#ff9a20" opacity="0.240" filter="url(#elceo-soft-glow-sm)"/>
+<rect id="light_streak_02" x="0" y="617" width="1920" height="1.1" fill="url(#elceo-horizontal-streak)" opacity="0.22"/>
+<circle id="light_streak_hotspot_02" cx="999.7" cy="617.5" r="2.2" fill="#ff9a20" opacity="0.330" filter="url(#elceo-soft-glow-sm)"/>
+<rect id="light_streak_03" x="220" y="754" width="1480" height="0.7" fill="url(#elceo-horizontal-streak)" opacity="0.14"/>
+<circle id="light_streak_hotspot_03" cx="763.5" cy="754.4" r="2.2" fill="#ff9a20" opacity="0.210" filter="url(#elceo-soft-glow-sm)"/>
+<rect id="light_streak_04" x="250" y="106" width="1400" height="0.45" fill="url(#elceo-horizontal-streak)" opacity="0.1"/>
+<circle id="light_streak_hotspot_04" cx="717.6" cy="106.2" r="2.2" fill="#ff9a20" opacity="0.150" filter="url(#elceo-soft-glow-sm)"/>
+<rect id="light_streak_05" x="110" y="980" width="1700" height="0.55" fill="url(#elceo-horizontal-streak)" opacity="0.12"/>
+<circle id="light_streak_hotspot_05" cx="872.7" cy="980.3" r="2.2" fill="#ff9a20" opacity="0.180" filter="url(#elceo-soft-glow-sm)"/>
+</g>
+</svg>
