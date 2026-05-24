@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_03_revb_projection_paths_up_down" width="430" height="520" viewBox="0 0 430 520" fill="none" overflow="visible" role="img" aria-label="ELCEO SVG-03 Rev-B display-safe upside and downside projection path assets with no text">
+  <defs>
+    <linearGradient id="elceo_svg_03_revb_projection_paths_up_down_supplyFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff4b5f" stop-opacity="0.36"/>
+      <stop offset="55%" stop-color="#9b1d2b" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#260308" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_projection_paths_up_down_demandFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e0a4" stop-opacity="0.34"/>
+      <stop offset="58%" stop-color="#008f70" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#021b15" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_projection_paths_up_down_upStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1ffb84" stop-opacity="0.58"/>
+      <stop offset="55%" stop-color="#45ff8b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#afffd0" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_projection_paths_up_down_downStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff465a" stop-opacity="0.60"/>
+      <stop offset="58%" stop-color="#ff4353" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#ffac92" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_projection_paths_up_down_amberStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6d00" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffb54a" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#ff6d00" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="elceo_svg_03_revb_projection_paths_up_down_arrowUp" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#55ff92" fill-opacity="0.98"/>
+    </marker>
+    <marker id="elceo_svg_03_revb_projection_paths_up_down_arrowDown" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#ff4b5f" fill-opacity="0.98"/>
+    </marker>
+    <filter id="elceo_svg_03_revb_projection_paths_up_down_greenGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_projection_paths_up_down_redGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_projection_paths_up_down_amberGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.35" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect id="elceo_svg_03_revb_projection_paths_up_down_transparent_import_bbox" x="0" y="0" width="430" height="520" fill="#000000" opacity="0.001"/>
+
+  <g id="svg03_revb_projection_paths" data-role="projection-path-assets">
+    <g id="svg03_revb_upside_projection_path_system" data-role="upside-hybrid-stepped-curved-path" transform="translate(56 58)">
+      <path id="svg03_revb_upside_projection_path" d="M0 168 H78 C90 168 96 162 102 150 L120 116 C128 101 139 94 156 94 H202 C224 94 238 82 251 59 C265 35 286 22 305 10" fill="none" stroke="url(#elceo_svg_03_revb_projection_paths_up_down_upStroke)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="17 8" marker-end="url(#elceo_svg_03_revb_projection_paths_up_down_arrowUp)" filter="url(#elceo_svg_03_revb_projection_paths_up_down_greenGlow)" vector-effect="non-scaling-stroke"/>
+      <g id="svg03_revb_upside_path_nodes" fill="#46ff87" stroke="#d9ffe2" stroke-width="0.65" filter="url(#elceo_svg_03_revb_projection_paths_up_down_greenGlow)">
+        <circle cx="0" cy="168" r="4.5"/><circle cx="78" cy="168" r="4"/><circle cx="120" cy="116" r="4"/>
+        <circle cx="156" cy="94" r="4"/><circle cx="202" cy="94" r="4"/><circle cx="251" cy="59" r="3.8"/>
+      </g>
+    </g>
+    <g id="svg03_revb_downside_projection_path_system" data-role="downside-hybrid-stepped-curved-path" transform="translate(56 290)">
+      <path id="svg03_revb_downside_projection_path" d="M0 0 H80 C92 0 98 6 105 20 L126 58 C133 72 145 80 163 80 H207 C231 80 246 95 259 118 C272 142 291 158 307 173" fill="none" stroke="url(#elceo_svg_03_revb_projection_paths_up_down_downStroke)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="17 8" marker-end="url(#elceo_svg_03_revb_projection_paths_up_down_arrowDown)" filter="url(#elceo_svg_03_revb_projection_paths_up_down_redGlow)" vector-effect="non-scaling-stroke"/>
+      <g id="svg03_revb_downside_path_nodes" fill="#ff4354" stroke="#ffd8d0" stroke-width="0.65" filter="url(#elceo_svg_03_revb_projection_paths_up_down_redGlow)">
+        <circle cx="0" cy="0" r="4.5"/><circle cx="80" cy="0" r="4"/><circle cx="126" cy="58" r="4"/>
+        <circle cx="163" cy="80" r="4"/><circle cx="207" cy="80" r="4"/><circle cx="259" cy="118" r="3.8"/>
+      </g>
+    </g>
+  </g>
+
+</svg>

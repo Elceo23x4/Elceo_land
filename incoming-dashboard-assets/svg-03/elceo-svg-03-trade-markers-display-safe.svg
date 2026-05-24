@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_03_revb_trade_markers" width="540" height="280" viewBox="0 0 540 280" fill="none" overflow="visible" role="img" aria-label="ELCEO SVG-03 Rev-B display-safe entry stop-loss and take-profit marker shape assets with no text">
+  <defs>
+    <linearGradient id="elceo_svg_03_revb_trade_markers_supplyFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff4b5f" stop-opacity="0.36"/>
+      <stop offset="55%" stop-color="#9b1d2b" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#260308" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_trade_markers_demandFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e0a4" stop-opacity="0.34"/>
+      <stop offset="58%" stop-color="#008f70" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#021b15" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_trade_markers_upStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1ffb84" stop-opacity="0.58"/>
+      <stop offset="55%" stop-color="#45ff8b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#afffd0" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_trade_markers_downStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff465a" stop-opacity="0.60"/>
+      <stop offset="58%" stop-color="#ff4353" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#ffac92" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_trade_markers_amberStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6d00" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffb54a" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#ff6d00" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="elceo_svg_03_revb_trade_markers_arrowUp" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#55ff92" fill-opacity="0.98"/>
+    </marker>
+    <marker id="elceo_svg_03_revb_trade_markers_arrowDown" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#ff4b5f" fill-opacity="0.98"/>
+    </marker>
+    <filter id="elceo_svg_03_revb_trade_markers_greenGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_trade_markers_redGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_trade_markers_amberGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.35" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect id="elceo_svg_03_revb_trade_markers_transparent_import_bbox" x="0" y="0" width="540" height="280" fill="#000000" opacity="0.001"/>
+
+  <g id="svg03_revb_trade_markers" data-role="trade-marker-assets" transform="translate(42 35)">
+    <g id="svg03_revb_entry_marker_family" data-role="entry-marker-shapes" transform="translate(0 0)">
+      <circle id="svg03_revb_entry_marker_outer" cx="60" cy="60" r="24" fill="#0c0702" stroke="#ff9b2f" stroke-width="2.2" filter="url(#elceo_svg_03_revb_trade_markers_amberGlow)" vector-effect="non-scaling-stroke"/>
+      <rect id="svg03_revb_entry_marker_inner_diamond" x="51" y="51" width="18" height="18" transform="rotate(45 60 60)" fill="#160803" stroke="#ffd18a" stroke-width="1.1" stroke-opacity="0.92" vector-effect="non-scaling-stroke"/>
+      <circle id="svg03_revb_entry_marker_core" cx="60" cy="60" r="3.2" fill="#ffb14a"/>
+    </g>
+    <g id="svg03_revb_take_profit_marker_family" data-role="take-profit-marker-shapes" transform="translate(160 0)">
+      <rect id="svg03_revb_tp_square_outer" x="34" y="34" width="52" height="52" rx="3" fill="#04170b" stroke="#39ff7b" stroke-width="2.2" filter="url(#elceo_svg_03_revb_trade_markers_greenGlow)" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_tp_arrow_symbolic_chevron" d="M48 63 L60 49 L72 63" fill="none" stroke="#aaffc5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+      <circle id="svg03_revb_tp_core" cx="60" cy="60" r="3" fill="#50ff8a"/>
+    </g>
+    <g id="svg03_revb_stop_loss_marker_family" data-role="stop-loss-marker-shapes" transform="translate(320 0)">
+      <path id="svg03_revb_sl_inverted_triangle" d="M60 88 L30 36 H90 Z" fill="#170405" stroke="#ff4458" stroke-width="2.2" filter="url(#elceo_svg_03_revb_trade_markers_redGlow)" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_sl_inner_cut" d="M48 52 L72 76 M72 52 L48 76" stroke="#ffc3ba" stroke-width="1.65" stroke-linecap="round" stroke-opacity="0.82" vector-effect="non-scaling-stroke"/>
+    </g>
+    <g id="svg03_revb_micro_tp_markers" data-role="smaller-take-profit-variants" transform="translate(0 150)">
+      <rect id="svg03_revb_tp_micro_01" x="40" y="30" width="34" height="34" rx="2" fill="#04170b" stroke="#39ff7b" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_tp_micro_02" d="M160 66 L137 28 H183 Z" fill="#04170b" stroke="#39ff7b" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+      <circle id="svg03_revb_tp_micro_03" cx="270" cy="47" r="18" fill="#04170b" stroke="#39ff7b" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+      <rect id="svg03_revb_tp_micro_04" x="374" y="30" width="34" height="34" rx="0" transform="rotate(45 391 47)" fill="#04170b" stroke="#39ff7b" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+    </g>
+  </g>
+
+</svg>

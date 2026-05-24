@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_03_revb_zones" width="640" height="340" viewBox="0 0 640 340" fill="none" overflow="visible" role="img" aria-label="ELCEO SVG-03 Rev-B display-safe supply and demand zone assets with no text">
+  <defs>
+    <linearGradient id="elceo_svg_03_revb_zones_supplyFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff4b5f" stop-opacity="0.36"/>
+      <stop offset="55%" stop-color="#9b1d2b" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#260308" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_zones_demandFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e0a4" stop-opacity="0.34"/>
+      <stop offset="58%" stop-color="#008f70" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#021b15" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_zones_upStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1ffb84" stop-opacity="0.58"/>
+      <stop offset="55%" stop-color="#45ff8b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#afffd0" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_zones_downStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff465a" stop-opacity="0.60"/>
+      <stop offset="58%" stop-color="#ff4353" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#ffac92" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_zones_amberStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6d00" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffb54a" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#ff6d00" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="elceo_svg_03_revb_zones_arrowUp" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#55ff92" fill-opacity="0.98"/>
+    </marker>
+    <marker id="elceo_svg_03_revb_zones_arrowDown" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#ff4b5f" fill-opacity="0.98"/>
+    </marker>
+    <filter id="elceo_svg_03_revb_zones_greenGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_zones_redGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_zones_amberGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.35" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect id="elceo_svg_03_revb_zones_transparent_import_bbox" x="0" y="0" width="640" height="340" fill="#000000" opacity="0.001"/>
+
+  <g id="svg03_revb_zones" data-role="zone-block-assets">
+    <g id="svg03_revb_supply_zone_block" data-role="supply-zone" transform="translate(52 42)">
+      <rect id="svg03_revb_supply_zone_outer" x="0" y="0" width="536" height="82" rx="2" fill="url(#elceo_svg_03_revb_zones_supplyFill)" stroke="#ff4b5f" stroke-width="1.35" stroke-opacity="0.82" vector-effect="non-scaling-stroke"/>
+      <rect id="svg03_revb_supply_zone_inner_hairline" x="7" y="7" width="522" height="68" rx="1.2" fill="none" stroke="#ffffff" stroke-width="0.45" stroke-opacity="0.16" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_supply_zone_top_scan" d="M18 14 H518" stroke="#ff94a0" stroke-width="0.6" stroke-opacity="0.42" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_supply_zone_bottom_depth" d="M18 68 H518" stroke="#240307" stroke-width="1.25" stroke-opacity="0.50" vector-effect="non-scaling-stroke"/>
+      <g id="svg03_revb_supply_zone_corner_handles" fill="#240307" stroke="#ff4b5f" stroke-width="1.25" stroke-opacity="0.96" vector-effect="non-scaling-stroke">
+        <rect x="-5" y="-5" width="10" height="10" transform="rotate(45 0 0)"/>
+        <rect x="531" y="-5" width="10" height="10" transform="rotate(45 536 0)"/>
+        <rect x="-5" y="77" width="10" height="10" transform="rotate(45 0 82)"/>
+        <rect x="531" y="77" width="10" height="10" transform="rotate(45 536 82)"/>
+      </g>
+    </g>
+    <g id="svg03_revb_demand_zone_block" data-role="demand-zone" transform="translate(52 202)">
+      <rect id="svg03_revb_demand_zone_outer" x="0" y="0" width="536" height="82" rx="2" fill="url(#elceo_svg_03_revb_zones_demandFill)" stroke="#00d49a" stroke-width="1.35" stroke-opacity="0.82" vector-effect="non-scaling-stroke"/>
+      <rect id="svg03_revb_demand_zone_inner_hairline" x="7" y="7" width="522" height="68" rx="1.2" fill="none" stroke="#ffffff" stroke-width="0.45" stroke-opacity="0.14" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_demand_zone_top_scan" d="M18 14 H518" stroke="#6bffd1" stroke-width="0.6" stroke-opacity="0.36" vector-effect="non-scaling-stroke"/>
+      <path id="svg03_revb_demand_zone_bottom_depth" d="M18 68 H518" stroke="#041f17" stroke-width="1.25" stroke-opacity="0.46" vector-effect="non-scaling-stroke"/>
+      <g id="svg03_revb_demand_zone_corner_handles" fill="#021b15" stroke="#00d49a" stroke-width="1.25" stroke-opacity="0.96" vector-effect="non-scaling-stroke">
+        <rect x="-5" y="-5" width="10" height="10" transform="rotate(45 0 0)"/>
+        <rect x="531" y="-5" width="10" height="10" transform="rotate(45 536 0)"/>
+        <rect x="-5" y="77" width="10" height="10" transform="rotate(45 0 82)"/>
+        <rect x="531" y="77" width="10" height="10" transform="rotate(45 536 82)"/>
+      </g>
+    </g>
+  </g>
+
+</svg>

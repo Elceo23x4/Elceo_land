@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_03_revb_composed_overlay_only" width="680" height="360" viewBox="0 0 680 360" fill="none" overflow="visible" role="img" aria-label="ELCEO SVG-03 Rev-B composed overlay only with no text no candles no axes">
+  <defs>
+    <linearGradient id="elceo_svg_03_revb_composed_overlay_only_supplyFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff4b5f" stop-opacity="0.36"/>
+      <stop offset="55%" stop-color="#9b1d2b" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#260308" stop-opacity="0.14"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_composed_overlay_only_demandFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00e0a4" stop-opacity="0.34"/>
+      <stop offset="58%" stop-color="#008f70" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#021b15" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_composed_overlay_only_upStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1ffb84" stop-opacity="0.58"/>
+      <stop offset="55%" stop-color="#45ff8b" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#afffd0" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_composed_overlay_only_downStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff465a" stop-opacity="0.60"/>
+      <stop offset="58%" stop-color="#ff4353" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#ffac92" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="elceo_svg_03_revb_composed_overlay_only_amberStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ff6d00" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#ffb54a" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#ff6d00" stop-opacity="0.15"/>
+    </linearGradient>
+    <marker id="elceo_svg_03_revb_composed_overlay_only_arrowUp" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#55ff92" fill-opacity="0.98"/>
+    </marker>
+    <marker id="elceo_svg_03_revb_composed_overlay_only_arrowDown" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="9" markerHeight="9" orient="auto">
+      <path d="M1 1 L11 6 L1 11 L4.2 6 Z" fill="#ff4b5f" fill-opacity="0.98"/>
+    </marker>
+    <filter id="elceo_svg_03_revb_composed_overlay_only_greenGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_composed_overlay_only_redGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.0" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="elceo_svg_03_revb_composed_overlay_only_amberGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="1.35" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect id="elceo_svg_03_revb_composed_overlay_only_transparent_import_bbox" x="0" y="0" width="680" height="360" fill="#000000" opacity="0.001"/>
+
+  <g id="svg03_revb_composed_overlay_only" data-role="composed-overlay-no-chart-ui" transform="translate(24 24)">
+    <g id="svg03_revb_composed_guide_lines">
+      <line x1="0" y1="70" x2="632" y2="70" stroke="#ff465a" stroke-width="1.1" stroke-opacity="0.82" stroke-dasharray="1 8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <line x1="0" y1="114" x2="632" y2="114" stroke="#ffbb35" stroke-width="1" stroke-opacity="0.72" stroke-dasharray="1 8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <line x1="0" y1="164" x2="632" y2="164" stroke="#d6d8d2" stroke-width="1" stroke-opacity="0.70" stroke-dasharray="1 8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <line x1="0" y1="214" x2="632" y2="214" stroke="#00dca8" stroke-width="1" stroke-opacity="0.70" stroke-dasharray="1 8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+      <line x1="0" y1="272" x2="632" y2="272" stroke="#1dff89" stroke-width="1" stroke-opacity="0.74" stroke-dasharray="1 8" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+    </g>
+    <g id="svg03_revb_composed_supply_zone" transform="translate(168 16)">
+      <rect x="0" y="0" width="330" height="56" rx="2" fill="url(#elceo_svg_03_revb_composed_overlay_only_supplyFill)" stroke="#ff4b5f" stroke-width="1.25" stroke-opacity="0.82" vector-effect="non-scaling-stroke"/>
+      <rect x="5" y="5" width="320" height="46" fill="none" stroke="#ffffff" stroke-width="0.4" stroke-opacity="0.13"/>
+      <g fill="#240307" stroke="#ff4b5f" stroke-width="1.1"><rect x="-4" y="-4" width="8" height="8" transform="rotate(45 0 0)"/><rect x="326" y="-4" width="8" height="8" transform="rotate(45 330 0)"/><rect x="-4" y="52" width="8" height="8" transform="rotate(45 0 56)"/><rect x="326" y="52" width="8" height="8" transform="rotate(45 330 56)"/></g>
+    </g>
+    <g id="svg03_revb_composed_demand_zone" transform="translate(132 214)">
+      <rect x="0" y="0" width="330" height="58" rx="2" fill="url(#elceo_svg_03_revb_composed_overlay_only_demandFill)" stroke="#00d49a" stroke-width="1.25" stroke-opacity="0.82" vector-effect="non-scaling-stroke"/>
+      <rect x="5" y="5" width="320" height="48" fill="none" stroke="#ffffff" stroke-width="0.4" stroke-opacity="0.12"/>
+      <g fill="#021b15" stroke="#00d49a" stroke-width="1.1"><rect x="-4" y="-4" width="8" height="8" transform="rotate(45 0 0)"/><rect x="326" y="-4" width="8" height="8" transform="rotate(45 330 0)"/><rect x="-4" y="54" width="8" height="8" transform="rotate(45 0 58)"/><rect x="326" y="54" width="8" height="8" transform="rotate(45 330 58)"/></g>
+    </g>
+    <g id="svg03_revb_composed_upside_path" transform="translate(390 130)">
+      <path d="M0 32 H52 C64 32 70 25 77 10 L84 -6 C90 -20 102 -26 118 -26 H158 C177 -26 190 -38 202 -58 C214 -78 232 -92 250 -103" fill="none" stroke="url(#elceo_svg_03_revb_composed_overlay_only_upStroke)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="15 7" marker-end="url(#elceo_svg_03_revb_composed_overlay_only_arrowUp)" filter="url(#elceo_svg_03_revb_composed_overlay_only_greenGlow)" vector-effect="non-scaling-stroke"/>
+      <g fill="#46ff87" stroke="#d9ffe2" stroke-width="0.55"><circle cx="0" cy="32" r="3.5"/><circle cx="52" cy="32" r="3.2"/><circle cx="84" cy="-6" r="3.2"/><circle cx="118" cy="-26" r="3.2"/><circle cx="158" cy="-26" r="3.2"/></g>
+      <rect x="134" y="-45" width="22" height="22" fill="#04170b" stroke="#39ff7b" stroke-width="1.8"/>
+      <path d="M128 14 L141 -10 L155 14 Z" fill="#04170b" stroke="#39ff7b" stroke-width="1.5"/>
+    </g>
+    <g id="svg03_revb_composed_downside_path" transform="translate(390 184)">
+      <path d="M0 0 H50 C62 0 68 8 76 22 L92 50 C100 63 112 70 128 70 H170 C192 70 205 84 218 106 C231 130 248 146 265 162" fill="none" stroke="url(#elceo_svg_03_revb_composed_overlay_only_downStroke)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="15 7" marker-end="url(#elceo_svg_03_revb_composed_overlay_only_arrowDown)" filter="url(#elceo_svg_03_revb_composed_overlay_only_redGlow)" vector-effect="non-scaling-stroke"/>
+      <g fill="#ff4354" stroke="#ffd8d0" stroke-width="0.55"><circle cx="0" cy="0" r="3.5"/><circle cx="50" cy="0" r="3.2"/><circle cx="92" cy="50" r="3.2"/><circle cx="128" cy="70" r="3.2"/><circle cx="170" cy="70" r="3.2"/></g>
+      <path d="M127 35 L113 12 H141 Z" fill="#170405" stroke="#ff4458" stroke-width="1.6"/>
+      <rect x="116" y="92" width="22" height="22" fill="#170405" stroke="#ff4458" stroke-width="1.6"/>
+    </g>
+    <g id="svg03_revb_composed_structure_markers">
+      <rect x="270" y="148" width="12" height="12" transform="rotate(45 276 154)" fill="#100602" stroke="#ffbb35" stroke-width="1.1"/>
+      <rect x="484" y="66" width="10" height="10" transform="rotate(45 489 71)" fill="#04170b" stroke="#46ff87" stroke-width="1.1"/>
+      <rect x="44" y="265" width="10" height="10" transform="rotate(45 49 270)" fill="#021b15" stroke="#1dff89" stroke-width="1.1"/>
+    </g>
+  </g>
+
+</svg>
