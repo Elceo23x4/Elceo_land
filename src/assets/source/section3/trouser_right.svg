@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="trouser_panel_right" data-name="trouser_panel_right" width="494" height="1008" viewBox="0 0 494 1008" role="img" aria-labelledby="title desc" overflow="visible">
+  <title id="title">trouser_panel_right</title>
+  <desc id="desc">Repaired for broad UI-tool compatibility: no ns0 prefixes, no undefined fill references, normalized 0 0 viewBox.</desc>
+  <defs>
+    <linearGradient id="orangeFlat_right" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#ff7a12"/>
+      <stop offset="1" stop-color="#ec4a00"/>
+    </linearGradient>
+  </defs>
+  <g id="trouser_panel_right_group" data-label="trouser_panel_right_group">
+    <path id="trouser_panel_right_outer_shape" data-label="trouser_panel_right_outer_shape" d="M 494 0 H 55 L 0 1008 H 494 Z" fill="url(#orangeFlat_right)" stroke="#111111" stroke-width="6" stroke-linejoin="miter"/>
+    <path id="trouser_panel_right_inner_outline" data-label="trouser_panel_right_inner_outline" d="M 472 28 H 82 L 32 978 H 472 Z" fill="none" stroke="#151515" stroke-width="3" stroke-dasharray="10 9" stroke-linejoin="miter"/>
+  </g>
+</svg>

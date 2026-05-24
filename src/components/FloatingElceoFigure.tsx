@@ -33,10 +33,13 @@ export default function FloatingElceoFigure({ dimmed = false }: FloatingElceoFig
   const scale = useHeroScale();
 
   const stageLeft = (window.innerWidth - 1920 * scale) / 2;
-  const left = stageLeft + FIGURE_LEFT * scale;
-  const top = FIGURE_TOP * scale;
   const width = FIGURE_WIDTH * scale;
   const height = FIGURE_HEIGHT * scale;
+  const margin = 12;
+  const unclampedLeft = stageLeft + FIGURE_LEFT * scale;
+  const maxLeft = window.innerWidth - width - margin;
+  const left = Math.max(margin, Math.min(unclampedLeft, maxLeft));
+  const top = Math.max(8, Math.min(FIGURE_TOP * scale, window.innerHeight - height - 8));
 
   return (
     <div

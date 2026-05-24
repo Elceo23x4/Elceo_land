@@ -1,8 +1,11 @@
-import { useState, useCallback, useLayoutEffect, useRef } from "react";
+import { useState, useCallback, useLayoutEffect, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import PagePreloader from "./components/PagePreloader";
+import MobileBlocker from "./components/MobileBlocker";
 import HeroSection from "./components/HeroSection";
 import SectionTwo from "./components/SectionTwo";
+import SectionThree from "./components/SectionThree";
 import ScrollCue from "./components/ScrollCue";
 import AboutPopup from "./components/AboutPopup";
 import PricingPopup from "./components/PricingPopup";
@@ -12,13 +15,42 @@ import GoldCursor3D from "./components/GoldCursor3D";
 
 gsap.registerPlugin(ScrollTrigger);
 
+function useIsSupportedViewport(minWidth = 768) {
+  const [supported, setSupported] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return window.innerWidth >= minWidth;
+  });
+
+  useEffect(() => {
+    const media = window.matchMedia(`(min-width: ${minWidth}px)`);
+    const update = () => setSupported(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, [minWidth]);
+
+  return supported;
+}
+
 export default function App() {
+  const isSupportedViewport = useIsSupportedViewport(768);
+
+  if (!isSupportedViewport) {
+    return <MobileBlocker />;
+  }
+
+  return <LandingPage />;
+}
+
+function LandingPage() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isPricingOpen, setIsPricingOpen] = useState(false);
   const [isFaqOpen, setIsFaqOpen] = useState(false);
 
   const heroPanelRef = useRef<HTMLDivElement>(null);
   const heroMotionRef = useRef<HTMLDivElement>(null);
+  const sectionTwoPanelRef = useRef<HTMLDivElement>(null);
+  const sectionTwoMotionRef = useRef<HTMLDivElement>(null);
 
   const handleAboutOpen = useCallback(() => setIsAboutOpen(true), []);
   const handleAboutClose = useCallback(() => setIsAboutOpen(false), []);
@@ -75,6 +107,118 @@ export default function App() {
     };
   }, []);
 
+  // GSAP parallax on Section Two
+  useLayoutEffect(() => {
+    const s2Panel = sectionTwoPanelRef.current;
+    const s2Motion = sectionTwoMotionRef.current;
+    if (!s2Panel || !s2Motion) return;
+
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(s2Motion, {
+        transformPerspective: 1400,
+        transformOrigin: "center bottom",
+        scale: 1,
+        yPercent: 0,
+        rotateX: 0,
+        opacity: 1,
+        filter: "brightness(1) saturate(1) blur(0px)",
+      });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: s2Panel,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.9,
+          invalidateOnRefresh: true,
+        },
+      }).to(s2Motion, {
+        scale: 0.88,
+        yPercent: -8,
+        rotateX: 6,
+        opacity: 0.45,
+        filter: "brightness(0.62) saturate(0.88) blur(0.35px)",
+        ease: "none",
+      }, 0);
+    }, s2Panel);
+
+    const raf = requestAnimationFrame(() => ScrollTrigger.refresh());
+
+    return () => {
+      cancelAnimationFrame(raf);
+      ctx.revert();
+    };
+  }, []);
+
+  // Section-by-section wheel scroll guard
+  useEffect(() => {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let locked = false;
+
+    function isInsideScrollable(target: EventTarget | null): boolean {
+      let el = target as HTMLElement | null;
+      while (el && el !== document.body) {
+        const style = window.getComputedStyle(el);
+        const canScrollY = /(auto|scroll)/.test(style.overflowY) && el.scrollHeight > el.clientHeight;
+        const canScrollX = /(auto|scroll)/.test(style.overflowX) && el.scrollWidth > el.clientWidth;
+        if (canScrollY || canScrollX) return true;
+        el = el.parentElement;
+      }
+      return false;
+    }
+
+    function getSections(): HTMLElement[] {
+      const s: HTMLElement[] = [];
+      if (heroPanelRef.current) s.push(heroPanelRef.current);
+      if (sectionTwoPanelRef.current) s.push(sectionTwoPanelRef.current);
+      const s3 = document.querySelector<HTMLElement>(".section-three");
+      if (s3) s.push(s3);
+      return s;
+    }
+
+    function getCurrentIndex(sections: HTMLElement[]): number {
+      const scrollY = window.scrollY;
+      let closest = 0;
+      let minDist = Infinity;
+      for (let i = 0; i < sections.length; i++) {
+        const dist = Math.abs(sections[i].offsetTop - scrollY);
+        if (dist < minDist) { minDist = dist; closest = i; }
+      }
+      return closest;
+    }
+
+    function onWheel(e: WheelEvent) {
+      if (locked) { e.preventDefault(); return; }
+      if (isInsideScrollable(e.target)) return;
+      if (Math.abs(e.deltaY) < 18) return;
+
+      const sections = getSections();
+      if (sections.length < 2) return;
+
+      const current = getCurrentIndex(sections);
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const next = Math.max(0, Math.min(sections.length - 1, current + direction));
+
+      if (next === current) return;
+
+      e.preventDefault();
+      locked = true;
+
+      window.scrollTo({
+        top: sections[next].offsetTop,
+        behavior: prefersReduced ? "auto" : "smooth",
+      });
+
+      setTimeout(() => { locked = false; }, 950);
+    }
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
   return (
     <>
       <div className="landing-page">
@@ -87,7 +231,12 @@ export default function App() {
             />
           </div>
         </div>
-        <SectionTwo />
+        <div className="magazine-section-two-panel" ref={sectionTwoPanelRef}>
+          <div className="magazine-section-two-motion" ref={sectionTwoMotionRef}>
+            <SectionTwo />
+          </div>
+        </div>
+        <SectionThree />
       </div>
       <FloatingElceoFigure dimmed={anyPopupOpen} />
       <ScrollCue />
@@ -95,6 +244,7 @@ export default function App() {
       <PricingPopup isOpen={isPricingOpen} onClose={handlePricingClose} />
       <FaqPopup isOpen={isFaqOpen} onClose={handleFaqClose} />
       <GoldCursor3D />
+      <PagePreloader />
     </>
   );
 }

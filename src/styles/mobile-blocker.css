@@ -1,0 +1,78 @@
+/* =========================================================
+   Mobile Blocker — min 768px required
+   ========================================================= */
+
+.mobile-blocker {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+.mobile-blocker-content {
+  text-align: center;
+  max-width: 380px;
+}
+
+.mobile-blocker-heading {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.mobile-blocker-body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: clamp(14px, 3.5vw, 17px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.mobile-blocker-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.mobile-blocker-phone {
+  width: 38px;
+  height: auto;
+  animation: mobileBlockerPulse 2.4s ease-in-out infinite;
+}
+
+.mobile-blocker-arrow {
+  width: 44px;
+  height: auto;
+  animation: mobileBlockerSlide 1.8s ease-in-out infinite;
+}
+
+.mobile-blocker-desktop {
+  width: 72px;
+  height: auto;
+  animation: mobileBlockerGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes mobileBlockerPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.92); }
+  50% { opacity: 0.8; transform: scale(1); }
+}
+
+@keyframes mobileBlockerSlide {
+  0%, 100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(6px); opacity: 1; }
+}
+
+@keyframes mobileBlockerGlow {
+  0%, 100% { opacity: 0.7; transform: scale(0.96); }
+  50% { opacity: 1; transform: scale(1.02); }
+}
