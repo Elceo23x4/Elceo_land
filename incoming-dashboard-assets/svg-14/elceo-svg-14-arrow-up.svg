@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="ELCEO SVG-14 up arrow">
+<defs>
+  <filter id="arrow_glow" x="-120%" y="-120%" width="340%" height="340%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <linearGradient id="arrow_fill" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#24dc57" stop-opacity="0.92"/><stop offset="65%" stop-color="#4df06f" stop-opacity="1"/><stop offset="100%" stop-color="#d6ffe0" stop-opacity="0.98"/></linearGradient>
+</defs>
+<rect x="0.5" y="0.5" width="511" height="511" fill="none" stroke="transparent"/>
+<polygon id="arrow_body" points="156.89,362.15 318.11,204.48 343.28,230.22 372.00,128.00 269.17,154.43 294.34,180.17 133.11,337.85" fill="url(#arrow_fill)" filter="url(#arrow_glow)"/>
+</svg>
