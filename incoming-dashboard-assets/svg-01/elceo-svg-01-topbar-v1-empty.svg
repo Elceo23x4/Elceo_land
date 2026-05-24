@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_01_approved_topbar_v1_empty" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" role="img" aria-label="ELCEO approved topbar from SVG-01 v1 with all text removed"><defs>
+  <linearGradient id="elceo_orange_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffd07a" stop-opacity="0.98"/>
+    <stop offset="24%" stop-color="#ff9b2f" stop-opacity="0.95"/>
+    <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.85"/>
+    <stop offset="100%" stop-color="#733000" stop-opacity="0.65"/>
+  </linearGradient>
+  <linearGradient id="elceo_dim_orange_grad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#ff8a18" stop-opacity="0"/>
+    <stop offset="14%" stop-color="#ff8a18" stop-opacity="0.55"/>
+    <stop offset="50%" stop-color="#ff8a18" stop-opacity="0.95"/>
+    <stop offset="86%" stop-color="#ff8a18" stop-opacity="0.55"/>
+    <stop offset="100%" stop-color="#ff8a18" stop-opacity="0"/>
+  </linearGradient>
+  <radialGradient id="elceo_node_grad">
+    <stop offset="0%" stop-color="#fff0b8" stop-opacity="1"/>
+    <stop offset="35%" stop-color="#ff9b2f" stop-opacity=".98"/>
+    <stop offset="72%" stop-color="#ff6a00" stop-opacity=".28"/>
+    <stop offset="100%" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="elceo_orange_glow" x="-80%" y="-80%" width="260%" height="260%">
+    <feGaussianBlur stdDeviation="2.2" result="blur1"/>
+    <feGaussianBlur stdDeviation="7" in="SourceGraphic" result="blur2"/>
+    <feColorMatrix in="blur2" type="matrix" values="1 0 0 0 1  0 .42 0 0 .35  0 0 .05 0 0  0 0 0 .7 0" result="glow"/>
+    <feMerge>
+      <feMergeNode in="glow"/>
+      <feMergeNode in="blur1"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <filter id="elceo_soft_haze" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="16"/>
+  </filter>
+  <filter id="elceo_tight_glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="1.4" result="blur"/>
+    <feMerge>
+      <feMergeNode in="blur"/>
+      <feMergeNode in="SourceGraphic"/>
+    </feMerge>
+  </filter>
+  <pattern id="elceo_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#ff7a11" stroke-width=".45" opacity=".10"/>
+  </pattern>
+  <style>
+    :root {
+      --elceo-orange: #ff8a18;
+      --elceo-amber: #ffbf4a;
+      --elceo-dim: #8f3f0a;
+      --elceo-black: #020100;
+      --elceo-green: #22ff74;
+      --elceo-red: #ff3b32;
+    }
+    .hud-main { fill: none; stroke: url(#elceo_orange_grad); stroke-width: 1.35; vector-effect: non-scaling-stroke; }
+    .hud-thin { fill: none; stroke: #ff8a18; stroke-width: .75; opacity: .58; vector-effect: non-scaling-stroke; }
+    .hud-faint { fill: none; stroke: #ff8a18; stroke-width: .55; opacity: .22; vector-effect: non-scaling-stroke; }
+    .hud-bold { fill: none; stroke: #ff8a18; stroke-width: 2.3; opacity: .94; vector-effect: non-scaling-stroke; }
+    .hud-fill-dark { fill: rgba(2, 1, 0, .60); stroke: #ff8a18; stroke-width: 1.1; opacity: .9; vector-effect: non-scaling-stroke; }
+    .hud-text { font-family: 'Share Tech Mono','IBM Plex Mono','JetBrains Mono',monospace; font-weight: 700; letter-spacing: 1.2px; fill: #ff9b2f; }
+    .hud-text-small { font-family: 'Share Tech Mono','IBM Plex Mono','JetBrains Mono',monospace; font-weight: 700; letter-spacing: 1px; fill: #ff9b2f; font-size: 11px; }
+    .hud-node { fill: url(#elceo_node_grad); filter: url(#elceo_orange_glow); }
+    .anim-rotate-slow { transform-origin: center; }
+    .anim-pulse { transform-origin: center; }
+  </style>
+</defs>
+
+<g id="top_system_bar">
+<path id="top_bar_outer" d="M 30 18 L 1890 18 L 1902 30 L 1902 58 L 1890 70 L 30 70 L 18 58 L 18 30 Z" fill="#020100" opacity=".65" stroke="#ff8a18" stroke-width=".9"/>
+<path id="logo_divider_slash" d="M 185 70 L 220 18" class="hud-thin" opacity=".7"/>
+<path id="top_title_chamfer" d="M 210 18 L 500 18 L 486 70 L 185 70" class="hud-thin" opacity=".35"/>
+<path id="top_status_center_plate" d="M 650 18 L 1594 18 L 1576 70 L 632 70 Z" class="hud-thin" opacity=".55"/>
+</g>
+</svg>

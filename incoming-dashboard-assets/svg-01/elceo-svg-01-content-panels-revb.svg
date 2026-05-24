@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_01_approved_content_panels_revb_varied_weight" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" role="img" aria-label="ELCEO approved content panel border system from SVG-01 RevB, central chart placeholder excluded"><defs>
+  <linearGradient id="elceo_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#8f3d0b" stop-opacity="0.35"/>
+    <stop offset="18%" stop-color="#ff7a18" stop-opacity="0.95"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.95"/>
+    <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.9"/>
+    <stop offset="100%" stop-color="#7a2d08" stop-opacity="0.4"/>
+  </linearGradient>
+  <linearGradient id="elceo_panel_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ff9f2d" stop-opacity="0.85"/>
+    <stop offset="38%" stop-color="#c35a13" stop-opacity="0.45"/>
+    <stop offset="70%" stop-color="#ff7a18" stop-opacity="0.75"/>
+    <stop offset="100%" stop-color="#542000" stop-opacity="0.35"/>
+  </linearGradient>
+  <radialGradient id="elceo_radial_soft" cx="50%" cy="47%" r="55%">
+    <stop offset="0%" stop-color="#ff9b24" stop-opacity="0.10"/>
+    <stop offset="42%" stop-color="#ff7a18" stop-opacity="0.05"/>
+    <stop offset="76%" stop-color="#ff7a18" stop-opacity="0.035"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="elceo_orange_aura" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.35 0 0 0.35  0 0 0.1 0 0  0 0 0 0.8 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="elceo_soft_line" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.15" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <pattern id="elceo_micro_grid" width="32" height="32" patternUnits="userSpaceOnUse">
+    <path d="M32 0H0V32" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.07"/>
+  </pattern>
+</defs>
+
+
+<style>
+  .el-bg { fill:#030302; }
+  .hud-primary { fill:none; stroke:url(#elceo_orange_stroke); stroke-width:1.45; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-heavy { fill:none; stroke:#ff8a1e; stroke-opacity:.80; stroke-width:2.7; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-medium { fill:none; stroke:#e86813; stroke-opacity:.62; stroke-width:1.55; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-fine { fill:none; stroke:#ffb13b; stroke-opacity:.38; stroke-width:.72; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-hair { fill:none; stroke:#ff7a18; stroke-opacity:.22; stroke-width:.45; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-dim { fill:none; stroke:#8f3d0b; stroke-opacity:.35; stroke-width:1; stroke-linejoin:round; stroke-linecap:round; }
+  .panel-fill { fill:#080604; fill-opacity:.50; }
+  .slot-fill { fill:#050403; fill-opacity:.18; }
+  .hot-fill { fill:#ff7a18; fill-opacity:.10; }
+  .dark-fill { fill:#000; fill-opacity:.35; }
+  .icon { fill:none; stroke:#ff9a26; stroke-opacity:.85; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .icon-secondary { fill:none; stroke:#ff9a26; stroke-opacity:.48; stroke-width:1.25; stroke-linecap:round; stroke-linejoin:round; }
+  .terminal { fill:#0a0501; stroke:#ff8a1e; stroke-width:1.45; stroke-opacity:.78; }
+  .terminal-inner { fill:#ff9f2d; fill-opacity:.75; }
+  .tick-heavy { stroke:#ff9a26; stroke-opacity:.85; stroke-width:2.1; stroke-linecap:round; }
+  .tick-fine { stroke:#ff9a26; stroke-opacity:.32; stroke-width:.65; stroke-linecap:round; }
+  .ring-base { fill:none; stroke:#6d2a08; stroke-opacity:.48; stroke-width:1; }
+  .ring-active { fill:none; stroke:#ff841a; stroke-opacity:.82; stroke-width:2.15; stroke-linecap:round; }
+  .ring-thin { fill:none; stroke:#ff9a26; stroke-opacity:.36; stroke-width:.75; stroke-linecap:round; }
+  .ring-faint { fill:none; stroke:#ff7a18; stroke-opacity:.18; stroke-width:.45; stroke-linecap:round; }
+</style>
+
+
+<g id="svg01_revb_panel_border_system_varied_weight">
+<g id="panel_directional_bias_shell" data-non-uniform-stroke="true">
+<path id="panel_directional_bias_shell_panel_fill" d="M 132 92 L 506 92 L 520 106 L 520 348 L 506 362 L 132 362 L 118 348 L 118 106 L 132 92 Z" class="panel-fill"/>
+<path id="panel_directional_bias_shell_primary_top_edge" d="M 132 92 H 254.7" class="hud-heavy"/>
+<path id="panel_directional_bias_shell_secondary_top_edge" d="M 262.7 92 H 506" class="hud-medium"/>
+<path id="panel_directional_bias_shell_right_edge_fine" d="M 520 106 V 348" class="hud-fine"/>
+<path id="panel_directional_bias_shell_bottom_edge_medium" d="M 506 362 H 132" class="hud-medium"/>
+<path id="panel_directional_bias_shell_left_edge_mixed" d="M 118 348 V 205.4 M 118 189.2 V 106" class="hud-fine"/>
+<path id="panel_directional_bias_shell_corner_diagonal_emphasis" d="M 132 92 L 118 106 M 506 92 L 520 106 M 520 348 L 506 362 M 132 362 L 118 348" class="hud-medium"/>
+<path id="panel_directional_bias_shell_title_separator_thin" d="M 134 130 H 504" class="hud-hair"/>
+<path id="panel_directional_bias_shell_number_badge_empty" d="M 135 102 L 151 102 L 156 107 L 156 121 L 151 126 L 135 126 L 130 121 L 130 107 L 135 102 Z" class="hud-medium"/>
+<path id="panel_directional_bias_shell_inner_left_accent" d="M 128 146 V 344" class="hud-hair"/>
+<path id="panel_directional_bias_shell_lower_micro_accent" d="M 152 346 H 238 M 364 346 H 490" class="hud-fine"/>
+</g>
+<g id="panel_confidence_matrix_shell" data-non-uniform-stroke="true">
+<path id="panel_confidence_matrix_shell_panel_fill" d="M 132 382 L 506 382 L 520 396 L 520 586 L 506 600 L 132 600 L 118 586 L 118 396 L 132 382 Z" class="panel-fill"/>
+<path id="panel_confidence_matrix_shell_primary_top_edge" d="M 132 382 H 254.7" class="hud-heavy"/>
+<path id="panel_confidence_matrix_shell_secondary_top_edge" d="M 262.7 382 H 506" class="hud-medium"/>
+<path id="panel_confidence_matrix_shell_right_edge_fine" d="M 520 396 V 586" class="hud-fine"/>
+<path id="panel_confidence_matrix_shell_bottom_edge_medium" d="M 506 600 H 132" class="hud-medium"/>
+<path id="panel_confidence_matrix_shell_left_edge_mixed" d="M 118 586 V 473.6 M 118 460.5 V 396" class="hud-fine"/>
+<path id="panel_confidence_matrix_shell_corner_diagonal_emphasis" d="M 132 382 L 118 396 M 506 382 L 520 396 M 520 586 L 506 600 M 132 600 L 118 586" class="hud-medium"/>
+<path id="panel_confidence_matrix_shell_title_separator_thin" d="M 134 420 H 504" class="hud-hair"/>
+<path id="panel_confidence_matrix_shell_number_badge_empty" d="M 135 392 L 151 392 L 156 397 L 156 411 L 151 416 L 135 416 L 130 411 L 130 397 L 135 392 Z" class="hud-medium"/>
+<path id="panel_confidence_matrix_shell_inner_left_accent" d="M 128 436 V 582" class="hud-hair"/>
+<path id="panel_confidence_matrix_shell_lower_micro_accent" d="M 152 584 H 238 M 364 584 H 490" class="hud-fine"/>
+</g>
+<g id="panel_watchlist_shell" data-non-uniform-stroke="true">
+<path id="panel_watchlist_shell_panel_fill" d="M 132 620 L 506 620 L 520 634 L 520 818 L 506 832 L 132 832 L 118 818 L 118 634 L 132 620 Z" class="panel-fill"/>
+<path id="panel_watchlist_shell_primary_top_edge" d="M 132 620 H 254.7" class="hud-heavy"/>
+<path id="panel_watchlist_shell_secondary_top_edge" d="M 262.7 620 H 506" class="hud-medium"/>
+<path id="panel_watchlist_shell_right_edge_fine" d="M 520 634 V 818" class="hud-fine"/>
+<path id="panel_watchlist_shell_bottom_edge_medium" d="M 506 832 H 132" class="hud-medium"/>
+<path id="panel_watchlist_shell_left_edge_mixed" d="M 118 818 V 709.0 M 118 696.3 V 634" class="hud-fine"/>
+<path id="panel_watchlist_shell_corner_diagonal_emphasis" d="M 132 620 L 118 634 M 506 620 L 520 634 M 520 818 L 506 832 M 132 832 L 118 818" class="hud-medium"/>
+<path id="panel_watchlist_shell_title_separator_thin" d="M 134 658 H 504" class="hud-hair"/>
+<path id="panel_watchlist_shell_number_badge_empty" d="M 135 630 L 151 630 L 156 635 L 156 649 L 151 654 L 135 654 L 130 649 L 130 635 L 135 630 Z" class="hud-medium"/>
+<path id="panel_watchlist_shell_inner_left_accent" d="M 128 674 V 814" class="hud-hair"/>
+<path id="panel_watchlist_shell_lower_micro_accent" d="M 152 816 H 238 M 364 816 H 490" class="hud-fine"/>
+</g>
+<g id="panel_evidence_stack_shell" data-non-uniform-stroke="true">
+<path id="panel_evidence_stack_shell_panel_fill" d="M 1442 92 L 1864 92 L 1878 106 L 1878 438 L 1864 452 L 1442 452 L 1428 438 L 1428 106 L 1442 92 Z" class="panel-fill"/>
+<path id="panel_evidence_stack_shell_primary_top_edge" d="M 1442 92 H 1581.0" class="hud-heavy"/>
+<path id="panel_evidence_stack_shell_secondary_top_edge" d="M 1589.0 92 H 1864" class="hud-medium"/>
+<path id="panel_evidence_stack_shell_right_edge_fine" d="M 1878 106 V 438" class="hud-fine"/>
+<path id="panel_evidence_stack_shell_bottom_edge_medium" d="M 1864 452 H 1442" class="hud-medium"/>
+<path id="panel_evidence_stack_shell_left_edge_mixed" d="M 1428 438 V 243.2 M 1428 221.6 V 106" class="hud-fine"/>
+<path id="panel_evidence_stack_shell_corner_diagonal_emphasis" d="M 1442 92 L 1428 106 M 1864 92 L 1878 106 M 1878 438 L 1864 452 M 1442 452 L 1428 438" class="hud-medium"/>
+<path id="panel_evidence_stack_shell_title_separator_thin" d="M 1444 130 H 1862" class="hud-hair"/>
+<path id="panel_evidence_stack_shell_number_badge_empty" d="M 1445 102 L 1461 102 L 1466 107 L 1466 121 L 1461 126 L 1445 126 L 1440 121 L 1440 107 L 1445 102 Z" class="hud-medium"/>
+<path id="panel_evidence_stack_shell_inner_left_accent" d="M 1438 146 V 434" class="hud-hair"/>
+<path id="panel_evidence_stack_shell_lower_micro_accent" d="M 1462 436 H 1548 M 1722 436 H 1848" class="hud-fine"/>
+</g>
+<g id="panel_news_macro_shell" data-non-uniform-stroke="true">
+<path id="panel_news_macro_shell_panel_fill" d="M 1442 472 L 1864 472 L 1878 486 L 1878 718 L 1864 732 L 1442 732 L 1428 718 L 1428 486 L 1442 472 Z" class="panel-fill"/>
+<path id="panel_news_macro_shell_primary_top_edge" d="M 1442 472 H 1581.0" class="hud-heavy"/>
+<path id="panel_news_macro_shell_secondary_top_edge" d="M 1589.0 472 H 1864" class="hud-medium"/>
+<path id="panel_news_macro_shell_right_edge_fine" d="M 1878 486 V 718" class="hud-fine"/>
+<path id="panel_news_macro_shell_bottom_edge_medium" d="M 1864 732 H 1442" class="hud-medium"/>
+<path id="panel_news_macro_shell_left_edge_mixed" d="M 1428 718 V 581.2 M 1428 565.6 V 486" class="hud-fine"/>
+<path id="panel_news_macro_shell_corner_diagonal_emphasis" d="M 1442 472 L 1428 486 M 1864 472 L 1878 486 M 1878 718 L 1864 732 M 1442 732 L 1428 718" class="hud-medium"/>
+<path id="panel_news_macro_shell_title_separator_thin" d="M 1444 510 H 1862" class="hud-hair"/>
+<path id="panel_news_macro_shell_number_badge_empty" d="M 1445 482 L 1461 482 L 1466 487 L 1466 501 L 1461 506 L 1445 506 L 1440 501 L 1440 487 L 1445 482 Z" class="hud-medium"/>
+<path id="panel_news_macro_shell_inner_left_accent" d="M 1438 526 V 714" class="hud-hair"/>
+<path id="panel_news_macro_shell_lower_micro_accent" d="M 1462 716 H 1548 M 1722 716 H 1848" class="hud-fine"/>
+</g>
+<g id="panel_coaching_shell" data-non-uniform-stroke="true">
+<path id="panel_coaching_shell_panel_fill" d="M 132 852 L 814 852 L 828 866 L 828 1028 L 814 1042 L 132 1042 L 118 1028 L 118 866 L 132 852 Z" class="panel-fill"/>
+<path id="panel_coaching_shell_primary_top_edge" d="M 132 852 H 359.4" class="hud-heavy"/>
+<path id="panel_coaching_shell_secondary_top_edge" d="M 367.4 852 H 814" class="hud-medium"/>
+<path id="panel_coaching_shell_right_edge_fine" d="M 828 866 V 1028" class="hud-fine"/>
+<path id="panel_coaching_shell_bottom_edge_medium" d="M 814 1042 H 132" class="hud-medium"/>
+<path id="panel_coaching_shell_left_edge_mixed" d="M 118 1028 V 931.8 M 118 920.4 V 866" class="hud-fine"/>
+<path id="panel_coaching_shell_corner_diagonal_emphasis" d="M 132 852 L 118 866 M 814 852 L 828 866 M 828 1028 L 814 1042 M 132 1042 L 118 1028" class="hud-medium"/>
+<path id="panel_coaching_shell_title_separator_thin" d="M 134 890 H 812" class="hud-hair"/>
+<path id="panel_coaching_shell_number_badge_empty" d="M 135 862 L 151 862 L 156 867 L 156 881 L 151 886 L 135 886 L 130 881 L 130 867 L 135 862 Z" class="hud-medium"/>
+<path id="panel_coaching_shell_inner_left_accent" d="M 128 906 V 1024" class="hud-hair"/>
+<path id="panel_coaching_shell_lower_micro_accent" d="M 152 1026 H 238 M 672 1026 H 798" class="hud-fine"/>
+</g>
+<g id="panel_market_regime_shell" data-non-uniform-stroke="true">
+<path id="panel_market_regime_shell_panel_fill" d="M 866 852 L 1864 852 L 1878 866 L 1878 1028 L 1864 1042 L 866 1042 L 852 1028 L 852 866 L 866 852 Z" class="panel-fill"/>
+<path id="panel_market_regime_shell_primary_top_edge" d="M 866 852 H 1200.8" class="hud-heavy"/>
+<path id="panel_market_regime_shell_secondary_top_edge" d="M 1208.8 852 H 1864" class="hud-medium"/>
+<path id="panel_market_regime_shell_right_edge_fine" d="M 1878 866 V 1028" class="hud-fine"/>
+<path id="panel_market_regime_shell_bottom_edge_medium" d="M 1864 1042 H 866" class="hud-medium"/>
+<path id="panel_market_regime_shell_left_edge_mixed" d="M 852 1028 V 931.8 M 852 920.4 V 866" class="hud-fine"/>
+<path id="panel_market_regime_shell_corner_diagonal_emphasis" d="M 866 852 L 852 866 M 1864 852 L 1878 866 M 1878 1028 L 1864 1042 M 866 1042 L 852 1028" class="hud-medium"/>
+<path id="panel_market_regime_shell_title_separator_thin" d="M 868 890 H 1862" class="hud-hair"/>
+<path id="panel_market_regime_shell_number_badge_empty" d="M 869 862 L 885 862 L 890 867 L 890 881 L 885 886 L 869 886 L 864 881 L 864 867 L 869 862 Z" class="hud-medium"/>
+<path id="panel_market_regime_shell_inner_left_accent" d="M 862 906 V 1024" class="hud-hair"/>
+<path id="panel_market_regime_shell_lower_micro_accent" d="M 886 1026 H 972 M 1722 1026 H 1848" class="hud-fine"/>
+</g>
+</g>
+</svg>
