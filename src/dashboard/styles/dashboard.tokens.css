@@ -1,0 +1,44 @@
+/* ELCEO Dashboard Design Tokens — Batch 2 */
+/* Scoped under .elceo-dashboard-scope to avoid landing page conflicts */
+
+.elceo-dashboard-scope {
+  --elceo-bg-0: #000000;
+  --elceo-bg-1: #050302;
+  --elceo-bg-2: #0a0502;
+  --elceo-panel-bg: rgba(7, 5, 3, 0.86);
+  --elceo-panel-bg-strong: rgba(12, 7, 3, 0.94);
+
+  --elceo-orange: #ff6a00;
+  --elceo-orange-soft: #d4790a;
+  --elceo-orange-hot: #ff9a3c;
+  --elceo-amber: #ffbf4a;
+
+  --elceo-green: #32e66a;
+  --elceo-red: #ff445c;
+  --elceo-silver: #d8dee7;
+  --elceo-muted: #8a8178;
+
+  --elceo-border: rgba(255, 106, 0, 0.38);
+  --elceo-border-soft: rgba(255, 106, 0, 0.18);
+  --elceo-glow-orange: 0 0 28px rgba(255, 106, 0, 0.22);
+
+  --elceo-radius-sm: 4px;
+  --elceo-radius-md: 8px;
+  --elceo-radius-lg: 14px;
+
+  --elceo-font-ui: "Courier New", monospace;
+  --elceo-font-display: "Courier New", monospace;
+  --elceo-font-dot: "Courier New", monospace;
+
+  --elceo-text-xs: 0.65rem;
+  --elceo-text-sm: 0.75rem;
+  --elceo-text-md: 0.85rem;
+  --elceo-text-lg: 1.1rem;
+  --elceo-text-xl: 1.4rem;
+
+  --elceo-space-xs: 0.25rem;
+  --elceo-space-sm: 0.5rem;
+  --elceo-space-md: 1rem;
+  --elceo-space-lg: 1.5rem;
+  --elceo-space-xl: 2.5rem;
+}
