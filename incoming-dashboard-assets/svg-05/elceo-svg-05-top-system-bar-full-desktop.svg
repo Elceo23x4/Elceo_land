@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_05_top_system_bar_full_desktop" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" role="img" aria-label="ELCEO SVG-05 top system bar empty structured asset">
+
+<defs>
+  <linearGradient id="g_orange_main" x1="0" y1="0" x2="1920" y2="0" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#ff7a10" stop-opacity="0.10"/>
+    <stop offset="0.08" stop-color="#ff8a18" stop-opacity="0.90"/>
+    <stop offset="0.30" stop-color="#ffb04c" stop-opacity="0.78"/>
+    <stop offset="0.55" stop-color="#ff7a10" stop-opacity="0.45"/>
+    <stop offset="0.76" stop-color="#ffb04c" stop-opacity="0.74"/>
+    <stop offset="0.92" stop-color="#ff8a18" stop-opacity="0.86"/>
+    <stop offset="1" stop-color="#ff7a10" stop-opacity="0.10"/>
+  </linearGradient>
+  <linearGradient id="g_slot_fade" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#ff8a18" stop-opacity="0"/>
+    <stop offset="0.12" stop-color="#ff8a18" stop-opacity="0.30"/>
+    <stop offset="0.50" stop-color="#ffb04c" stop-opacity="0.62"/>
+    <stop offset="0.88" stop-color="#ff8a18" stop-opacity="0.30"/>
+    <stop offset="1" stop-color="#ff8a18" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="g_dark_plate" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#030201" stop-opacity="0.88"/>
+    <stop offset="1" stop-color="#000000" stop-opacity="0.58"/>
+  </linearGradient>
+  <radialGradient id="g_micro_node" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#fff4c2" stop-opacity="1"/>
+    <stop offset="0.42" stop-color="#ff9b2f" stop-opacity="0.94"/>
+    <stop offset="1" stop-color="#ff6a00" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="f_orange_glow" x="-50%" y="-70%" width="200%" height="240%">
+    <feGaussianBlur stdDeviation="2.4" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 .45 0 0 .32  0 0 .05 0 0  0 0 0 .70 0" result="glow"/>
+    <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="f_soft_haze" x="-60%" y="-80%" width="220%" height="260%">
+    <feGaussianBlur stdDeviation="9"/>
+  </filter>
+</defs>
+
+<rect id="import_artboard_keeper" x="0" y="0" width="1920" height="120" fill="#000000" fill-opacity="0.001"/>
+<g id="top_system_bar_complete_empty">
+<rect id="topbar_back_haze" x="22" y="14" width="1876" height="62" rx="10" fill="#ff7a10" opacity="0.07" filter="url(#f_soft_haze)"/>
+<path id="topbar_outer_frame" d="M 30 18 L 1890 18 L 1902 30 L 1902 58 L 1890 70 L 30 70 L 18 58 L 18 30 Z" fill="url(#g_dark_plate)" stroke="url(#g_orange_main)" stroke-width="1.18" opacity="0.96" vector-effect="non-scaling-stroke"/>
+<path id="topbar_inner_upper_line" d="M 44 24 L 1876 24" fill="none" stroke="#ff8a18" stroke-width="0.55" stroke-opacity="0.33" vector-effect="non-scaling-stroke"/>
+<path id="topbar_inner_lower_line" d="M 44 64 L 1876 64" fill="none" stroke="#ff8a18" stroke-width="0.45" stroke-opacity="0.20" vector-effect="non-scaling-stroke"/>
+<g id="left_identity_empty_slots">
+<path id="logo_slot_empty_frame" d="M 38 28 L 166 28 L 180 44 L 166 60 L 38 60 Z" fill="#000000" fill-opacity="0.22" stroke="#ff8a18" stroke-width="0.72" stroke-opacity="0.35" vector-effect="non-scaling-stroke"/>
+<path id="identity_slash_divider" d="M 185 70 L 220 18" fill="none" stroke="#ff8a18" stroke-width="0.82" stroke-opacity="0.62" vector-effect="non-scaling-stroke"/>
+<path id="title_slot_empty_plate" d="M 210 18 L 500 18 L 486 70 L 185 70 Z" fill="#030201" fill-opacity="0.30" stroke="#ff8a18" stroke-width="0.62" stroke-opacity="0.38" vector-effect="non-scaling-stroke"/>
+<path id="title_slot_subline" d="M 236 60 L 452 60" fill="none" stroke="url(#g_slot_fade)" stroke-width="0.72" opacity="0.55" vector-effect="non-scaling-stroke"/>
+</g>
+<g id="center_status_empty_slots">
+<path id="center_master_plate" d="M 650 18 L 1594 18 L 1576 70 L 632 70 Z" fill="#020100" fill-opacity="0.24" stroke="#ff8a18" stroke-width="0.76" stroke-opacity="0.50" vector-effect="non-scaling-stroke"/>
+<g id="system_status_slot_empty">
+<path id="system_status_slot_empty_top_rule" d="M 680 24 L 892 24" fill="none" stroke="#ffb04c" stroke-width="0.66" stroke-opacity="0.50" vector-effect="non-scaling-stroke"/>
+<path id="system_status_slot_empty_bottom_rule" d="M 684 64 L 888 64" fill="none" stroke="#ff8a18" stroke-width="0.48" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="system_status_slot_empty_left_slash" d="M 668 64 L 686 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.26" vector-effect="non-scaling-stroke"/>
+<path id="system_status_slot_empty_right_slash" d="M 894 64 L 904 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.22" vector-effect="non-scaling-stroke"/>
+<circle id="system_status_slot_empty_left_micro_anchor" cx="676" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.72"/>
+<circle id="system_status_slot_empty_right_micro_anchor" cx="896" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.45"/>
+</g>
+<g id="session_slot_empty">
+<path id="session_slot_empty_top_rule" d="M 932 24 L 1268 24" fill="none" stroke="#ffb04c" stroke-width="0.66" stroke-opacity="0.50" vector-effect="non-scaling-stroke"/>
+<path id="session_slot_empty_bottom_rule" d="M 936 64 L 1264 64" fill="none" stroke="#ff8a18" stroke-width="0.48" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="session_slot_empty_left_slash" d="M 920 64 L 938 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.26" vector-effect="non-scaling-stroke"/>
+<path id="session_slot_empty_right_slash" d="M 1262 64 L 1280 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.22" vector-effect="non-scaling-stroke"/>
+<circle id="session_slot_empty_left_micro_anchor" cx="928" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.72"/>
+<circle id="session_slot_empty_right_micro_anchor" cx="1272" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.45"/>
+</g>
+<g id="time_slot_empty">
+<path id="time_slot_empty_top_rule" d="M 1308 24 L 1516 24" fill="none" stroke="#ffb04c" stroke-width="0.66" stroke-opacity="0.50" vector-effect="non-scaling-stroke"/>
+<path id="time_slot_empty_bottom_rule" d="M 1312 64 L 1512 64" fill="none" stroke="#ff8a18" stroke-width="0.48" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="time_slot_empty_left_slash" d="M 1296 64 L 1314 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.26" vector-effect="non-scaling-stroke"/>
+<path id="time_slot_empty_right_slash" d="M 1510 64 L 1528 24" fill="none" stroke="#ff8a18" stroke-width="0.56" stroke-opacity="0.22" vector-effect="non-scaling-stroke"/>
+<circle id="time_slot_empty_left_micro_anchor" cx="1304" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.72"/>
+<circle id="time_slot_empty_right_micro_anchor" cx="1520" cy="44" r="2" fill="url(#g_micro_node)" opacity="0.45"/>
+</g>
+</g>
+<g id="right_utility_empty_slots">
+<path id="utility_cluster_outer_slot" d="M 1608 22 L 1874 22 L 1888 34 L 1888 60 L 1874 70 L 1608 70 L 1594 58 L 1594 34 Z" fill="#000000" fill-opacity="0.16" stroke="#ff8a18" stroke-width="0.62" stroke-opacity="0.34" vector-effect="non-scaling-stroke"/>
+<path id="notification_slot_empty" d="M 1626 30 L 1676 30 L 1682 36 L 1682 54 L 1676 60 L 1626 60 L 1620 54 L 1620 36 Z" fill="#030201" fill-opacity="0.14" stroke="#ff8a18" stroke-width="0.58" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="notification_slot_empty_top_glint" d="M 1630 32 L 1670 32" fill="none" stroke="#ffb04c" stroke-width="0.5" stroke-opacity="0.34" vector-effect="non-scaling-stroke"/>
+<path id="alert_slot_empty" d="M 1708 30 L 1764 30 L 1770 36 L 1770 54 L 1764 60 L 1708 60 L 1702 54 L 1702 36 Z" fill="#030201" fill-opacity="0.14" stroke="#ff8a18" stroke-width="0.58" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="alert_slot_empty_top_glint" d="M 1712 32 L 1758 32" fill="none" stroke="#ffb04c" stroke-width="0.5" stroke-opacity="0.34" vector-effect="non-scaling-stroke"/>
+<path id="menu_slot_empty" d="M 1796 30 L 1856 30 L 1862 36 L 1862 54 L 1856 60 L 1796 60 L 1790 54 L 1790 36 Z" fill="#030201" fill-opacity="0.14" stroke="#ff8a18" stroke-width="0.58" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="menu_slot_empty_top_glint" d="M 1800 32 L 1850 32" fill="none" stroke="#ffb04c" stroke-width="0.5" stroke-opacity="0.34" vector-effect="non-scaling-stroke"/>
+<circle id="menu_slot_micro_dot_01" cx="1812" cy="45" r="2.2" fill="#ff8a18" opacity="0.64" filter="url(#f_orange_glow)"/>
+<circle id="menu_slot_micro_dot_02" cx="1830" cy="45" r="2.2" fill="#ff8a18" opacity="0.64" filter="url(#f_orange_glow)"/>
+<circle id="menu_slot_micro_dot_03" cx="1848" cy="45" r="2.2" fill="#ff8a18" opacity="0.64" filter="url(#f_orange_glow)"/>
+</g>
+<g id="topbar_broken_accent_rules">
+<path id="topbar_broken_rule_01" d="M 520 22 L 615 22" fill="none" stroke="#ff8a18" stroke-width="0.75" stroke-opacity="0.42" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_02" d="M 534 66 L 620 66" fill="none" stroke="#ff8a18" stroke-width="0.5" stroke-opacity="0.2" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_03" d="M 1540 22 L 1582 22" fill="none" stroke="#ff8a18" stroke-width="0.7" stroke-opacity="0.35" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_04" d="M 1560 66 L 1586 66" fill="none" stroke="#ff8a18" stroke-width="0.5" stroke-opacity="0.18" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_05" d="M 38 18 L 96 18" fill="none" stroke="#ff8a18" stroke-width="0.75" stroke-opacity="0.55" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_06" d="M 1822 18 L 1888 18" fill="none" stroke="#ff8a18" stroke-width="0.75" stroke-opacity="0.55" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_07" d="M 26 70 L 92 70" fill="none" stroke="#ff8a18" stroke-width="0.55" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+<path id="topbar_broken_rule_08" d="M 1810 70 L 1892 70" fill="none" stroke="#ff8a18" stroke-width="0.55" stroke-opacity="0.28" vector-effect="non-scaling-stroke"/>
+</g>
+</g>
+</svg>
