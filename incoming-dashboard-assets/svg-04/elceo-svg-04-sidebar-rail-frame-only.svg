@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_04_sidebar_rail_frame_only" width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" role="img" aria-label="ELCEO SVG 04 sidebar navigation asset">
+<defs>
+  <linearGradient id="svg04_orange_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffb13b" stop-opacity="0.95"/>
+    <stop offset="32%" stop-color="#ff7a18" stop-opacity="0.88"/>
+    <stop offset="68%" stop-color="#c7510b" stop-opacity="0.58"/>
+    <stop offset="100%" stop-color="#5b2104" stop-opacity="0.42"/>
+  </linearGradient>
+  <linearGradient id="svg04_orange_line" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#6f2705" stop-opacity="0.35"/>
+    <stop offset="20%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.96"/>
+    <stop offset="82%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="100%" stop-color="#6f2705" stop-opacity="0.35"/>
+  </linearGradient>
+  <radialGradient id="svg04_active_warm_fill" cx="50%" cy="50%" r="65%">
+    <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.16"/>
+    <stop offset="58%" stop-color="#ff7a18" stop-opacity="0.055"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="svg04_orange_glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.38 0 0 0.38  0 0 0.05 0 0  0 0 0 0.68 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="svg04_soft_glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.05" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect id="import_bounds_near_invisible" x="0" y="0" width="1920" height="1080" fill="#000000" fill-opacity="0.001"/>
+<g id="svg04_railonly_sidebar_complete_approved_equal_spacing">
+<path id="svg04_railonly_sidebar_outer_chamfer_rail" d="M 35 118 L 79 118 L 96 135 L 96 893 L 79 910 L 35 910 L 18 893 L 18 135 L 35 118 Z" fill="#050301" fill-opacity="0.26" stroke="url(#svg04_orange_line)" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round"/>
+<path id="svg04_railonly_sidebar_inner_fine_rail" d="M 37 126 L 77 126 L 89 138 L 89 890 L 77 902 L 37 902 L 25 890 L 25 138 L 37 126 Z" fill="none" stroke="#ff7a18" stroke-opacity="0.22" stroke-width="0.45" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="svg04_railonly_active_slot_template" data-state="idle">
+  <path id="svg04_railonly_active_slot_template_outer_chamfer" d="M 36 153 L 78 153 L 88 163 L 88 205 L 78 215 L 36 215 L 26 205 L 26 163 Z" fill="url(#svg04_active_warm_fill)" fill-opacity="0.022" stroke="#ff8a1e" stroke-opacity="0.35" stroke-width="1.05" stroke-linejoin="round" stroke-linecap="round" filter="url(#svg04_soft_glow)"/>
+  <path id="svg04_railonly_active_slot_template_inner_chamfer" d="M 39 159 L 75 159 L 82 166 L 82 202 L 75 209 L 39 209 L 32 202 L 32 166 Z" fill="none" stroke="#ffb13b" stroke-opacity="0.14" stroke-width="0.65" stroke-linejoin="round"/>
+</g>
+<path id="svg04_railonly_sidebar_top_cap_accent" d="M 38 119 H 76" fill="none" stroke="#ff8a1e" stroke-opacity="0.80" stroke-width="2.7" stroke-linecap="round"/>
+<path id="svg04_railonly_sidebar_bottom_cap_accent" d="M 38 909 H 76" fill="none" stroke="#ff8a1e" stroke-opacity="0.80" stroke-width="2.7" stroke-linecap="round"/>
+</g>
+</svg>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_04_nav_icons_display_safe" width="704" height="320" viewBox="0 0 704 320" fill="none" role="img" aria-label="ELCEO SVG 04 sidebar navigation asset">
+<defs>
+  <linearGradient id="svg04_orange_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffb13b" stop-opacity="0.95"/>
+    <stop offset="32%" stop-color="#ff7a18" stop-opacity="0.88"/>
+    <stop offset="68%" stop-color="#c7510b" stop-opacity="0.58"/>
+    <stop offset="100%" stop-color="#5b2104" stop-opacity="0.42"/>
+  </linearGradient>
+  <linearGradient id="svg04_orange_line" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#6f2705" stop-opacity="0.35"/>
+    <stop offset="20%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.96"/>
+    <stop offset="82%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="100%" stop-color="#6f2705" stop-opacity="0.35"/>
+  </linearGradient>
+  <radialGradient id="svg04_active_warm_fill" cx="50%" cy="50%" r="65%">
+    <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.16"/>
+    <stop offset="58%" stop-color="#ff7a18" stop-opacity="0.055"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="svg04_orange_glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.38 0 0 0.38  0 0 0.05 0 0  0 0 0 0.68 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="svg04_soft_glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.05" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect id="import_bounds_near_invisible" x="0" y="0" width="704" height="320" fill="#000000" fill-opacity="0.001"/>
+<g id="svg04_nav_icon_sheet_display_safe">
+<rect id="svg04_icon_01_cell_bounds" x="36" y="36" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_01" data-icon-index="1" data-center-x="84" data-center-y="84">
+<rect x="67.325" y="67.325" width="13.049999999999999" height="13.049999999999999" rx="2.61" fill="none" stroke="#ff9a26" stroke-opacity="0.92" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="67.325" y="87.625" width="13.049999999999999" height="13.049999999999999" rx="2.61" fill="none" stroke="#ff9a26" stroke-opacity="0.92" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="87.625" y="67.325" width="13.049999999999999" height="13.049999999999999" rx="2.61" fill="none" stroke="#ff9a26" stroke-opacity="0.92" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="87.625" y="87.625" width="13.049999999999999" height="13.049999999999999" rx="2.61" fill="none" stroke="#ff9a26" stroke-opacity="0.92" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_02_cell_bounds" x="164" y="36" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_02" data-icon-index="2" data-center-x="212" data-center-y="84">
+<circle cx="212" cy="84" r="23.2" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48"/>
+<path d="M 188.8 84 H 235.2 M 212 60.8 C 198.95 75.3 198.95 92.7 212 107.2 M 212 60.8 C 225.05 75.3 225.05 92.7 212 107.2" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_03_cell_bounds" x="292" y="36" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_03" data-icon-index="3" data-center-x="340" data-center-y="84">
+<path d="M 321.15 88.35 C 312.45 72.4 326.95 57.900000000000006 340 65.15 C 351.6 56.45 367.55 72.4 358.85 88.35 C 369.0 101.4 351.6 113.0 340 102.85 C 328.4 113.0 311.0 101.4 321.15 88.35 Z" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 340 65.15 V 102.85 M 325.5 81.1 H 354.5 M 329.85 95.6 H 350.15" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_04_cell_bounds" x="420" y="36" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_04" data-icon-index="4" data-center-x="468" data-center-y="84">
+<polygon points="468.0,59.35 473.945,75.73500000000001 491.49,76.31499999999998 477.71500000000003,87.18999999999998 482.5,104.01000000000002 468.0,94.15 453.5,104.01000000000002 458.28499999999997,87.18999999999998 444.51,76.31499999999998 462.055,75.73500000000001" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_05_cell_bounds" x="548" y="36" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_05" data-icon-index="5" data-center-x="596" data-center-y="84">
+<path d="M 575.7 97.05 H 616.3 C 610.5 91.25 609.05 81.1 609.05 72.4 C 609.05 62.25 582.95 62.25 582.95 72.4 C 582.95 81.1 581.5 91.25 575.7 97.05 Z" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 588.75 102.85 C 593.1 108.65 598.9 108.65 603.25 102.85" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round"/>
+</g>
+<rect id="svg04_icon_06_cell_bounds" x="36" y="164" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_06" data-icon-index="6" data-center-x="84" data-center-y="212">
+<rect x="59.35" y="197.5" width="49.3" height="34.8" rx="4.35" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48"/>
+<path d="M 73.85 197.5 V 188.8 H 94.15 V 197.5 M 59.35 209.1 H 108.65" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_07_cell_bounds" x="164" y="164" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_07" data-icon-index="7" data-center-x="212" data-center-y="212">
+<path d="M 194.6 187.35 H 222.15 L 232.3 197.5 V 236.65 H 194.6 Z" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 222.15 187.35 V 197.5 H 232.3 M 203.3 207.65 H 222.15 M 203.3 219.25 H 222.15" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_08_cell_bounds" x="292" y="164" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_08" data-icon-index="8" data-center-x="340" data-center-y="212">
+<rect x="316.8" y="193.15" width="46.4" height="40.6" rx="4.35" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48"/>
+<path d="M 316.8 204.75 H 363.2 M 328.4 185.9 V 197.5 M 351.6 185.9 V 197.5" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round"/>
+</g>
+<rect id="svg04_icon_09_cell_bounds" x="420" y="164" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_09" data-icon-index="9" data-center-x="468" data-center-y="212">
+<path d="M 441.9 206.2 L 468 191.7 L 494.1 206.2 L 468 220.7 Z" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 453.5 214.9 V 227.95 C 463.65 235.2 472.35 235.2 482.5 227.95 V 214.9" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<rect id="svg04_icon_10_cell_bounds" x="548" y="164" width="96" height="96" rx="18" fill="#050301" fill-opacity="0.20" stroke="#ff7a18" stroke-opacity="0.18" stroke-width="0.8"/>
+<g id="svg04_nav_icon_10" data-icon-index="10" data-center-x="596" data-center-y="212">
+<circle cx="596" cy="212" r="8.7" fill="none" stroke="#ff9a26" stroke-opacity="0.45" stroke-width="1.8125"/>
+<path d="M 596.0 194.513 L 596.0 185.9" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 607.658 200.342 L 613.4 194.6" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 613.487 212.0 L 622.1 212.0" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 607.658 223.658 L 613.4 229.4" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 596.0 229.487 L 596.0 238.1" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 584.342 223.658 L 578.6 229.4" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 578.513 212.0 L 569.9 212.0" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+<path d="M 584.342 200.342 L 578.6 194.6" fill="none" stroke="#ff9a26" stroke-opacity="0.84" stroke-width="3.48" stroke-linecap="round"/>
+</g>
+</g>
+</svg>
