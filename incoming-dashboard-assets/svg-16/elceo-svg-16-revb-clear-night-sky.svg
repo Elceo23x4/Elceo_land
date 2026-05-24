@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="760" viewBox="0 0 1920 760" fill="none" role="img" aria-label="ELCEO SVG-16 Rev-B full width realistic clear night sky">
+  <defs>
+    <filter id="glow-silver-soft" x="-420%" y="-420%" width="940%" height="940%">
+      <feGaussianBlur stdDeviation="1.0" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.3" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-silver-bright" x="-520%" y="-520%" width="1140%" height="1140%">
+      <feGaussianBlur stdDeviation="1.6" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4.0" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-orange-soft" x="-420%" y="-420%" width="940%" height="940%">
+      <feGaussianBlur stdDeviation="1.1" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-orange-bright" x="-540%" y="-540%" width="1180%" height="1180%">
+      <feGaussianBlur stdDeviation="1.8" result="b1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4.4" result="b2"/>
+      <feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <radialGradient id="silver-fill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#e8edf3" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#d0d7e0" stop-opacity="0.95"/>
+    </radialGradient>
+    <radialGradient id="silver-bright-fill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="42%" stop-color="#f5f7fa" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#d8dee7" stop-opacity="0.98"/>
+    </radialGradient>
+    <radialGradient id="orange-fill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff2ce" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#ffd684" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#ff9a2b" stop-opacity="0.95"/>
+    </radialGradient>
+    <radialGradient id="orange-bright-fill" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fff7dd" stop-opacity="1"/>
+      <stop offset="42%" stop-color="#ffe29f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#ff8d19" stop-opacity="0.98"/>
+    </radialGradient>
+
+    <symbol id="star-silver-small" overflow="visible"><circle cx="0" cy="0" r="1.15" fill="url(#silver-fill)" opacity="0.95"/></symbol>
+    <symbol id="star-silver-mid" overflow="visible"><circle cx="0" cy="0" r="1.55" fill="url(#silver-fill)" opacity="0.98" filter="url(#glow-silver-soft)"/></symbol>
+    <symbol id="star-silver-bright" overflow="visible"><circle cx="0" cy="0" r="1.95" fill="url(#silver-bright-fill)" opacity="1" filter="url(#glow-silver-bright)"/></symbol>
+    <symbol id="star-orange-small" overflow="visible"><circle cx="0" cy="0" r="1.18" fill="url(#orange-fill)" opacity="0.97" filter="url(#glow-orange-soft)"/></symbol>
+    <symbol id="star-orange-bright" overflow="visible"><circle cx="0" cy="0" r="1.95" fill="url(#orange-bright-fill)" opacity="1" filter="url(#glow-orange-bright)"/></symbol>
+
+    <symbol id="twinkle-silver" overflow="visible">
+      <g filter="url(#glow-silver-bright)">
+        <line x1="-3.2" y1="0" x2="3.2" y2="0" stroke="#ebeff5" stroke-width="0.75" stroke-linecap="round"/>
+        <line x1="0" y1="-3.2" x2="0" y2="3.2" stroke="#ebeff5" stroke-width="0.75" stroke-linecap="round"/>
+        <circle cx="0" cy="0" r="1.05" fill="#ffffff"/>
+      </g>
+    </symbol>
+    <symbol id="twinkle-orange" overflow="visible">
+      <g filter="url(#glow-orange-bright)">
+        <line x1="-3.0" y1="0" x2="3.0" y2="0" stroke="#ffd58e" stroke-width="0.75" stroke-linecap="round"/>
+        <line x1="0" y1="-3.0" x2="0" y2="3.0" stroke="#ffd58e" stroke-width="0.75" stroke-linecap="round"/>
+        <circle cx="0" cy="0" r="1.0" fill="#fff1cb"/>
+      </g>
+    </symbol>
+  </defs>
+  <rect width="1920" height="760" fill="#000000"/>
+  <g id="svg16_revb_night_sky_starfield">
+    <g id="silver-small-stars"><use href="#star-silver-small" x="772.55" y="17.62" transform="translate(772.55 17.62) scale(0.789) translate(-772.55 -17.62)"/>
+<use href="#star-silver-small" x="1553.63" y="19.71" transform="translate(1553.63 19.71) scale(0.981) translate(-1553.63 -19.71)"/>
+<use href="#star-silver-small" x="343.99" y="40.95" transform="translate(343.99 40.95) scale(0.865) translate(-343.99 -40.95)"/>
+<use href="#star-silver-small" x="1601.82" y="36.03" transform="translate(1601.82 36.03) scale(0.957) translate(-1601.82 -36.03)"/>
+<use href="#star-silver-small" x="1892.91" y="54.58" transform="translate(1892.91 54.58) scale(0.791) translate(-1892.91 -54.58)"/>
+<use href="#star-silver-small" x="974.88" y="76.64" transform="translate(974.88 76.64) scale(0.925) translate(-974.88 -76.64)"/>
+<use href="#star-silver-small" x="1816.83" y="70.89" transform="translate(1816.83 70.89) scale(0.998) translate(-1816.83 -70.89)"/>
+<use href="#star-silver-small" x="672.49" y="96.23" transform="translate(672.49 96.23) scale(0.784) translate(-672.49 -96.23)"/>
+<use href="#star-silver-small" x="744.60" y="96.91" transform="translate(744.60 96.91) scale(0.930) translate(-744.60 -96.91)"/>
+<use href="#star-silver-small" x="772.29" y="96.27" transform="translate(772.29 96.27) scale(0.851) translate(-772.29 -96.27)"/>
+<use href="#star-silver-small" x="798.80" y="88.51" transform="translate(798.80 88.51) scale(0.843) translate(-798.80 -88.51)"/>
+<use href="#star-silver-small" x="934.05" y="95.80" transform="translate(934.05 95.80) scale(0.853) translate(-934.05 -95.80)"/>
+<use href="#star-silver-small" x="1078.07" y="89.76" transform="translate(1078.07 89.76) scale(0.802) translate(-1078.07 -89.76)"/>
+<use href="#star-silver-small" x="1582.09" y="96.92" transform="translate(1582.09 96.92) scale(0.822) translate(-1582.09 -96.92)"/>
+<use href="#star-silver-small" x="616.71" y="111.56" transform="translate(616.71 111.56) scale(0.829) translate(-616.71 -111.56)"/>
+<use href="#star-silver-small" x="705.09" y="111.43" transform="translate(705.09 111.43) scale(0.824) translate(-705.09 -111.43)"/>
+<use href="#star-silver-small" x="869.63" y="112.61" transform="translate(869.63 112.61) scale(0.955) translate(-869.63 -112.61)"/>
+<use href="#star-silver-small" x="1082.55" y="112.11" transform="translate(1082.55 112.11) scale(0.838) translate(-1082.55 -112.11)"/>
+<use href="#star-silver-small" x="1528.11" y="113.38" transform="translate(1528.11 113.38) scale(0.927) translate(-1528.11 -113.38)"/>
+<use href="#star-silver-small" x="1745.81" y="108.44" transform="translate(1745.81 108.44) scale(0.812) translate(-1745.81 -108.44)"/>
+<use href="#star-silver-small" x="1654.49" y="131.48" transform="translate(1654.49 131.48) scale(0.998) translate(-1654.49 -131.48)"/>
+<use href="#star-silver-small" x="921.28" y="179.26" transform="translate(921.28 179.26) scale(0.948) translate(-921.28 -179.26)"/>
+<use href="#star-silver-small" x="959.15" y="178.36" transform="translate(959.15 178.36) scale(0.897) translate(-959.15 -178.36)"/>
+<use href="#star-silver-small" x="1300.04" y="186.83" transform="translate(1300.04 186.83) scale(0.953) translate(-1300.04 -186.83)"/>
+<use href="#star-silver-small" x="1839.03" y="181.19" transform="translate(1839.03 181.19) scale(0.781) translate(-1839.03 -181.19)"/>
+<use href="#star-silver-small" x="111.64" y="200.16" transform="translate(111.64 200.16) scale(0.928) translate(-111.64 -200.16)"/>
+<use href="#star-silver-small" x="382.21" y="199.61" transform="translate(382.21 199.61) scale(0.861) translate(-382.21 -199.61)"/>
+<use href="#star-silver-small" x="1117.86" y="202.81" transform="translate(1117.86 202.81) scale(0.888) translate(-1117.86 -202.81)"/>
+<use href="#star-silver-small" x="1331.14" y="198.43" transform="translate(1331.14 198.43) scale(0.969) translate(-1331.14 -198.43)"/>
+<use href="#star-silver-small" x="1482.67" y="198.42" transform="translate(1482.67 198.42) scale(0.845) translate(-1482.67 -198.42)"/>
+<use href="#star-silver-small" x="1644.36" y="199.33" transform="translate(1644.36 199.33) scale(1.000) translate(-1644.36 -199.33)"/>
+<use href="#star-silver-small" x="1698.86" y="204.82" transform="translate(1698.86 204.82) scale(0.913) translate(-1698.86 -204.82)"/>
+<use href="#star-silver-small" x="329.94" y="217.10" transform="translate(329.94 217.10) scale(0.865) translate(-329.94 -217.10)"/>
+<use href="#star-silver-small" x="1842.35" y="234.04" transform="translate(1842.35 234.04) scale(0.965) translate(-1842.35 -234.04)"/>
+<use href="#star-silver-small" x="18.09" y="252.59" transform="translate(18.09 252.59) scale(0.926) translate(-18.09 -252.59)"/>
+<use href="#star-silver-small" x="510.40" y="254.69" transform="translate(510.40 254.69) scale(0.821) translate(-510.40 -254.69)"/>
+<use href="#star-silver-small" x="1731.73" y="254.71" transform="translate(1731.73 254.71) scale(0.937) translate(-1731.73 -254.71)"/>
+<use href="#star-silver-small" x="182.26" y="293.30" transform="translate(182.26 293.30) scale(0.884) translate(-182.26 -293.30)"/>
+<use href="#star-silver-small" x="267.00" y="288.76" transform="translate(267.00 288.76) scale(0.781) translate(-267.00 -288.76)"/>
+<use href="#star-silver-small" x="70.26" y="309.61" transform="translate(70.26 309.61) scale(0.922) translate(-70.26 -309.61)"/>
+<use href="#star-silver-small" x="831.89" y="304.04" transform="translate(831.89 304.04) scale(0.831) translate(-831.89 -304.04)"/>
+<use href="#star-silver-small" x="18.83" y="322.26" transform="translate(18.83 322.26) scale(0.940) translate(-18.83 -322.26)"/>
+<use href="#star-silver-small" x="163.27" y="329.37" transform="translate(163.27 329.37) scale(0.920) translate(-163.27 -329.37)"/>
+<use href="#star-silver-small" x="1278.87" y="324.06" transform="translate(1278.87 324.06) scale(0.922) translate(-1278.87 -324.06)"/>
+<use href="#star-silver-small" x="1697.93" y="324.44" transform="translate(1697.93 324.44) scale(0.851) translate(-1697.93 -324.44)"/>
+<use href="#star-silver-small" x="1032.12" y="343.18" transform="translate(1032.12 343.18) scale(0.820) translate(-1032.12 -343.18)"/>
+<use href="#star-silver-small" x="1133.92" y="346.01" transform="translate(1133.92 346.01) scale(0.902) translate(-1133.92 -346.01)"/>
+<use href="#star-silver-small" x="1156.71" y="345.51" transform="translate(1156.71 345.51) scale(0.899) translate(-1156.71 -345.51)"/>
+<use href="#star-silver-small" x="384.97" y="358.36" transform="translate(384.97 358.36) scale(0.867) translate(-384.97 -358.36)"/>
+<use href="#star-silver-small" x="543.37" y="380.55" transform="translate(543.37 380.55) scale(0.879) translate(-543.37 -380.55)"/>
+<use href="#star-silver-small" x="1168.83" y="376.91" transform="translate(1168.83 376.91) scale(0.859) translate(-1168.83 -376.91)"/>
+<use href="#star-silver-small" x="923.28" y="401.82" transform="translate(923.28 401.82) scale(0.903) translate(-923.28 -401.82)"/>
+<use href="#star-silver-small" x="1227.52" y="401.40" transform="translate(1227.52 401.40) scale(0.967) translate(-1227.52 -401.40)"/>
+<use href="#star-silver-small" x="1257.54" y="398.27" transform="translate(1257.54 398.27) scale(0.857) translate(-1257.54 -398.27)"/>
+<use href="#star-silver-small" x="59.56" y="413.77" transform="translate(59.56 413.77) scale(0.970) translate(-59.56 -413.77)"/>
+<use href="#star-silver-small" x="182.09" y="420.86" transform="translate(182.09 420.86) scale(0.906) translate(-182.09 -420.86)"/>
+<use href="#star-silver-small" x="685.97" y="417.31" transform="translate(685.97 417.31) scale(0.933) translate(-685.97 -417.31)"/>
+<use href="#star-silver-small" x="972.40" y="415.27" transform="translate(972.40 415.27) scale(0.897) translate(-972.40 -415.27)"/>
+<use href="#star-silver-small" x="992.67" y="412.82" transform="translate(992.67 412.82) scale(0.937) translate(-992.67 -412.82)"/>
+<use href="#star-silver-small" x="199.87" y="430.33" transform="translate(199.87 430.33) scale(0.858) translate(-199.87 -430.33)"/>
+<use href="#star-silver-small" x="413.76" y="431.93" transform="translate(413.76 431.93) scale(0.894) translate(-413.76 -431.93)"/>
+<use href="#star-silver-small" x="594.42" y="434.41" transform="translate(594.42 434.41) scale(0.909) translate(-594.42 -434.41)"/>
+<use href="#star-silver-small" x="220.81" y="453.73" transform="translate(220.81 453.73) scale(0.959) translate(-220.81 -453.73)"/>
+<use href="#star-silver-small" x="726.49" y="470.07" transform="translate(726.49 470.07) scale(0.969) translate(-726.49 -470.07)"/>
+<use href="#star-silver-small" x="707.08" y="489.31" transform="translate(707.08 489.31) scale(0.893) translate(-707.08 -489.31)"/>
+<use href="#star-silver-small" x="1064.46" y="487.28" transform="translate(1064.46 487.28) scale(0.802) translate(-1064.46 -487.28)"/>
+<use href="#star-silver-small" x="251.70" y="509.64" transform="translate(251.70 509.64) scale(0.927) translate(-251.70 -509.64)"/>
+<use href="#star-silver-small" x="487.08" y="502.77" transform="translate(487.08 502.77) scale(0.952) translate(-487.08 -502.77)"/>
+<use href="#star-silver-small" x="814.43" y="505.37" transform="translate(814.43 505.37) scale(0.803) translate(-814.43 -505.37)"/>
+<use href="#star-silver-small" x="1149.96" y="525.33" transform="translate(1149.96 525.33) scale(0.871) translate(-1149.96 -525.33)"/>
+<use href="#star-silver-small" x="1369.06" y="526.86" transform="translate(1369.06 526.86) scale(0.798) translate(-1369.06 -526.86)"/>
+<use href="#star-silver-small" x="200.80" y="539.21" transform="translate(200.80 539.21) scale(0.826) translate(-200.80 -539.21)"/>
+<use href="#star-silver-small" x="632.27" y="543.42" transform="translate(632.27 543.42) scale(0.844) translate(-632.27 -543.42)"/>
+<use href="#star-silver-small" x="1295.38" y="544.17" transform="translate(1295.38 544.17) scale(0.882) translate(-1295.38 -544.17)"/>
+<use href="#star-silver-small" x="1422.27" y="540.71" transform="translate(1422.27 540.71) scale(0.860) translate(-1422.27 -540.71)"/>
+<use href="#star-silver-small" x="955.56" y="561.32" transform="translate(955.56 561.32) scale(0.940) translate(-955.56 -561.32)"/>
+<use href="#star-silver-small" x="1042.64" y="556.81" transform="translate(1042.64 556.81) scale(0.987) translate(-1042.64 -556.81)"/>
+<use href="#star-silver-small" x="1622.61" y="556.84" transform="translate(1622.61 556.84) scale(0.842) translate(-1622.61 -556.84)"/>
+<use href="#star-silver-small" x="166.75" y="582.00" transform="translate(166.75 582.00) scale(0.924) translate(-166.75 -582.00)"/>
+<use href="#star-silver-small" x="236.52" y="576.99" transform="translate(236.52 576.99) scale(0.802) translate(-236.52 -576.99)"/>
+<use href="#star-silver-small" x="1193.00" y="577.42" transform="translate(1193.00 577.42) scale(0.917) translate(-1193.00 -577.42)"/>
+<use href="#star-silver-small" x="1712.20" y="576.48" transform="translate(1712.20 576.48) scale(0.847) translate(-1712.20 -576.48)"/>
+<use href="#star-silver-small" x="141.02" y="600.19" transform="translate(141.02 600.19) scale(0.906) translate(-141.02 -600.19)"/>
+<use href="#star-silver-small" x="1243.12" y="597.51" transform="translate(1243.12 597.51) scale(0.802) translate(-1243.12 -597.51)"/>
+<use href="#star-silver-small" x="56.74" y="609.42" transform="translate(56.74 609.42) scale(0.966) translate(-56.74 -609.42)"/>
+<use href="#star-silver-small" x="689.21" y="616.91" transform="translate(689.21 616.91) scale(0.795) translate(-689.21 -616.91)"/>
+<use href="#star-silver-small" x="1571.20" y="613.50" transform="translate(1571.20 613.50) scale(0.946) translate(-1571.20 -613.50)"/>
+<use href="#star-silver-small" x="1640.64" y="632.94" transform="translate(1640.64 632.94) scale(0.945) translate(-1640.64 -632.94)"/>
+<use href="#star-silver-small" x="93.03" y="653.29" transform="translate(93.03 653.29) scale(0.909) translate(-93.03 -653.29)"/>
+<use href="#star-silver-small" x="105.95" y="653.70" transform="translate(105.95 653.70) scale(0.909) translate(-105.95 -653.70)"/>
+<use href="#star-silver-small" x="1137.81" y="665.91" transform="translate(1137.81 665.91) scale(0.963) translate(-1137.81 -665.91)"/>
+<use href="#star-silver-small" x="1188.60" y="668.27" transform="translate(1188.60 668.27) scale(0.900) translate(-1188.60 -668.27)"/>
+<use href="#star-silver-small" x="1046.09" y="688.83" transform="translate(1046.09 688.83) scale(0.802) translate(-1046.09 -688.83)"/>
+<use href="#star-silver-small" x="250.27" y="700.59" transform="translate(250.27 700.59) scale(1.000) translate(-250.27 -700.59)"/>
+<use href="#star-silver-small" x="474.47" y="700.64" transform="translate(474.47 700.64) scale(0.990) translate(-474.47 -700.64)"/>
+<use href="#star-silver-small" x="867.44" y="709.00" transform="translate(867.44 709.00) scale(0.795) translate(-867.44 -709.00)"/>
+<use href="#star-silver-small" x="882.29" y="699.75" transform="translate(882.29 699.75) scale(0.892) translate(-882.29 -699.75)"/>
+<use href="#star-silver-small" x="939.02" y="726.88" transform="translate(939.02 726.88) scale(0.811) translate(-939.02 -726.88)"/>
+<use href="#star-silver-small" x="1173.21" y="725.43" transform="translate(1173.21 725.43) scale(0.879) translate(-1173.21 -725.43)"/>
+<use href="#star-silver-small" x="1841.66" y="718.09" transform="translate(1841.66 718.09) scale(0.827) translate(-1841.66 -718.09)"/>
+<use href="#star-silver-small" x="265.85" y="205.04" transform="translate(265.85 205.04) scale(0.821) translate(-265.85 -205.04)"/>
+<use href="#star-silver-small" x="267.99" y="184.90" transform="translate(267.99 184.90) scale(0.937) translate(-267.99 -184.90)"/>
+<use href="#star-silver-small" x="307.93" y="178.46" transform="translate(307.93 178.46) scale(0.766) translate(-307.93 -178.46)"/>
+<use href="#star-silver-small" x="297.87" y="164.00" transform="translate(297.87 164.00) scale(0.919) translate(-297.87 -164.00)"/>
+<use href="#star-silver-small" x="296.83" y="182.12" transform="translate(296.83 182.12) scale(0.932) translate(-296.83 -182.12)"/>
+<use href="#star-silver-small" x="292.59" y="167.69" transform="translate(292.59 167.69) scale(0.879) translate(-292.59 -167.69)"/>
+<use href="#star-silver-small" x="284.12" y="162.72" transform="translate(284.12 162.72) scale(0.838) translate(-284.12 -162.72)"/>
+<use href="#star-silver-small" x="294.92" y="167.93" transform="translate(294.92 167.93) scale(0.921) translate(-294.92 -167.93)"/>
+<use href="#star-silver-small" x="291.18" y="154.34" transform="translate(291.18 154.34) scale(0.844) translate(-291.18 -154.34)"/>
+<use href="#star-silver-small" x="282.43" y="181.24" transform="translate(282.43 181.24) scale(0.907) translate(-282.43 -181.24)"/>
+<use href="#star-silver-small" x="304.45" y="155.42" transform="translate(304.45 155.42) scale(0.857) translate(-304.45 -155.42)"/>
+<use href="#star-silver-small" x="825.05" y="109.95" transform="translate(825.05 109.95) scale(0.855) translate(-825.05 -109.95)"/>
+<use href="#star-silver-small" x="828.69" y="126.17" transform="translate(828.69 126.17) scale(0.868) translate(-828.69 -126.17)"/>
+<use href="#star-silver-small" x="785.96" y="119.12" transform="translate(785.96 119.12) scale(0.854) translate(-785.96 -119.12)"/>
+<use href="#star-silver-small" x="781.74" y="127.60" transform="translate(781.74 127.60) scale(0.767) translate(-781.74 -127.60)"/>
+<use href="#star-silver-small" x="863.98" y="107.39" transform="translate(863.98 107.39) scale(0.795) translate(-863.98 -107.39)"/>
+<use href="#star-silver-small" x="833.34" y="126.09" transform="translate(833.34 126.09) scale(0.876) translate(-833.34 -126.09)"/>
+<use href="#star-silver-small" x="766.84" y="121.99" transform="translate(766.84 121.99) scale(0.818) translate(-766.84 -121.99)"/>
+<use href="#star-silver-small" x="814.89" y="118.77" transform="translate(814.89 118.77) scale(0.762) translate(-814.89 -118.77)"/>
+<use href="#star-silver-small" x="809.84" y="104.64" transform="translate(809.84 104.64) scale(0.863) translate(-809.84 -104.64)"/>
+<use href="#star-silver-small" x="808.02" y="133.18" transform="translate(808.02 133.18) scale(0.839) translate(-808.02 -133.18)"/>
+<use href="#star-silver-small" x="827.31" y="141.71" transform="translate(827.31 141.71) scale(0.860) translate(-827.31 -141.71)"/>
+<use href="#star-silver-small" x="806.26" y="93.42" transform="translate(806.26 93.42) scale(0.894) translate(-806.26 -93.42)"/>
+<use href="#star-silver-small" x="868.97" y="130.78" transform="translate(868.97 130.78) scale(0.898) translate(-868.97 -130.78)"/>
+<use href="#star-silver-small" x="827.42" y="96.78" transform="translate(827.42 96.78) scale(0.906) translate(-827.42 -96.78)"/>
+<use href="#star-silver-small" x="836.33" y="135.62" transform="translate(836.33 135.62) scale(0.780) translate(-836.33 -135.62)"/>
+<use href="#star-silver-small" x="1361.40" y="214.84" transform="translate(1361.40 214.84) scale(0.869) translate(-1361.40 -214.84)"/>
+<use href="#star-silver-small" x="1347.08" y="203.34" transform="translate(1347.08 203.34) scale(0.938) translate(-1347.08 -203.34)"/>
+<use href="#star-silver-small" x="1314.82" y="228.58" transform="translate(1314.82 228.58) scale(0.870) translate(-1314.82 -228.58)"/>
+<use href="#star-silver-small" x="1306.87" y="227.83" transform="translate(1306.87 227.83) scale(0.828) translate(-1306.87 -227.83)"/>
+<use href="#star-silver-small" x="1336.92" y="256.15" transform="translate(1336.92 256.15) scale(0.848) translate(-1336.92 -256.15)"/>
+<use href="#star-silver-small" x="1299.83" y="266.03" transform="translate(1299.83 266.03) scale(0.903) translate(-1299.83 -266.03)"/>
+<use href="#star-silver-small" x="1358.05" y="238.41" transform="translate(1358.05 238.41) scale(0.777) translate(-1358.05 -238.41)"/>
+<use href="#star-silver-small" x="1328.26" y="225.76" transform="translate(1328.26 225.76) scale(0.935) translate(-1328.26 -225.76)"/>
+<use href="#star-silver-small" x="1357.00" y="203.84" transform="translate(1357.00 203.84) scale(0.866) translate(-1357.00 -203.84)"/>
+<use href="#star-silver-small" x="1322.37" y="232.98" transform="translate(1322.37 232.98) scale(0.845) translate(-1322.37 -232.98)"/>
+<use href="#star-silver-small" x="1347.10" y="211.73" transform="translate(1347.10 211.73) scale(0.939) translate(-1347.10 -211.73)"/>
+<use href="#star-silver-small" x="1291.46" y="195.98" transform="translate(1291.46 195.98) scale(0.826) translate(-1291.46 -195.98)"/>
+<use href="#star-silver-small" x="1311.70" y="201.14" transform="translate(1311.70 201.14) scale(0.911) translate(-1311.70 -201.14)"/>
+<use href="#star-silver-small" x="1568.99" y="133.67" transform="translate(1568.99 133.67) scale(0.914) translate(-1568.99 -133.67)"/>
+<use href="#star-silver-small" x="1570.43" y="169.82" transform="translate(1570.43 169.82) scale(0.790) translate(-1570.43 -169.82)"/>
+<use href="#star-silver-small" x="1542.42" y="143.15" transform="translate(1542.42 143.15) scale(0.803) translate(-1542.42 -143.15)"/>
+<use href="#star-silver-small" x="1584.05" y="139.92" transform="translate(1584.05 139.92) scale(0.812) translate(-1584.05 -139.92)"/>
+<use href="#star-silver-small" x="1589.35" y="128.42" transform="translate(1589.35 128.42) scale(0.864) translate(-1589.35 -128.42)"/>
+<use href="#star-silver-small" x="1594.01" y="152.00" transform="translate(1594.01 152.00) scale(0.934) translate(-1594.01 -152.00)"/>
+<use href="#star-silver-small" x="1535.12" y="148.03" transform="translate(1535.12 148.03) scale(0.936) translate(-1535.12 -148.03)"/>
+<use href="#star-silver-small" x="1592.27" y="147.76" transform="translate(1592.27 147.76) scale(0.861) translate(-1592.27 -147.76)"/>
+<use href="#star-silver-small" x="1575.41" y="144.10" transform="translate(1575.41 144.10) scale(0.825) translate(-1575.41 -144.10)"/>
+<use href="#star-silver-small" x="1559.83" y="177.82" transform="translate(1559.83 177.82) scale(0.817) translate(-1559.83 -177.82)"/>
+<use href="#star-silver-small" x="1563.82" y="145.09" transform="translate(1563.82 145.09) scale(0.857) translate(-1563.82 -145.09)"/>
+<use href="#star-silver-small" x="1588.34" y="125.56" transform="translate(1588.34 125.56) scale(0.936) translate(-1588.34 -125.56)"/>
+<use href="#star-silver-small" x="1567.35" y="148.56" transform="translate(1567.35 148.56) scale(0.877) translate(-1567.35 -148.56)"/>
+<use href="#star-silver-small" x="1143.92" y="440.39" transform="translate(1143.92 440.39) scale(0.799) translate(-1143.92 -440.39)"/>
+<use href="#star-silver-small" x="1098.35" y="423.84" transform="translate(1098.35 423.84) scale(0.792) translate(-1098.35 -423.84)"/>
+<use href="#star-silver-small" x="1096.12" y="379.84" transform="translate(1096.12 379.84) scale(0.855) translate(-1096.12 -379.84)"/>
+<use href="#star-silver-small" x="1066.47" y="416.31" transform="translate(1066.47 416.31) scale(0.899) translate(-1066.47 -416.31)"/>
+<use href="#star-silver-small" x="1088.19" y="436.15" transform="translate(1088.19 436.15) scale(0.919) translate(-1088.19 -436.15)"/>
+<use href="#star-silver-small" x="1092.49" y="430.65" transform="translate(1092.49 430.65) scale(0.801) translate(-1092.49 -430.65)"/>
+<use href="#star-silver-small" x="1074.88" y="436.53" transform="translate(1074.88 436.53) scale(0.888) translate(-1074.88 -436.53)"/>
+<use href="#star-silver-small" x="1133.55" y="444.14" transform="translate(1133.55 444.14) scale(0.768) translate(-1133.55 -444.14)"/>
+<use href="#star-silver-small" x="1126.84" y="423.95" transform="translate(1126.84 423.95) scale(0.873) translate(-1126.84 -423.95)"/>
+<use href="#star-silver-small" x="1093.30" y="418.49" transform="translate(1093.30 418.49) scale(0.781) translate(-1093.30 -418.49)"/>
+<use href="#star-silver-small" x="1101.59" y="377.60" transform="translate(1101.59 377.60) scale(0.867) translate(-1101.59 -377.60)"/>
+<use href="#star-silver-small" x="1107.26" y="421.27" transform="translate(1107.26 421.27) scale(0.777) translate(-1107.26 -421.27)"/>
+<use href="#star-silver-small" x="1101.05" y="430.29" transform="translate(1101.05 430.29) scale(0.883) translate(-1101.05 -430.29)"/></g>
+    <g id="silver-mid-stars"><use href="#star-silver-mid" x="256.01" y="24.53" transform="translate(256.01 24.53) scale(1.058) translate(-256.01 -24.53)"/>
+<use href="#star-silver-mid" x="868.85" y="42.76" transform="translate(868.85 42.76) scale(0.840) translate(-868.85 -42.76)"/>
+<use href="#star-silver-mid" x="1513.87" y="36.22" transform="translate(1513.87 36.22) scale(1.143) translate(-1513.87 -36.22)"/>
+<use href="#star-silver-mid" x="736.68" y="54.56" transform="translate(736.68 54.56) scale(1.136) translate(-736.68 -54.56)"/>
+<use href="#star-silver-mid" x="253.09" y="113.79" transform="translate(253.09 113.79) scale(0.995) translate(-253.09 -113.79)"/>
+<use href="#star-silver-mid" x="468.24" y="107.02" transform="translate(468.24 107.02) scale(1.040) translate(-468.24 -107.02)"/>
+<use href="#star-silver-mid" x="1582.81" y="114.68" transform="translate(1582.81 114.68) scale(0.858) translate(-1582.81 -114.68)"/>
+<use href="#star-silver-mid" x="240.69" y="123.40" transform="translate(240.69 123.40) scale(1.063) translate(-240.69 -123.40)"/>
+<use href="#star-silver-mid" x="884.87" y="130.99" transform="translate(884.87 130.99) scale(1.132) translate(-884.87 -130.99)"/>
+<use href="#star-silver-mid" x="1206.69" y="128.10" transform="translate(1206.69 128.10) scale(0.898) translate(-1206.69 -128.10)"/>
+<use href="#star-silver-mid" x="288.23" y="141.01" transform="translate(288.23 141.01) scale(1.086) translate(-288.23 -141.01)"/>
+<use href="#star-silver-mid" x="1716.18" y="148.11" transform="translate(1716.18 148.11) scale(1.087) translate(-1716.18 -148.11)"/>
+<use href="#star-silver-mid" x="1041.83" y="161.97" transform="translate(1041.83 161.97) scale(1.008) translate(-1041.83 -161.97)"/>
+<use href="#star-silver-mid" x="1067.22" y="163.33" transform="translate(1067.22 163.33) scale(1.090) translate(-1067.22 -163.33)"/>
+<use href="#star-silver-mid" x="1480.66" y="159.65" transform="translate(1480.66 159.65) scale(1.037) translate(-1480.66 -159.65)"/>
+<use href="#star-silver-mid" x="253.85" y="186.95" transform="translate(253.85 186.95) scale(0.882) translate(-253.85 -186.95)"/>
+<use href="#star-silver-mid" x="520.01" y="185.67" transform="translate(520.01 185.67) scale(1.104) translate(-520.01 -185.67)"/>
+<use href="#star-silver-mid" x="897.11" y="199.73" transform="translate(897.11 199.73) scale(1.092) translate(-897.11 -199.73)"/>
+<use href="#star-silver-mid" x="1207.25" y="219.46" transform="translate(1207.25 219.46) scale(1.010) translate(-1207.25 -219.46)"/>
+<use href="#star-silver-mid" x="813.23" y="257.29" transform="translate(813.23 257.29) scale(0.825) translate(-813.23 -257.29)"/>
+<use href="#star-silver-mid" x="1230.02" y="251.13" transform="translate(1230.02 251.13) scale(1.156) translate(-1230.02 -251.13)"/>
+<use href="#star-silver-mid" x="996.71" y="268.73" transform="translate(996.71 268.73) scale(1.035) translate(-996.71 -268.73)"/>
+<use href="#star-silver-mid" x="1208.79" y="324.95" transform="translate(1208.79 324.95) scale(0.959) translate(-1208.79 -324.95)"/>
+<use href="#star-silver-mid" x="1545.26" y="322.13" transform="translate(1545.26 322.13) scale(1.022) translate(-1545.26 -322.13)"/>
+<use href="#star-silver-mid" x="271.61" y="361.29" transform="translate(271.61 361.29) scale(0.982) translate(-271.61 -361.29)"/>
+<use href="#star-silver-mid" x="507.90" y="395.98" transform="translate(507.90 395.98) scale(1.076) translate(-507.90 -395.98)"/>
+<use href="#star-silver-mid" x="141.17" y="434.66" transform="translate(141.17 434.66) scale(1.017) translate(-141.17 -434.66)"/>
+<use href="#star-silver-mid" x="456.36" y="438.05" transform="translate(456.36 438.05) scale(0.992) translate(-456.36 -438.05)"/>
+<use href="#star-silver-mid" x="521.15" y="429.87" transform="translate(521.15 429.87) scale(0.935) translate(-521.15 -429.87)"/>
+<use href="#star-silver-mid" x="665.69" y="433.03" transform="translate(665.69 433.03) scale(0.921) translate(-665.69 -433.03)"/>
+<use href="#star-silver-mid" x="466.14" y="449.49" transform="translate(466.14 449.49) scale(1.053) translate(-466.14 -449.49)"/>
+<use href="#star-silver-mid" x="1041.37" y="452.31" transform="translate(1041.37 452.31) scale(1.043) translate(-1041.37 -452.31)"/>
+<use href="#star-silver-mid" x="1138.19" y="487.71" transform="translate(1138.19 487.71) scale(1.142) translate(-1138.19 -487.71)"/>
+<use href="#star-silver-mid" x="41.32" y="504.10" transform="translate(41.32 504.10) scale(0.931) translate(-41.32 -504.10)"/>
+<use href="#star-silver-mid" x="1676.70" y="507.91" transform="translate(1676.70 507.91) scale(0.927) translate(-1676.70 -507.91)"/>
+<use href="#star-silver-mid" x="827.86" y="525.88" transform="translate(827.86 525.88) scale(0.953) translate(-827.86 -525.88)"/>
+<use href="#star-silver-mid" x="1042.71" y="524.95" transform="translate(1042.71 524.95) scale(0.838) translate(-1042.71 -524.95)"/>
+<use href="#star-silver-mid" x="881.04" y="537.01" transform="translate(881.04 537.01) scale(0.986) translate(-881.04 -537.01)"/>
+<use href="#star-silver-mid" x="1403.06" y="564.22" transform="translate(1403.06 564.22) scale(1.111) translate(-1403.06 -564.22)"/>
+<use href="#star-silver-mid" x="1788.39" y="561.54" transform="translate(1788.39 561.54) scale(0.984) translate(-1788.39 -561.54)"/>
+<use href="#star-silver-mid" x="1330.86" y="574.85" transform="translate(1330.86 574.85) scale(0.932) translate(-1330.86 -574.85)"/>
+<use href="#star-silver-mid" x="664.51" y="618.38" transform="translate(664.51 618.38) scale(1.052) translate(-664.51 -618.38)"/>
+<use href="#star-silver-mid" x="402.54" y="649.92" transform="translate(402.54 649.92) scale(0.848) translate(-402.54 -649.92)"/>
+<use href="#star-silver-mid" x="521.44" y="684.55" transform="translate(521.44 684.55) scale(0.978) translate(-521.44 -684.55)"/>
+<use href="#star-silver-mid" x="652.60" y="707.80" transform="translate(652.60 707.80) scale(1.051) translate(-652.60 -707.80)"/>
+<use href="#star-silver-mid" x="1528.14" y="719.03" transform="translate(1528.14 719.03) scale(0.876) translate(-1528.14 -719.03)"/></g>
+    <g id="silver-bright-stars"><use href="#star-silver-bright" x="717.34" y="40.02" transform="translate(717.34 40.02) scale(1.032) translate(-717.34 -40.02)"/>
+<use href="#star-silver-bright" x="1607.34" y="112.37" transform="translate(1607.34 112.37) scale(1.035) translate(-1607.34 -112.37)"/>
+<use href="#star-silver-bright" x="1636.92" y="125.00" transform="translate(1636.92 125.00) scale(1.251) translate(-1636.92 -125.00)"/>
+<use href="#star-silver-bright" x="1262.01" y="204.33" transform="translate(1262.01 204.33) scale(1.204) translate(-1262.01 -204.33)"/>
+<use href="#star-silver-bright" x="1711.90" y="255.35" transform="translate(1711.90 255.35) scale(1.121) translate(-1711.90 -255.35)"/>
+<use href="#star-silver-bright" x="381.59" y="339.63" transform="translate(381.59 339.63) scale(1.257) translate(-381.59 -339.63)"/>
+<use href="#star-silver-bright" x="1582.98" y="341.94" transform="translate(1582.98 341.94) scale(0.978) translate(-1582.98 -341.94)"/>
+<use href="#star-silver-bright" x="1420.56" y="436.87" transform="translate(1420.56 436.87) scale(1.174) translate(-1420.56 -436.87)"/>
+<use href="#star-silver-bright" x="1709.05" y="448.97" transform="translate(1709.05 448.97) scale(0.956) translate(-1709.05 -448.97)"/>
+<use href="#star-silver-bright" x="141.99" y="469.81" transform="translate(141.99 469.81) scale(1.006) translate(-141.99 -469.81)"/>
+<use href="#star-silver-bright" x="234.04" y="492.51" transform="translate(234.04 492.51) scale(1.347) translate(-234.04 -492.51)"/>
+<use href="#star-silver-bright" x="1097.79" y="648.71" transform="translate(1097.79 648.71) scale(1.131) translate(-1097.79 -648.71)"/>
+<use href="#star-silver-bright" x="1712.85" y="669.37" transform="translate(1712.85 669.37) scale(1.158) translate(-1712.85 -669.37)"/></g>
+    <g id="orange-small-stars"><use href="#star-orange-small" x="1869.56" y="38.25" transform="translate(1869.56 38.25) scale(0.914) translate(-1869.56 -38.25)"/>
+<use href="#star-orange-small" x="447.27" y="91.93" transform="translate(447.27 91.93) scale(0.831) translate(-447.27 -91.93)"/>
+<use href="#star-orange-small" x="1258.77" y="92.71" transform="translate(1258.77 92.71) scale(0.999) translate(-1258.77 -92.71)"/>
+<use href="#star-orange-small" x="1009.11" y="181.60" transform="translate(1009.11 181.60) scale(0.950) translate(-1009.11 -181.60)"/>
+<use href="#star-orange-small" x="1455.31" y="185.24" transform="translate(1455.31 185.24) scale(0.928) translate(-1455.31 -185.24)"/>
+<use href="#star-orange-small" x="1097.05" y="197.10" transform="translate(1097.05 197.10) scale(0.907) translate(-1097.05 -197.10)"/>
+<use href="#star-orange-small" x="330.63" y="240.02" transform="translate(330.63 240.02) scale(0.895) translate(-330.63 -240.02)"/>
+<use href="#star-orange-small" x="128.04" y="321.67" transform="translate(128.04 321.67) scale(0.843) translate(-128.04 -321.67)"/>
+<use href="#star-orange-small" x="1606.29" y="342.61" transform="translate(1606.29 342.61) scale(0.899) translate(-1606.29 -342.61)"/>
+<use href="#star-orange-small" x="467.82" y="402.50" transform="translate(467.82 402.50) scale(0.955) translate(-467.82 -402.50)"/>
+<use href="#star-orange-small" x="600.81" y="399.75" transform="translate(600.81 399.75) scale(0.884) translate(-600.81 -399.75)"/>
+<use href="#star-orange-small" x="429.65" y="469.85" transform="translate(429.65 469.85) scale(0.804) translate(-429.65 -469.85)"/>
+<use href="#star-orange-small" x="972.86" y="485.96" transform="translate(972.86 485.96) scale(0.807) translate(-972.86 -485.96)"/>
+<use href="#star-orange-small" x="199.28" y="528.86" transform="translate(199.28 528.86) scale(0.904) translate(-199.28 -528.86)"/>
+<use href="#star-orange-small" x="1552.91" y="563.34" transform="translate(1552.91 563.34) scale(0.960) translate(-1552.91 -563.34)"/>
+<use href="#star-orange-small" x="360.30" y="618.03" transform="translate(360.30 618.03) scale(0.857) translate(-360.30 -618.03)"/>
+<use href="#star-orange-small" x="613.69" y="654.07" transform="translate(613.69 654.07) scale(0.969) translate(-613.69 -654.07)"/>
+<use href="#star-orange-small" x="280.46" y="159.99" transform="translate(280.46 159.99) scale(0.772) translate(-280.46 -159.99)"/>
+<use href="#star-orange-small" x="331.46" y="172.86" transform="translate(331.46 172.86) scale(0.863) translate(-331.46 -172.86)"/>
+<use href="#star-orange-small" x="292.64" y="199.01" transform="translate(292.64 199.01) scale(0.900) translate(-292.64 -199.01)"/>
+<use href="#star-orange-small" x="290.48" y="170.44" transform="translate(290.48 170.44) scale(0.826) translate(-290.48 -170.44)"/>
+<use href="#star-orange-small" x="1294.73" y="204.95" transform="translate(1294.73 204.95) scale(0.770) translate(-1294.73 -204.95)"/>
+<use href="#star-orange-small" x="1321.30" y="183.90" transform="translate(1321.30 183.90) scale(0.768) translate(-1321.30 -183.90)"/>
+<use href="#star-orange-small" x="1575.07" y="140.29" transform="translate(1575.07 140.29) scale(0.773) translate(-1575.07 -140.29)"/>
+<use href="#star-orange-small" x="1580.56" y="140.73" transform="translate(1580.56 140.73) scale(0.933) translate(-1580.56 -140.73)"/>
+<use href="#star-orange-small" x="1104.77" y="394.34" transform="translate(1104.77 394.34) scale(0.831) translate(-1104.77 -394.34)"/>
+<use href="#star-orange-small" x="1126.60" y="405.64" transform="translate(1126.60 405.64) scale(0.920) translate(-1126.60 -405.64)"/></g>
+    <g id="orange-bright-stars"><use href="#star-orange-bright" x="309.40" y="123.10" transform="translate(309.40 123.10) scale(1.158) translate(-309.40 -123.10)"/>
+<use href="#star-orange-bright" x="831.74" y="344.26" transform="translate(831.74 344.26) scale(1.203) translate(-831.74 -344.26)"/>
+<use href="#star-orange-bright" x="1030.72" y="362.85" transform="translate(1030.72 362.85) scale(1.213) translate(-1030.72 -362.85)"/>
+<use href="#star-orange-bright" x="1113.84" y="360.89" transform="translate(1113.84 360.89) scale(0.953) translate(-1113.84 -360.89)"/>
+<use href="#star-orange-bright" x="1494.92" y="376.05" transform="translate(1494.92 376.05) scale(1.014) translate(-1494.92 -376.05)"/>
+<use href="#star-orange-bright" x="1387.72" y="398.88" transform="translate(1387.72 398.88) scale(1.035) translate(-1387.72 -398.88)"/>
+<use href="#star-orange-bright" x="399.21" y="503.17" transform="translate(399.21 503.17) scale(0.993) translate(-399.21 -503.17)"/>
+<use href="#star-orange-bright" x="510.80" y="505.31" transform="translate(510.80 505.31) scale(1.254) translate(-510.80 -505.31)"/>
+<use href="#star-orange-bright" x="235.48" y="526.56" transform="translate(235.48 526.56) scale(0.914) translate(-235.48 -526.56)"/>
+<use href="#star-orange-bright" x="650.13" y="594.07" transform="translate(650.13 594.07) scale(1.092) translate(-650.13 -594.07)"/>
+<use href="#star-orange-bright" x="1370.47" y="653.61" transform="translate(1370.47 653.61) scale(1.239) translate(-1370.47 -653.61)"/>
+<use href="#star-orange-bright" x="186.77" y="704.82" transform="translate(186.77 704.82) scale(1.160) translate(-186.77 -704.82)"/></g>
+    <g id="silver-twinkles"><use href="#twinkle-silver" x="1138.19" y="487.71" transform="translate(1138.19 487.71) scale(1.014) translate(-1138.19 -487.71)"/>
+<use href="#twinkle-silver" x="1636.92" y="125.00" transform="translate(1636.92 125.00) scale(0.970) translate(-1636.92 -125.00)"/>
+<use href="#twinkle-silver" x="1041.83" y="161.97" transform="translate(1041.83 161.97) scale(1.042) translate(-1041.83 -161.97)"/>
+<use href="#twinkle-silver" x="1042.71" y="524.95" transform="translate(1042.71 524.95) scale(1.092) translate(-1042.71 -524.95)"/>
+<use href="#twinkle-silver" x="884.87" y="130.99" transform="translate(884.87 130.99) scale(0.985) translate(-884.87 -130.99)"/>
+<use href="#twinkle-silver" x="521.15" y="429.87" transform="translate(521.15 429.87) scale(0.823) translate(-521.15 -429.87)"/>
+<use href="#twinkle-silver" x="1206.69" y="128.10" transform="translate(1206.69 128.10) scale(1.052) translate(-1206.69 -128.10)"/>
+<use href="#twinkle-silver" x="1403.06" y="564.22" transform="translate(1403.06 564.22) scale(1.011) translate(-1403.06 -564.22)"/>
+<use href="#twinkle-silver" x="271.61" y="361.29" transform="translate(271.61 361.29) scale(1.099) translate(-271.61 -361.29)"/>
+<use href="#twinkle-silver" x="253.85" y="186.95" transform="translate(253.85 186.95) scale(0.970) translate(-253.85 -186.95)"/>
+<use href="#twinkle-silver" x="1387.72" y="398.88" transform="translate(1387.72 398.88) scale(1.054) translate(-1387.72 -398.88)"/>
+<use href="#twinkle-silver" x="1480.66" y="159.65" transform="translate(1480.66 159.65) scale(1.009) translate(-1480.66 -159.65)"/>
+<use href="#twinkle-silver" x="652.60" y="707.80" transform="translate(652.60 707.80) scale(0.918) translate(-652.60 -707.80)"/>
+<use href="#twinkle-silver" x="1041.37" y="452.31" transform="translate(1041.37 452.31) scale(1.060) translate(-1041.37 -452.31)"/>
+<use href="#twinkle-silver" x="288.23" y="141.01" transform="translate(288.23 141.01) scale(0.915) translate(-288.23 -141.01)"/>
+<use href="#twinkle-silver" x="456.36" y="438.05" transform="translate(456.36 438.05) scale(0.973) translate(-456.36 -438.05)"/>
+<use href="#twinkle-silver" x="399.21" y="503.17" transform="translate(399.21 503.17) scale(0.938) translate(-399.21 -503.17)"/>
+<use href="#twinkle-silver" x="466.14" y="449.49" transform="translate(466.14 449.49) scale(0.848) translate(-466.14 -449.49)"/>
+<use href="#twinkle-silver" x="141.99" y="469.81" transform="translate(141.99 469.81) scale(1.117) translate(-141.99 -469.81)"/>
+<use href="#twinkle-silver" x="1330.86" y="574.85" transform="translate(1330.86 574.85) scale(1.026) translate(-1330.86 -574.85)"/>
+<use href="#twinkle-silver" x="1067.22" y="163.33" transform="translate(1067.22 163.33) scale(1.006) translate(-1067.22 -163.33)"/>
+<use href="#twinkle-silver" x="650.13" y="594.07" transform="translate(650.13 594.07) scale(1.038) translate(-650.13 -594.07)"/>
+<use href="#twinkle-silver" x="1545.26" y="322.13" transform="translate(1545.26 322.13) scale(0.995) translate(-1545.26 -322.13)"/>
+<use href="#twinkle-silver" x="831.74" y="344.26" transform="translate(831.74 344.26) scale(1.144) translate(-831.74 -344.26)"/>
+<use href="#twinkle-silver" x="868.85" y="42.76" transform="translate(868.85 42.76) scale(1.119) translate(-868.85 -42.76)"/>
+<use href="#twinkle-silver" x="1030.72" y="362.85" transform="translate(1030.72 362.85) scale(0.839) translate(-1030.72 -362.85)"/>
+<use href="#twinkle-silver" x="827.86" y="525.88" transform="translate(827.86 525.88) scale(0.927) translate(-827.86 -525.88)"/>
+<use href="#twinkle-silver" x="141.17" y="434.66" transform="translate(141.17 434.66) scale(0.943) translate(-141.17 -434.66)"/>
+<use href="#twinkle-silver" x="1709.05" y="448.97" transform="translate(1709.05 448.97) scale(0.831) translate(-1709.05 -448.97)"/>
+<use href="#twinkle-silver" x="1420.56" y="436.87" transform="translate(1420.56 436.87) scale(1.103) translate(-1420.56 -436.87)"/>
+<use href="#twinkle-silver" x="664.51" y="618.38" transform="translate(664.51 618.38) scale(1.080) translate(-664.51 -618.38)"/>
+<use href="#twinkle-silver" x="665.69" y="433.03" transform="translate(665.69 433.03) scale(0.909) translate(-665.69 -433.03)"/>
+<use href="#twinkle-silver" x="1607.34" y="112.37" transform="translate(1607.34 112.37) scale(0.974) translate(-1607.34 -112.37)"/>
+<use href="#twinkle-silver" x="468.24" y="107.02" transform="translate(468.24 107.02) scale(0.909) translate(-468.24 -107.02)"/>
+<use href="#twinkle-silver" x="1711.90" y="255.35" transform="translate(1711.90 255.35) scale(0.824) translate(-1711.90 -255.35)"/>
+<use href="#twinkle-silver" x="736.68" y="54.56" transform="translate(736.68 54.56) scale(1.095) translate(-736.68 -54.56)"/>
+<use href="#twinkle-silver" x="881.04" y="537.01" transform="translate(881.04 537.01) scale(1.120) translate(-881.04 -537.01)"/>
+<use href="#twinkle-silver" x="1208.79" y="324.95" transform="translate(1208.79 324.95) scale(0.934) translate(-1208.79 -324.95)"/>
+<use href="#twinkle-silver" x="1716.18" y="148.11" transform="translate(1716.18 148.11) scale(1.145) translate(-1716.18 -148.11)"/>
+<use href="#twinkle-silver" x="717.34" y="40.02" transform="translate(717.34 40.02) scale(1.142) translate(-717.34 -40.02)"/>
+<use href="#twinkle-silver" x="1712.85" y="669.37" transform="translate(1712.85 669.37) scale(0.826) translate(-1712.85 -669.37)"/>
+<use href="#twinkle-silver" x="507.90" y="395.98" transform="translate(507.90 395.98) scale(1.025) translate(-507.90 -395.98)"/>
+<use href="#twinkle-silver" x="1370.47" y="653.61" transform="translate(1370.47 653.61) scale(0.917) translate(-1370.47 -653.61)"/>
+<use href="#twinkle-silver" x="1207.25" y="219.46" transform="translate(1207.25 219.46) scale(1.098) translate(-1207.25 -219.46)"/>
+<use href="#twinkle-silver" x="256.01" y="24.53" transform="translate(256.01 24.53) scale(1.080) translate(-256.01 -24.53)"/>
+<use href="#twinkle-silver" x="1513.87" y="36.22" transform="translate(1513.87 36.22) scale(1.070) translate(-1513.87 -36.22)"/>
+<use href="#twinkle-silver" x="41.32" y="504.10" transform="translate(41.32 504.10) scale(1.060) translate(-41.32 -504.10)"/>
+<use href="#twinkle-silver" x="1528.14" y="719.03" transform="translate(1528.14 719.03) scale(0.937) translate(-1528.14 -719.03)"/></g>
+    <g id="orange-twinkles"><use href="#twinkle-orange" x="813.23" y="257.29" transform="translate(813.23 257.29) scale(1.098) translate(-813.23 -257.29)"/>
+<use href="#twinkle-orange" x="1113.84" y="360.89" transform="translate(1113.84 360.89) scale(1.038) translate(-1113.84 -360.89)"/>
+<use href="#twinkle-orange" x="1582.98" y="341.94" transform="translate(1582.98 341.94) scale(0.838) translate(-1582.98 -341.94)"/>
+<use href="#twinkle-orange" x="309.40" y="123.10" transform="translate(309.40 123.10) scale(1.104) translate(-309.40 -123.10)"/>
+<use href="#twinkle-orange" x="1676.70" y="507.91" transform="translate(1676.70 507.91) scale(0.936) translate(-1676.70 -507.91)"/>
+<use href="#twinkle-orange" x="240.69" y="123.40" transform="translate(240.69 123.40) scale(0.834) translate(-240.69 -123.40)"/>
+<use href="#twinkle-orange" x="381.59" y="339.63" transform="translate(381.59 339.63) scale(1.049) translate(-381.59 -339.63)"/>
+<use href="#twinkle-orange" x="1788.39" y="561.54" transform="translate(1788.39 561.54) scale(1.148) translate(-1788.39 -561.54)"/>
+<use href="#twinkle-orange" x="1494.92" y="376.05" transform="translate(1494.92 376.05) scale(0.853) translate(-1494.92 -376.05)"/>
+<use href="#twinkle-orange" x="1582.81" y="114.68" transform="translate(1582.81 114.68) scale(0.825) translate(-1582.81 -114.68)"/></g>
+  </g>
+</svg>
