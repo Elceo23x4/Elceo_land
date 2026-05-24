@@ -1,0 +1,72 @@
+.dashboard-foundation {
+  min-height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: "Courier New", monospace;
+}
+
+.dashboard-foundation__card {
+  border: 1px solid #d4790a33;
+  border-radius: 6px;
+  padding: 3rem 2.5rem;
+  max-width: 560px;
+  width: 100%;
+  background: #0d0d0d;
+  box-shadow: 0 0 40px #d4790a0a, inset 0 0 20px #00000066;
+}
+
+.dashboard-foundation__title {
+  font-size: 1.5rem;
+  color: #d4790a;
+  margin: 0 0 0.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dashboard-foundation__subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 2rem;
+  letter-spacing: 0.04em;
+}
+
+.dashboard-foundation__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.dashboard-foundation__chip {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid #d4790a44;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  color: #ccc;
+  background: #111;
+  letter-spacing: 0.03em;
+}
+
+.dashboard-foundation__chip--route {
+  color: #d4790a;
+  border-color: #d4790a66;
+}
+
+.dashboard-foundation__body {
+  color: #999;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+.dashboard-foundation__footer {
+  font-size: 0.7rem;
+  color: #555;
+  border-top: 1px solid #1a1a1a;
+  padding-top: 1rem;
+  letter-spacing: 0.02em;
+}
