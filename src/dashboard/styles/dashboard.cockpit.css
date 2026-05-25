@@ -149,13 +149,13 @@
 
 /* ─── Panel Slots ─── */
 .cockpit-slot {
-  border: 1px solid rgba(255, 106, 0, 0.12);
+  border: 1px solid rgba(255, 106, 0, 0.06);
   border-radius: var(--elceo-radius-sm);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 6px 8px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.03);
 }
 .cockpit-slot__label {
   font-size: 8px;
@@ -163,7 +163,7 @@
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 0.3;
   white-space: nowrap;
 }
 
@@ -229,6 +229,7 @@
 }
 
 .elceo-chart-shell {
+  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -294,12 +295,18 @@
   opacity: 0.5;
 }
 
+/* Attribution must stay inside chart frame, non-intrusive */
+
+/* Attribution — must stay inside chart frame, non-intrusive */
 .elceo-chart-attribution {
-  font-size: 6px;
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  pointer-events: none;
+  font-size: 5px;
   color: var(--elceo-muted);
   font-family: var(--elceo-font-ui);
-  opacity: 0.4;
-  text-align: right;
-  padding: 2px 8px;
+  opacity: 0.35;
   letter-spacing: 0.03em;
+  text-align: right;
 }
