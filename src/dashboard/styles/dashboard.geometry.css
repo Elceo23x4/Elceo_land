@@ -1,0 +1,49 @@
+/* ELCEO Dashboard Geometry + No-Glow — Batch 6C */
+
+/* ─── No-Glow structural override ─── */
+.elceo-cockpit-no-glow,
+.elceo-cockpit-no-glow *,
+.elceo-cockpit-no-glow svg,
+.elceo-cockpit-no-glow svg * {
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* ─── Panel Border Layer ─── */
+.cockpit-layer--panel-borders {
+  z-index: 12;
+  pointer-events: none;
+}
+
+.cockpit-panel-border {
+  pointer-events: none;
+}
+.cockpit-panel-border svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Cockpit structural no-glow overrides ─── */
+.cockpit-layer--shell {
+  filter: none;
+}
+.cockpit-layer--shell .cockpit-shell-asset--full-stage,
+.cockpit-layer--shell .cockpit-shell-asset--isolated {
+  filter: none;
+}
+.cockpit-layer--chart-frame {
+  filter: none;
+  box-shadow: none;
+}
+.cockpit-panel-content-layer {
+  filter: none;
+  box-shadow: none;
+}
+
+/* Popover no-glow (cockpit-scoped) */
+.cockpit-panel-content-slot .elceo-popover {
+  filter: none;
+  text-shadow: none;
+}

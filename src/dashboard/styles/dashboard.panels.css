@@ -69,3 +69,25 @@
 .cockpit-panel-content-slot .elceo-notice { padding: 5px 8px; font-size: 7px; }
 .cockpit-panel-content-slot .elceo-notice__title { font-size: 7.5px; }
 .cockpit-panel-content-slot .elceo-stale { padding: 4px 6px; font-size: 6.5px; margin-bottom: 5px; }
+
+
+/* ─── Header/Body content areas (exact geometry) ─── */
+.elceo-panel-header-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.elceo-panel-body-content {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cockpit-panel-content-slot--header {
+  display: flex;
+  align-items: center;
+}

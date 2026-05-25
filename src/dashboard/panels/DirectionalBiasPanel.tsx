@@ -1,12 +1,24 @@
-import PanelFrame from "./PanelFrame";
 import { dashboardReasoningFixture } from "../fixtures/dashboardReasoningFixture";
 import { HoverInsightPopover } from "../components/workspace";
 
 const bias = dashboardReasoningFixture.directionalBias;
 
-export default function DirectionalBiasPanel() {
+interface DirectionalBiasPanelProps {
+  section: "header" | "body";
+}
+
+export default function DirectionalBiasPanel({ section }: DirectionalBiasPanelProps) {
+  if (section === "header") {
+    return (
+      <div className="elceo-panel-header-content">
+        <p className="elceo-panel-frame__eyebrow">Reasoning Snapshot</p>
+        <h3 className="elceo-panel-frame__title">Directional Bias</h3>
+      </div>
+    );
+  }
+
   return (
-    <PanelFrame title="Directional Bias" eyebrow="Reasoning Snapshot" density="ultra">
+    <div className="elceo-panel-body-content">
       <p className="elceo-directional-panel__headline">{bias.headline}</p>
       <div className="elceo-panel-mini-grid">
         <div className="elceo-panel-mini-grid__item">
@@ -30,14 +42,8 @@ export default function DirectionalBiasPanel() {
         ))}
       </div>
       <p className="elceo-panel-watch">{bias.watchCondition}</p>
-      <HoverInsightPopover
-        trigger="Why conditional?"
-        title="Conditional Reasoning"
-        summary="The pressure state is not enough without structure confirmation."
-        detail={<p style={{ margin: 0, fontSize: "0.6rem", color: "#8a8178", lineHeight: 1.5 }}>{bias.invalidationNote}</p>}
-        side="bottom"
-      />
+      <HoverInsightPopover trigger="Why conditional?" title="Conditional Reasoning" summary="The pressure state is not enough without structure confirmation." detail={<p style={{ margin: 0, fontSize: "0.6rem", color: "#8a8178", lineHeight: 1.5 }}>{bias.invalidationNote}</p>} side="bottom" />
       <p className="elceo-panel-caveat">Fixture-only · provider pending</p>
-    </PanelFrame>
+    </div>
   );
 }
