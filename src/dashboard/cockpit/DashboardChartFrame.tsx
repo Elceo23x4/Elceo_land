@@ -1,10 +1,11 @@
 import { ChartConsoleFrame } from "./dashboardCockpitAssets";
 import { CHART_FRAME } from "./dashboardCockpitLayout";
+import { ChartContainer, fixtureNormalizedOhlcData } from "../chart";
 
 /**
- * Chart console frame placeholder.
- * No chart engine, no candlesticks, no fake data.
- * Blank frame ready for future Lightweight Charts integration.
+ * Chart console frame — Batch 5
+ * Renders ChartContainer with fixture OHLC data inside the SVG frame.
+ * The SVG chart frame border remains visible around the chart.
  */
 export default function DashboardChartFrame() {
   return (
@@ -18,13 +19,17 @@ export default function DashboardChartFrame() {
         height: CHART_FRAME.h,
       }}
     >
+      {/* SVG chart frame border — remains visible */}
       <div className="cockpit-chart-frame-asset">
         <ChartConsoleFrame />
       </div>
-      <div className="cockpit-chart-placeholder">
-        <span className="cockpit-chart-placeholder__text">
-          Chart engine placeholder — Batch 3 shell only
-        </span>
+
+      {/* Chart engine inside the frame, inset from borders */}
+      <div className="cockpit-chart-inner">
+        <ChartContainer
+          data={fixtureNormalizedOhlcData}
+          mode="fixture_only"
+        />
       </div>
     </div>
   );
