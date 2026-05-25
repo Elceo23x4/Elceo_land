@@ -1,0 +1,54 @@
+/* ELCEO Dashboard Core — Batch 2 */
+/* Base scope, panel surfaces, HUD borders, text scales */
+
+@import "./dashboard.tokens.css";
+
+.elceo-dashboard-scope {
+  min-height: 100vh;
+  background: var(--elceo-bg-0);
+  color: var(--elceo-silver);
+  font-family: var(--elceo-font-ui);
+  font-size: var(--elceo-text-md);
+  line-height: 1.5;
+}
+
+.elceo-panel {
+  background: var(--elceo-panel-bg);
+  border: 1px solid var(--elceo-border-soft);
+  border-radius: var(--elceo-radius-md);
+  padding: var(--elceo-space-lg);
+}
+
+.elceo-panel--strong {
+  background: var(--elceo-panel-bg-strong);
+  border-color: var(--elceo-border);
+  box-shadow: var(--elceo-glow-orange);
+}
+
+.elceo-panel__title {
+  font-size: var(--elceo-text-lg);
+  color: var(--elceo-orange);
+  margin: 0 0 var(--elceo-space-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.elceo-panel__eyebrow {
+  font-size: var(--elceo-text-xs);
+  color: var(--elceo-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 var(--elceo-space-xs);
+}
+
+.elceo-text-xs { font-size: var(--elceo-text-xs); }
+.elceo-text-sm { font-size: var(--elceo-text-sm); }
+.elceo-text-md { font-size: var(--elceo-text-md); }
+.elceo-text-lg { font-size: var(--elceo-text-lg); }
+.elceo-text-xl { font-size: var(--elceo-text-xl); }
+
+.elceo-text-muted { color: var(--elceo-muted); }
+.elceo-text-orange { color: var(--elceo-orange); }
+.elceo-text-green { color: var(--elceo-green); }
+.elceo-text-red { color: var(--elceo-red); }
+.elceo-text-amber { color: var(--elceo-amber); }
