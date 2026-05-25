@@ -20,6 +20,9 @@ export default function ChartContainer(props: ChartEngineProps) {
       <div className="elceo-chart-body">
         <ChartEngine {...props} />
       </div>
+      <div className="elceo-chart-attribution">
+        Charts by TradingView Lightweight Charts
+      </div>
     </div>
   );
 }

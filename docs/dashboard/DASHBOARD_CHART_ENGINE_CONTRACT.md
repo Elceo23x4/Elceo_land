@@ -15,7 +15,7 @@ visible candlestick chart within the approved dashboard shell.
 
 ## 2. Why Lightweight Charts
 
-Lightweight Charts (by TradingView) provides:
+Lightweight Charts v5.x (by TradingView) provides:
 - Small bundle size (~45KB gzipped)
 - Canvas-based high-performance rendering
 - Candlestick, line, area, histogram series types
@@ -25,6 +25,16 @@ Lightweight Charts (by TradingView) provides:
 
 It was chosen because ELCEO needs a professional-grade financial chart
 that integrates cleanly with the existing React/TypeScript/Vite pipeline.
+
+**Version:** The implementation targets Lightweight Charts v5.x (^5.2.0).
+It uses the v5 API: `createChart`, `chart.addSeries(CandlestickSeries, options)`,
+`series.setData(...)`, and `chart.timeScale().fitContent()`.
+
+The deprecated v4 `addCandlestickSeries()` API is NOT used.
+
+**Attribution:** A subtle "Charts by TradingView Lightweight Charts" line
+is displayed below the chart surface. This does not imply TradingView
+provides ELCEO data — it is library attribution only.
 
 ---
 
