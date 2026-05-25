@@ -1,4 +1,4 @@
-/* ELCEO Dashboard Cockpit Shell — Batch 3 */
+/* ELCEO Dashboard Cockpit Shell — Batch 3 + Batch 4 alignment pass */
 /* Viewport, stage, layer system, slot map, background layers */
 
 @import "./dashboard.core.css";
@@ -26,8 +26,6 @@
 /* ─── Stage (1920×1080 logical canvas) ─── */
 .cockpit-stage {
   position: relative;
-  width: 1920px;
-  height: 1080px;
   flex-shrink: 0;
   overflow: hidden;
 }
@@ -54,11 +52,8 @@
 .cockpit-bg-asset {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 1920px;
+  height: 1080px;
 }
 .cockpit-bg-asset svg {
   width: 100%;
@@ -66,44 +61,51 @@
   display: block;
 }
 
-.cockpit-bg-asset--base-texture { opacity: 0.10; }
-.cockpit-bg-asset--night-sky { opacity: 0.24; }
-.cockpit-bg-asset--world-map { opacity: 0.22; }
-.cockpit-bg-asset--streaks { opacity: 0.12; }
-.cockpit-bg-asset--scan-arcs { opacity: 0.10; }
-.cockpit-bg-asset--particles { opacity: 0.08; }
+/* Night sky & world map: viewBox 1920×760 — center vertically */
+.cockpit-bg-asset--night-sky,
+.cockpit-bg-asset--world-map {
+  top: 160px;
+  height: 760px;
+}
+
+.cockpit-bg-asset--base-texture { opacity: 0.08; }
+.cockpit-bg-asset--night-sky { opacity: 0.20; }
+.cockpit-bg-asset--world-map { opacity: 0.18; }
+.cockpit-bg-asset--streaks { opacity: 0.10; }
+.cockpit-bg-asset--scan-arcs { opacity: 0.08; }
+.cockpit-bg-asset--particles { opacity: 0.06; }
 
 /* ─── Shell Assets ─── */
-.cockpit-shell-asset svg {
+
+/* Full-stage shell assets (viewBox 0 0 1920 1080) — render inset 0 */
+.cockpit-shell-asset--full-stage {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+}
+.cockpit-shell-asset--full-stage svg {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.cockpit-shell-asset--content-panels {
+/* Isolated shell assets (non-1920×1080 viewBox) — positioned inline */
+.cockpit-shell-asset--isolated {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.85;
 }
-.cockpit-shell-asset--content-panels svg {
+.cockpit-shell-asset--isolated svg {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-.cockpit-shell-asset--footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 80px;
-  opacity: 0.7;
-}
-.cockpit-shell-asset--footer svg {
-  width: 100%;
-  height: 100%;
-}
+/* Opacity tuning for shell layers */
+.cockpit-shell-asset--topbar { opacity: 0.92; }
+.cockpit-shell-asset--sidebar { opacity: 0.88; }
+.cockpit-shell-asset--content-panels { opacity: 0.80; }
+.cockpit-shell-asset--central-wheel { opacity: 0.75; }
+.cockpit-shell-asset--footer { opacity: 0.65; }
 
 /* ─── Chart Frame ─── */
 .cockpit-chart-frame-asset {
@@ -124,20 +126,20 @@
   justify-content: center;
 }
 .cockpit-chart-placeholder__text {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--elceo-muted);
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.06em;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
-/* ─── Connectors ─── */
+/* ─── Connectors (viewBox 0 0 1920 1080 — full stage) ─── */
 .cockpit-connector-asset {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
+  width: 1920px;
+  height: 1080px;
+  opacity: 0.50;
 }
 .cockpit-connector-asset svg {
   width: 100%;
@@ -147,38 +149,39 @@
 
 /* ─── Panel Slots ─── */
 .cockpit-slot {
-  border: 1px solid rgba(255, 106, 0, 0.15);
+  border: 1px solid rgba(255, 106, 0, 0.12);
   border-radius: var(--elceo-radius-sm);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.15);
 }
 .cockpit-slot__label {
-  font-size: 9px;
+  font-size: 8px;
   color: var(--elceo-orange-soft);
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.5;
   white-space: nowrap;
 }
 
 /* ─── Status Bar ─── */
 .cockpit-status-bar {
   position: absolute;
-  bottom: 12px;
-  right: 16px;
+  bottom: 14px;
+  right: 18px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .cockpit-status-bar__label {
-  font-size: 9px;
+  font-size: 8px;
   color: var(--elceo-muted);
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.04em;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 /* ─── Stage Labels ─── */
@@ -187,11 +190,11 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 8px;
+  font-size: 7px;
   color: var(--elceo-muted);
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.04em;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 .cockpit-stage-label--top-right {
   top: 8px;
@@ -208,6 +211,6 @@
   .cockpit-bg-asset--particles,
   .cockpit-bg-asset--scan-arcs,
   .cockpit-bg-asset--streaks {
-    opacity: 0.04;
+    opacity: 0.03;
   }
 }

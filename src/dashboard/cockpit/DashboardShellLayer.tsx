@@ -5,53 +5,41 @@ import {
   CentralWheel,
   FooterSlots,
 } from "./dashboardCockpitAssets";
-import { TOP_BAR, SIDEBAR, CENTRAL_WHEEL } from "./dashboardCockpitLayout";
+import { CENTRAL_WHEEL, FOOTER_SLOTS } from "./dashboardCockpitLayout";
 
 /**
  * Structural shell layer: topbar, sidebar, content panels frame,
- * central radial wheel. Positioned absolutely within 1920×1080 stage.
+ * central radial wheel, footer slots.
+ * Positioned absolutely within 1920×1080 stage.
+ *
+ * Batch 4 alignment:
+ * - TopSystemBar, SidebarRail, ContentPanels have viewBox 0 0 1920 1080
+ *   → rendered full-stage (inset 0).
+ * - CentralWheel has viewBox 0 0 1000 720 → isolated, explicit position.
+ * - FooterSlots has viewBox 0 330 680 120 → isolated, explicit position.
  */
 export default function DashboardShellLayer() {
   return (
     <div className="cockpit-layer cockpit-layer--shell" aria-hidden="true">
-      {/* Top system bar — full width */}
-      <div
-        className="cockpit-shell-asset cockpit-shell-asset--topbar"
-        style={{
-          position: "absolute",
-          left: TOP_BAR.x,
-          top: TOP_BAR.y,
-          width: TOP_BAR.w,
-          height: TOP_BAR.h,
-        }}
-      >
-        <TopSystemBar />
-      </div>
-
-      {/* Sidebar rail */}
-      <div
-        className="cockpit-shell-asset cockpit-shell-asset--sidebar"
-        style={{
-          position: "absolute",
-          left: SIDEBAR.x,
-          top: SIDEBAR.y,
-          width: SIDEBAR.w,
-          height: SIDEBAR.h,
-        }}
-      >
-        <SidebarRail />
-      </div>
-
-      {/* Content panels frame — full stage overlay */}
-      <div className="cockpit-shell-asset cockpit-shell-asset--content-panels">
+      {/* Content panels frame — full stage (viewBox 0 0 1920 1080) */}
+      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--content-panels">
         <ContentPanels />
       </div>
 
-      {/* Central wheel / radial ring */}
+      {/* Top system bar — full stage (viewBox 0 0 1920 1080) */}
+      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--topbar">
+        <TopSystemBar />
+      </div>
+
+      {/* Sidebar rail — full stage (viewBox 0 0 1920 1080) */}
+      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--sidebar">
+        <SidebarRail />
+      </div>
+
+      {/* Central wheel / radial ring — isolated (viewBox 0 0 1000 720) */}
       <div
-        className="cockpit-shell-asset cockpit-shell-asset--central-wheel"
+        className="cockpit-shell-asset--isolated cockpit-shell-asset--central-wheel"
         style={{
-          position: "absolute",
           left: CENTRAL_WHEEL.x,
           top: CENTRAL_WHEEL.y,
           width: CENTRAL_WHEEL.w,
@@ -61,8 +49,16 @@ export default function DashboardShellLayer() {
         <CentralWheel />
       </div>
 
-      {/* Footer slots */}
-      <div className="cockpit-shell-asset cockpit-shell-asset--footer">
+      {/* Footer slots — isolated (viewBox 0 330 680 120) */}
+      <div
+        className="cockpit-shell-asset--isolated cockpit-shell-asset--footer"
+        style={{
+          left: FOOTER_SLOTS.x,
+          top: FOOTER_SLOTS.y,
+          width: FOOTER_SLOTS.w,
+          height: FOOTER_SLOTS.h,
+        }}
+      >
         <FooterSlots />
       </div>
     </div>

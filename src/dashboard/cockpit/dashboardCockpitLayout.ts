@@ -1,7 +1,17 @@
 /**
- * Dashboard Cockpit Layout — Batch 3
+ * Dashboard Cockpit Layout — Batch 3 + Batch 4 alignment
  * Logical slot positions within the 1920×1080 stage.
- * These are starting points and may be refined in later batches.
+ *
+ * Batch 4 viewBox findings:
+ * - TopSystemBar: viewBox 0 0 1920 1080 → FULL STAGE
+ * - SidebarRail: viewBox 0 0 1920 1080 → FULL STAGE
+ * - ContentPanels: viewBox 0 0 1920 1080 → FULL STAGE
+ * - Connectors: viewBox 0 0 1920 1080 → FULL STAGE
+ * - CentralWheel: viewBox 0 0 1000 720 → ISOLATED
+ * - FooterSlots: viewBox 0 330 680 120 → ISOLATED
+ * - ChartConsoleFrame: viewBox 0 0 680 450 → ISOLATED
+ * - NightSky: viewBox 0 0 1920 760 → wide but shorter
+ * - WorldMap: viewBox 0 0 1920 760 → wide but shorter
  */
 
 export interface SlotPosition {
@@ -77,37 +87,39 @@ export const PANEL_SLOTS: SlotPosition[] = [
   {
     id: "central-chart-console",
     label: "Central Chart Console",
-    x: 650,
-    y: 190,
-    w: 700,
-    h: 480,
+    x: 620,
+    y: 200,
+    w: 680,
+    h: 450,
   },
 ];
 
+// viewBox: 0 0 680 450 — isolated chart frame
 export const CHART_FRAME = {
-  x: 650,
-  y: 190,
-  w: 700,
-  h: 480,
+  x: 620,
+  y: 200,
+  w: 680,
+  h: 450,
 };
 
-export const TOP_BAR = {
-  x: 0,
-  y: 0,
-  w: 1920,
-  h: 72,
-};
+// viewBox: 0 0 1920 1080 — FULL STAGE (render inset 0, no coordinates needed)
+export const TOP_BAR = { fullStage: true as const };
 
-export const SIDEBAR = {
-  x: 20,
-  y: 82,
-  w: 90,
-  h: 840,
-};
+// viewBox: 0 0 1920 1080 — FULL STAGE (render inset 0, no coordinates needed)
+export const SIDEBAR = { fullStage: true as const };
 
+// viewBox: 0 0 1000 720 — isolated, centered in cockpit
 export const CENTRAL_WHEEL = {
-  x: 480,
-  y: 70,
-  w: 960,
+  x: 460,
+  y: 160,
+  w: 1000,
   h: 720,
+};
+
+// viewBox: 0 330 680 120 — small isolated footer element
+export const FOOTER_SLOTS = {
+  x: 620,
+  y: 950,
+  w: 680,
+  h: 120,
 };
