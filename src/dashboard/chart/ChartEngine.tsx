@@ -2,6 +2,8 @@ import { useRef, useEffect } from "react";
 import type { ChartEngineProps } from "./chartTypes";
 import {
   elceoChartLayoutOptions,
+  elceoChartGridOptions,
+  elceoChartCrosshairOptions,
   elceoCandlestickOptions,
   elceoTimeScaleOptions,
   elceoPriceScaleOptions,
@@ -10,7 +12,7 @@ import {
 /**
  * ChartEngine — Batch 5
  *
- * Client-side Lightweight Charts wrapper.
+ * Client-side Lightweight Charts v5 wrapper.
  * - Creates chart on mount
  * - Observes container resize
  * - Cleans up on unmount
@@ -37,8 +39,8 @@ export default function ChartEngine({ data, height, className }: ChartEngineProp
         width: el.clientWidth,
         height: height ?? el.clientHeight,
         layout: elceoChartLayoutOptions,
-        grid: elceoChartLayoutOptions.grid,
-        crosshair: elceoChartLayoutOptions.crosshair,
+        grid: elceoChartGridOptions,
+        crosshair: elceoChartCrosshairOptions,
         timeScale: elceoTimeScaleOptions,
         rightPriceScale: elceoPriceScaleOptions,
       });

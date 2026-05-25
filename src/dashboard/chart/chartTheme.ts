@@ -2,18 +2,32 @@
  * ELCEO Chart Theme — Batch 5
  * Matches the dashboard's dark HUD aesthetic.
  * No bright white backgrounds. No default TradingView styling.
+ *
+ * Uses Lightweight Charts v5 enums (ColorType, LineStyle).
  */
 
+import { ColorType, LineStyle } from "lightweight-charts";
+
 export const elceoChartLayoutOptions = {
-  background: { type: "solid" as const, color: "transparent" },
+  background: { type: ColorType.Solid, color: "transparent" },
   textColor: "rgba(216, 222, 231, 0.68)",
-  grid: {
-    vertLines: { color: "rgba(255, 106, 0, 0.06)" },
-    horzLines: { color: "rgba(255, 106, 0, 0.06)" },
+};
+
+export const elceoChartGridOptions = {
+  vertLines: { color: "rgba(255, 106, 0, 0.06)" },
+  horzLines: { color: "rgba(255, 106, 0, 0.06)" },
+};
+
+export const elceoChartCrosshairOptions = {
+  vertLine: {
+    color: "rgba(255, 106, 0, 0.3)",
+    width: 1 as const,
+    style: LineStyle.Dashed,
   },
-  crosshair: {
-    vertLine: { color: "rgba(255, 106, 0, 0.3)", width: 1 as const, style: 2 as const },
-    horzLine: { color: "rgba(255, 106, 0, 0.3)", width: 1 as const, style: 2 as const },
+  horzLine: {
+    color: "rgba(255, 106, 0, 0.3)",
+    width: 1 as const,
+    style: LineStyle.Dashed,
   },
 };
 
