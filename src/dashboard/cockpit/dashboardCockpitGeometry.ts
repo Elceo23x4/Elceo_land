@@ -1,3 +1,21 @@
+/**
+ * ELCEO Dashboard Cockpit Geometry — Batch 6C/6D
+ * Exact user-provided coordinates for the 1920×1080 stage.
+ *
+ * ViewBox findings (do not distort these):
+ * - TopSystemBar full: 1920×1080 (full-stage, draws only at top)
+ * - TopSystemBar isolated: 1920×120 (wide but short)
+ * - ContentPanels Rev-B: 1920×1080 (full-stage, contains all panel housing)
+ * - SidebarRail: 1920×1080 (full-stage, draws at far-left)
+ * - CentralWheel: 1000×720 (isolated)
+ * - ChartConsoleFrame: 680×450 (isolated, aspect ~1.51:1)
+ * - Connectors: 1920×1080 (full-stage)
+ *
+ * IMPORTANT:
+ * - chartConsoleBounds = user's full center zone (737×729)
+ * - chartFrame = fitted rectangle preserving ChartConsoleFrame aspect ratio
+ */
+
 export interface CockpitRect { x: number; y: number; w: number; h: number; }
 export interface CockpitPanelGeometry { outer: CockpitRect; header: CockpitRect; body: CockpitRect; borderVariant: "small" | "medium" | "tall" | "wide"; }
 
@@ -6,7 +24,10 @@ export const COCKPIT_GEOMETRY = {
   topSystemBar: { x: 18, y: 18, w: 1884, h: 52 },
   centralWheel: { x: 485, y: 99, w: 978, h: 685 },
   revisionBPanelBorderSystem: { x: 81, y: 83, w: 1773, h: 963 },
-  chartConsole: { x: 622, y: 94, w: 737, h: 729 },
+  // User's full central chart/wheel zone
+  chartConsoleBounds: { x: 622, y: 94, w: 737, h: 729 },
+  // Fitted chart frame preserving native 680:450 aspect ratio within the bounds
+  chartFrame: { x: 622, y: 200, w: 737, h: 488 },
   panels: {
     directionalBiasSummary: {
       outer: { x: 81, y: 85, w: 505, h: 249 },

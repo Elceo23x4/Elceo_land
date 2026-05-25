@@ -3,17 +3,19 @@ import PanelBorderSmall from "../../assets/source/dashboard/panels/elceo-svg-06-
 import PanelBorderMedium from "../../assets/source/dashboard/panels/elceo-svg-06-panel-border-medium.svg?react";
 import PanelBorderWide from "../../assets/source/dashboard/panels/elceo-svg-06-panel-border-wide.svg?react";
 
-const SHOW_SVG06_PANEL_BORDERS = true;
+// Disabled by default until SVG-06 borders are visually calibrated against the Revision B panel housing.
+// ContentPanels Rev-B (full-stage) already contains panel frame chrome.
+// Enabling this creates double-border noise.
+const SHOW_SVG06_PANEL_BORDERS = false;
 
 const BORDER_COMPONENTS = {
   small: PanelBorderSmall,
   medium: PanelBorderMedium,
   wide: PanelBorderWide,
-  tall: PanelBorderSmall, // fallback
+  tall: PanelBorderSmall,
 };
 
 const panels = COCKPIT_GEOMETRY.panels;
-
 const PANEL_ENTRIES = [
   panels.directionalBiasSummary,
   panels.confidenceContextMatrix,
