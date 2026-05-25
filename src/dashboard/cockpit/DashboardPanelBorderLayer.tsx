@@ -3,10 +3,14 @@ import PanelBorderSmall from "../../assets/source/dashboard/panels/elceo-svg-06-
 import PanelBorderMedium from "../../assets/source/dashboard/panels/elceo-svg-06-panel-border-medium.svg?react";
 import PanelBorderWide from "../../assets/source/dashboard/panels/elceo-svg-06-panel-border-wide.svg?react";
 
-// Disabled by default until SVG-06 borders are visually calibrated against the Revision B panel housing.
-// ContentPanels Rev-B (full-stage) already contains panel frame chrome.
-// Enabling this creates double-border noise.
-const SHOW_SVG06_PANEL_BORDERS = false;
+/**
+ * SVG-06 Panel Border Layer — Batch 6E
+ *
+ * Now the PRIMARY visible panel shell system.
+ * ContentPanels Rev-B was removed from visible shell to allow coordinate-faithful placement.
+ * Each panel border is rendered at its exact outer rectangle from COCKPIT_GEOMETRY.
+ */
+const SHOW_SVG06_PANEL_BORDERS = true;
 
 const BORDER_COMPONENTS = {
   small: PanelBorderSmall,
@@ -17,23 +21,27 @@ const BORDER_COMPONENTS = {
 
 const panels = COCKPIT_GEOMETRY.panels;
 const PANEL_ENTRIES = [
-  panels.directionalBiasSummary,
-  panels.confidenceContextMatrix,
-  panels.watchlist,
-  panels.evidenceReasoningEngine,
-  panels.newsMacroIntelligence,
-  panels.coachingInsights,
-  panels.marketRegimeCrossAssetPulse,
+  { key: "bias", geo: panels.directionalBiasSummary },
+  { key: "confidence", geo: panels.confidenceContextMatrix },
+  { key: "watchlist", geo: panels.watchlist },
+  { key: "evidence", geo: panels.evidenceReasoningEngine },
+  { key: "news", geo: panels.newsMacroIntelligence },
+  { key: "coaching", geo: panels.coachingInsights },
+  { key: "regime", geo: panels.marketRegimeCrossAssetPulse },
 ];
 
 export default function DashboardPanelBorderLayer() {
   if (!SHOW_SVG06_PANEL_BORDERS) return null;
   return (
     <div className="cockpit-layer cockpit-layer--panel-borders elceo-cockpit-no-glow" aria-hidden="true">
-      {PANEL_ENTRIES.map((p, i) => {
-        const Border = BORDER_COMPONENTS[p.borderVariant];
+      {PANEL_ENTRIES.map(({ key, geo }) => {
+        const Border = BORDER_COMPONENTS[geo.borderVariant];
         return (
-          <div key={i} className="cockpit-panel-border" style={{ position: "absolute", left: p.outer.x, top: p.outer.y, width: p.outer.w, height: p.outer.h }}>
+          <div
+            key={key}
+            className="cockpit-panel-border"
+            style={{ position: "absolute", left: geo.outer.x, top: geo.outer.y, width: geo.outer.w, height: geo.outer.h }}
+          >
             <Border />
           </div>
         );

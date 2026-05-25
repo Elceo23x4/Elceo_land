@@ -12,15 +12,17 @@ import DashboardStageLabels from "./DashboardStageLabels";
 import { DashboardPanelContentLayer } from "../panels";
 
 /**
- * ELCEO Dashboard Cockpit — Batch 6D geometry reset
+ * ELCEO Dashboard Cockpit — Batch 6E coordinate-faithful rebuild
  *
- * Layer order:
+ * Visible layers:
  * 1. Background (sky, map, atmosphere)
- * 2. Shell (full-stage content panels, topbar, sidebar, wheel)
- * 3. Panel borders (SVG-06, disabled by default — returns null)
- * 4. Chart frame (isolated, fitted aspect)
- * 5. Panel content (header/body in exact geometry rects)
- * 6. Debug overlays (all disabled)
+ * 2. Shell (topbar isolated, sidebar full-stage, wheel isolated)
+ * 3. Panel borders (SVG-06 at exact user coordinates — primary shell)
+ * 4. Chart frame (isolated, aspect-preserved)
+ * 5. Panel content (header/body in geometry rects)
+ *
+ * ContentPanels Rev-B removed from visible shell.
+ * Debug layers remain disabled.
  */
 const SHOW_PANEL_SLOT_DEBUG = false;
 const SHOW_CONNECTOR_LAYER = false;

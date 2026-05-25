@@ -1,38 +1,28 @@
-import {
-  TopSystemBar,
-  SidebarRail,
-  ContentPanels,
-  CentralWheel,
-} from "./dashboardCockpitAssets";
+import { TopSystemBarIsolated, SidebarRail, CentralWheel } from "./dashboardCockpitAssets";
 import { COCKPIT_GEOMETRY } from "./dashboardCockpitGeometry";
 
-const { centralWheel } = COCKPIT_GEOMETRY;
+const { topSystemBar, centralWheel } = COCKPIT_GEOMETRY;
 
 /**
- * Structural shell layer — Batch 6D reset
+ * Coordinate-faithful shell layer — Batch 6E
  *
- * ViewBox-aware rendering:
- * - TopSystemBar (full-desktop): 1920×1080 → render FULL-STAGE
- * - SidebarRail: 1920×1080 → render FULL-STAGE (far-left by SVG design)
- * - ContentPanels Rev-B: 1920×1080 → render FULL-STAGE (contains all panel housing)
- * - CentralWheel: 1000×720 → render ISOLATED at user coordinates
- *
- * Do NOT squeeze full-stage SVGs into small rectangles.
+ * - ContentPanels Rev-B REMOVED from visible shell (replaced by SVG-06 panel borders)
+ * - TopBar: isolated asset (viewBox 0 0 1920 120) placed at exact user rect
+ * - Sidebar: full-stage (no isolated variant exists) — stays far-left by SVG design
+ * - CentralWheel: isolated (viewBox 0 0 1000 720) at exact user coordinates
  */
 export default function DashboardShellLayer() {
   return (
     <div className="cockpit-layer cockpit-layer--shell elceo-cockpit-no-glow" aria-hidden="true">
-      {/* Content panels Rev-B — full stage (viewBox 0 0 1920 1080) */}
-      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--content-panels">
-        <ContentPanels />
+      {/* Top system bar — isolated (viewBox 0 0 1920 120) at user coordinates */}
+      <div
+        className="cockpit-shell-asset--isolated cockpit-shell-asset--topbar"
+        style={{ left: topSystemBar.x, top: topSystemBar.y, width: topSystemBar.w, height: topSystemBar.h }}
+      >
+        <TopSystemBarIsolated />
       </div>
 
-      {/* Top system bar — full stage (viewBox 0 0 1920 1080, draws at top only) */}
-      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--topbar">
-        <TopSystemBar />
-      </div>
-
-      {/* Sidebar rail — full stage (viewBox 0 0 1920 1080, draws far-left) */}
+      {/* Sidebar rail — full stage (no isolated variant). Far-left by SVG internal design. */}
       <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--sidebar">
         <SidebarRail />
       </div>
