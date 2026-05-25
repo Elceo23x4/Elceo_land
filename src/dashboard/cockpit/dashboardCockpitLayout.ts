@@ -111,7 +111,7 @@ export const SIDEBAR = { fullStage: true as const };
 // viewBox: 0 0 1000 720 — isolated, centered in cockpit
 export const CENTRAL_WHEEL = {
   x: 460,
-  y: 160,
+  y: 65,
   w: 1000,
   h: 720,
 };

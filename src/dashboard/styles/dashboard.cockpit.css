@@ -149,13 +149,13 @@
 
 /* ─── Panel Slots ─── */
 .cockpit-slot {
-  border: 1px solid rgba(255, 106, 0, 0.12);
+  border: 1px solid rgba(255, 106, 0, 0.06);
   border-radius: var(--elceo-radius-sm);
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 6px 8px;
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(0, 0, 0, 0.03);
 }
 .cockpit-slot__label {
   font-size: 8px;
@@ -163,7 +163,7 @@
   font-family: var(--elceo-font-ui);
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 0.3;
   white-space: nowrap;
 }
 
@@ -213,4 +213,100 @@
   .cockpit-bg-asset--streaks {
     opacity: 0.03;
   }
+}
+
+/* ─── Chart Integration — Batch 5 ─── */
+
+.cockpit-chart-inner {
+  position: absolute;
+  left: 38px;
+  right: 42px;
+  top: 42px;
+  bottom: 46px;
+  overflow: hidden;
+  border-radius: 2px;
+  pointer-events: auto;
+}
+
+.elceo-chart-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.elceo-chart-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.elceo-chart-status__label {
+  font-size: 8px;
+  color: var(--elceo-orange-soft);
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.elceo-chart-status__badge {
+  font-size: 7px;
+  color: var(--elceo-amber);
+  background: rgba(255, 191, 74, 0.1);
+  border: 1px solid rgba(255, 191, 74, 0.2);
+  border-radius: 2px;
+  padding: 1px 4px;
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.elceo-chart-status__notice {
+  font-size: 7px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  opacity: 0.6;
+  margin-left: auto;
+}
+
+.elceo-chart-body {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.elceo-chart-surface {
+  position: absolute;
+  inset: 0;
+}
+
+.elceo-chart-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  opacity: 0.5;
+}
+
+/* Attribution must stay inside chart frame, non-intrusive */
+
+/* Attribution — must stay inside chart frame, non-intrusive */
+.elceo-chart-attribution {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  pointer-events: none;
+  font-size: 5px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  opacity: 0.35;
+  letter-spacing: 0.03em;
+  text-align: right;
 }

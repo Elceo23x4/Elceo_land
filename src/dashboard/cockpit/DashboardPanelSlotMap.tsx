@@ -2,14 +2,20 @@ import { PANEL_SLOTS } from "./dashboardCockpitLayout";
 
 interface DashboardPanelSlotMapProps {
   showLabels?: boolean;
+  visible?: boolean;
 }
 
 /**
- * Semantic panel slot map for the cockpit layout.
- * Defines where each intelligence panel will be placed.
- * No final panel content — only transparent HUD slot boundaries.
+ * Debug-only panel slot overlay.
+ * Renders transparent slot boundaries for internal layout review.
+ * Not visible by default in production cockpit.
  */
-export default function DashboardPanelSlotMap({ showLabels = true }: DashboardPanelSlotMapProps) {
+export default function DashboardPanelSlotMap({
+  showLabels = false,
+  visible = false,
+}: DashboardPanelSlotMapProps) {
+  if (!visible) return null;
+
   return (
     <div className="cockpit-layer cockpit-layer--slots">
       {PANEL_SLOTS.map((slot) => (
