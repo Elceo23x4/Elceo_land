@@ -7,9 +7,10 @@ import DashboardChartFrame from "./DashboardChartFrame";
 import DashboardConnectorLayer from "./DashboardConnectorLayer";
 import DashboardShellStatusLayer from "./DashboardShellStatusLayer";
 import DashboardStageLabels from "./DashboardStageLabels";
+import { DashboardPanelContentLayer } from "../panels";
 
 /**
- * ELCEO Dashboard Cockpit Shell — Batch 3/4/5
+ * ELCEO Dashboard Cockpit Shell — Batch 3/4/5/6
  *
  * Debug/review layers are disabled by default.
  * Set constants to true only for internal review sessions.
@@ -26,6 +27,7 @@ export default function DashboardCockpit() {
         <DashboardBackgroundLayers />
         <DashboardShellLayer />
         <DashboardChartFrame />
+        <DashboardPanelContentLayer />
         {SHOW_PANEL_SLOT_DEBUG && <DashboardPanelSlotMap visible showLabels />}
         {SHOW_CONNECTOR_LAYER && <DashboardConnectorLayer />}
         {SHOW_SHELL_STATUS_LAYER && <DashboardShellStatusLayer />}
