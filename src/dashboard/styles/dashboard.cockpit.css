@@ -1,0 +1,213 @@
+/* ELCEO Dashboard Cockpit Shell — Batch 3 */
+/* Viewport, stage, layer system, slot map, background layers */
+
+@import "./dashboard.core.css";
+@import "./dashboard.states.css";
+@import "./dashboard.interactions.css";
+
+/* ─── Cockpit Root ─── */
+.elceo-cockpit {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--elceo-bg-0);
+}
+
+/* ─── Viewport (fills browser area, hosts scaled stage) ─── */
+.cockpit-viewport {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── Stage (1920×1080 logical canvas) ─── */
+.cockpit-stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ─── Layer base ─── */
+.cockpit-layer {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  pointer-events: none;
+}
+
+/* Z-index layering */
+.cockpit-layer--bg { z-index: 1; }
+.cockpit-layer--shell { z-index: 10; }
+.cockpit-layer--slots { z-index: 15; }
+.cockpit-layer--chart-frame { z-index: 25; }
+.cockpit-layer--connectors { z-index: 40; }
+.cockpit-layer--status { z-index: 50; pointer-events: auto; }
+.cockpit-layer--labels { z-index: 50; }
+
+/* ─── Background Assets ─── */
+.cockpit-bg-asset {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cockpit-bg-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cockpit-bg-asset--base-texture { opacity: 0.10; }
+.cockpit-bg-asset--night-sky { opacity: 0.24; }
+.cockpit-bg-asset--world-map { opacity: 0.22; }
+.cockpit-bg-asset--streaks { opacity: 0.12; }
+.cockpit-bg-asset--scan-arcs { opacity: 0.10; }
+.cockpit-bg-asset--particles { opacity: 0.08; }
+
+/* ─── Shell Assets ─── */
+.cockpit-shell-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cockpit-shell-asset--content-panels {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+.cockpit-shell-asset--content-panels svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cockpit-shell-asset--footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  opacity: 0.7;
+}
+.cockpit-shell-asset--footer svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── Chart Frame ─── */
+.cockpit-chart-frame-asset {
+  position: absolute;
+  inset: 0;
+}
+.cockpit-chart-frame-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cockpit-chart-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cockpit-chart-placeholder__text {
+  font-size: 11px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.06em;
+  opacity: 0.5;
+}
+
+/* ─── Connectors ─── */
+.cockpit-connector-asset {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+.cockpit-connector-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Panel Slots ─── */
+.cockpit-slot {
+  border: 1px solid rgba(255, 106, 0, 0.15);
+  border-radius: var(--elceo-radius-sm);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 6px 8px;
+}
+.cockpit-slot__label {
+  font-size: 9px;
+  color: var(--elceo-orange-soft);
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* ─── Status Bar ─── */
+.cockpit-status-bar {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cockpit-status-bar__label {
+  font-size: 9px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+/* ─── Stage Labels ─── */
+.cockpit-stage-label {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 8px;
+  color: var(--elceo-muted);
+  font-family: var(--elceo-font-ui);
+  letter-spacing: 0.04em;
+  opacity: 0.4;
+}
+.cockpit-stage-label--top-right {
+  top: 8px;
+  right: 12px;
+  text-align: right;
+}
+.cockpit-stage-label--bottom-left {
+  bottom: 8px;
+  left: 12px;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .cockpit-bg-asset--particles,
+  .cockpit-bg-asset--scan-arcs,
+  .cockpit-bg-asset--streaks {
+    opacity: 0.04;
+  }
+}
