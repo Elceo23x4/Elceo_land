@@ -1,0 +1,101 @@
+/* ELCEO Dashboard Panel Content — Batch 6 + 6A + 6B typography/alignment */
+
+.cockpit-panel-content-layer { z-index: 30; pointer-events: none; }
+.cockpit-panel-content-slot { box-sizing: border-box; pointer-events: auto; overflow: visible; background: transparent; border: none; }
+
+/* ─── Panel Frame (transparent content compositor, no visible border) ─── */
+.elceo-panel-frame { width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; padding: 0; margin: 0; background: transparent; border: none; box-shadow: none; overflow: visible; }
+.elceo-panel-frame--ultra {}
+.elceo-panel-frame__header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 6px; flex-shrink: 0; }
+.elceo-panel-frame__eyebrow { font-size: 7px; color: var(--elceo-muted); text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 2px; opacity: 0.7; }
+.elceo-panel-frame__title { font-size: 10px; color: var(--elceo-orange-soft); margin: 0; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; }
+.elceo-panel-frame__body { flex: 1; min-height: 0; overflow: visible; }
+
+/* ─── Directional Panel ─── */
+.elceo-directional-panel__headline { font-size: 13px; color: var(--elceo-silver); margin: 0 0 8px; font-weight: 600; line-height: 1.3; }
+
+/* ─── Mini Grid (metrics) ─── */
+.elceo-panel-mini-grid { display: flex; gap: 12px; margin-bottom: 8px; }
+.elceo-panel-mini-grid__item { display: flex; flex-direction: column; gap: 1px; }
+.elceo-panel-mini-grid__label { font-size: 7px; color: var(--elceo-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.elceo-panel-mini-grid__value { font-size: 9px; color: var(--elceo-silver); text-transform: capitalize; }
+.elceo-panel-mini-grid__value--positive { color: var(--elceo-green); }
+.elceo-panel-mini-grid__value--warning { color: var(--elceo-amber); }
+.elceo-panel-mini-grid__value--danger { color: var(--elceo-red); }
+
+/* ─── Driver List ─── */
+.elceo-panel-driver-list { display: flex; flex-direction: column; gap: 4px; margin-bottom: 6px; }
+.elceo-panel-driver-row { display: flex; flex-direction: column; gap: 1px; padding: 3px 6px; border-left: 2px solid var(--elceo-border-soft); }
+.elceo-panel-driver-row--positive { border-left-color: var(--elceo-green); }
+.elceo-panel-driver-row--warning { border-left-color: var(--elceo-amber); }
+.elceo-panel-driver-row--danger { border-left-color: var(--elceo-red); }
+.elceo-panel-driver-row--neutral { border-left-color: var(--elceo-muted); }
+.elceo-panel-driver-row__label { font-size: 8px; color: var(--elceo-silver); font-weight: 600; letter-spacing: 0.03em; }
+.elceo-panel-driver-row__summary { font-size: 7px; color: var(--elceo-muted); line-height: 1.4; }
+
+/* ─── Watch / Summary / Caveat ─── */
+.elceo-panel-watch { font-size: 7.5px; color: var(--elceo-amber); margin: 6px 0 4px; line-height: 1.4; font-style: italic; }
+.elceo-panel-summary { font-size: 7.5px; color: var(--elceo-muted); margin: 5px 0 0; line-height: 1.4; }
+.elceo-panel-caveat { font-size: 6px; color: var(--elceo-muted); margin: 6px 0 0; opacity: 0.6; letter-spacing: 0.02em; }
+
+/* ─── Panel Detail Button ─── */
+.elceo-panel-detail-button { display: inline-block; margin-top: 6px; padding: 3px 8px; background: transparent; border: 1px solid var(--elceo-border-soft); border-radius: 2px; color: var(--elceo-orange-soft); font-family: var(--elceo-font-ui); font-size: 6.5px; cursor: pointer; letter-spacing: 0.04em; text-transform: uppercase; }
+.elceo-panel-detail-button:hover { border-color: var(--elceo-border); color: var(--elceo-orange); }
+.elceo-panel-detail-button:focus-visible { outline: 1px solid var(--elceo-orange); outline-offset: 1px; }
+
+/* ─── Cockpit-scoped workspace overrides ─── */
+.cockpit-panel-content-slot .elceo-workspace { border: none; background: transparent; box-shadow: none; }
+.cockpit-panel-content-slot .elceo-workspace__header { display: none; }
+.cockpit-panel-content-slot .elceo-workspace__body { padding: 0; }
+.cockpit-panel-content-slot .elceo-tabs { border-bottom-color: rgba(255, 106, 0, 0.1); margin-bottom: 6px; }
+.cockpit-panel-content-slot .elceo-tabs__btn { padding: 3px 6px; font-size: 7px; }
+
+/* ─── Cockpit-scoped popover overrides (no glow, transparent bg) ─── */
+.cockpit-panel-content-slot .elceo-popover {
+  background: rgba(5, 3, 2, 0.82);
+  box-shadow: none;
+  border: 1px solid rgba(255, 106, 0, 0.22);
+  backdrop-filter: blur(6px);
+  max-width: 240px;
+  min-width: 160px;
+  padding: 8px 10px;
+}
+.cockpit-panel-content-slot .elceo-popover-trigger { font-size: 7px; }
+.cockpit-panel-content-slot .elceo-popover__title { font-size: 8px; }
+.cockpit-panel-content-slot .elceo-popover__summary { font-size: 7px; }
+
+/* ─── Cockpit-scoped status list compact ─── */
+.cockpit-panel-content-slot .elceo-status-list__item { padding: 3px 0; font-size: 8px; }
+.cockpit-panel-content-slot .elceo-notice { padding: 5px 8px; font-size: 7px; }
+.cockpit-panel-content-slot .elceo-notice__title { font-size: 7.5px; }
+.cockpit-panel-content-slot .elceo-stale { padding: 4px 6px; font-size: 6.5px; margin-bottom: 5px; }
+
+
+/* ─── Header/Body content areas (exact geometry) ─── */
+.elceo-panel-header-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.elceo-panel-body-content {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.elceo-directional-panel-body {
+  max-width: 365px;
+}
+
+.elceo-confidence-panel-body {
+  max-width: 365px;
+}
+
+.cockpit-panel-content-slot--header {
+  display: flex;
+  align-items: center;
+}

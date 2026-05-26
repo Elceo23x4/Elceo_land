@@ -1,23 +1,29 @@
 import "../styles/dashboard.cockpit.css";
+import "../styles/dashboard.geometry.css";
 import DashboardViewport from "./DashboardViewport";
 import DashboardBackgroundLayers from "./DashboardBackgroundLayers";
 import DashboardShellLayer from "./DashboardShellLayer";
+import DashboardPanelBorderLayer from "./DashboardPanelBorderLayer";
 import DashboardPanelSlotMap from "./DashboardPanelSlotMap";
 import DashboardChartFrame from "./DashboardChartFrame";
 import DashboardConnectorLayer from "./DashboardConnectorLayer";
 import DashboardShellStatusLayer from "./DashboardShellStatusLayer";
 import DashboardStageLabels from "./DashboardStageLabels";
+import { DashboardPanelContentLayer } from "../panels";
+import DashboardGeometryCalibrationOverlay from "./DashboardGeometryCalibrationOverlay";
 
 /**
- * ELCEO Dashboard Cockpit Shell — Batch 3/4/5
+ * ELCEO Dashboard Cockpit — Batch 6O
  *
- * Debug/review layers are disabled by default.
- * Set constants to true only for internal review sessions.
+ * Adjusted RevB SVG is the official visible panel shell (full-stage).
+ * DashboardCustomPanelShellLayer removed from runtime (generic redraw rejected).
+ * SVG-06 borders disabled. Connectors disabled. Calibration overlay disabled.
  */
 const SHOW_PANEL_SLOT_DEBUG = false;
-const SHOW_CONNECTOR_LAYER = false; // Connector layer quarantined until exact post-chart alignment calibration
+const SHOW_CONNECTOR_LAYER = false;
 const SHOW_SHELL_STATUS_LAYER = false;
 const SHOW_STAGE_LABELS = false;
+const SHOW_GEOMETRY_CALIBRATION = false;
 
 export default function DashboardCockpit() {
   return (
@@ -25,7 +31,10 @@ export default function DashboardCockpit() {
       <DashboardViewport>
         <DashboardBackgroundLayers />
         <DashboardShellLayer />
+        <DashboardPanelBorderLayer />
         <DashboardChartFrame />
+        <DashboardPanelContentLayer />
+        {SHOW_GEOMETRY_CALIBRATION && <DashboardGeometryCalibrationOverlay showLabels />}
         {SHOW_PANEL_SLOT_DEBUG && <DashboardPanelSlotMap visible showLabels />}
         {SHOW_CONNECTOR_LAYER && <DashboardConnectorLayer />}
         {SHOW_SHELL_STATUS_LAYER && <DashboardShellStatusLayer />}
