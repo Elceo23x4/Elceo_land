@@ -4,8 +4,10 @@
 @import "./dashboard.tokens.css";
 
 .elceo-dashboard-scope {
-  min-height: 100vh;
-  min-height: 100dvh;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  position: relative;
   background: var(--elceo-bg-0);
   color: var(--elceo-silver);
   font-family: var(--elceo-font-ui);

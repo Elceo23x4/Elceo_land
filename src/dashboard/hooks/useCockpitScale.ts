@@ -5,18 +5,17 @@ export const STAGE_H = 1080;
 
 export interface CockpitScale {
   scale: number;
-  scaledWidth: number;
-  scaledHeight: number;
   viewportWidth: number;
   viewportHeight: number;
 }
 
 /**
- * Calculates scale factor to fit 1920×1080 logical stage
- * inside the observed container while preserving 16:9 aspect ratio.
+ * Calculates scale factor to contain 1920×1080 inside the visible viewport.
  *
- * Batch 7C: Hardened with multiple resize listeners, getBoundingClientRect,
- * visualViewport fallback, and rAF debouncing.
+ * Batch 7C2: Uses window.visualViewport / window.innerWidth as primary source.
+ * Does NOT rely on container element measurement (avoids circular dependency).
+ * Listens to: window resize, orientationchange, visualViewport resize/scroll.
+ * Uses requestAnimationFrame debouncing.
  */
 export default function useCockpitScale(): {
   containerRef: React.RefObject<HTMLDivElement | null>;
@@ -24,43 +23,27 @@ export default function useCockpitScale(): {
 } {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number>(0);
-  const [cockpitScale, setCockpitScale] = useState<CockpitScale>({
-    scale: 1,
-    scaledWidth: STAGE_W,
-    scaledHeight: STAGE_H,
-    viewportWidth: STAGE_W,
-    viewportHeight: STAGE_H,
+  const [cockpitScale, setCockpitScale] = useState<CockpitScale>(() => {
+    const w = typeof window !== "undefined" ? (window.visualViewport?.width ?? window.innerWidth) : STAGE_W;
+    const h = typeof window !== "undefined" ? (window.visualViewport?.height ?? window.innerHeight) : STAGE_H;
+    const raw = Math.min(w / STAGE_W, h / STAGE_H);
+    return { scale: Math.max(0.05, Math.min(raw, 1.5)), viewportWidth: w, viewportHeight: h };
   });
 
   const recalc = useCallback(() => {
-    const el = containerRef.current;
+    const width = window.visualViewport?.width ?? window.innerWidth;
+    const height = window.visualViewport?.height ?? window.innerHeight;
 
-    let vw = 0;
-    let vh = 0;
+    if (width === 0 || height === 0) return;
 
-    if (el) {
-      const rect = el.getBoundingClientRect();
-      vw = rect.width;
-      vh = rect.height;
-    }
+    const rawScale = Math.min(width / STAGE_W, height / STAGE_H);
+    const scale = Math.max(0.05, Math.min(rawScale, 1.5));
 
-    // Fallback to visualViewport or window inner dimensions
-    if (!vw || !vh) {
-      vw = window.visualViewport?.width ?? window.innerWidth;
-      vh = window.visualViewport?.height ?? window.innerHeight;
-    }
-
-    if (vw === 0 || vh === 0) return;
-
-    const rawScale = Math.min(vw / STAGE_W, vh / STAGE_H);
-    const scale = Math.max(0.1, Math.min(rawScale, 1.5));
-
-    setCockpitScale({
-      scale,
-      scaledWidth: Math.floor(STAGE_W * scale),
-      scaledHeight: Math.floor(STAGE_H * scale),
-      viewportWidth: vw,
-      viewportHeight: vh,
+    setCockpitScale((prev) => {
+      if (prev.scale === scale && prev.viewportWidth === width && prev.viewportHeight === height) {
+        return prev;
+      }
+      return { scale, viewportWidth: width, viewportHeight: height };
     });
   }, []);
 
@@ -70,23 +53,14 @@ export default function useCockpitScale(): {
   }, [recalc]);
 
   useEffect(() => {
-    const el = containerRef.current;
-
     // Initial calculation
     recalc();
-
-    // ResizeObserver on container
-    let ro: ResizeObserver | undefined;
-    if (el && typeof ResizeObserver !== "undefined") {
-      ro = new ResizeObserver(scheduleRecalc);
-      ro.observe(el);
-    }
 
     // Window resize + orientationchange
     window.addEventListener("resize", scheduleRecalc);
     window.addEventListener("orientationchange", scheduleRecalc);
 
-    // visualViewport resize (handles mobile browser chrome changes, pinch zoom)
+    // visualViewport resize (handles mobile browser chrome, pinch zoom)
     const vv = window.visualViewport;
     if (vv) {
       vv.addEventListener("resize", scheduleRecalc);
@@ -94,7 +68,6 @@ export default function useCockpitScale(): {
     }
 
     return () => {
-      if (ro) ro.disconnect();
       window.removeEventListener("resize", scheduleRecalc);
       window.removeEventListener("orientationchange", scheduleRecalc);
       if (vv) {

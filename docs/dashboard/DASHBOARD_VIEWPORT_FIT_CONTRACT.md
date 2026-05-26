@@ -1,4 +1,4 @@
-# Dashboard Viewport Fit Contract — Batch 7C
+# Dashboard Viewport Fit Contract — Batch 7C2
 
 ## Overview
 
@@ -15,8 +15,11 @@ The ELCEO dashboard cockpit is a fixed logical **1920×1080** canvas that must s
 
 ### `useCockpitScale` Hook
 
-Listens to multiple resize sources for robust recalculation:
-- `ResizeObserver` on the container element
+Measures viewport directly (not container element) to avoid circular dependency:
+- Primary: `window.visualViewport.width/height`
+- Fallback: `window.innerWidth/innerHeight`
+
+Listens to:
 - `window.resize` event
 - `window.orientationchange` event
 - `window.visualViewport.resize` (handles mobile browser chrome, pinch zoom)
@@ -24,28 +27,25 @@ Listens to multiple resize sources for robust recalculation:
 
 Uses `requestAnimationFrame` to debounce and avoid layout thrashing.
 
-Measurement priority:
-1. Container `getBoundingClientRect()` width/height
-2. Fallback: `window.visualViewport.width/height`
-3. Fallback: `window.innerWidth/innerHeight`
-
 Scale formula:
 ```
 rawScale = Math.min(viewportWidth / 1920, viewportHeight / 1080)
-scale = clamp(rawScale, 0.1, 1.5)
+scale = clamp(rawScale, 0.05, 1.5)
 ```
 
-### `DashboardViewport` Component
+### `DashboardViewport` Component — Center-Scaled Fixed Stage
 
-- Outer `.cockpit-viewport` fills the browser area and centers content via flexbox.
-- `.cockpit-stage-wrapper` is sized to `1920 * scale` × `1080 * scale` with `overflow: visible`.
-- `.cockpit-stage` is a fixed 1920×1080 div with `transform: scale(scale)` from `top left`.
+- Outer `.cockpit-viewport` fills the browser area (`position: fixed; inset: 0`).
+- `.cockpit-stage-wrapper` is a **fixed 1920×1080** div positioned at `left: 50%; top: 50%`.
+- Transform on wrapper: `translate3d(-50%, -50%, 0) scale(scale)` with `transform-origin: center center`.
+- `.cockpit-stage` is a fixed 1920×1080 div with `overflow: hidden` to clip layers.
+- **No flex centering.** Centering is done purely via absolute positioning + translate.
 
 ### CSS
 
 - `.elceo-cockpit` uses `position: fixed; inset: 0` with `100vw`/`100dvh`.
-- `.cockpit-viewport` uses `100vw`/`100dvh` with flex centering.
-- `.cockpit-stage-wrapper` has `overflow: visible` to prevent edge clipping from rounding.
+- `.cockpit-viewport` uses `position: fixed; inset: 0` — no flex, no align-items, no justify-content.
+- `.cockpit-stage-wrapper` is `position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px`.
 - `.cockpit-stage` has `overflow: hidden` to clip internal layer content at 1920×1080.
 
 ## Expected Behavior by Viewport Size
