@@ -1,10 +1,8 @@
 import "../styles/dashboard.cockpit.css";
 import "../styles/dashboard.geometry.css";
-import "../styles/dashboard.custom-panels.css";
 import DashboardViewport from "./DashboardViewport";
 import DashboardBackgroundLayers from "./DashboardBackgroundLayers";
 import DashboardShellLayer from "./DashboardShellLayer";
-import DashboardCustomPanelShellLayer from "./DashboardCustomPanelShellLayer";
 import DashboardPanelBorderLayer from "./DashboardPanelBorderLayer";
 import DashboardPanelSlotMap from "./DashboardPanelSlotMap";
 import DashboardChartFrame from "./DashboardChartFrame";
@@ -15,7 +13,11 @@ import { DashboardPanelContentLayer } from "../panels";
 import DashboardGeometryCalibrationOverlay from "./DashboardGeometryCalibrationOverlay";
 
 /**
- * ELCEO Dashboard Cockpit — Batch 6L coordinate-driven panel shell
+ * ELCEO Dashboard Cockpit — Batch 6O
+ *
+ * Adjusted RevB SVG is the official visible panel shell (full-stage).
+ * DashboardCustomPanelShellLayer removed from runtime (generic redraw rejected).
+ * SVG-06 borders disabled. Connectors disabled. Calibration overlay disabled.
  */
 const SHOW_PANEL_SLOT_DEBUG = false;
 const SHOW_CONNECTOR_LAYER = false;
@@ -29,10 +31,9 @@ export default function DashboardCockpit() {
       <DashboardViewport>
         <DashboardBackgroundLayers />
         <DashboardShellLayer />
-        <DashboardCustomPanelShellLayer />
+        <DashboardPanelBorderLayer />
         <DashboardChartFrame />
         <DashboardPanelContentLayer />
-        <DashboardPanelBorderLayer />
         {SHOW_GEOMETRY_CALIBRATION && <DashboardGeometryCalibrationOverlay showLabels />}
         {SHOW_PANEL_SLOT_DEBUG && <DashboardPanelSlotMap visible showLabels />}
         {SHOW_CONNECTOR_LAYER && <DashboardConnectorLayer />}
