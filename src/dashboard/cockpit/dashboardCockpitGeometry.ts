@@ -56,14 +56,4 @@ export const COCKPIT_PANEL_CONTENT_RECTS = {
   },
 } as const;
 
-/** Calibration rects for first two panels (temporary) */
-export const PANEL_CONTENT_CALIBRATION_RECTS = {
-  directionalBiasSummary: {
-    header: { x: 130, y: 118, w: 330, h: 26 },
-    body: { x: 130, y: 155, w: 365, h: 118 },
-  },
-  confidenceContextMatrix: {
-    header: { x: 130, y: 382, w: 330, h: 26 },
-    body: { x: 130, y: 420, w: 365, h: 118 },
-  },
-} as const;
+
