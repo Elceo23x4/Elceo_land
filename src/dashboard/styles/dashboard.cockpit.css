@@ -107,6 +107,35 @@
 .cockpit-shell-asset--central-wheel { opacity: 0.75; }
 .cockpit-shell-asset--footer { opacity: 0.65; }
 
+/* ─── Sidebar Rail Fit — Batch 6Q ─── */
+.cockpit-shell-asset--sidebar-rail-fit {
+  position: absolute;
+  left: 2px;
+  top: 104px;
+  width: 86px;
+  height: 830px;
+  opacity: 0.88;
+}
+.cockpit-shell-asset--sidebar-rail-fit svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Content Panels — reduce internal glow/fill — Batch 6Q ─── */
+.cockpit-shell-asset--content-panels svg [id*="_fill"],
+.cockpit-shell-asset--content-panels svg [id*="_aura"],
+.cockpit-shell-asset--content-panels svg [id*="inner_glow"] {
+  opacity: 0.04 !important;
+  filter: none !important;
+}
+.cockpit-shell-asset--content-panels svg [id*="panel_fill_gradient"] {
+  stop-opacity: 0.02 !important;
+}
+.cockpit-shell-asset--content-panels svg {
+  filter: none !important;
+}
+
 /* ─── Chart Frame ─── */
 .cockpit-chart-frame-asset {
   position: absolute;
