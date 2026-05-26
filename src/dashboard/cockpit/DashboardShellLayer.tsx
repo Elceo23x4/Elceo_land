@@ -22,7 +22,7 @@ export default function DashboardShellLayer() {
         <TopSystemBarIsolated preserveAspectRatio="none" />
       </div>
 
-      {/* Sidebar rail — full stage, far-left */}
+      {/* Sidebar rail — full stage, far-left, slight scaleX via CSS */}
       <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--sidebar">
         <SidebarRail />
       </div>

@@ -1,6 +1,6 @@
 /**
  * SVG-06 Panel Border Layer — DISABLED.
- * The main panel shell is DashboardCustomPanelShellLayer (coordinate-driven).
+ * The main panel shell is the RevB SVG rendered via ContentPanels (full-stage).
  * SVG-06 borders are NOT the main dashboard shell.
  * Keep disabled unless explicitly reintroduced for popup/special effect usage.
  */

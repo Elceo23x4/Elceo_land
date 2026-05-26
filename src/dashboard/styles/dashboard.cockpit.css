@@ -102,10 +102,51 @@
 
 /* Opacity tuning for shell layers */
 .cockpit-shell-asset--topbar { opacity: 0.92; }
-.cockpit-shell-asset--sidebar { opacity: 0.88; }
 .cockpit-shell-asset--content-panels { opacity: 0.80; }
 .cockpit-shell-asset--central-wheel { opacity: 0.75; }
 .cockpit-shell-asset--footer { opacity: 0.65; }
+
+/* ─── Sidebar Rail — Batch 6R ─── */
+.cockpit-shell-asset--sidebar {
+  opacity: 0.88;
+  transform-origin: left center;
+  transform: translateX(-4px) scaleX(0.92);
+}
+
+/* ─── Content Panels — panel surface treatment — Batch 6R ─── */
+
+/* Remove aura/glow from panel internals */
+.cockpit-shell-asset--content-panels svg [id$="_soft_inner_aura"],
+.cockpit-shell-asset--content-panels svg [id$="_inner_glow"] {
+  opacity: 0 !important;
+  filter: none !important;
+}
+
+/* Remove filter glow from all filtered elements inside panels */
+.cockpit-shell-asset--content-panels svg [filter] {
+  filter: none !important;
+}
+
+/* Keep a controlled dark panel surface */
+.cockpit-shell-asset--content-panels svg [id$="_panel_fill"] {
+  fill: rgba(3, 2, 1, 0.28) !important;
+  fill-opacity: 0.28 !important;
+  filter: none !important;
+}
+
+/* Reduce gradient stops */
+.cockpit-shell-asset--content-panels svg #panel_fill_gradient stop {
+  stop-opacity: 0.08 !important;
+}
+
+.cockpit-shell-asset--content-panels svg #panel_aura stop {
+  stop-opacity: 0 !important;
+}
+
+/* No filter on parent SVG */
+.cockpit-shell-asset--content-panels svg {
+  filter: none !important;
+}
 
 /* ─── Chart Frame ─── */
 .cockpit-chart-frame-asset {
@@ -113,6 +154,16 @@
   inset: 0;
 }
 .cockpit-chart-frame-asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.cockpit-chart-frame-asset--full-console {
+  position: absolute;
+  inset: 0;
+}
+.cockpit-chart-frame-asset--full-console svg {
   width: 100%;
   height: 100%;
   display: block;
