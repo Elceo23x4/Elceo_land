@@ -44,3 +44,12 @@ Not used as main shell. ContentPanels RevB also removed from visible shell.
 ## No SVG Source Files Modified
 
 Panel frames are drawn programmatically via inline SVG paths.
+
+
+
+---
+
+## Batch 6M Update
+
+Switched runtime panel content from temporary calibration rectangles
+(PANEL_CONTENT_CALIBRATION_RECTS) to final COCKPIT_PANEL_CONTENT_RECTS.

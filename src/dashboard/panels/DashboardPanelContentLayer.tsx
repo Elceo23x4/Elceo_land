@@ -1,14 +1,14 @@
 import "./dashboard-panels-import";
-import { PANEL_CONTENT_CALIBRATION_RECTS } from "../cockpit/dashboardCockpitGeometry";
+import { COCKPIT_PANEL_CONTENT_RECTS } from "../cockpit/dashboardCockpitGeometry";
 import DirectionalBiasPanel from "./DirectionalBiasPanel";
 import ConfidenceContextPanel from "./ConfidenceContextPanel";
 
-const bias = PANEL_CONTENT_CALIBRATION_RECTS.directionalBiasSummary;
-const conf = PANEL_CONTENT_CALIBRATION_RECTS.confidenceContextMatrix;
+const bias = COCKPIT_PANEL_CONTENT_RECTS.directionalBiasSummary;
+const conf = COCKPIT_PANEL_CONTENT_RECTS.confidenceContextMatrix;
 
 /**
- * Panel content layer — Batch 6J calibration
- * Uses reduced calibration rects for visual seating verification.
+ * Panel content layer — Batch 6M
+ * Uses final COCKPIT_PANEL_CONTENT_RECTS for panel placement.
  */
 export default function DashboardPanelContentLayer() {
   return (
