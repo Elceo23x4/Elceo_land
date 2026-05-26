@@ -47,3 +47,19 @@
   filter: none;
   text-shadow: none;
 }
+
+/* ─── Geometry Calibration Overlay ─── */
+.cockpit-layer--geometry-calibration {
+  z-index: 90;
+  pointer-events: none;
+}
+.cockpit-geometry-rect {
+  pointer-events: none;
+}
+
+/* ─── Topbar isolated fit ─── */
+.cockpit-shell-asset--topbar-isolated svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}

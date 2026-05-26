@@ -15,6 +15,8 @@ import ParticleGlowField from "../../assets/source/dashboard/background/elceo-sv
 import ContentPanels from "../../assets/source/dashboard/shell/elceo-svg-01-content-panels-revb.svg?react";
 // TopBar full-stage (viewBox 0 0 1920 1080) — renders topbar via internal positioning
 import TopSystemBar from "../../assets/source/dashboard/shell/elceo-svg-05-top-system-bar-full-desktop.svg?react";
+// TopBar isolated (viewBox 0 0 1920 120) — for coordinate-faithful placement
+import TopSystemBarIsolated from "../../assets/source/dashboard/shell/elceo-svg-05-top-system-bar-isolated-empty.svg?react";
 // Sidebar: full-stage (viewBox 0 0 1920 1080), far-left by SVG design
 import SidebarRail from "../../assets/source/dashboard/shell/elceo-svg-04-sidebar-rail-complete-approved.svg?react";
 // Central wheel: isolated (viewBox 0 0 1000 720)
@@ -28,6 +30,6 @@ import FullConnectorComposite from "../../assets/source/dashboard/connectors/elc
 
 export {
   NightSky, DottedWorldMap, BackgroundBaseTexture, HorizontalLightStreaks, ScanArcs, ParticleGlowField,
-  ContentPanels, TopSystemBar, SidebarRail, CentralWheel,
+  ContentPanels, TopSystemBar, TopSystemBarIsolated, SidebarRail, CentralWheel,
   ChartConsoleFrame, FullConnectorComposite,
 };
