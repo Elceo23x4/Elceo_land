@@ -18,7 +18,7 @@ export default function DirectionalBiasPanel({ section }: DirectionalBiasPanelPr
   }
 
   return (
-    <div className="elceo-panel-body-content">
+    <div className="elceo-panel-body-content elceo-directional-panel-body">
       <p className="elceo-directional-panel__headline">{bias.headline}</p>
       <div className="elceo-panel-mini-grid">
         <div className="elceo-panel-mini-grid__item">
@@ -34,16 +34,8 @@ export default function DirectionalBiasPanel({ section }: DirectionalBiasPanelPr
           <span className="elceo-panel-mini-grid__value">Conditional</span>
         </div>
       </div>
-      <div className="elceo-panel-driver-list">
-        {bias.drivers.map((d, i) => (
-          <div key={i} className={`elceo-panel-driver-row elceo-panel-driver-row--${d.tone}`}>
-            <span className="elceo-panel-driver-row__label">{d.label}</span>
-          </div>
-        ))}
-      </div>
       <p className="elceo-panel-watch">{bias.watchCondition}</p>
       <HoverInsightPopover trigger="Why conditional?" title="Conditional Reasoning" summary="The pressure state is not enough without structure confirmation." detail={<p style={{ margin: 0, fontSize: "0.6rem", color: "#8a8178", lineHeight: 1.5 }}>{bias.invalidationNote}</p>} side="bottom" />
-      <p className="elceo-panel-caveat">Fixture-only · provider pending</p>
     </div>
   );
 }

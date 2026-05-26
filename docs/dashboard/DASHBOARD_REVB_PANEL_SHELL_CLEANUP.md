@@ -84,6 +84,15 @@ All positioning via TypeScript geometry contract and CSS only.
 
 ---
 
+## Batch 6J Update
+
+Added temporary calibration rectangles for first two panel contents.
+Reduced body content area and simplified panel body content for visual seating.
+Tabs removed from Confidence panel temporarily. Driver list removed from
+Directional Bias body. Content constrained to max-width 365px.
+
+---
+
 ## Next Batch Recommendation
 
 Batch 7: Watchlist + Evidence panel content, verify content alignment

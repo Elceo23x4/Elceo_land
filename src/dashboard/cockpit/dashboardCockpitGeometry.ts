@@ -98,3 +98,20 @@ export const COCKPIT_GEOMETRY = {
     },
   },
 } as const;
+
+
+/**
+ * Temporary calibration rectangles — Batch 6J
+ * Reduced body areas to prevent content sprawl during visual seating.
+ * May differ from the full headerBoard/bodyBoard above.
+ */
+export const PANEL_CONTENT_CALIBRATION_RECTS = {
+  directionalBiasSummary: {
+    header: { x: 130, y: 118, w: 330, h: 26 },
+    body: { x: 130, y: 155, w: 365, h: 118 },
+  },
+  confidenceContextMatrix: {
+    header: { x: 130, y: 382, w: 330, h: 26 },
+    body: { x: 130, y: 420, w: 365, h: 118 },
+  },
+} as const;

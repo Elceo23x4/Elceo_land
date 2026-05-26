@@ -84,7 +84,15 @@
 .elceo-panel-body-content {
   width: 100%;
   height: 100%;
-  overflow: visible;
+  overflow: hidden;
+}
+
+.elceo-directional-panel-body {
+  max-width: 365px;
+}
+
+.elceo-confidence-panel-body {
+  max-width: 365px;
 }
 
 .cockpit-panel-content-slot--header {
