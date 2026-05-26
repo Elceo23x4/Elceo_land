@@ -1,0 +1,380 @@
+/* ELCEO Dashboard Panel Visuals — Batch 7A */
+/* Structural layout patterns for panel content */
+
+/* ─── Panel Header (shared) ─── */
+.elceo-panel-hdr {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* ─── Panel Body (shared) ─── */
+.elceo-panel-bdy {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ─── Directional Bias Panel ─── */
+.elceo-bias-body {
+  display: flex;
+  gap: 12px;
+  height: 100%;
+}
+
+.elceo-bias-body__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.elceo-bias-body__graphic {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elceo-bias-body__graphic svg {
+  width: 72px;
+  height: 72px;
+  display: block;
+  filter: drop-shadow(0 0 8px rgba(78, 232, 123, 0.15));
+}
+
+.elceo-bias-stats {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 4px;
+}
+
+.elceo-bias-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.elceo-bias-stat__label {
+  font-family: var(--elceo-font-mono);
+  font-size: 8px;
+  color: rgba(160, 145, 130, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.elceo-bias-stat__value {
+  font-family: var(--elceo-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(220, 210, 200, 0.9);
+}
+
+.elceo-bias-drivers {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-height: 0;
+}
+
+.elceo-bias-driver {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.elceo-bias-driver__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.elceo-bias-driver__dot--positive { background: #4ee87b; }
+.elceo-bias-driver__dot--warning { background: #f0a848; }
+.elceo-bias-driver__dot--negative { background: #f25c54; }
+.elceo-bias-driver__dot--danger { background: #f25c54; }
+.elceo-bias-driver__dot--neutral { background: rgba(160, 150, 140, 0.5); }
+
+.elceo-bias-driver__text {
+  font-family: var(--elceo-font-body);
+  font-size: 10px;
+  color: rgba(200, 190, 180, 0.82);
+  line-height: 1.3;
+}
+
+.elceo-bias-caveat {
+  font-family: var(--elceo-font-body);
+  font-size: 9px;
+  color: rgba(240, 168, 72, 0.7);
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: auto;
+}
+
+/* ─── Confidence/Gauge Panel ─── */
+.elceo-gauge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.elceo-gauge-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.elceo-gauge-cell__svg {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  max-height: 68px;
+  display: block;
+}
+
+.elceo-gauge-cell__svg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.elceo-gauge-cell__label {
+  font-family: var(--elceo-font-mono);
+  font-size: 8px;
+  color: rgba(180, 165, 150, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: center;
+}
+
+.elceo-gauge-cell__value {
+  font-family: var(--elceo-font-display);
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ─── Watchlist Panel ─── */
+.elceo-watchlist {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.elceo-watchlist__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.elceo-watchlist__thead {
+  border-bottom: 1px solid rgba(255, 140, 40, 0.15);
+}
+
+.elceo-watchlist__th {
+  font-family: var(--elceo-font-mono);
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(160, 145, 130, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 4px 4px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.elceo-watchlist__th--right {
+  text-align: right;
+}
+
+.elceo-watchlist__tr {
+  border-bottom: 1px solid rgba(255, 140, 40, 0.06);
+}
+
+.elceo-watchlist__tr:last-child {
+  border-bottom: none;
+}
+
+.elceo-watchlist__td {
+  font-family: var(--elceo-font-body);
+  font-size: 10px;
+  color: rgba(210, 200, 190, 0.85);
+  padding: 4px 4px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.elceo-watchlist__td--asset {
+  font-family: var(--elceo-font-mono);
+  font-weight: 600;
+  font-size: 10px;
+  color: rgba(230, 220, 210, 0.92);
+  letter-spacing: 0.02em;
+}
+
+.elceo-watchlist__td--right {
+  text-align: right;
+}
+
+.elceo-watchlist__td--change-pos {
+  color: #4ee87b;
+  font-family: var(--elceo-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.elceo-watchlist__td--change-neg {
+  color: #f25c54;
+  font-family: var(--elceo-font-mono);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.elceo-watchlist__sparkline {
+  display: inline-block;
+  width: 48px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.elceo-watchlist__sparkline svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Evidence Stack Panel ─── */
+.elceo-evidence {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.elceo-evidence__rows {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-height: 0;
+}
+
+.elceo-evidence__row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 4px;
+  border-left: 2px solid rgba(255, 140, 40, 0.3);
+  background: rgba(255, 140, 40, 0.02);
+  border-radius: 0 2px 2px 0;
+}
+
+.elceo-evidence__icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  background: rgba(255, 140, 40, 0.06);
+  border: 1px solid rgba(255, 140, 40, 0.2);
+}
+
+.elceo-evidence__icon svg {
+  width: 12px;
+  height: 12px;
+}
+
+.elceo-evidence__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.elceo-evidence__category {
+  font-family: var(--elceo-font-body);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(220, 210, 200, 0.9);
+  line-height: 1.2;
+}
+
+.elceo-evidence__detail {
+  font-family: var(--elceo-font-body);
+  font-size: 9px;
+  color: rgba(170, 160, 150, 0.7);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.elceo-evidence__score {
+  flex-shrink: 0;
+}
+
+/* ─── Conviction Bar ─── */
+.elceo-conviction {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 140, 40, 0.12);
+}
+
+.elceo-conviction__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.elceo-conviction__bar-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 140, 40, 0.08);
+  border: 1px solid rgba(255, 140, 40, 0.15);
+  overflow: hidden;
+}
+
+.elceo-conviction__bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(255, 140, 40, 0.6) 0%, rgba(78, 232, 123, 0.7) 100%);
+  transition: width 0.3s ease;
+}
+
+/* ─── Inline Sparkline (row-level) ─── */
+.elceo-sparkline-inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.elceo-sparkline-inline svg {
+  display: block;
+}

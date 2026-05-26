@@ -1,7 +1,8 @@
-import { useState } from "react";
 import { dashboardReasoningFixture } from "../fixtures/dashboardReasoningFixture";
-import { DetailDrawer } from "../components/workspace";
-import { SafeStatusList } from "../components/system";
+import ConfidenceGauge from "../../assets/source/dashboard/gauges/elceo-svg-07-confidence-gauge-display-safe.svg?react";
+import ContradictionGauge from "../../assets/source/dashboard/gauges/elceo-svg-07-contradiction-gauge-display-safe.svg?react";
+import FreshnessGauge from "../../assets/source/dashboard/gauges/elceo-svg-07-freshness-gauge-display-safe.svg?react";
+import ZoneStrengthGauge from "../../assets/source/dashboard/gauges/elceo-svg-07-zone-strength-gauge-display-safe.svg?react";
 
 const ctx = dashboardReasoningFixture.confidenceContext;
 
@@ -9,35 +10,38 @@ interface ConfidenceContextPanelProps {
   section: "header" | "body";
 }
 
-export default function ConfidenceContextPanel({ section }: ConfidenceContextPanelProps) {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+const gauges = [
+  { Svg: ConfidenceGauge, label: "Confidence", value: ctx.confidenceLabel, color: "elceo-color-bullish" },
+  { Svg: ContradictionGauge, label: "Contradiction", value: ctx.contradiction, color: "elceo-color-bearish" },
+  { Svg: FreshnessGauge, label: "Freshness", value: ctx.freshness, color: "elceo-color-amber" },
+  { Svg: ZoneStrengthGauge, label: "Zone Strength", value: ctx.zoneStrength, color: "elceo-color-bullish" },
+];
 
+export default function ConfidenceContextPanel({ section }: ConfidenceContextPanelProps) {
   if (section === "header") {
     return (
-      <div className="elceo-panel-header-content">
-        <p className="elceo-panel-frame__eyebrow">Reasoning Matrix</p>
-        <h3 className="elceo-panel-frame__title">Confidence & Context</h3>
+      <div className="elceo-panel-hdr">
+        <p className="elceo-typo-eyebrow">Reasoning Matrix</p>
+        <h3 className="elceo-typo-title">Confidence &amp; Context</h3>
       </div>
     );
   }
 
   return (
-    <div className="elceo-panel-body-content elceo-confidence-panel-body">
-      <SafeStatusList items={ctx.contextRows} />
-      <p className="elceo-panel-summary">{ctx.summary}</p>
-      <button className="elceo-panel-detail-button" onClick={() => setDrawerOpen(true)} type="button">
-        Open context detail
-      </button>
-      <DetailDrawer open={drawerOpen} title="Context Detail" subtitle="Fixture-only reasoning preview" onClose={() => setDrawerOpen(false)}>
-        <SafeStatusList items={[
-          { label: "Source mode", value: "Fixture only", tone: "neutral" },
-          { label: "Confidence", value: ctx.confidenceLabel, tone: "neutral" },
-          { label: "Contradiction", value: ctx.contradiction, tone: "warning" },
-          { label: "Freshness", value: ctx.freshness, tone: "warning" },
-          { label: "Zone strength", value: ctx.zoneStrength, tone: "positive" },
-        ]} />
-        <p style={{ marginTop: "0.8rem", fontSize: "0.6rem", color: "#8a8178" }}>No raw provider data. Fixture reasoning only.</p>
-      </DetailDrawer>
+    <div className="elceo-panel-bdy">
+      <div className="elceo-gauge-grid">
+        {gauges.map((g, i) => (
+          <div className="elceo-gauge-cell" key={i}>
+            <div className="elceo-gauge-cell__svg">
+              <g.Svg />
+            </div>
+            <span className="elceo-gauge-cell__label">{g.label}</span>
+            <span className={`elceo-gauge-cell__value ${g.color}`}>
+              {String(g.value).charAt(0).toUpperCase() + String(g.value).slice(1)}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
