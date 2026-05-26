@@ -1,4 +1,4 @@
-/* ELCEO Dashboard Core — Batch 2 */
+/* ELCEO Dashboard Core — Batch 7D */
 /* Base scope, panel surfaces, HUD borders, text scales */
 
 @import "./dashboard.tokens.css";
@@ -14,6 +14,7 @@
   font-size: var(--elceo-text-md);
   line-height: 1.5;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .elceo-panel {

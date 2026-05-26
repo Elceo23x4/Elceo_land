@@ -6,32 +6,20 @@ interface DashboardViewportProps {
 }
 
 /**
- * Dashboard viewport — center-scaled fixed stage approach.
+ * Dashboard Viewport — Batch 7D Responsive Board Model
  *
- * Batch 7C2: The cockpit-stage-wrapper is a fixed 1920×1080 element positioned
- * at absolute 50%/50% and centered via translate3d(-50%, -50%, 0) combined with
- * the contain scale. This eliminates flex-centering rounding issues and ensures
- * the full cockpit is always visible regardless of viewport dimensions.
+ * The board uses CSS aspect-ratio: 1920/1080 to maintain proportions.
+ * It fits inside the viewport via max-width/max-height constraints.
+ * No JS-driven transform scaling. Pure CSS responsive containment.
+ * All internal layers use percentage-based positioning relative to the board.
  */
 export default function DashboardViewport({ children }: DashboardViewportProps) {
-  const { containerRef, cockpitScale } = useCockpitScale();
-  const { scale, viewportWidth, viewportHeight } = cockpitScale;
+  const { boardRef } = useCockpitScale();
 
   return (
-    <div className="cockpit-viewport" ref={containerRef}>
-      <div
-        className="cockpit-stage-wrapper"
-        data-cockpit-scale={scale.toFixed(4)}
-        data-cockpit-fit="contain-center"
-        data-viewport-width={Math.round(viewportWidth)}
-        data-viewport-height={Math.round(viewportHeight)}
-        style={{
-          transform: `translate3d(-50%, -50%, 0) scale(${scale})`,
-        }}
-      >
-        <div className="cockpit-stage">
-          {children}
-        </div>
+    <div className="cockpit-viewport">
+      <div className="cockpit-board" ref={boardRef}>
+        {children}
       </div>
     </div>
   );

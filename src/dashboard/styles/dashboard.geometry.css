@@ -1,36 +1,12 @@
-/* ELCEO Dashboard Geometry + No-Glow — Batch 6C */
+/* ELCEO Dashboard Geometry — Batch 7D */
+/* Structural overrides for shell layers and panels */
 
-/* ─── No-Glow structural override ─── */
-.elceo-cockpit-no-glow,
-.elceo-cockpit-no-glow *,
-.elceo-cockpit-no-glow svg,
-.elceo-cockpit-no-glow svg * {
-  filter: none !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-}
-
-/* ─── Panel Border Layer ─── */
-.cockpit-layer--panel-borders {
-  z-index: 12;
-  pointer-events: none;
-}
-
-.cockpit-panel-border {
-  pointer-events: none;
-}
-.cockpit-panel-border svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* ─── Cockpit structural no-glow overrides ─── */
+/* ─── Shell layer filter cleanup ─── */
 .cockpit-layer--shell {
   filter: none;
 }
-.cockpit-layer--shell .cockpit-shell-asset--full-stage,
-.cockpit-layer--shell .cockpit-shell-asset--isolated {
+.cockpit-layer--shell .cockpit-shell-asset--full,
+.cockpit-layer--shell .cockpit-shell-asset--positioned {
   filter: none;
 }
 .cockpit-layer--chart-frame {
@@ -43,23 +19,19 @@
 }
 
 /* Popover no-glow (cockpit-scoped) */
-.cockpit-panel-content-slot .elceo-popover {
+.cockpit-panel-slot .elceo-popover {
   filter: none;
   text-shadow: none;
 }
 
-/* ─── Geometry Calibration Overlay ─── */
-.cockpit-layer--geometry-calibration {
-  z-index: 90;
-  pointer-events: none;
-}
-.cockpit-geometry-rect {
+/* ─── Panel Border Layer (dormant) ─── */
+.cockpit-layer--panel-borders {
+  z-index: 12;
   pointer-events: none;
 }
 
-/* ─── Topbar isolated fit ─── */
-.cockpit-shell-asset--topbar-isolated svg {
-  width: 100%;
-  height: 100%;
-  display: block;
+/* ─── Geometry Calibration Overlay (dormant) ─── */
+.cockpit-layer--geometry-calibration {
+  z-index: 90;
+  pointer-events: none;
 }

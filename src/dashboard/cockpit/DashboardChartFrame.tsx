@@ -1,23 +1,21 @@
 import { ChartConsoleFrame } from "./dashboardCockpitAssets";
-import { COCKPIT_GEOMETRY } from "./dashboardCockpitGeometry";
+import { SHELL_GEOMETRY, boardRectStyle } from "./dashboardCockpitGeometry";
 import { ChartContainer, fixtureNormalizedOhlcData } from "../chart";
 
-const { chartFrame } = COCKPIT_GEOMETRY;
-
 /**
- * Chart console frame — Batch 6D
+ * Chart console frame — Batch 7D
  *
- * Uses chartFrame (not chartConsoleBounds) to preserve native 680:450 aspect.
- * ChartConsoleFrame SVG viewBox is 680×450 — do NOT stretch to 737×729.
+ * Uses SHELL_GEOMETRY.chartConsoleFrame for percentage-based board positioning.
+ * ChartConsoleFrame fills the zone. Chart candles sit inside with safe insets.
  */
 export default function DashboardChartFrame() {
   return (
     <div
-      className="cockpit-layer cockpit-layer--chart-frame elceo-cockpit-no-glow"
-      style={{ position: "absolute", left: chartFrame.x, top: chartFrame.y, width: chartFrame.w, height: chartFrame.h }}
+      className="cockpit-layer cockpit-layer--chart-frame"
+      style={boardRectStyle(SHELL_GEOMETRY.chartConsoleFrame)}
     >
       <div className="cockpit-chart-frame-asset">
-        <ChartConsoleFrame />
+        <ChartConsoleFrame preserveAspectRatio="none" />
       </div>
       <div className="cockpit-chart-inner">
         <ChartContainer data={fixtureNormalizedOhlcData} mode="fixture_only" />

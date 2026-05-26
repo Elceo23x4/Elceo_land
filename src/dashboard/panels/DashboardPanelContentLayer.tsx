@@ -1,5 +1,5 @@
 import "./dashboard-panels-import";
-import { COCKPIT_PANEL_CONTENT_RECTS } from "../cockpit/dashboardCockpitGeometry";
+import { PANEL_CONTENT_RECTS, boardRectStyle } from "../cockpit/dashboardCockpitGeometry";
 import DirectionalBiasPanel from "./DirectionalBiasPanel";
 import ConfidenceContextPanel from "./ConfidenceContextPanel";
 import WatchlistPanel from "./WatchlistPanel";
@@ -8,75 +8,69 @@ import NewsMacroPanel from "./NewsMacroPanel";
 import CoachingInsightsPanel from "./CoachingInsightsPanel";
 import MarketRegimePanel from "./MarketRegimePanel";
 
-const bias = COCKPIT_PANEL_CONTENT_RECTS.directionalBiasSummary;
-const conf = COCKPIT_PANEL_CONTENT_RECTS.confidenceContextMatrix;
-const watch = COCKPIT_PANEL_CONTENT_RECTS.watchlist;
-const evidence = COCKPIT_PANEL_CONTENT_RECTS.evidenceReasoningEngine;
-const news = COCKPIT_PANEL_CONTENT_RECTS.newsMacroIntelligence;
-const coaching = COCKPIT_PANEL_CONTENT_RECTS.coachingInsights;
-const regime = COCKPIT_PANEL_CONTENT_RECTS.marketRegimeCrossAssetPulse;
+const P = PANEL_CONTENT_RECTS;
 
 /**
- * Panel content layer — Batch 7B
- * Uses COCKPIT_PANEL_CONTENT_RECTS for panel placement.
+ * Panel content layer — Batch 7D
+ * Uses PANEL_CONTENT_RECTS with boardRectStyle for responsive percentage positioning.
  * Renders all 7 dashboard panels.
  */
 export default function DashboardPanelContentLayer() {
   return (
-    <div className="cockpit-layer cockpit-panel-content-layer elceo-cockpit-no-glow">
+    <div className="cockpit-layer cockpit-panel-content-layer">
       {/* Directional Bias Summary */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: bias.header.x, top: bias.header.y, width: bias.header.w, height: bias.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.directionalBiasSummary.header)}>
         <DirectionalBiasPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: bias.body.x, top: bias.body.y, width: bias.body.w, height: bias.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.directionalBiasSummary.body)}>
         <DirectionalBiasPanel section="body" />
       </div>
 
       {/* Confidence & Context Matrix */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: conf.header.x, top: conf.header.y, width: conf.header.w, height: conf.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.confidenceContextMatrix.header)}>
         <ConfidenceContextPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: conf.body.x, top: conf.body.y, width: conf.body.w, height: conf.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.confidenceContextMatrix.body)}>
         <ConfidenceContextPanel section="body" />
       </div>
 
       {/* Watchlist */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: watch.header.x, top: watch.header.y, width: watch.header.w, height: watch.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.watchlist.header)}>
         <WatchlistPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: watch.body.x, top: watch.body.y, width: watch.body.w, height: watch.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.watchlist.body)}>
         <WatchlistPanel section="body" />
       </div>
 
       {/* Evidence Stack / Reasoning Engine */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: evidence.header.x, top: evidence.header.y, width: evidence.header.w, height: evidence.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.evidenceStackReasoningEngine.header)}>
         <EvidenceStackPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: evidence.body.x, top: evidence.body.y, width: evidence.body.w, height: evidence.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.evidenceStackReasoningEngine.body)}>
         <EvidenceStackPanel section="body" />
       </div>
 
       {/* News & Macro Intelligence */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: news.header.x, top: news.header.y, width: news.header.w, height: news.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.newsMacroIntelligence.header)}>
         <NewsMacroPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: news.body.x, top: news.body.y, width: news.body.w, height: news.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.newsMacroIntelligence.body)}>
         <NewsMacroPanel section="body" />
       </div>
 
       {/* Coaching Insights */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: coaching.header.x, top: coaching.header.y, width: coaching.header.w, height: coaching.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.coachingInsights.header)}>
         <CoachingInsightsPanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: coaching.body.x, top: coaching.body.y, width: coaching.body.w, height: coaching.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.coachingInsights.body)}>
         <CoachingInsightsPanel section="body" />
       </div>
 
       {/* Market Regime / Cross-Asset Pulse */}
-      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: regime.header.x, top: regime.header.y, width: regime.header.w, height: regime.header.h }}>
+      <div className="cockpit-panel-slot cockpit-panel-slot--header" style={boardRectStyle(P.marketRegimeCrossAssetPulse.header)}>
         <MarketRegimePanel section="header" />
       </div>
-      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: regime.body.x, top: regime.body.y, width: regime.body.w, height: regime.body.h }}>
+      <div className="cockpit-panel-slot" style={boardRectStyle(P.marketRegimeCrossAssetPulse.body)}>
         <MarketRegimePanel section="body" />
       </div>
     </div>

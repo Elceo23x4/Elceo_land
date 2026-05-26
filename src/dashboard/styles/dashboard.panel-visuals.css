@@ -65,7 +65,7 @@
 
 .elceo-bias-stat__label {
   font-family: var(--elceo-font-mono);
-  font-size: 8px;
+  font-size: clamp(6px, 0.48cqi, 9px);
   color: rgba(160, 145, 130, 0.65);
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -73,7 +73,7 @@
 
 .elceo-bias-stat__value {
   font-family: var(--elceo-font-body);
-  font-size: 11px;
+  font-size: clamp(9px, 0.65cqi, 12px);
   font-weight: 600;
   color: rgba(220, 210, 200, 0.9);
 }
@@ -108,14 +108,14 @@
 
 .elceo-bias-driver__text {
   font-family: var(--elceo-font-body);
-  font-size: 10px;
+  font-size: clamp(8px, 0.58cqi, 11px);
   color: rgba(200, 190, 180, 0.82);
   line-height: 1.3;
 }
 
 .elceo-bias-caveat {
   font-family: var(--elceo-font-body);
-  font-size: 9px;
+  font-size: clamp(7px, 0.52cqi, 10px);
   color: rgba(240, 168, 72, 0.7);
   font-style: italic;
   line-height: 1.4;
@@ -158,7 +158,7 @@
 
 .elceo-gauge-cell__label {
   font-family: var(--elceo-font-mono);
-  font-size: 8px;
+  font-size: clamp(6px, 0.48cqi, 9px);
   color: rgba(180, 165, 150, 0.7);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -167,7 +167,7 @@
 
 .elceo-gauge-cell__value {
   font-family: var(--elceo-font-display);
-  font-size: 12px;
+  font-size: clamp(9px, 0.7cqi, 13px);
   font-weight: 600;
   text-align: center;
 }
@@ -193,7 +193,7 @@
 
 .elceo-watchlist__th {
   font-family: var(--elceo-font-mono);
-  font-size: 8px;
+  font-size: clamp(6px, 0.48cqi, 9px);
   font-weight: 500;
   color: rgba(160, 145, 130, 0.6);
   text-transform: uppercase;
@@ -217,7 +217,7 @@
 
 .elceo-watchlist__td {
   font-family: var(--elceo-font-body);
-  font-size: 10px;
+  font-size: clamp(8px, 0.58cqi, 11px);
   color: rgba(210, 200, 190, 0.85);
   padding: 4px 4px;
   vertical-align: middle;
@@ -227,7 +227,7 @@
 .elceo-watchlist__td--asset {
   font-family: var(--elceo-font-mono);
   font-weight: 600;
-  font-size: 10px;
+  font-size: clamp(8px, 0.58cqi, 11px);
   color: rgba(230, 220, 210, 0.92);
   letter-spacing: 0.02em;
 }
@@ -318,7 +318,7 @@
 
 .elceo-evidence__category {
   font-family: var(--elceo-font-body);
-  font-size: 10px;
+  font-size: clamp(8px, 0.58cqi, 11px);
   font-weight: 600;
   color: rgba(220, 210, 200, 0.9);
   line-height: 1.2;
@@ -326,7 +326,7 @@
 
 .elceo-evidence__detail {
   font-family: var(--elceo-font-body);
-  font-size: 9px;
+  font-size: clamp(7px, 0.52cqi, 10px);
   color: rgba(170, 160, 150, 0.7);
   line-height: 1.3;
   white-space: nowrap;
@@ -428,7 +428,7 @@
 
 .elceo-news-row__headline {
   font-family: var(--elceo-font-body);
-  font-size: 10px;
+  font-size: clamp(8px, 0.58cqi, 11px);
   font-weight: 600;
   color: rgba(220, 210, 200, 0.9);
   line-height: 1.25;
@@ -553,7 +553,7 @@
 
 .elceo-coach-focus__statement {
   font-family: var(--elceo-font-display);
-  font-size: 14px;
+  font-size: clamp(11px, 0.82cqi, 15px);
   font-weight: 700;
   color: rgba(240, 168, 72, 0.92);
   line-height: 1.2;
@@ -562,7 +562,7 @@
 
 .elceo-coach-focus__note {
   font-family: var(--elceo-font-body);
-  font-size: 9px;
+  font-size: clamp(7px, 0.52cqi, 10px);
   color: rgba(180, 170, 160, 0.7);
   line-height: 1.4;
   margin: 0;
@@ -652,7 +652,7 @@
 
 .elceo-regime-card__asset {
   font-family: var(--elceo-font-mono);
-  font-size: 9px;
+  font-size: clamp(7px, 0.52cqi, 10px);
   font-weight: 600;
   color: rgba(220, 210, 200, 0.9);
   letter-spacing: 0.02em;

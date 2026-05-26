@@ -1,68 +1,51 @@
-# Dashboard Viewport Fit Contract — Batch 7C2
+# Dashboard Viewport Fit Contract — Batch 7D
 
-## Overview
+## Architecture: Responsive Board Model
 
-The ELCEO dashboard cockpit is a fixed logical **1920×1080** canvas that must scale to fit any browser viewport while preserving the 16:9 aspect ratio.
+The ELCEO dashboard uses a **responsive board model** instead of JS-driven transform scaling.
 
-## Scaling Mode: Contain (not Cover)
+### Core Concept
 
-- The full cockpit must **always remain visible** — no cropping.
-- Letterboxing (horizontal black bars) is acceptable at tall viewports.
-- Pillarboxing (vertical black bars) is acceptable at narrow viewports.
-- Cropping is **never acceptable**.
+- The board uses `aspect-ratio: 1920/1080` and CSS containment to fit any viewport.
+- Width: `min(100vw, calc(100dvh * 1920 / 1080))`
+- The board never crops — it letterboxes/pillarboxes with the dark background.
+- All internal positioning uses **percentage coordinates** derived from the 1920×1080 reference.
+- Typography scales via `clamp()` using container query inline-size (`cqi`).
 
-## Implementation
+### No Transform Scaling
 
-### `useCockpitScale` Hook
+The old `transform: scale()` + fixed 1920×1080px stage wrapper is removed.
+The new model uses pure CSS responsive sizing.
 
-Measures viewport directly (not container element) to avoid circular dependency:
-- Primary: `window.visualViewport.width/height`
-- Fallback: `window.innerWidth/innerHeight`
+## Geometry Source of Truth
 
-Listens to:
-- `window.resize` event
-- `window.orientationchange` event
-- `window.visualViewport.resize` (handles mobile browser chrome, pinch zoom)
-- `window.visualViewport.scroll` (handles mobile address bar collapse)
+`src/dashboard/cockpit/dashboardCockpitGeometry.ts`
 
-Uses `requestAnimationFrame` to debounce and avoid layout thrashing.
+- `SHELL_GEOMETRY`: topSystemBar, centralWheel, chartConsoleFrame, sidebarRail
+- `PANEL_CONTENT_RECTS`: all 7 panel header/body coordinates (board-space px)
+- `boardRectStyle()`: converts board-px rect to percentage inline styles
 
-Scale formula:
-```
-rawScale = Math.min(viewportWidth / 1920, viewportHeight / 1080)
-scale = clamp(rawScale, 0.05, 1.5)
-```
-
-### `DashboardViewport` Component — Center-Scaled Fixed Stage
-
-- Outer `.cockpit-viewport` fills the browser area (`position: fixed; inset: 0`).
-- `.cockpit-stage-wrapper` is a **fixed 1920×1080** div positioned at `left: 50%; top: 50%`.
-- Transform on wrapper: `translate3d(-50%, -50%, 0) scale(scale)` with `transform-origin: center center`.
-- `.cockpit-stage` is a fixed 1920×1080 div with `overflow: hidden` to clip layers.
-- **No flex centering.** Centering is done purely via absolute positioning + translate.
-
-### CSS
-
-- `.elceo-cockpit` uses `position: fixed; inset: 0` with `100vw`/`100dvh`.
-- `.cockpit-viewport` uses `position: fixed; inset: 0` — no flex, no align-items, no justify-content.
-- `.cockpit-stage-wrapper` is `position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px`.
-- `.cockpit-stage` has `overflow: hidden` to clip internal layer content at 1920×1080.
-
-## Expected Behavior by Viewport Size
+## Expected Behavior
 
 | Viewport | Behavior |
 |----------|----------|
-| 1920×1080 | Scale ~1.0, full fit |
-| 1600×900 | Scale ~0.833, full fit |
-| 1366×768 | Scale ~0.711, full fit |
-| 1280×720 | Scale ~0.667, full fit |
-| 1024×768 | Scale ~0.533, letterboxed |
-| 900×600 | Scale ~0.469, full fit |
+| 1920×1080 | Full fit, no bars |
+| 1600×900 | Scaled down, centered |
+| 1366×768 | Scaled down, centered |
+| 1280×720 | Scaled down, centered |
+| 1024×768 | Letterboxed (wider aspect than 16:9) |
+| Tablet landscape | Full fit, text remains readable |
+
+## Visual Sanitization
+
+- Panel aura/glow/shadow disabled via CSS (`display: none` + `opacity: 0`)
+- `svg02a_corner_thickness_system` under chart disabled
+- No SVG source files modified — CSS-only overrides
 
 ## Invariants
 
-- No panel content was changed
-- No shell/SVG source files were modified
-- No landing page files were modified
-- Scaling is pure CSS transform + JS measurement
-- The 1920×1080 coordinate system inside `.cockpit-stage` is unchanged
+- ContentPanels RevB remains the only visible panel shell
+- No React-drawn panel rectangles
+- All coordinates from `PANEL_CONTENT_RECTS` (Batch 7D updated values)
+- Fixture-only data
+- No landing page changes

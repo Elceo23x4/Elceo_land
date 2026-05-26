@@ -1,34 +1,31 @@
 import { ContentPanels, TopSystemBarIsolated, SidebarRail, CentralWheel } from "./dashboardCockpitAssets";
-import { COCKPIT_GEOMETRY } from "./dashboardCockpitGeometry";
-
-const { topSystemBar, centralWheel } = COCKPIT_GEOMETRY;
+import { SHELL_GEOMETRY, boardRectStyle } from "./dashboardCockpitGeometry";
 
 /**
- * Shell layer — Batch 6O
- * ContentPanels RevB restored as the visible panel shell (full-stage).
- * The adjusted RevB SVG contains all panel frames at correct sizes.
- * React does not redraw panel borders.
+ * Shell layer — Batch 7D
+ * ContentPanels RevB is the visible panel shell (full-board).
+ * Shell assets use percentage-based positioning derived from board geometry.
  */
 export default function DashboardShellLayer() {
   return (
-    <div className="cockpit-layer cockpit-layer--shell elceo-cockpit-no-glow" aria-hidden="true">
-      {/* Adjusted RevB content panels — full stage, the official visible panel shell */}
-      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--content-panels">
+    <div className="cockpit-layer cockpit-layer--shell" aria-hidden="true">
+      {/* RevB content panels — full board */}
+      <div className="cockpit-shell-asset--full cockpit-shell-asset--content-panels">
         <ContentPanels />
       </div>
 
-      {/* Top system bar — isolated, fills user rect */}
-      <div className="cockpit-shell-asset--isolated cockpit-shell-asset--topbar-isolated" style={{ left: topSystemBar.x, top: topSystemBar.y, width: topSystemBar.w, height: topSystemBar.h }}>
+      {/* Top system bar */}
+      <div className="cockpit-shell-asset--positioned cockpit-shell-asset--topbar" style={boardRectStyle(SHELL_GEOMETRY.topSystemBar)}>
         <TopSystemBarIsolated preserveAspectRatio="none" />
       </div>
 
-      {/* Sidebar rail — full stage, far-left */}
-      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--sidebar">
-        <SidebarRail />
+      {/* Sidebar rail */}
+      <div className="cockpit-shell-asset--positioned cockpit-shell-asset--sidebar" style={boardRectStyle(SHELL_GEOMETRY.sidebarRail)}>
+        <SidebarRail preserveAspectRatio="xMinYMid meet" />
       </div>
 
-      {/* Central wheel — isolated at board coordinates */}
-      <div className="cockpit-shell-asset--isolated cockpit-shell-asset--central-wheel" style={{ left: centralWheel.x, top: centralWheel.y, width: centralWheel.w, height: centralWheel.h }}>
+      {/* Central wheel */}
+      <div className="cockpit-shell-asset--positioned cockpit-shell-asset--central-wheel" style={boardRectStyle(SHELL_GEOMETRY.centralWheel)}>
         <CentralWheel />
       </div>
     </div>
