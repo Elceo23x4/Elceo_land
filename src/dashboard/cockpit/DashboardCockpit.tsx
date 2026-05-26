@@ -1,8 +1,10 @@
 import "../styles/dashboard.cockpit.css";
 import "../styles/dashboard.geometry.css";
+import "../styles/dashboard.custom-panels.css";
 import DashboardViewport from "./DashboardViewport";
 import DashboardBackgroundLayers from "./DashboardBackgroundLayers";
 import DashboardShellLayer from "./DashboardShellLayer";
+import DashboardCustomPanelShellLayer from "./DashboardCustomPanelShellLayer";
 import DashboardPanelBorderLayer from "./DashboardPanelBorderLayer";
 import DashboardPanelSlotMap from "./DashboardPanelSlotMap";
 import DashboardChartFrame from "./DashboardChartFrame";
@@ -13,19 +15,12 @@ import { DashboardPanelContentLayer } from "../panels";
 import DashboardGeometryCalibrationOverlay from "./DashboardGeometryCalibrationOverlay";
 
 /**
- * ELCEO Dashboard Cockpit — Batch 6G geometry calibration
- *
- * ContentPanels RevB is the primary visible panel housing (full-stage).
- * SVG-06 borders disabled (would double-border with RevB).
- * Panel content uses board-space header/body rects.
- * Geometry calibration overlay ON temporarily for visual verification.
+ * ELCEO Dashboard Cockpit — Batch 6L coordinate-driven panel shell
  */
 const SHOW_PANEL_SLOT_DEBUG = false;
 const SHOW_CONNECTOR_LAYER = false;
 const SHOW_SHELL_STATUS_LAYER = false;
 const SHOW_STAGE_LABELS = false;
-// Temporary geometry calibration overlay. Keep false by default.
-// Enable only during internal coordinate review.
 const SHOW_GEOMETRY_CALIBRATION = false;
 
 export default function DashboardCockpit() {
@@ -34,9 +29,10 @@ export default function DashboardCockpit() {
       <DashboardViewport>
         <DashboardBackgroundLayers />
         <DashboardShellLayer />
-        <DashboardPanelBorderLayer />
+        <DashboardCustomPanelShellLayer />
         <DashboardChartFrame />
         <DashboardPanelContentLayer />
+        <DashboardPanelBorderLayer />
         {SHOW_GEOMETRY_CALIBRATION && <DashboardGeometryCalibrationOverlay showLabels />}
         {SHOW_PANEL_SLOT_DEBUG && <DashboardPanelSlotMap visible showLabels />}
         {SHOW_CONNECTOR_LAYER && <DashboardConnectorLayer />}

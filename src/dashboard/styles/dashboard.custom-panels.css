@@ -1,0 +1,12 @@
+/* Custom Panel Shell — Batch 6L */
+.cockpit-layer--custom-panel-shell {
+  z-index: 11;
+  pointer-events: none;
+}
+.cockpit-custom-panel-svg {
+  width: 1920px;
+  height: 1080px;
+  display: block;
+  filter: none;
+  box-shadow: none;
+}
