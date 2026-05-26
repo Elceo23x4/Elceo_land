@@ -49,3 +49,9 @@ The new model uses pure CSS responsive sizing.
 - All coordinates from `PANEL_CONTENT_RECTS` (Batch 7D updated values)
 - Fixture-only data
 - No landing page changes
+
+
+
+## Batch 7D-BuildFix
+
+Removed stale `COCKPIT_PANEL_RECTS` references from obsolete calibration/custom shell files after the responsive board geometry rewrite. Deleted `DashboardCustomPanelShellLayer.tsx` and `dashboard.custom-panels.css`. Replaced `DashboardGeometryCalibrationOverlay.tsx` with a null stub.
