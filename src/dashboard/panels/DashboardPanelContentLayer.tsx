@@ -4,16 +4,22 @@ import DirectionalBiasPanel from "./DirectionalBiasPanel";
 import ConfidenceContextPanel from "./ConfidenceContextPanel";
 import WatchlistPanel from "./WatchlistPanel";
 import EvidenceStackPanel from "./EvidenceStackPanel";
+import NewsMacroPanel from "./NewsMacroPanel";
+import CoachingInsightsPanel from "./CoachingInsightsPanel";
+import MarketRegimePanel from "./MarketRegimePanel";
 
 const bias = COCKPIT_PANEL_CONTENT_RECTS.directionalBiasSummary;
 const conf = COCKPIT_PANEL_CONTENT_RECTS.confidenceContextMatrix;
 const watch = COCKPIT_PANEL_CONTENT_RECTS.watchlist;
 const evidence = COCKPIT_PANEL_CONTENT_RECTS.evidenceReasoningEngine;
+const news = COCKPIT_PANEL_CONTENT_RECTS.newsMacroIntelligence;
+const coaching = COCKPIT_PANEL_CONTENT_RECTS.coachingInsights;
+const regime = COCKPIT_PANEL_CONTENT_RECTS.marketRegimeCrossAssetPulse;
 
 /**
- * Panel content layer — Batch 7A
+ * Panel content layer — Batch 7B
  * Uses COCKPIT_PANEL_CONTENT_RECTS for panel placement.
- * Renders: Directional Bias, Confidence & Context, Watchlist, Evidence Stack.
+ * Renders all 7 dashboard panels.
  */
 export default function DashboardPanelContentLayer() {
   return (
@@ -48,6 +54,30 @@ export default function DashboardPanelContentLayer() {
       </div>
       <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: evidence.body.x, top: evidence.body.y, width: evidence.body.w, height: evidence.body.h }}>
         <EvidenceStackPanel section="body" />
+      </div>
+
+      {/* News & Macro Intelligence */}
+      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: news.header.x, top: news.header.y, width: news.header.w, height: news.header.h }}>
+        <NewsMacroPanel section="header" />
+      </div>
+      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: news.body.x, top: news.body.y, width: news.body.w, height: news.body.h }}>
+        <NewsMacroPanel section="body" />
+      </div>
+
+      {/* Coaching Insights */}
+      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: coaching.header.x, top: coaching.header.y, width: coaching.header.w, height: coaching.header.h }}>
+        <CoachingInsightsPanel section="header" />
+      </div>
+      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: coaching.body.x, top: coaching.body.y, width: coaching.body.w, height: coaching.body.h }}>
+        <CoachingInsightsPanel section="body" />
+      </div>
+
+      {/* Market Regime / Cross-Asset Pulse */}
+      <div className="cockpit-panel-content-slot cockpit-panel-content-slot--header" style={{ position: "absolute", left: regime.header.x, top: regime.header.y, width: regime.header.w, height: regime.header.h }}>
+        <MarketRegimePanel section="header" />
+      </div>
+      <div className="cockpit-panel-content-slot" style={{ position: "absolute", left: regime.body.x, top: regime.body.y, width: regime.body.w, height: regime.body.h }}>
+        <MarketRegimePanel section="body" />
       </div>
     </div>
   );

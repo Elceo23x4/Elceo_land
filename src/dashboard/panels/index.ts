@@ -3,4 +3,7 @@ export { default as DirectionalBiasPanel } from "./DirectionalBiasPanel";
 export { default as ConfidenceContextPanel } from "./ConfidenceContextPanel";
 export { default as WatchlistPanel } from "./WatchlistPanel";
 export { default as EvidenceStackPanel } from "./EvidenceStackPanel";
+export { default as NewsMacroPanel } from "./NewsMacroPanel";
+export { default as CoachingInsightsPanel } from "./CoachingInsightsPanel";
+export { default as MarketRegimePanel } from "./MarketRegimePanel";
 export { default as PanelFrame } from "./PanelFrame";
