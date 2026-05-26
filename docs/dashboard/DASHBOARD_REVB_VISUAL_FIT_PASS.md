@@ -1,49 +1,55 @@
-# Dashboard RevB Visual Fit Pass — Batch 6Q
+# Dashboard RevB Visual Fit Pass — Batch 6R
 
 ## Summary
 
-Four surgical visual fixes applied to the dashboard cockpit without modifying SVG source files, landing pages, or panel content.
+Corrective fixes for sidebar visibility, chart console placement, and panel surface treatment.
 
 ## Changes
 
-### 1. Sidebar Rail — Width Reduced, Left Spacing < 5px
+### 1. Sidebar Rail — Restored Full-Stage Visibility
 
-- Sidebar changed from full-stage rendering to isolated fit wrapper.
-- New wrapper class: `.cockpit-shell-asset--sidebar-rail-fit`
-- Position: `left: 2px`, `top: 104px`, `width: 86px`, `height: 830px`
-- `preserveAspectRatio="xMinYMid meet"` preserves icon/rail fidelity.
-- Left edge spacing is 2px (< 5px requirement met).
+- **Problem (6Q):** SidebarRail was squeezed into an 86px wrapper, making the 1920×1080 SVG invisible.
+- **Fix:** Restored full-stage rendering with CSS transform for slight narrowing.
+- Wrapper: `.cockpit-shell-asset--full-stage.cockpit-shell-asset--sidebar`
+- CSS:
+  ```css
+  .cockpit-shell-asset--sidebar {
+    opacity: 0.88;
+    transform-origin: left center;
+    transform: translateX(-4px) scaleX(0.92);
+  }
+  ```
+- Sidebar is visible, slightly narrower, and sits < 5px from left edge.
+- No `preserveAspectRatio` override on SidebarRail.
 
-### 2. Panel Internal Glow/Fill Reduced (CSS Only)
+### 2. Panel Surface — Correct Glow/Fill Treatment
 
-- CSS overrides target SVG elements inside `.cockpit-shell-asset--content-panels`:
-  - `[id*="_fill"]` → opacity 0.04
-  - `[id*="_aura"]` → opacity 0.04
-  - `[id*="inner_glow"]` → opacity 0.04
-  - `[id*="panel_fill_gradient"]` stop-opacity → 0.02
+- **Removed:** Aura (`_soft_inner_aura`), inner glow (`_inner_glow`), all `filter` effects.
+- **Kept:** Controlled dark panel fill at `rgba(3,2,1,0.28)` on `_panel_fill` paths.
+- **Reduced:** `#panel_fill_gradient` stops to 0.08 opacity, `#panel_aura` stops to 0.
 - Panel border strokes remain fully visible.
-- No SVG source file modified.
+- No SVG source file modified — CSS-only overrides.
 
-### 3. ChartConsoleFrame Uses chartConsoleBounds
+### 3. ChartConsoleFrame Uses Full chartConsoleBounds
 
-- Outer `DashboardChartFrame` wrapper now uses `chartConsoleBounds`:
-  - `x: 622, y: 94, w: 737, h: 729`
-- Inner `chartFrameVisual` positions the ChartConsoleFrame SVG (680×450 viewBox) at:
-  - `x: 0, y: 106, w: 737, h: 488` (relative inside chartConsoleBounds)
-- Chart candles remain fitted inside ChartConsoleFrame via computed insets.
-- No distortion of the 680×450 SVG.
+- **Problem (6Q):** `chartFrameVisual.y = 106` offset cancelled the coordinate change.
+- **Fix:** Removed `chartFrameVisual`. ChartConsoleFrame fills entire console zone.
+- Outer wrapper: `left: 622, top: 94, width: 737, height: 729`
+- `ChartConsoleFrame preserveAspectRatio="none"` fills the 737×729 area.
+- Chart candles inside with insets: `left: 46, top: 92, right: 52, bottom: 96`
+- Resulting chart area: `639×541` pixels within the console zone.
 
-### 4. TopSystemBarIsolated Confirmed
+### 4. TopSystemBarIsolated — Confirmed
 
-- Already using `COCKPIT_GEOMETRY.topSystemBar`: `x: 18, y: 18, w: 1884, h: 52`
-- `preserveAspectRatio="none"` fills the full bar width.
-- No change was needed.
+- Position: `x: 18, y: 18, w: 1884, h: 52`
+- `preserveAspectRatio="none"` — fills the bar width.
+- No changes needed.
 
 ## Invariants Preserved
 
 - No SVG source files modified
 - No landing page files modified
-- Connectors remain disabled (`SHOW_CONNECTOR_LAYER = false`)
+- Connectors disabled (`SHOW_CONNECTOR_LAYER = false`)
 - Calibration overlay disabled (`SHOW_GEOMETRY_CALIBRATION = false`)
 - SVG-06 panel borders disabled (`SHOW_SVG06_PANEL_BORDERS = false`)
 - DashboardCustomPanelShellLayer deleted (not in runtime)
@@ -53,6 +59,6 @@ Four surgical visual fixes applied to the dashboard cockpit without modifying SV
 
 | File | Change |
 |------|--------|
-| `src/dashboard/cockpit/DashboardShellLayer.tsx` | Sidebar wrapper changed to fit class |
-| `src/dashboard/cockpit/DashboardChartFrame.tsx` | Outer uses chartConsoleBounds, inner uses chartFrameVisual |
-| `src/dashboard/styles/dashboard.cockpit.css` | Sidebar fit CSS + panel glow/fill reduction CSS |
+| `src/dashboard/cockpit/DashboardShellLayer.tsx` | Sidebar restored to full-stage |
+| `src/dashboard/cockpit/DashboardChartFrame.tsx` | Uses chartConsoleBounds directly, removed chartFrameVisual |
+| `src/dashboard/styles/dashboard.cockpit.css` | Sidebar CSS, panel surface CSS, chart full-console CSS |

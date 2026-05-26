@@ -5,13 +5,13 @@ import { ChartContainer, fixtureNormalizedOhlcData } from "../chart";
 const { chartConsoleBounds } = COCKPIT_GEOMETRY;
 
 /**
- * Chart console frame — Batch 6Q
+ * Chart console frame — Batch 6R
  *
  * Outer wrapper uses chartConsoleBounds (622,94,737,729) — the full user chart zone.
- * Inner chartFrameVisual positions the ChartConsoleFrame SVG (680×450 viewBox)
- * within the console bounds so candles remain fitted inside.
+ * ChartConsoleFrame fills the entire console area with preserveAspectRatio="none".
+ * Chart candles sit inside with safe insets relative to the 737×729 console.
  */
-const chartFrameVisual = { x: 0, y: 106, w: 737, h: 488 };
+const chartInnerInset = { left: 46, top: 92, right: 52, bottom: 96 };
 
 export default function DashboardChartFrame() {
   return (
@@ -19,10 +19,19 @@ export default function DashboardChartFrame() {
       className="cockpit-layer cockpit-layer--chart-frame elceo-cockpit-no-glow"
       style={{ position: "absolute", left: chartConsoleBounds.x, top: chartConsoleBounds.y, width: chartConsoleBounds.w, height: chartConsoleBounds.h }}
     >
-      <div className="cockpit-chart-frame-asset" style={{ position: "absolute", left: chartFrameVisual.x, top: chartFrameVisual.y, width: chartFrameVisual.w, height: chartFrameVisual.h }}>
-        <ChartConsoleFrame />
+      <div className="cockpit-chart-frame-asset cockpit-chart-frame-asset--full-console">
+        <ChartConsoleFrame preserveAspectRatio="none" />
       </div>
-      <div className="cockpit-chart-inner" style={{ position: "absolute", left: chartFrameVisual.x + 38, top: chartFrameVisual.y + 42, width: chartFrameVisual.w - 80, height: chartFrameVisual.h - 88 }}>
+      <div
+        className="cockpit-chart-inner"
+        style={{
+          position: "absolute",
+          left: chartInnerInset.left,
+          top: chartInnerInset.top,
+          width: chartConsoleBounds.w - chartInnerInset.left - chartInnerInset.right,
+          height: chartConsoleBounds.h - chartInnerInset.top - chartInnerInset.bottom,
+        }}
+      >
         <ChartContainer data={fixtureNormalizedOhlcData} mode="fixture_only" />
       </div>
     </div>
