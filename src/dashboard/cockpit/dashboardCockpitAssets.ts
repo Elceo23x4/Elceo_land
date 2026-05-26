@@ -1,6 +1,5 @@
 /**
- * Dashboard Cockpit Shell Assets — Batch 6E coordinate-faithful rebuild
- * Only imports SVGs required for the structural shell composition.
+ * Dashboard Cockpit Shell Assets — Batch 6F
  */
 
 // ─── Background ───
@@ -12,9 +11,11 @@ import ScanArcs from "../../assets/source/dashboard/background/elceo-svg-10-scan
 import ParticleGlowField from "../../assets/source/dashboard/background/elceo-svg-10-particle-glow-field.svg?react";
 
 // ─── Shell ───
-// TopBar: isolated asset (viewBox 0 0 1920 120) — coordinate-faithful
-import TopSystemBarIsolated from "../../assets/source/dashboard/shell/elceo-svg-05-top-system-bar-isolated-empty.svg?react";
-// Sidebar: full-stage only (viewBox 0 0 1920 1080) — no isolated variant exists
+// ContentPanels RevB: full-stage (viewBox 0 0 1920 1080), primary panel housing
+import ContentPanels from "../../assets/source/dashboard/shell/elceo-svg-01-content-panels-revb.svg?react";
+// TopBar full-stage (viewBox 0 0 1920 1080) — renders topbar via internal positioning
+import TopSystemBar from "../../assets/source/dashboard/shell/elceo-svg-05-top-system-bar-full-desktop.svg?react";
+// Sidebar: full-stage (viewBox 0 0 1920 1080), far-left by SVG design
 import SidebarRail from "../../assets/source/dashboard/shell/elceo-svg-04-sidebar-rail-complete-approved.svg?react";
 // Central wheel: isolated (viewBox 0 0 1000 720)
 import CentralWheel from "../../assets/source/dashboard/shell/elceo-svg-01-central-wheel-v1-isolated.svg?react";
@@ -27,6 +28,6 @@ import FullConnectorComposite from "../../assets/source/dashboard/connectors/elc
 
 export {
   NightSky, DottedWorldMap, BackgroundBaseTexture, HorizontalLightStreaks, ScanArcs, ParticleGlowField,
-  TopSystemBarIsolated, SidebarRail, CentralWheel,
+  ContentPanels, TopSystemBar, SidebarRail, CentralWheel,
   ChartConsoleFrame, FullConnectorComposite,
 };

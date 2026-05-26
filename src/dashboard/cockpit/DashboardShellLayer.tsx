@@ -1,33 +1,38 @@
-import { TopSystemBarIsolated, SidebarRail, CentralWheel } from "./dashboardCockpitAssets";
+import { ContentPanels, TopSystemBar, SidebarRail, CentralWheel } from "./dashboardCockpitAssets";
 import { COCKPIT_GEOMETRY } from "./dashboardCockpitGeometry";
 
-const { topSystemBar, centralWheel } = COCKPIT_GEOMETRY;
+const { centralWheel } = COCKPIT_GEOMETRY;
 
 /**
- * Coordinate-faithful shell layer — Batch 6E
+ * Shell layer — Batch 6F (coordinate-space corrected)
  *
- * - ContentPanels Rev-B REMOVED from visible shell (replaced by SVG-06 panel borders)
- * - TopBar: isolated asset (viewBox 0 0 1920 120) placed at exact user rect
- * - Sidebar: full-stage (no isolated variant exists) — stays far-left by SVG design
- * - CentralWheel: isolated (viewBox 0 0 1000 720) at exact user coordinates
+ * - ContentPanels RevB: full-stage (viewBox 0 0 1920 1080) — primary panel housing.
+ *   Contains the RevB panel-border-system internally at board position 81,83.
+ * - TopSystemBar: full-stage (viewBox 0 0 1920 1080) — draws topbar at top internally.
+ * - SidebarRail: full-stage (viewBox 0 0 1920 1080) — draws sidebar at far-left.
+ * - CentralWheel: isolated (viewBox 0 0 1000 720) — placed at board coordinates.
+ *
+ * Full-stage SVGs must NOT be squeezed into small rectangles.
  */
 export default function DashboardShellLayer() {
   return (
     <div className="cockpit-layer cockpit-layer--shell elceo-cockpit-no-glow" aria-hidden="true">
-      {/* Top system bar — isolated (viewBox 0 0 1920 120) at user coordinates */}
-      <div
-        className="cockpit-shell-asset--isolated cockpit-shell-asset--topbar"
-        style={{ left: topSystemBar.x, top: topSystemBar.y, width: topSystemBar.w, height: topSystemBar.h }}
-      >
-        <TopSystemBarIsolated />
+      {/* ContentPanels RevB — full stage, primary panel housing */}
+      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--content-panels">
+        <ContentPanels />
       </div>
 
-      {/* Sidebar rail — full stage (no isolated variant). Far-left by SVG internal design. */}
+      {/* Top system bar — full stage */}
+      <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--topbar">
+        <TopSystemBar />
+      </div>
+
+      {/* Sidebar rail — full stage, far-left */}
       <div className="cockpit-shell-asset--full-stage cockpit-shell-asset--sidebar">
         <SidebarRail />
       </div>
 
-      {/* Central wheel — isolated (viewBox 0 0 1000 720) at user coordinates */}
+      {/* Central wheel — isolated at board coordinates */}
       <div
         className="cockpit-shell-asset--isolated cockpit-shell-asset--central-wheel"
         style={{ left: centralWheel.x, top: centralWheel.y, width: centralWheel.w, height: centralWheel.h }}
