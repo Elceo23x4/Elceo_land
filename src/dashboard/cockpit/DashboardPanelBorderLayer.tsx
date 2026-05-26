@@ -4,11 +4,12 @@ import PanelBorderMedium from "../../assets/source/dashboard/panels/elceo-svg-06
 import PanelBorderWide from "../../assets/source/dashboard/panels/elceo-svg-06-panel-border-wide.svg?react";
 
 /**
- * SVG-06 Panel Border Layer — DISABLED by default.
+ * SVG-06 Panel Border Layer — DISABLED.
  *
- * ContentPanels RevB is the primary visible panel housing.
- * SVG-06 borders are NOT used as main shell — would create double borders.
- * Preserved for future popup/effects use only.
+ * The main visible panel shell is elceo-svg-01-content-panels-revb.svg (full-stage).
+ * SVG-06 panel borders are NOT the main dashboard shell.
+ * Keep disabled unless explicitly reintroduced for popup/special effect usage.
+ * Enabling this would create double-border noise over the RevB panel housing.
  */
 const SHOW_SVG06_PANEL_BORDERS = false;
 
