@@ -71,3 +71,16 @@ After visual review:
 2. If aligned: turn off overlay, proceed to next batch
 3. If misaligned: adjust geometry values by measured offset
 4. Do NOT adjust the SVG files — only adjust the TypeScript geometry
+
+---
+
+## Status Update (Batch 6H)
+
+The calibration overlay has been turned OFF by default after review.
+`SHOW_GEOMETRY_CALIBRATION = false`
+
+The coordinate model remains active and unchanged.
+The overlay can be re-enabled only for internal calibration by setting the
+constant to true.
+
+PR review should now evaluate the clean dashboard without the overlay.

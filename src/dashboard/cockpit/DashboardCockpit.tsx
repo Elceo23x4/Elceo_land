@@ -24,7 +24,9 @@ const SHOW_PANEL_SLOT_DEBUG = false;
 const SHOW_CONNECTOR_LAYER = false;
 const SHOW_SHELL_STATUS_LAYER = false;
 const SHOW_STAGE_LABELS = false;
-const SHOW_GEOMETRY_CALIBRATION = true; // TEMPORARY — for visual alignment review only
+// Temporary geometry calibration overlay. Keep false by default.
+// Enable only during internal coordinate review.
+const SHOW_GEOMETRY_CALIBRATION = false;
 
 export default function DashboardCockpit() {
   return (
