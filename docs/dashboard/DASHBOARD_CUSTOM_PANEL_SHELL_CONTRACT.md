@@ -45,11 +45,27 @@ Not used as main shell. ContentPanels RevB also removed from visible shell.
 
 Panel frames are drawn programmatically via inline SVG paths.
 
-
-
 ---
 
 ## Batch 6M Update
 
 Switched runtime panel content from temporary calibration rectangles
 (PANEL_CONTENT_CALIBRATION_RECTS) to final COCKPIT_PANEL_CONTENT_RECTS.
+
+---
+
+## Batch 6N Update
+
+Custom panel shell made visually assertive:
+- Stronger fill (rgba(3,2,1,0.42))
+- Stronger main border (rgba(255,106,0,0.72), 1.25px)
+- Inner border at 8px inset
+- Dynamic corner accents (12% of smallest dimension, min 22, max 42)
+- Title lane line below header zone
+- Left notch technical brackets
+- No glow, no shadow, no filter
+- Panel micro-labels temporarily enabled (SHOW_PANEL_NAME_MICRO_LABELS=true)
+- z-index raised to 18 (above shell bg, below chart/content)
+- Coordinates unchanged
+- ContentPanels RevB remains disabled as visible shell
+- SVG-06 remains disabled
