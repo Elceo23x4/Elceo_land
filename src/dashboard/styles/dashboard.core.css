@@ -5,11 +5,13 @@
 
 .elceo-dashboard-scope {
   min-height: 100vh;
+  min-height: 100dvh;
   background: var(--elceo-bg-0);
   color: var(--elceo-silver);
   font-family: var(--elceo-font-ui);
   font-size: var(--elceo-text-md);
   line-height: 1.5;
+  overflow: hidden;
 }
 
 .elceo-panel {

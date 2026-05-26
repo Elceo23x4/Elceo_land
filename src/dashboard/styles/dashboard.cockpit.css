@@ -9,25 +9,47 @@
 .elceo-cockpit {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: var(--elceo-bg-0);
+  box-sizing: border-box;
 }
 
 /* ─── Viewport (fills browser area, hosts scaled stage) ─── */
 .cockpit-viewport {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-width: 0;
+  min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+/* ─── Stage Wrapper (sized to scaled dimensions for centering) ─── */
+.cockpit-stage-wrapper {
+  position: relative;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
 /* ─── Stage (1920×1080 logical canvas) ─── */
 .cockpit-stage {
   position: relative;
   flex-shrink: 0;
+  width: 1920px;
+  height: 1080px;
   overflow: hidden;
+  will-change: transform;
+}
+
+/* ─── Dashboard-scoped body overflow safety ─── */
+.elceo-dashboard-scope {
+  box-sizing: border-box;
 }
 
 /* ─── Layer base ─── */

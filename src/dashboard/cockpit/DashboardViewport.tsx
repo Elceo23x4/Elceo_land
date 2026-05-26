@@ -7,24 +7,24 @@ interface DashboardViewportProps {
 
 /**
  * Dashboard viewport — scales the 1920×1080 logical stage to fit
- * the browser viewport while preserving 16:9 aspect ratio.
+ * the browser viewport while preserving 16:9 aspect ratio (contain mode).
  *
- * Batch 4: Fixed centering approach. The stage is scaled from top-left,
- * and the wrapper div is sized to the scaled dimensions so flexbox
- * centering works correctly (no visual offset).
+ * Batch 7C: Hardened scaling, explicit wrapper sizing, overflow visible
+ * to prevent rounding-related clipping at edges.
  */
 export default function DashboardViewport({ children }: DashboardViewportProps) {
   const { containerRef, cockpitScale } = useCockpitScale();
-  const { scale } = cockpitScale;
+  const { scale, scaledWidth, scaledHeight } = cockpitScale;
 
   return (
     <div className="cockpit-viewport" ref={containerRef}>
       <div
         className="cockpit-stage-wrapper"
+        data-cockpit-scale={scale.toFixed(4)}
+        data-cockpit-fit="contain"
         style={{
-          width: STAGE_W * scale,
-          height: STAGE_H * scale,
-          overflow: "hidden",
+          width: scaledWidth,
+          height: scaledHeight,
         }}
       >
         <div
