@@ -1,0 +1,210 @@
+/**
+ * dashboardResponsivePanels.css
+ *
+ * Panel chrome styling for the responsive dashboard.
+ * Each panel uses its isolated SVG frame as background chrome
+ * with real DOM content rendered above it.
+ */
+
+/* ─── Panel Chrome Container ─── */
+.dashboard-chrome-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+/* ─── Panel Frame (SVG background) ─── */
+.dashboard-panel-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dashboard-panel-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Panel Content (above frame) ─── */
+.dashboard-panel-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: clamp(10px, 1.2cqi, 18px) clamp(12px, 1.5cqi, 22px);
+  box-sizing: border-box;
+}
+
+/* ─── Panel Header ─── */
+.dashboard-panel-header {
+  flex-shrink: 0;
+  margin-bottom: clamp(4px, 0.6cqi, 10px);
+}
+
+.dashboard-panel-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a8178;
+  margin: 0 0 2px 0;
+}
+
+.dashboard-panel-title {
+  color: #e8dfd4;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ─── Panel Body ─── */
+.dashboard-panel-body {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
+}
+
+.dashboard-panel-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-panel-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-panel-body::-webkit-scrollbar-thumb {
+  background: rgba(138, 129, 120, 0.3);
+  border-radius: 2px;
+}
+
+/* ─── Topbar Chrome ─── */
+.dashboard-topbar-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dashboard-topbar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-topbar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 clamp(12px, 1.5vw, 24px);
+  box-sizing: border-box;
+  gap: clamp(10px, 1.2vw, 20px);
+}
+
+.dashboard-topbar-brand {
+  font-weight: 700;
+  color: #e8dfd4;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.dashboard-topbar-title {
+  color: #8a8178;
+  white-space: nowrap;
+}
+
+.dashboard-topbar-spacer {
+  flex: 1;
+}
+
+.dashboard-topbar-badge {
+  padding: 2px 8px;
+  border-radius: 3px;
+  background: rgba(138, 129, 120, 0.15);
+  border: 1px solid rgba(138, 129, 120, 0.25);
+  color: #8a8178;
+  white-space: nowrap;
+}
+
+.dashboard-topbar-badge--fixture {
+  color: #d4a853;
+  border-color: rgba(212, 168, 83, 0.3);
+  background: rgba(212, 168, 83, 0.08);
+}
+
+.dashboard-topbar-clock {
+  color: #6b6560;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ─── Sidebar Chrome ─── */
+.dashboard-sidebar-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dashboard-sidebar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-sidebar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(8px, 1vh, 14px) 0;
+  box-sizing: border-box;
+  gap: clamp(10px, 1.5vh, 18px);
+}
+
+.dashboard-sidebar-icon {
+  width: clamp(20px, 2.2vw, 32px);
+  height: clamp(20px, 2.2vw, 32px);
+  border-radius: 4px;
+  background: rgba(138, 129, 120, 0.1);
+  border: 1px solid rgba(138, 129, 120, 0.2);
+  display: grid;
+  place-items: center;
+  color: #8a8178;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.dashboard-sidebar-icon:hover {
+  background: rgba(138, 129, 120, 0.2);
+  border-color: rgba(138, 129, 120, 0.4);
+}
+
+.dashboard-sidebar-icon--active {
+  background: rgba(212, 168, 83, 0.12);
+  border-color: rgba(212, 168, 83, 0.35);
+  color: #d4a853;
+}
+
+.dashboard-sidebar-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(138, 129, 120, 0.3);
+}

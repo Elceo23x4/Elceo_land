@@ -1,0 +1,124 @@
+/**
+ * dashboardResponsiveTypography.css
+ *
+ * Responsive typography system for the ELCEO dashboard.
+ * Uses clamp() for all type sizing. Never fixed tiny pixel values.
+ *
+ * Font stack:
+ * - Headings / brand: 'Space Grotesk', system-ui, sans-serif
+ * - Body / UI: 'Inter', system-ui, sans-serif
+ * - Mono / data: 'IBM Plex Mono', 'SF Mono', monospace
+ */
+
+/* ─── Font face fallbacks (system stack used if @fontsource not installed) ─── */
+.dashboard-responsive-viewport {
+  --font-heading: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+}
+
+/* ─── Eyebrow ─── */
+.dashboard-panel-eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.55vw, 11px);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* ─── Panel Title ─── */
+.dashboard-panel-title {
+  font-family: var(--font-heading);
+  font-size: clamp(12px, 0.9vw, 17px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ─── Panel Body Text ─── */
+.dashboard-panel-body {
+  font-family: var(--font-body);
+  font-size: clamp(10px, 0.72vw, 13px);
+  line-height: 1.5;
+  color: #c4bab0;
+}
+
+/* ─── Key Metric ─── */
+.dashboard-metric-value {
+  font-family: var(--font-heading);
+  font-size: clamp(16px, 1.4vw, 26px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #e8dfd4;
+}
+
+/* ─── Chip / Badge Text ─── */
+.dashboard-chip-text {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.55vw, 11px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* ─── Topbar Typography ─── */
+.dashboard-topbar-brand {
+  font-family: var(--font-heading);
+  font-size: clamp(13px, 1vw, 18px);
+}
+
+.dashboard-topbar-title {
+  font-family: var(--font-body);
+  font-size: clamp(10px, 0.7vw, 13px);
+}
+
+.dashboard-topbar-badge {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.55vw, 11px);
+}
+
+.dashboard-topbar-clock {
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.6vw, 12px);
+}
+
+/* ─── Sidebar Typography ─── */
+.dashboard-sidebar-icon {
+  font-family: var(--font-body);
+  font-size: clamp(9px, 0.6vw, 12px);
+  font-weight: 500;
+}
+
+/* ─── Data grid / mini-grid typography ─── */
+.dashboard-data-label {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.55vw, 11px);
+  color: #8a8178;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.dashboard-data-value {
+  font-family: var(--font-body);
+  font-size: clamp(10px, 0.72vw, 13px);
+  color: #e8dfd4;
+}
+
+/* ─── Chart Attribution ─── */
+.dashboard-chart-attribution {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.45vw, 9px);
+  color: #6b6560;
+}
+
+/* ─── Container Query responsive overrides ─── */
+@container (max-width: 300px) {
+  .dashboard-panel-title {
+    font-size: clamp(11px, 3.5cqi, 15px);
+  }
+
+  .dashboard-panel-eyebrow {
+    font-size: clamp(7px, 2.2cqi, 10px);
+  }
+
+  .dashboard-panel-body {
+    font-size: clamp(9px, 2.8cqi, 12px);
+  }
+}
