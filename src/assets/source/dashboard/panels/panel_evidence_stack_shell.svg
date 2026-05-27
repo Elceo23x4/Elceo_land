@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="panel_evidence_stack_shell" width="529" height="370" viewBox="0 0 529 370" fill="none" role="img" aria-label="panel_evidence_stack_shell"><defs>
+    <linearGradient id="evidence_stack_panel_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7a2b05" stop-opacity="0.35"/>
+      <stop offset="18%" stop-color="#ff7414" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.88"/>
+      <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.82"/>
+      <stop offset="100%" stop-color="#642100" stop-opacity="0.38"/>
+    </linearGradient>
+    <linearGradient id="evidence_stack_panel_vertical_edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9e2a" stop-opacity="0.80"/>
+      <stop offset="42%" stop-color="#b94608" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#ff7a18" stop-opacity="0.68"/>
+    </linearGradient>
+    <linearGradient id="evidence_stack_panel_fill_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120803" stop-opacity="0.66"/>
+      <stop offset="45%" stop-color="#050302" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#110602" stop-opacity="0.56"/>
+    </linearGradient>
+    <radialGradient id="evidence_stack_panel_aura" cx="50%" cy="42%" r="67%" display="none" data-disabled="true">
+      <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.12"/>
+      <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.035"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="evidence_stack_soft_orange" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6" result="blur" in="SourceGraphic"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.32  0 0 0.12 0 0  0 0 0 0.72 0" in="blur"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="evidence_stack_panel_shadow" x="-18%" y="-18%" width="136%" height="136%" display="none" data-disabled="true">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#ff7a18" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="evidence_stack_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.055"/>
+    </pattern>
+  </defs>
+  <style>
+  .slot-rect { fill:#000000; fill-opacity:0; stroke:none; }
+  .board-slot { fill:#000000; fill-opacity:0; stroke:none; }
+</style>
+  <g id="panel_evidence_stack_shell_group" data-component="elceo-panel-border" data-reference-style="border-small-medium-tall-wide" data-non-uniform-stroke="true" data-panel-width="529" data-panel-height="370" data-panel-left="1241" data-panel-top="0" transform="translate(-1241 0)">
+      <path id="panel_evidence_stack_shell_panel_fill" d="M 1255 0 H 1756 L 1770 14 V 356 L 1756 370 H 1255 L 1241 356 V 14 L 1255 0 Z" fill="url(#evidence_stack_panel_fill_gradient)" fill-opacity="0.72" data-original-filter="url(#evidence_stack_panel_shadow)"/>
+      <path id="panel_evidence_stack_shell_soft_inner_aura" d="M 1255 2 H 1756 L 1768 14 V 356 L 1756 368 H 1255 L 1243 356 V 14 L 1255 2 Z" fill="url(#evidence_stack_panel_aura)" fill-opacity="1" display="none" data-disabled="true"/>
+      <path id="panel_evidence_stack_shell_primary_top_heavy" d="M 1255 0 H 1423.3" stroke="url(#evidence_stack_panel_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#evidence_stack_soft_orange)"/>
+      <path id="panel_evidence_stack_shell_secondary_top_medium" d="M 1436.9 0 H 1756" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_right_edge_fine" d="M 1770 14 V 356" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_bottom_left_accent" d="M 1255 370 H 1380.2" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_bottom_main_medium" d="M 1403.3 370 H 1588.2" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_bottom_right_accent" d="M 1605.7 370 H 1756" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_left_edge_upper_fine" d="M 1241 14 V 147.4" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_left_edge_lower_hair" d="M 1241 195.3 V 356" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_corner_diagonal_emphasis" d="M 1255 0 L 1241 14 M 1756 0 L 1770 14 M 1770 356 L 1756 370 M 1255 370 L 1241 356" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_inner_top_hairline" d="M 1265 10 H 1746" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_inner_bottom_hairline" d="M 1265 360 H 1746" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_title_separator_faint" d="M 1269 48 H 1744" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_title_notch_left" d="M 1271 49 H 1365" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_title_notch_right" d="M 1632 49 H 1750" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_number_badge_empty" d="M 1260 12 H 1274 L 1280 18 V 32 L 1274 38 H 1260 L 1254 32 V 18 L 1260 12 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_number_badge_inner_glow" d="M 1263 17 H 1271 L 1275 21 V 29 L 1271 33 H 1263 L 1259 29 V 21 L 1263 17 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24" display="none" data-disabled="true"/>
+      <path id="panel_evidence_stack_shell_left_inner_vertical_accent" d="M 1251 66 V 336" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_evidence_stack_shell_lower_micro_accents" d="M 1275 346 H 1389 M 1632 346 H 1756" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="evidence_stack_panel_content_blocks_invisible" transform="translate(-1322 -83)"><rect id="content_block_evidence_stack_header" class="slot-rect" x="1408" y="98" width="441" height="35" data-content-block="evidence_stack_header"/>
+    <rect id="content_block_evidence_stack_body" class="slot-rect" x="1374" y="147" width="483" height="294" data-content-block="evidence_stack_body"/>
+    </g></svg>
