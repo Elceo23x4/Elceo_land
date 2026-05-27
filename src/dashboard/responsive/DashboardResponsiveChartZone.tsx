@@ -29,7 +29,7 @@ export default function DashboardResponsiveChartZone() {
 
           {/* Actual chart content */}
           <div className="chart-inner">
-            <ChartContainer data={fixtureNormalizedOhlcData} />
+            <ChartContainer data={fixtureNormalizedOhlcData} mode="fixture_only" />
           </div>
         </div>
       </div>
