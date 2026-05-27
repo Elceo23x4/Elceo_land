@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="panel_coaching_shell" width="738" height="191" viewBox="0 0 738 191" fill="none" role="img" aria-label="panel_coaching_shell"><defs>
+    <linearGradient id="coaching_panel_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7a2b05" stop-opacity="0.35"/>
+      <stop offset="18%" stop-color="#ff7414" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.88"/>
+      <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.82"/>
+      <stop offset="100%" stop-color="#642100" stop-opacity="0.38"/>
+    </linearGradient>
+    <linearGradient id="coaching_panel_vertical_edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9e2a" stop-opacity="0.80"/>
+      <stop offset="42%" stop-color="#b94608" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#ff7a18" stop-opacity="0.68"/>
+    </linearGradient>
+    <linearGradient id="coaching_panel_fill_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120803" stop-opacity="0.66"/>
+      <stop offset="45%" stop-color="#050302" stop-opacity="0.42"/>
+      <stop offset="100%" stop-color="#110602" stop-opacity="0.56"/>
+    </linearGradient>
+    <radialGradient id="coaching_panel_aura" cx="50%" cy="42%" r="67%" display="none" data-disabled="true">
+      <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.12"/>
+      <stop offset="62%" stop-color="#ff6a00" stop-opacity="0.035"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="coaching_soft_orange" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.6" result="blur" in="SourceGraphic"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 1  0 0.42 0 0 0.32  0 0 0.12 0 0  0 0 0 0.72 0" in="blur"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="coaching_panel_shadow" x="-18%" y="-18%" width="136%" height="136%" display="none" data-disabled="true">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#ff7a18" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="coaching_micro_grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0V28" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.055"/>
+    </pattern>
+  </defs>
+  <style>
+  .slot-rect { fill:#000000; fill-opacity:0; stroke:none; }
+  .board-slot { fill:#000000; fill-opacity:0; stroke:none; }
+</style>
+  <g id="panel_coaching_shell_group" data-component="elceo-panel-border" data-reference-style="border-small-medium-tall-wide" data-non-uniform-stroke="true" data-panel-width="738" data-panel-height="191" data-panel-left="0" data-panel-top="772" transform="translate(0 -772)">
+      <path id="panel_coaching_shell_panel_fill" d="M 14 772 H 724 L 738 786 V 949 L 724 963 H 14 L 0 949 V 786 L 14 772 Z" fill="url(#coaching_panel_fill_gradient)" fill-opacity="0.72" data-original-filter="url(#coaching_panel_shadow)"/>
+      <path id="panel_coaching_shell_soft_inner_aura" d="M 14 774 H 724 L 736 786 V 949 L 724 961 H 14 L 2 949 V 786 L 14 774 Z" fill="url(#coaching_panel_aura)" fill-opacity="1" display="none" data-disabled="true"/>
+      <path id="panel_coaching_shell_primary_top_heavy" d="M 14 772 H 252.6" stroke="url(#coaching_panel_orange_stroke)" stroke-width="2.65" stroke-opacity="0.88" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#coaching_soft_orange)"/>
+      <path id="panel_coaching_shell_secondary_top_medium" d="M 271.7 772 H 724" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_right_edge_fine" d="M 738 786 V 949" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_bottom_left_accent" d="M 14 963 H 191.5" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_bottom_main_medium" d="M 224.2 963 H 486.1" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_bottom_right_accent" d="M 511 963 H 724" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_left_edge_upper_fine" d="M 0 786 V 849.6" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_left_edge_lower_hair" d="M 0 872.4 V 949" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_corner_diagonal_emphasis" d="M 14 772 L 0 786 M 724 772 L 738 786 M 738 949 L 724 963 M 14 963 L 0 949" stroke="#ff7a18" stroke-width="1.45" stroke-opacity="0.62" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_inner_top_hairline" d="M 24 782 H 714" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_inner_bottom_hairline" d="M 24 953 H 714" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_title_separator_faint" d="M 28 820 H 712" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_title_notch_left" d="M 30 821 H 124" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_title_notch_right" d="M 600 821 H 718" stroke="#8f3d0b" stroke-width="0.9" stroke-opacity="0.26" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_number_badge_empty" d="M 19 784 H 33 L 39 790 V 804 L 33 810 H 19 L 13 804 V 790 L 19 784 Z" fill="#080402" fill-opacity="0.74" stroke="#ff8a1e" stroke-width="1.25" stroke-opacity="0.78" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_number_badge_inner_glow" d="M 22 789 H 30 L 34 793 V 801 L 30 805 H 22 L 18 801 V 793 L 22 789 Z" fill="none" stroke="#ffb13b" stroke-width="0.55" stroke-opacity="0.24" display="none" data-disabled="true"/>
+      <path id="panel_coaching_shell_left_inner_vertical_accent" d="M 10 838 V 929" stroke="#ff7a18" stroke-width="0.42" stroke-opacity="0.22" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="panel_coaching_shell_lower_micro_accents" d="M 34 939 H 148 M 600 939 H 724" stroke="#ffb13b" stroke-width="0.72" stroke-opacity="0.36" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="coaching_panel_content_blocks_invisible" transform="translate(-81 -855)"><rect id="content_block_coaching_header" class="slot-rect" x="157" y="878" width="652" height="29" data-content-block="coaching_header"/>
+    <rect id="content_block_coaching_body" class="slot-rect" x="126" y="923" width="689" height="119" data-content-block="coaching_body"/>
+    </g></svg>
