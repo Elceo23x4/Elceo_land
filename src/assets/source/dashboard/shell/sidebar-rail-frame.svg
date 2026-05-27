@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="elceo_svg_04_sidebar_rail_frame_only" width="49.18" height="731.21" viewBox="0 0 49.18 731.21" fill="none" role="img" aria-label="ELCEO SVG 04 sidebar navigation asset">
+<defs>
+  <linearGradient id="sidebar_rail_svg04_orange_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ffb13b" stop-opacity="0.95"/>
+    <stop offset="32%" stop-color="#ff7a18" stop-opacity="0.88"/>
+    <stop offset="68%" stop-color="#c7510b" stop-opacity="0.58"/>
+    <stop offset="100%" stop-color="#5b2104" stop-opacity="0.42"/>
+  </linearGradient>
+  <linearGradient id="sidebar_rail_svg04_orange_line" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#6f2705" stop-opacity="0.35"/>
+    <stop offset="20%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.96"/>
+    <stop offset="82%" stop-color="#ff7a18" stop-opacity="0.90"/>
+    <stop offset="100%" stop-color="#6f2705" stop-opacity="0.35"/>
+  </linearGradient>
+  <radialGradient id="sidebar_rail_svg04_active_warm_fill" cx="50%" cy="50%" r="65%">
+    <stop offset="0%" stop-color="#ff8a1e" stop-opacity="0.16"/>
+    <stop offset="58%" stop-color="#ff7a18" stop-opacity="0.055"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+  </radialGradient>
+  <filter id="sidebar_rail_svg04_orange_glow" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur"/>
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.38 0 0 0.38  0 0 0.05 0 0  0 0 0 0.68 0"/>
+    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="sidebar_rail_svg04_soft_glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.05" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<rect id="sidebar_rail_import_bounds_near_invisible" x="0" y="0" width="49.18" height="731.21" fill="#000000" fill-opacity="0.001"/>
+<g id="sidebar_rail_svg04_railonly_sidebar_complete_approved_equal_spacing">
+<path id="sidebar_rail_svg04_railonly_sidebar_outer_chamfer_rail" d="M 10.7187 0 L 38.4613 0 L 49.18 15.6952 L 49.18 715.5148 L 38.4613 731.21 L 10.7187 731.21 L 0 715.5148 L 0 15.6952 L 10.7187 0 Z" fill="#050301" fill-opacity="0.26" stroke="url(#sidebar_rail_svg04_orange_line)" stroke-width="1.45" stroke-linejoin="round" stroke-linecap="round"/>
+<path id="sidebar_rail_svg04_railonly_sidebar_inner_fine_rail" d="M 11.9797 7.386 L 37.2003 7.386 L 44.7664 18.4649 L 44.7664 712.7451 L 37.2003 723.824 L 11.9797 723.824 L 4.4136 712.7451 L 4.4136 18.4649 L 11.9797 7.386 Z" fill="none" stroke="#ff7a18" stroke-opacity="0.22" stroke-width="0.45" stroke-linejoin="round" stroke-linecap="round"/>
+<g id="sidebar_rail_svg04_railonly_active_slot_template" data-state="idle">
+  <path id="sidebar_rail_svg04_railonly_active_slot_template_outer_chamfer" d="M 11.3492 32.3136 L 37.8308 32.3136 L 44.1359 41.546 L 44.1359 80.3223 L 37.8308 89.5548 L 11.3492 89.5548 L 5.0441 80.3223 L 5.0441 41.546 Z" fill="url(#sidebar_rail_svg04_active_warm_fill)" fill-opacity="0.022" stroke="#ff8a1e" stroke-opacity="0.35" stroke-width="1.05" stroke-linejoin="round" stroke-linecap="round" filter="url(#sidebar_rail_svg04_soft_glow)"/>
+  <path id="sidebar_rail_svg04_railonly_active_slot_template_inner_chamfer" d="M 13.2408 37.853 L 35.9392 37.853 L 40.3528 44.3158 L 40.3528 77.5526 L 35.9392 84.0153 L 13.2408 84.0153 L 8.8272 77.5526 L 8.8272 44.3158 Z" fill="none" stroke="#ffb13b" stroke-opacity="0.14" stroke-width="0.65" stroke-linejoin="round"/>
+</g>
+<path id="sidebar_rail_svg04_railonly_sidebar_top_cap_accent" d="M 12.6103 0.9232 H 36.5697" fill="none" stroke="#ff8a1e" stroke-opacity="0.80" stroke-width="2.7" stroke-linecap="round"/>
+<path id="sidebar_rail_svg04_railonly_sidebar_bottom_cap_accent" d="M 12.6103 730.2868 H 36.5697" fill="none" stroke="#ff8a1e" stroke-opacity="0.80" stroke-width="2.7" stroke-linecap="round"/>
+</g>
+</svg>
