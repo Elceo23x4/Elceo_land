@@ -138,13 +138,17 @@ export default function DashboardResponsivePanelLayer() {
       </div>
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.confidenceContextMatrix.body)}>
         <SectionNav items={["Matrix", "Conflicts", "Quality"]} active={confSection} onSelect={setConfSection} />
-        {confSection === 0 && confidenceFixture.metrics.map((m) => (
-          <HoverPreviewCard
-            key={m.label}
-            trigger={<><DataRow label={m.label} value={m.value} tone={m.tone} /><MiniMeter score={m.score} tone={m.tone} /></>}
-            preview={<p className="dashboard-precision-body-text">{m.label} score: {m.score}% — {m.tone === "warning" ? "Caution zone" : "Within range"}</p>}
-          />
-        ))}
+        {confSection === 0 && (
+          <div className="dashboard-two-col">
+            {confidenceFixture.metrics.map((m) => (
+              <HoverPreviewCard
+                key={m.label}
+                trigger={<><DataRow label={m.label} value={m.value} tone={m.tone} /><MiniMeter score={m.score} tone={m.tone} /></>}
+                preview={<p className="dashboard-precision-body-text">{m.label} score: {m.score}% — {m.tone === "warning" ? "Caution zone" : "Within range"}</p>}
+              />
+            ))}
+          </div>
+        )}
         {confSection === 1 && (
           <>
             {confidenceFixture.conflicts.map((c) => (
@@ -228,16 +232,24 @@ export default function DashboardResponsivePanelLayer() {
             </div>
           </>
         )}
-        {evidSection === 1 && evidenceFixture.map((e) => (
-          <DataRow key={e.label} label={`${e.category}: ${e.label}`} value={`${e.score}%`} tone={e.tone} />
-        ))}
+        {evidSection === 1 && (
+          <div className="dashboard-two-col">
+            {evidenceFixture.map((e) => (
+              <DataRow key={e.label} label={`${e.category}: ${e.label}`} value={`${e.score}%`} tone={e.tone} />
+            ))}
+          </div>
+        )}
         {evidSection === 2 && (
-          <>
-            <DataRow label="Macro vs momentum" value="Contradicting" tone="warning" />
-            <p className="dashboard-precision-body-text">Macro context contradicts momentum. Sentiment cautious despite structure confirmation.</p>
-            <DataRow label="Sentiment vs breadth" value="Diverging" tone="warning" />
-            <p className="dashboard-precision-note">Review contradictions before committing to directional bias.</p>
-          </>
+          <div className="dashboard-two-col">
+            <div>
+              <DataRow label="Macro vs momentum" value="Contradicting" tone="warning" />
+              <p className="dashboard-precision-body-text">Macro context contradicts momentum.</p>
+            </div>
+            <div>
+              <DataRow label="Sentiment vs breadth" value="Diverging" tone="warning" />
+              <p className="dashboard-precision-body-text">Sentiment cautious despite structure confirmation.</p>
+            </div>
+          </div>
         )}
         <ActionBar onExpand={() => openDrawer("Evidence", "Full Evidence Chain", "evidence")} />
       </div>
@@ -252,18 +264,39 @@ export default function DashboardResponsivePanelLayer() {
       </div>
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.newsMacroIntelligence.body)}>
         <SectionNav items={["Headlines", "Events", "Compare"]} active={newsSection} onSelect={setNewsSection} />
-        {newsSection === 0 && newsFixture.map((h) => (
-          <HoverPreviewCard
-            key={h.title}
-            trigger={
-              <div className="dashboard-precision-data-row">
-                <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
-                <Chip value={h.impact} tone={h.tone} />
-              </div>
-            }
-            preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
-          />
-        ))}
+        {newsSection === 0 && (
+          <SlideStripWrapper>
+            {/* Two-column headline pages (4 per page) */}
+            <div className="dashboard-two-col" style={{ minWidth: "100%" }}>
+              {newsFixture.slice(0, 4).map((h) => (
+                <HoverPreviewCard
+                  key={h.title}
+                  trigger={
+                    <div className="dashboard-precision-data-row">
+                      <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
+                      <Chip value={h.impact} tone={h.tone} />
+                    </div>
+                  }
+                  preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
+                />
+              ))}
+            </div>
+            <div className="dashboard-two-col" style={{ minWidth: "100%" }}>
+              {newsFixture.slice(4, 8).map((h) => (
+                <HoverPreviewCard
+                  key={h.title}
+                  trigger={
+                    <div className="dashboard-precision-data-row">
+                      <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
+                      <Chip value={h.impact} tone={h.tone} />
+                    </div>
+                  }
+                  preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
+                />
+              ))}
+            </div>
+          </SlideStripWrapper>
+        )}
         {newsSection === 1 && (
           <SlideStripWrapper>
             {macroEvents.map((ev) => (
@@ -305,10 +338,20 @@ export default function DashboardResponsivePanelLayer() {
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.coachingInsights.body)}>
         <SectionNav items={["Focus", "Discipline", "Journal"]} active={coachSection} onSelect={setCoachSection} />
         {coachSection === 0 && (
-          <>
-            <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{coachingFixture.headline}</p>
-            <p className="dashboard-precision-body-text">{coachingFixture.body}</p>
-          </>
+          <div className="dashboard-compare-split">
+            <div>
+              <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{coachingFixture.headline}</p>
+              <p className="dashboard-precision-body-text">{coachingFixture.body}</p>
+            </div>
+            <div>
+              {coachingFixture.checklist.slice(0, 2).map((item) => (
+                <div key={item} className="dashboard-precision-data-row">
+                  <span className="dashboard-precision-data-label">☐</span>
+                  <span style={{ color: "#b8afa6" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
         )}
         {coachSection === 1 && (
           <SlideStripWrapper>
@@ -362,18 +405,26 @@ export default function DashboardResponsivePanelLayer() {
           </SlideStripWrapper>
         )}
         {regimeSection === 1 && (
-          <>
-            {regimeStrip.map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
-            <p className="dashboard-precision-note">Cross-asset correlation elevated — diversification benefit reduced.</p>
-          </>
+          <div className="dashboard-two-col">
+            <div>
+              {regimeStrip.slice(0, 2).map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
+            </div>
+            <div>
+              {regimeStrip.slice(2).map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
+            </div>
+          </div>
         )}
         {regimeSection === 2 && (
-          <>
-            <DataRow label="Liquidity" value="Adequate" tone="positive" />
-            <DataRow label="Spread environment" value="Normal" tone="neutral" />
-            <DataRow label="Volatility regime" value="Moderate" tone="neutral" />
-            <p className="dashboard-precision-note">Liquidity conditions support normal position sizing assumptions.</p>
-          </>
+          <div className="dashboard-compare-split">
+            <div>
+              <DataRow label="Liquidity" value="Adequate" tone="positive" />
+              <DataRow label="Spread environment" value="Normal" tone="neutral" />
+            </div>
+            <div>
+              <DataRow label="Volatility regime" value="Moderate" tone="neutral" />
+              <DataRow label="Correlation" value="Elevated" tone="warning" />
+            </div>
+          </div>
         )}
       </div>
 

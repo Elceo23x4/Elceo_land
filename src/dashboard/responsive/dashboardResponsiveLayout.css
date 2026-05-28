@@ -165,6 +165,96 @@
   display: block;
 }
 
+/* ─── Panel Aura Activation — Black at 60% opacity (R5C) ─── */
+.dashboard-precision-panel-frame svg [id$="_soft_inner_aura"],
+.dashboard-precision-panel-frame svg [id*="soft_inner_aura"] {
+  display: inline !important;
+  fill: rgba(0, 0, 0, 0.6) !important;
+  fill-opacity: 1 !important;
+  filter: none !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_aura"],
+.dashboard-precision-panel-frame svg [id*="panel_aura"] {
+  display: inline !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_aura"] stop {
+  stop-color: #000000 !important;
+  stop-opacity: 0.6 !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_shadow"],
+.dashboard-precision-panel-frame svg [id*="panel_shadow"] {
+  display: none !important;
+}
+
+/* Keep inner glow disabled — only aura activates */
+.dashboard-precision-panel-frame svg [id$="_inner_glow"],
+.dashboard-precision-panel-frame svg [id*="inner_glow"] {
+  display: none !important;
+}
+
+/* ─── Night Sky Star Twinkle Animation (R5C) ─── */
+@keyframes dashboardStarTwinkleSlow {
+  0%, 100% {
+    opacity: 0.55;
+    filter: brightness(0.9);
+  }
+  45% {
+    opacity: 1;
+    filter: brightness(1.45);
+  }
+  70% {
+    opacity: 0.72;
+    filter: brightness(1.05);
+  }
+}
+
+.dashboard-precision-bg-sky svg use {
+  animation-name: dashboardStarTwinkleSlow;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.dashboard-precision-bg-sky svg use:nth-of-type(3n) {
+  animation-duration: 7.5s;
+  animation-delay: 0s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-of-type(4n) {
+  animation-duration: 9s;
+  animation-delay: 1.2s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-of-type(5n) {
+  animation-duration: 11s;
+  animation-delay: 2.8s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-of-type(7n) {
+  animation-duration: 13s;
+  animation-delay: 4.5s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-of-type(11n) {
+  animation-duration: 15s;
+  animation-delay: 0.7s;
+}
+
+/* Default duration for non-matched stars */
+.dashboard-precision-bg-sky svg use {
+  animation-duration: 8s;
+  animation-delay: 0.3s;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-precision-bg-sky svg use {
+    animation: none !important;
+  }
+}
+
 /* ─── Content Slots ─── */
 .dashboard-precision-content-slot {
   z-index: 15;

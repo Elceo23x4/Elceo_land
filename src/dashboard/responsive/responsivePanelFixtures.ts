@@ -147,6 +147,10 @@ export const newsFixture: MacroHeadline[] = [
   { title: "CPI print pending next session", impact: "high", tone: "warning", source: "Fixture", time: "Tomorrow" },
   { title: "Earnings season early phase", impact: "low", tone: "neutral", source: "Fixture", time: "Ongoing" },
   { title: "Geopolitical tension low impact today", impact: "low", tone: "neutral", source: "Fixture", time: "Today" },
+  { title: "Treasury auction demand strong", impact: "medium", tone: "positive", source: "Fixture", time: "3h ago" },
+  { title: "Oil inventories draw larger than expected", impact: "medium", tone: "warning", source: "Fixture", time: "5h ago" },
+  { title: "China PMI below consensus", impact: "high", tone: "negative", source: "Fixture", time: "Yesterday" },
+  { title: "ECB rate path unchanged — dovish tilt", impact: "medium", tone: "positive", source: "Fixture", time: "Yesterday" },
 ];
 
 export const macroEvents: MacroEvent[] = [
