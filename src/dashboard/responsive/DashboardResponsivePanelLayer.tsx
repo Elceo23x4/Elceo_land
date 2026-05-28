@@ -9,7 +9,7 @@
  * No coordinate changes. No live data. No unsafe wording.
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   DirectionalBiasFrame,
   ConfidenceMatrixFrame,
@@ -38,6 +38,7 @@ import {
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
+import PanelExpandButton from "./panelContent/PanelExpandButton";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
 import type { ReactNode } from "react";
 
@@ -69,6 +70,7 @@ export default function DashboardResponsivePanelLayer() {
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
   const [drawerPanel, setDrawerPanel] = useState("");
+  const [expandedPanel, setExpandedPanel] = useState<string | null>(null);
 
   const openDrawer = useCallback((eyebrow: string, title: string, panel: string) => {
     setDrawerEyebrow(eyebrow);
@@ -76,6 +78,18 @@ export default function DashboardResponsivePanelLayer() {
     setDrawerPanel(panel);
     setDrawerOpen(true);
   }, []);
+
+  const toggleExpand = useCallback((panelId: string) => {
+    setExpandedPanel((prev) => (prev === panelId ? null : panelId));
+  }, []);
+
+  // Escape closes expanded panel
+  useEffect(() => {
+    if (!expandedPanel) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setExpandedPanel(null); };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [expandedPanel]);
 
   // Section nav state
   const [biasSection, setBiasSection] = useState(0);
@@ -265,37 +279,22 @@ export default function DashboardResponsivePanelLayer() {
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.newsMacroIntelligence.body)}>
         <SectionNav items={["Headlines", "Events", "Compare"]} active={newsSection} onSelect={setNewsSection} />
         {newsSection === 0 && (
-          <SlideStripWrapper>
-            {/* Two-column headline pages (4 per page) */}
-            <div className="dashboard-two-col" style={{ minWidth: "100%" }}>
-              {newsFixture.slice(0, 4).map((h) => (
-                <HoverPreviewCard
-                  key={h.title}
-                  trigger={
-                    <div className="dashboard-precision-data-row">
-                      <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
-                      <Chip value={h.impact} tone={h.tone} />
-                    </div>
-                  }
-                  preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
-                />
-              ))}
-            </div>
-            <div className="dashboard-two-col" style={{ minWidth: "100%" }}>
-              {newsFixture.slice(4, 8).map((h) => (
-                <HoverPreviewCard
-                  key={h.title}
-                  trigger={
-                    <div className="dashboard-precision-data-row">
-                      <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
-                      <Chip value={h.impact} tone={h.tone} />
-                    </div>
-                  }
-                  preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
-                />
-              ))}
-            </div>
-          </SlideStripWrapper>
+          <div className="dashboard-news-timeline">
+            {newsFixture.map((h, i) => (
+              <HoverPreviewCard
+                key={h.title}
+                className={i % 2 === 0 ? "dashboard-news-timeline__left" : "dashboard-news-timeline__right"}
+                trigger={
+                  <div className="dashboard-news-timeline__item">
+                    <span className={`dashboard-news-timeline__dot dashboard-news-timeline__dot--${h.impact}`} />
+                    <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
+                    <Chip value={h.impact} tone={h.impact === "high" ? "negative" : h.impact === "medium" ? "positive" : "warning"} />
+                  </div>
+                }
+                preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "negative" : h.impact === "medium" ? "positive" : "warning"} /></>}
+              />
+            ))}
+          </div>
         )}
         {newsSection === 1 && (
           <SlideStripWrapper>
@@ -427,6 +426,27 @@ export default function DashboardResponsivePanelLayer() {
           </div>
         )}
       </div>
+
+      {/* ═══ PANEL EXPAND BUTTONS ═══ */}
+      {(Object.keys(PANEL_FRAME_RECTS) as Array<keyof typeof PANEL_FRAME_RECTS>).map((key) => {
+        const rect = PANEL_FRAME_RECTS[key];
+        const btnStyle = {
+          position: "absolute" as const,
+          left: `${((rect.x + rect.w - 28) / 1920) * 100}%`,
+          top: `${((rect.y + 6) / 1080) * 100}%`,
+          zIndex: expandedPanel === key ? 130 : 25,
+        };
+        return (
+          <div key={key} style={btnStyle}>
+            <PanelExpandButton expanded={expandedPanel === key} onToggle={() => toggleExpand(key)} />
+          </div>
+        );
+      })}
+
+      {/* Expanded panel overlay */}
+      {expandedPanel && (
+        <div className="dashboard-panel-expand-overlay" onClick={() => setExpandedPanel(null)} />
+      )}
 
       {/* ═══ DETAIL DRAWER ═══ */}
       <DashboardResponsiveDetailDrawer open={drawerOpen} title={drawerTitle} eyebrow={drawerEyebrow} onClose={() => setDrawerOpen(false)}>

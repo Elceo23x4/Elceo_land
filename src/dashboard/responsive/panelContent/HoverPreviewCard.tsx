@@ -2,10 +2,9 @@
  * HoverPreviewCard.tsx
  *
  * Compact hover/pinned preview card for panel rows.
- * - Hover/focus shows preview
- * - Click pins the preview
- * - Pinned preview has close button, Escape closes
- * - Dark glass HUD styling
+ * R5D: Fixed flicker/vibration by using contain:layout paint on trigger,
+ * absolute positioning with pointer-events:none for hover state,
+ * and preventing layout shift from preview insertion.
  */
 
 import { useState, useRef, useCallback, useEffect, type ReactNode } from "react";
@@ -23,7 +22,8 @@ export default function HoverPreviewCard({ trigger, preview, className = "" }: H
 
   const show = hovered || pinned;
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
     setPinned((p) => !p);
   }, []);
 
@@ -39,11 +39,10 @@ export default function HoverPreviewCard({ trigger, preview, className = "" }: H
   return (
     <div
       ref={wrapperRef}
-      className={`dashboard-hover-trigger ${className}`}
+      className={`dashboard-preview-trigger ${className}`}
       onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseLeave={() => { if (!pinned) setHovered(false); }}
       onClick={handleClick}
-      style={{ position: "relative", cursor: "pointer" }}
     >
       {trigger}
       {show && (
@@ -52,7 +51,7 @@ export default function HoverPreviewCard({ trigger, preview, className = "" }: H
             <button
               type="button"
               className="dashboard-hover-preview__close"
-              onClick={(e) => { e.stopPropagation(); setPinned(false); }}
+              onClick={(e) => { e.stopPropagation(); setPinned(false); setHovered(false); }}
               aria-label="Close preview"
             >
               ✕

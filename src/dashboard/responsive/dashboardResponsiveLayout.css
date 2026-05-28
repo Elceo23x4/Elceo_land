@@ -195,62 +195,59 @@
   display: none !important;
 }
 
-/* ─── Night Sky Star Twinkle Animation (R5C) ─── */
+/* ─── Night Sky Star Twinkle Animation (R5D fix) ─── */
 @keyframes dashboardStarTwinkleSlow {
   0%, 100% {
-    opacity: 0.55;
-    filter: brightness(0.9);
+    opacity: 0.45;
+    filter: brightness(0.85);
   }
   45% {
     opacity: 1;
-    filter: brightness(1.45);
+    filter: brightness(1.75);
   }
   70% {
-    opacity: 0.72;
-    filter: brightness(1.05);
+    opacity: 0.68;
+    filter: brightness(1.1);
   }
 }
 
-.dashboard-precision-bg-sky svg use {
-  animation-name: dashboardStarTwinkleSlow;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
+.dashboard-precision-bg-sky svg use,
+.dashboard-precision-bg-sky svg circle,
+.dashboard-precision-bg-sky svg [id*="star"] {
+  animation: dashboardStarTwinkleSlow 8s ease-in-out infinite;
+  animation-delay: 0.3s;
 }
 
-.dashboard-precision-bg-sky svg use:nth-of-type(3n) {
+.dashboard-precision-bg-sky svg use:nth-child(3n) {
   animation-duration: 7.5s;
   animation-delay: 0s;
 }
 
-.dashboard-precision-bg-sky svg use:nth-of-type(4n) {
-  animation-duration: 9s;
-  animation-delay: 1.2s;
+.dashboard-precision-bg-sky svg use:nth-child(4n+1) {
+  animation-duration: 9.2s;
+  animation-delay: 1.4s;
 }
 
-.dashboard-precision-bg-sky svg use:nth-of-type(5n) {
+.dashboard-precision-bg-sky svg use:nth-child(5n+2) {
   animation-duration: 11s;
   animation-delay: 2.8s;
 }
 
-.dashboard-precision-bg-sky svg use:nth-of-type(7n) {
-  animation-duration: 13s;
-  animation-delay: 4.5s;
+.dashboard-precision-bg-sky svg use:nth-child(7n+3) {
+  animation-duration: 13.5s;
+  animation-delay: 4.2s;
 }
 
-.dashboard-precision-bg-sky svg use:nth-of-type(11n) {
+.dashboard-precision-bg-sky svg use:nth-child(11n+5) {
   animation-duration: 15s;
   animation-delay: 0.7s;
 }
 
-/* Default duration for non-matched stars */
-.dashboard-precision-bg-sky svg use {
-  animation-duration: 8s;
-  animation-delay: 0.3s;
-}
-
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .dashboard-precision-bg-sky svg use {
+  .dashboard-precision-bg-sky svg use,
+  .dashboard-precision-bg-sky svg circle,
+  .dashboard-precision-bg-sky svg [id*="star"] {
     animation: none !important;
   }
 }
