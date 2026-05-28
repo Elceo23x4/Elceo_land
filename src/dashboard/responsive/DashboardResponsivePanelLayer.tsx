@@ -331,19 +331,30 @@ export default function DashboardResponsivePanelLayer() {
               </div>
             )}
             {newsSection === 1 && (
-              <SlideStripWrapper>
+              <div className="dashboard-events-flow">
                 {macroEvents.map((ev) => (
                   <HoverPreviewCard
                     key={ev.label}
+                    className={`dashboard-event-node dashboard-event-node--${ev.impact}`}
                     trigger={
-                      <div style={{ minWidth: "120px", padding: "2px 0" }}>
-                        <DataRow label={ev.label} value={ev.time} tone={ev.impact === "high" ? "warning" : "neutral"} />
+                      <div className="dashboard-event-node__content">
+                        <span className="dashboard-precision-metadata">{ev.time}</span>
+                        <span className="dashboard-precision-body-text" style={{ margin: 0 }}>{ev.label}</span>
+                        <div style={{ display: "flex", gap: "4px", alignItems: "center", flexWrap: "wrap" }}>
+                          <Chip value={ev.impact} tone={ev.impact === "high" ? "negative" : ev.impact === "medium" ? "positive" : "warning"} />
+                          <Chip value={ev.status} tone="neutral" />
+                        </div>
                       </div>
                     }
-                    preview={<p className="dashboard-precision-body-text">{ev.label} — {ev.status}. Impact: {ev.impact}</p>}
+                    preview={
+                      <div>
+                        <p className="dashboard-precision-body-text">{ev.label} — {ev.status}</p>
+                        <p className="dashboard-precision-note">Impact: {ev.impact}. Scheduled macro catalyst — monitor for deviation from consensus.</p>
+                      </div>
+                    }
                   />
                 ))}
-              </SlideStripWrapper>
+              </div>
             )}
             {newsSection === 2 && (
               <div className="dashboard-compare-split">

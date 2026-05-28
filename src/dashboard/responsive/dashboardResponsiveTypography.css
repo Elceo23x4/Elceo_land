@@ -540,6 +540,66 @@
 .dashboard-precision-chip--impact-medium { color: #5cba6e; background: rgba(92, 186, 110, 0.08); border: 1px solid rgba(92, 186, 110, 0.2); }
 .dashboard-precision-chip--impact-low { color: #d4a853; background: rgba(212, 168, 83, 0.08); border: 1px solid rgba(212, 168, 83, 0.2); }
 
+/* ─── Events Flow Timeline (R5F) ─── */
+.dashboard-events-flow {
+  position: relative;
+  display: grid;
+  gap: clamp(8px, 0.8vw, 14px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: clamp(14px, 1.2vw, 20px);
+}
+
+/* Vertical linking rail */
+.dashboard-events-flow::before {
+  content: "";
+  position: absolute;
+  left: clamp(5px, 0.5vw, 9px);
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 191, 74, 0.45), rgba(255, 106, 0, 0.28), transparent);
+  pointer-events: none;
+}
+
+.dashboard-event-node {
+  position: relative;
+  padding-left: clamp(10px, 0.8vw, 16px);
+}
+
+/* Node dot — colored by impact */
+.dashboard-event-node::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 0.65em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #8a8178;
+}
+
+.dashboard-event-node--high::before {
+  background: #e05555;
+  box-shadow: 0 0 8px rgba(224, 85, 85, 0.45);
+}
+
+.dashboard-event-node--medium::before {
+  background: #5cba6e;
+  box-shadow: 0 0 8px rgba(92, 186, 110, 0.45);
+}
+
+.dashboard-event-node--low::before {
+  background: #d4a853;
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.45);
+}
+
+.dashboard-event-node__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1px, 0.15vw, 3px);
+}
+
 /* ─── Custom Flat Modern Scrollbars (R5D) ─── */
 .dashboard-panel-scroll-y,
 .dashboard-panel-scroll-x,
@@ -647,15 +707,17 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   PRECISION PANEL GROUP — Unified panel expansion system
+   PRECISION PANEL GROUP — Rect-based expansion system
+   No transform: scale(). Panel grows via left/top/width/height transition.
+   Text stays at natural size (capped at 1.15x via CSS variable).
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-panel-group {
   position: absolute;
   container-type: inline-size;
   z-index: 12;
-  transition: transform 220ms ease, filter 220ms ease, z-index 0ms;
-  will-change: transform;
+  --dashboard-expanded-text-scale: 1;
+  transition: left 260ms ease, top 260ms ease, width 260ms ease, height 260ms ease, filter 260ms ease, z-index 0ms;
 }
 
 .dashboard-panel-group__frame {
@@ -715,7 +777,7 @@
   box-sizing: border-box;
 }
 
-/* Expand button — inside panel, top-right */
+/* Expand button — inside panel, top-right, fixed size */
 .dashboard-panel-group__expand-btn {
   position: absolute;
   top: clamp(6px, 1.2%, 12px);
@@ -724,45 +786,22 @@
   pointer-events: auto;
 }
 
-/* ─── Panel Expansion — scale(2) with per-panel transform origins ─── */
+/* ─── Panel Expansion — rect-based (no transform scale) ─── */
 .dashboard-panel-group.is-expanded {
   z-index: 160;
-  transform: scale(2);
-  filter: drop-shadow(0 24px 80px rgba(0, 0, 0, 0.55));
+  --dashboard-expanded-text-scale: 1.15;
+  filter: drop-shadow(0 20px 64px rgba(0, 0, 0, 0.5));
 }
 
-/* Per-panel transform origins */
-.dashboard-panel-group--directionalBiasSummary { transform-origin: top left; }
-.dashboard-panel-group--confidenceContextMatrix { transform-origin: top left; }
-.dashboard-panel-group--watchlist { transform-origin: bottom left; }
-.dashboard-panel-group--evidenceStackReasoningEngine { transform-origin: top right; }
-.dashboard-panel-group--newsMacroIntelligence { transform-origin: top right; }
-.dashboard-panel-group--coachingInsights { transform-origin: bottom left; }
-.dashboard-panel-group--marketRegimeCrossAssetPulse { transform-origin: bottom right; }
-
-/* Per-panel translate corrections for off-screen prevention */
-.dashboard-panel-group--evidenceStackReasoningEngine.is-expanded {
-  transform: translateX(-45%) scale(2);
-}
-
-.dashboard-panel-group--newsMacroIntelligence.is-expanded {
-  transform: translateX(-45%) scale(2);
-}
-
-.dashboard-panel-group--marketRegimeCrossAssetPulse.is-expanded {
-  transform: translateX(-35%) translateY(-20%) scale(2);
-}
-
-.dashboard-panel-group--coachingInsights.is-expanded {
-  transform: translateY(-25%) scale(2);
-}
-
-.dashboard-panel-group--watchlist.is-expanded {
-  transform: translateY(-15%) scale(2);
+/* Expanded text scale — applies subtle 1.15x to body text only */
+.dashboard-panel-group.is-expanded .dashboard-precision-body-text,
+.dashboard-panel-group.is-expanded .dashboard-precision-data-row,
+.dashboard-panel-group.is-expanded .dashboard-precision-note {
+  font-size: calc(1em * var(--dashboard-expanded-text-scale, 1));
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   TWINKLE STAR LAYER
+   TWINKLE STAR LAYER — GSAP-driven (CSS animation removed)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-twinkle-star-layer {
@@ -776,40 +815,14 @@
 .dashboard-twinkle-star {
   position: absolute;
   border-radius: 999px;
-  opacity: 0.55;
+  opacity: 0.35;
   background: rgba(220, 224, 230, 0.9);
   box-shadow: 0 0 6px rgba(220, 224, 230, 0.45);
-  animation: dashboardTwinkleStar var(--twinkle-duration, 10s) ease-in-out infinite;
-  animation-delay: var(--twinkle-delay, 0s);
 }
 
 .dashboard-twinkle-star--orange {
   background: rgba(255, 176, 86, 0.9);
   box-shadow: 0 0 7px rgba(255, 128, 32, 0.45);
-}
-
-@keyframes dashboardTwinkleStar {
-  0%, 100% {
-    opacity: 0.25;
-    transform: scale(0.82);
-    filter: brightness(0.8);
-  }
-  42% {
-    opacity: 1;
-    transform: scale(1.22);
-    filter: brightness(1.7);
-  }
-  70% {
-    opacity: 0.52;
-    transform: scale(1);
-    filter: brightness(1.05);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-twinkle-star {
-    animation: none !important;
-  }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
