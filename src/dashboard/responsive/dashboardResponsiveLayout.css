@@ -59,18 +59,11 @@
 
 .dashboard-precision-bg-map {
   z-index: 1;
-  opacity: 0.72;
+  opacity: 0.38;
 }
 
 .dashboard-precision-bg-map svg {
-  filter: grayscale(1) brightness(1.8) contrast(1.18);
-  mix-blend-mode: screen;
-}
-
-.dashboard-precision-bg-map svg circle,
-.dashboard-precision-bg-map svg path,
-.dashboard-precision-bg-map svg [fill] {
-  fill: rgba(185, 188, 186, 0.72) !important;
+  filter: grayscale(0.8) brightness(1.2) contrast(1.1);
 }
 
 /* ─── Wheel ─── */
@@ -85,24 +78,32 @@
   display: block;
 }
 
-/* ─── Chart Glass — Realistic Transparent Acrylic ─── */
+/* ─── Chart Glass — Black Transparent Acrylic ─── */
 .dashboard-precision-chart-glass {
   position: absolute;
   pointer-events: none;
   background:
-    linear-gradient(125deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.045) 20%, rgba(255,255,255,0.015) 52%, rgba(255,255,255,0.09) 100%),
-    linear-gradient(180deg, rgba(255,180,90,0.035), rgba(20,255,180,0.025)),
-    rgba(5, 10, 9, 0.18);
-  border: 1px solid rgba(255, 220, 170, 0.18);
-  outline: 1px solid rgba(255, 106, 0, 0.08);
-  backdrop-filter: blur(14px) saturate(1.35) contrast(1.08);
-  -webkit-backdrop-filter: blur(14px) saturate(1.35) contrast(1.08);
+    linear-gradient(125deg,
+      rgba(255,255,255,0.12) 0%,
+      rgba(255,255,255,0.035) 18%,
+      rgba(0,0,0,0.12) 48%,
+      rgba(255,255,255,0.055) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.46),
+      rgba(0,0,0,0.28)
+    ),
+    rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 210, 150, 0.14);
+  outline: 1px solid rgba(255, 106, 0, 0.07);
+  backdrop-filter: blur(15px) saturate(1.24) contrast(1.08);
+  -webkit-backdrop-filter: blur(15px) saturate(1.24) contrast(1.08);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.22),
-    inset 0 -1px 0 rgba(255,106,0,0.12),
-    inset 18px 0 34px rgba(255,255,255,0.035),
-    inset -22px 0 42px rgba(0,255,170,0.03),
-    0 20px 70px rgba(0,0,0,0.35);
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(255,106,0,0.10),
+    inset 20px 0 42px rgba(255,255,255,0.025),
+    inset -24px 0 52px rgba(0,0,0,0.22),
+    0 18px 64px rgba(0,0,0,0.42);
   overflow: hidden;
 }
 
@@ -111,9 +112,9 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(108deg, transparent 0%, rgba(255,255,255,0.18) 12%, transparent 26%),
-    linear-gradient(250deg, transparent 0%, rgba(255,255,255,0.08) 18%, transparent 40%);
-  opacity: 0.42;
+    linear-gradient(108deg, transparent 0%, rgba(255,255,255,0.12) 12%, transparent 26%),
+    linear-gradient(250deg, transparent 0%, rgba(255,255,255,0.06) 18%, transparent 40%);
+  opacity: 0.35;
   mix-blend-mode: screen;
 }
 
@@ -121,10 +122,10 @@
   content: "";
   position: absolute;
   inset: 1px;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.06);
   box-shadow:
-    inset 0 0 32px rgba(255,255,255,0.035),
-    inset 0 0 60px rgba(255,106,0,0.035);
+    inset 0 0 28px rgba(0,0,0,0.18),
+    inset 0 0 52px rgba(255,106,0,0.025);
 }
 
 /* ─── Chart Frame ─── */
