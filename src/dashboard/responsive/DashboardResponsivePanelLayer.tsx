@@ -2,9 +2,11 @@
  * DashboardResponsivePanelLayer.tsx
  *
  * Renders all 7 dashboard panels at exact board-reference coordinates.
- * Premium content with section nav, chips, meters, action bars.
+ * R5B: Full section switching, hover previews, enriched drawer content,
+ * slide strips with edge fades, premium readability.
+ *
  * All content inside existing header/body content blocks.
- * No coordinate changes. No live data.
+ * No coordinate changes. No live data. No unsafe wording.
  */
 
 import { useState, useCallback } from "react";
@@ -34,49 +36,28 @@ import {
   regimeFixture,
   regimeStrip,
 } from "./responsivePanelFixtures";
-import type { Tone } from "./responsivePanelFixtures";
+import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
+import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
+import type { ReactNode } from "react";
 
-/* ─── Shared Micro Components ─── */
+/* ─── Drawer Content Templates ─── */
 
-function Chip({ value, tone }: { value: string; tone: Tone }) {
-  return <span className={`dashboard-precision-chip dashboard-precision-chip--${tone}`}>{value}</span>;
-}
-
-function DataRow({ label, value, tone }: { label: string; value: string; tone?: Tone }) {
-  const color = tone === "positive" ? "#5cba6e" : tone === "negative" ? "#e05555" : tone === "warning" ? "#d4a853" : "#8a8178";
+function DrawerSection({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <div className="dashboard-precision-data-row">
-      <span className="dashboard-precision-data-label">{label}</span>
-      <span style={{ color }}>{value}</span>
+    <div style={{ marginBottom: "12px" }}>
+      <p className="dashboard-precision-data-label" style={{ marginBottom: "4px" }}>{title}</p>
+      {children}
     </div>
   );
 }
 
-function MiniMeter({ score, tone }: { score: number; tone: Tone }) {
+function DrawerActions() {
   return (
-    <div className="dashboard-mini-meter">
-      <div className={`dashboard-mini-meter__fill dashboard-mini-meter__fill--${tone}`} style={{ width: `${score}%` }} />
-    </div>
-  );
-}
-
-function SectionNav({ items, active, onSelect }: { items: string[]; active: number; onSelect: (i: number) => void }) {
-  return (
-    <div className="dashboard-section-nav">
-      {items.map((item, i) => (
-        <span key={item} className={`dashboard-section-nav__item${i === active ? " dashboard-section-nav__item--active" : ""}`} onClick={() => onSelect(i)}>{item}</span>
-      ))}
-    </div>
-  );
-}
-
-function ActionBar({ onExpand }: { onExpand?: () => void }) {
-  return (
-    <div className="dashboard-panel-action-bar">
-      <button type="button" className="dashboard-panel-action-btn" onClick={onExpand}>Expand</button>
-      <button type="button" className="dashboard-panel-action-btn">Evidence</button>
-      <button type="button" className="dashboard-panel-action-btn">Journal</button>
+    <div className="dashboard-panel-action-bar" style={{ marginTop: "14px" }}>
+      <button type="button" className="dashboard-panel-action-btn">Add to Journal</button>
+      <button type="button" className="dashboard-panel-action-btn">Open Evidence</button>
+      <button type="button" className="dashboard-panel-action-btn">Save View</button>
     </div>
   );
 }
@@ -87,21 +68,23 @@ export default function DashboardResponsivePanelLayer() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
-  const [drawerContent, setDrawerContent] = useState<string>("");
+  const [drawerPanel, setDrawerPanel] = useState("");
 
-  const openDrawer = useCallback((eyebrow: string, title: string, content: string) => {
+  const openDrawer = useCallback((eyebrow: string, title: string, panel: string) => {
     setDrawerEyebrow(eyebrow);
     setDrawerTitle(title);
-    setDrawerContent(content);
+    setDrawerPanel(panel);
     setDrawerOpen(true);
   }, []);
 
-  // Section nav state (visual fixture)
+  // Section nav state
   const [biasSection, setBiasSection] = useState(0);
   const [confSection, setConfSection] = useState(0);
   const [watchSection, setWatchSection] = useState(0);
   const [evidSection, setEvidSection] = useState(0);
   const [newsSection, setNewsSection] = useState(0);
+  const [coachSection, setCoachSection] = useState(0);
+  const [regimeSection, setRegimeSection] = useState(0);
 
   return (
     <>
@@ -121,21 +104,28 @@ export default function DashboardResponsivePanelLayer() {
             <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
               <Chip value={biasFixture.strength} tone={biasFixture.strengthTone} />
               <Chip value={biasFixture.condition} tone={biasFixture.conditionTone} />
-              <Chip value={biasFixture.status} tone="pending" />
+              <StatusLabel label={biasFixture.status} />
             </div>
             <p className="dashboard-precision-body-text">{biasFixture.headline}</p>
+            <p className="dashboard-precision-note">{biasFixture.watchCondition}</p>
           </>
         )}
         {biasSection === 1 && biasFixture.drivers.map((d) => (
-          <DataRow key={d.label} label={d.label} value={d.summary} tone={d.tone} />
+          <HoverPreviewCard
+            key={d.label}
+            trigger={<DataRow label={d.label} value={d.summary} tone={d.tone} />}
+            preview={<><p className="dashboard-precision-body-text">{d.summary}</p><Chip value={`Freshness: ${d.freshness}`} tone={d.freshness === "Current" ? "positive" : "warning"} /></>}
+          />
         ))}
         {biasSection === 2 && (
           <>
-            <p className="dashboard-precision-note">{biasFixture.watchCondition}</p>
-            <p className="dashboard-precision-note">{biasFixture.invalidation}</p>
+            <p className="dashboard-precision-body-text">{biasFixture.watchCondition}</p>
+            <p className="dashboard-precision-body-text">{biasFixture.invalidation}</p>
+            <DataRow label="Contradiction" value="Macro tension unresolved" tone="warning" />
+            <p className="dashboard-precision-note">Review next session for structural confirmation.</p>
           </>
         )}
-        <ActionBar onExpand={() => openDrawer("Reasoning", "Directional Bias Detail", biasFixture.watchCondition + " " + biasFixture.invalidation)} />
+        <ActionBar onExpand={() => openDrawer("Reasoning", "Directional Bias Detail", "bias")} />
       </div>
 
       {/* ═══ CONFIDENCE & CONTEXT ═══ */}
@@ -149,25 +139,33 @@ export default function DashboardResponsivePanelLayer() {
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.confidenceContextMatrix.body)}>
         <SectionNav items={["Matrix", "Conflicts", "Quality"]} active={confSection} onSelect={setConfSection} />
         {confSection === 0 && confidenceFixture.metrics.map((m) => (
-          <div key={m.label}>
-            <DataRow label={m.label} value={m.value} tone={m.tone} />
-            <MiniMeter score={m.score} tone={m.tone} />
-          </div>
+          <HoverPreviewCard
+            key={m.label}
+            trigger={<><DataRow label={m.label} value={m.value} tone={m.tone} /><MiniMeter score={m.score} tone={m.tone} /></>}
+            preview={<p className="dashboard-precision-body-text">{m.label} score: {m.score}% — {m.tone === "warning" ? "Caution zone" : "Within range"}</p>}
+          />
         ))}
-        {confSection === 1 && confidenceFixture.conflicts.map((c) => (
-          <div key={c.label} style={{ marginBottom: "4px" }}>
-            <span className="dashboard-precision-data-label">{c.label}</span>
-            <p className="dashboard-precision-note" style={{ margin: "1px 0" }}>{c.detail}</p>
-          </div>
-        ))}
+        {confSection === 1 && (
+          <>
+            {confidenceFixture.conflicts.map((c) => (
+              <div key={c.label} style={{ marginBottom: "6px" }}>
+                <DataRow label={c.label} value="Active" tone="warning" />
+                <p className="dashboard-precision-body-text" style={{ marginTop: "2px" }}>{c.detail}</p>
+              </div>
+            ))}
+            <p className="dashboard-precision-note">Contradictions reduce effective confidence by ~15%.</p>
+          </>
+        )}
         {confSection === 2 && (
           <>
             <DataRow label="Data quality" value={`${confidenceFixture.dataQuality}%`} tone="neutral" />
             <MiniMeter score={confidenceFixture.dataQuality} tone="neutral" />
+            <DataRow label="Source coverage" value="3 of 5 active" tone="warning" />
+            <DataRow label="Staleness risk" value="Low-moderate" tone="neutral" />
             <p className="dashboard-precision-note">{confidenceFixture.summary}</p>
           </>
         )}
-        <ActionBar onExpand={() => openDrawer("Matrix", "Confidence Decomposition", confidenceFixture.summary)} />
+        <ActionBar onExpand={() => openDrawer("Matrix", "Confidence Decomposition", "confidence")} />
       </div>
 
       {/* ═══ WATCHLIST ═══ */}
@@ -180,12 +178,28 @@ export default function DashboardResponsivePanelLayer() {
       </div>
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.watchlist.body)}>
         <SectionNav items={["Assets", "Alerts", "Bias"]} active={watchSection} onSelect={setWatchSection} />
-        {watchlistFixture.map((a) => (
-          <div key={a.ticker} className="dashboard-precision-data-row">
-            <span className="dashboard-precision-data-label" style={{ minWidth: "24px" }}>{a.ticker}</span>
-            <span style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", fontSize: "inherit" }}>{a.change}</span>
-            <Chip value={a.bias} tone={a.biasTone} />
-          </div>
+        {watchSection === 0 && watchlistFixture.map((a) => (
+          <HoverPreviewCard
+            key={a.ticker}
+            trigger={
+              <div className="dashboard-precision-data-row">
+                <span className="dashboard-precision-data-label" style={{ minWidth: "28px" }}>{a.ticker}</span>
+                <span style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178" }}>{a.change}</span>
+                <Chip value={a.bias} tone={a.biasTone} />
+              </div>
+            }
+            preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} /></>}
+          />
+        ))}
+        {watchSection === 1 && (
+          <SlideStripWrapper>
+            <Chip value="ES: Structure watch" tone="warning" />
+            <Chip value="NQ: Momentum active" tone="positive" />
+            <Chip value="GC: Pending review" tone="pending" />
+          </SlideStripWrapper>
+        )}
+        {watchSection === 2 && watchlistFixture.map((a) => (
+          <DataRow key={a.ticker} label={a.ticker} value={`${a.bias} (${a.confidence})`} tone={a.biasTone} />
         ))}
       </div>
 
@@ -202,13 +216,14 @@ export default function DashboardResponsivePanelLayer() {
         {evidSection === 0 && (
           <>
             {evidenceFixture.map((e) => (
-              <div key={e.label}>
-                <DataRow label={e.label} value={e.value} tone={e.tone} />
-                <MiniMeter score={e.score} tone={e.tone} />
-              </div>
+              <HoverPreviewCard
+                key={e.label}
+                trigger={<><DataRow label={e.label} value={e.value} tone={e.tone} /><MiniMeter score={e.score} tone={e.tone} /></>}
+                preview={<><p className="dashboard-precision-body-text">{e.category}: {e.label} — Score {e.score}%</p><Chip value={`Freshness: ${e.freshness}`} tone={e.freshness === "Current" ? "positive" : "warning"} /></>}
+              />
             ))}
-            <div style={{ marginTop: "6px" }}>
-              <DataRow label="Conviction" value={`${evidenceConviction}%`} tone="positive" />
+            <div style={{ marginTop: "6px", borderTop: "1px solid rgba(138,129,120,0.1)", paddingTop: "4px" }}>
+              <DataRow label="Aggregate conviction" value={`${evidenceConviction}%`} tone="positive" />
               <MiniMeter score={evidenceConviction} tone="positive" />
             </div>
           </>
@@ -217,9 +232,14 @@ export default function DashboardResponsivePanelLayer() {
           <DataRow key={e.label} label={`${e.category}: ${e.label}`} value={`${e.score}%`} tone={e.tone} />
         ))}
         {evidSection === 2 && (
-          <p className="dashboard-precision-note">Macro context contradicts momentum. Sentiment cautious despite structure confirmation.</p>
+          <>
+            <DataRow label="Macro vs momentum" value="Contradicting" tone="warning" />
+            <p className="dashboard-precision-body-text">Macro context contradicts momentum. Sentiment cautious despite structure confirmation.</p>
+            <DataRow label="Sentiment vs breadth" value="Diverging" tone="warning" />
+            <p className="dashboard-precision-note">Review contradictions before committing to directional bias.</p>
+          </>
         )}
-        <ActionBar onExpand={() => openDrawer("Evidence", "Full Evidence Chain", "Macro context contradicts momentum. Sentiment cautious despite structure confirmation. Review before commitment.")} />
+        <ActionBar onExpand={() => openDrawer("Evidence", "Full Evidence Chain", "evidence")} />
       </div>
 
       {/* ═══ NEWS & MACRO ═══ */}
@@ -233,24 +253,45 @@ export default function DashboardResponsivePanelLayer() {
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.newsMacroIntelligence.body)}>
         <SectionNav items={["Headlines", "Events", "Compare"]} active={newsSection} onSelect={setNewsSection} />
         {newsSection === 0 && newsFixture.map((h) => (
-          <div key={h.title} className="dashboard-precision-data-row">
-            <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
-            <Chip value={h.impact} tone={h.tone} />
-          </div>
+          <HoverPreviewCard
+            key={h.title}
+            trigger={
+              <div className="dashboard-precision-data-row">
+                <span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span>
+                <Chip value={h.impact} tone={h.tone} />
+              </div>
+            }
+            preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "warning" : "neutral"} /></>}
+          />
         ))}
-        {newsSection === 1 && macroEvents.map((ev) => (
-          <div key={ev.label} className="dashboard-precision-data-row">
-            <span className="dashboard-precision-data-label">{ev.label}</span>
-            <span style={{ color: ev.impact === "high" ? "#d4a853" : "#8a8178" }}>{ev.time}</span>
-          </div>
-        ))}
+        {newsSection === 1 && (
+          <SlideStripWrapper>
+            {macroEvents.map((ev) => (
+              <HoverPreviewCard
+                key={ev.label}
+                trigger={
+                  <div style={{ minWidth: "120px", padding: "2px 0" }}>
+                    <DataRow label={ev.label} value={ev.time} tone={ev.impact === "high" ? "warning" : "neutral"} />
+                  </div>
+                }
+                preview={<p className="dashboard-precision-body-text">{ev.label} — {ev.status}. Impact: {ev.impact}</p>}
+              />
+            ))}
+          </SlideStripWrapper>
+        )}
         {newsSection === 2 && (
           <div className="dashboard-compare-split">
-            <div><DataRow label="USD" value="Soft" tone="warning" /></div>
-            <div><DataRow label="Gold" value="Bid" tone="positive" /></div>
+            <div>
+              <DataRow label="USD Index" value="Soft" tone="warning" />
+              <DataRow label="EUR/USD" value="Firm" tone="positive" />
+            </div>
+            <div>
+              <DataRow label="Gold" value="Bid" tone="positive" />
+              <DataRow label="Yields" value="Flat" tone="neutral" />
+            </div>
           </div>
         )}
-        <Chip value="Provider Pending" tone="pending" />
+        <StatusLabel label="Provider Pending" />
       </div>
 
       {/* ═══ COACHING INSIGHTS ═══ */}
@@ -262,13 +303,36 @@ export default function DashboardResponsivePanelLayer() {
         <h3 className="dashboard-precision-title">Coaching Insights</h3>
       </div>
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.coachingInsights.body)}>
-        <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{coachingFixture.headline}</p>
-        <div className="dashboard-panel-scroll-x dashboard-slide-strip" style={{ margin: "4px 0" }}>
-          {coachingFixture.tiles.map((t) => (
-            <Chip key={t.label} value={`${t.label}: ${t.message}`} tone={t.tone} />
-          ))}
-        </div>
-        <ActionBar onExpand={() => openDrawer("Coaching", "Coaching Rationale", coachingFixture.body)} />
+        <SectionNav items={["Focus", "Discipline", "Journal"]} active={coachSection} onSelect={setCoachSection} />
+        {coachSection === 0 && (
+          <>
+            <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{coachingFixture.headline}</p>
+            <p className="dashboard-precision-body-text">{coachingFixture.body}</p>
+          </>
+        )}
+        {coachSection === 1 && (
+          <SlideStripWrapper>
+            {coachingFixture.tiles.map((t) => (
+              <HoverPreviewCard
+                key={t.label}
+                trigger={<Chip value={`${t.label}: ${t.message}`} tone={t.tone} />}
+                preview={<p className="dashboard-precision-body-text">{t.label} — {t.message}</p>}
+              />
+            ))}
+          </SlideStripWrapper>
+        )}
+        {coachSection === 2 && (
+          <>
+            {coachingFixture.checklist.map((item) => (
+              <div key={item} className="dashboard-precision-data-row">
+                <span className="dashboard-precision-data-label">☐</span>
+                <span className="dashboard-precision-body-text" style={{ margin: 0 }}>{item}</span>
+              </div>
+            ))}
+            <ActionBar onExpand={() => openDrawer("Coaching", "Journal Prompt", "coaching")} actions={["Add to Journal", "Save View"]} />
+          </>
+        )}
+        {coachSection !== 2 && <ActionBar onExpand={() => openDrawer("Coaching", "Coaching Rationale", "coaching")} />}
       </div>
 
       {/* ═══ MARKET REGIME ═══ */}
@@ -280,26 +344,118 @@ export default function DashboardResponsivePanelLayer() {
         <h3 className="dashboard-precision-title">Market Regime</h3>
       </div>
       <div className="dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y" style={boardRectStyle(PANEL_CONTENT_RECTS.marketRegimeCrossAssetPulse.body)}>
-        <div className="dashboard-panel-scroll-x dashboard-slide-strip">
-          {regimeFixture.map((r) => (
-            <div key={r.asset} style={{ minWidth: "80px" }}>
-              <DataRow label={r.asset} value={r.direction} tone={r.tone} />
-              <MiniMeter score={r.strength} tone={r.tone} />
-            </div>
-          ))}
-        </div>
-        <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", marginTop: "4px" }}>
-          {regimeStrip.map((s) => <Chip key={s.label} value={`${s.label}: ${s.value}`} tone={s.tone} />)}
-        </div>
+        <SectionNav items={["Pulse", "Correlation", "Liquidity"]} active={regimeSection} onSelect={setRegimeSection} />
+        {regimeSection === 0 && (
+          <SlideStripWrapper>
+            {regimeFixture.map((r) => (
+              <HoverPreviewCard
+                key={r.asset}
+                trigger={
+                  <div style={{ minWidth: "90px" }}>
+                    <DataRow label={r.asset} value={r.direction} tone={r.tone} />
+                    <MiniMeter score={r.strength} tone={r.tone} />
+                  </div>
+                }
+                preview={<p className="dashboard-precision-body-text">{r.asset}: {r.direction} — Strength {r.strength}%</p>}
+              />
+            ))}
+          </SlideStripWrapper>
+        )}
+        {regimeSection === 1 && (
+          <>
+            {regimeStrip.map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
+            <p className="dashboard-precision-note">Cross-asset correlation elevated — diversification benefit reduced.</p>
+          </>
+        )}
+        {regimeSection === 2 && (
+          <>
+            <DataRow label="Liquidity" value="Adequate" tone="positive" />
+            <DataRow label="Spread environment" value="Normal" tone="neutral" />
+            <DataRow label="Volatility regime" value="Moderate" tone="neutral" />
+            <p className="dashboard-precision-note">Liquidity conditions support normal position sizing assumptions.</p>
+          </>
+        )}
       </div>
 
       {/* ═══ DETAIL DRAWER ═══ */}
       <DashboardResponsiveDetailDrawer open={drawerOpen} title={drawerTitle} eyebrow={drawerEyebrow} onClose={() => setDrawerOpen(false)}>
-        <p className="dashboard-precision-body-text">{drawerContent}</p>
-        <div style={{ marginTop: "12px" }}>
-          <Chip value="Fixture Mode" tone="pending" />
-          <p className="dashboard-precision-note" style={{ marginTop: "8px" }}>This is fixture reasoning content. No provider connection is active.</p>
-        </div>
+        {drawerPanel === "bias" && (
+          <>
+            <DrawerSection title="Bias Snapshot">
+              <DataRow label="Direction" value={biasFixture.direction} tone="positive" />
+              <DataRow label="Strength" value={biasFixture.strength} tone={biasFixture.strengthTone} />
+              <DataRow label="Condition" value={biasFixture.condition} tone={biasFixture.conditionTone} />
+            </DrawerSection>
+            <DrawerSection title="Driver Weighting">
+              {biasFixture.drivers.map((d) => <DataRow key={d.label} label={d.label} value={d.freshness} tone={d.tone} />)}
+            </DrawerSection>
+            <DrawerSection title="Conditions to Watch">
+              <p className="dashboard-precision-body-text">{biasFixture.watchCondition}</p>
+              <p className="dashboard-precision-body-text">{biasFixture.invalidation}</p>
+            </DrawerSection>
+            <DrawerSection title="Contradiction Notes">
+              <p className="dashboard-precision-note">Macro tension unresolved. Momentum supports upside but broader context mixed.</p>
+            </DrawerSection>
+          </>
+        )}
+        {drawerPanel === "confidence" && (
+          <>
+            <DrawerSection title="Confidence Decomposition">
+              {confidenceFixture.metrics.map((m) => <><DataRow key={m.label} label={m.label} value={`${m.score}%`} tone={m.tone} /><MiniMeter score={m.score} tone={m.tone} /></>)}
+            </DrawerSection>
+            <DrawerSection title="Freshness">
+              <DataRow label="Review window" value="Active" tone="positive" />
+              <DataRow label="Staleness risk" value="Low-moderate" tone="neutral" />
+            </DrawerSection>
+            <DrawerSection title="Contradiction">
+              {confidenceFixture.conflicts.map((c) => <p key={c.label} className="dashboard-precision-body-text">{c.label}: {c.detail}</p>)}
+            </DrawerSection>
+            <DrawerSection title="Data Quality">
+              <DataRow label="Quality score" value={`${confidenceFixture.dataQuality}%`} tone="neutral" />
+              <p className="dashboard-precision-note">3 of 5 sources active in fixture mode.</p>
+            </DrawerSection>
+          </>
+        )}
+        {drawerPanel === "evidence" && (
+          <>
+            <DrawerSection title="Evidence Hierarchy">
+              {evidenceFixture.map((e) => <DataRow key={e.label} label={`${e.category}: ${e.label}`} value={`${e.score}%`} tone={e.tone} />)}
+            </DrawerSection>
+            <DrawerSection title="Weighted Drivers">
+              <DataRow label="Aggregate conviction" value={`${evidenceConviction}%`} tone="positive" />
+              <MiniMeter score={evidenceConviction} tone="positive" />
+            </DrawerSection>
+            <DrawerSection title="Contradictions">
+              <p className="dashboard-precision-body-text">Macro context contradicts momentum. Sentiment cautious despite structure confirmation.</p>
+            </DrawerSection>
+            <DrawerSection title="Provider Status">
+              <StatusLabel label="Provider Pending — Fixture Mode" />
+              <p className="dashboard-precision-note">Evidence based on fixture reasoning data only.</p>
+            </DrawerSection>
+          </>
+        )}
+        {drawerPanel === "coaching" && (
+          <>
+            <DrawerSection title="Discipline Rationale">
+              <p className="dashboard-precision-body-text">{coachingFixture.body}</p>
+            </DrawerSection>
+            <DrawerSection title="Scenario Checklist">
+              {coachingFixture.checklist.map((item) => <DataRow key={item} label="☐" value={item} tone="neutral" />)}
+            </DrawerSection>
+            <DrawerSection title="Journal Prompt">
+              <p className="dashboard-precision-body-text">Document current bias reasoning, contradiction awareness, and review conditions before next session.</p>
+            </DrawerSection>
+            <DrawerSection title="Review Window">
+              <DataRow label="Next review" value="Next session open" tone="neutral" />
+              <p className="dashboard-precision-note">Reassess if structure zone breaks or macro catalyst arrives.</p>
+            </DrawerSection>
+          </>
+        )}
+        {!["bias", "confidence", "evidence", "coaching"].includes(drawerPanel) && (
+          <p className="dashboard-precision-body-text">Panel detail content for this section. Fixture mode — no provider connection active.</p>
+        )}
+        <StatusLabel label="Fixture Mode" />
+        <DrawerActions />
       </DashboardResponsiveDetailDrawer>
     </>
   );

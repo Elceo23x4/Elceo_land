@@ -20,7 +20,7 @@
 /* ─── Eyebrow ─── */
 .dashboard-precision-eyebrow {
   font-family: var(--font-mono);
-  font-size: clamp(8.5px, 0.48vw, 10.5px);
+  font-size: clamp(9px, 0.5vw, 11px);
   font-weight: 500;
   line-height: 1.3;
   text-transform: uppercase;
@@ -61,34 +61,34 @@
   margin: 0;
 }
 
-/* ─── Body Text ─── */
+/* ─── Body Text (1.3x readability increase from R5B) ─── */
 .dashboard-precision-body-text {
   font-family: var(--font-body);
-  font-size: clamp(10.5px, 0.58vw, 12.5px);
-  line-height: 1.5;
+  font-size: clamp(13.5px, 0.75vw, 16.25px);
+  line-height: 1.52;
   color: #b8afa6;
-  margin: 0 0 clamp(2px, 0.25vw, 5px) 0;
+  margin: 0 0 clamp(3px, 0.3vw, 6px) 0;
 }
 
-/* ─── Note / Italic ─── */
+/* ─── Note / Italic (moderate increase) ─── */
 .dashboard-precision-note {
   font-family: var(--font-body);
-  font-size: clamp(9.5px, 0.52vw, 11.5px);
-  line-height: 1.4;
+  font-size: clamp(11px, 0.62vw, 13.5px);
+  line-height: 1.45;
   color: #7a7370;
   font-style: italic;
   margin: clamp(3px, 0.3vw, 6px) 0 0 0;
 }
 
-/* ─── Data Row ─── */
+/* ─── Data Row (table text moderate increase) ─── */
 .dashboard-precision-data-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(2px, 0.2vw, 4px) 0;
+  padding: clamp(2px, 0.22vw, 5px) 0;
   border-bottom: 1px solid rgba(138, 129, 120, 0.08);
-  font-size: clamp(9.5px, 0.52vw, 11.5px);
-  line-height: 1.4;
+  font-size: clamp(11px, 0.62vw, 13px);
+  line-height: 1.45;
 }
 
 .dashboard-precision-data-label {
@@ -98,13 +98,13 @@
   letter-spacing: 0.04em;
 }
 
-/* ─── Chip / Badge ─── */
+/* ─── Chip / Badge (slight increase for readability) ─── */
 .dashboard-precision-chip {
   font-family: var(--font-mono);
-  font-size: clamp(8.5px, 0.46vw, 10.5px);
+  font-size: clamp(9.5px, 0.52vw, 11.5px);
   font-weight: 500;
   line-height: 1.2;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 3px;
   display: inline-flex;
   align-items: center;
@@ -364,11 +364,39 @@
   display: flex;
   gap: clamp(6px, 0.5vw, 10px);
   padding-bottom: 3px;
+  position: relative;
 }
 
 .dashboard-slide-strip > * {
   flex-shrink: 0;
   scroll-snap-align: start;
+}
+
+/* Edge fades for horizontal strips */
+.dashboard-slide-strip-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-slide-strip-wrapper::before,
+.dashboard-slide-strip-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 18px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dashboard-slide-strip-wrapper::before {
+  left: 0;
+  background: linear-gradient(90deg, rgba(3, 2, 1, 0.85), transparent);
+}
+
+.dashboard-slide-strip-wrapper::after {
+  right: 0;
+  background: linear-gradient(270deg, rgba(3, 2, 1, 0.85), transparent);
 }
 
 /* ─── Compare Split ─── */
