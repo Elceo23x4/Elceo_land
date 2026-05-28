@@ -129,12 +129,13 @@ const STARS: Star[] = [
   { cx: 46, cy: 95, r: 0.14, tone: "silver", group: 3 },
 ];
 
-// GSAP animation parameters per group (deterministic, no runtime randomness)
+// GSAP animation parameters per group — SLOW premium twinkle
+// Durations 18–34s, scale max 1.18, gentle opacity range
 const GROUP_PARAMS = [
-  { opacityTo: 1, scaleTo: 1.4, duration: 5.5, delay: 0 },
-  { opacityTo: 0.9, scaleTo: 1.3, duration: 7.2, delay: 0.8 },
-  { opacityTo: 0.85, scaleTo: 1.25, duration: 9.0, delay: 1.6 },
-  { opacityTo: 0.95, scaleTo: 1.35, duration: 11.0, delay: 2.4 },
+  { opacityTo: 0.92, scaleTo: 1.14, duration: 18, delay: 0 },
+  { opacityTo: 0.85, scaleTo: 1.10, duration: 22, delay: 3 },
+  { opacityTo: 0.88, scaleTo: 1.16, duration: 28, delay: 6 },
+  { opacityTo: 0.95, scaleTo: 1.18, duration: 34, delay: 9 },
 ];
 
 export default function DashboardGsapStarfield() {
@@ -157,8 +158,8 @@ export default function DashboardGsapStarfield() {
         gsap.to(star, {
           opacity: params.opacityTo,
           scale: params.scaleTo,
-          duration: params.duration + (index % 5) * 0.4,
-          delay: params.delay + (index % 7) * 0.3,
+          duration: params.duration + (index % 5) * 2.5,
+          delay: params.delay + (index % 7) * 1.8,
           repeat: -1,
           yoyo: true,
           ease: "sine.inOut",

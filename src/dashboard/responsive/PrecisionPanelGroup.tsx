@@ -19,6 +19,7 @@ import {
   type BoardRect,
 } from "./dashboardResponsiveGeometry";
 import PanelExpandButton from "./panelContent/PanelExpandButton";
+import ScrollFrame from "./panelContent/ScrollFrame";
 
 export type PanelId = keyof typeof PANEL_FRAME_RECTS;
 
@@ -145,12 +146,14 @@ export default function PrecisionPanelGroup({
         {headerContent}
       </div>
 
-      {/* Body content */}
+      {/* Body content — custom scroll indicator */}
       <div
-        className="dashboard-panel-group__body dashboard-precision-content-slot dashboard-precision-content-slot--body dashboard-panel-scroll-y"
+        className="dashboard-panel-group__body dashboard-precision-content-slot dashboard-precision-content-slot--body"
         style={relativeRectStyle(contentRects.body, frameRect)}
       >
-        {bodyContent}
+        <ScrollFrame>
+          {bodyContent}
+        </ScrollFrame>
       </div>
 
       {/* Expand/Restore button - inside panel */}

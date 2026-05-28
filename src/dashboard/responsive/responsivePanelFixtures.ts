@@ -227,3 +227,77 @@ export const regimeStrip = [
   { label: "Liquidity", value: "Adequate", tone: "positive" as Tone },
   { label: "Correlation", value: "Elevated", tone: "warning" as Tone },
 ];
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   UI FLOW FIXTURES — Access, Routes, Journal, Notifications, Account
+   Covers every dashboard-visible ELCEO feature/route from UI flow.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export const dashboardAccessFixture = {
+  plan: "Focus Plan",
+  planState: "focus_active",
+  trialState: "not_applicable",
+  restricted: false,
+  gifted: false,
+  providerMode: "Fixture Mode",
+  providerReadiness: "Provider Pending",
+  liveActivation: "blocked_live_activation",
+};
+
+export const assetSelectorFixture = {
+  activeAsset: "XAU/USD",
+  favorites: ["XAU/USD", "NAS100", "BTC/USD"],
+  launchPriority: ["XAU/USD", "NAS100", "SPX500", "DE30", "BTC/USD"],
+  fxMajors: ["EUR/USD", "GBP/USD", "USD/JPY", "USD/CHF", "AUD/USD", "NZD/USD", "USD/CAD"],
+};
+
+export const journalQuickCaptureFixture = {
+  asset: "XAU/USD",
+  prompt: "What evidence supports the current bias?",
+  tags: ["structure", "macro", "discipline"],
+  emotionCheck: "controlled",
+  lastEntry: "2h ago",
+  readiness: "Basic capture enabled",
+};
+
+export const routePreviewFixture = {
+  evidence: { status: "Focus", route: "/market-evidence", state: "Full evidence available" },
+  journal: { status: "Allowed", route: "/journal", state: "Basic + premium context links" },
+  portfolio: { status: "Focus", route: "/portfolio", state: "Watchlist intelligence" },
+  analytics: { status: "Focus", route: "/analytics", state: "Behavior and performance lens" },
+  coaching: { status: "Focus", route: "/coaching", state: "Discipline feedback active" },
+  notifications: { status: "Provider Pending", route: "/notifications", state: "No live sends" },
+  account: { status: "Ready", route: "/account", state: "Social ID present" },
+  billing: { status: "Activation gated", route: "/billing", state: "Checkout blocked until live readiness" },
+};
+
+export const notificationFixture = {
+  inboxCount: 3,
+  topics: ["macro shock", "zone retest", "journal reminder"],
+  quietHours: "22:00–06:00",
+  delivery: "No-live-send readiness",
+};
+
+export const accountReadinessFixture = {
+  socialIdentifier: "X handle ready",
+  paymentReadiness: "Ready",
+  security: "Session active",
+  billing: "Focus Plan fixture",
+};
+
+export const analyticsPreviewFixture = {
+  disciplineScore: 72,
+  reviewConsistency: 64,
+  overconfidenceWatch: "Medium",
+  bestSession: "London/NY overlap",
+};
+
+export const providerTraceFixture = {
+  marketData: "Provider Pending",
+  news: "Fixture Mode",
+  macro: "Fixture Mode",
+  extraction: "Provider Pending",
+  notifications: "No-live-send",
+};

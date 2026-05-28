@@ -76,11 +76,10 @@
 }
 
 .dashboard-precision-data-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: inherit;
   color: #8a8178;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.01em;
 }
 
 /* ─── Regime Grid (horizontal layout for wide panel) ─── */

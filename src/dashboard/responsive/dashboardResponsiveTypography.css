@@ -15,6 +15,26 @@
   --font-heading: 'Inter', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', 'Geist Mono', 'SFMono-Regular', Consolas, ui-monospace, monospace;
+  font-family: var(--font-body);
+  font-synthesis: none;
+}
+
+/* ─── Hover Preview Font Override (body font for all preview content) ─── */
+.dashboard-hover-preview-floating,
+.dashboard-hover-preview-floating * {
+  font-family: var(--font-body);
+}
+
+.dashboard-hover-preview-floating .dashboard-precision-metadata,
+.dashboard-hover-preview-floating .dashboard-watchlist-ticker,
+.dashboard-hover-preview-floating .dashboard-precision-data-value--mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Clean text helper (body font, no geometric style) ─── */
+.dashboard-clean-text {
+  font-family: var(--font-body);
+  letter-spacing: 0;
 }
 
 /* ─── Eyebrow ─── */
@@ -92,9 +112,15 @@
 }
 
 .dashboard-precision-data-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: inherit;
   color: #7a7370;
+  letter-spacing: 0.01em;
+}
+
+/* Use mono only for compact ticker/ID-style labels */
+.dashboard-precision-data-label--mono {
+  font-family: var(--font-mono);
   letter-spacing: 0.04em;
 }
 
@@ -118,7 +144,7 @@
 
 /* ─── Chip / Badge ─── */
 .dashboard-precision-chip {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: clamp(9.5px, 0.44vw + 0.12cqi, 12px);
   font-weight: 500;
   line-height: 1.2;
@@ -733,6 +759,55 @@
   font-family: var(--font-mono);
   font-size: clamp(7px, 0.38vw, 9px);
   color: #8a8178;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CUSTOM SCROLL FRAME — ELCEO HUD scroll indicator
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-scroll-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.dashboard-scroll-frame__viewport {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dashboard-scroll-frame__viewport::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.dashboard-scroll-frame__rail--y {
+  position: absolute;
+  top: 4px;
+  right: 1px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(255, 191, 74, 0.08), transparent);
+  pointer-events: none;
+  z-index: 18;
+}
+
+.dashboard-scroll-frame__thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 214, 126, 0.75), rgba(255, 106, 0, 0.35));
+  box-shadow: 0 0 6px rgba(255, 136, 32, 0.18);
+  transition: opacity 0.2s;
 }
 
 

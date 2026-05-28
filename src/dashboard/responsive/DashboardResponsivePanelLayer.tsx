@@ -31,6 +31,11 @@ import {
   coachingFixture,
   regimeFixture,
   regimeStrip,
+  dashboardAccessFixture,
+  routePreviewFixture,
+  journalQuickCaptureFixture,
+  analyticsPreviewFixture,
+  providerTraceFixture,
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
@@ -54,9 +59,11 @@ function DrawerSection({ title, children }: { title: string; children: ReactNode
 function DrawerActions() {
   return (
     <div className="dashboard-panel-action-bar" style={{ marginTop: "14px" }}>
-      <button type="button" className="dashboard-panel-action-btn">Add to Journal</button>
+      <button type="button" className="dashboard-panel-action-btn">Add Journal Note</button>
       <button type="button" className="dashboard-panel-action-btn">Open Evidence</button>
-      <button type="button" className="dashboard-panel-action-btn">Save View</button>
+      <button type="button" className="dashboard-panel-action-btn">View Analytics</button>
+      <button type="button" className="dashboard-panel-action-btn">Open Notifications</button>
+      <button type="button" className="dashboard-panel-action-btn">Account Readiness</button>
     </div>
   );
 }
@@ -558,9 +565,14 @@ export default function DashboardResponsivePanelLayer() {
             <DrawerSection title="Contradictions">
               <p className="dashboard-precision-body-text">Macro context contradicts momentum. Sentiment cautious despite structure confirmation.</p>
             </DrawerSection>
-            <DrawerSection title="Provider Status">
-              <StatusLabel label="Provider Pending — Fixture Mode" />
-              <p className="dashboard-precision-note">Evidence based on fixture reasoning data only.</p>
+            <DrawerSection title="Provider Trace">
+              <DataRow label="Market data" value={providerTraceFixture.marketData} tone="warning" />
+              <DataRow label="News" value={providerTraceFixture.news} tone="neutral" />
+              <DataRow label="Macro" value={providerTraceFixture.macro} tone="neutral" />
+              <DataRow label="Extraction" value={providerTraceFixture.extraction} tone="warning" />
+            </DrawerSection>
+            <DrawerSection title="Route Access">
+              <DataRow label={routePreviewFixture.evidence.route} value={routePreviewFixture.evidence.state} tone="positive" />
             </DrawerSection>
           </>
         )}
@@ -572,8 +584,17 @@ export default function DashboardResponsivePanelLayer() {
             <DrawerSection title="Scenario Checklist">
               {coachingFixture.checklist.map((item) => <DataRow key={item} label="☐" value={item} tone="neutral" />)}
             </DrawerSection>
-            <DrawerSection title="Journal Prompt">
-              <p className="dashboard-precision-body-text">Document current bias reasoning, contradiction awareness, and review conditions before next session.</p>
+            <DrawerSection title="Journal Quick Capture">
+              <DataRow label="Asset" value={journalQuickCaptureFixture.asset} tone="positive" />
+              <DataRow label="Prompt" value={journalQuickCaptureFixture.prompt} tone="neutral" />
+              <DataRow label="Last entry" value={journalQuickCaptureFixture.lastEntry} tone="neutral" />
+              <DataRow label="Readiness" value={journalQuickCaptureFixture.readiness} tone="positive" />
+            </DrawerSection>
+            <DrawerSection title="Analytics Preview">
+              <DataRow label="Discipline score" value={`${analyticsPreviewFixture.disciplineScore}%`} tone="positive" />
+              <DataRow label="Review consistency" value={`${analyticsPreviewFixture.reviewConsistency}%`} tone="neutral" />
+              <DataRow label="Overconfidence watch" value={analyticsPreviewFixture.overconfidenceWatch} tone="warning" />
+              <DataRow label="Best session" value={analyticsPreviewFixture.bestSession} tone="positive" />
             </DrawerSection>
             <DrawerSection title="Review Window">
               <DataRow label="Next review" value="Next session open" tone="neutral" />
