@@ -195,61 +195,35 @@
   display: none !important;
 }
 
-/* ─── Night Sky Star Twinkle Animation (R5D fix) ─── */
-@keyframes dashboardStarTwinkleSlow {
-  0%, 100% {
-    opacity: 0.45;
-    filter: brightness(0.85);
-  }
-  45% {
-    opacity: 1;
-    filter: brightness(1.75);
-  }
-  70% {
-    opacity: 0.68;
-    filter: brightness(1.1);
-  }
+/* ─── GSAP Starfield Layer ─── */
+.dashboard-gsap-starfield-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.dashboard-precision-bg-sky svg use,
-.dashboard-precision-bg-sky svg circle,
-.dashboard-precision-bg-sky svg [id*="star"] {
-  animation: dashboardStarTwinkleSlow 8s ease-in-out infinite;
-  animation-delay: 0.3s;
+.dashboard-gsap-starfield {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(3n) {
-  animation-duration: 7.5s;
-  animation-delay: 0s;
+.dashboard-gsap-star {
+  opacity: 0.42;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(4n+1) {
-  animation-duration: 9.2s;
-  animation-delay: 1.4s;
+.dashboard-gsap-star--silver {
+  fill: rgba(218, 224, 232, 0.92);
+  filter: drop-shadow(0 0 2px rgba(218, 224, 232, 0.65));
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(5n+2) {
-  animation-duration: 11s;
-  animation-delay: 2.8s;
-}
-
-.dashboard-precision-bg-sky svg use:nth-child(7n+3) {
-  animation-duration: 13.5s;
-  animation-delay: 4.2s;
-}
-
-.dashboard-precision-bg-sky svg use:nth-child(11n+5) {
-  animation-duration: 15s;
-  animation-delay: 0.7s;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-precision-bg-sky svg use,
-  .dashboard-precision-bg-sky svg circle,
-  .dashboard-precision-bg-sky svg [id*="star"] {
-    animation: none !important;
-  }
+.dashboard-gsap-star--orange {
+  fill: rgba(255, 176, 86, 0.9);
+  filter: drop-shadow(0 0 3px rgba(255, 128, 32, 0.65));
 }
 
 /* ─── Content Slots ─── */

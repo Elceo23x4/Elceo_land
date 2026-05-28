@@ -23,6 +23,7 @@ import {
   biasFixture,
   confidenceFixture,
   watchlistFixture,
+  watchlistAlerts,
   evidenceFixture,
   evidenceConviction,
   newsFixture,
@@ -33,6 +34,7 @@ import {
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
+import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
 import PrecisionPanelGroup from "./PrecisionPanelGroup";
 import type { PanelId } from "./PrecisionPanelGroup";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
@@ -120,6 +122,10 @@ export default function DashboardResponsivePanelLayer() {
             <SectionNav items={["Snapshot", "Drivers", "Conditions"]} active={biasSection} onSelect={setBiasSection} />
             {biasSection === 0 && (
               <>
+                <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
+                  <SessionBadge session={biasFixture.session} />
+                  <Chip value={biasFixture.activeAsset} tone="positive" />
+                </div>
                 <p className="dashboard-precision-metric">{biasFixture.direction}</p>
                 <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
                   <Chip value={biasFixture.strength} tone={biasFixture.strengthTone} />
@@ -141,8 +147,9 @@ export default function DashboardResponsivePanelLayer() {
               <>
                 <p className="dashboard-precision-body-text">{biasFixture.watchCondition}</p>
                 <p className="dashboard-precision-body-text">{biasFixture.invalidation}</p>
-                <DataRow label="Contradiction" value="Macro tension unresolved" tone="warning" />
-                <p className="dashboard-precision-note">Review next session for structural confirmation.</p>
+                <DataRow label="Contradiction" value={biasFixture.contradiction} tone="warning" />
+                <DataRow label="Review window" value={biasFixture.reviewWindow} tone="neutral" />
+                <p className="dashboard-precision-note">Macro pressure: {biasFixture.macroPressure}</p>
               </>
             )}
             <ActionBar onExpand={() => openDrawer("Reasoning", "Directional Bias Detail", "bias")} />
@@ -170,7 +177,14 @@ export default function DashboardResponsivePanelLayer() {
                 {confidenceFixture.metrics.map((m) => (
                   <HoverPreviewCard
                     key={m.label}
-                    trigger={<><DataRow label={m.label} value={m.value} tone={m.tone} /><MiniMeter score={m.score} tone={m.tone} /></>}
+                    trigger={
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <MiniDonutScore score={m.score} tone={m.tone} />
+                        <div style={{ flex: 1 }}>
+                          <DataRow label={m.label} value={m.value} tone={m.tone} />
+                        </div>
+                      </div>
+                    }
                     preview={<p className="dashboard-precision-body-text">{m.label} score: {m.score}% — {m.tone === "warning" ? "Caution zone" : "Within range"}</p>}
                   />
                 ))}
@@ -221,8 +235,9 @@ export default function DashboardResponsivePanelLayer() {
                 key={a.ticker}
                 trigger={
                   <div className="dashboard-precision-data-row">
-                    <span className="dashboard-precision-data-label" style={{ minWidth: "28px" }}>{a.ticker}</span>
-                    <span style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178" }}>{a.change}</span>
+                    <span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span>
+                    <MiniSparkline data={a.sparkline} tone={a.changeTone} />
+                    <span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span>
                     <Chip value={a.bias} tone={a.biasTone} />
                   </div>
                 }
@@ -230,11 +245,15 @@ export default function DashboardResponsivePanelLayer() {
               />
             ))}
             {watchSection === 1 && (
-              <SlideStripWrapper>
-                <Chip value="ES: Structure watch" tone="warning" />
-                <Chip value="NQ: Momentum active" tone="positive" />
-                <Chip value="GC: Pending review" tone="pending" />
-              </SlideStripWrapper>
+              <div className="dashboard-panel-scroll-y" style={{ maxHeight: "100%" }}>
+                {watchlistAlerts.map((al) => (
+                  <HoverPreviewCard
+                    key={al.asset}
+                    trigger={<DataRow label={al.asset} value={al.alert} tone={al.tone} />}
+                    preview={<p className="dashboard-precision-body-text">{al.asset}: {al.alert}</p>}
+                  />
+                ))}
+              </div>
             )}
             {watchSection === 2 && watchlistFixture.map((a) => (
               <DataRow key={a.ticker} label={a.ticker} value={`${a.bias} (${a.confidence})`} tone={a.biasTone} />
@@ -263,12 +282,12 @@ export default function DashboardResponsivePanelLayer() {
                 {evidenceFixture.map((e) => (
                   <HoverPreviewCard
                     key={e.label}
-                    trigger={<><DataRow label={e.label} value={e.value} tone={e.tone} /><MiniMeter score={e.score} tone={e.tone} /></>}
+                    trigger={<><DataRow label={e.label} value={e.value} tone={e.tone} /><EvidenceWeightBar score={e.score} tone={e.tone} /></>}
                     preview={<><p className="dashboard-precision-body-text">{e.category}: {e.label} — Score {e.score}%</p><Chip value={`Freshness: ${e.freshness}`} tone={e.freshness === "Current" ? "positive" : "warning"} /></>}
                   />
                 ))}
                 <div style={{ marginTop: "6px", borderTop: "1px solid rgba(138,129,120,0.1)", paddingTop: "4px" }}>
-                  <DataRow label="Aggregate conviction" value={`${evidenceConviction}%`} tone="positive" />
+                  <DataRow label="Aggregate conviction" value={`${evidenceConviction}%`} tone="positive" mono />
                   <MiniMeter score={evidenceConviction} tone="positive" />
                 </div>
               </>
@@ -454,7 +473,7 @@ export default function DashboardResponsivePanelLayer() {
                     trigger={
                       <div style={{ minWidth: "90px" }}>
                         <DataRow label={r.asset} value={r.direction} tone={r.tone} />
-                        <MiniMeter score={r.strength} tone={r.tone} />
+                        <CrossAssetMiniPulse strength={r.strength} tone={r.tone} />
                       </div>
                     }
                     preview={<p className="dashboard-precision-body-text">{r.asset}: {r.direction} — Strength {r.strength}%</p>}
