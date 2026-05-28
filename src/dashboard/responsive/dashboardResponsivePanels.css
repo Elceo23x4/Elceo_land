@@ -1,0 +1,168 @@
+/**
+ * dashboardResponsivePanels.css
+ *
+ * Precision panel content styling for the ELCEO responsive dashboard.
+ * Works with the coordinate-driven board system.
+ *
+ * Panel frames are positioned by boardRectStyle() (inline styles).
+ * Content slots (header/body) are also board-absolute positioned.
+ * This CSS provides typography, data rows, and micro-component styling.
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRECISION CONTENT STYLING
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Eyebrow ─── */
+.dashboard-precision-eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.5cqi, 10px);
+  font-weight: 500;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8a8178;
+  margin: 0 0 1px 0;
+}
+
+/* ─── Title ─── */
+.dashboard-precision-title {
+  font-family: var(--font-heading);
+  font-size: clamp(9px, 0.85cqi, 16px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: #e8dfd4;
+  margin: 0;
+}
+
+/* ─── Key Metric ─── */
+.dashboard-precision-metric {
+  font-family: var(--font-heading);
+  font-size: clamp(10px, 1.1cqi, 20px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #e8dfd4;
+  margin: 0 0 clamp(2px, 0.3cqi, 6px) 0;
+  text-transform: capitalize;
+}
+
+/* ─── Body Text ─── */
+.dashboard-precision-body-text {
+  font-family: var(--font-body);
+  font-size: clamp(8px, 0.65cqi, 12px);
+  line-height: 1.45;
+  color: #c4bab0;
+  margin: 0 0 clamp(2px, 0.3cqi, 5px) 0;
+}
+
+/* ─── Note / Italic ─── */
+.dashboard-precision-note {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.55cqi, 11px);
+  line-height: 1.4;
+  color: #8a8178;
+  font-style: italic;
+  margin: clamp(2px, 0.3cqi, 6px) 0 0 0;
+}
+
+/* ─── Data Row ─── */
+.dashboard-precision-data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(1px, 0.15cqi, 3px) 0;
+  border-bottom: 1px solid rgba(138, 129, 120, 0.1);
+  font-size: clamp(8px, 0.6cqi, 12px);
+}
+
+.dashboard-precision-data-label {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: #8a8178;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Regime Grid (horizontal layout for wide panel) ─── */
+.dashboard-precision-regime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: clamp(2px, 0.3cqi, 6px) clamp(8px, 1cqi, 16px);
+}
+
+/* ─── Topbar Typography ─── */
+.dashboard-precision-topbar-brand {
+  font-family: var(--font-heading);
+  font-size: clamp(9px, 0.8cqi, 16px);
+  font-weight: 700;
+  color: #e8dfd4;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.dashboard-precision-topbar-title {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.55cqi, 12px);
+  color: #8a8178;
+  white-space: nowrap;
+}
+
+.dashboard-precision-topbar-spacer {
+  flex: 1;
+}
+
+.dashboard-precision-topbar-badge {
+  font-family: var(--font-mono);
+  font-size: clamp(6px, 0.45cqi, 10px);
+  padding: 1px clamp(4px, 0.4cqi, 8px);
+  border-radius: 2px;
+  background: rgba(138, 129, 120, 0.15);
+  border: 1px solid rgba(138, 129, 120, 0.25);
+  color: #8a8178;
+  white-space: nowrap;
+}
+
+.dashboard-precision-topbar-badge--fixture {
+  color: #d4a853;
+  border-color: rgba(212, 168, 83, 0.3);
+  background: rgba(212, 168, 83, 0.08);
+}
+
+.dashboard-precision-topbar-clock {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.5cqi, 11px);
+  color: #6b6560;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LEGACY PANEL CHROME STYLES — NOT ACTIVE RUNTIME
+   These classes were used by the R1 generic grid layout.
+   They are no longer referenced by the precision board components.
+   Kept as dead code reference. Will be cleaned in a future batch.
+   ═══════════════════════════════════════════════════════════════════════════════
+
+.dashboard-chrome-panel { ... }
+.dashboard-panel-frame { ... }
+.dashboard-panel-content { ... }
+.dashboard-panel-header { ... }
+.dashboard-panel-eyebrow { ... }
+.dashboard-panel-title { ... }
+.dashboard-panel-body { ... }
+.dashboard-topbar-frame { ... }
+.dashboard-topbar-content { ... }
+.dashboard-topbar-brand { ... }
+.dashboard-topbar-title { ... }
+.dashboard-topbar-spacer { ... }
+.dashboard-topbar-badge { ... }
+.dashboard-topbar-badge--fixture { ... }
+.dashboard-topbar-clock { ... }
+.dashboard-sidebar-frame { ... }
+.dashboard-sidebar-content { ... }
+.dashboard-sidebar-icon { ... }
+.dashboard-sidebar-icon--active { ... }
+.dashboard-sidebar-dot { ... }
+
+*/

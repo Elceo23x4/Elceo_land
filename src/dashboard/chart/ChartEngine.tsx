@@ -30,14 +30,26 @@ export default function ChartEngine({ data, height, className }: ChartEngineProp
 
     let chart: ReturnType<typeof import("lightweight-charts").createChart> | null = null;
     let ro: ResizeObserver | null = null;
+    let rafId: number | null = null;
 
-    // Dynamic import to handle SSR-like environments gracefully
-    import("lightweight-charts").then(({ createChart, CandlestickSeries }) => {
-      if (!el.isConnected) return;
+    function initChart(module: typeof import("lightweight-charts")) {
+      const { createChart, CandlestickSeries } = module;
+      if (!el || !el.isConnected) return;
+
+      // Measure container using getBoundingClientRect for accuracy
+      const rect = el.getBoundingClientRect();
+      const width = Math.max(1, Math.floor(rect.width || el.clientWidth));
+      const resolvedHeight = Math.max(1, Math.floor(height ?? rect.height ?? el.clientHeight));
+
+      // If container has no real size yet, retry once on next frame
+      if (width <= 1 || resolvedHeight <= 1) {
+        rafId = requestAnimationFrame(() => initChart(module));
+        return;
+      }
 
       chart = createChart(el, {
-        width: el.clientWidth,
-        height: height ?? el.clientHeight,
+        width,
+        height: resolvedHeight,
         layout: elceoChartLayoutOptions,
         grid: elceoChartGridOptions,
         crosshair: elceoChartCrosshairOptions,
@@ -55,17 +67,25 @@ export default function ChartEngine({ data, height, className }: ChartEngineProp
       if (typeof ResizeObserver !== "undefined") {
         ro = new ResizeObserver(() => {
           if (chart && el.isConnected) {
-            chart.applyOptions({
-              width: el.clientWidth,
-              height: height ?? el.clientHeight,
-            });
+            const r = el.getBoundingClientRect();
+            const w = Math.max(1, Math.floor(r.width || el.clientWidth));
+            const h = Math.max(1, Math.floor(height ?? r.height ?? el.clientHeight));
+            if (w > 0 && h > 0) {
+              chart.applyOptions({ width: w, height: h });
+            }
           }
         });
         ro.observe(el);
       }
+    }
+
+    // Dynamic import to handle SSR-like environments gracefully
+    import("lightweight-charts").then((module) => {
+      initChart(module);
     });
 
     return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
       if (ro) ro.disconnect();
       if (chart) {
         chart.remove();

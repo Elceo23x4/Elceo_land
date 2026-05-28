@@ -1,0 +1,468 @@
+/**
+ * dashboardResponsiveLayout.css
+ *
+ * Precision coordinate board layout for the ELCEO dashboard.
+ * Design reference: 1920×1080 (NOT used as runtime layout engine).
+ * Runtime: fluid 16:9 board with percentage-based positioning.
+ *
+ * OLD generic grid classes (.dashboard-responsive-viewport, .dashboard-responsive-shell,
+ * .dashboard-main-grid, etc.) are NO LONGER active. They remain commented below for
+ * reference only and are not imported by the active cockpit component.
+ */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRECISION BOARD SYSTEM — ACTIVE RUNTIME
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Viewport ─── */
+.dashboard-precision-viewport {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #030201;
+}
+
+/* ─── Fluid Board (fills viewport — NO poster/contain mode) ─── */
+.dashboard-precision-board {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  container-type: size;
+  background: #030201;
+}
+
+/* ─── Background layers ─── */
+.dashboard-precision-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dashboard-precision-layer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-bg-sky {
+  z-index: 0;
+  opacity: 0.74;
+}
+
+.dashboard-precision-bg-map {
+  z-index: 1;
+  opacity: 0.38;
+}
+
+.dashboard-precision-bg-map svg {
+  filter: grayscale(0.8) brightness(1.2) contrast(1.1);
+}
+
+/* ─── Wheel ─── */
+.dashboard-precision-wheel {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.dashboard-precision-wheel svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Chart Glass — Black Transparent Acrylic ─── */
+.dashboard-precision-chart-glass {
+  position: absolute;
+  pointer-events: none;
+  background:
+    linear-gradient(125deg,
+      rgba(255,255,255,0.12) 0%,
+      rgba(255,255,255,0.035) 18%,
+      rgba(0,0,0,0.12) 48%,
+      rgba(255,255,255,0.055) 100%
+    ),
+    linear-gradient(180deg,
+      rgba(0,0,0,0.46),
+      rgba(0,0,0,0.28)
+    ),
+    rgba(0, 0, 0, 0.26);
+  border: 1px solid rgba(255, 210, 150, 0.14);
+  outline: 1px solid rgba(255, 106, 0, 0.07);
+  backdrop-filter: blur(15px) saturate(1.24) contrast(1.08);
+  -webkit-backdrop-filter: blur(15px) saturate(1.24) contrast(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.18),
+    inset 0 -1px 0 rgba(255,106,0,0.10),
+    inset 20px 0 42px rgba(255,255,255,0.025),
+    inset -24px 0 52px rgba(0,0,0,0.22),
+    0 18px 64px rgba(0,0,0,0.42);
+  overflow: hidden;
+}
+
+.dashboard-precision-chart-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(108deg, transparent 0%, rgba(255,255,255,0.12) 12%, transparent 26%),
+    linear-gradient(250deg, transparent 0%, rgba(255,255,255,0.06) 18%, transparent 40%);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+.dashboard-precision-chart-glass::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow:
+    inset 0 0 28px rgba(0,0,0,0.18),
+    inset 0 0 52px rgba(255,106,0,0.025);
+}
+
+/* ─── Chart Frame ─── */
+.dashboard-precision-chart-frame {
+  pointer-events: none;
+}
+
+.dashboard-precision-chart-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Hide unwanted internal blocks/corners in chart console frame */
+.dashboard-precision-chart-frame svg [id*="svg02a_corner_thickness_system"],
+.dashboard-precision-chart-frame svg [id*="corner_thickness"],
+.dashboard-precision-chart-frame svg [id*="chart_block_fill"],
+.dashboard-precision-chart-frame svg [id*="panel_top_left_glow"] {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* ─── Chart Display ─── */
+.dashboard-precision-chart-display {
+  overflow: hidden;
+}
+
+/* ─── Panel Frames ─── */
+.dashboard-precision-panel-frame {
+  pointer-events: none;
+  z-index: 12;
+}
+
+.dashboard-precision-panel-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Panel Aura Activation — Black at 60% opacity (R5C) ─── */
+.dashboard-precision-panel-frame svg [id$="_soft_inner_aura"],
+.dashboard-precision-panel-frame svg [id*="soft_inner_aura"] {
+  display: inline !important;
+  fill: rgba(0, 0, 0, 0.6) !important;
+  fill-opacity: 1 !important;
+  filter: none !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_aura"],
+.dashboard-precision-panel-frame svg [id*="panel_aura"] {
+  display: inline !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_aura"] stop {
+  stop-color: #000000 !important;
+  stop-opacity: 0.6 !important;
+}
+
+.dashboard-precision-panel-frame svg [id$="_panel_shadow"],
+.dashboard-precision-panel-frame svg [id*="panel_shadow"] {
+  display: none !important;
+}
+
+/* Keep inner glow disabled — only aura activates */
+.dashboard-precision-panel-frame svg [id$="_inner_glow"],
+.dashboard-precision-panel-frame svg [id*="inner_glow"] {
+  display: none !important;
+}
+
+/* ─── Night Sky Star Twinkle Animation (R5D fix) ─── */
+@keyframes dashboardStarTwinkleSlow {
+  0%, 100% {
+    opacity: 0.45;
+    filter: brightness(0.85);
+  }
+  45% {
+    opacity: 1;
+    filter: brightness(1.75);
+  }
+  70% {
+    opacity: 0.68;
+    filter: brightness(1.1);
+  }
+}
+
+.dashboard-precision-bg-sky svg use,
+.dashboard-precision-bg-sky svg circle,
+.dashboard-precision-bg-sky svg [id*="star"] {
+  animation: dashboardStarTwinkleSlow 8s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-child(3n) {
+  animation-duration: 7.5s;
+  animation-delay: 0s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-child(4n+1) {
+  animation-duration: 9.2s;
+  animation-delay: 1.4s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-child(5n+2) {
+  animation-duration: 11s;
+  animation-delay: 2.8s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-child(7n+3) {
+  animation-duration: 13.5s;
+  animation-delay: 4.2s;
+}
+
+.dashboard-precision-bg-sky svg use:nth-child(11n+5) {
+  animation-duration: 15s;
+  animation-delay: 0.7s;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-precision-bg-sky svg use,
+  .dashboard-precision-bg-sky svg circle,
+  .dashboard-precision-bg-sky svg [id*="star"] {
+    animation: none !important;
+  }
+}
+
+/* ─── Content Slots ─── */
+.dashboard-precision-content-slot {
+  z-index: 15;
+  container-type: inline-size;
+  box-sizing: border-box;
+}
+
+.dashboard-precision-content-slot--header {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-precision-content-slot--body {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
+  min-height: 0;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
+  background: rgba(138, 129, 120, 0.3);
+  border-radius: 2px;
+}
+
+/* ─── Topbar ─── */
+.dashboard-precision-topbar {
+  overflow: hidden;
+}
+
+.dashboard-precision-topbar::after {
+  content: "";
+  position: absolute;
+  left: 1.2%;
+  right: 1.2%;
+  bottom: 0;
+  height: max(1px, 0.12cqh);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 106, 0, 0.36),
+    rgba(255, 191, 74, 0.5),
+    rgba(255, 106, 0, 0.32),
+    transparent
+  );
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.dashboard-precision-topbar-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-precision-topbar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-topbar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 clamp(8px, 1cqi, 20px);
+  box-sizing: border-box;
+  gap: clamp(6px, 0.8cqi, 16px);
+}
+
+/* ─── Sidebar ─── */
+.dashboard-precision-sidebar {
+  overflow: hidden;
+}
+
+.dashboard-precision-sidebar-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-precision-sidebar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-sidebar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: clamp(6px, 0.8cqi, 12px) 0;
+  box-sizing: border-box;
+  gap: clamp(6px, 1cqi, 14px);
+}
+
+.dashboard-precision-sidebar-icon {
+  width: clamp(16px, 55%, 28px);
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: rgba(138, 129, 120, 0.1);
+  border: 1px solid rgba(138, 129, 120, 0.2);
+  display: grid;
+  place-items: center;
+  color: #8a8178;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-size: clamp(6px, 0.5cqi, 10px);
+  font-family: var(--font-mono);
+}
+
+.dashboard-precision-sidebar-icon:hover {
+  background: rgba(138, 129, 120, 0.2);
+  border-color: rgba(138, 129, 120, 0.4);
+}
+
+.dashboard-precision-sidebar-icon--active {
+  background: rgba(212, 168, 83, 0.12);
+  border-color: rgba(212, 168, 83, 0.35);
+  color: #d4a853;
+}
+
+
+/* ─── Sidebar Button Layer ─── */
+.dashboard-sidebar-button-layer {
+  position: absolute;
+  inset: 7% 0 7% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.dashboard-sidebar-btn {
+  all: unset;
+  box-sizing: border-box;
+  width: clamp(18px, 1.9cqi, 32px);
+  height: clamp(18px, 1.9cqi, 32px);
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: rgba(20, 18, 16, 0.5);
+  border: 1px solid rgba(138, 129, 120, 0.25);
+  color: rgba(212, 168, 83, 0.7);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.dashboard-sidebar-btn svg {
+  width: 60%;
+  height: 60%;
+}
+
+.dashboard-sidebar-btn:hover {
+  background: rgba(212, 168, 83, 0.1);
+  border-color: rgba(212, 168, 83, 0.45);
+  color: rgba(212, 168, 83, 1);
+}
+
+.dashboard-sidebar-btn:focus-visible {
+  outline: 2px solid rgba(212, 168, 83, 0.6);
+  outline-offset: 2px;
+}
+
+.dashboard-sidebar-btn--active {
+  background: rgba(212, 168, 83, 0.12);
+  border-color: rgba(212, 168, 83, 0.5);
+  color: #d4a853;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LEGACY GENERIC GRID — NOT ACTIVE RUNTIME
+   Kept for reference only. Not imported by precision cockpit.
+   ═══════════════════════════════════════════════════════════════════════════════
+
+.dashboard-responsive-viewport { ... }
+.dashboard-responsive-shell { ... }
+.dashboard-topbar-zone { ... }
+.dashboard-sidebar-zone { ... }
+.dashboard-main-grid { ... }
+.dashboard-panel--directional-bias { ... }
+.dashboard-panel--confidence-context { ... }
+.dashboard-panel--watchlist { ... }
+.dashboard-chart-zone { ... }
+.dashboard-panel--evidence-stack { ... }
+.dashboard-panel--news-macro { ... }
+.dashboard-panel--coaching { ... }
+.dashboard-panel--market-regime { ... }
+.chart-zone { ... }
+.chart-zone-wheel { ... }
+.chart-zone-console { ... }
+.chart-zone-console-frame { ... }
+.chart-inner { ... }
+
+*/
