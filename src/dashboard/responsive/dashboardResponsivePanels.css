@@ -1,210 +1,168 @@
 /**
  * dashboardResponsivePanels.css
  *
- * Panel chrome styling for the responsive dashboard.
- * Each panel uses its isolated SVG frame as background chrome
- * with real DOM content rendered above it.
+ * Precision panel content styling for the ELCEO responsive dashboard.
+ * Works with the coordinate-driven board system.
+ *
+ * Panel frames are positioned by boardRectStyle() (inline styles).
+ * Content slots (header/body) are also board-absolute positioned.
+ * This CSS provides typography, data rows, and micro-component styling.
  */
 
-/* ─── Panel Chrome Container ─── */
-.dashboard-chrome-panel {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-width: 0;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  container-type: inline-size;
-  overflow: hidden;
-}
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRECISION CONTENT STYLING
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─── Panel Frame (SVG background) ─── */
-.dashboard-panel-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.dashboard-panel-frame svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* ─── Panel Content (above frame) ─── */
-.dashboard-panel-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  padding: clamp(10px, 1.2cqi, 18px) clamp(12px, 1.5cqi, 22px);
-  box-sizing: border-box;
-}
-
-/* ─── Panel Header ─── */
-.dashboard-panel-header {
-  flex-shrink: 0;
-  margin-bottom: clamp(4px, 0.6cqi, 10px);
-}
-
-.dashboard-panel-eyebrow {
+/* ─── Eyebrow ─── */
+.dashboard-precision-eyebrow {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.5cqi, 10px);
+  font-weight: 500;
+  line-height: 1.3;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #8a8178;
-  margin: 0 0 2px 0;
+  margin: 0 0 1px 0;
 }
 
-.dashboard-panel-title {
-  color: #e8dfd4;
-  margin: 0;
+/* ─── Title ─── */
+.dashboard-precision-title {
+  font-family: var(--font-heading);
+  font-size: clamp(9px, 0.85cqi, 16px);
   font-weight: 600;
   line-height: 1.2;
+  color: #e8dfd4;
+  margin: 0;
 }
 
-/* ─── Panel Body ─── */
-.dashboard-panel-body {
-  flex: 1 1 0;
-  min-height: 0;
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
+/* ─── Key Metric ─── */
+.dashboard-precision-metric {
+  font-family: var(--font-heading);
+  font-size: clamp(10px, 1.1cqi, 20px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: #e8dfd4;
+  margin: 0 0 clamp(2px, 0.3cqi, 6px) 0;
+  text-transform: capitalize;
 }
 
-.dashboard-panel-body::-webkit-scrollbar {
-  width: 4px;
+/* ─── Body Text ─── */
+.dashboard-precision-body-text {
+  font-family: var(--font-body);
+  font-size: clamp(8px, 0.65cqi, 12px);
+  line-height: 1.45;
+  color: #c4bab0;
+  margin: 0 0 clamp(2px, 0.3cqi, 5px) 0;
 }
 
-.dashboard-panel-body::-webkit-scrollbar-track {
-  background: transparent;
+/* ─── Note / Italic ─── */
+.dashboard-precision-note {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.55cqi, 11px);
+  line-height: 1.4;
+  color: #8a8178;
+  font-style: italic;
+  margin: clamp(2px, 0.3cqi, 6px) 0 0 0;
 }
 
-.dashboard-panel-body::-webkit-scrollbar-thumb {
-  background: rgba(138, 129, 120, 0.3);
-  border-radius: 2px;
-}
-
-/* ─── Topbar Chrome ─── */
-.dashboard-topbar-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.dashboard-topbar-frame svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.dashboard-topbar-content {
-  position: relative;
-  z-index: 1;
+/* ─── Data Row ─── */
+.dashboard-precision-data-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: 0 clamp(12px, 1.5vw, 24px);
-  box-sizing: border-box;
-  gap: clamp(10px, 1.2vw, 20px);
+  padding: clamp(1px, 0.15cqi, 3px) 0;
+  border-bottom: 1px solid rgba(138, 129, 120, 0.1);
+  font-size: clamp(8px, 0.6cqi, 12px);
 }
 
-.dashboard-topbar-brand {
+.dashboard-precision-data-label {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: #8a8178;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── Regime Grid (horizontal layout for wide panel) ─── */
+.dashboard-precision-regime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: clamp(2px, 0.3cqi, 6px) clamp(8px, 1cqi, 16px);
+}
+
+/* ─── Topbar Typography ─── */
+.dashboard-precision-topbar-brand {
+  font-family: var(--font-heading);
+  font-size: clamp(9px, 0.8cqi, 16px);
   font-weight: 700;
   color: #e8dfd4;
   letter-spacing: 0.12em;
   white-space: nowrap;
 }
 
-.dashboard-topbar-title {
+.dashboard-precision-topbar-title {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.55cqi, 12px);
   color: #8a8178;
   white-space: nowrap;
 }
 
-.dashboard-topbar-spacer {
+.dashboard-precision-topbar-spacer {
   flex: 1;
 }
 
-.dashboard-topbar-badge {
-  padding: 2px 8px;
-  border-radius: 3px;
+.dashboard-precision-topbar-badge {
+  font-family: var(--font-mono);
+  font-size: clamp(6px, 0.45cqi, 10px);
+  padding: 1px clamp(4px, 0.4cqi, 8px);
+  border-radius: 2px;
   background: rgba(138, 129, 120, 0.15);
   border: 1px solid rgba(138, 129, 120, 0.25);
   color: #8a8178;
   white-space: nowrap;
 }
 
-.dashboard-topbar-badge--fixture {
+.dashboard-precision-topbar-badge--fixture {
   color: #d4a853;
   border-color: rgba(212, 168, 83, 0.3);
   background: rgba(212, 168, 83, 0.08);
 }
 
-.dashboard-topbar-clock {
+.dashboard-precision-topbar-clock {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.5cqi, 11px);
   color: #6b6560;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-/* ─── Sidebar Chrome ─── */
-.dashboard-sidebar-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
 
-.dashboard-sidebar-frame svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LEGACY PANEL CHROME STYLES — NOT ACTIVE RUNTIME
+   These classes were used by the R1 generic grid layout.
+   They are no longer referenced by the precision board components.
+   Kept as dead code reference. Will be cleaned in a future batch.
+   ═══════════════════════════════════════════════════════════════════════════════
 
-.dashboard-sidebar-content {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  padding: clamp(8px, 1vh, 14px) 0;
-  box-sizing: border-box;
-  gap: clamp(10px, 1.5vh, 18px);
-}
+.dashboard-chrome-panel { ... }
+.dashboard-panel-frame { ... }
+.dashboard-panel-content { ... }
+.dashboard-panel-header { ... }
+.dashboard-panel-eyebrow { ... }
+.dashboard-panel-title { ... }
+.dashboard-panel-body { ... }
+.dashboard-topbar-frame { ... }
+.dashboard-topbar-content { ... }
+.dashboard-topbar-brand { ... }
+.dashboard-topbar-title { ... }
+.dashboard-topbar-spacer { ... }
+.dashboard-topbar-badge { ... }
+.dashboard-topbar-badge--fixture { ... }
+.dashboard-topbar-clock { ... }
+.dashboard-sidebar-frame { ... }
+.dashboard-sidebar-content { ... }
+.dashboard-sidebar-icon { ... }
+.dashboard-sidebar-icon--active { ... }
+.dashboard-sidebar-dot { ... }
 
-.dashboard-sidebar-icon {
-  width: clamp(20px, 2.2vw, 32px);
-  height: clamp(20px, 2.2vw, 32px);
-  border-radius: 4px;
-  background: rgba(138, 129, 120, 0.1);
-  border: 1px solid rgba(138, 129, 120, 0.2);
-  display: grid;
-  place-items: center;
-  color: #8a8178;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-}
-
-.dashboard-sidebar-icon:hover {
-  background: rgba(138, 129, 120, 0.2);
-  border-color: rgba(138, 129, 120, 0.4);
-}
-
-.dashboard-sidebar-icon--active {
-  background: rgba(212, 168, 83, 0.12);
-  border-color: rgba(212, 168, 83, 0.35);
-  color: #d4a853;
-}
-
-.dashboard-sidebar-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(138, 129, 120, 0.3);
-}
+*/

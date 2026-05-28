@@ -1,218 +1,271 @@
 /**
  * dashboardResponsiveLayout.css
  *
- * Core responsive layout architecture for the ELCEO dashboard.
- * Uses CSS Grid with clamp() for adaptive sizing.
- *
+ * Precision coordinate board layout for the ELCEO dashboard.
  * Design reference: 1920×1080 (NOT used as runtime layout engine).
- * Runtime: responsive CSS Grid filling the browser viewport.
+ * Runtime: fluid 16:9 board with percentage-based positioning.
+ *
+ * OLD generic grid classes (.dashboard-responsive-viewport, .dashboard-responsive-shell,
+ * .dashboard-main-grid, etc.) are NO LONGER active. They remain commented below for
+ * reference only and are not imported by the active cockpit component.
  */
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRECISION BOARD SYSTEM — ACTIVE RUNTIME
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
 /* ─── Viewport ─── */
-.dashboard-responsive-viewport {
+.dashboard-precision-viewport {
   width: 100vw;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
   background: #030201;
-  position: relative;
+  display: grid;
+  place-items: center;
 }
 
-/* ─── Shell Grid ─── */
-.dashboard-responsive-shell {
+/* ─── Fluid Board ─── */
+.dashboard-precision-board {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: min(100vw, calc(100dvh * 16 / 9));
+  max-height: 100dvh;
+  overflow: hidden;
+  container-type: inline-size;
+  background: #030201;
+}
+
+/* ─── Background layers ─── */
+.dashboard-precision-layer {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: clamp(56px, 4vw, 76px) minmax(0, 1fr);
-  grid-template-rows: clamp(48px, 5vh, 72px) minmax(0, 1fr);
-  grid-template-areas:
-    "topbar topbar"
-    "sidebar main";
-  gap: clamp(6px, 0.8vw, 14px);
-  padding: clamp(6px, 0.8vw, 14px);
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dashboard-precision-layer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-bg-sky {
+  z-index: 0;
+  opacity: 0.72;
+}
+
+.dashboard-precision-bg-map {
+  z-index: 1;
+  opacity: 0.35;
+}
+
+/* ─── Wheel ─── */
+.dashboard-precision-wheel {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.dashboard-precision-wheel svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Chart Glass ─── */
+.dashboard-precision-chart-glass {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.01)),
+    rgba(4, 8, 7, 0.38);
+  border: 1px solid rgba(255, 191, 74, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 0 36px rgba(255, 120, 20, 0.06),
+    0 0 0 1px rgba(255, 106, 0, 0.08);
+  pointer-events: none;
+}
+
+/* ─── Chart Frame ─── */
+.dashboard-precision-chart-frame {
+  pointer-events: none;
+}
+
+.dashboard-precision-chart-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Hide unwanted internal blocks/corners in chart console frame */
+.dashboard-precision-chart-frame svg [id*="svg02a_corner_thickness_system"],
+.dashboard-precision-chart-frame svg [id*="corner_thickness"],
+.dashboard-precision-chart-frame svg [id*="chart_block_fill"],
+.dashboard-precision-chart-frame svg [id*="panel_top_left_glow"] {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* ─── Chart Display ─── */
+.dashboard-precision-chart-display {
+  overflow: hidden;
+}
+
+/* ─── Panel Frames ─── */
+.dashboard-precision-panel-frame {
+  pointer-events: none;
+  z-index: 12;
+}
+
+.dashboard-precision-panel-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Content Slots ─── */
+.dashboard-precision-content-slot {
+  z-index: 15;
+  container-type: inline-size;
   box-sizing: border-box;
 }
 
-/* ─── Topbar Zone ─── */
-.dashboard-topbar-zone {
-  grid-area: topbar;
-  position: relative;
-  min-width: 0;
-  min-height: 0;
+.dashboard-precision-content-slot--header {
+  overflow: hidden;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* ─── Sidebar Zone ─── */
-.dashboard-sidebar-zone {
-  grid-area: sidebar;
-  position: relative;
-  min-width: 0;
+.dashboard-precision-content-slot--body {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
   min-height: 0;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
+  background: rgba(138, 129, 120, 0.3);
+  border-radius: 2px;
+}
+
+/* ─── Topbar ─── */
+.dashboard-precision-topbar {
+  overflow: hidden;
+}
+
+.dashboard-precision-topbar-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-precision-topbar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-topbar-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0 clamp(8px, 1cqi, 20px);
+  box-sizing: border-box;
+  gap: clamp(6px, 0.8cqi, 16px);
+}
+
+/* ─── Sidebar ─── */
+.dashboard-precision-sidebar {
+  overflow: hidden;
+}
+
+.dashboard-precision-sidebar-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-precision-sidebar-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-precision-sidebar-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-/* ─── Main Grid ─── */
-.dashboard-main-grid {
-  grid-area: main;
-  display: grid;
-  grid-template-columns:
-    minmax(280px, 0.9fr)
-    minmax(480px, 1.55fr)
-    minmax(300px, 1fr);
-  grid-template-rows:
-    minmax(0, 1fr)
-    minmax(0, 1fr)
-    minmax(170px, 0.55fr);
-  grid-template-areas:
-    "bias    chart   evidence"
-    "confidence chart news"
-    "watchlist  coaching regime";
-  gap: clamp(8px, 0.9vw, 16px);
-  min-width: 0;
-  min-height: 0;
-}
-
-/* ─── Panel Grid Areas ─── */
-.dashboard-panel--directional-bias {
-  grid-area: bias;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--confidence-context {
-  grid-area: confidence;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--watchlist {
-  grid-area: watchlist;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-chart-zone {
-  grid-area: chart;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--evidence-stack {
-  grid-area: evidence;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--news-macro {
-  grid-area: news;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--coaching {
-  grid-area: coaching;
-  min-width: 0;
-  min-height: 0;
-}
-
-.dashboard-panel--market-regime {
-  grid-area: regime;
-  min-width: 0;
-  min-height: 0;
-}
-
-/* ─── Chart Zone Internals ─── */
-.chart-zone {
-  position: relative;
   width: 100%;
   height: 100%;
-  min-width: 0;
-  min-height: 0;
+  padding: clamp(6px, 0.8cqi, 12px) 0;
+  box-sizing: border-box;
+  gap: clamp(6px, 1cqi, 14px);
 }
 
-.chart-zone-wheel {
-  position: absolute;
-  inset: 0;
+.dashboard-precision-sidebar-icon {
+  width: clamp(16px, 55%, 28px);
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: rgba(138, 129, 120, 0.1);
+  border: 1px solid rgba(138, 129, 120, 0.2);
   display: grid;
   place-items: center;
-  opacity: 0.75;
-  pointer-events: none;
+  color: #8a8178;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-size: clamp(6px, 0.5cqi, 10px);
+  font-family: var(--font-mono);
 }
 
-.chart-zone-wheel svg {
-  width: 90%;
-  height: 90%;
-  max-width: 100%;
-  max-height: 100%;
+.dashboard-precision-sidebar-icon:hover {
+  background: rgba(138, 129, 120, 0.2);
+  border-color: rgba(138, 129, 120, 0.4);
 }
 
-.chart-zone-console {
-  position: absolute;
-  inset: clamp(18px, 3vw, 46px) clamp(12px, 2vw, 34px);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
+.dashboard-precision-sidebar-icon--active {
+  background: rgba(212, 168, 83, 0.12);
+  border-color: rgba(212, 168, 83, 0.35);
+  color: #d4a853;
 }
 
-.chart-zone-console-frame {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
 
-.chart-zone-console-frame svg {
-  width: 100%;
-  height: 100%;
-}
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LEGACY GENERIC GRID — NOT ACTIVE RUNTIME
+   Kept for reference only. Not imported by precision cockpit.
+   ═══════════════════════════════════════════════════════════════════════════════
 
-.chart-inner {
-  position: absolute;
-  inset: 10% 8% 11% 8%;
-  z-index: 3;
-}
+.dashboard-responsive-viewport { ... }
+.dashboard-responsive-shell { ... }
+.dashboard-topbar-zone { ... }
+.dashboard-sidebar-zone { ... }
+.dashboard-main-grid { ... }
+.dashboard-panel--directional-bias { ... }
+.dashboard-panel--confidence-context { ... }
+.dashboard-panel--watchlist { ... }
+.dashboard-chart-zone { ... }
+.dashboard-panel--evidence-stack { ... }
+.dashboard-panel--news-macro { ... }
+.dashboard-panel--coaching { ... }
+.dashboard-panel--market-regime { ... }
+.chart-zone { ... }
+.chart-zone-wheel { ... }
+.chart-zone-console { ... }
+.chart-zone-console-frame { ... }
+.chart-inner { ... }
 
-/* ─── Responsive Breakpoints ─── */
-
-/* Tablet landscape / smaller desktops */
-@media (max-width: 1280px) {
-  .dashboard-main-grid {
-    grid-template-columns:
-      minmax(240px, 1fr)
-      minmax(360px, 1.4fr)
-      minmax(240px, 1fr);
-    grid-template-rows:
-      minmax(0, 1fr)
-      minmax(0, 1fr)
-      minmax(150px, 0.5fr);
-  }
-}
-
-/* Narrower tablets */
-@media (max-width: 1024px) {
-  .dashboard-main-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto auto auto auto;
-    grid-template-areas:
-      "chart    chart"
-      "bias     evidence"
-      "confidence news"
-      "watchlist coaching"
-      "regime   regime";
-  }
-
-  .dashboard-responsive-shell {
-    grid-template-columns: clamp(44px, 3.5vw, 60px) minmax(0, 1fr);
-  }
-}
-
-/* Compact */
-@media (max-width: 768px) {
-  .dashboard-responsive-shell {
-    grid-template-columns: clamp(40px, 3vw, 52px) minmax(0, 1fr);
-    gap: clamp(4px, 0.6vw, 8px);
-    padding: clamp(4px, 0.6vw, 8px);
-  }
-}
+*/
