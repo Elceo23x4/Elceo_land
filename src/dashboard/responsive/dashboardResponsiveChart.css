@@ -1,0 +1,94 @@
+/**
+ * dashboardResponsiveChart.css
+ *
+ * Required chart styles for the responsive dashboard runtime.
+ * These classes are used by ChartContainer and ChartEngine.
+ * Without them, the chart shell/body/surface have no dimensions and the chart won't render.
+ */
+
+/* ─── Chart Display Container (board-positioned) ─── */
+.dashboard-precision-chart-display {
+  position: absolute;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+/* ─── Chart Shell ─── */
+.elceo-chart-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ─── Chart Status Bar ─── */
+.elceo-chart-status {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.5cqi, 10px);
+  padding: clamp(2px, 0.3cqi, 6px) clamp(4px, 0.6cqi, 10px);
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.45cqi, 10px);
+  color: #8a8178;
+  border-bottom: 1px solid rgba(255, 106, 0, 0.08);
+}
+
+.elceo-chart-status__label {
+  color: #c4bab0;
+  font-weight: 500;
+}
+
+.elceo-chart-status__badge {
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: rgba(212, 168, 83, 0.1);
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  color: #d4a853;
+  font-size: inherit;
+}
+
+.elceo-chart-status__notice {
+  color: #6b6560;
+  font-style: italic;
+}
+
+/* ─── Chart Body ─── */
+.elceo-chart-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Chart Surface (Lightweight Charts mounts here) ─── */
+.elceo-chart-surface {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ─── Chart Empty State ─── */
+.elceo-chart-empty {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: #6b6560;
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.6cqi, 12px);
+}
+
+/* ─── Chart Attribution ─── */
+.elceo-chart-attribution {
+  flex-shrink: 0;
+  padding: clamp(2px, 0.2cqi, 4px) clamp(4px, 0.6cqi, 10px);
+  font-family: var(--font-mono);
+  font-size: clamp(6px, 0.35cqi, 8px);
+  color: #4a4540;
+  text-align: right;
+}

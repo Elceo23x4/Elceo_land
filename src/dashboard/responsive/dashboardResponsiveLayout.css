@@ -59,12 +59,18 @@
 
 .dashboard-precision-bg-map {
   z-index: 1;
-  opacity: 0.58;
+  opacity: 0.72;
 }
 
 .dashboard-precision-bg-map svg {
-  filter: brightness(1.45) contrast(1.18) saturate(1.08);
+  filter: grayscale(1) brightness(1.8) contrast(1.18);
   mix-blend-mode: screen;
+}
+
+.dashboard-precision-bg-map svg circle,
+.dashboard-precision-bg-map svg path,
+.dashboard-precision-bg-map svg [fill] {
+  fill: rgba(185, 188, 186, 0.72) !important;
 }
 
 /* ─── Wheel ─── */
@@ -292,6 +298,57 @@
 .dashboard-precision-sidebar-icon--active {
   background: rgba(212, 168, 83, 0.12);
   border-color: rgba(212, 168, 83, 0.35);
+  color: #d4a853;
+}
+
+
+/* ─── Sidebar Button Layer ─── */
+.dashboard-sidebar-button-layer {
+  position: absolute;
+  inset: 7% 0 7% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.dashboard-sidebar-btn {
+  all: unset;
+  box-sizing: border-box;
+  width: clamp(18px, 1.9cqi, 32px);
+  height: clamp(18px, 1.9cqi, 32px);
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: rgba(20, 18, 16, 0.5);
+  border: 1px solid rgba(138, 129, 120, 0.25);
+  color: rgba(212, 168, 83, 0.7);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.dashboard-sidebar-btn svg {
+  width: 60%;
+  height: 60%;
+}
+
+.dashboard-sidebar-btn:hover {
+  background: rgba(212, 168, 83, 0.1);
+  border-color: rgba(212, 168, 83, 0.45);
+  color: rgba(212, 168, 83, 1);
+}
+
+.dashboard-sidebar-btn:focus-visible {
+  outline: 2px solid rgba(212, 168, 83, 0.6);
+  outline-offset: 2px;
+}
+
+.dashboard-sidebar-btn--active {
+  background: rgba(212, 168, 83, 0.12);
+  border-color: rgba(212, 168, 83, 0.5);
   color: #d4a853;
 }
 

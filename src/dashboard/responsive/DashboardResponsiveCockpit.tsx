@@ -19,25 +19,17 @@
  * This is a fluid coordinate canvas that fills the viewport.
  */
 
-import { TopSystemBarFrame, SidebarRailFrame } from "./dashboardResponsiveAssets";
+import { TopSystemBarFrame } from "./dashboardResponsiveAssets";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
 import DashboardResponsiveBackground from "./DashboardResponsiveBackground";
 import DashboardResponsiveChartZone from "./DashboardResponsiveChartZone";
 import DashboardResponsivePanelLayer from "./DashboardResponsivePanelLayer";
+import DashboardResponsiveSidebar from "./DashboardResponsiveSidebar";
 
 import "./dashboardResponsiveLayout.css";
 import "./dashboardResponsivePanels.css";
 import "./dashboardResponsiveTypography.css";
-
-/* ─── Sidebar nav items ─── */
-const SIDEBAR_ITEMS = [
-  { id: "overview", label: "OV", active: true },
-  { id: "chart", label: "CH", active: false },
-  { id: "watchlist", label: "WL", active: false },
-  { id: "macro", label: "MA", active: false },
-  { id: "coaching", label: "CO", active: false },
-  { id: "settings", label: "ST", active: false },
-];
+import "./dashboardResponsiveChart.css";
 
 export default function DashboardResponsiveCockpit() {
   return (
@@ -73,27 +65,7 @@ export default function DashboardResponsiveCockpit() {
         </div>
 
         {/* ─── Sidebar (z-index 30) ─── */}
-        <div
-          className="dashboard-precision-sidebar"
-          style={{ ...boardRectStyle(SHELL_RECTS.sidebarRail), zIndex: 30 }}
-        >
-          <div className="dashboard-precision-sidebar-frame" aria-hidden="true">
-            <SidebarRailFrame preserveAspectRatio="none" />
-          </div>
-          <nav className="dashboard-precision-sidebar-content" aria-label="Dashboard navigation">
-            {SIDEBAR_ITEMS.map((item) => (
-              <div
-                key={item.id}
-                className={`dashboard-precision-sidebar-icon${item.active ? " dashboard-precision-sidebar-icon--active" : ""}`}
-                title={item.id}
-                role="button"
-                tabIndex={0}
-              >
-                {item.label}
-              </div>
-            ))}
-          </nav>
-        </div>
+        <DashboardResponsiveSidebar />
       </div>
     </div>
   );
