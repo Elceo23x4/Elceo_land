@@ -1,12 +1,13 @@
 /**
  * DashboardResponsiveCockpit.tsx
  *
- * Top-level responsive dashboard component using precision coordinate board.
+ * Top-level responsive dashboard component using fluid coordinate canvas.
  * Replaces the old absolute 1920×1080 cockpit as the active /dashboard view.
  *
  * Architecture:
- * - Fluid board preserves 16:9 aspect ratio, fills viewport without crop
+ * - Fluid canvas fills 100vw × 100dvh (NO poster / contain / aspect-ratio board)
  * - All elements positioned by board-reference percentages (1920×1080 design ref)
+ * - X scales with browser width, Y scales with browser height
  * - Isolated SVG frames as panel/shell chrome
  * - Real DOM content inside precision content slots
  * - Internal scroll where needed
@@ -14,7 +15,8 @@
  *
  * This is NOT the old full-board SVG runtime.
  * This is NOT generic CSS grid fractions.
- * This is a coordinate-driven responsive board.
+ * This is NOT a poster/centered 16:9 board.
+ * This is a fluid coordinate canvas that fills the viewport.
  */
 
 import { TopSystemBarFrame, SidebarRailFrame } from "./dashboardResponsiveAssets";

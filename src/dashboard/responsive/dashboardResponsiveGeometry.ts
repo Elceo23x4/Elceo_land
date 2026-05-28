@@ -23,6 +23,7 @@ export const SHELL_RECTS = {
   topSystemBar: { x: 18, y: 18, w: 1884, h: 52 },
   sidebarRail: { x: 10.93, y: 109.55, w: 49.18, h: 731.21 },
   centralWheel: { x: 525, y: 9, w: 845, h: 870 },
+  chartGlass: { x: 629, y: 172, w: 618, h: 579 },
   chartConsoleFrame: { x: 549, y: 142, w: 769, h: 723 },
   chartDisplay: { x: 664, y: 194, w: 545, h: 515 },
 } as const;

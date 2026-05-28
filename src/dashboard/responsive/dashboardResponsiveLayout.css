@@ -16,23 +16,23 @@
 
 /* ─── Viewport ─── */
 .dashboard-precision-viewport {
+  position: fixed;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
   background: #030201;
-  display: grid;
-  place-items: center;
 }
 
-/* ─── Fluid Board ─── */
+/* ─── Fluid Board (fills viewport — NO poster/contain mode) ─── */
 .dashboard-precision-board {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  width: min(100vw, calc(100dvh * 16 / 9));
-  max-height: 100dvh;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-  container-type: inline-size;
+  container-type: size;
   background: #030201;
 }
 
@@ -54,12 +54,17 @@
 
 .dashboard-precision-bg-sky {
   z-index: 0;
-  opacity: 0.72;
+  opacity: 0.74;
 }
 
 .dashboard-precision-bg-map {
   z-index: 1;
-  opacity: 0.35;
+  opacity: 0.58;
+}
+
+.dashboard-precision-bg-map svg {
+  filter: brightness(1.45) contrast(1.18) saturate(1.08);
+  mix-blend-mode: screen;
 }
 
 /* ─── Wheel ─── */
@@ -74,17 +79,46 @@
   display: block;
 }
 
-/* ─── Chart Glass ─── */
+/* ─── Chart Glass — Realistic Transparent Acrylic ─── */
 .dashboard-precision-chart-glass {
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.01)),
-    rgba(4, 8, 7, 0.38);
-  border: 1px solid rgba(255, 191, 74, 0.12);
-  backdrop-filter: blur(10px);
-  box-shadow:
-    inset 0 0 36px rgba(255, 120, 20, 0.06),
-    0 0 0 1px rgba(255, 106, 0, 0.08);
+  position: absolute;
   pointer-events: none;
+  background:
+    linear-gradient(125deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.045) 20%, rgba(255,255,255,0.015) 52%, rgba(255,255,255,0.09) 100%),
+    linear-gradient(180deg, rgba(255,180,90,0.035), rgba(20,255,180,0.025)),
+    rgba(5, 10, 9, 0.18);
+  border: 1px solid rgba(255, 220, 170, 0.18);
+  outline: 1px solid rgba(255, 106, 0, 0.08);
+  backdrop-filter: blur(14px) saturate(1.35) contrast(1.08);
+  -webkit-backdrop-filter: blur(14px) saturate(1.35) contrast(1.08);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(255,106,0,0.12),
+    inset 18px 0 34px rgba(255,255,255,0.035),
+    inset -22px 0 42px rgba(0,255,170,0.03),
+    0 20px 70px rgba(0,0,0,0.35);
+  overflow: hidden;
+}
+
+.dashboard-precision-chart-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(108deg, transparent 0%, rgba(255,255,255,0.18) 12%, transparent 26%),
+    linear-gradient(250deg, transparent 0%, rgba(255,255,255,0.08) 18%, transparent 40%);
+  opacity: 0.42;
+  mix-blend-mode: screen;
+}
+
+.dashboard-precision-chart-glass::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    inset 0 0 32px rgba(255,255,255,0.035),
+    inset 0 0 60px rgba(255,106,0,0.035);
 }
 
 /* ─── Chart Frame ─── */
@@ -161,6 +195,24 @@
 /* ─── Topbar ─── */
 .dashboard-precision-topbar {
   overflow: hidden;
+}
+
+.dashboard-precision-topbar::after {
+  content: "";
+  position: absolute;
+  left: 1.2%;
+  right: 1.2%;
+  bottom: 0;
+  height: max(1px, 0.12cqh);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 106, 0, 0.36),
+    rgba(255, 191, 74, 0.5),
+    rgba(255, 106, 0, 0.32),
+    transparent
+  );
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .dashboard-precision-topbar-frame {

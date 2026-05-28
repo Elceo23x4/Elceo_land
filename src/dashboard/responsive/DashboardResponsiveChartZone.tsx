@@ -30,10 +30,10 @@ export default function DashboardResponsiveChartZone() {
         <CentralWheel preserveAspectRatio="xMidYMid meet" />
       </div>
 
-      {/* Chart glass — straight-sided glass layer behind frame */}
+      {/* Acrylic chart glass — realistic transparent glass layer behind frame */}
       <div
         className="dashboard-precision-chart-glass"
-        style={{ ...boardRectStyle(SHELL_RECTS.chartConsoleFrame), zIndex: 7 }}
+        style={{ ...boardRectStyle(SHELL_RECTS.chartGlass), zIndex: 7 }}
         aria-hidden="true"
       />
 
