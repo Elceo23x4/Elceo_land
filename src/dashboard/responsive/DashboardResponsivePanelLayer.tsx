@@ -30,6 +30,7 @@ import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine
 import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 import { getDashboardConditionWatchSnapshot } from "./dashboardConditionWatchFixtureEngine";
+import { getDashboardCrossAssetSnapshot } from "./dashboardCrossAssetFixtureEngine";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -71,6 +72,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
   const scenario = getDashboardScenarioSnapshot(activeAsset, activeTimeframe || "1H", cognition);
   const reviewWorkflow = getDashboardReviewWorkflowSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario);
   const conditionWatch = getDashboardConditionWatchSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, reviewWorkflow);
+  const crossAsset = getDashboardCrossAssetSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, conditionWatch);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -221,7 +223,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
       {/* ═══ EVIDENCE — Stack / Insights / Source Status / Source Freshness ═══ */}
       <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} linked={linkedPanelId === "evidenceStackReasoningEngine"} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />}
-        headerContent={<><p className="dashboard-precision-eyebrow">Signal Alignment</p><h3 className="dashboard-precision-title">Evidence · Insights</h3></>}
+        headerContent={<><p className="dashboard-precision-eyebrow">Evidence Alignment</p><h3 className="dashboard-precision-title">Evidence · Insights</h3></>}
         bodyContent={<>
           <SectionNav items={["Stack", "Insights", "Source Status", "Freshness"]} active={evidMode} onSelect={setEvidMode} />
           {evidMode === 0 && (<>
@@ -286,11 +288,10 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             </div>
           )}
           {newsMode === 2 && (<>
-            <DataRow label="Active asset context" value={assetCtx?.macroSensitivity ?? "—"} tone="neutral" />
-            <DataRow label={currencyCompareFixture.usdVsGold.label} value={currencyCompareFixture.usdVsGold.direction} tone={currencyCompareFixture.usdVsGold.tone} />
-            <DataRow label={currencyCompareFixture.usdVsJpy.label} value={currencyCompareFixture.usdVsJpy.direction} tone={currencyCompareFixture.usdVsJpy.tone} />
-            <DataRow label={currencyCompareFixture.eurUsd.label} value={currencyCompareFixture.eurUsd.direction} tone={currencyCompareFixture.eurUsd.tone} />
-            <DataRow label={currencyCompareFixture.realYields.label} value={currencyCompareFixture.realYields.direction} tone={currencyCompareFixture.realYields.tone} />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
+            {crossAsset.alignedAssets.slice(0, 2).map((a) => <DataRow key={a.id} label={a.asset} value={a.driver} tone={a.tone} />)}
+            {crossAsset.inverseAssets.slice(0, 1).map((a) => <DataRow key={a.id} label={`${a.asset} (inverse)`} value={a.driver} tone={a.tone} />)}
           </>)}
           {newsMode === 3 && (<>
             <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
@@ -350,37 +351,29 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         headerContent={<><p className="dashboard-precision-eyebrow">Environment State</p><h3 className="dashboard-precision-title">Market Regime</h3></>}
         bodyContent={<>
           <SectionNav items={["Cross-Asset", "Liquidity", "Volatility", "Correlation"]} active={regimeMode} onSelect={setRegimeMode} />
-          {regimeMode === 0 && (
-            <SlideStripWrapper>
-              {regimeFixture.map((r) => (
-                <HoverPreviewCard key={r.asset}
-                  trigger={<div style={{ minWidth: "90px" }}><DataRow label={r.asset} value={r.direction} tone={r.tone} /><CrossAssetMiniPulse strength={r.strength} tone={r.tone} /></div>}
-                  preview={<p className="dashboard-precision-body-text">{r.asset}: {r.direction} — Strength {r.strength}%</p>} />
-              ))}
-            </SlideStripWrapper>
-          )}
-          {regimeMode === 1 && (
-            <div className="dashboard-compare-split">
-              <div>
-                {regimeStrip.slice(0, 2).map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
-                <DataRow label="Spread" value="Normal" tone="neutral" />
-              </div>
-              <div>
-                {regimeStrip.slice(2).map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
-              </div>
-            </div>
-          )}
+          {regimeMode === 0 && (<>
+            <DataRow label="Driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
+            {crossAsset.pressureMap.map((p) => <DataRow key={p.id} label={p.label} value={p.value} tone={p.tone} />)}
+          </>)}
+          {regimeMode === 1 && (<>
+            <DataRow label="Liquidity" value={crossAsset.liquidityLink} tone="positive" />
+            <DataRow label="Volatility" value={crossAsset.volatilityLink} tone={cognition.cautionTone} />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
+          </>)}
           {regimeMode === 2 && (<>
             <DataRow label="Active asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="neutral" />
-            <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
-            <DataRow label="Vol condition" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
+            <DataRow label="Volatility" value={crossAsset.volatilityLink} tone={cognition.cautionTone} />
             {conditionWatch.regimeWatch.map((w) => <DataRow key={w.id} label="Regime watch" value={w.detail} tone={w.tone} />)}
-            <DataRow label="Zone strength" value={`${cognition.zoneStrengthScore}%`} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} />
-            <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
+            <p className="dashboard-precision-note">{crossAsset.cautionNote}</p>
           </>)}
-          {regimeMode === 3 && correlationFixture.map((c) => (
-            <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />
-          ))}
+          {regimeMode === 3 && (<>
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
+            {crossAsset.alignedAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↗`} value={a.driver} tone={a.tone} />)}
+            {crossAsset.divergingAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↔`} value={a.driver} tone={a.tone} />)}
+            {crossAsset.inverseAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↘`} value={a.driver} tone={a.tone} />)}
+          </>)}
           <ActionBar onExpand={() => openDrawer("Regime", "Market Regime Detail", "regime")} />
         </>} />
 
@@ -476,31 +469,36 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         {drawerPanel === "news" && (<>
           <DrawerSection title="Macro Scenario Context">
             <DataRow label="Active asset" value={activeAsset} tone="positive" />
-            <DataRow label="Macro sensitivity" value={cognition.macroSensitivity} tone="neutral" />
-            <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
+            <DataRow label="Driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
             {scenario.conditions.filter(c => c.linkedArea === "macro").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
           </DrawerSection>
           <DrawerSection title="Macro Condition Watch">
             {conditionWatch.macroWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Alternate Scenario Note">
+          <DrawerSection title="Alternate Scenario">
             <p className="dashboard-precision-body-text">{scenario.alternateScenario}</p>
+            <p className="dashboard-precision-note">{crossAsset.cautionNote}</p>
           </DrawerSection>
         </>)}
         {drawerPanel === "regime" && (<>
-          <DrawerSection title="Regime Scenario Context">
-            <DataRow label="Active asset" value={activeAsset} tone="positive" />
-            <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
-            <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
-            <DataRow label="Volatility" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
+          <DrawerSection title="Cross-Asset Context">
+            <DataRow label="Driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Liquidity" value={crossAsset.liquidityLink} tone="positive" />
+            <DataRow label="Volatility" value={crossAsset.volatilityLink} tone={cognition.cautionTone} />
           </DrawerSection>
-          <DrawerSection title="Condition Watch">
-            {conditionWatch.regimeWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
-            {conditionWatch.liquidityWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
+          <DrawerSection title="Aligned Assets">
+            {crossAsset.alignedAssets.map((a) => <DataRow key={a.id} label={a.asset} value={a.implication} tone={a.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Review">
-            {reviewWorkflow.checklist.filter(c => c.linkedArea === "regime").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
-            <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
+          <DrawerSection title="Diverging Assets">
+            {crossAsset.divergingAssets.map((a) => <DataRow key={a.id} label={a.asset} value={a.implication} tone={a.tone} />)}
+            {crossAsset.inverseAssets.map((a) => <DataRow key={a.id} label={`${a.asset} (inverse)`} value={a.implication} tone={a.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Pressure Map">
+            {crossAsset.pressureMap.map((p) => <DataRow key={p.id} label={p.label} value={`${p.value} — ${p.detail}`} tone={p.tone} />)}
           </DrawerSection>
         </>)}
         {!["bias", "confidence", "evidence", "coaching", "watchlist", "news", "regime"].includes(drawerPanel) && (

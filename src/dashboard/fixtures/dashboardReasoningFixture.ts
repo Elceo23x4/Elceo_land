@@ -14,7 +14,7 @@ export const dashboardReasoningFixture: DashboardReasoningFixture = {
     caveat: "Fixture-only reasoning. No live data connection is active.",
     drivers: [
       { label: "Momentum pressure", tone: "positive", summary: "Elevated directional flow detected in fixture data" },
-      { label: "Macro tension", tone: "warning", summary: "Mixed signals from broader context drivers" },
+      { label: "Macro tension", tone: "warning", summary: "Mixed conditions from broader context drivers" },
       { label: "Freshness", tone: "neutral", summary: "Data within acceptable review window" },
     ],
   },

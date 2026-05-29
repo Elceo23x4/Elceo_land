@@ -150,6 +150,8 @@ When the real journal system exists:
 
 The condition watch fixture engine (`dashboardConditionWatchFixtureEngine.ts`) consumes the review workflow and scenario/cognition snapshots to produce market condition watch items. These are market context conditions to monitor — not notification settings or delivery preferences.
 
+The cross-asset fixture engine (`dashboardCrossAssetFixtureEngine.ts`) consumes condition watch output to explain correlation, liquidity, risk tone, and external pressure relationships between assets.
+
 ---
 
 _This document is the reference for the review workflow fixture engine. Safe language only. No trading instructions._

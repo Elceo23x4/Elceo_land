@@ -191,7 +191,7 @@ const ASSET_PROFILES: Record<string, AssetProfile> = {
     cautionTone: "warning",
     reviewWindow: "Post UK GDP release",
     confidenceReason: "Conditional upside requires UK data confirmation before escalation.",
-    contradictionReason: "UK data uncertainty and USD mixed signals create conditional bias.",
+    contradictionReason: "UK data uncertainty and USD mixed conditions create conditional bias.",
     freshnessReason: "Pre-data state. Freshness limited until UK GDP resolves.",
     zoneReason: "Structure conditional — requires UK data to confirm or invalidate.",
     evidenceSummary: "UK GDP, employment data, and USD weakness form the conditional evidence base.",

@@ -80,7 +80,7 @@ const SCENARIO_PROFILES: Record<string, AssetScenarioProfile> = {
     ],
     contradictionItems: [
       { label: "Risk-on equities", category: "sentiment", tone: "warning", summary: "Equity firmness contradicts safe-haven thesis.", chartLink: "contradiction-marker" },
-      { label: "USD mixed signals", category: "macro", tone: "warning", summary: "Dollar weakening on data but yields not confirming.", chartLink: "macro-marker" },
+      { label: "USD mixed conditions", category: "macro", tone: "warning", summary: "Dollar weakening on data but yields not confirming.", chartLink: "macro-marker" },
       { label: "Event risk pending", category: "macro", tone: "warning", summary: "CPI release may invalidate current evidence alignment.", chartLink: "macro-marker" },
     ],
     freshnessItems: [

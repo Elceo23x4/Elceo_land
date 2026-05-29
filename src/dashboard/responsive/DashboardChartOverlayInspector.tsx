@@ -13,6 +13,7 @@ import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine
 import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 import { getDashboardConditionWatchSnapshot } from "./dashboardConditionWatchFixtureEngine";
+import { getDashboardCrossAssetSnapshot } from "./dashboardCrossAssetFixtureEngine";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -42,6 +43,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const scenario = getDashboardScenarioSnapshot(assetSymbol, tf, cognition);
   const reviewWorkflow = getDashboardReviewWorkflowSnapshot(assetSymbol, tf, cognition, scenario);
   const conditionWatch = getDashboardConditionWatchSnapshot(assetSymbol, tf, cognition, scenario, reviewWorkflow);
+  const crossAsset = getDashboardCrossAssetSnapshot(assetSymbol, tf, cognition, scenario, conditionWatch);
 
   let title = "";
   let kind = "";
@@ -69,7 +71,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     actionLabel = "View Evidence Context";
     assetContextLine = `${assetSymbol} · ${tf} — Zone strength: ${cognition.zoneStrengthScore}%. Review: ${reviewWorkflow.reviewState.replace(/_/g, " ")}`;
     const zoneWatch = conditionWatch.items.find(w => w.chartLink === "structure-zone");
-    watchLine = zoneWatch ? `Watch: ${zoneWatch.detail}` : "";
+    watchLine = zoneWatch ? `Watch: ${zoneWatch.detail} Cross-asset: ${crossAsset.usdLink}` : `Cross-asset: ${crossAsset.usdLink}`;
   } else if (item.type === "marker") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
@@ -91,7 +93,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     assetContextLine = `${assetSymbol} · ${tf} — ${cognition.macroSensitivity}`;
     const markerChartLink = item.kind === "contradiction" ? "contradiction-marker" : item.kind === "macro_event" ? "macro-marker" : "structure-zone";
     const markerWatch = conditionWatch.items.find(w => w.chartLink === markerChartLink);
-    watchLine = markerWatch ? `Watch: ${markerWatch.detail}` : "";
+    watchLine = markerWatch ? `Watch: ${markerWatch.detail} Cross-asset: ${crossAsset.dominantDriver}` : `Cross-asset: ${crossAsset.dominantDriver}`;
   } else if (item.type === "annotation") {
     title = `${item.title} — ${assetSymbol}`;
     kind = "annotation";
@@ -102,7 +104,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     actionLabel = item.actionLabel;
     assetContextLine = `${assetSymbol} · ${tf} — Scenario confidence: ${scenario.scenarioConfidence}%. Next review: ${reviewWorkflow.nextReviewCue}`;
     const freshWatch = conditionWatch.items.find(w => w.chartLink === "freshness-note");
-    watchLine = freshWatch ? `Watch: ${freshWatch.detail}` : "";
+    watchLine = freshWatch ? `Watch: ${freshWatch.detail}` : `Cross-asset: ${crossAsset.correlationNote}`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";
@@ -113,7 +115,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     actionLabel = "Review Scenario";
     assetContextLine = `${assetSymbol} · ${tf} — Review window: ${scenario.reviewWindow}`;
     const scenarioWatch = conditionWatch.items.find(w => w.chartLink === "scenario-path");
-    watchLine = scenarioWatch ? `Watch: ${scenarioWatch.detail}` : "";
+    watchLine = scenarioWatch ? `Watch: ${scenarioWatch.detail} Cross-asset: ${crossAsset.correlationNote}` : `Cross-asset: ${crossAsset.correlationNote}`;
   }
 
   return (

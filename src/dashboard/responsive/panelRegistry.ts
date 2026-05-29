@@ -50,7 +50,7 @@ export const panelRegistry: PanelRegistryEntry[] = [
     id: "evidence-stack",
     frame: EvidenceStackFrame,
     title: "Evidence Stack",
-    eyebrow: "Signal Alignment",
+    eyebrow: "Evidence Alignment",
     gridClass: "dashboard-panel--evidence-stack",
   },
   {

@@ -79,11 +79,11 @@ export const confidenceFixture = {
     { label: "Freshness", value: "Current", tone: "positive" as Tone, score: 78 },
     { label: "Zone strength", value: "Elevated", tone: "positive" as Tone, score: 74 },
     { label: "Data quality", value: "Good", tone: "positive" as Tone, score: 72 },
-    { label: "Signal agreement", value: "Moderate", tone: "neutral" as Tone, score: 58 },
+    { label: "Condition agreement", value: "Moderate", tone: "neutral" as Tone, score: 58 },
   ] satisfies ConfidenceMetric[],
   conflicts: [
     { label: "Risk-on vs safe-haven", detail: "Equities firm while gold also bid — cross-asset contradiction" },
-    { label: "USD mixed signals", detail: "Dollar weakening on data but yields not confirming direction" },
+    { label: "USD mixed conditions", detail: "Dollar weakening on data but yields not confirming direction" },
     { label: "Event risk pending", detail: "CPI release may invalidate current evidence alignment" },
   ],
   whyNotHigher: "Contradiction score (42%) caps effective confidence. Risk-on equities dilute safe-haven conviction.",
@@ -224,7 +224,7 @@ export interface MacroEvent {
 }
 
 export const newsFixture: MacroHeadline[] = [
-  { title: "Fed minutes signal patience on rate path", impact: "high", tone: "warning", source: "Fixture", time: "2h ago" },
+  { title: "Fed minutes suggest patience cue on rate path", impact: "high", tone: "warning", source: "Fixture", time: "2h ago" },
   { title: "US CPI print pending — consensus +0.2% MoM", impact: "high", tone: "warning", source: "Fixture", time: "Tomorrow" },
   { title: "ECB maintains rates, dovish forward guidance", impact: "medium", tone: "positive", source: "Fixture", time: "Today" },
   { title: "Gold ETF inflows accelerate — 3rd consecutive week", impact: "medium", tone: "positive", source: "Fixture", time: "3h ago" },
@@ -250,7 +250,7 @@ export const currencyCompareFixture = {
 };
 
 export const macroPulseFixture = {
-  centralBankTone: "Dovish lean — patience signaled",
+  centralBankTone: "Dovish lean — patience indicated",
   liquidity: "Adequate — no stress indicators",
   riskEvent: "CPI release pending — high impact scheduled",
   sourceState: "Fixture Mode — macro extraction pending",

@@ -69,7 +69,7 @@ export const chartZones: ChartZoneFixture[] = [
     linkedPanel: "regime",
     whyItMatters: "Liquidity concentration may attract price before reversal risk",
     evidenceWeight: 60,
-    caution: "Sweep of this band without momentum may signal exhaustion",
+    caution: "Sweep of this band without momentum may indicate exhaustion cue",
   },
   {
     id: "supply-1",
