@@ -212,8 +212,6 @@ export default function DashboardResponsivePanelLayer() {
             <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
             <StatusLabel label="Market Data Pending" />
           </>)}
-            <StatusLabel label="Market Data Pending" />
-          </>)}
           {evidMode === 3 && (<>
             <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
             <MiniMeter score={confidenceFixture.metrics[2].score} tone="positive" />
