@@ -29,6 +29,7 @@ import { assetContextBySymbol } from "./responsivePanelFixtures";
 import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
 import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
+import { getDashboardConditionWatchSnapshot } from "./dashboardConditionWatchFixtureEngine";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -69,6 +70,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
   const cognition = getDashboardCognitionSnapshot(activeAsset, activeTimeframe || "1H");
   const scenario = getDashboardScenarioSnapshot(activeAsset, activeTimeframe || "1H", cognition);
   const reviewWorkflow = getDashboardReviewWorkflowSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario);
+  const conditionWatch = getDashboardConditionWatchSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, reviewWorkflow);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -125,6 +127,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Alternate" value={scenario.alternateScenario} tone="warning" />
             <DataRow label="Confidence" value={`${scenario.scenarioConfidence}%`} tone={scenario.scenarioConfidence >= 55 ? "positive" : "neutral"} />
             <DataRow label="Condition" value={scenario.conditionSummary} tone={scenario.scenarioTone} />
+            <DataRow label="Top watch" value={conditionWatch.items[0]?.detail ?? ""} tone={conditionWatch.items[0]?.tone ?? "neutral"} />
             <DataRow label="Review window" value={scenario.reviewWindow} tone="neutral" />
             <p className="dashboard-precision-note">{scenario.cautionNote}</p>
           </>)}
@@ -202,12 +205,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
               trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
               preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
           ))}
-          {watchMode === 2 && watchlistAlerts.map((al) => (
-            <HoverPreviewCard key={al.asset} trigger={<DataRow label={al.asset} value={al.alert} tone={al.tone} />}
-              preview={<p className="dashboard-precision-body-text">{al.asset}: {al.alert}</p>} />
+          {watchMode === 2 && conditionWatch.items.slice(0, 5).map((w) => (
+            <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />
           ))}
           {watchMode === 3 && (<>
             <DataRow label="Timeframe" value={`${activeTimeframe || "1H"} — ${tfCtx?.scenarioPace ?? ""}`} tone="neutral" />
+            <DataRow label="Watch" value={conditionWatch.summary} tone={conditionWatch.items[0]?.tone ?? "neutral"} />
             {scenarioMapFixture.map((s) => (
             <DataRow key={s.asset} label={`${s.asset}${s.asset === activeAsset ? " ●" : ""}`} value={s.asset === activeAsset ? (assetCtx?.scenario ?? s.scenario) : s.scenario} tone={s.tone} />
             ))}
@@ -251,6 +254,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
             <MiniMeter score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
             <DataRow label="Stale risk" value={cognition.freshnessScore >= 70 ? "Low" : cognition.freshnessScore >= 55 ? "Low-moderate" : "Moderate"} tone={cognition.freshnessScore >= 60 ? "neutral" : "warning"} />
+            {conditionWatch.freshnessWatch.map((w) => <DataRow key={w.id} label="Freshness watch" value={w.detail} tone={w.tone} />)}
             <DataRow label="Next review cue" value={cognition.reviewWindow} tone="neutral" />
             <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
           </>)}
@@ -292,8 +296,8 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
             <DataRow label="Macro sensitivity" value={cognition.macroSensitivity} tone="neutral" />
             <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
+            {conditionWatch.macroWatch.map((w) => <DataRow key={w.id} label="Macro watch" value={w.detail} tone={w.tone} />)}
             <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
-            <DataRow label="Contradiction" value={cognition.contradictionReason} tone={cognition.cautionTone} />
             <StatusLabel label="Fixture Mode" />
           </>)}
           <ActionBar onExpand={() => openDrawer("Macro", "News & Macro Context", "news")} />
@@ -331,6 +335,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {coachMode === 3 && (<>
             <DataRow label="Review state" value={reviewWorkflow.reviewState.replace(/_/g, " ")} tone={reviewWorkflow.reviewTone} />
+            <DataRow label="Top condition" value={conditionWatch.items[0]?.detail ?? ""} tone={conditionWatch.items[0]?.tone ?? "neutral"} />
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "contradiction" || c.linkedArea === "freshness").map((c) => (
               <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />
             ))}
@@ -369,6 +374,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Active asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="neutral" />
             <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
             <DataRow label="Vol condition" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
+            {conditionWatch.regimeWatch.map((w) => <DataRow key={w.id} label="Regime watch" value={w.detail} tone={w.tone} />)}
             <DataRow label="Zone strength" value={`${cognition.zoneStrengthScore}%`} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} />
             <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
           </>)}
@@ -395,6 +401,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </DrawerSection>
           <DrawerSection title="Review Checklist">
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "scenario").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+            {conditionWatch.structureWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
           </DrawerSection>
           <DrawerSection title="Caution">
             <p className="dashboard-precision-body-text">{scenario.cautionNote}</p>
@@ -421,13 +428,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </DrawerSection>
           <DrawerSection title="Evidence Review">
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "evidence").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+            {conditionWatch.freshnessWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
             <DataRow label="Note evidence line" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
           </DrawerSection>
           <DrawerSection title="Contradiction Items">
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
-          </DrawerSection>
-          <DrawerSection title="Freshness Items">
-            {scenario.freshnessItems.map((f) => <DataRow key={f.id} label={f.label} value={f.summary} tone={f.tone} />)}
+            {conditionWatch.contradictionWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
           </DrawerSection>
         </>)}
         {drawerPanel === "coaching" && (<>
@@ -474,13 +480,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
             {scenario.conditions.filter(c => c.linkedArea === "macro").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
           </DrawerSection>
+          <DrawerSection title="Macro Condition Watch">
+            {conditionWatch.macroWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
+          </DrawerSection>
           <DrawerSection title="Alternate Scenario Note">
             <p className="dashboard-precision-body-text">{scenario.alternateScenario}</p>
-          </DrawerSection>
-          <DrawerSection title="Currency Drivers">
-            <DataRow label={currencyCompareFixture.usdVsGold.label} value={currencyCompareFixture.usdVsGold.direction} tone={currencyCompareFixture.usdVsGold.tone} />
-            <DataRow label={currencyCompareFixture.usdVsJpy.label} value={currencyCompareFixture.usdVsJpy.direction} tone={currencyCompareFixture.usdVsJpy.tone} />
-            <DataRow label={currencyCompareFixture.realYields.label} value={currencyCompareFixture.realYields.direction} tone={currencyCompareFixture.realYields.tone} />
           </DrawerSection>
         </>)}
         {drawerPanel === "regime" && (<>
@@ -489,14 +493,14 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
             <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
             <DataRow label="Volatility" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
-            {scenario.conditions.filter(c => c.linkedArea === "regime" || c.linkedArea === "liquidity").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Regime Review">
+          <DrawerSection title="Condition Watch">
+            {conditionWatch.regimeWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
+            {conditionWatch.liquidityWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Review">
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "regime").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
             <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
-          </DrawerSection>
-          <DrawerSection title="Cross-Asset Pulse">
-            {regimeFixture.slice(0, 4).map((r) => <DataRow key={r.asset} label={r.asset} value={r.direction} tone={r.tone} />)}
           </DrawerSection>
         </>)}
         {!["bias", "confidence", "evidence", "coaching", "watchlist", "news", "regime"].includes(drawerPanel) && (

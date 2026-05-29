@@ -146,4 +146,10 @@ When the real journal system exists:
 
 ---
 
+## Condition Watch Integration
+
+The condition watch fixture engine (`dashboardConditionWatchFixtureEngine.ts`) consumes the review workflow and scenario/cognition snapshots to produce market condition watch items. These are market context conditions to monitor — not notification settings or delivery preferences.
+
+---
+
 _This document is the reference for the review workflow fixture engine. Safe language only. No trading instructions._
