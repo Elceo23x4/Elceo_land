@@ -1,121 +1,122 @@
-# ELCEO Dashboard — UI Flow Fixture Coverage (R6A)
+# ELCEO Dashboard — UI Flow Fixture Coverage (R6B)
 
-Production-simulation content architecture mapping every user-facing ELCEO surface
-to its dashboard panel/mode/drawer representation.
+Market-only production simulation. The dashboard represents market intelligence exclusively.
 
 ---
 
-## Panel Mode Architecture
+## Security Boundary: What Dashboard Must Not Expose
+
+The ELCEO market dashboard intentionally does NOT show:
+
+| Excluded Content | Reason | Future Surface |
+|---|---|---|
+| Account information | Not market content | Account page |
+| Billing / subscription state | Not market content | Billing page |
+| Social identifier readiness | Security-sensitive | Account page |
+| Payment readiness | Security-sensitive | Billing page |
+| Restricted-user access states | Internal access control | Admin surfaces |
+| Notification preferences / delivery settings | Not market content | Notification settings page |
+| Security / session / step-up information | Security-sensitive | Auth flows |
+| Route URLs / path strings | Implementation detail | Router internals |
+| Subscription wall implementation | Internal gating | Billing page |
+| Raw provider payloads | Security-sensitive | Provider admin |
+| Admin / super-admin readiness | Not user-facing | Admin surfaces |
+
+**Safe market-facing labels allowed on dashboard:**
+- Fixture Mode
+- Provider Pending
+- Source Freshness Watch
+- Market Data Pending
+- News Fixture
+- Macro Fixture
+
+---
+
+## Panel Mode Architecture (Market-Only)
 
 | Panel | Mode 0 | Mode 1 | Mode 2 | Mode 3 |
 |-------|--------|--------|--------|--------|
-| Directional Bias | Bias | Scenario | Readiness | Asset |
-| Confidence & Context | Confidence | Contradiction | Freshness | Access |
-| Watchlist | Featured | FX Majors | Alerts | Portfolio |
+| Directional Bias | Bias | Scenario | Drivers | Asset |
+| Confidence & Context | Confidence | Contradiction | Freshness | Data Quality |
+| Watchlist | Featured | FX Majors | Alerts | Scenario Map |
 | Evidence · Insights | Stack | Insights | Provider Trace | Source Freshness |
 | News & Macro | Headlines | Events | Currency Compare | Macro Pulse |
-| Coaching · Journal | Coaching | Journal | Analytics | Behavior |
-| Market Regime | Cross-Asset | Liquidity/Risk | Notifications | Account/Billing |
+| Coaching · Journal | Coaching | Journal Note | Discipline | Behavior |
+| Market Regime | Cross-Asset | Liquidity/Risk | Volatility | Correlation |
 
 ---
 
-## UI Flow Coverage Table
+## Market Content Coverage
 
-| UI Flow Area | Panel / Mode | Fixture Export | Route Preview | Status |
-|---|---|---|---|---|
-| Dashboard asset cockpit | Bias / Asset mode | `assetCockpitFixture` | `/dashboard/xau-usd` | Represented |
-| Directional bias | Bias / Bias mode | `biasFixture` | — | Represented |
-| Scenario conditions | Bias / Scenario mode | `biasFixture.scenarios` | — | Represented |
-| Confidence decomposition | Confidence / Confidence mode | `confidenceDecompositionFixture` | — | Represented |
-| Contradiction analysis | Confidence / Contradiction mode | `confidenceDecompositionFixture.conflicts` | — | Represented |
-| Source freshness | Confidence / Freshness + Evidence / Freshness | `confidenceDecompositionFixture`, `marketInsightsFixture` | — | Represented |
-| Access / plan gating | Confidence / Access mode | `accountBillingReadinessFixture` | `/account/billing` | Represented |
-| Watchlist (priority assets) | Watchlist / Featured mode | `launchAssetUniverseFixture.priorityAssets` | — | Represented |
-| FX majors | Watchlist / FX Majors mode | `launchAssetUniverseFixture.fxMajors` | — | Represented |
-| Alerts | Watchlist / Alerts mode | `portfolioWatchlistFixture.alerts` | — | Represented |
-| Portfolio / tracked scenarios | Watchlist / Portfolio mode | `portfolioWatchlistFixture` | `/portfolio` | Represented |
-| Evidence stack | Evidence / Stack mode | `evidenceStackFixture` | `/market-evidence` | Represented |
-| Market insights | Evidence / Insights mode | `marketInsightsFixture` | — | Represented |
-| Provider trace (safe view) | Evidence / Provider mode | `providerTraceFixture` | — | Represented |
-| Macro headlines | News / Headlines mode | `macroIntelligenceFixture.headlines` | — | Represented |
-| Event calendar | News / Events mode | `macroIntelligenceFixture.events` | — | Represented |
-| Currency compare | News / Currency mode | `macroIntelligenceFixture.currencyCompare` | — | Represented |
-| Macro pulse | News / Macro Pulse mode | `macroIntelligenceFixture.macroPulse` | — | Represented |
-| Coaching | Coaching / Coaching mode | `coachingFixture` | `/coaching` | Represented |
-| Journal quick capture | Coaching / Journal mode | `journalQuickCaptureFixture` | `/journal/new` | Represented |
-| Analytics preview | Coaching / Analytics mode | `analyticsPreviewFixture` | `/analytics` | Represented |
-| Behavior overlay | Coaching / Behavior mode | `coachingFixture.behaviorOverlay` | — | Represented |
-| Cross-asset pulse | Regime / Cross-Asset mode | `regimeFixture` | — | Represented |
-| Liquidity / risk | Regime / Liquidity mode | `regimeStrip` | — | Represented |
-| Notifications readiness | Regime / Notifications mode | `notificationReadinessFixture` | `/notifications` | Represented |
-| Account & billing | Regime / Account mode | `accountBillingReadinessFixture` | `/account`, `/account/billing` | Represented |
-| Subscription wall preview | Confidence / Access + Regime / Account | `accountBillingReadinessFixture.subscriptionWallPreview` | `/account/billing` | Represented |
-| Provider pending states | Evidence / Provider + topbar badges | `providerTraceFixture`, `dashboardAccessFixture` | — | Represented |
-| Restricted user caveat | Confidence / Access mode | `accountBillingReadinessFixture.restrictedUser` | — | Represented |
-| Kick off vs Focus gating | Confidence / Access mode | `dashboardAccessFixture.planState` | — | Represented |
-| Chart intelligence overlays | Chart zone (fixture display) | — | — | Future (R7) |
-| Admin read-only surfaces | — | — | — | Future (R9) |
-| Super Admin step-up surfaces | — | — | — | Future (R9) |
+| Area | Dashboard Representation | Status |
+|---|---|---|
+| Asset cockpit | Bias / Asset mode + chart zone | Active |
+| Directional bias | Bias mode — direction, strength, condition | Active |
+| Scenario conditions | Scenario mode — primary, alternate, invalidation | Active |
+| Driver analysis | Drivers mode — 5 drivers with freshness | Active |
+| Confidence decomposition | Confidence mode — 6 metrics with donuts | Active |
+| Contradiction analysis | Contradiction mode — conflicts, why not higher/lower | Active |
+| Source freshness | Freshness mode + Evidence / Freshness mode | Active |
+| Data quality | Data Quality mode — quality score, coverage, staleness | Active |
+| Watchlist (priority) | Featured mode — XAU/USD, NAS100, SPX500, DE30, BTC/USD | Active |
+| FX majors | FX Majors mode — 7 pairs with sparklines | Active |
+| Scenario alerts | Alerts mode — zone retest, contradiction, momentum | Active |
+| Scenario map | Scenario Map mode — tracked asset scenarios | Active |
+| Evidence stack | Stack mode — 10 items with weight bars | Active |
+| Market insights | Insights mode — summary, supports, contradictions | Active |
+| Provider trace (safe) | Provider mode — market/news/macro/extraction labels | Active |
+| Macro headlines | Headlines mode — vertical timeline, impact colors | Active |
+| Event calendar | Events mode — flowing timeline with linking lines | Active |
+| Currency compare | Currency mode — USD/Gold, USD/JPY, EUR/USD, yields | Active |
+| Macro pulse | Macro Pulse mode — central bank, liquidity, risk | Active |
+| Coaching | Coaching mode — headline, checklist, body | Active |
+| Journal note | Journal Note mode — prompt, tags, emotional state | Active |
+| Discipline metrics | Discipline mode — score, consistency, caution | Active |
+| Behavior overlay | Behavior mode — readiness gate, recent quality | Active |
+| Cross-asset pulse | Cross-Asset mode — 7 assets with mini pulse | Active |
+| Liquidity / risk | Liquidity mode — regime strip, spread | Active |
+| Volatility | Volatility mode — regime, event risk, session note | Active |
+| Correlation | Correlation mode — 5 cross-asset pairs | Active |
 
 ---
 
-## Sidebar Route Surface Mapping
+## Sidebar (Market Cockpit Controls)
 
-| Button | Label | Route Context (title/aria) |
-|--------|-------|---------------------------|
-| Dashboard | Dashboard | Dashboard — Asset Cockpit |
-| Assets | Assets | Assets — Portfolio / Watchlist |
-| Evidence | Evidence | Market Evidence — Source Freshness |
-| Journal | Journal | Journal — Quick Capture |
-| Analytics | Analytics | Analytics — Coaching / Behavior |
-| Notifications | Notifications | Notifications — Preferences |
-| Account | Account | Account — Billing / Readiness |
-
----
-
-## Drawer Route Previews
-
-| Drawer | Route Previews Shown |
-|--------|---------------------|
-| Bias | `/dashboard/xau-usd` |
-| Confidence | Plan + billing readiness |
-| Evidence | `/market-evidence`, provider trace, persistence |
-| Coaching | `/journal`, `/analytics`, `/coaching` |
-| News | `/market-evidence`, `/notifications` |
-| Regime | `/notifications`, `/account`, `/account/billing` |
+| Button | Title |
+|--------|-------|
+| Cockpit | Market Cockpit |
+| Chart | Chart Context |
+| Assets | Watchlist Assets |
+| Evidence | Evidence Stack |
+| Macro | News & Macro |
+| Regime | Market Regime |
+| Journal | Journal & Coaching |
 
 ---
 
-## Fixture Export Groups (14)
+## Drawer Actions (Market-Only)
 
-1. `assetCockpitFixture` — active asset, timeframe, session, route
-2. `launchAssetUniverseFixture` — priority assets + FX majors (12 total)
-3. `evidenceStackFixture` — 10-item evidence hierarchy
-4. `marketInsightsFixture` — summary, supports, contradictions, caution
-5. `confidenceDecompositionFixture` — 6 metrics, 3 conflicts, quality
-6. `macroIntelligenceFixture` — headlines, events, currency, macro pulse
-7. `journalQuickCaptureFixture` — prompt, tags, emotional state, fields
-8. `portfolioWatchlistFixture` — scenarios, alerts, workspace, route
-9. `analyticsPreviewFixture` — discipline, consistency, behavior caution
-10. `coachingFixture` — headline, checklist, tiles, behavior overlay
-11. `notificationReadinessFixture` — inbox, topics, channels, delivery
-12. `accountBillingReadinessFixture` — plan, social ID, billing, wall
-13. `providerTraceFixture` — per-source provider status
-14. `routePreviewFixture` — 11 typed route previews with access states
+- Expand Evidence
+- Capture Journal Note
+- Save Market View
+- Review Scenario
+- Compare Assets
+- Inspect Freshness
 
 ---
 
-## Still Future
+## Intentionally Separated (Future Surfaces)
 
-| Feature | Batch | Notes |
-|---------|-------|-------|
-| Chart intelligence overlays | R7 | Zones, annotations, asset selector |
-| Drawer deep route pages | R8 | Full page views for evidence, journal, analytics |
-| Auth / plan gating enforcement | R9 | Protected routes, restricted user handling |
-| Provider adapter integration | R10 | Fixture-to-live toggle |
-| Accessibility hardening | R11 | ARIA audit, keyboard nav, reduced motion |
-| Production readiness | R12 | Tests, build, launch checklist |
+| Feature | Future Batch | Notes |
+|---------|-------------|-------|
+| Account page | R9 | Social ID, profile, security |
+| Billing page | R9 | Subscription, payment, plan management |
+| Notification settings | R9 | Delivery, preferences, channels |
+| Auth / plan gating | R9 | Protected routes, restricted user |
+| Admin surfaces | R9+ | Read-only admin, super-admin step-up |
+| Chart overlays | R7 | Zones, annotations, asset selector |
+| Deep route pages | R8 | Full evidence, journal, analytics pages |
 
 ---
 
-_Last updated: R6A batch_
+_Last updated: R6B batch_

@@ -21,7 +21,7 @@
 
 import { TopSystemBarFrame } from "./dashboardResponsiveAssets";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
-import { dashboardAccessFixture, notificationFixture } from "./responsivePanelFixtures";
+import { assetCockpitFixture } from "./responsivePanelFixtures";
 import DashboardResponsiveBackground from "./DashboardResponsiveBackground";
 import DashboardResponsiveChartZone from "./DashboardResponsiveChartZone";
 import DashboardResponsivePanelLayer from "./DashboardResponsivePanelLayer";
@@ -57,12 +57,11 @@ export default function DashboardResponsiveCockpit() {
             <span className="dashboard-precision-topbar-brand">ELCEO</span>
             <span className="dashboard-precision-topbar-title">Market Cognition Cockpit</span>
             <span className="dashboard-precision-topbar-spacer" />
-            <span className="dashboard-precision-topbar-badge">{dashboardAccessFixture.plan}</span>
+            <span className="dashboard-precision-topbar-badge">{assetCockpitFixture.activeAsset}</span>
             <span className="dashboard-precision-topbar-badge dashboard-precision-topbar-badge--fixture">
-              {dashboardAccessFixture.providerMode}
+              Fixture Mode
             </span>
-            <span className="dashboard-precision-topbar-badge">{dashboardAccessFixture.providerReadiness}</span>
-            <span className="dashboard-precision-topbar-badge" title="Notifications">{notificationFixture.inboxCount}</span>
+            <span className="dashboard-precision-topbar-badge">Provider Pending</span>
             <span className="dashboard-precision-topbar-clock">UTC —:—</span>
           </div>
         </div>
