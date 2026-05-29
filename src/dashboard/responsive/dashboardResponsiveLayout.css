@@ -393,7 +393,6 @@
 
 .dashboard-chart-annotation.is-highlighted .dashboard-chart-annotation__label { filter: saturate(1.3) brightness(1.2); }
 .dashboard-chart-annotation.is-selected .dashboard-chart-annotation__label { outline: none !important; filter: saturate(1.5) brightness(1.3); border-color: currentColor; }
-}
 
 /* ─── Hover Tooltip (zone/marker/path) ─── */
 .dashboard-chart-hover-tip {
