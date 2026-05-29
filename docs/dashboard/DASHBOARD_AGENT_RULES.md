@@ -70,6 +70,17 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Timeframe rules (R7F)
+
+- Timeframe selector must remain fixture/local state until live data boundary exists.
+- Asset/timeframe changes must not imply live data.
+- Chart overlays must remain normalized/fixture-only until provider integration.
+- Timeframe state is owned by the cockpit — never duplicated in child components.
+- Chart candle dataset does not change with timeframe — it is fixture-only.
+- Context labels and panel notes update to reflect timeframe awareness only.
+
+---
+
 ## Validation rules
 
 Every dashboard batch must report:

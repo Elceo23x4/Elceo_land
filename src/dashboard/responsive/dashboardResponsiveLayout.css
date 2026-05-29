@@ -191,7 +191,6 @@
 
 /* ─── Markers ─── */
 .dashboard-chart-marker {
-  filter: drop-shadow(0 0 2px currentColor);
   transition: opacity 0.2s;
 }
 
@@ -263,7 +262,7 @@
 .dashboard-chart-annotation__tooltip p {
   font-family: var(--font-body);
   font-size: clamp(7px, 0.38vw, 9px);
-  color: #b8afa6;
+  color: #f0e8dd;
   margin: 0 0 2px;
   line-height: 1.4;
 }
@@ -306,6 +305,13 @@
 
 .dashboard-chart-context-strip__item--state {
   color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.25);
+}
+
+.dashboard-chart-context-strip__item--timeframe {
+  color: #ffd76a;
+  font-weight: 600;
+  font-family: var(--font-mono);
   border-color: rgba(255, 215, 106, 0.25);
 }
 
@@ -538,6 +544,15 @@
   line-height: 1.35;
 }
 
+.dashboard-chart-inspector__timeframe-note {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #c5b9ad;
+  font-style: italic;
+  margin: 2px 0;
+  line-height: 1.35;
+}
+
 .dashboard-chart-inspector__actions {
   display: flex;
   flex-wrap: wrap;
@@ -665,6 +680,105 @@
 }
 
 .dashboard-asset-selector__option-label {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d8cfc4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TIMEFRAME SELECTOR — HUD compact dropdown (R7F)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-timeframe-selector {
+  position: absolute;
+  top: clamp(4px, 0.5vw, 10px);
+  right: clamp(130px, 12vw, 200px);
+  z-index: 11;
+  pointer-events: auto;
+}
+
+.dashboard-timeframe-selector__trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.4vw, 8px);
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 106, 0.22);
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.dashboard-timeframe-selector__trigger:hover {
+  border-color: rgba(255, 215, 106, 0.45);
+}
+
+.dashboard-timeframe-selector__trigger:focus-visible {
+  outline: 1px solid rgba(212, 168, 83, 0.5);
+  outline-offset: 1px;
+}
+
+.dashboard-timeframe-selector__value {
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.5vw, 12px);
+  font-weight: 700;
+  color: #ffd76a;
+  letter-spacing: 0.04em;
+}
+
+.dashboard-timeframe-selector__arrow {
+  font-size: clamp(7px, 0.35vw, 8px);
+  color: #ffd76a;
+}
+
+.dashboard-timeframe-selector__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: max-content;
+  min-width: 100px;
+  background: rgba(6, 4, 2, 0.95);
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-timeframe-selector__option {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dashboard-timeframe-selector__option:hover {
+  background: rgba(255, 215, 106, 0.06);
+}
+
+.dashboard-timeframe-selector__option.is-active {
+  background: rgba(255, 215, 106, 0.1);
+}
+
+.dashboard-timeframe-selector__option-value {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.44vw, 10.5px);
+  font-weight: 600;
+  color: #f8f2e8;
+  min-width: 28px;
+}
+
+.dashboard-timeframe-selector__option.is-active .dashboard-timeframe-selector__option-value {
+  color: #ffd76a;
+}
+
+.dashboard-timeframe-selector__option-label {
   font-family: var(--font-body);
   font-size: clamp(6.5px, 0.34vw, 8px);
   color: #d8cfc4;

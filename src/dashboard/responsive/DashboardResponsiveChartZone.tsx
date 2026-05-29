@@ -1,8 +1,8 @@
 /**
  * DashboardResponsiveChartZone.tsx
  *
- * R7C: Chart zone with interactive overlay, inspector, asset selector.
- * Receives activeAsset from cockpit and updates context strip.
+ * R7F: Chart zone with interactive overlay, inspector, asset selector, timeframe selector.
+ * Receives activeAsset + activeTimeframe from cockpit and updates context strip.
  */
 
 import { useState, useCallback } from "react";
@@ -13,22 +13,30 @@ import { assetContextBySymbol } from "./responsivePanelFixtures";
 import DashboardChartIntelligenceOverlay from "./DashboardChartIntelligenceOverlay";
 import DashboardChartOverlayInspector from "./DashboardChartOverlayInspector";
 import DashboardAssetSelector from "./DashboardAssetSelector";
+import DashboardTimeframeSelector from "./DashboardTimeframeSelector";
+import type { Timeframe } from "./DashboardTimeframeSelector";
 import { getOverlayItemById, chartZones, type LinkedPanel } from "./chartIntelligenceFixture";
 
 interface ChartZoneProps {
   activeAsset: string;
+  activeTimeframe: Timeframe;
   onAssetChange: (asset: string) => void;
+  onTimeframeChange: (tf: Timeframe) => void;
   onLinkedPanel?: (panel: LinkedPanel | null) => void;
 }
 
-export default function DashboardResponsiveChartZone({ activeAsset, onAssetChange, onLinkedPanel }: ChartZoneProps) {
+export default function DashboardResponsiveChartZone({
+  activeAsset,
+  activeTimeframe,
+  onAssetChange,
+  onTimeframeChange,
+  onLinkedPanel,
+}: ChartZoneProps) {
   const [showZones, setShowZones] = useState(true);
   const [showLiquidity, setShowLiquidity] = useState(true);
   const [showScenario, setShowScenario] = useState(true);
   const [showNotes, setShowNotes] = useState(true);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-
-  const ctx = assetContextBySymbol[activeAsset];
 
   const handleSelect = useCallback((id: string | null) => {
     setSelectedId(id);
@@ -79,12 +87,20 @@ export default function DashboardResponsiveChartZone({ activeAsset, onAssetChang
           selectedId={selectedId}
           onSelect={handleSelect}
           activeAsset={activeAsset}
+          activeTimeframe={activeTimeframe}
         />
 
         <DashboardChartOverlayInspector
           selectedId={selectedId}
           onClose={() => handleSelect(null)}
           activeAsset={activeAsset}
+          activeTimeframe={activeTimeframe}
+        />
+
+        {/* Timeframe selector — top-right, before asset selector */}
+        <DashboardTimeframeSelector
+          activeTimeframe={activeTimeframe}
+          onTimeframeChange={onTimeframeChange}
         />
 
         {/* Asset selector — top-right */}

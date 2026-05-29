@@ -490,3 +490,147 @@ export const assetContextBySymbol: Record<string, AssetContext> = {
 };
 
 export const AVAILABLE_ASSETS = Object.keys(assetContextBySymbol);
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ASSET + TIMEFRAME CONTEXT — per-asset timeframe-aware fixture context (R7F)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export interface AssetTimeframeContext {
+  label: string;
+  assetClass: string;
+  timeframeNotes: Record<string, string>;
+}
+
+export const assetTimeframeContextBySymbol: Record<string, AssetTimeframeContext> = {
+  "XAU/USD": {
+    label: "Gold Spot",
+    assetClass: "Metals",
+    timeframeNotes: {
+      "15M": "Short-window structure review; freshness sensitivity elevated.",
+      "1H": "Primary cockpit view for structure and macro alignment.",
+      "4H": "Higher-context scenario review with slower confirmation.",
+      "1D": "Macro regime context and broader liquidity map.",
+    },
+  },
+  "NAS100": {
+    label: "Nasdaq 100",
+    assetClass: "Indices",
+    timeframeNotes: {
+      "15M": "Momentum micro-structure; session-driven freshness.",
+      "1H": "Core scenario review aligned with US session flow.",
+      "4H": "Cross-session momentum and structure persistence check.",
+      "1D": "Broad regime lens and macro trend alignment.",
+    },
+  },
+  "SPX500": {
+    label: "S&P 500",
+    assetClass: "Indices",
+    timeframeNotes: {
+      "15M": "Intraday structure and volatility micro-lens.",
+      "1H": "Primary scenario context for US session analysis.",
+      "4H": "Intermediate confirmation and momentum persistence.",
+      "1D": "Macro regime and cross-asset correlation review.",
+    },
+  },
+  "DE30": {
+    label: "Germany 40",
+    assetClass: "Indices",
+    timeframeNotes: {
+      "15M": "European session micro-structure review.",
+      "1H": "Primary cockpit view for European indices.",
+      "4H": "Cross-session regime review and US correlation.",
+      "1D": "Macro trend context and ECB policy sensitivity.",
+    },
+  },
+  "BTC/USD": {
+    label: "Bitcoin",
+    assetClass: "Crypto",
+    timeframeNotes: {
+      "15M": "Volatile micro-structure; freshness critical.",
+      "1H": "Core scenario review for breakout and momentum.",
+      "4H": "Multi-session momentum persistence and volume.",
+      "1D": "Broader regime and risk-on correlation lens.",
+    },
+  },
+  "EUR/USD": {
+    label: "Euro/Dollar",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Short-window micro-structure; news sensitivity high.",
+      "1H": "Primary cockpit view for EUR flow analysis.",
+      "4H": "Cross-session direction and ECB policy context.",
+      "1D": "Macro regime and interest rate differential lens.",
+    },
+  },
+  "GBP/USD": {
+    label: "Cable",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "UK data release micro-structure sensitivity.",
+      "1H": "Core scenario view for London/NY session flow.",
+      "4H": "Intermediate structure and UK macro alignment.",
+      "1D": "Broader UK economic regime and policy lens.",
+    },
+  },
+  "USD/JPY": {
+    label: "Dollar/Yen",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Intervention risk micro-structure; high sensitivity.",
+      "1H": "Core cockpit view for yield differential flow.",
+      "4H": "Cross-session intervention zone monitoring.",
+      "1D": "Macro regime and BoJ policy divergence lens.",
+    },
+  },
+  "USD/CHF": {
+    label: "Dollar/Swiss",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Safe-haven flow micro-structure review.",
+      "1H": "Primary cockpit view for USD/CHF direction.",
+      "4H": "Intermediate safe-haven demand persistence.",
+      "1D": "Macro regime and SNB policy context lens.",
+    },
+  },
+  "AUD/USD": {
+    label: "Aussie/Dollar",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Asian session micro-structure and China data sensitivity.",
+      "1H": "Core cockpit view for commodity-linked FX.",
+      "4H": "Cross-session momentum and China correlation.",
+      "1D": "Macro regime and commodity cycle lens.",
+    },
+  },
+  "NZD/USD": {
+    label: "Kiwi/Dollar",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Low-liquidity micro-structure; spread sensitivity.",
+      "1H": "Primary cockpit view for NZD momentum.",
+      "4H": "Cross-session persistence and AUD correlation.",
+      "1D": "Macro regime and RBNZ policy context lens.",
+    },
+  },
+  "USD/CAD": {
+    label: "Dollar/Loonie",
+    assetClass: "FX Major",
+    timeframeNotes: {
+      "15M": "Oil correlation micro-structure review.",
+      "1H": "Core cockpit view for oil-linked USD/CAD.",
+      "4H": "Intermediate oil and BoC policy alignment.",
+      "1D": "Macro regime and energy market correlation lens.",
+    },
+  },
+};
+
+/**
+ * Helper: get timeframe note for a given asset + timeframe combination.
+ * Returns safe fallback if asset or timeframe is not found.
+ */
+export function getTimeframeNote(asset: string, timeframe: string): string {
+  const ctx = assetTimeframeContextBySymbol[asset];
+  if (!ctx) return "Fixture context not available for this asset.";
+  return ctx.timeframeNotes[timeframe] ?? "Timeframe context pending.";
+}
