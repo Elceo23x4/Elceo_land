@@ -93,6 +93,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Cross-asset fixture engine rules
+
+- Cross-asset engine must remain deterministic.
+- No live correlation claims — all relationships are fixture context.
+- All cross-asset language must be framed as fixture market context.
+- Avoid "signal" completely; use cue/condition/pressure/context.
+- Engine is located in `src/dashboard/responsive/dashboardCrossAssetFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.

@@ -420,7 +420,7 @@ export const dashboardAssetManifest: DashboardAssetEntry[] = [
     category: "gauges",
     status: "approved",
     sourcePath: "src/assets/source/dashboard/gauges/elceo-svg-07-contradiction-gauge-display-safe.svg",
-    notes: "Signal contradiction gauge",
+    notes: "Contradiction condition gauge",
     importMode: "svgr",
   },
   {
