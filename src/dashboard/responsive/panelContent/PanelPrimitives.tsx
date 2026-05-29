@@ -14,12 +14,12 @@ export function Chip({ value, tone }: { value: string; tone: Tone }) {
 }
 
 /* ─── DataRow ─── */
-export function DataRow({ label, value, tone }: { label: string; value: string; tone?: Tone }) {
+export function DataRow({ label, value, tone, mono }: { label: string; value: string; tone?: Tone; mono?: boolean }) {
   const color = tone === "positive" ? "#5cba6e" : tone === "negative" ? "#e05555" : tone === "warning" ? "#d4a853" : "#8a8178";
   return (
     <div className="dashboard-precision-data-row">
       <span className="dashboard-precision-data-label">{label}</span>
-      <span style={{ color }}>{value}</span>
+      <span className={`dashboard-precision-data-value${mono ? " dashboard-precision-data-value--mono" : ""}`} style={{ color }}>{value}</span>
     </div>
   );
 }

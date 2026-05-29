@@ -153,6 +153,523 @@
   overflow: hidden;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CHART INTELLIGENCE OVERLAY
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-chart-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dashboard-chart-overlay__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Zone Overlays ─── */
+.dashboard-chart-zone {
+  transition: opacity 0.2s;
+}
+
+.dashboard-chart-zone--demand { opacity: 0.85; }
+.dashboard-chart-zone--supply { opacity: 0.75; }
+.dashboard-chart-zone--structure { opacity: 0.9; }
+.dashboard-chart-zone--liquidity { opacity: 0.7; }
+
+/* ─── Scenario Paths ─── */
+.dashboard-chart-scenario-path {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+/* ─── Markers ─── */
+.dashboard-chart-marker {
+  filter: drop-shadow(0 0 2px currentColor);
+  transition: opacity 0.2s;
+}
+
+/* ─── Annotation Anchors ─── */
+.dashboard-chart-annotation-anchor {
+  transition: opacity 0.2s;
+}
+
+/* ─── Annotation Labels (HTML) ─── */
+.dashboard-chart-annotation {
+  position: absolute;
+  transform: translate(-50%, -130%);
+  pointer-events: auto;
+  cursor: default;
+  z-index: 8;
+}
+
+.dashboard-chart-annotation__label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.42vw, 9.5px);
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.dashboard-chart-annotation--positive .dashboard-chart-annotation__label {
+  color: #5cba6e;
+  background: rgba(92, 186, 110, 0.08);
+  border: 1px solid rgba(92, 186, 110, 0.25);
+}
+
+.dashboard-chart-annotation--negative .dashboard-chart-annotation__label {
+  color: #e05555;
+  background: rgba(224, 85, 85, 0.08);
+  border: 1px solid rgba(224, 85, 85, 0.25);
+}
+
+.dashboard-chart-annotation--warning .dashboard-chart-annotation__label {
+  color: #d4a853;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.25);
+}
+
+.dashboard-chart-annotation--neutral .dashboard-chart-annotation__label {
+  color: #8a8178;
+  background: rgba(138, 129, 120, 0.08);
+  border: 1px solid rgba(138, 129, 120, 0.2);
+}
+
+/* ─── Annotation Tooltip ─── */
+.dashboard-chart-annotation__tooltip {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 180px;
+  padding: 5px 8px;
+  background: rgba(8, 6, 4, 0.94);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.dashboard-chart-annotation__tooltip p {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.38vw, 9px);
+  color: #b8afa6;
+  margin: 0 0 2px;
+  line-height: 1.4;
+}
+
+.dashboard-chart-annotation__link {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d4a853;
+  opacity: 0.8;
+}
+
+/* ─── Active Context Strip ─── */
+.dashboard-chart-context-strip {
+  position: absolute;
+  bottom: clamp(4px, 0.5vw, 10px);
+  left: clamp(4px, 0.5vw, 10px);
+  display: flex;
+  gap: clamp(4px, 0.4vw, 8px);
+  align-items: center;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.dashboard-chart-context-strip__item {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.38vw, 9px);
+  color: #e8dfd4;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  white-space: nowrap;
+}
+
+.dashboard-chart-context-strip__item--asset {
+  color: #ffffff;
+  font-weight: 600;
+  border-color: rgba(255, 215, 106, 0.35);
+}
+
+.dashboard-chart-context-strip__item--state {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.25);
+}
+
+/* ─── Overlay Toggle Controls — positioned at board coordinates ─── */
+.dashboard-chart-overlay-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 0.5vw, 10px);
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-chart-overlay-toggle {
+  all: unset;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: clamp(10px, 0.58vw, 13px);
+  font-weight: 500;
+  color: #f0e8dd;
+  padding: clamp(4px, 0.35vw, 6px) clamp(9px, 0.7vw, 14px);
+  min-height: 24px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+  white-space: nowrap;
+}
+
+.dashboard-chart-overlay-toggle:hover {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.45);
+}
+
+.dashboard-chart-overlay-toggle[aria-pressed="true"] {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.55);
+  background: rgba(255, 215, 106, 0.08);
+}
+
+.dashboard-chart-overlay-toggle:focus-visible {
+  outline: 1px solid rgba(212, 168, 83, 0.5);
+  outline-offset: 1px;
+}
+
+/* ─── Overlay Interaction States — Neon color only, no outlines ─── */
+.dashboard-chart-overlay [role="button"],
+.dashboard-chart-overlay [tabindex] {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.dashboard-chart-overlay [role="button"]:focus,
+.dashboard-chart-overlay [tabindex]:focus { outline: none; }
+.dashboard-chart-overlay [role="button"]:focus:not(:focus-visible),
+.dashboard-chart-overlay [tabindex]:focus:not(:focus-visible) { outline: none; }
+.dashboard-chart-overlay [role="button"]:focus-visible,
+.dashboard-chart-overlay [tabindex]:focus-visible {
+  outline: 1px dashed rgba(57, 255, 136, 0.4);
+  outline-offset: 1px;
+}
+
+.dashboard-chart-zone.is-highlighted {
+  opacity: 1 !important;
+  filter: saturate(1.3) brightness(1.12);
+}
+
+.dashboard-chart-zone.is-selected {
+  opacity: 1 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  filter: saturate(1.45) brightness(1.18);
+}
+
+.dashboard-chart-zone--demand.is-selected { stroke: #39ff88 !important; fill: rgba(57, 255, 136, 0.12) !important; }
+.dashboard-chart-zone--supply.is-selected { stroke: #ff4f5f !important; fill: rgba(255, 79, 95, 0.10) !important; }
+.dashboard-chart-zone--structure.is-selected { stroke: #ffd76a !important; fill: rgba(255, 215, 106, 0.10) !important; }
+.dashboard-chart-zone--liquidity.is-selected { stroke: #ffb032 !important; fill: rgba(255, 176, 50, 0.08) !important; }
+
+.dashboard-chart-scenario-path.is-highlighted { opacity: 1; filter: saturate(1.3) brightness(1.15); }
+.dashboard-chart-scenario-path.is-selected { opacity: 1; outline: none !important; filter: saturate(1.5) brightness(1.25); }
+
+.dashboard-chart-marker.is-highlighted { filter: saturate(1.4) brightness(1.2); }
+.dashboard-chart-marker.is-selected { outline: none !important; filter: saturate(1.6) brightness(1.3); }
+
+.dashboard-chart-annotation.is-highlighted .dashboard-chart-annotation__label { filter: saturate(1.3) brightness(1.2); }
+.dashboard-chart-annotation.is-selected .dashboard-chart-annotation__label { outline: none !important; filter: saturate(1.5) brightness(1.3); border-color: currentColor; }
+
+/* ─── Hover Tooltip (zone/marker/path) ─── */
+.dashboard-chart-hover-tip {
+  position: absolute;
+  transform: translate(-50%, -120%);
+  z-index: 12;
+  pointer-events: none;
+  width: max-content;
+  max-width: 200px;
+  padding: 4px 8px;
+  background: rgba(8, 6, 4, 0.92);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  border-radius: 3px;
+  backdrop-filter: blur(8px);
+}
+
+.dashboard-chart-hover-tip strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.4vw, 9.5px);
+  font-weight: 600;
+  color: #e8dfd4;
+  margin-bottom: 1px;
+}
+
+.dashboard-chart-hover-tip p {
+  font-family: var(--font-body);
+  font-size: clamp(7.5px, 0.41vw, 9.8px);
+  color: #f0e8dd;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CHART OVERLAY INSPECTOR — Dark glass HUD panel
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-chart-inspector {
+  position: absolute;
+  bottom: clamp(32px, 4vw, 60px);
+  right: clamp(6px, 0.8vw, 14px);
+  z-index: 14;
+  width: clamp(160px, 18vw, 240px);
+  background: rgba(6, 4, 2, 0.92);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+  animation: chartInspectorFadeIn 150ms ease-out;
+}
+
+@keyframes chartInspectorFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dashboard-chart-inspector__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 8px 4px;
+  border-bottom: 1px solid rgba(138, 129, 120, 0.1);
+}
+
+.dashboard-chart-inspector__title {
+  font-family: var(--font-body);
+  font-size: clamp(8px, 0.46vw, 11px);
+  font-weight: 700;
+  color: #e8dfd4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-chart-inspector__close {
+  all: unset;
+  box-sizing: border-box;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  color: #6b6560;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: color 0.12s;
+}
+
+.dashboard-chart-inspector__close:hover { color: #e8dfd4; }
+
+.dashboard-chart-inspector__body {
+  padding: 5px 8px;
+}
+
+.dashboard-chart-inspector__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5px 0;
+  font-size: clamp(7px, 0.38vw, 9px);
+}
+
+.dashboard-chart-inspector__label {
+  color: #d8cfc4;
+  font-family: var(--font-body);
+}
+
+.dashboard-chart-inspector__value {
+  color: #f8f2e8;
+  font-family: var(--font-body);
+  font-weight: 500;
+  text-align: right;
+}
+
+.dashboard-chart-inspector__value--link {
+  color: #ffd76a;
+}
+
+.dashboard-chart-inspector__note {
+  font-family: var(--font-body);
+  font-size: clamp(7.5px, 0.41vw, 9.8px);
+  color: #f0e8dd;
+  margin: 4px 0 2px;
+  line-height: 1.4;
+}
+
+.dashboard-chart-inspector__why {
+  font-family: var(--font-body);
+  font-size: clamp(7.5px, 0.39vw, 9.2px);
+  color: #e8dfd4;
+  font-style: italic;
+  margin: 2px 0;
+  line-height: 1.35;
+}
+
+.dashboard-chart-inspector__caution {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d4a853;
+  margin: 2px 0;
+  line-height: 1.35;
+}
+
+.dashboard-chart-inspector__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 4px 8px 6px;
+  border-top: 1px solid rgba(138, 129, 120, 0.08);
+}
+
+.dashboard-chart-inspector__action {
+  all: unset;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d8cfc4;
+  padding: 2px 5px;
+  border: 1px solid rgba(212, 168, 83, 0.2);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+
+.dashboard-chart-inspector__action:hover {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.4);
+}
+
+/* ─── Panel Linked Highlight ─── */
+.dashboard-panel-group--linked {
+  box-shadow: inset 0 0 0 1px rgba(212, 168, 83, 0.25), 0 0 12px rgba(212, 168, 83, 0.08);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   ASSET SELECTOR — HUD dropdown
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-asset-selector {
+  position: absolute;
+  top: clamp(4px, 0.5vw, 10px);
+  right: clamp(4px, 0.5vw, 10px);
+  z-index: 11;
+  pointer-events: auto;
+}
+
+.dashboard-asset-selector__trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 0.5vw, 10px);
+  padding: 4px 10px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 106, 0.22);
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.dashboard-asset-selector__trigger:hover {
+  border-color: rgba(255, 215, 106, 0.45);
+}
+
+.dashboard-asset-selector__symbol {
+  font-family: var(--font-body);
+  font-size: clamp(9.6px, 0.55vw, 13.2px);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dashboard-asset-selector__class {
+  font-family: var(--font-body);
+  font-size: clamp(7.8px, 0.41vw, 9.6px);
+  color: #d8cfc4;
+}
+
+.dashboard-asset-selector__arrow {
+  font-size: clamp(7.2px, 0.36vw, 8.4px);
+  color: #ffd76a;
+}
+
+.dashboard-asset-selector__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  width: max-content;
+  min-width: 140px;
+  max-height: 240px;
+  overflow-y: auto;
+  background: rgba(6, 4, 2, 0.95);
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 172, 76, 0.3) transparent;
+}
+
+.dashboard-asset-selector__option {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dashboard-asset-selector__option:hover {
+  background: rgba(255, 215, 106, 0.06);
+}
+
+.dashboard-asset-selector__option.is-active {
+  background: rgba(255, 215, 106, 0.1);
+}
+
+.dashboard-asset-selector__option-symbol {
+  font-family: var(--font-body);
+  font-size: clamp(7.5px, 0.42vw, 10px);
+  font-weight: 600;
+  color: #f8f2e8;
+  min-width: 56px;
+}
+
+.dashboard-asset-selector__option-label {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d8cfc4;
+}
+
 /* ─── Panel Frames ─── */
 .dashboard-precision-panel-frame {
   pointer-events: none;
@@ -195,61 +712,35 @@
   display: none !important;
 }
 
-/* ─── Night Sky Star Twinkle Animation (R5D fix) ─── */
-@keyframes dashboardStarTwinkleSlow {
-  0%, 100% {
-    opacity: 0.45;
-    filter: brightness(0.85);
-  }
-  45% {
-    opacity: 1;
-    filter: brightness(1.75);
-  }
-  70% {
-    opacity: 0.68;
-    filter: brightness(1.1);
-  }
+/* ─── GSAP Starfield Layer ─── */
+.dashboard-gsap-starfield-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.dashboard-precision-bg-sky svg use,
-.dashboard-precision-bg-sky svg circle,
-.dashboard-precision-bg-sky svg [id*="star"] {
-  animation: dashboardStarTwinkleSlow 8s ease-in-out infinite;
-  animation-delay: 0.3s;
+.dashboard-gsap-starfield {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(3n) {
-  animation-duration: 7.5s;
-  animation-delay: 0s;
+.dashboard-gsap-star {
+  opacity: 0.42;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(4n+1) {
-  animation-duration: 9.2s;
-  animation-delay: 1.4s;
+.dashboard-gsap-star--silver {
+  fill: rgba(218, 224, 232, 0.92);
+  filter: drop-shadow(0 0 2px rgba(218, 224, 232, 0.65));
 }
 
-.dashboard-precision-bg-sky svg use:nth-child(5n+2) {
-  animation-duration: 11s;
-  animation-delay: 2.8s;
-}
-
-.dashboard-precision-bg-sky svg use:nth-child(7n+3) {
-  animation-duration: 13.5s;
-  animation-delay: 4.2s;
-}
-
-.dashboard-precision-bg-sky svg use:nth-child(11n+5) {
-  animation-duration: 15s;
-  animation-delay: 0.7s;
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-precision-bg-sky svg use,
-  .dashboard-precision-bg-sky svg circle,
-  .dashboard-precision-bg-sky svg [id*="star"] {
-    animation: none !important;
-  }
+.dashboard-gsap-star--orange {
+  fill: rgba(255, 176, 86, 0.9);
+  filter: drop-shadow(0 0 3px rgba(255, 128, 32, 0.65));
 }
 
 /* ─── Content Slots ─── */

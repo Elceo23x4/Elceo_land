@@ -26,6 +26,7 @@ export const SHELL_RECTS = {
   chartGlass: { x: 629, y: 172, w: 618, h: 579 },
   chartConsoleFrame: { x: 573, y: 162, w: 718, h: 657 },
   chartDisplay: { x: 664, y: 194, w: 545, h: 515 },
+  chartOverlayToggleBar: { x: 726, y: 706, w: 428, h: 33 },
 } as const;
 
 export const PANEL_FRAME_RECTS = {

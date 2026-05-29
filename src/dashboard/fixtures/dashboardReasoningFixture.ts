@@ -11,7 +11,7 @@ export const dashboardReasoningFixture: DashboardReasoningFixture = {
     summary: "Fixture reasoning shows stronger upside pressure, but confirmation remains conditional.",
     watchCondition: "Watch whether momentum sustains above the latest internal structure zone.",
     invalidationNote: "Bias weakens if the structure fails to sustain through the next review window.",
-    caveat: "Fixture-only reasoning. No provider connection is active.",
+    caveat: "Fixture-only reasoning. No live data connection is active.",
     drivers: [
       { label: "Momentum pressure", tone: "positive", summary: "Elevated directional flow detected in fixture data" },
       { label: "Macro tension", tone: "warning", summary: "Mixed signals from broader context drivers" },

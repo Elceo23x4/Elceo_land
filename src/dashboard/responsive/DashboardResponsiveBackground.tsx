@@ -1,15 +1,14 @@
 /**
  * DashboardResponsiveBackground.tsx
  *
- * Renders the night sky and dotted world map behind the entire dashboard board.
- * Both assets are positioned absolute, filling the board, at z-index 0.
- *
- * Uses preserveAspectRatio="xMidYMid slice" for the sky (fills without gaps)
- * and preserveAspectRatio="xMidYMid meet" for the map (avoids distortion).
+ * Renders the night sky, GSAP starfield, and dotted world map behind the dashboard.
+ * DashboardGsapStarfield is the primary visible twinkle layer (z-index 3).
+ * Old DashboardTwinkleStarLayer and useGsapStarTwinkle are no longer active runtime.
  */
 
 import NightSky from "../../assets/source/dashboard/sky/elceo-svg-16-revb-clear-night-sky.svg?react";
 import DottedWorldMap from "../../assets/source/dashboard/maps/elceo-svg-15-revb-dotted-world-map.svg?react";
+import DashboardGsapStarfield from "./DashboardGsapStarfield";
 
 export default function DashboardResponsiveBackground() {
   return (
@@ -21,6 +20,9 @@ export default function DashboardResponsiveBackground() {
       >
         <NightSky preserveAspectRatio="xMidYMid slice" />
       </div>
+
+      {/* GSAP SVG starfield — visible twinkle layer (z-index 3) */}
+      <DashboardGsapStarfield />
 
       {/* Dotted world map — fills board, lower opacity */}
       <div

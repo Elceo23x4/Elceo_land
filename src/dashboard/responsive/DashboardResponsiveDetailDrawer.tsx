@@ -5,7 +5,7 @@
  * Opens from panel action buttons, shows fixture detail content.
  * Right-side panel on desktop. Keyboard accessible.
  *
- * No route change. No raw payloads. No provider secrets.
+ * No route change. No raw payloads. Market cockpit only.
  */
 
 import { useEffect, useRef, type ReactNode } from "react";

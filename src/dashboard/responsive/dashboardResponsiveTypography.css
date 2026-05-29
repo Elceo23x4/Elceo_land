@@ -2,20 +2,39 @@
  * dashboardResponsiveTypography.css
  *
  * Premium adaptive typography for the ELCEO dashboard.
- * R5D: Clean font stack. Adaptive two-layer scale (viewport + container query).
- * Section headings increased for visibility.
+ * Clean font stack — no decorative/geometric display fonts.
+ * Inter for all UI text. Mono only for tickers, prices, timestamps.
  *
  * Font stack:
- * - Headings: 'Space Grotesk', 'Geist', 'Inter', system-ui, sans-serif
- * - Body/UI: 'Inter', 'Geist', system-ui, sans-serif
+ * - Headings/Body/UI: 'Inter', 'Geist', system-ui, sans-serif
  * - Mono/data: 'IBM Plex Mono', 'Geist Mono', ui-monospace, monospace
  */
 
 /* ─── Font Variables ─── */
 .dashboard-precision-viewport {
-  --font-heading: 'Space Grotesk', 'Geist', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-body: 'Inter', 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'IBM Plex Mono', 'Geist Mono', 'SFMono-Regular', Consolas, ui-monospace, monospace;
+  font-family: var(--font-body);
+  font-synthesis: none;
+}
+
+/* ─── Hover Preview Font Override (body font for all preview content) ─── */
+.dashboard-hover-preview-floating,
+.dashboard-hover-preview-floating * {
+  font-family: var(--font-body);
+}
+
+.dashboard-hover-preview-floating .dashboard-precision-metadata,
+.dashboard-hover-preview-floating .dashboard-watchlist-ticker,
+.dashboard-hover-preview-floating .dashboard-precision-data-value--mono {
+  font-family: var(--font-mono);
+}
+
+/* ─── Clean text helper (body font, no geometric style) ─── */
+.dashboard-clean-text {
+  font-family: var(--font-body);
+  letter-spacing: 0;
 }
 
 /* ─── Eyebrow ─── */
@@ -65,18 +84,18 @@
 /* ─── Body Text (adaptive two-layer scale) ─── */
 .dashboard-precision-body-text {
   font-family: var(--font-body);
-  font-size: clamp(12px, 0.62vw + 0.22cqi, 16.5px);
+  font-size: clamp(13.8px, 0.71vw + 0.25cqi, 19px);
   line-height: 1.52;
-  color: #b8afa6;
+  color: #d8cfc4;
   margin: 0 0 clamp(3px, 0.3vw, 6px) 0;
 }
 
 /* ─── Note / Italic ─── */
 .dashboard-precision-note {
   font-family: var(--font-body);
-  font-size: clamp(10.5px, 0.52vw + 0.16cqi, 13.5px);
+  font-size: clamp(12px, 0.6vw + 0.18cqi, 15.5px);
   line-height: 1.45;
-  color: #7a7370;
+  color: #c5b9ad;
   font-style: italic;
   margin: clamp(3px, 0.3vw, 6px) 0 0 0;
 }
@@ -93,15 +112,39 @@
 }
 
 .dashboard-precision-data-label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: inherit;
   color: #7a7370;
+  letter-spacing: 0.01em;
+}
+
+/* Use mono only for compact ticker/ID-style labels */
+.dashboard-precision-data-label--mono {
+  font-family: var(--font-mono);
   letter-spacing: 0.04em;
+}
+
+.dashboard-precision-data-value {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.dashboard-precision-data-value--mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Watchlist Ticker ─── */
+.dashboard-watchlist-ticker {
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+  font-weight: 600;
 }
 
 /* ─── Chip / Badge ─── */
 .dashboard-precision-chip {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: clamp(9.5px, 0.44vw + 0.12cqi, 12px);
   font-weight: 500;
   line-height: 1.2;
@@ -337,47 +380,59 @@
 .dashboard-detail-drawer__close:hover { color: #e8dfd4; }
 .dashboard-detail-drawer__close:focus-visible { outline: 1px solid rgba(212, 168, 83, 0.5); }
 
-/* ─── Hover Preview Popover (R5D: flicker-free) ─── */
+/* ─── Hover Preview Trigger (portal-based, no flicker) ─── */
 .dashboard-preview-trigger {
   position: relative;
-  contain: layout paint;
   cursor: pointer;
 }
 
-.dashboard-hover-preview {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  z-index: 90;
-  min-width: min(260px, 80cqi);
-  max-width: 320px;
+/* ─── Floating Hover Preview (portal into document.body) ─── */
+.dashboard-hover-preview-floating {
+  position: fixed;
+  z-index: 240;
+  width: min(280px, calc(100vw - 16px));
   padding: clamp(8px, 0.6vw, 12px);
-  background: rgba(8, 6, 4, 0.94);
-  border: 1px solid rgba(212, 168, 83, 0.18);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  background: rgba(8, 6, 4, 0.96);
+  border: 1px solid rgba(212, 168, 83, 0.22);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   transform: translateZ(0);
-  will-change: opacity;
+  animation: dashboardPreviewFadeIn 120ms ease-out;
 }
 
-.dashboard-hover-preview--pinned { pointer-events: auto; }
+.dashboard-hover-preview-floating.is-pinned {
+  pointer-events: auto;
+  border-color: rgba(212, 168, 83, 0.35);
+}
+
+@keyframes dashboardPreviewFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 .dashboard-hover-preview__close {
   all: unset;
   position: absolute;
   top: 4px;
   right: 4px;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   display: grid;
   place-items: center;
   color: #6b6560;
   cursor: pointer;
   font-size: 10px;
+  border-radius: 2px;
+  transition: color 0.12s, background 0.12s;
 }
 
-.dashboard-hover-preview__close:hover { color: #e8dfd4; }
+.dashboard-hover-preview__close:hover {
+  color: #e8dfd4;
+  background: rgba(138, 129, 120, 0.15);
+}
 
 /* ─── Flat Slide Strip ─── */
 .dashboard-slide-strip {
@@ -528,6 +583,66 @@
 .dashboard-precision-chip--impact-medium { color: #5cba6e; background: rgba(92, 186, 110, 0.08); border: 1px solid rgba(92, 186, 110, 0.2); }
 .dashboard-precision-chip--impact-low { color: #d4a853; background: rgba(212, 168, 83, 0.08); border: 1px solid rgba(212, 168, 83, 0.2); }
 
+/* ─── Events Flow Timeline (R5F) ─── */
+.dashboard-events-flow {
+  position: relative;
+  display: grid;
+  gap: clamp(8px, 0.8vw, 14px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-left: clamp(14px, 1.2vw, 20px);
+}
+
+/* Vertical linking rail */
+.dashboard-events-flow::before {
+  content: "";
+  position: absolute;
+  left: clamp(5px, 0.5vw, 9px);
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255, 191, 74, 0.45), rgba(255, 106, 0, 0.28), transparent);
+  pointer-events: none;
+}
+
+.dashboard-event-node {
+  position: relative;
+  padding-left: clamp(10px, 0.8vw, 16px);
+}
+
+/* Node dot — colored by impact */
+.dashboard-event-node::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 0.65em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #8a8178;
+}
+
+.dashboard-event-node--high::before {
+  background: #e05555;
+  box-shadow: 0 0 8px rgba(224, 85, 85, 0.45);
+}
+
+.dashboard-event-node--medium::before {
+  background: #5cba6e;
+  box-shadow: 0 0 8px rgba(92, 186, 110, 0.45);
+}
+
+.dashboard-event-node--low::before {
+  background: #d4a853;
+  box-shadow: 0 0 8px rgba(212, 168, 83, 0.45);
+}
+
+.dashboard-event-node__content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1px, 0.15vw, 3px);
+}
+
 /* ─── Custom Flat Modern Scrollbars (R5D) ─── */
 .dashboard-panel-scroll-y,
 .dashboard-panel-scroll-x,
@@ -578,13 +693,130 @@
 }
 
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MINI VISUALS — Inline graphics for ELCEO panels
+   ═══════════════════════════════════════════════════════════════════════════════ */
 
-/* ─── Panel Expand Button (R5D) ─── */
+.dashboard-mini-sparkline {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dashboard-mini-donut {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dashboard-mini-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.dashboard-evidence-weight-bar {
+  position: relative;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(138, 129, 120, 0.12);
+  overflow: hidden;
+  margin: 2px 0;
+}
+
+.dashboard-evidence-weight-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+  opacity: 0.8;
+}
+
+.dashboard-evidence-weight-bar__tick {
+  position: absolute;
+  top: -1px;
+  width: 1px;
+  height: 5px;
+  background: rgba(255, 191, 74, 0.4);
+}
+
+.dashboard-session-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.42vw, 10px);
+  color: #d4a853;
+  padding: 1px 6px;
+  border-radius: 2px;
+  background: rgba(212, 168, 83, 0.06);
+  border: 1px solid rgba(212, 168, 83, 0.2);
+}
+
+.dashboard-source-glyph {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.38vw, 9px);
+  color: #8a8178;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CUSTOM SCROLL FRAME — ELCEO HUD scroll indicator
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-scroll-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.dashboard-scroll-frame__viewport {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.dashboard-scroll-frame__viewport::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.dashboard-scroll-frame__rail--y {
+  position: absolute;
+  top: 4px;
+  right: 1px;
+  bottom: 4px;
+  width: 3px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, rgba(255, 191, 74, 0.08), transparent);
+  pointer-events: none;
+  z-index: 18;
+}
+
+.dashboard-scroll-frame__thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  min-height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 214, 126, 0.75), rgba(255, 106, 0, 0.35));
+  box-shadow: 0 0 6px rgba(255, 136, 32, 0.18);
+  transition: opacity 0.2s;
+}
+
+
+/* ─── Panel Expand Button (responsive, inside panel group) ─── */
 .dashboard-panel-expand-btn {
   all: unset;
   box-sizing: border-box;
-  width: clamp(18px, 1.2vw, 24px);
-  height: clamp(18px, 1.2vw, 24px);
+  width: clamp(18px, 5.5cqi, 26px);
+  height: clamp(18px, 5.5cqi, 26px);
   display: grid;
   place-items: center;
   border-radius: 3px;
@@ -624,6 +856,139 @@
   position: absolute;
   inset: 0;
   z-index: 119;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.35);
   cursor: pointer;
+  animation: dashboardOverlayFadeIn 180ms ease-out;
+}
+
+@keyframes dashboardOverlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   PRECISION PANEL GROUP — Rect-based expansion system
+   No transform: scale(). Panel grows via left/top/width/height transition.
+   Text stays at natural size (capped at 1.15x via CSS variable).
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-panel-group {
+  position: absolute;
+  container-type: inline-size;
+  z-index: 12;
+  --dashboard-expanded-text-scale: 1;
+  transition: left 260ms ease, top 260ms ease, width 260ms ease, height 260ms ease, filter 260ms ease, z-index 0ms;
+}
+
+.dashboard-panel-group__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-panel-group__frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Panel aura activation for grouped frames */
+.dashboard-panel-group__frame svg [id$="_soft_inner_aura"],
+.dashboard-panel-group__frame svg [id*="soft_inner_aura"] {
+  display: inline !important;
+  fill: rgba(0, 0, 0, 0.6) !important;
+  fill-opacity: 1 !important;
+  filter: none !important;
+}
+
+.dashboard-panel-group__frame svg [id$="_panel_aura"],
+.dashboard-panel-group__frame svg [id*="panel_aura"] {
+  display: inline !important;
+}
+
+.dashboard-panel-group__frame svg [id$="_panel_aura"] stop {
+  stop-color: #000000 !important;
+  stop-opacity: 0.6 !important;
+}
+
+.dashboard-panel-group__frame svg [id$="_panel_shadow"],
+.dashboard-panel-group__frame svg [id*="panel_shadow"] {
+  display: none !important;
+}
+
+.dashboard-panel-group__frame svg [id$="_inner_glow"],
+.dashboard-panel-group__frame svg [id*="inner_glow"] {
+  display: none !important;
+}
+
+.dashboard-panel-group__header {
+  z-index: 15;
+  container-type: inline-size;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-panel-group__body {
+  z-index: 15;
+  container-type: inline-size;
+  box-sizing: border-box;
+}
+
+/* Expand button — inside panel, top-right, fixed size */
+.dashboard-panel-group__expand-btn {
+  position: absolute;
+  top: clamp(6px, 1.2%, 12px);
+  right: clamp(8px, 1.6%, 14px);
+  z-index: 20;
+  pointer-events: auto;
+}
+
+/* ─── Panel Expansion — rect-based (no transform scale) ─── */
+.dashboard-panel-group.is-expanded {
+  z-index: 160;
+  --dashboard-expanded-text-scale: 1.15;
+  filter: drop-shadow(0 20px 64px rgba(0, 0, 0, 0.5));
+}
+
+/* Expanded text scale — applies subtle 1.15x to body text only */
+.dashboard-panel-group.is-expanded .dashboard-precision-body-text,
+.dashboard-panel-group.is-expanded .dashboard-precision-data-row,
+.dashboard-panel-group.is-expanded .dashboard-precision-note {
+  font-size: calc(1em * var(--dashboard-expanded-text-scale, 1));
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   OLD TWINKLE STAR LAYER — DEACTIVATED (replaced by DashboardGsapStarfield)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* Legacy — no longer active runtime. DashboardGsapStarfield.tsx is primary. */
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CUSTOM SCROLLBARS — Enhanced visibility (board-scoped)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-precision-board * {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 172, 76, 0.5) rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-precision-board *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.dashboard-precision-board *::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-precision-board *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(255, 191, 74, 0.55), rgba(255, 106, 0, 0.38));
+  border-radius: 999px;
+}
+
+.dashboard-precision-board *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 220, 130, 0.75), rgba(255, 106, 0, 0.56));
 }

@@ -1,12 +1,29 @@
 /**
  * responsivePanelFixtures.ts
  *
- * Premium typed fixture data for all 7 dashboard panels.
- * No live data. No network calls. No timers.
- * Uses safe language only — bias, pressure, evidence, caution.
+ * ELCEO Market Cockpit fixture contract.
+ * Market intelligence only. Safe language only.
  */
 
 export type Tone = "positive" | "negative" | "warning" | "neutral" | "stale" | "pending";
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ASSET COCKPIT
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export const assetCockpitFixture = {
+  activeAsset: "XAU/USD",
+  timeframe: "1H",
+  session: "London/NY Overlap",
+  assetClass: "Metals",
+  activeScenario: "Upside pressure toward 2,440 structure zone",
+  reviewWindow: "Next session open",
+  sourceMode: "Fixture Mode",
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIRECTIONAL BIAS
+   ═══════════════════════════════════════════════════════════════════════ */
 
 export interface DriverItem {
   label: string;
@@ -15,12 +32,69 @@ export interface DriverItem {
   freshness: string;
 }
 
+export const biasFixture = {
+  activeAsset: "XAU/USD",
+  session: "London/NY Overlap",
+  headline: "Upside pressure forming on XAU/USD",
+  direction: "Upside Pressure",
+  strength: "Elevated",
+  strengthTone: "positive" as Tone,
+  condition: "Conditional",
+  conditionTone: "warning" as Tone,
+  watchCondition: "Watch whether momentum sustains above the 2,420 structure zone through NY session close.",
+  invalidation: "Bias weakens if price fails to sustain above the identified zone during the next review window.",
+  drivers: [
+    { label: "Momentum", tone: "positive" as Tone, summary: "Elevated directional flow above structure zone", freshness: "Current" },
+    { label: "USD softness", tone: "positive" as Tone, summary: "Dollar index retreating, supports gold bid", freshness: "Current" },
+    { label: "Safe-haven demand", tone: "positive" as Tone, summary: "Geopolitical uncertainty supporting precious metals", freshness: "Current" },
+    { label: "Macro tension", tone: "warning" as Tone, summary: "Risk-on equities contradicting safe-haven gold bid", freshness: "Watch" },
+    { label: "Yield pressure", tone: "neutral" as Tone, summary: "Real yields flat — not opposing or supporting", freshness: "Current" },
+  ] satisfies DriverItem[],
+  status: "Fixture Mode" as const,
+  reviewWindow: "Next session open",
+  macroPressure: "USD softness / Yields flat / Safe-haven demand",
+  contradiction: "Risk-on equities vs safe-haven gold bid",
+  scenarios: {
+    primary: "Continuation toward 2,440 if structure zone 2,420 confirms",
+    alternate: "Pullback toward 2,400 if CPI surprise or USD reversal",
+    invalidation: "Sustained break below 2,400 negates current bias",
+  },
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CONFIDENCE DECOMPOSITION
+   ═══════════════════════════════════════════════════════════════════════ */
+
 export interface ConfidenceMetric {
   label: string;
   value: string;
   tone: Tone;
-  score: number; // 0–100
+  score: number;
 }
+
+export const confidenceFixture = {
+  metrics: [
+    { label: "Confidence", value: "Moderate-High", tone: "positive" as Tone, score: 68 },
+    { label: "Contradiction", value: "Medium", tone: "warning" as Tone, score: 42 },
+    { label: "Freshness", value: "Current", tone: "positive" as Tone, score: 78 },
+    { label: "Zone strength", value: "Elevated", tone: "positive" as Tone, score: 74 },
+    { label: "Data quality", value: "Good", tone: "positive" as Tone, score: 72 },
+    { label: "Signal agreement", value: "Moderate", tone: "neutral" as Tone, score: 58 },
+  ] satisfies ConfidenceMetric[],
+  conflicts: [
+    { label: "Risk-on vs safe-haven", detail: "Equities firm while gold also bid — cross-asset contradiction" },
+    { label: "USD mixed signals", detail: "Dollar weakening on data but yields not confirming direction" },
+    { label: "Event risk pending", detail: "CPI release may invalidate current evidence alignment" },
+  ],
+  whyNotHigher: "Contradiction score (42%) caps effective confidence. Risk-on equities dilute safe-haven conviction.",
+  whyNotLower: "Structure confirmation and momentum alignment keep baseline elevated despite macro uncertainty.",
+  summary: "Confidence moderate-high. Contradiction between risk appetite and defensive positioning.",
+  dataQuality: 72,
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   WATCHLIST — ELCEO Launch Assets
+   ═══════════════════════════════════════════════════════════════════════ */
 
 export interface WatchlistAsset {
   ticker: string;
@@ -31,7 +105,44 @@ export interface WatchlistAsset {
   bias: string;
   biasTone: Tone;
   confidence: string;
+  sparkline: number[];
 }
+
+export const watchlistFixture: WatchlistAsset[] = [
+  { ticker: "XAU/USD", name: "Gold Spot", last: "2,418.50", change: "+0.42%", changeTone: "positive", bias: "Upside pressure", biasTone: "positive", confidence: "Elevated", sparkline: [38, 42, 40, 45, 48, 46, 52, 55] },
+  { ticker: "NAS100", name: "Nasdaq 100", last: "20,714", change: "+0.58%", changeTone: "positive", bias: "Active bias", biasTone: "positive", confidence: "Moderate", sparkline: [60, 58, 62, 65, 63, 68, 70, 72] },
+  { ticker: "SPX500", name: "S&P 500", last: "5,842", change: "+0.34%", changeTone: "positive", bias: "Conditional", biasTone: "warning", confidence: "Watch", sparkline: [50, 52, 51, 54, 53, 55, 56, 57] },
+  { ticker: "DE30", name: "Germany 40", last: "18,245", change: "-0.12%", changeTone: "negative", bias: "No setup", biasTone: "neutral", confidence: "Low", sparkline: [48, 46, 47, 44, 45, 43, 42, 41] },
+  { ticker: "BTC/USD", name: "Bitcoin", last: "67,420", change: "+1.24%", changeTone: "positive", bias: "Momentum active", biasTone: "positive", confidence: "Elevated", sparkline: [30, 35, 38, 42, 48, 52, 58, 65] },
+];
+
+export const watchlistFxMajors: WatchlistAsset[] = [
+  { ticker: "EUR/USD", name: "Euro/Dollar", last: "1.0892", change: "+0.18%", changeTone: "positive", bias: "Watching", biasTone: "neutral", confidence: "Pending", sparkline: [45, 46, 44, 47, 48, 47, 49, 50] },
+  { ticker: "GBP/USD", name: "Cable", last: "1.2748", change: "+0.22%", changeTone: "positive", bias: "Conditional", biasTone: "warning", confidence: "Watch", sparkline: [42, 44, 43, 45, 46, 48, 47, 49] },
+  { ticker: "USD/JPY", name: "Dollar/Yen", last: "154.82", change: "-0.35%", changeTone: "negative", bias: "Downside pressure", biasTone: "negative", confidence: "Moderate", sparkline: [65, 62, 60, 58, 55, 54, 52, 50] },
+  { ticker: "USD/CHF", name: "Dollar/Swiss", last: "0.8845", change: "-0.14%", changeTone: "negative", bias: "Watching", biasTone: "neutral", confidence: "Pending", sparkline: [52, 51, 50, 49, 48, 48, 47, 46] },
+  { ticker: "AUD/USD", name: "Aussie/Dollar", last: "0.6678", change: "+0.08%", changeTone: "positive", bias: "No setup", biasTone: "neutral", confidence: "Low", sparkline: [44, 45, 44, 45, 46, 45, 46, 46] },
+  { ticker: "NZD/USD", name: "Kiwi/Dollar", last: "0.6142", change: "+0.05%", changeTone: "neutral", bias: "No setup", biasTone: "neutral", confidence: "Low", sparkline: [42, 42, 43, 42, 43, 43, 43, 44] },
+  { ticker: "USD/CAD", name: "Dollar/Loonie", last: "1.3612", change: "+0.10%", changeTone: "positive", bias: "Watching", biasTone: "neutral", confidence: "Pending", sparkline: [48, 49, 49, 50, 50, 51, 51, 52] },
+];
+
+export const watchlistAlerts = [
+  { asset: "XAU/USD", alert: "Structure zone 2,420 — watching for confirmation", tone: "warning" as Tone },
+  { asset: "NAS100", alert: "Momentum active above 20,650", tone: "positive" as Tone },
+  { asset: "BTC/USD", alert: "Breakout pending — volume increasing", tone: "positive" as Tone },
+  { asset: "USD/JPY", alert: "Intervention risk zone approaching", tone: "negative" as Tone },
+];
+
+export const scenarioMapFixture = [
+  { asset: "XAU/USD", scenario: "Upside toward 2,440 structure zone", status: "Active", tone: "positive" as Tone },
+  { asset: "NAS100", scenario: "Momentum continuation above 20,650", status: "Active", tone: "positive" as Tone },
+  { asset: "BTC/USD", scenario: "Breakout pending — volume watch", status: "Monitoring", tone: "warning" as Tone },
+  { asset: "USD/JPY", scenario: "Downside intervention risk zone", status: "Caution", tone: "negative" as Tone },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   EVIDENCE STACK
+   ═══════════════════════════════════════════════════════════════════════ */
 
 export interface EvidenceItem {
   category: string;
@@ -41,6 +152,61 @@ export interface EvidenceItem {
   score: number;
   freshness: string;
 }
+
+export const evidenceFixture: EvidenceItem[] = [
+  { category: "Technical", label: "Momentum", value: "Elevated", tone: "positive", score: 78, freshness: "Current" },
+  { category: "Technical", label: "Structure", value: "Confirming", tone: "positive", score: 72, freshness: "Current" },
+  { category: "Technical", label: "Volume profile", value: "Supportive", tone: "positive", score: 64, freshness: "Current" },
+  { category: "Macro", label: "USD weakness", value: "Active", tone: "positive", score: 70, freshness: "Current" },
+  { category: "Macro", label: "Yield context", value: "Neutral", tone: "neutral", score: 50, freshness: "Current" },
+  { category: "Liquidity", label: "Market depth", value: "Adequate", tone: "positive", score: 66, freshness: "Current" },
+  { category: "Volatility", label: "Vol regime", value: "Moderate", tone: "neutral", score: 55, freshness: "Current" },
+  { category: "Sentiment", label: "Positioning", value: "Net positive", tone: "positive", score: 62, freshness: "Current" },
+  { category: "Sentiment", label: "Risk appetite", value: "Contradicting", tone: "warning", score: 38, freshness: "Watch" },
+  { category: "Event", label: "CPI pending", value: "Caution", tone: "warning", score: 35, freshness: "Watch" },
+];
+
+export const evidenceConviction = 65;
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MARKET INSIGHTS
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export const marketInsightsFixture = {
+  summary: "Gold maintains upside pressure. USD softness and safe-haven demand support the current bias. Contradictions remain from risk-on equities.",
+  topSupports: [
+    "Momentum elevated above structure zone",
+    "USD Index weakening below 104 support",
+    "Gold ETF inflows accelerating (3rd week)",
+  ],
+  topContradictions: [
+    "Risk-on equity environment contradicts safe-haven thesis",
+    "Sentiment cautious despite supportive technicals",
+    "Pending CPI release may disrupt current regime",
+  ],
+  scenarioNote: "Primary scenario: continuation toward 2,440 if structure confirms. Alternate: pullback to 2,400 if CPI surprises.",
+  cautionNote: "Contradiction between risk-on equities and safe-haven gold bid requires monitoring.",
+  freshnessNote: "All primary sources current. Macro extraction pending source readiness.",
+  nextReviewTrigger: "CPI release tomorrow 08:30 ET or structure zone retest",
+  chartOverlayNote: "Chart overlay highlights the active structure zone, liquidity band, and scenario path used by the evidence stack.",
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SOURCE STATUS (market data source state)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export const sourceStatusFixture = {
+  marketData: "Market Data Pending",
+  news: "Fixture Mode",
+  macro: "Fixture Mode",
+  extraction: "Source Pending",
+  chartData: "Fixture Mode",
+  sourceFreshness: "Source Watch",
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MACRO INTELLIGENCE
+   ═══════════════════════════════════════════════════════════════════════ */
 
 export interface MacroHeadline {
   title: string;
@@ -57,11 +223,93 @@ export interface MacroEvent {
   status: string;
 }
 
+export const newsFixture: MacroHeadline[] = [
+  { title: "Fed minutes signal patience on rate path", impact: "high", tone: "warning", source: "Fixture", time: "2h ago" },
+  { title: "US CPI print pending — consensus +0.2% MoM", impact: "high", tone: "warning", source: "Fixture", time: "Tomorrow" },
+  { title: "ECB maintains rates, dovish forward guidance", impact: "medium", tone: "positive", source: "Fixture", time: "Today" },
+  { title: "Gold ETF inflows accelerate — 3rd consecutive week", impact: "medium", tone: "positive", source: "Fixture", time: "3h ago" },
+  { title: "China PMI contracts below 50 — risk event", impact: "high", tone: "negative", source: "Fixture", time: "Yesterday" },
+  { title: "USD Index breaks below 104 support", impact: "medium", tone: "positive", source: "Fixture", time: "5h ago" },
+  { title: "Treasury auction 10Y demand strong", impact: "medium", tone: "positive", source: "Fixture", time: "Today" },
+  { title: "Geopolitical tensions — Middle East update", impact: "low", tone: "neutral", source: "Fixture", time: "Ongoing" },
+];
+
+export const macroEvents: MacroEvent[] = [
+  { label: "US CPI YoY", time: "Tomorrow 08:30 ET", impact: "high", status: "Pending" },
+  { label: "Initial Jobless Claims", time: "Thursday 08:30 ET", impact: "medium", status: "Scheduled" },
+  { label: "Fed Speaker — Williams", time: "Friday 14:00 ET", impact: "medium", status: "Scheduled" },
+  { label: "UK GDP MoM", time: "Friday 02:00 ET", impact: "medium", status: "Scheduled" },
+  { label: "Michigan Sentiment", time: "Friday 10:00 ET", impact: "low", status: "Scheduled" },
+];
+
+export const currencyCompareFixture = {
+  usdVsGold: { label: "USD vs Gold", direction: "Inverse — USD soft, Gold bid", tone: "positive" as Tone },
+  usdVsJpy: { label: "USD vs JPY", direction: "USD weakening — intervention zone", tone: "warning" as Tone },
+  eurUsd: { label: "EUR/USD context", direction: "Euro firm on ECB dovish repricing", tone: "positive" as Tone },
+  realYields: { label: "Real yields", direction: "Flat — not opposing gold", tone: "neutral" as Tone },
+};
+
+export const macroPulseFixture = {
+  centralBankTone: "Dovish lean — patience signaled",
+  liquidity: "Adequate — no stress indicators",
+  riskEvent: "CPI release pending — high impact scheduled",
+  sourceState: "Fixture Mode — macro extraction pending",
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   COACHING (market-behavior discipline only)
+   ═══════════════════════════════════════════════════════════════════════ */
+
 export interface CoachingTile {
   label: string;
   message: string;
   tone: Tone;
 }
+
+export const coachingFixture = {
+  headline: "Await structure confirmation on XAU/USD",
+  body: "Current momentum supports bias direction. Scenario review should wait for structural confirmation at the 2,420 zone. Confirmation is required before escalation — do not front-run without evidence alignment.",
+  tiles: [
+    { label: "Patience", message: "Structure confirmation first", tone: "positive" as Tone },
+    { label: "Contradiction", message: "Acknowledge risk-on vs safe-haven tension", tone: "warning" as Tone },
+    { label: "Journal", message: "Document reasoning before next review", tone: "neutral" as Tone },
+    { label: "Session", message: "London/NY overlap — optimal liquidity", tone: "positive" as Tone },
+  ] satisfies CoachingTile[],
+  checklist: [
+    "Structure zone 2,420 confirmed?",
+    "Evidence stack aligned above 60%?",
+    "Contradiction acknowledged and documented?",
+    "Freshness within acceptable window?",
+    "Source freshness checked?",
+  ],
+  behaviorOverlay: {
+    recentQuality: "Good — 3 of last 4 reviews documented",
+    readinessGate: "Confirmation required before scenario escalation",
+    caution: "None currently — maintain discipline",
+  },
+};
+
+export const journalNoteFixture = {
+  asset: "XAU/USD",
+  prompt: "What evidence supports the current bias?",
+  tags: ["structure", "macro", "discipline", "contradiction"],
+  emotionalState: "Controlled",
+  disciplineNote: "Awaiting confirmation — not front-running scenario",
+  lastNote: "2h ago",
+};
+
+export const disciplineFixture = {
+  disciplineScore: 72,
+  reviewConsistency: 64,
+  overconfidenceWatch: "Medium",
+  bestSession: "London/NY overlap",
+  missedReviews: 2,
+  behaviorCaution: "Slight pattern of reviewing without documenting contradictions",
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MARKET REGIME / CROSS-ASSET PULSE
+   ═══════════════════════════════════════════════════════════════════════ */
 
 export interface RegimePulse {
   asset: string;
@@ -70,126 +318,14 @@ export interface RegimePulse {
   strength: number;
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   DIRECTIONAL BIAS
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const biasFixture = {
-  headline: "Upside pressure forming",
-  direction: "upside pressure",
-  strength: "elevated",
-  strengthTone: "positive" as Tone,
-  condition: "conditional",
-  conditionTone: "warning" as Tone,
-  watchCondition: "Watch whether momentum sustains above the latest internal structure zone.",
-  invalidation: "Bias weakens if the structure fails to sustain through the next review window.",
-  drivers: [
-    { label: "Momentum pressure", tone: "positive" as Tone, summary: "Elevated directional flow in fixture data", freshness: "Current" },
-    { label: "Macro tension", tone: "warning" as Tone, summary: "Mixed signals from broader context drivers", freshness: "Watch" },
-    { label: "Data freshness", tone: "neutral" as Tone, summary: "Within acceptable review window", freshness: "OK" },
-  ] satisfies DriverItem[],
-  status: "Fixture Mode" as const,
-};
-
-/* ═══════════════════════════════════════════════════════════════════════
-   CONFIDENCE & CONTEXT
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const confidenceFixture = {
-  metrics: [
-    { label: "Confidence", value: "Moderate", tone: "neutral" as Tone, score: 58 },
-    { label: "Contradiction", value: "Medium", tone: "warning" as Tone, score: 42 },
-    { label: "Freshness", value: "Watch", tone: "warning" as Tone, score: 55 },
-    { label: "Zone strength", value: "Elevated", tone: "positive" as Tone, score: 72 },
-  ] satisfies ConfidenceMetric[],
-  conflicts: [
-    { label: "Momentum vs macro", detail: "Momentum supports bias but macro context unresolved" },
-    { label: "Freshness lag", detail: "Some driver inputs approaching staleness threshold" },
-  ],
-  summary: "Confidence moderate due to medium contradiction between drivers.",
-  dataQuality: 64,
-};
-
-/* ═══════════════════════════════════════════════════════════════════════
-   WATCHLIST
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const watchlistFixture: WatchlistAsset[] = [
-  { ticker: "ES", name: "S&P 500 E-mini", last: "5,842", change: "+0.38%", changeTone: "positive", bias: "Upside pressure", biasTone: "positive", confidence: "Moderate" },
-  { ticker: "NQ", name: "Nasdaq 100", last: "20,714", change: "+0.52%", changeTone: "positive", bias: "Active bias", biasTone: "positive", confidence: "Elevated" },
-  { ticker: "YM", name: "Dow E-mini", last: "43,120", change: "-0.08%", changeTone: "negative", bias: "No setup", biasTone: "neutral", confidence: "Low" },
-  { ticker: "RTY", name: "Russell 2000", last: "2,284", change: "+0.12%", changeTone: "neutral", bias: "Conditional", biasTone: "warning", confidence: "Watch" },
-  { ticker: "GC", name: "Gold", last: "2,418", change: "+0.24%", changeTone: "positive", bias: "Watching", biasTone: "neutral", confidence: "Pending" },
-];
-
-/* ═══════════════════════════════════════════════════════════════════════
-   EVIDENCE STACK
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const evidenceFixture: EvidenceItem[] = [
-  { category: "Technical", label: "Momentum", value: "Elevated", tone: "positive", score: 78, freshness: "Current" },
-  { category: "Technical", label: "Structure", value: "Confirming", tone: "positive", score: 72, freshness: "Current" },
-  { category: "Technical", label: "Volume profile", value: "Neutral", tone: "neutral", score: 50, freshness: "Current" },
-  { category: "Macro", label: "Macro context", value: "Mixed", tone: "warning", score: 45, freshness: "Watch" },
-  { category: "Sentiment", label: "Breadth", value: "Supportive", tone: "positive", score: 65, freshness: "Current" },
-  { category: "Sentiment", label: "Sentiment", value: "Cautious", tone: "warning", score: 40, freshness: "Watch" },
-  { category: "Volatility", label: "Vol regime", value: "Moderate", tone: "neutral", score: 55, freshness: "Current" },
-];
-
-export const evidenceConviction = 62;
-
-/* ═══════════════════════════════════════════════════════════════════════
-   NEWS & MACRO
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const newsFixture: MacroHeadline[] = [
-  { title: "Fed minutes released — no surprise", impact: "medium", tone: "neutral", source: "Fixture", time: "2h ago" },
-  { title: "CPI print pending next session", impact: "high", tone: "warning", source: "Fixture", time: "Tomorrow" },
-  { title: "Earnings season early phase", impact: "low", tone: "neutral", source: "Fixture", time: "Ongoing" },
-  { title: "Geopolitical tension low impact today", impact: "low", tone: "neutral", source: "Fixture", time: "Today" },
-  { title: "Treasury auction demand strong", impact: "medium", tone: "positive", source: "Fixture", time: "3h ago" },
-  { title: "Oil inventories draw larger than expected", impact: "medium", tone: "warning", source: "Fixture", time: "5h ago" },
-  { title: "China PMI below consensus", impact: "high", tone: "negative", source: "Fixture", time: "Yesterday" },
-  { title: "ECB rate path unchanged — dovish tilt", impact: "medium", tone: "positive", source: "Fixture", time: "Yesterday" },
-];
-
-export const macroEvents: MacroEvent[] = [
-  { label: "CPI YoY", time: "Tomorrow 08:30 ET", impact: "high", status: "Pending" },
-  { label: "Jobless claims", time: "Thursday 08:30 ET", impact: "medium", status: "Scheduled" },
-  { label: "Fed speaker", time: "Friday 14:00 ET", impact: "medium", status: "Scheduled" },
-];
-
-/* ═══════════════════════════════════════════════════════════════════════
-   COACHING INSIGHTS
-   ═══════════════════════════════════════════════════════════════════════ */
-
-export const coachingFixture = {
-  headline: "Wait for structure confirmation",
-  body: "Current momentum supports bias direction, but entry should wait for structural confirmation at the identified zone. Do not front-run without evidence alignment.",
-  tiles: [
-    { label: "Patience", message: "Structure first, then action", tone: "positive" as Tone },
-    { label: "Contradiction", message: "Acknowledge mixed macro signals", tone: "warning" as Tone },
-    { label: "Journal", message: "Log reasoning before decisions", tone: "neutral" as Tone },
-  ] satisfies CoachingTile[],
-  checklist: [
-    "Structure zone confirmed?",
-    "Evidence stack aligned?",
-    "Contradiction resolved?",
-    "Freshness acceptable?",
-  ],
-};
-
-/* ═══════════════════════════════════════════════════════════════════════
-   MARKET REGIME
-   ═══════════════════════════════════════════════════════════════════════ */
-
 export const regimeFixture: RegimePulse[] = [
-  { asset: "Gold", direction: "Bid", tone: "positive", strength: 68 },
-  { asset: "USD Index", direction: "Soft", tone: "warning", strength: 42 },
+  { asset: "Gold", direction: "Bid", tone: "positive", strength: 72 },
+  { asset: "USD Index", direction: "Soft", tone: "warning", strength: 38 },
   { asset: "Equities", direction: "Firm", tone: "positive", strength: 65 },
   { asset: "Yields", direction: "Flat", tone: "neutral", strength: 50 },
-  { asset: "Crypto", direction: "Mixed", tone: "warning", strength: 48 },
-  { asset: "Risk Sentiment", direction: "Risk-on tilt", tone: "positive", strength: 62 },
+  { asset: "Crypto", direction: "Risk-on tilt", tone: "positive", strength: 62 },
+  { asset: "Risk Sentiment", direction: "Appetite elevated", tone: "positive", strength: 64 },
+  { asset: "Volatility", direction: "Moderate-low", tone: "positive", strength: 58 },
 ];
 
 export const regimeStrip = [
@@ -198,3 +334,159 @@ export const regimeStrip = [
   { label: "Liquidity", value: "Adequate", tone: "positive" as Tone },
   { label: "Correlation", value: "Elevated", tone: "warning" as Tone },
 ];
+
+export const volatilityFixture = {
+  regime: "Moderate — no compression or expansion extremes",
+  eventRisk: "CPI release proximity elevating short-term vol expectation",
+  sessionNote: "NY session typically higher intraday vol than Asian",
+};
+
+export const correlationFixture = [
+  { pair: "Gold vs USD", direction: "Inverse — strong", tone: "positive" as Tone },
+  { pair: "Gold vs Yields", direction: "Mildly inverse — yields flat", tone: "neutral" as Tone },
+  { pair: "Equities vs Gold", direction: "Both bid — unusual", tone: "warning" as Tone },
+  { pair: "BTC vs Risk", direction: "Correlated — risk-on tilt", tone: "positive" as Tone },
+  { pair: "Risk-on vs Risk-off", direction: "Tension — contradicting", tone: "warning" as Tone },
+];
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ASSET CONTEXT BY SYMBOL — per-asset fixture context for dashboard sync
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export interface AssetContext {
+  label: string;
+  assetClass: string;
+  timeframe: string;
+  bias: string;
+  biasTone: Tone;
+  scenario: string;
+  macroLink: string;
+  regimeLink: string;
+}
+
+export const assetContextBySymbol: Record<string, AssetContext> = {
+  "XAU/USD": {
+    label: "Gold Spot",
+    assetClass: "Metals",
+    timeframe: "1H",
+    bias: "Upside pressure",
+    biasTone: "positive",
+    scenario: "Structure confirmation remains the review condition",
+    macroLink: "USD softness and yield stability remain the primary context",
+    regimeLink: "Gold remains sensitive to USD and real-yield pressure",
+  },
+  "NAS100": {
+    label: "Nasdaq 100",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "Active bias",
+    biasTone: "positive",
+    scenario: "Momentum continuation above 20,650 structure",
+    macroLink: "Fed patience and tech earnings cycle support",
+    regimeLink: "Risk-on tilt supports equity indices",
+  },
+  "SPX500": {
+    label: "S&P 500",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "Conditional",
+    biasTone: "warning",
+    scenario: "Requires broad confirmation — CPI pending",
+    macroLink: "Macro uncertainty caps confidence until CPI clarity",
+    regimeLink: "Broad equity regime trending but contradicted by vol",
+  },
+  "DE30": {
+    label: "Germany 40",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "No active scenario — awaiting catalyst",
+    macroLink: "ECB dovish lean provides background context",
+    regimeLink: "European equities follow US risk tone",
+  },
+  "BTC/USD": {
+    label: "Bitcoin",
+    assetClass: "Crypto",
+    timeframe: "1H",
+    bias: "Momentum active",
+    biasTone: "positive",
+    scenario: "Breakout pending — volume confirmation needed",
+    macroLink: "Risk-on environment and USD softness supportive",
+    regimeLink: "Crypto correlated with broad risk sentiment",
+  },
+  "EUR/USD": {
+    label: "Euro/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "ECB repricing vs USD weakness — range-bound",
+    macroLink: "ECB dovish forward guidance with USD softness",
+    regimeLink: "EUR inversely linked to USD Index direction",
+  },
+  "GBP/USD": {
+    label: "Cable",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Conditional",
+    biasTone: "warning",
+    scenario: "UK GDP pending — conditional upside if data supports",
+    macroLink: "UK macro data and USD direction primary drivers",
+    regimeLink: "Cable tracks USD weakness and UK data cycle",
+  },
+  "USD/JPY": {
+    label: "Dollar/Yen",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Downside pressure",
+    biasTone: "negative",
+    scenario: "Intervention risk zone — caution on further upside",
+    macroLink: "BoJ intervention rhetoric and US yield differential",
+    regimeLink: "JPY strength reflects risk-off potential and intervention",
+  },
+  "USD/CHF": {
+    label: "Dollar/Swiss",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "No active setup — safe-haven flows mixed",
+    macroLink: "CHF safe-haven demand offset by SNB policy",
+    regimeLink: "USD/CHF tracks broad USD direction",
+  },
+  "AUD/USD": {
+    label: "Aussie/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "Range-bound — no catalyst active",
+    macroLink: "China PMI weakness offsets USD softness",
+    regimeLink: "AUD sensitive to China data and commodity prices",
+  },
+  "NZD/USD": {
+    label: "Kiwi/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "No active scenario — low conviction",
+    macroLink: "RBNZ policy and dairy prices primary local drivers",
+    regimeLink: "NZD follows AUD direction with lower liquidity",
+  },
+  "USD/CAD": {
+    label: "Dollar/Loonie",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "Oil correlation watch — no clear directional bias",
+    macroLink: "Oil price direction and BoC rate path",
+    regimeLink: "CAD correlated with oil and broad USD direction",
+  },
+};
+
+export const AVAILABLE_ASSETS = Object.keys(assetContextBySymbol);
