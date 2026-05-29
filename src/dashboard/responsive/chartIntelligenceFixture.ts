@@ -146,7 +146,7 @@ export const chartMarkers: ChartMarkerFixture[] = [
     kind: "contradiction",
     tone: "negative",
     x: 75, y: 38,
-    note: "Risk-on equities contradicting safe-haven gold bid",
+    note: "Risk-on equities contradicting defensive asset context",
     linkedPanel: "confidence",
     whyItMatters: "Cross-asset contradiction caps effective confidence score",
     freshness: "Current",
@@ -271,7 +271,7 @@ export const activeChartContextFixture = {
   session: "London/NY Overlap",
   sourceState: "Fixture Mode",
   marketDataState: "Market Data Pending",
-  activeScenario: "Upside pressure while structure zone confirms",
+  activeScenario: "Structure zone and liquidity band remain the scenario context",
   reviewWindow: "Next session open",
 };
 

@@ -8,6 +8,7 @@
  */
 
 import { getOverlayItemById, type LinkedPanel } from "./chartIntelligenceFixture";
+import { assetContextBySymbol } from "./responsivePanelFixtures";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -29,6 +30,9 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const item = getOverlayItemById(selectedId);
   if (!item) return null;
 
+  const assetSymbol = activeAsset || "XAU/USD";
+  const assetCtx = assetContextBySymbol[assetSymbol];
+
   let title = "";
   let kind = "";
   let strength: number | null = null;
@@ -39,9 +43,10 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   let whyItMatters = "";
   let caution = "";
   let actionLabel = "Inspect Context";
+  let assetContextLine = "";
 
   if (item.type === "zone") {
-    title = `${activeAsset || "XAU/USD"} ${item.label}`;
+    title = `${assetSymbol} ${item.label}`;
     kind = item.kind;
     strength = item.strength;
     freshness = item.freshness;
@@ -50,30 +55,34 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     whyItMatters = item.whyItMatters;
     caution = item.caution ?? "";
     actionLabel = "View Evidence Context";
+    assetContextLine = `Linked to ${assetSymbol} evidence. Used by current asset scenario review.`;
   } else if (item.type === "marker") {
-    title = item.label;
+    title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
     freshness = item.freshness;
     linkedPanel = item.linkedPanel;
     note = item.note;
     whyItMatters = item.whyItMatters;
     actionLabel = "Inspect Market Context";
+    assetContextLine = `${assetSymbol} structure context — ${assetCtx?.primaryLens ?? "market intelligence"}`;
   } else if (item.type === "annotation") {
-    title = item.title;
+    title = `${item.title} — ${assetSymbol}`;
     kind = "annotation";
     freshness = item.freshness;
     linkedPanel = item.panelLink;
     note = item.body;
     whyItMatters = `Evidence tags: ${item.evidenceTags.join(", ")}`;
     actionLabel = item.actionLabel;
+    assetContextLine = `Linked to ${assetSymbol} scenario review.`;
   } else if (item.type === "path") {
-    title = item.label;
+    title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";
     confidence = item.confidence;
     linkedPanel = item.linkedPanel;
     note = item.condition;
     whyItMatters = item.alternativeNote;
     actionLabel = "Review Scenario";
+    assetContextLine = `${assetSymbol} scenario path. ${assetCtx?.reviewWindow ? `Review window: ${assetCtx.reviewWindow}` : ""}`;
   }
 
   return (
@@ -132,6 +141,10 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
 
         {caution && (
           <p className="dashboard-chart-inspector__caution">{caution}</p>
+        )}
+
+        {assetContextLine && (
+          <p className="dashboard-chart-inspector__note" style={{ opacity: 0.7, fontSize: "10px", marginTop: "4px" }}>{assetContextLine}</p>
         )}
       </div>
 
