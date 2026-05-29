@@ -25,6 +25,7 @@ import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAs
 import PrecisionPanelGroup from "./PrecisionPanelGroup";
 import type { PanelId } from "./PrecisionPanelGroup";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
+import { assetContextBySymbol } from "./responsivePanelFixtures";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -53,11 +54,13 @@ function MarketDrawerActions() {
 }
 
 interface PanelLayerProps {
+  activeAsset: string;
   linkedPanel?: LinkedPanel | null;
 }
 
-export default function DashboardResponsivePanelLayer({ linkedPanel }: PanelLayerProps) {
+export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel }: PanelLayerProps) {
   const linkedPanelId = linkedPanel ? LINKED_PANEL_MAP[linkedPanel] ?? null : null;
+  const assetCtx = assetContextBySymbol[activeAsset];
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -120,11 +123,12 @@ export default function DashboardResponsivePanelLayer({ linkedPanel }: PanelLaye
               preview={<><p className="dashboard-precision-body-text">{d.summary}</p><Chip value={`Freshness: ${d.freshness}`} tone={d.freshness === "Current" ? "positive" : "warning"} /></>} />
           ))}
           {biasMode === 3 && (<>
-            <DataRow label="Active asset" value={assetCockpitFixture.activeAsset} tone="positive" />
-            <DataRow label="Class" value={assetCockpitFixture.assetClass} tone="neutral" />
-            <DataRow label="Timeframe" value={assetCockpitFixture.timeframe} tone="neutral" />
-            <DataRow label="Session" value={assetCockpitFixture.session} tone="positive" />
-            <DataRow label="Source mode" value={assetCockpitFixture.sourceMode} tone="neutral" />
+            <DataRow label="Active asset" value={activeAsset} tone="positive" />
+            <DataRow label="Class" value={assetCtx?.assetClass ?? "—"} tone="neutral" />
+            <DataRow label="Timeframe" value={assetCtx?.timeframe ?? "1H"} tone="neutral" />
+            <DataRow label="Bias" value={assetCtx?.bias ?? "—"} tone={assetCtx?.biasTone ?? "neutral"} />
+            <DataRow label="Source mode" value="Fixture Mode" tone="neutral" />
+            <p className="dashboard-precision-note">{assetCtx?.scenario ?? ""}</p>
           </>)}
           <ActionBar onExpand={() => openDrawer("Reasoning", "Directional Bias", "bias")} />
         </>} />
@@ -295,7 +299,7 @@ export default function DashboardResponsivePanelLayer({ linkedPanel }: PanelLaye
             <DataRow label="Prompt" value={journalNoteFixture.prompt} tone="neutral" />
             <DataRow label="Emotional state" value={journalNoteFixture.emotionalState} tone="positive" />
             <DataRow label="Discipline" value={journalNoteFixture.disciplineNote} tone="neutral" />
-            <DataRow label="Last entry" value={journalNoteFixture.lastEntry} tone="neutral" />
+            <DataRow label="Last note" value={journalNoteFixture.lastNote} tone="neutral" />
             <p className="dashboard-precision-note">Tags: {journalNoteFixture.tags.join(", ")}</p>
           </>)}
           {coachMode === 2 && (<>
@@ -362,9 +366,9 @@ export default function DashboardResponsivePanelLayer({ linkedPanel }: PanelLaye
       <DashboardResponsiveDetailDrawer open={drawerOpen} title={drawerTitle} eyebrow={drawerEyebrow} onClose={() => setDrawerOpen(false)}>
         {drawerPanel === "bias" && (<>
           <DrawerSection title="Bias Snapshot">
-            <DataRow label="Direction" value={biasFixture.direction} tone="positive" />
+            <DataRow label="Direction" value={assetCtx?.bias ?? biasFixture.direction} tone={assetCtx?.biasTone ?? "positive"} />
+            <DataRow label="Active asset" value={activeAsset} tone="positive" />
             <DataRow label="Strength" value={biasFixture.strength} tone={biasFixture.strengthTone} />
-            <DataRow label="Active asset" value={biasFixture.activeAsset} tone="positive" />
           </DrawerSection>
           <DrawerSection title="Scenarios">
             <DataRow label="Primary" value={biasFixture.scenarios.primary} tone="positive" />

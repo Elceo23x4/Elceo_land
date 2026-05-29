@@ -1,14 +1,14 @@
 /**
  * DashboardResponsiveCockpit.tsx
  *
- * Top-level responsive dashboard component using fluid coordinate canvas.
- * R7B: Manages linked panel state between chart overlay and panels.
+ * R7C: Owns activeAsset + linkedPanel state.
+ * Passes active asset to chart zone, panel layer, and topbar.
  */
 
 import { useState } from "react";
 import { TopSystemBarFrame } from "./dashboardResponsiveAssets";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
-import { assetCockpitFixture } from "./responsivePanelFixtures";
+import { assetContextBySymbol } from "./responsivePanelFixtures";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import DashboardResponsiveBackground from "./DashboardResponsiveBackground";
 import DashboardResponsiveChartZone from "./DashboardResponsiveChartZone";
@@ -21,18 +21,28 @@ import "./dashboardResponsiveTypography.css";
 import "./dashboardResponsiveChart.css";
 
 export default function DashboardResponsiveCockpit() {
+  const [activeAsset, setActiveAsset] = useState("XAU/USD");
   const [linkedPanel, setLinkedPanel] = useState<LinkedPanel | null>(null);
+
+  const ctx = assetContextBySymbol[activeAsset];
 
   return (
     <div className="dashboard-precision-viewport">
       <div className="dashboard-precision-board">
         <DashboardResponsiveBackground />
 
-        <DashboardResponsiveChartZone onLinkedPanel={setLinkedPanel} />
+        <DashboardResponsiveChartZone
+          activeAsset={activeAsset}
+          onAssetChange={setActiveAsset}
+          onLinkedPanel={setLinkedPanel}
+        />
 
-        <DashboardResponsivePanelLayer linkedPanel={linkedPanel} />
+        <DashboardResponsivePanelLayer
+          activeAsset={activeAsset}
+          linkedPanel={linkedPanel}
+        />
 
-        {/* ─── Topbar (z-index 30) ─── */}
+        {/* ─── Topbar ─── */}
         <div
           className="dashboard-precision-topbar"
           style={{ ...boardRectStyle(SHELL_RECTS.topSystemBar), zIndex: 30 }}
@@ -44,7 +54,8 @@ export default function DashboardResponsiveCockpit() {
             <span className="dashboard-precision-topbar-brand">ELCEO</span>
             <span className="dashboard-precision-topbar-title">Market Cognition Cockpit</span>
             <span className="dashboard-precision-topbar-spacer" />
-            <span className="dashboard-precision-topbar-badge">{assetCockpitFixture.activeAsset}</span>
+            <span className="dashboard-precision-topbar-badge">{activeAsset}</span>
+            <span className="dashboard-precision-topbar-badge">{ctx?.assetClass ?? ""}</span>
             <span className="dashboard-precision-topbar-badge dashboard-precision-topbar-badge--fixture">
               Fixture Mode
             </span>

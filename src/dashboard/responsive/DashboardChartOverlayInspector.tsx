@@ -20,9 +20,10 @@ const PANEL_LABELS: Record<LinkedPanel, string> = {
 interface InspectorProps {
   selectedId: string | null;
   onClose: () => void;
+  activeAsset?: string;
 }
 
-export default function DashboardChartOverlayInspector({ selectedId, onClose }: InspectorProps) {
+export default function DashboardChartOverlayInspector({ selectedId, onClose, activeAsset }: InspectorProps) {
   if (!selectedId) return null;
 
   const item = getOverlayItemById(selectedId);
@@ -40,7 +41,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose }: 
   let actionLabel = "Inspect Context";
 
   if (item.type === "zone") {
-    title = item.label;
+    title = `${activeAsset || "XAU/USD"} ${item.label}`;
     kind = item.kind;
     strength = item.strength;
     freshness = item.freshness;

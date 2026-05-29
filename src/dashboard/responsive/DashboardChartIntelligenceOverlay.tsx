@@ -40,6 +40,7 @@ interface OverlayProps {
   showNotes: boolean;
   selectedId: string | null;
   onSelect: (id: string | null) => void;
+  activeAsset?: string;
 }
 
 export default function DashboardChartIntelligenceOverlay({
@@ -49,6 +50,7 @@ export default function DashboardChartIntelligenceOverlay({
   showNotes,
   selectedId,
   onSelect,
+  activeAsset,
 }: OverlayProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -194,7 +196,7 @@ export default function DashboardChartIntelligenceOverlay({
       {/* ─── Active Context Strip ─── */}
       <div className="dashboard-chart-context-strip">
         <span className="dashboard-chart-context-strip__item dashboard-chart-context-strip__item--asset">
-          {activeChartContextFixture.asset}
+          {activeAsset || activeChartContextFixture.asset}
         </span>
         <span className="dashboard-chart-context-strip__item">
           {activeChartContextFixture.timeframe}

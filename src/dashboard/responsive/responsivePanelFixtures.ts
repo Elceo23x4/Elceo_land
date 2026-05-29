@@ -295,7 +295,7 @@ export const journalNoteFixture = {
   tags: ["structure", "macro", "discipline", "contradiction"],
   emotionalState: "Controlled",
   disciplineNote: "Awaiting confirmation — not front-running scenario",
-  lastEntry: "2h ago",
+  lastNote: "2h ago",
 };
 
 export const disciplineFixture = {
@@ -348,3 +348,145 @@ export const correlationFixture = [
   { pair: "BTC vs Risk", direction: "Correlated — risk-on tilt", tone: "positive" as Tone },
   { pair: "Risk-on vs Risk-off", direction: "Tension — contradicting", tone: "warning" as Tone },
 ];
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ASSET CONTEXT BY SYMBOL — per-asset fixture context for dashboard sync
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export interface AssetContext {
+  label: string;
+  assetClass: string;
+  timeframe: string;
+  bias: string;
+  biasTone: Tone;
+  scenario: string;
+  macroLink: string;
+  regimeLink: string;
+}
+
+export const assetContextBySymbol: Record<string, AssetContext> = {
+  "XAU/USD": {
+    label: "Gold Spot",
+    assetClass: "Metals",
+    timeframe: "1H",
+    bias: "Upside pressure",
+    biasTone: "positive",
+    scenario: "Structure confirmation remains the review condition",
+    macroLink: "USD softness and yield stability remain the primary context",
+    regimeLink: "Gold remains sensitive to USD and real-yield pressure",
+  },
+  "NAS100": {
+    label: "Nasdaq 100",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "Active bias",
+    biasTone: "positive",
+    scenario: "Momentum continuation above 20,650 structure",
+    macroLink: "Fed patience and tech earnings cycle support",
+    regimeLink: "Risk-on tilt supports equity indices",
+  },
+  "SPX500": {
+    label: "S&P 500",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "Conditional",
+    biasTone: "warning",
+    scenario: "Requires broad confirmation — CPI pending",
+    macroLink: "Macro uncertainty caps confidence until CPI clarity",
+    regimeLink: "Broad equity regime trending but contradicted by vol",
+  },
+  "DE30": {
+    label: "Germany 40",
+    assetClass: "Indices",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "No active scenario — awaiting catalyst",
+    macroLink: "ECB dovish lean provides background context",
+    regimeLink: "European equities follow US risk tone",
+  },
+  "BTC/USD": {
+    label: "Bitcoin",
+    assetClass: "Crypto",
+    timeframe: "1H",
+    bias: "Momentum active",
+    biasTone: "positive",
+    scenario: "Breakout pending — volume confirmation needed",
+    macroLink: "Risk-on environment and USD softness supportive",
+    regimeLink: "Crypto correlated with broad risk sentiment",
+  },
+  "EUR/USD": {
+    label: "Euro/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "ECB repricing vs USD weakness — range-bound",
+    macroLink: "ECB dovish forward guidance with USD softness",
+    regimeLink: "EUR inversely linked to USD Index direction",
+  },
+  "GBP/USD": {
+    label: "Cable",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Conditional",
+    biasTone: "warning",
+    scenario: "UK GDP pending — conditional upside if data supports",
+    macroLink: "UK macro data and USD direction primary drivers",
+    regimeLink: "Cable tracks USD weakness and UK data cycle",
+  },
+  "USD/JPY": {
+    label: "Dollar/Yen",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Downside pressure",
+    biasTone: "negative",
+    scenario: "Intervention risk zone — caution on further upside",
+    macroLink: "BoJ intervention rhetoric and US yield differential",
+    regimeLink: "JPY strength reflects risk-off potential and intervention",
+  },
+  "USD/CHF": {
+    label: "Dollar/Swiss",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "No active setup — safe-haven flows mixed",
+    macroLink: "CHF safe-haven demand offset by SNB policy",
+    regimeLink: "USD/CHF tracks broad USD direction",
+  },
+  "AUD/USD": {
+    label: "Aussie/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "Range-bound — no catalyst active",
+    macroLink: "China PMI weakness offsets USD softness",
+    regimeLink: "AUD sensitive to China data and commodity prices",
+  },
+  "NZD/USD": {
+    label: "Kiwi/Dollar",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "No setup",
+    biasTone: "neutral",
+    scenario: "No active scenario — low conviction",
+    macroLink: "RBNZ policy and dairy prices primary local drivers",
+    regimeLink: "NZD follows AUD direction with lower liquidity",
+  },
+  "USD/CAD": {
+    label: "Dollar/Loonie",
+    assetClass: "FX Major",
+    timeframe: "1H",
+    bias: "Watching",
+    biasTone: "neutral",
+    scenario: "Oil correlation watch — no clear directional bias",
+    macroLink: "Oil price direction and BoC rate path",
+    regimeLink: "CAD correlated with oil and broad USD direction",
+  },
+};
+
+export const AVAILABLE_ASSETS = Object.keys(assetContextBySymbol);
