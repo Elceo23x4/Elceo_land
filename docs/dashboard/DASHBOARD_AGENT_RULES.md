@@ -67,6 +67,9 @@ Read this file before making any changes to the ELCEO dashboard.
 - No outer glow for selected elements.
 - Chart text must be white/off-white, not muted gray.
 - Toggle controls are positioned at board coordinates (`SHELL_RECTS.chartOverlayToggleBar`), not inside chart candle area.
+- Central wheel asset geometry must be updated only through `dashboardResponsiveGeometry.ts` unless user explicitly asks to edit SVG.
+- Wheel must stay behind chart/glass/overlay layers (z-index 5 or below).
+- Selected overlay elements must use neon color state only — no outline, no glow, no stroke inflation.
 
 ---
 
