@@ -9,6 +9,7 @@
 
 import { getOverlayItemById, type LinkedPanel } from "./chartIntelligenceFixture";
 import { assetContextBySymbol } from "./responsivePanelFixtures";
+import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -34,6 +35,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const assetSymbol = activeAsset || "XAU/USD";
   const tf = activeTimeframe || "1H";
   const assetCtx = assetContextBySymbol[assetSymbol];
+  const cognition = getDashboardCognitionSnapshot(assetSymbol, tf);
 
   let title = "";
   let kind = "";
@@ -50,41 +52,43 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   if (item.type === "zone") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind;
-    strength = item.strength;
-    freshness = item.freshness;
+    strength = cognition.zoneStrengthScore;
+    freshness = cognition.freshnessScore >= 65 ? "Current" : "Watch";
     linkedPanel = item.linkedPanel;
     note = item.note;
-    whyItMatters = item.whyItMatters;
+    whyItMatters = cognition.zoneReason;
     caution = item.caution ?? "";
     actionLabel = "View Evidence Context";
-    assetContextLine = `${assetSymbol} · ${tf} structure context. Linked to evidence.`;
+    assetContextLine = `${assetSymbol} · ${tf} structure context. Zone strength: ${cognition.zoneStrengthScore}%.`;
   } else if (item.type === "marker") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
-    freshness = item.freshness;
+    freshness = cognition.freshnessScore >= 65 ? "Current" : "Watch";
     linkedPanel = item.linkedPanel;
     note = item.note;
-    whyItMatters = item.whyItMatters;
+    whyItMatters = item.kind === "contradiction" ? cognition.contradictionReason : item.whyItMatters;
     actionLabel = "Inspect Market Context";
-    assetContextLine = `${assetSymbol} · ${tf} — ${assetCtx?.primaryLens ?? "market intelligence"}`;
+    assetContextLine = item.kind === "contradiction"
+      ? `${assetSymbol} · ${tf} — Contradiction: ${cognition.contradictionScore}%.`
+      : `${assetSymbol} · ${tf} — ${assetCtx?.primaryLens ?? "market intelligence"}`;
   } else if (item.type === "annotation") {
     title = `${item.title} — ${assetSymbol}`;
     kind = "annotation";
-    freshness = item.freshness;
+    freshness = cognition.freshnessScore >= 65 ? "Current" : "Watch";
     linkedPanel = item.panelLink;
     note = item.body;
     whyItMatters = `Evidence tags: ${item.evidenceTags.join(", ")}`;
     actionLabel = item.actionLabel;
-    assetContextLine = `${assetSymbol} · ${tf} scenario review.`;
+    assetContextLine = `${assetSymbol} · ${tf} scenario review. Confidence: ${cognition.confidenceScore}%.`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";
-    confidence = item.confidence;
+    confidence = cognition.confidenceScore;
     linkedPanel = item.linkedPanel;
     note = item.condition;
-    whyItMatters = item.alternativeNote;
+    whyItMatters = cognition.confidenceReason;
     actionLabel = "Review Scenario";
-    assetContextLine = `${assetSymbol} · ${tf} scenario path. ${assetCtx?.reviewWindow ? `Review window: ${assetCtx.reviewWindow}` : ""}`;
+    assetContextLine = `${assetSymbol} · ${tf} scenario path. Review window: ${cognition.reviewWindow}`;
   }
 
   return (

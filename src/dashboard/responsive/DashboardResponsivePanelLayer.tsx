@@ -26,6 +26,7 @@ import PrecisionPanelGroup from "./PrecisionPanelGroup";
 import type { PanelId } from "./PrecisionPanelGroup";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
 import { assetContextBySymbol } from "./responsivePanelFixtures";
+import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -63,6 +64,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
   const linkedPanelId = linkedPanel ? LINKED_PANEL_MAP[linkedPanel] ?? null : null;
   const assetCtx = assetContextBySymbol[activeAsset];
   const tfCtx = timeframeContextByValue[activeTimeframe || "1H"];
+  const cognition = getDashboardCognitionSnapshot(activeAsset, activeTimeframe || "1H");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -145,27 +147,27 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <SectionNav items={["Confidence", "Contradiction", "Freshness", "Data Quality"]} active={confMode} onSelect={setConfMode} />
           {confMode === 0 && (
             <div className="dashboard-two-col">
-              {confidenceFixture.metrics.map((m) => (
-                <HoverPreviewCard key={m.label}
-                  trigger={<div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={m.score} tone={m.tone} /><div style={{ flex: 1 }}><DataRow label={m.label} value={m.value} tone={m.tone} /></div></div>}
-                  preview={<p className="dashboard-precision-body-text">{m.label}: {m.score}% — {m.tone === "warning" ? "Caution zone" : "Within range"}</p>} />
-              ))}
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.confidenceScore} tone={cognition.confidenceScore >= 60 ? "positive" : cognition.confidenceScore >= 45 ? "neutral" : "warning"} /><div style={{ flex: 1 }}><DataRow label="Confidence" value={`${cognition.confidenceScore}%`} tone={cognition.confidenceScore >= 60 ? "positive" : "neutral"} /></div></div>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.contradictionScore} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} /><div style={{ flex: 1 }}><DataRow label="Contradiction" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} /></div></div>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} /><div style={{ flex: 1 }}><DataRow label="Freshness" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} /></div></div>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.zoneStrengthScore} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} /><div style={{ flex: 1 }}><DataRow label="Zone strength" value={`${cognition.zoneStrengthScore}%`} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} /></div></div>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.evidenceWeight} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} /><div style={{ flex: 1 }}><DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} /></div></div>
             </div>
           )}
           {confMode === 1 && (<>
-            {confidenceFixture.conflicts.map((c) => (
-              <div key={c.label} style={{ marginBottom: "6px" }}><DataRow label={c.label} value="Active" tone="warning" /><p className="dashboard-precision-body-text" style={{ marginTop: "2px" }}>{c.detail}</p></div>
-            ))}
-            <DataRow label="Why not higher" value={confidenceFixture.whyNotHigher} tone="warning" />
-            <DataRow label="Why not lower" value={confidenceFixture.whyNotLower} tone="positive" />
+            <DataRow label="Contradiction score" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
+            <MiniMeter score={cognition.contradictionScore} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
+            <p className="dashboard-precision-body-text">{cognition.contradictionReason}</p>
+            <DataRow label="Why not higher" value={cognition.confidenceReason} tone="warning" />
+            <DataRow label="Caution" value={cognition.cautionNote} tone={cognition.cautionTone} />
           </>)}
           {confMode === 2 && (<>
-            <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
-            <MiniMeter score={confidenceFixture.metrics[2].score} tone="positive" />
+            <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
+            <MiniMeter score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
             <DataRow label="Sensitivity" value={tfCtx?.freshnessSensitivity ?? ""} tone="neutral" />
             <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
             <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
-            <p className="dashboard-precision-note">{assetCtx?.freshnessNote ?? marketInsightsFixture.freshnessNote}</p>
+            <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
           </>)}
           {confMode === 3 && (<>
             <DataRow label="Data quality" value={`${confidenceFixture.dataQuality}%`} tone="positive" />
@@ -220,18 +222,18 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
                 preview={<><p className="dashboard-precision-body-text">{e.category}: {e.label} — Score {e.score}%</p><Chip value={`Freshness: ${e.freshness}`} tone={e.freshness === "Current" ? "positive" : "warning"} /></>} />
             ))}
             <div style={{ marginTop: "6px", borderTop: "1px solid rgba(138,129,120,0.1)", paddingTop: "4px" }}>
-              <DataRow label="Aggregate conviction" value={`${evidenceConviction}%`} tone="positive" mono />
-              <MiniMeter score={evidenceConviction} tone="positive" />
+              <DataRow label="Aggregate conviction" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} mono />
+              <MiniMeter score={cognition.evidenceWeight} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
             </div>
           </>)}
           {evidMode === 1 && (<>
             <DataRow label="Active asset" value={activeAsset} tone="positive" />
             <DataRow label="Timeframe" value={`${activeTimeframe || "1H"} — ${tfCtx?.evidenceNote ?? ""}`} tone="neutral" />
-            <p className="dashboard-precision-body-text">{assetCtx?.evidenceFocus ?? marketInsightsFixture.summary}</p>
+            <DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
+            <p className="dashboard-precision-body-text">{cognition.evidenceSummary}</p>
             {marketInsightsFixture.topSupports.map((s) => <DataRow key={s} label="Supports" value={s} tone="positive" />)}
             {marketInsightsFixture.topContradictions.map((c) => <DataRow key={c} label="Contradicts" value={c} tone="warning" />)}
-            <p className="dashboard-precision-note">{assetCtx?.cautionNote ?? marketInsightsFixture.cautionNote}</p>
-            <p className="dashboard-precision-note">{marketInsightsFixture.chartOverlayNote}</p>
+            <p className="dashboard-precision-note">{cognition.cautionNote}</p>
           </>)}
           {evidMode === 2 && (<>
             <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
@@ -243,11 +245,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <StatusLabel label="Market Data Pending" />
           </>)}
           {evidMode === 3 && (<>
-            <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
-            <MiniMeter score={confidenceFixture.metrics[2].score} tone="positive" />
-            <DataRow label="Stale risk" value="Low-moderate" tone="neutral" />
-            <DataRow label="Next review cue" value={marketInsightsFixture.nextReviewTrigger} tone="neutral" />
-            <p className="dashboard-precision-note">{marketInsightsFixture.freshnessNote}</p>
+            <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
+            <MiniMeter score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
+            <DataRow label="Stale risk" value={cognition.freshnessScore >= 70 ? "Low" : cognition.freshnessScore >= 55 ? "Low-moderate" : "Moderate"} tone={cognition.freshnessScore >= 60 ? "neutral" : "warning"} />
+            <DataRow label="Next review cue" value={cognition.reviewWindow} tone="neutral" />
+            <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
           </>)}
           <ActionBar onExpand={() => openDrawer("Evidence", "Evidence Chain", "evidence")} />
         </>} />
@@ -285,11 +287,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {newsMode === 3 && (<>
             <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
-            <DataRow label="Central bank tone" value={macroPulseFixture.centralBankTone} tone="positive" />
-            <DataRow label="Liquidity" value={macroPulseFixture.liquidity} tone="positive" />
-            <DataRow label="Risk event" value={macroPulseFixture.riskEvent} tone="warning" />
-            <DataRow label="Source state" value={macroPulseFixture.sourceState} tone="neutral" />
-            <StatusLabel label="Market Data Pending" />
+            <DataRow label="Macro sensitivity" value={cognition.macroSensitivity} tone="neutral" />
+            <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
+            <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
+            <DataRow label="Contradiction" value={cognition.contradictionReason} tone={cognition.cautionTone} />
+            <StatusLabel label="Fixture Mode" />
           </>)}
           <ActionBar onExpand={() => openDrawer("Macro", "News & Macro Context", "news")} />
         </>} />
@@ -302,10 +304,10 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <SectionNav items={["Coaching", "Journal Note", "Discipline", "Behavior"]} active={coachMode} onSelect={setCoachMode} />
           {coachMode === 0 && (<>
             <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{`Await structure confirmation on ${activeAsset}`}</p>
-            <p className="dashboard-precision-body-text">{assetCtx?.scenario ?? coachingFixture.body}</p>
-            {coachingFixture.checklist.slice(0, 3).map((item) => (
-              <div key={item} className="dashboard-precision-data-row"><span className="dashboard-precision-data-label">☐</span><span style={{ color: "#b8afa6" }}>{item}</span></div>
-            ))}
+            <p className="dashboard-precision-body-text">{cognition.cautionNote}</p>
+            <DataRow label="Confidence" value={`${cognition.confidenceScore}%`} tone={cognition.confidenceScore >= 60 ? "positive" : "neutral"} />
+            <DataRow label="Volatility" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
+            <DataRow label="Review window" value={cognition.reviewWindow} tone="neutral" />
           </>)}
           {coachMode === 1 && (<>
             <DataRow label="Asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="positive" />
@@ -364,11 +366,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             </div>
           )}
           {regimeMode === 2 && (<>
-            <DataRow label="Active asset" value={`${activeAsset} · ${activeTimeframe || "1H"} — ${assetCtx?.regimeLink ?? ""}`} tone="neutral" />
-            <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
-            <DataRow label="Vol regime" value={volatilityFixture.regime} tone="neutral" />
-            <DataRow label="Event risk" value={volatilityFixture.eventRisk} tone="warning" />
-            <DataRow label="Session note" value={volatilityFixture.sessionNote} tone="neutral" />
+            <DataRow label="Active asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="neutral" />
+            <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
+            <DataRow label="Vol condition" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
+            <DataRow label="Zone strength" value={`${cognition.zoneStrengthScore}%`} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} />
+            <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
           </>)}
           {regimeMode === 3 && correlationFixture.map((c) => (
             <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />
