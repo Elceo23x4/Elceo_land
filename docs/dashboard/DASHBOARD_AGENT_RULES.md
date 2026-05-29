@@ -54,6 +54,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Cognition fixture engine rules
+
+- Cognition fixture engine must remain deterministic (same input → same output).
+- No `Math.random`, `Date.now`, `new Date`, network calls, or timers.
+- Fixture scores must not imply live market advice.
+- Score copy must use safe scenario/evidence/confidence language.
+- Engine is located in `src/dashboard/responsive/dashboardCognitionFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.
