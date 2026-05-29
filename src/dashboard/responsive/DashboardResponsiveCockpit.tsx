@@ -61,7 +61,7 @@ export default function DashboardResponsiveCockpit() {
             <span className="dashboard-precision-topbar-badge dashboard-precision-topbar-badge--fixture">
               Fixture Mode
             </span>
-            <span className="dashboard-precision-topbar-badge">Provider Pending</span>
+            <span className="dashboard-precision-topbar-badge">Market Data Pending</span>
             <span className="dashboard-precision-topbar-clock">UTC —:—</span>
           </div>
         </div>

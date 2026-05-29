@@ -1,9 +1,8 @@
 /**
  * DashboardResponsiveSidebar.tsx
  *
- * R6B: Market cockpit navigation only.
- * No account/billing/notification/security route concepts.
- * Buttons are fixture placeholders — no navigation behavior.
+ * R6C: Market cockpit navigation only.
+ * Buttons are fixture placeholders.
  */
 
 import { SidebarRailFrame } from "./dashboardResponsiveAssets";

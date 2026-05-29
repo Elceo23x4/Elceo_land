@@ -1,9 +1,8 @@
 /**
  * DashboardResponsivePanelLayer.tsx
  *
- * R6B: Market-only production simulation. No account/billing/security content.
- * Each panel has 4 market-intelligence modes.
- * No route paths in content. No unsafe wording.
+ * R6C: Market-only cockpit. Complete drawer coverage for all 7 panels.
+ * User-facing source language (no internal/backend wording).
  */
 
 import { useState, useCallback, useEffect } from "react";
@@ -18,7 +17,7 @@ import {
   newsFixture, macroEvents, currencyCompareFixture, macroPulseFixture,
   coachingFixture, journalNoteFixture, disciplineFixture,
   regimeFixture, regimeStrip, volatilityFixture, correlationFixture,
-  providerTraceFixture,
+  sourceStatusFixture,
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
@@ -110,7 +109,7 @@ export default function DashboardResponsivePanelLayer() {
             <DataRow label="Class" value={assetCockpitFixture.assetClass} tone="neutral" />
             <DataRow label="Timeframe" value={assetCockpitFixture.timeframe} tone="neutral" />
             <DataRow label="Session" value={assetCockpitFixture.session} tone="positive" />
-            <DataRow label="Provider" value={assetCockpitFixture.providerMode} tone="neutral" />
+            <DataRow label="Source mode" value={assetCockpitFixture.sourceMode} tone="neutral" />
           </>)}
           <ActionBar onExpand={() => openDrawer("Reasoning", "Directional Bias", "bias")} />
         </>} />
@@ -140,14 +139,14 @@ export default function DashboardResponsivePanelLayer() {
           {confMode === 2 && (<>
             <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
             <MiniMeter score={confidenceFixture.metrics[2].score} tone="positive" />
-            <DataRow label="Market data" value={providerTraceFixture.marketData} tone="warning" />
-            <DataRow label="Extraction" value={providerTraceFixture.extraction} tone="warning" />
+            <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
+            <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
             <p className="dashboard-precision-note">{marketInsightsFixture.freshnessNote}</p>
           </>)}
           {confMode === 3 && (<>
             <DataRow label="Data quality" value={`${confidenceFixture.dataQuality}%`} tone="positive" />
             <MiniMeter score={confidenceFixture.dataQuality} tone="positive" />
-            <DataRow label="Source freshness" value={providerTraceFixture.sourceFreshness} tone="neutral" />
+            <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
             <DataRow label="Evidence coverage" value="8 of 10 categories active" tone="positive" />
             <DataRow label="Staleness risk" value="Low-moderate" tone="neutral" />
             <p className="dashboard-precision-note">{confidenceFixture.summary}</p>
@@ -178,14 +177,15 @@ export default function DashboardResponsivePanelLayer() {
           {watchMode === 3 && scenarioMapFixture.map((s) => (
             <DataRow key={s.asset} label={s.asset} value={s.scenario} tone={s.tone} />
           ))}
+          <ActionBar onExpand={() => openDrawer("Watchlist", "Asset Intelligence", "watchlist")} />
         </>} />
 
 
-      {/* ═══ EVIDENCE — Stack / Insights / Provider Trace / Source Freshness ═══ */}
+      {/* ═══ EVIDENCE — Stack / Insights / Source Status / Source Freshness ═══ */}
       <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Signal Alignment</p><h3 className="dashboard-precision-title">Evidence · Insights</h3></>}
         bodyContent={<>
-          <SectionNav items={["Stack", "Insights", "Provider", "Freshness"]} active={evidMode} onSelect={setEvidMode} />
+          <SectionNav items={["Stack", "Insights", "Source Status", "Freshness"]} active={evidMode} onSelect={setEvidMode} />
           {evidMode === 0 && (<>
             {evidenceFixture.map((e) => (
               <HoverPreviewCard key={e.label} trigger={<><DataRow label={e.label} value={e.value} tone={e.tone} /><EvidenceWeightBar score={e.score} tone={e.tone} /></>}
@@ -203,13 +203,15 @@ export default function DashboardResponsivePanelLayer() {
             <p className="dashboard-precision-note">{marketInsightsFixture.cautionNote}</p>
           </>)}
           {evidMode === 2 && (<>
-            <DataRow label="Market data" value={providerTraceFixture.marketData} tone="warning" />
-            <DataRow label="News" value={providerTraceFixture.news} tone="neutral" />
-            <DataRow label="Macro" value={providerTraceFixture.macro} tone="neutral" />
-            <DataRow label="Extraction" value={providerTraceFixture.extraction} tone="warning" />
-            <DataRow label="Chart data" value={providerTraceFixture.chartData} tone="neutral" />
-            <DataRow label="Source freshness" value={providerTraceFixture.sourceFreshness} tone="neutral" />
-            <StatusLabel label="Provider Pending" />
+            <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
+            <DataRow label="News" value={sourceStatusFixture.news} tone="neutral" />
+            <DataRow label="Macro" value={sourceStatusFixture.macro} tone="neutral" />
+            <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
+            <DataRow label="Chart data" value={sourceStatusFixture.chartData} tone="neutral" />
+            <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
+            <StatusLabel label="Market Data Pending" />
+          </>)}
+            <StatusLabel label="Market Data Pending" />
           </>)}
           {evidMode === 3 && (<>
             <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
@@ -255,9 +257,10 @@ export default function DashboardResponsivePanelLayer() {
             <DataRow label="Central bank tone" value={macroPulseFixture.centralBankTone} tone="positive" />
             <DataRow label="Liquidity" value={macroPulseFixture.liquidity} tone="positive" />
             <DataRow label="Risk event" value={macroPulseFixture.riskEvent} tone="warning" />
-            <DataRow label="Provider status" value={macroPulseFixture.providerStatus} tone="neutral" />
-            <StatusLabel label="Provider Pending" />
+            <DataRow label="Source state" value={macroPulseFixture.sourceState} tone="neutral" />
+            <StatusLabel label="Market Data Pending" />
           </>)}
+          <ActionBar onExpand={() => openDrawer("Macro", "News & Macro Context", "news")} />
         </>} />
 
 
@@ -337,6 +340,7 @@ export default function DashboardResponsivePanelLayer() {
           {regimeMode === 3 && correlationFixture.map((c) => (
             <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />
           ))}
+          <ActionBar onExpand={() => openDrawer("Regime", "Market Regime Detail", "regime")} />
         </>} />
 
 
@@ -362,7 +366,7 @@ export default function DashboardResponsivePanelLayer() {
           <DrawerSection title="Contradictions">{confidenceFixture.conflicts.map((c) => <p key={c.label} className="dashboard-precision-body-text">{c.label}: {c.detail}</p>)}</DrawerSection>
           <DrawerSection title="Data Quality">
             <DataRow label="Quality" value={`${confidenceFixture.dataQuality}%`} tone="positive" />
-            <DataRow label="Source freshness" value={providerTraceFixture.sourceFreshness} tone="neutral" />
+            <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
           </DrawerSection>
         </>)}
         {drawerPanel === "evidence" && (<>
@@ -372,9 +376,9 @@ export default function DashboardResponsivePanelLayer() {
             <p className="dashboard-precision-note">{marketInsightsFixture.scenarioNote}</p>
           </DrawerSection>
           <DrawerSection title="Source Freshness">
-            <DataRow label="Market data" value={providerTraceFixture.marketData} tone="warning" />
-            <DataRow label="Chart data" value={providerTraceFixture.chartData} tone="neutral" />
-            <DataRow label="Extraction" value={providerTraceFixture.extraction} tone="warning" />
+            <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
+            <DataRow label="Chart data" value={sourceStatusFixture.chartData} tone="neutral" />
+            <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
           </DrawerSection>
         </>)}
         {drawerPanel === "coaching" && (<>
@@ -388,8 +392,53 @@ export default function DashboardResponsivePanelLayer() {
             <DataRow label="Consistency" value={`${disciplineFixture.reviewConsistency}%`} tone="neutral" />
           </DrawerSection>
         </>)}
-        {!["bias", "confidence", "evidence", "coaching"].includes(drawerPanel) && (
-          <p className="dashboard-precision-body-text">Market context for this section. Fixture mode — provider pending.</p>
+        {drawerPanel === "watchlist" && (<>
+          <DrawerSection title="Featured Assets">
+            {watchlistFixture.map((a) => <DataRow key={a.ticker} label={a.ticker} value={`${a.bias} (${a.confidence})`} tone={a.biasTone} />)}
+          </DrawerSection>
+          <DrawerSection title="FX Majors">
+            {watchlistFxMajors.slice(0, 4).map((a) => <DataRow key={a.ticker} label={a.ticker} value={a.bias} tone={a.biasTone} />)}
+          </DrawerSection>
+          <DrawerSection title="Scenario Alerts">
+            {watchlistAlerts.map((al) => <DataRow key={al.asset} label={al.asset} value={al.alert} tone={al.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Active Focus">
+            <DataRow label="Focus asset" value={assetCockpitFixture.activeAsset} tone="positive" />
+            <DataRow label="Session" value={assetCockpitFixture.session} tone="positive" />
+          </DrawerSection>
+        </>)}
+        {drawerPanel === "news" && (<>
+          <DrawerSection title="Macro Context">
+            <DataRow label="Central bank" value={macroPulseFixture.centralBankTone} tone="positive" />
+            <DataRow label="Liquidity" value={macroPulseFixture.liquidity} tone="positive" />
+            <DataRow label="Risk event" value={macroPulseFixture.riskEvent} tone="warning" />
+          </DrawerSection>
+          <DrawerSection title="Currency Drivers">
+            <DataRow label={currencyCompareFixture.usdVsGold.label} value={currencyCompareFixture.usdVsGold.direction} tone={currencyCompareFixture.usdVsGold.tone} />
+            <DataRow label={currencyCompareFixture.usdVsJpy.label} value={currencyCompareFixture.usdVsJpy.direction} tone={currencyCompareFixture.usdVsJpy.tone} />
+            <DataRow label={currencyCompareFixture.realYields.label} value={currencyCompareFixture.realYields.direction} tone={currencyCompareFixture.realYields.tone} />
+          </DrawerSection>
+          <DrawerSection title="Event Timeline">
+            {macroEvents.slice(0, 3).map((ev) => <DataRow key={ev.label} label={ev.label} value={ev.time} tone={ev.impact === "high" ? "warning" : "neutral"} />)}
+          </DrawerSection>
+        </>)}
+        {drawerPanel === "regime" && (<>
+          <DrawerSection title="Cross-Asset Pulse">
+            {regimeFixture.slice(0, 4).map((r) => <DataRow key={r.asset} label={r.asset} value={r.direction} tone={r.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Volatility State">
+            <DataRow label="Regime" value={volatilityFixture.regime} tone="neutral" />
+            <DataRow label="Event risk" value={volatilityFixture.eventRisk} tone="warning" />
+          </DrawerSection>
+          <DrawerSection title="Correlation Map">
+            {correlationFixture.slice(0, 3).map((c) => <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Liquidity">
+            {regimeStrip.map((s) => <DataRow key={s.label} label={s.label} value={s.value} tone={s.tone} />)}
+          </DrawerSection>
+        </>)}
+        {!["bias", "confidence", "evidence", "coaching", "watchlist", "news", "regime"].includes(drawerPanel) && (
+          <p className="dashboard-precision-body-text">Market context for this section. Fixture mode.</p>
         )}
         <StatusLabel label="Fixture Mode" />
         <MarketDrawerActions />

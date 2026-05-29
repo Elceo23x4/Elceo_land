@@ -1,9 +1,8 @@
 /**
  * responsivePanelFixtures.ts
  *
- * ELCEO Market Cockpit — production-simulation fixture contract.
- * Market intelligence only. No account/billing/security/notification content.
- * No live data. No network calls. No timers. Safe language only.
+ * ELCEO Market Cockpit fixture contract.
+ * Market intelligence only. Safe language only.
  */
 
 export type Tone = "positive" | "negative" | "warning" | "neutral" | "stale" | "pending";
@@ -19,7 +18,7 @@ export const assetCockpitFixture = {
   assetClass: "Metals",
   activeScenario: "Upside pressure toward 2,440 structure zone",
   reviewWindow: "Next session open",
-  providerMode: "Fixture Mode",
+  sourceMode: "Fixture Mode",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -187,21 +186,21 @@ export const marketInsightsFixture = {
   ],
   scenarioNote: "Primary scenario: continuation toward 2,440 if structure confirms. Alternate: pullback to 2,400 if CPI surprises.",
   cautionNote: "Contradiction between risk-on equities and safe-haven gold bid requires monitoring.",
-  freshnessNote: "All primary sources current. Macro extraction pending provider readiness.",
+  freshnessNote: "All primary sources current. Macro extraction pending source readiness.",
   nextReviewTrigger: "CPI release tomorrow 08:30 ET or structure zone retest",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
-   PROVIDER TRACE (market-source labels only — no account/security)
+   SOURCE STATUS (market data source state)
    ═══════════════════════════════════════════════════════════════════════ */
 
-export const providerTraceFixture = {
-  marketData: "Provider Pending",
+export const sourceStatusFixture = {
+  marketData: "Market Data Pending",
   news: "Fixture Mode",
   macro: "Fixture Mode",
-  extraction: "Provider Pending",
+  extraction: "Source Pending",
   chartData: "Fixture Mode",
-  sourceFreshness: "Watch",
+  sourceFreshness: "Source Watch",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -253,7 +252,7 @@ export const macroPulseFixture = {
   centralBankTone: "Dovish lean — patience signaled",
   liquidity: "Adequate — no stress indicators",
   riskEvent: "CPI release pending — high impact scheduled",
-  providerStatus: "Fixture Mode — macro extraction pending",
+  sourceState: "Fixture Mode — macro extraction pending",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -280,7 +279,7 @@ export const coachingFixture = {
     "Evidence stack aligned above 60%?",
     "Contradiction acknowledged and documented?",
     "Freshness within acceptable window?",
-    "Provider readiness reviewed?",
+    "Source freshness checked?",
   ],
   behaviorOverlay: {
     recentQuality: "Good — 3 of last 4 reviews documented",

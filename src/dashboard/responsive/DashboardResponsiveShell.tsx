@@ -39,7 +39,7 @@ export default function DashboardResponsiveShell({ children }: DashboardResponsi
           <span className="dashboard-topbar-badge dashboard-topbar-badge--fixture">
             Fixture Mode
           </span>
-          <span className="dashboard-topbar-badge">Provider Pending</span>
+          <span className="dashboard-topbar-badge">Market Data Pending</span>
           <span className="dashboard-topbar-clock">UTC —:—</span>
         </div>
       </div>

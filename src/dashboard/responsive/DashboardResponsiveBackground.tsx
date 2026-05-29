@@ -21,7 +21,7 @@ export default function DashboardResponsiveBackground() {
         <NightSky preserveAspectRatio="xMidYMid slice" />
       </div>
 
-      {/* GSAP SVG starfield — guaranteed visible twinkle (z-index 3) */}
+      {/* GSAP SVG starfield — visible twinkle layer (z-index 3) */}
       <DashboardGsapStarfield />
 
       {/* Dotted world map — fills board, lower opacity */}

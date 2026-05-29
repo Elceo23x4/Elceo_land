@@ -24,7 +24,7 @@ The ELCEO market dashboard intentionally does NOT show:
 
 **Safe market-facing labels allowed on dashboard:**
 - Fixture Mode
-- Provider Pending
+- Market Data Pending
 - Source Freshness Watch
 - Market Data Pending
 - News Fixture
@@ -39,7 +39,7 @@ The ELCEO market dashboard intentionally does NOT show:
 | Directional Bias | Bias | Scenario | Drivers | Asset |
 | Confidence & Context | Confidence | Contradiction | Freshness | Data Quality |
 | Watchlist | Featured | FX Majors | Alerts | Scenario Map |
-| Evidence · Insights | Stack | Insights | Provider Trace | Source Freshness |
+| Evidence · Insights | Stack | Insights | Source Status | Source Freshness |
 | News & Macro | Headlines | Events | Currency Compare | Macro Pulse |
 | Coaching · Journal | Coaching | Journal Note | Discipline | Behavior |
 | Market Regime | Cross-Asset | Liquidity/Risk | Volatility | Correlation |
