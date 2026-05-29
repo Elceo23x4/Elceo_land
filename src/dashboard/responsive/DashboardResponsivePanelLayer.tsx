@@ -25,7 +25,17 @@ import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAs
 import PrecisionPanelGroup from "./PrecisionPanelGroup";
 import type { PanelId } from "./PrecisionPanelGroup";
 import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
+import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
+
+/* ─── LinkedPanel to PanelId mapping ─── */
+const LINKED_PANEL_MAP: Record<string, PanelId> = {
+  bias: "directionalBiasSummary",
+  confidence: "confidenceContextMatrix",
+  evidence: "evidenceStackReasoningEngine",
+  macro: "newsMacroIntelligence",
+  regime: "marketRegimeCrossAssetPulse",
+};
 
 function DrawerSection({ title, children }: { title: string; children: ReactNode }) {
   return (<div style={{ marginBottom: "12px" }}><p className="dashboard-precision-data-label" style={{ marginBottom: "4px" }}>{title}</p>{children}</div>);
@@ -42,7 +52,12 @@ function MarketDrawerActions() {
   );
 }
 
-export default function DashboardResponsivePanelLayer() {
+interface PanelLayerProps {
+  linkedPanel?: LinkedPanel | null;
+}
+
+export default function DashboardResponsivePanelLayer({ linkedPanel }: PanelLayerProps) {
+  const linkedPanelId = linkedPanel ? LINKED_PANEL_MAP[linkedPanel] ?? null : null;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -76,7 +91,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ DIRECTIONAL BIAS — Bias / Scenario / Drivers / Asset ═══ */}
-      <PrecisionPanelGroup panelId="directionalBiasSummary" expanded={expandedPanel === "directionalBiasSummary"} onToggleExpand={() => toggleExpand("directionalBiasSummary")} frameSvg={<DirectionalBiasFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="directionalBiasSummary" expanded={expandedPanel === "directionalBiasSummary"} onToggleExpand={() => toggleExpand("directionalBiasSummary")} linked={linkedPanelId === "directionalBiasSummary"} frameSvg={<DirectionalBiasFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Reasoning Snapshot</p><h3 className="dashboard-precision-title">Directional Bias</h3></>}
         bodyContent={<>
           <SectionNav items={["Bias", "Scenario", "Drivers", "Asset"]} active={biasMode} onSelect={setBiasMode} />
@@ -116,7 +131,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ CONFIDENCE — Confidence / Contradiction / Freshness / Data Quality ═══ */}
-      <PrecisionPanelGroup panelId="confidenceContextMatrix" expanded={expandedPanel === "confidenceContextMatrix"} onToggleExpand={() => toggleExpand("confidenceContextMatrix")} frameSvg={<ConfidenceMatrixFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="confidenceContextMatrix" expanded={expandedPanel === "confidenceContextMatrix"} onToggleExpand={() => toggleExpand("confidenceContextMatrix")} linked={linkedPanelId === "confidenceContextMatrix"} frameSvg={<ConfidenceMatrixFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Reasoning Matrix</p><h3 className="dashboard-precision-title">Confidence &amp; Context</h3></>}
         bodyContent={<>
           <SectionNav items={["Confidence", "Contradiction", "Freshness", "Data Quality"]} active={confMode} onSelect={setConfMode} />
@@ -156,7 +171,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ WATCHLIST — Featured / FX Majors / Alerts / Scenario Map ═══ */}
-      <PrecisionPanelGroup panelId="watchlist" expanded={expandedPanel === "watchlist"} onToggleExpand={() => toggleExpand("watchlist")} frameSvg={<WatchlistFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="watchlist" expanded={expandedPanel === "watchlist"} onToggleExpand={() => toggleExpand("watchlist")} linked={linkedPanelId === "watchlist"} frameSvg={<WatchlistFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Active Instruments</p><h3 className="dashboard-precision-title">Watchlist</h3></>}
         bodyContent={<>
           <SectionNav items={["Featured", "FX Majors", "Alerts", "Scenario Map"]} active={watchMode} onSelect={setWatchMode} />
@@ -182,7 +197,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ EVIDENCE — Stack / Insights / Source Status / Source Freshness ═══ */}
-      <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} linked={linkedPanelId === "evidenceStackReasoningEngine"} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Signal Alignment</p><h3 className="dashboard-precision-title">Evidence · Insights</h3></>}
         bodyContent={<>
           <SectionNav items={["Stack", "Insights", "Source Status", "Freshness"]} active={evidMode} onSelect={setEvidMode} />
@@ -224,7 +239,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ NEWS & MACRO — Headlines / Events / Currency / Macro Pulse ═══ */}
-      <PrecisionPanelGroup panelId="newsMacroIntelligence" expanded={expandedPanel === "newsMacroIntelligence"} onToggleExpand={() => toggleExpand("newsMacroIntelligence")} frameSvg={<NewsMacroFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="newsMacroIntelligence" expanded={expandedPanel === "newsMacroIntelligence"} onToggleExpand={() => toggleExpand("newsMacroIntelligence")} linked={linkedPanelId === "newsMacroIntelligence"} frameSvg={<NewsMacroFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Context Drivers</p><h3 className="dashboard-precision-title">News &amp; Macro</h3></>}
         bodyContent={<>
           <SectionNav items={["Headlines", "Events", "Currency", "Macro Pulse"]} active={newsMode} onSelect={setNewsMode} />
@@ -264,7 +279,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ COACHING — Coaching / Journal Note / Discipline / Behavior ═══ */}
-      <PrecisionPanelGroup panelId="coachingInsights" expanded={expandedPanel === "coachingInsights"} onToggleExpand={() => toggleExpand("coachingInsights")} frameSvg={<CoachingFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="coachingInsights" expanded={expandedPanel === "coachingInsights"} onToggleExpand={() => toggleExpand("coachingInsights")} linked={linkedPanelId === "coachingInsights"} frameSvg={<CoachingFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Decision Support</p><h3 className="dashboard-precision-title">Coaching · Journal</h3></>}
         bodyContent={<>
           <SectionNav items={["Coaching", "Journal Note", "Discipline", "Behavior"]} active={coachMode} onSelect={setCoachMode} />
@@ -307,7 +322,7 @@ export default function DashboardResponsivePanelLayer() {
 
 
       {/* ═══ MARKET REGIME — Cross-Asset / Liquidity / Volatility / Correlation ═══ */}
-      <PrecisionPanelGroup panelId="marketRegimeCrossAssetPulse" expanded={expandedPanel === "marketRegimeCrossAssetPulse"} onToggleExpand={() => toggleExpand("marketRegimeCrossAssetPulse")} frameSvg={<MarketRegimeFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="marketRegimeCrossAssetPulse" expanded={expandedPanel === "marketRegimeCrossAssetPulse"} onToggleExpand={() => toggleExpand("marketRegimeCrossAssetPulse")} linked={linkedPanelId === "marketRegimeCrossAssetPulse"} frameSvg={<MarketRegimeFrame preserveAspectRatio="none" />}
         headerContent={<><p className="dashboard-precision-eyebrow">Environment State</p><h3 className="dashboard-precision-title">Market Regime</h3></>}
         bodyContent={<>
           <SectionNav items={["Cross-Asset", "Liquidity", "Volatility", "Correlation"]} active={regimeMode} onSelect={setRegimeMode} />

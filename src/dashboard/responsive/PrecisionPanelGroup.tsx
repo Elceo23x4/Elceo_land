@@ -30,6 +30,7 @@ interface PrecisionPanelGroupProps {
   frameSvg: ReactNode;
   headerContent: ReactNode;
   bodyContent: ReactNode;
+  linked?: boolean;
 }
 
 /** Expansion scale per panel */
@@ -118,6 +119,7 @@ export default function PrecisionPanelGroup({
   frameSvg,
   headerContent,
   bodyContent,
+  linked,
 }: PrecisionPanelGroupProps) {
   const frameRect = PANEL_FRAME_RECTS[panelId];
   const contentRects = PANEL_CONTENT_RECTS[panelId];
@@ -130,7 +132,7 @@ export default function PrecisionPanelGroup({
 
   return (
     <div
-      className={`dashboard-panel-group dashboard-panel-group--${panelId}${expanded ? " is-expanded" : ""}`}
+      className={`dashboard-panel-group dashboard-panel-group--${panelId}${expanded ? " is-expanded" : ""}${linked ? " dashboard-panel-group--linked" : ""}`}
       style={positionStyle}
     >
       {/* Panel frame SVG */}

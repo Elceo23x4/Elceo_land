@@ -2,26 +2,14 @@
  * DashboardResponsiveCockpit.tsx
  *
  * Top-level responsive dashboard component using fluid coordinate canvas.
- * Replaces the old absolute 1920×1080 cockpit as the active /dashboard view.
- *
- * Architecture:
- * - Fluid canvas fills 100vw × 100dvh (NO poster / contain / aspect-ratio board)
- * - All elements positioned by board-reference percentages (1920×1080 design ref)
- * - X scales with browser width, Y scales with browser height
- * - Isolated SVG frames as panel/shell chrome
- * - Real DOM content inside precision content slots
- * - Internal scroll where needed
- * - Adaptive typography via clamp() + container queries
- *
- * This is NOT the old full-board SVG runtime.
- * This is NOT generic CSS grid fractions.
- * This is NOT a poster/centered 16:9 board.
- * This is a fluid coordinate canvas that fills the viewport.
+ * R7B: Manages linked panel state between chart overlay and panels.
  */
 
+import { useState } from "react";
 import { TopSystemBarFrame } from "./dashboardResponsiveAssets";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
 import { assetCockpitFixture } from "./responsivePanelFixtures";
+import type { LinkedPanel } from "./chartIntelligenceFixture";
 import DashboardResponsiveBackground from "./DashboardResponsiveBackground";
 import DashboardResponsiveChartZone from "./DashboardResponsiveChartZone";
 import DashboardResponsivePanelLayer from "./DashboardResponsivePanelLayer";
@@ -33,17 +21,16 @@ import "./dashboardResponsiveTypography.css";
 import "./dashboardResponsiveChart.css";
 
 export default function DashboardResponsiveCockpit() {
+  const [linkedPanel, setLinkedPanel] = useState<LinkedPanel | null>(null);
+
   return (
     <div className="dashboard-precision-viewport">
       <div className="dashboard-precision-board">
-        {/* ─── Background layers (z-index 0) ─── */}
         <DashboardResponsiveBackground />
 
-        {/* ─── Central wheel + chart glass + chart frame + chart display ─── */}
-        <DashboardResponsiveChartZone />
+        <DashboardResponsiveChartZone onLinkedPanel={setLinkedPanel} />
 
-        {/* ─── Panel frames + content slots (z-index 12–20) ─── */}
-        <DashboardResponsivePanelLayer />
+        <DashboardResponsivePanelLayer linkedPanel={linkedPanel} />
 
         {/* ─── Topbar (z-index 30) ─── */}
         <div
@@ -66,7 +53,6 @@ export default function DashboardResponsiveCockpit() {
           </div>
         </div>
 
-        {/* ─── Sidebar (z-index 30) ─── */}
         <DashboardResponsiveSidebar />
       </div>
     </div>

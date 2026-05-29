@@ -1,160 +1,127 @@
-# ELCEO Dashboard — Chart Intelligence Overlay Contract
+# ELCEO Dashboard — Chart Intelligence Overlay Contract (R7B)
 
 ## Purpose
 
-The chart intelligence overlay renders market-context layers directly on the chart display area. It visually connects the evidence stack, scenario conditions, and source freshness state to the active chart — giving the user immediate spatial context for the current bias reasoning.
+The chart intelligence overlay renders interactive market-context layers directly on the chart display area. Selecting an overlay element opens a compact inspector and highlights the linked cognition panel — creating a visual bridge between chart structure and the dashboard's evidence/bias/macro reasoning.
 
-This is a **fixture-only** overlay foundation. No live price data, no real-time updates, no network calls.
+Fixture-only. No live price data. No network calls. Market language only.
 
 ---
 
-## Architecture
+## Interaction Model
 
-### Coordinate System
+### Hover
+- Hovering a zone, marker, or scenario path shows a lightweight tooltip (label + note).
+- Hovering an annotation label shows its tooltip (body + linked panel label).
+- No layout shift. Tooltip is position-absolute inside chart overlay.
 
-All overlay coordinates are **normalized 0–100** within the chart display rect (`SHELL_RECTS.chartDisplay`). This means:
+### Selection
+- Clicking an overlay element selects it.
+- Selected element stays highlighted (brighter stroke/fill, larger radius for markers).
+- Only one element selected at a time.
+- Clicking the same element again deselects it.
+- Escape key clears selection.
+- Toggling off a layer that contains the selected item clears selection.
 
-- `x: 0` = left edge of chart display
-- `x: 100` = right edge of chart display
-- `y: 0` = top edge of chart display
-- `y: 100` = bottom edge of chart display
+### Inspector
+- Shown when an element is selected.
+- Compact dark-glass HUD panel, bottom-right inside chart frame.
+- Shows: title, kind, strength/confidence, freshness, linked panel, note, why-it-matters, caution.
+- Action buttons: contextual label + Inspect Freshness + Save Market Note.
+- Close button clears selection.
 
-Coordinates do not reference real price levels or timestamps. They are spatial fixtures designed to demonstrate overlay positioning.
-
-### Layer Stack (inside chart display div)
-
-| Layer | z-index | Content |
-|-------|---------|---------|
-| Chart candles | base | ChartContainer fixture data |
-| Intelligence overlay | 6 | SVG zones, paths, markers, annotation anchors |
-| Annotation labels | 8 | HTML positioned labels with tooltips |
-| Context strip | 8 | Bottom-left asset/timeframe/session/state |
-| Toggle controls | 9 | Top-left overlay visibility toggles |
-
-### Component
-
-`DashboardChartIntelligenceOverlay.tsx`
-
-Props:
-- `showZones: boolean` — demand/supply/structure zone visibility
-- `showLiquidity: boolean` — liquidity band visibility
-- `showScenario: boolean` — scenario path visibility
-- `showNotes: boolean` — annotation label visibility
+### Panel Linkage
+- When an overlay item is selected, the matching cognition panel receives a `--linked` CSS class.
+- Produces a subtle gold inset glow on the linked panel.
+- Mapping: demand/structure → Evidence, scenario path → Bias, macro event → News & Macro, contradiction → Confidence, liquidity → Market Regime.
+- No panel content changes. No drawer auto-open. No navigation.
 
 ---
 
 ## Overlay Layers
 
-### 1. Zone Overlays
-
-| Kind | Tone | Visual |
-|------|------|--------|
-| Demand | positive | Green transparent fill, green border |
-| Supply | negative | Red transparent fill, red border |
-| Structure | positive | Gold dashed border, subtle fill |
-| Liquidity | warning | Amber dotted border, minimal fill |
-
-Zones use `<rect>` elements with transparent fills so candles remain visible beneath.
-
-### 2. Scenario Paths
-
-Dashed `<polyline>` elements showing projected scenario direction:
-- **Primary**: positive tone, upward path, 65% confidence
-- **Alternate**: warning tone, downward path, 30% confidence
-
-Paths are subtle and do not claim prediction or instruction.
-
-### 3. Markers
-
-`<circle>` elements at specific chart locations:
-- Liquidity sweep (warning)
-- Structure retest (positive)
-- Macro event / CPI (warning)
-- Contradiction (negative)
-
-### 4. Annotation Callouts
-
-HTML labels positioned over the SVG overlay. Each annotation:
-- Shows a compact label (Bias / Evidence / Macro / Freshness)
-- On hover, reveals a tooltip with context text
-- Links conceptually to a panel (no navigation)
-
-### 5. Active Context Strip
-
-Bottom-left compact strip showing:
-- Active asset (XAU/USD)
-- Timeframe (1H)
-- Session (London/NY Overlap)
-- Source state (Fixture Mode)
+| Layer | Elements | Interactive | Toggle |
+|-------|----------|-------------|--------|
+| Zones (demand/supply/structure) | `<rect>` | Yes — hover + click | Zones |
+| Liquidity bands | `<rect>` dashed | Yes — hover + click | Liquidity |
+| Scenario paths | `<polyline>` dashed | Yes — hover + click | Scenario |
+| Markers | `<circle>` | Yes — hover + click | Zones |
+| Annotations | HTML labels | Yes — hover + click | Notes |
+| Context strip | HTML badges | No | Always visible |
+| Toggle controls | HTML buttons | Yes (toggle) | — |
+| Inspector | HTML panel | Yes (close/actions) | — |
 
 ---
 
-## Toggle Controls
+## Fixture Data (chartIntelligenceFixture.ts)
 
-Top-left inside chart frame. Four toggle buttons:
-- **Zones** — demand/supply/structure visibility
-- **Liquidity** — liquidity band visibility
-- **Scenario** — scenario path visibility
-- **Notes** — annotation labels visibility
+### Zone fields
+`id, label, kind, tone, x1/x2/y1/y2, strength, freshness, note, linkedPanel, whyItMatters, evidenceWeight, caution?`
 
-All default to ON. Keyboard accessible with `aria-pressed`.
+### Marker fields
+`id, label, kind, tone, x/y, note, linkedPanel, whyItMatters, freshness, timestampLabel`
+
+### Annotation fields
+`id, title, body, tone, anchorX/anchorY, panelLink, linkedPanelLabel, evidenceTags[], freshness, actionLabel`
+
+### Scenario path fields
+`id, label, tone, points[], confidence, condition, linkedPanel, alternativeNote`
+
+### Helper
+`getOverlayItemById(id)` → returns typed `OverlayItem` union or undefined.
+
+---
+
+## Panel Linkage Mapping
+
+| Overlay element | Linked panel |
+|-----------------|-------------|
+| Demand zone | Evidence |
+| Structure zone | Bias |
+| Liquidity band | Market Regime |
+| Supply zone | Confidence |
+| Liquidity sweep marker | Market Regime |
+| Structure retest marker | Evidence |
+| CPI event marker | News & Macro |
+| Contradiction marker | Confidence |
+| Bias annotation | Bias |
+| Evidence annotation | Evidence |
+| Macro annotation | News & Macro |
+| Freshness annotation | Confidence |
+| Primary scenario path | Bias |
+| Alternate scenario path | Bias |
 
 ---
 
 ## Safe Language Rules
 
-The overlay must never display:
-- Price targets as instructions
-- Entry/exit signals
-- Buy/sell/hold recommendations
-- Profit projections
-- Risk-free claims
+Never display: price targets as instructions, buy/sell/hold, profit projections, risk-free claims, entry/exit signals.
 
-Allowed language:
-- Structure zone
-- Liquidity band
-- Scenario path
-- Confirmation required
-- Contradiction present
-- Caution area
-- Review window
-- Source freshness watch
+Allowed: structure zone, liquidity band, scenario path, confirmation required, contradiction present, caution area, review window, source freshness, fixture mode, market data state.
 
 ---
 
-## Fixture Data Source
+## Inspector Actions (non-routing placeholders)
 
-`chartIntelligenceFixture.ts` exports:
-- `chartZones` — 4 zone fixtures
-- `chartMarkers` — 4 marker fixtures
-- `chartAnnotations` — 4 annotation fixtures
-- `scenarioPaths` — 2 scenario path fixtures
-- `activeChartContextFixture` — context strip data
-
----
-
-## What Is Intentionally Not Live Yet
-
-| Feature | Status | Future Batch |
-|---------|--------|--------------|
-| Real price-mapped zones | Not active | R7B+ (requires live adapter) |
-| Dynamic scenario recalculation | Not active | R7B+ |
-| Live freshness indicators | Not active | R10 (source adapter) |
-| Asset selector switching | Not active | R7B |
-| Timeframe switching | Not active | R7B |
-| Chart-to-panel navigation | Not active | R8 |
-| Annotation click-to-expand | Not active | R8 |
+- View Evidence Context
+- Inspect Market Context
+- Inspect Bias Context
+- Inspect Freshness
+- Review Scenario
+- Save Market Note
 
 ---
 
-## Future R7B Work
+## Future R7C Items
 
-- Asset selector dropdown inside chart context strip
+- Chart-to-panel connector lines (SVG paths between overlay and panel)
+- Active asset selector dropdown inside context strip
 - Timeframe selector
 - Dynamic zone visibility based on active scenario
-- Chart annotation click → panel focus
-- Additional overlay layers: session bands, volume profile ghost
+- Chart annotation click → panel focus/scroll
+- Additional overlays: session bands, volume profile ghost
+- Unit tests for overlay fixtures and interaction state
 
 ---
 
-_Last updated: R7A batch_
+_Last updated: R7B batch_

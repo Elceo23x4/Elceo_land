@@ -293,7 +293,7 @@ export const dashboardAssetManifest: DashboardAssetEntry[] = [
     category: "chart",
     status: "approved",
     sourcePath: "src/assets/source/dashboard/chart/elceo-svg-03-trade-markers-display-safe.svg",
-    notes: "Trade entry/exit marker visuals",
+    notes: "Chart marker visuals",
     importMode: "svgr",
   },
   {
