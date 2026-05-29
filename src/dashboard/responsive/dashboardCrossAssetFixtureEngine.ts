@@ -7,7 +7,7 @@
  * activeAsset, activeTimeframe, cognition, scenario, and conditionWatch.
  *
  * No random. No Date.now. No network. No live data. No persistence.
- * Safe market language only. No "signal" wording.
+ * Safe market language only.
  */
 
 import type { DashboardCognitionSnapshot, DashboardCognitionTone } from "./dashboardCognitionFixtureEngine";

@@ -197,22 +197,33 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         headerContent={<><p className="dashboard-precision-eyebrow">Active Instruments</p><h3 className="dashboard-precision-title">Watchlist</h3></>}
         bodyContent={<>
           <SectionNav items={["Featured", "FX Majors", "Alerts", "Scenario Map"]} active={watchMode} onSelect={setWatchMode} />
-          {watchMode === 0 && watchlistFixture.map((a) => (
-            <HoverPreviewCard key={a.ticker}
-              trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
-              preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
-          ))}
-          {watchMode === 1 && watchlistFxMajors.map((a) => (
-            <HoverPreviewCard key={a.ticker}
-              trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
-              preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
-          ))}
-          {watchMode === 2 && conditionWatch.items.slice(0, 5).map((w) => (
-            <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />
-          ))}
+          {watchMode === 0 && (<>
+            {watchlistFixture.map((a) => (
+              <HoverPreviewCard key={a.ticker}
+                trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
+                preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
+            ))}
+            <DataRow label="Cross-asset" value={crossAsset.dominantDriver} tone={cognition.scenarioTone} />
+          </>)}
+          {watchMode === 1 && (<>
+            {watchlistFxMajors.map((a) => (
+              <HoverPreviewCard key={a.ticker}
+                trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
+                preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
+            ))}
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            {crossAsset.alignedAssets.slice(0, 2).map((a) => <DataRow key={a.id} label={`${a.asset} ↗`} value={a.driver} tone={a.tone} />)}
+          </>)}
+          {watchMode === 2 && (<>
+            {conditionWatch.items.slice(0, 4).map((w) => (
+              <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />
+            ))}
+            <DataRow label="Cross-asset pressure" value={crossAsset.dominantDriver} tone={cognition.scenarioTone} />
+          </>)}
           {watchMode === 3 && (<>
             <DataRow label="Timeframe" value={`${activeTimeframe || "1H"} — ${tfCtx?.scenarioPace ?? ""}`} tone="neutral" />
             <DataRow label="Watch" value={conditionWatch.summary} tone={conditionWatch.items[0]?.tone ?? "neutral"} />
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
             {scenarioMapFixture.map((s) => (
             <DataRow key={s.asset} label={`${s.asset}${s.asset === activeAsset ? " ●" : ""}`} value={s.asset === activeAsset ? (assetCtx?.scenario ?? s.scenario) : s.scenario} tone={s.tone} />
             ))}
@@ -230,6 +241,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             {scenario.evidenceItems.map((e) => (
               <DataRow key={e.id} label={e.label} value={e.summary} tone={e.tone} />
             ))}
+            <DataRow label="Cross-asset" value={crossAsset.dominantDriver} tone={cognition.scenarioTone} />
             <div style={{ marginTop: "6px", borderTop: "1px solid rgba(138,129,120,0.1)", paddingTop: "4px" }}>
               <DataRow label="Aggregate conviction" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} mono />
               <MiniMeter score={cognition.evidenceWeight} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
@@ -238,10 +250,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           {evidMode === 1 && (<>
             <DataRow label="Primary scenario" value={scenario.primaryScenario} tone={scenario.scenarioTone} />
             <DataRow label="Alternate" value={scenario.alternateScenario} tone="warning" />
-            <DataRow label="Condition" value={scenario.conditionSummary} tone={scenario.scenarioTone} />
+            <DataRow label="Cross-asset driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
             <DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label="Contradicts" value={c.summary} tone={c.tone} />)}
-            <p className="dashboard-precision-note">{scenario.cautionNote}</p>
+            <p className="dashboard-precision-note">{crossAsset.cautionNote}</p>
           </>)}
           {evidMode === 2 && (<>
             <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
@@ -419,10 +432,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <DrawerSection title="Evidence Drilldown">
             {scenario.evidenceItems.map((e) => <DataRow key={e.id} label={`${e.category}: ${e.label}`} value={e.summary} tone={e.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Evidence Review">
-            {reviewWorkflow.checklist.filter(c => c.linkedArea === "evidence").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
-            {conditionWatch.freshnessWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
-            <DataRow label="Note evidence line" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
+          <DrawerSection title="Cross-Asset Evidence">
+            <DataRow label="Dominant driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
+            <DataRow label="Caution" value={crossAsset.cautionNote} tone={cognition.cautionTone} />
+            {crossAsset.pressureMap.slice(0, 2).map((p) => <DataRow key={p.id} label={p.label} value={`${p.value} — ${p.detail}`} tone={p.tone} />)}
           </DrawerSection>
           <DrawerSection title="Contradiction Items">
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
@@ -453,18 +468,21 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <DrawerSection title="Featured Assets">
             {watchlistFixture.map((a) => <DataRow key={a.ticker} label={a.ticker} value={`${a.bias} (${a.confidence})`} tone={a.biasTone} />)}
           </DrawerSection>
-          <DrawerSection title="FX Majors">
-            {watchlistFxMajors.slice(0, 4).map((a) => <DataRow key={a.ticker} label={a.ticker} value={a.bias} tone={a.biasTone} />)}
-          </DrawerSection>
-          <DrawerSection title="Scenario Alerts">
-            {watchlistAlerts.map((al) => <DataRow key={al.asset} label={al.asset} value={al.alert} tone={al.tone} />)}
+          <DrawerSection title="Cross-Asset Relationship">
+            <DataRow label="Active asset" value={activeAsset} tone="positive" />
+            <DataRow label="Dominant driver" value={crossAsset.dominantDriver} tone="neutral" />
+            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
+            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
+            <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
+            {crossAsset.alignedAssets.slice(0, 1).map((a) => <DataRow key={a.id} label={`Aligned: ${a.asset}`} value={a.implication} tone={a.tone} />)}
+            {crossAsset.divergingAssets.slice(0, 1).map((a) => <DataRow key={a.id} label={`Diverging: ${a.asset}`} value={a.implication} tone={a.tone} />)}
+            {crossAsset.inverseAssets.slice(0, 1).map((a) => <DataRow key={a.id} label={`Inverse: ${a.asset}`} value={a.implication} tone={a.tone} />)}
           </DrawerSection>
           <DrawerSection title="Active Focus">
-            <DataRow label="Focus asset" value={activeAsset} tone="positive" />
-            <DataRow label="Asset class" value={assetCtx?.assetClass ?? ""} tone="neutral" />
             <DataRow label="Scenario" value={assetCtx?.scenario ?? ""} tone="neutral" />
             <DataRow label="Session" value={assetCockpitFixture.session} tone="positive" />
           </DrawerSection>
+        </>)}
         </>)}
         {drawerPanel === "news" && (<>
           <DrawerSection title="Macro Scenario Context">
