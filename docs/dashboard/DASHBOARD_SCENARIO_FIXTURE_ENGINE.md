@@ -138,4 +138,10 @@ When live data becomes available:
 
 ---
 
+## Review Workflow Integration
+
+The review workflow engine (`dashboardReviewWorkflowFixtureEngine.ts`) consumes `DashboardScenarioSnapshot` and `DashboardCognitionSnapshot` to produce a market review checklist, readiness score, and market note draft fixtures.
+
+---
+
 _This document is the reference for the scenario fixture engine. Safe language only. No trading instructions._
