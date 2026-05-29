@@ -128,4 +128,10 @@ When live data becomes available:
 
 ---
 
+## Scenario Engine Integration
+
+The scenario fixture engine (`dashboardScenarioFixtureEngine.ts`) consumes `DashboardCognitionSnapshot` and produces structured primary/alternate scenarios, condition checks, and evidence drilldown rows. It derives `scenarioConfidence` from the cognition scores and generates per-asset condition/evidence/contradiction/freshness items.
+
+---
+
 _This document is the reference for the cognition fixture engine. Safe language only. No trading instructions._
