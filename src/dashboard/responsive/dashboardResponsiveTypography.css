@@ -84,18 +84,18 @@
 /* ─── Body Text (adaptive two-layer scale) ─── */
 .dashboard-precision-body-text {
   font-family: var(--font-body);
-  font-size: clamp(12px, 0.62vw + 0.22cqi, 16.5px);
+  font-size: clamp(13.8px, 0.71vw + 0.25cqi, 19px);
   line-height: 1.52;
-  color: #b8afa6;
+  color: #d8cfc4;
   margin: 0 0 clamp(3px, 0.3vw, 6px) 0;
 }
 
 /* ─── Note / Italic ─── */
 .dashboard-precision-note {
   font-family: var(--font-body);
-  font-size: clamp(10.5px, 0.52vw + 0.16cqi, 13.5px);
+  font-size: clamp(12px, 0.6vw + 0.18cqi, 15.5px);
   line-height: 1.45;
-  color: #7a7370;
+  color: #c5b9ad;
   font-style: italic;
   margin: clamp(3px, 0.3vw, 6px) 0 0 0;
 }

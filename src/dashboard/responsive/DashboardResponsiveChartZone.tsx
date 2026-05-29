@@ -89,14 +89,14 @@ export default function DashboardResponsiveChartZone({ activeAsset, onAssetChang
 
         {/* Asset selector — top-right */}
         <DashboardAssetSelector activeAsset={activeAsset} onAssetChange={onAssetChange} />
+      </div>
 
-        {/* Toggle controls — top-left */}
-        <div className="dashboard-chart-overlay-controls">
-          <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showZones} onClick={() => handleToggle(setShowZones, zoneIds)}>Zones</button>
-          <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showLiquidity} onClick={() => handleToggle(setShowLiquidity, liquidityIds)}>Liquidity</button>
-          <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showScenario} onClick={() => setShowScenario((v) => !v)}>Scenario</button>
-          <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showNotes} onClick={() => setShowNotes((v) => !v)}>Notes</button>
-        </div>
+      {/* Toggle controls — board-positioned below chart candle area */}
+      <div className="dashboard-chart-overlay-controls" style={{ ...boardRectStyle(SHELL_RECTS.chartOverlayToggleBar), zIndex: 9 }}>
+        <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showZones} onClick={() => handleToggle(setShowZones, zoneIds)}>Zones</button>
+        <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showLiquidity} onClick={() => handleToggle(setShowLiquidity, liquidityIds)}>Liquidity</button>
+        <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showScenario} onClick={() => setShowScenario((v) => !v)}>Scenario</button>
+        <button type="button" className="dashboard-chart-overlay-toggle" aria-pressed={showNotes} onClick={() => setShowNotes((v) => !v)}>Notes</button>
       </div>
     </>
   );
