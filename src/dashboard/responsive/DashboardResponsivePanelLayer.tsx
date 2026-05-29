@@ -201,6 +201,7 @@ export default function DashboardResponsivePanelLayer() {
             {marketInsightsFixture.topSupports.map((s) => <DataRow key={s} label="Supports" value={s} tone="positive" />)}
             {marketInsightsFixture.topContradictions.map((c) => <DataRow key={c} label="Contradicts" value={c} tone="warning" />)}
             <p className="dashboard-precision-note">{marketInsightsFixture.cautionNote}</p>
+            <p className="dashboard-precision-note">{marketInsightsFixture.chartOverlayNote}</p>
           </>)}
           {evidMode === 2 && (<>
             <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />

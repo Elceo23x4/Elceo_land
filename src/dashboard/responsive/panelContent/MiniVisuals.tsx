@@ -85,10 +85,10 @@ export function SessionBadge({ session }: { session: string }) {
   );
 }
 
-/* ─── ProviderStatusGlyph ─── */
-export function ProviderStatusGlyph({ status = "Fixture Mode" }: { status?: string }) {
+/* ─── SourceStatusGlyph ─── */
+export function SourceStatusGlyph({ status = "Fixture Mode" }: { status?: string }) {
   return (
-    <span className="dashboard-provider-glyph">
+    <span className="dashboard-source-glyph">
       <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
         <rect x="2" y="2" width="6" height="6" rx="1" fill="none" stroke="#8a8178" strokeWidth="0.8" strokeDasharray="2 1" />
       </svg>

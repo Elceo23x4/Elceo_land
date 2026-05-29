@@ -188,6 +188,7 @@ export const marketInsightsFixture = {
   cautionNote: "Contradiction between risk-on equities and safe-haven gold bid requires monitoring.",
   freshnessNote: "All primary sources current. Macro extraction pending source readiness.",
   nextReviewTrigger: "CPI release tomorrow 08:30 ET or structure zone retest",
+  chartOverlayNote: "Chart overlay highlights the active structure zone, liquidity band, and scenario path used by the evidence stack.",
 };
 
 /* ═══════════════════════════════════════════════════════════════════════

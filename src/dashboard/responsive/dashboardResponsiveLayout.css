@@ -153,6 +153,205 @@
   overflow: hidden;
 }
 
+/* ═══════════════════════════════════════════════════════════════════════════════
+   CHART INTELLIGENCE OVERLAY
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-chart-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.dashboard-chart-overlay__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Zone Overlays ─── */
+.dashboard-chart-zone {
+  transition: opacity 0.2s;
+}
+
+.dashboard-chart-zone--demand { opacity: 0.85; }
+.dashboard-chart-zone--supply { opacity: 0.75; }
+.dashboard-chart-zone--structure { opacity: 0.9; }
+.dashboard-chart-zone--liquidity { opacity: 0.7; }
+
+/* ─── Scenario Paths ─── */
+.dashboard-chart-scenario-path {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+/* ─── Markers ─── */
+.dashboard-chart-marker {
+  filter: drop-shadow(0 0 2px currentColor);
+  transition: opacity 0.2s;
+}
+
+/* ─── Annotation Anchors ─── */
+.dashboard-chart-annotation-anchor {
+  transition: opacity 0.2s;
+}
+
+/* ─── Annotation Labels (HTML) ─── */
+.dashboard-chart-annotation {
+  position: absolute;
+  transform: translate(-50%, -130%);
+  pointer-events: auto;
+  cursor: default;
+  z-index: 8;
+}
+
+.dashboard-chart-annotation__label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.42vw, 9.5px);
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.dashboard-chart-annotation--positive .dashboard-chart-annotation__label {
+  color: #5cba6e;
+  background: rgba(92, 186, 110, 0.08);
+  border: 1px solid rgba(92, 186, 110, 0.25);
+}
+
+.dashboard-chart-annotation--negative .dashboard-chart-annotation__label {
+  color: #e05555;
+  background: rgba(224, 85, 85, 0.08);
+  border: 1px solid rgba(224, 85, 85, 0.25);
+}
+
+.dashboard-chart-annotation--warning .dashboard-chart-annotation__label {
+  color: #d4a853;
+  background: rgba(212, 168, 83, 0.08);
+  border: 1px solid rgba(212, 168, 83, 0.25);
+}
+
+.dashboard-chart-annotation--neutral .dashboard-chart-annotation__label {
+  color: #8a8178;
+  background: rgba(138, 129, 120, 0.08);
+  border: 1px solid rgba(138, 129, 120, 0.2);
+}
+
+/* ─── Annotation Tooltip ─── */
+.dashboard-chart-annotation__tooltip {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 180px;
+  padding: 5px 8px;
+  background: rgba(8, 6, 4, 0.94);
+  border: 1px solid rgba(212, 168, 83, 0.18);
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.dashboard-chart-annotation__tooltip p {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.38vw, 9px);
+  color: #b8afa6;
+  margin: 0 0 2px;
+  line-height: 1.4;
+}
+
+.dashboard-chart-annotation__link {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34vw, 8px);
+  color: #d4a853;
+  opacity: 0.8;
+}
+
+/* ─── Active Context Strip ─── */
+.dashboard-chart-context-strip {
+  position: absolute;
+  bottom: clamp(4px, 0.5vw, 10px);
+  left: clamp(4px, 0.5vw, 10px);
+  display: flex;
+  gap: clamp(4px, 0.4vw, 8px);
+  align-items: center;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.dashboard-chart-context-strip__item {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.38vw, 9px);
+  color: #8a8178;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(138, 129, 120, 0.15);
+  white-space: nowrap;
+}
+
+.dashboard-chart-context-strip__item--asset {
+  color: #e8dfd4;
+  font-weight: 600;
+  border-color: rgba(212, 168, 83, 0.25);
+}
+
+.dashboard-chart-context-strip__item--state {
+  color: #d4a853;
+  border-color: rgba(212, 168, 83, 0.2);
+}
+
+/* ─── Overlay Toggle Controls ─── */
+.dashboard-chart-overlay-controls {
+  position: absolute;
+  top: clamp(4px, 0.5vw, 10px);
+  left: clamp(4px, 0.5vw, 10px);
+  display: flex;
+  gap: clamp(3px, 0.3vw, 6px);
+  z-index: 9;
+  pointer-events: auto;
+}
+
+.dashboard-chart-overlay-toggle {
+  all: unset;
+  box-sizing: border-box;
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.38vw, 9px);
+  font-weight: 500;
+  color: #6b6560;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(138, 129, 120, 0.2);
+  cursor: pointer;
+  transition: color 0.12s, border-color 0.12s, background 0.12s;
+  white-space: nowrap;
+}
+
+.dashboard-chart-overlay-toggle:hover {
+  color: #d4a853;
+  border-color: rgba(212, 168, 83, 0.35);
+}
+
+.dashboard-chart-overlay-toggle[aria-pressed="true"] {
+  color: #d4a853;
+  border-color: rgba(212, 168, 83, 0.4);
+  background: rgba(212, 168, 83, 0.06);
+}
+
+.dashboard-chart-overlay-toggle:focus-visible {
+  outline: 1px solid rgba(212, 168, 83, 0.5);
+  outline-offset: 1px;
+}
+
 /* ─── Panel Frames ─── */
 .dashboard-precision-panel-frame {
   pointer-events: none;
