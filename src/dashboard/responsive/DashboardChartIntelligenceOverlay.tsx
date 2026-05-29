@@ -41,6 +41,7 @@ interface OverlayProps {
   selectedId: string | null;
   onSelect: (id: string | null) => void;
   activeAsset?: string;
+  activeTimeframe?: string;
 }
 
 export default function DashboardChartIntelligenceOverlay({
@@ -51,6 +52,7 @@ export default function DashboardChartIntelligenceOverlay({
   selectedId,
   onSelect,
   activeAsset,
+  activeTimeframe,
 }: OverlayProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
@@ -198,14 +200,20 @@ export default function DashboardChartIntelligenceOverlay({
         <span className="dashboard-chart-context-strip__item dashboard-chart-context-strip__item--asset">
           {activeAsset || activeChartContextFixture.asset}
         </span>
-        <span className="dashboard-chart-context-strip__item">
-          {activeChartContextFixture.timeframe}
+        <span className="dashboard-chart-context-strip__item dashboard-chart-context-strip__item--timeframe">
+          {activeTimeframe || activeChartContextFixture.timeframe}
         </span>
         <span className="dashboard-chart-context-strip__item">
           {activeChartContextFixture.session}
         </span>
         <span className="dashboard-chart-context-strip__item dashboard-chart-context-strip__item--state">
-          {activeChartContextFixture.sourceState}
+          Fixture Mode
+        </span>
+        <span className="dashboard-chart-context-strip__item">
+          {activeChartContextFixture.marketDataState}
+        </span>
+        <span className="dashboard-chart-context-strip__item">
+          Review: {activeChartContextFixture.reviewWindow}
         </span>
       </div>
     </div>
