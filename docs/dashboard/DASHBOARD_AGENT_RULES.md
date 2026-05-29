@@ -64,6 +64,15 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Scenario fixture engine rules
+
+- Scenario fixture engine must remain deterministic.
+- Scenario engine must not use unsafe recommendation language.
+- Scenario engine must not imply live market advice.
+- Engine is located in `src/dashboard/responsive/dashboardScenarioFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.

@@ -10,6 +10,7 @@
 import { getOverlayItemById, type LinkedPanel } from "./chartIntelligenceFixture";
 import { assetContextBySymbol } from "./responsivePanelFixtures";
 import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
+import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -36,6 +37,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const tf = activeTimeframe || "1H";
   const assetCtx = assetContextBySymbol[assetSymbol];
   const cognition = getDashboardCognitionSnapshot(assetSymbol, tf);
+  const scenario = getDashboardScenarioSnapshot(assetSymbol, tf, cognition);
 
   let title = "";
   let kind = "";
@@ -55,22 +57,31 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     strength = cognition.zoneStrengthScore;
     freshness = cognition.freshnessScore >= 65 ? "Current" : "Watch";
     linkedPanel = item.linkedPanel;
-    note = item.note;
+    const structureEvidence = scenario.evidenceItems.find(e => e.chartLink === "structure-zone");
+    note = structureEvidence?.summary ?? item.note;
     whyItMatters = cognition.zoneReason;
     caution = item.caution ?? "";
     actionLabel = "View Evidence Context";
-    assetContextLine = `${assetSymbol} · ${tf} structure context. Zone strength: ${cognition.zoneStrengthScore}%.`;
+    assetContextLine = `${assetSymbol} · ${tf} — Zone strength: ${cognition.zoneStrengthScore}%. ${scenario.conditionSummary}`;
   } else if (item.type === "marker") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
     freshness = cognition.freshnessScore >= 65 ? "Current" : "Watch";
     linkedPanel = item.linkedPanel;
-    note = item.note;
-    whyItMatters = item.kind === "contradiction" ? cognition.contradictionReason : item.whyItMatters;
+    if (item.kind === "contradiction") {
+      const contraItem = scenario.contradictionItems[0];
+      note = contraItem?.summary ?? item.note;
+      whyItMatters = `Contradiction: ${cognition.contradictionScore}%. ${cognition.contradictionReason}`;
+    } else if (item.kind === "macro_event") {
+      const macroEvidence = scenario.evidenceItems.find(e => e.chartLink === "macro-marker");
+      note = macroEvidence?.summary ?? item.note;
+      whyItMatters = item.whyItMatters;
+    } else {
+      note = item.note;
+      whyItMatters = item.whyItMatters;
+    }
     actionLabel = "Inspect Market Context";
-    assetContextLine = item.kind === "contradiction"
-      ? `${assetSymbol} · ${tf} — Contradiction: ${cognition.contradictionScore}%.`
-      : `${assetSymbol} · ${tf} — ${assetCtx?.primaryLens ?? "market intelligence"}`;
+    assetContextLine = `${assetSymbol} · ${tf} — ${cognition.macroSensitivity}`;
   } else if (item.type === "annotation") {
     title = `${item.title} — ${assetSymbol}`;
     kind = "annotation";
@@ -79,16 +90,16 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     note = item.body;
     whyItMatters = `Evidence tags: ${item.evidenceTags.join(", ")}`;
     actionLabel = item.actionLabel;
-    assetContextLine = `${assetSymbol} · ${tf} scenario review. Confidence: ${cognition.confidenceScore}%.`;
+    assetContextLine = `${assetSymbol} · ${tf} — Scenario confidence: ${scenario.scenarioConfidence}%.`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";
-    confidence = cognition.confidenceScore;
+    confidence = scenario.scenarioConfidence;
     linkedPanel = item.linkedPanel;
-    note = item.condition;
-    whyItMatters = cognition.confidenceReason;
+    note = scenario.primaryScenario;
+    whyItMatters = scenario.conditionSummary;
     actionLabel = "Review Scenario";
-    assetContextLine = `${assetSymbol} · ${tf} scenario path. Review window: ${cognition.reviewWindow}`;
+    assetContextLine = `${assetSymbol} · ${tf} — Review window: ${scenario.reviewWindow}`;
   }
 
   return (
