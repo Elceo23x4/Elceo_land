@@ -115,7 +115,6 @@ Allowed: structure zone, liquidity band, scenario path, confirmation required, c
 ## Future R7C Items
 
 - Chart-to-panel connector lines (SVG paths between overlay and panel)
-- Active asset selector dropdown inside context strip
 - Timeframe selector
 - Dynamic zone visibility based on active scenario
 - Chart annotation click → panel focus/scroll
@@ -124,4 +123,45 @@ Allowed: structure zone, liquidity band, scenario path, confirmation required, c
 
 ---
 
-_Last updated: R7B batch_
+## R7E Updates
+
+### Central Wheel Geometry
+- Asset: `src/assets/source/dashboard/shell/central-wheel.svg`
+- viewBox: `0 0 1536 1536` (isolated square asset)
+- Board coordinates: `{ x: 569, y: 75, w: 771, h: 772 }`
+- preserveAspectRatio: `xMidYMid meet`
+- Layer order: z-index 5 (behind glass/frame/display/overlay)
+
+### Chart Toggle Bar Coordinates
+- Board rect: `{ x: 726, y: 706, w: 428, h: 33 }`
+- Positioned outside chart candle area in the frame zone below
+
+### Selected Overlay Style Rule
+- Neon color transformation only
+- No white/black outlines
+- No outer glow / drop-shadow
+- No stroke-width inflation
+- `:focus-visible` uses subtle neon dashed outline (not white)
+
+### Chart-to-Panel Cognition Mapping
+| Overlay element | Linked panel | Recommended mode |
+|---|---|---|
+| Scenario path | Directional Bias | Scenario |
+| Structure zone | Evidence Stack | Evidence Stack |
+| Liquidity band | Market Regime | Liquidity/Risk |
+| Macro event marker | News & Macro | Events |
+| Contradiction marker | Confidence & Context | Contradiction |
+| Freshness annotation | Evidence Stack | Source Freshness |
+| Bias annotation | Directional Bias | Bias |
+
+### Future R7F Visual QA Items
+- Panel content density check at reduced viewports
+- Chart overlay readability at 1366×768
+- Asset selector dropdown overflow at small heights
+- Toggle bar alignment verification
+- Inspector positioning at edge cases
+- Wheel opacity/visibility relative to chart layers
+
+---
+
+_Last updated: R7E batch_
