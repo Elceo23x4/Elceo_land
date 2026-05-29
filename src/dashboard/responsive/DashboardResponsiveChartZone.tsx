@@ -13,15 +13,18 @@ import { assetContextBySymbol } from "./responsivePanelFixtures";
 import DashboardChartIntelligenceOverlay from "./DashboardChartIntelligenceOverlay";
 import DashboardChartOverlayInspector from "./DashboardChartOverlayInspector";
 import DashboardAssetSelector from "./DashboardAssetSelector";
+import DashboardTimeframeSelector from "./DashboardTimeframeSelector";
 import { getOverlayItemById, chartZones, type LinkedPanel } from "./chartIntelligenceFixture";
 
 interface ChartZoneProps {
   activeAsset: string;
+  activeTimeframe: string;
   onAssetChange: (asset: string) => void;
+  onTimeframeChange: (tf: string) => void;
   onLinkedPanel?: (panel: LinkedPanel | null) => void;
 }
 
-export default function DashboardResponsiveChartZone({ activeAsset, onAssetChange, onLinkedPanel }: ChartZoneProps) {
+export default function DashboardResponsiveChartZone({ activeAsset, activeTimeframe, onAssetChange, onTimeframeChange, onLinkedPanel }: ChartZoneProps) {
   const [showZones, setShowZones] = useState(true);
   const [showLiquidity, setShowLiquidity] = useState(true);
   const [showScenario, setShowScenario] = useState(true);
@@ -85,10 +88,13 @@ export default function DashboardResponsiveChartZone({ activeAsset, onAssetChang
           selectedId={selectedId}
           onClose={() => handleSelect(null)}
           activeAsset={activeAsset}
+          activeTimeframe={activeTimeframe}
         />
 
         {/* Asset selector — top-right */}
         <DashboardAssetSelector activeAsset={activeAsset} onAssetChange={onAssetChange} />
+        {/* Timeframe selector — below asset selector */}
+        <DashboardTimeframeSelector activeTimeframe={activeTimeframe} onTimeframeChange={onTimeframeChange} />
       </div>
 
       {/* Toggle controls — board-positioned below chart candle area */}

@@ -149,4 +149,10 @@ All 7 drawer sections reflect the selected active asset:
 
 ---
 
+## Active Timeframe Pairing
+
+Active timeframe (`activeTimeframe`) is now paired with active asset. Both are local state in `DashboardResponsiveCockpit.tsx`. The timeframe selector appears below the asset selector in the chart zone. Panels reference timeframe context from `timeframeContextByValue` for review lens, freshness sensitivity, and scenario pace. See `DASHBOARD_TIMEFRAME_FIXTURE_SYNC.md` for full details.
+
+---
+
 _This document is the reference for active asset intelligence sync. Safe language only. No trading instructions._

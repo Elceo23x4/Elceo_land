@@ -22,15 +22,17 @@ interface InspectorProps {
   selectedId: string | null;
   onClose: () => void;
   activeAsset?: string;
+  activeTimeframe?: string;
 }
 
-export default function DashboardChartOverlayInspector({ selectedId, onClose, activeAsset }: InspectorProps) {
+export default function DashboardChartOverlayInspector({ selectedId, onClose, activeAsset, activeTimeframe }: InspectorProps) {
   if (!selectedId) return null;
 
   const item = getOverlayItemById(selectedId);
   if (!item) return null;
 
   const assetSymbol = activeAsset || "XAU/USD";
+  const tf = activeTimeframe || "1H";
   const assetCtx = assetContextBySymbol[assetSymbol];
 
   let title = "";
@@ -55,7 +57,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     whyItMatters = item.whyItMatters;
     caution = item.caution ?? "";
     actionLabel = "View Evidence Context";
-    assetContextLine = `Linked to ${assetSymbol} evidence. Used by current asset scenario review.`;
+    assetContextLine = `${assetSymbol} · ${tf} structure context. Linked to evidence.`;
   } else if (item.type === "marker") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
@@ -64,7 +66,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     note = item.note;
     whyItMatters = item.whyItMatters;
     actionLabel = "Inspect Market Context";
-    assetContextLine = `${assetSymbol} structure context — ${assetCtx?.primaryLens ?? "market intelligence"}`;
+    assetContextLine = `${assetSymbol} · ${tf} — ${assetCtx?.primaryLens ?? "market intelligence"}`;
   } else if (item.type === "annotation") {
     title = `${item.title} — ${assetSymbol}`;
     kind = "annotation";
@@ -73,7 +75,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     note = item.body;
     whyItMatters = `Evidence tags: ${item.evidenceTags.join(", ")}`;
     actionLabel = item.actionLabel;
-    assetContextLine = `Linked to ${assetSymbol} scenario review.`;
+    assetContextLine = `${assetSymbol} · ${tf} scenario review.`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";
@@ -82,7 +84,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     note = item.condition;
     whyItMatters = item.alternativeNote;
     actionLabel = "Review Scenario";
-    assetContextLine = `${assetSymbol} scenario path. ${assetCtx?.reviewWindow ? `Review window: ${assetCtx.reviewWindow}` : ""}`;
+    assetContextLine = `${assetSymbol} · ${tf} scenario path. ${assetCtx?.reviewWindow ? `Review window: ${assetCtx.reviewWindow}` : ""}`;
   }
 
   return (

@@ -44,6 +44,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Timeframe rules
+
+- Timeframe selector is fixture/local state only until live data boundary exists.
+- Timeframe changes must not imply live data.
+- Timeframe must not trigger network calls.
+- Timeframe must not change layout geometry.
+- Supported timeframes: `15M, 1H, 4H, 1D`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.

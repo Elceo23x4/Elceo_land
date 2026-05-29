@@ -957,3 +957,84 @@
 .chart-inner { ... }
 
 */
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   TIMEFRAME SELECTOR (scoped — mirrors asset selector HUD style)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-timeframe-selector {
+  position: absolute;
+  top: clamp(4px, 0.5vw, 10px);
+  right: clamp(4px, 0.5vw, 10px);
+  z-index: 11;
+  pointer-events: auto;
+  margin-top: clamp(28px, 2.4vw, 40px);
+}
+
+.dashboard-timeframe-selector__trigger {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.4vw, 8px);
+  padding: 3px 8px;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 215, 106, 0.18);
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+
+.dashboard-timeframe-selector__trigger:hover {
+  border-color: rgba(255, 215, 106, 0.4);
+}
+
+.dashboard-timeframe-selector__value {
+  font-family: var(--font-body);
+  font-size: clamp(8.4px, 0.48vw, 11px);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.dashboard-timeframe-selector__arrow {
+  font-size: clamp(7px, 0.34vw, 8px);
+  color: #ffd76a;
+}
+
+.dashboard-timeframe-selector__dropdown {
+  position: absolute;
+  top: calc(100% + 3px);
+  right: 0;
+  width: max-content;
+  min-width: 52px;
+  background: rgba(6, 4, 2, 0.95);
+  border: 1px solid rgba(255, 215, 106, 0.2);
+  border-radius: 4px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+}
+
+.dashboard-timeframe-selector__option {
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 4px 10px;
+  font-family: var(--font-body);
+  font-size: clamp(8px, 0.44vw, 10.5px);
+  font-weight: 600;
+  color: #d8cfc4;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+.dashboard-timeframe-selector__option:hover {
+  background: rgba(255, 215, 106, 0.06);
+}
+
+.dashboard-timeframe-selector__option.is-active {
+  background: rgba(255, 215, 106, 0.1);
+  color: #ffd76a;
+}

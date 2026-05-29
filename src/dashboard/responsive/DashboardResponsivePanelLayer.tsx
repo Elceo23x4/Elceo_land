@@ -17,7 +17,7 @@ import {
   newsFixture, macroEvents, currencyCompareFixture, macroPulseFixture,
   coachingFixture, journalNoteFixture, disciplineFixture,
   regimeFixture, regimeStrip, volatilityFixture, correlationFixture,
-  sourceStatusFixture,
+  sourceStatusFixture, timeframeContextByValue,
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
@@ -55,12 +55,14 @@ function MarketDrawerActions() {
 
 interface PanelLayerProps {
   activeAsset: string;
+  activeTimeframe?: string;
   linkedPanel?: LinkedPanel | null;
 }
 
-export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel }: PanelLayerProps) {
+export default function DashboardResponsivePanelLayer({ activeAsset, activeTimeframe, linkedPanel }: PanelLayerProps) {
   const linkedPanelId = linkedPanel ? LINKED_PANEL_MAP[linkedPanel] ?? null : null;
   const assetCtx = assetContextBySymbol[activeAsset];
+  const tfCtx = timeframeContextByValue[activeTimeframe || "1H"];
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -100,7 +102,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
           <SectionNav items={["Bias", "Scenario", "Drivers", "Asset"]} active={biasMode} onSelect={setBiasMode} />
           {biasMode === 0 && (<>
             <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
-              <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" />
+              <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" /><Chip value={activeTimeframe || "1H"} tone="neutral" />
             </div>
             <p className="dashboard-precision-metric">{assetCtx?.bias ?? biasFixture.direction}</p>
             <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
@@ -116,6 +118,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
             <DataRow label="Primary" value={biasFixture.scenarios.primary} tone="positive" />
             <DataRow label="Alternate" value={biasFixture.scenarios.alternate} tone="warning" />
             <DataRow label="Invalidation" value={biasFixture.scenarios.invalidation} tone="negative" />
+            <DataRow label="Timeframe lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
             <DataRow label="Next review" value={marketInsightsFixture.nextReviewTrigger} tone="neutral" />
             <p className="dashboard-precision-note">{biasFixture.watchCondition}</p>
           </>)}
@@ -159,6 +162,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
           {confMode === 2 && (<>
             <DataRow label="Freshness score" value={`${confidenceFixture.metrics[2].score}%`} tone="positive" />
             <MiniMeter score={confidenceFixture.metrics[2].score} tone="positive" />
+            <DataRow label="Sensitivity" value={tfCtx?.freshnessSensitivity ?? ""} tone="neutral" />
             <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
             <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
             <p className="dashboard-precision-note">{assetCtx?.freshnessNote ?? marketInsightsFixture.freshnessNote}</p>
@@ -195,9 +199,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
             <HoverPreviewCard key={al.asset} trigger={<DataRow label={al.asset} value={al.alert} tone={al.tone} />}
               preview={<p className="dashboard-precision-body-text">{al.asset}: {al.alert}</p>} />
           ))}
-          {watchMode === 3 && scenarioMapFixture.map((s) => (
+          {watchMode === 3 && (<>
+            <DataRow label="Timeframe" value={`${activeTimeframe || "1H"} — ${tfCtx?.scenarioPace ?? ""}`} tone="neutral" />
+            {scenarioMapFixture.map((s) => (
             <DataRow key={s.asset} label={`${s.asset}${s.asset === activeAsset ? " ●" : ""}`} value={s.asset === activeAsset ? (assetCtx?.scenario ?? s.scenario) : s.scenario} tone={s.tone} />
-          ))}
+            ))}
+          </>)}
           <ActionBar onExpand={() => openDrawer("Watchlist", "Asset Intelligence", "watchlist")} />
         </>} />
 
@@ -219,6 +226,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
           </>)}
           {evidMode === 1 && (<>
             <DataRow label="Active asset" value={activeAsset} tone="positive" />
+            <DataRow label="Timeframe" value={`${activeTimeframe || "1H"} — ${tfCtx?.evidenceNote ?? ""}`} tone="neutral" />
             <p className="dashboard-precision-body-text">{assetCtx?.evidenceFocus ?? marketInsightsFixture.summary}</p>
             {marketInsightsFixture.topSupports.map((s) => <DataRow key={s} label="Supports" value={s} tone="positive" />)}
             {marketInsightsFixture.topContradictions.map((c) => <DataRow key={c} label="Contradicts" value={c} tone="warning" />)}
@@ -276,6 +284,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
             <DataRow label={currencyCompareFixture.realYields.label} value={currencyCompareFixture.realYields.direction} tone={currencyCompareFixture.realYields.tone} />
           </>)}
           {newsMode === 3 && (<>
+            <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
             <DataRow label="Central bank tone" value={macroPulseFixture.centralBankTone} tone="positive" />
             <DataRow label="Liquidity" value={macroPulseFixture.liquidity} tone="positive" />
             <DataRow label="Risk event" value={macroPulseFixture.riskEvent} tone="warning" />
@@ -299,8 +308,8 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
             ))}
           </>)}
           {coachMode === 1 && (<>
-            <DataRow label="Asset" value={activeAsset} tone="positive" />
-            <DataRow label="Prompt" value={`What evidence supports the current ${activeAsset} bias?`} tone="neutral" />
+            <DataRow label="Asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="positive" />
+            <DataRow label="Prompt" value={`What evidence supports the current ${activeAsset} ${activeTimeframe || "1H"} bias?`} tone="neutral" />
             <DataRow label="Emotional state" value={journalNoteFixture.emotionalState} tone="positive" />
             <DataRow label="Discipline" value={`Awaiting confirmation on ${activeAsset} — not front-running scenario`} tone="neutral" />
             <DataRow label="Last note" value={journalNoteFixture.lastNote} tone="neutral" />
@@ -355,7 +364,8 @@ export default function DashboardResponsivePanelLayer({ activeAsset, linkedPanel
             </div>
           )}
           {regimeMode === 2 && (<>
-            <DataRow label="Active asset" value={`${activeAsset} — ${assetCtx?.regimeLink ?? ""}`} tone="neutral" />
+            <DataRow label="Active asset" value={`${activeAsset} · ${activeTimeframe || "1H"} — ${assetCtx?.regimeLink ?? ""}`} tone="neutral" />
+            <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
             <DataRow label="Vol regime" value={volatilityFixture.regime} tone="neutral" />
             <DataRow label="Event risk" value={volatilityFixture.eventRisk} tone="warning" />
             <DataRow label="Session note" value={volatilityFixture.sessionNote} tone="neutral" />

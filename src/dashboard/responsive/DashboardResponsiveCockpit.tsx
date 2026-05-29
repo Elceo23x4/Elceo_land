@@ -22,6 +22,7 @@ import "./dashboardResponsiveChart.css";
 
 export default function DashboardResponsiveCockpit() {
   const [activeAsset, setActiveAsset] = useState("XAU/USD");
+  const [activeTimeframe, setActiveTimeframe] = useState("1H");
   const [linkedPanel, setLinkedPanel] = useState<LinkedPanel | null>(null);
 
   const ctx = assetContextBySymbol[activeAsset];
@@ -33,12 +34,15 @@ export default function DashboardResponsiveCockpit() {
 
         <DashboardResponsiveChartZone
           activeAsset={activeAsset}
+          activeTimeframe={activeTimeframe}
           onAssetChange={setActiveAsset}
+          onTimeframeChange={setActiveTimeframe}
           onLinkedPanel={setLinkedPanel}
         />
 
         <DashboardResponsivePanelLayer
           activeAsset={activeAsset}
+          activeTimeframe={activeTimeframe}
           linkedPanel={linkedPanel}
         />
 
@@ -55,6 +59,7 @@ export default function DashboardResponsiveCockpit() {
             <span className="dashboard-precision-topbar-title">Market Cognition Cockpit</span>
             <span className="dashboard-precision-topbar-spacer" />
             <span className="dashboard-precision-topbar-badge">{activeAsset}</span>
+            <span className="dashboard-precision-topbar-badge">{activeTimeframe}</span>
             <span className="dashboard-precision-topbar-badge">{ctx?.assetClass ?? ""}</span>
             <span className="dashboard-precision-topbar-badge dashboard-precision-topbar-badge--fixture">
               Fixture Mode

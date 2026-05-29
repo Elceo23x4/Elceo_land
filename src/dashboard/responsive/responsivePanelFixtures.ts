@@ -594,3 +594,48 @@ export const assetContextBySymbol: Record<string, AssetContext> = {
 };
 
 export const AVAILABLE_ASSETS = Object.keys(assetContextBySymbol);
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TIMEFRAME CONTEXT — per-timeframe fixture context for dashboard sync
+   ═══════════════════════════════════════════════════════════════════════ */
+
+export interface TimeframeContext {
+  label: string;
+  reviewLens: string;
+  freshnessSensitivity: string;
+  scenarioPace: string;
+  evidenceNote: string;
+}
+
+export const timeframeContextByValue: Record<string, TimeframeContext> = {
+  "15M": {
+    label: "15M",
+    reviewLens: "Short-window structure review",
+    freshnessSensitivity: "Higher freshness sensitivity",
+    scenarioPace: "Fast context shifts",
+    evidenceNote: "Prioritize structure and liquidity changes inside the current session.",
+  },
+  "1H": {
+    label: "1H",
+    reviewLens: "Primary cockpit structure lens",
+    freshnessSensitivity: "Balanced freshness review",
+    scenarioPace: "Session-level scenario review",
+    evidenceNote: "Align structure, macro context, and evidence stack before raising confidence.",
+  },
+  "4H": {
+    label: "4H",
+    reviewLens: "Higher-context scenario review",
+    freshnessSensitivity: "Moderate freshness sensitivity",
+    scenarioPace: "Slower scenario confirmation",
+    evidenceNote: "Use for wider structure, liquidity, and contradiction context.",
+  },
+  "1D": {
+    label: "1D",
+    reviewLens: "Macro regime lens",
+    freshnessSensitivity: "Lower intraday sensitivity",
+    scenarioPace: "Broader market regime review",
+    evidenceNote: "Use for macro regime, cross-asset tension, and source freshness context.",
+  },
+};
+
+export const AVAILABLE_TIMEFRAMES = Object.keys(timeframeContextByValue);
