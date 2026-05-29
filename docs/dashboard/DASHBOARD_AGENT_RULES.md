@@ -83,6 +83,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Condition watch fixture rules
+
+- Condition watch is market context only, not notification delivery.
+- Do not use "signal" language for watch items — use "condition watch" or "review condition."
+- No notification settings/preferences inside dashboard panels.
+- No notification delivery, push, email, or channel content.
+- Engine is located in `src/dashboard/responsive/dashboardConditionWatchFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.
