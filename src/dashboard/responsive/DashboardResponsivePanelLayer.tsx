@@ -491,8 +491,6 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             {correlationFixture.slice(0, 3).map((c) => <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />)}
           </DrawerSection>
         </>)}
-          </DrawerSection>
-        </>)}
         {!["bias", "confidence", "evidence", "coaching", "watchlist", "news", "regime"].includes(drawerPanel) && (
           <p className="dashboard-precision-body-text">Market context for this section. Fixture mode.</p>
         )}
