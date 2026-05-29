@@ -11,6 +11,7 @@ import { getOverlayItemById, type LinkedPanel } from "./chartIntelligenceFixture
 import { assetContextBySymbol } from "./responsivePanelFixtures";
 import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
 import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
+import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -38,6 +39,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const assetCtx = assetContextBySymbol[assetSymbol];
   const cognition = getDashboardCognitionSnapshot(assetSymbol, tf);
   const scenario = getDashboardScenarioSnapshot(assetSymbol, tf, cognition);
+  const reviewWorkflow = getDashboardReviewWorkflowSnapshot(assetSymbol, tf, cognition, scenario);
 
   let title = "";
   let kind = "";
@@ -62,7 +64,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     whyItMatters = cognition.zoneReason;
     caution = item.caution ?? "";
     actionLabel = "View Evidence Context";
-    assetContextLine = `${assetSymbol} · ${tf} — Zone strength: ${cognition.zoneStrengthScore}%. ${scenario.conditionSummary}`;
+    assetContextLine = `${assetSymbol} · ${tf} — Zone strength: ${cognition.zoneStrengthScore}%. Review: ${reviewWorkflow.reviewState.replace(/_/g, " ")}`;
   } else if (item.type === "marker") {
     title = `${assetSymbol} ${item.label}`;
     kind = item.kind.replace(/_/g, " ");
@@ -90,7 +92,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     note = item.body;
     whyItMatters = `Evidence tags: ${item.evidenceTags.join(", ")}`;
     actionLabel = item.actionLabel;
-    assetContextLine = `${assetSymbol} · ${tf} — Scenario confidence: ${scenario.scenarioConfidence}%.`;
+    assetContextLine = `${assetSymbol} · ${tf} — Scenario confidence: ${scenario.scenarioConfidence}%. Next review: ${reviewWorkflow.nextReviewCue}`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";

@@ -28,6 +28,7 @@ import DashboardResponsiveDetailDrawer from "./DashboardResponsiveDetailDrawer";
 import { assetContextBySymbol } from "./responsivePanelFixtures";
 import { getDashboardCognitionSnapshot } from "./dashboardCognitionFixtureEngine";
 import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
+import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -67,6 +68,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
   const tfCtx = timeframeContextByValue[activeTimeframe || "1H"];
   const cognition = getDashboardCognitionSnapshot(activeAsset, activeTimeframe || "1H");
   const scenario = getDashboardScenarioSnapshot(activeAsset, activeTimeframe || "1H", cognition);
+  const reviewWorkflow = getDashboardReviewWorkflowSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -304,38 +306,35 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Coaching", "Journal Note", "Discipline", "Behavior"]} active={coachMode} onSelect={setCoachMode} />
           {coachMode === 0 && (<>
-            <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{`Await structure confirmation on ${activeAsset}`}</p>
-            <p className="dashboard-precision-body-text">{cognition.cautionNote}</p>
-            <DataRow label="Confidence" value={`${cognition.confidenceScore}%`} tone={cognition.confidenceScore >= 60 ? "positive" : "neutral"} />
-            <DataRow label="Volatility" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
-            <DataRow label="Review window" value={cognition.reviewWindow} tone="neutral" />
+            <p className="dashboard-precision-metric" style={{ fontSize: "clamp(12px, 0.75vw, 16px)" }}>{reviewWorkflow.coachingPrompt}</p>
+            <DataRow label="Readiness" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
+            <DataRow label="Review state" value={reviewWorkflow.reviewState.replace(/_/g, " ")} tone={reviewWorkflow.reviewTone} />
+            <DataRow label="Next review" value={reviewWorkflow.nextReviewCue} tone="neutral" />
+            <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
           </>)}
           {coachMode === 1 && (<>
-            <DataRow label="Asset" value={`${activeAsset} · ${activeTimeframe || "1H"}`} tone="positive" />
-            <DataRow label="Prompt" value={`What evidence supports the current ${activeAsset} ${activeTimeframe || "1H"} bias?`} tone="neutral" />
-            <DataRow label="Emotional state" value={journalNoteFixture.emotionalState} tone="positive" />
-            <DataRow label="Discipline" value={`Awaiting confirmation on ${activeAsset} — not front-running scenario`} tone="neutral" />
-            <DataRow label="Last note" value={journalNoteFixture.lastNote} tone="neutral" />
-            <p className="dashboard-precision-note">Tags: {journalNoteFixture.tags.join(", ")}</p>
+            <DataRow label="Note" value={reviewWorkflow.noteDraft.title} tone="positive" />
+            <p className="dashboard-precision-body-text">{reviewWorkflow.noteDraft.summary}</p>
+            <DataRow label="Evidence" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
+            <DataRow label="Contradiction" value={reviewWorkflow.noteDraft.contradictionLine} tone="warning" />
+            <DataRow label="Freshness" value={reviewWorkflow.noteDraft.freshnessLine} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
+            <DataRow label="Caution" value={reviewWorkflow.noteDraft.cautionLine} tone={cognition.cautionTone} />
+            <p className="dashboard-precision-note">Tags: {reviewWorkflow.noteDraft.tags.join(", ")}</p>
           </>)}
           {coachMode === 2 && (<>
-            <DataRow label="Discipline score" value={`${disciplineFixture.disciplineScore}%`} tone="positive" />
-            <DataRow label="Review consistency" value={`${disciplineFixture.reviewConsistency}%`} tone="neutral" />
-            <DataRow label="Overconfidence watch" value={disciplineFixture.overconfidenceWatch} tone="warning" />
-            <DataRow label="Best session" value={disciplineFixture.bestSession} tone="positive" />
-            <DataRow label="Missed reviews" value={`${disciplineFixture.missedReviews} this week`} tone="warning" />
-            <p className="dashboard-precision-note">{disciplineFixture.behaviorCaution}</p>
+            <DataRow label="Readiness score" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
+            <MiniMeter score={reviewWorkflow.readinessScore} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "discipline" || c.linkedArea === "scenario" || c.linkedArea === "evidence").map((c) => (
+              <DataRow key={c.id} label={c.label} value={c.status} tone={c.tone} />
+            ))}
+            <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
           </>)}
           {coachMode === 3 && (<>
-            <DataRow label="Recent quality" value={coachingFixture.behaviorOverlay.recentQuality} tone="positive" />
-            <DataRow label="Readiness gate" value={coachingFixture.behaviorOverlay.readinessGate} tone="neutral" />
-            <DataRow label="Caution" value={coachingFixture.behaviorOverlay.caution} tone="positive" />
-            <SlideStripWrapper>
-              {coachingFixture.tiles.map((t) => (
-                <HoverPreviewCard key={t.label} trigger={<Chip value={`${t.label}: ${t.message}`} tone={t.tone} />}
-                  preview={<p className="dashboard-precision-body-text">{t.label} — {t.message}</p>} />
-              ))}
-            </SlideStripWrapper>
+            <DataRow label="Review state" value={reviewWorkflow.reviewState.replace(/_/g, " ")} tone={reviewWorkflow.reviewTone} />
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "contradiction" || c.linkedArea === "freshness").map((c) => (
+              <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />
+            ))}
+            <DataRow label="Next review" value={reviewWorkflow.nextReviewCue} tone="neutral" />
           </>)}
           <ActionBar onExpand={() => openDrawer("Coaching", "Coaching & Discipline", "coaching")} />
         </>} />
@@ -387,11 +386,15 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Primary" value={scenario.primaryScenario} tone={scenario.scenarioTone} />
             <DataRow label="Alternate" value={scenario.alternateScenario} tone="warning" />
             <DataRow label="Confidence" value={`${scenario.scenarioConfidence}%`} tone={scenario.scenarioConfidence >= 55 ? "positive" : "neutral"} />
+            <DataRow label="Review state" value={reviewWorkflow.reviewState.replace(/_/g, " ")} tone={reviewWorkflow.reviewTone} />
             <DataRow label="Review window" value={scenario.reviewWindow} tone="neutral" />
           </DrawerSection>
           <DrawerSection title="Condition Checks">
             <p className="dashboard-precision-body-text">{scenario.conditionSummary}</p>
             {scenario.conditions.map((cond) => <DataRow key={cond.id} label={cond.label} value={cond.status} tone={cond.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Review Checklist">
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "scenario").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
           </DrawerSection>
           <DrawerSection title="Caution">
             <p className="dashboard-precision-body-text">{scenario.cautionNote}</p>
@@ -400,21 +403,25 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         {drawerPanel === "confidence" && (<>
           <DrawerSection title="Scenario Confidence">
             <DataRow label="Scenario confidence" value={`${scenario.scenarioConfidence}%`} tone={scenario.scenarioConfidence >= 55 ? "positive" : "neutral"} />
-            <DataRow label="Confidence" value={`${cognition.confidenceScore}%`} tone={cognition.confidenceScore >= 60 ? "positive" : "neutral"} />
+            <DataRow label="Readiness" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
             <DataRow label="Contradiction" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
             <DataRow label="Freshness" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
             <p className="dashboard-precision-note">{cognition.confidenceReason}</p>
           </DrawerSection>
+          <DrawerSection title="Review Checklist">
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "contradiction" || c.linkedArea === "freshness").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+          </DrawerSection>
           <DrawerSection title="Contradiction Drilldown">
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
-          </DrawerSection>
-          <DrawerSection title="Condition Summary">
-            <p className="dashboard-precision-body-text">{scenario.conditionSummary}</p>
           </DrawerSection>
         </>)}
         {drawerPanel === "evidence" && (<>
           <DrawerSection title="Evidence Drilldown">
             {scenario.evidenceItems.map((e) => <DataRow key={e.id} label={`${e.category}: ${e.label}`} value={e.summary} tone={e.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Evidence Review">
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "evidence").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+            <DataRow label="Note evidence line" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
           </DrawerSection>
           <DrawerSection title="Contradiction Items">
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
@@ -422,25 +429,25 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <DrawerSection title="Freshness Items">
             {scenario.freshnessItems.map((f) => <DataRow key={f.id} label={f.label} value={f.summary} tone={f.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Source Freshness">
-            <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
-            <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
-          </DrawerSection>
         </>)}
         {drawerPanel === "coaching" && (<>
-          <DrawerSection title="Coaching Rationale">
-            <DataRow label="Active asset" value={activeAsset} tone="positive" />
-            <p className="dashboard-precision-body-text">{assetCtx?.scenario ?? coachingFixture.body}</p>
+          <DrawerSection title="Market Note Draft">
+            <DataRow label="Title" value={reviewWorkflow.noteDraft.title} tone="positive" />
+            <p className="dashboard-precision-body-text">{reviewWorkflow.noteDraft.summary}</p>
+            <DataRow label="Evidence" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
+            <DataRow label="Contradiction" value={reviewWorkflow.noteDraft.contradictionLine} tone="warning" />
+            <DataRow label="Freshness" value={reviewWorkflow.noteDraft.freshnessLine} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
+            <DataRow label="Caution" value={reviewWorkflow.noteDraft.cautionLine} tone={cognition.cautionTone} />
+            <DataRow label="Review window" value={reviewWorkflow.noteDraft.reviewWindow} tone="neutral" />
+            <p className="dashboard-precision-note">Tags: {reviewWorkflow.noteDraft.tags.join(", ")}</p>
           </DrawerSection>
-          <DrawerSection title="Journal Note">
-            <DataRow label="Prompt" value={`What evidence supports the current ${activeAsset} bias?`} tone="neutral" />
-            <DataRow label="State" value={journalNoteFixture.emotionalState} tone="positive" />
-            <DataRow label="Discipline" value={`Awaiting confirmation on ${activeAsset}`} tone="neutral" />
+          <DrawerSection title="Review Checklist">
+            {reviewWorkflow.checklist.map((c) => <DataRow key={c.id} label={c.label} value={c.status} tone={c.tone} />)}
           </DrawerSection>
-          <DrawerSection title="Discipline">
-            <DataRow label="Score" value={`${disciplineFixture.disciplineScore}%`} tone="positive" />
-            <DataRow label="Consistency" value={`${disciplineFixture.reviewConsistency}%`} tone="neutral" />
-            <DataRow label="Review window" value={assetCtx?.reviewWindow ?? ""} tone="neutral" />
+          <DrawerSection title="Coaching">
+            <DataRow label="Readiness" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
+            <DataRow label="Next review" value={reviewWorkflow.nextReviewCue} tone="neutral" />
+            <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
           </DrawerSection>
         </>)}
         {drawerPanel === "watchlist" && (<>
@@ -484,11 +491,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Volatility" value={cognition.volatilityCondition} tone={cognition.cautionTone} />
             {scenario.conditions.filter(c => c.linkedArea === "regime" || c.linkedArea === "liquidity").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
           </DrawerSection>
+          <DrawerSection title="Regime Review">
+            {reviewWorkflow.checklist.filter(c => c.linkedArea === "regime").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+            <p className="dashboard-precision-note">{reviewWorkflow.disciplineReminder}</p>
+          </DrawerSection>
           <DrawerSection title="Cross-Asset Pulse">
             {regimeFixture.slice(0, 4).map((r) => <DataRow key={r.asset} label={r.asset} value={r.direction} tone={r.tone} />)}
-          </DrawerSection>
-          <DrawerSection title="Correlation">
-            {correlationFixture.slice(0, 3).map((c) => <DataRow key={c.pair} label={c.pair} value={c.direction} tone={c.tone} />)}
           </DrawerSection>
         </>)}
         {!["bias", "confidence", "evidence", "coaching", "watchlist", "news", "regime"].includes(drawerPanel) && (

@@ -73,6 +73,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Review workflow fixture rules
+
+- Review workflow fixture must remain deterministic.
+- No `localStorage`, `sessionStorage`, or persistence in dashboard fixture batches.
+- Generated market note drafts are fixture previews only.
+- No account/user private information in market note fixtures.
+- Engine is located in `src/dashboard/responsive/dashboardReviewWorkflowFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.
