@@ -22,7 +22,7 @@ export type BoardRect = { x: number; y: number; w: number; h: number };
 export const SHELL_RECTS = {
   topSystemBar: { x: 18, y: 18, w: 1884, h: 52 },
   sidebarRail: { x: 10.93, y: 109.55, w: 49.18, h: 731.21 },
-  centralWheel: { x: 525, y: 9, w: 845, h: 870 },
+  centralWheel: { x: 569, y: 75, w: 771, h: 772 },
   chartGlass: { x: 629, y: 172, w: 618, h: 579 },
   chartConsoleFrame: { x: 573, y: 162, w: 718, h: 657 },
   chartDisplay: { x: 664, y: 194, w: 545, h: 515 },
