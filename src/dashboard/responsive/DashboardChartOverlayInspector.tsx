@@ -14,6 +14,7 @@ import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 import { getDashboardConditionWatchSnapshot } from "./dashboardConditionWatchFixtureEngine";
 import { getDashboardCrossAssetSnapshot } from "./dashboardCrossAssetFixtureEngine";
+import { getDashboardSourceFreshnessSnapshot } from "./dashboardSourceFreshnessFixtureEngine";
 
 const PANEL_LABELS: Record<LinkedPanel, string> = {
   bias: "Directional Bias",
@@ -44,6 +45,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
   const reviewWorkflow = getDashboardReviewWorkflowSnapshot(assetSymbol, tf, cognition, scenario);
   const conditionWatch = getDashboardConditionWatchSnapshot(assetSymbol, tf, cognition, scenario, reviewWorkflow);
   const crossAsset = getDashboardCrossAssetSnapshot(assetSymbol, tf, cognition, scenario, conditionWatch);
+  const sourceFreshness = getDashboardSourceFreshnessSnapshot(assetSymbol, tf, cognition, scenario, conditionWatch, crossAsset);
 
   let title = "";
   let kind = "";
@@ -104,7 +106,7 @@ export default function DashboardChartOverlayInspector({ selectedId, onClose, ac
     actionLabel = item.actionLabel;
     assetContextLine = `${assetSymbol} · ${tf} — Scenario confidence: ${scenario.scenarioConfidence}%. Next review: ${reviewWorkflow.nextReviewCue}`;
     const freshWatch = conditionWatch.items.find(w => w.chartLink === "freshness-note");
-    watchLine = freshWatch ? `Watch: ${freshWatch.detail}` : `Cross-asset: ${crossAsset.correlationNote}`;
+    watchLine = freshWatch ? `Freshness: ${sourceFreshness.weakestLayer.label} (${sourceFreshness.weakestLayer.score}%). ${sourceFreshness.staleRisk} stale risk.` : `Freshness: ${sourceFreshness.summary}`;
   } else if (item.type === "path") {
     title = `${item.label} — ${assetSymbol}`;
     kind = "scenario path";

@@ -103,6 +103,16 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Source freshness fixture engine rules
+
+- Source freshness is market-facing only — describes evidence/data quality.
+- Do not expose backend, provider, API, or internal payload details.
+- Use only: Source Status, Source Freshness, Market Data State, Evidence Quality.
+- Do not use: Provider Trace, Provider Pending, or any internal service names.
+- Engine is located in `src/dashboard/responsive/dashboardSourceFreshnessFixtureEngine.ts`.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, take position, stop loss, entry, exit.
