@@ -1117,3 +1117,119 @@
   border-color: rgba(255, 215, 106, 0.85);
   background: rgba(255, 215, 106, 0.14);
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1 VISUAL POLISH — scoped readability and interaction refinements
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Chart toggle buttons: slightly brighter text, better active state ─── */
+.dashboard-chart-overlay-toggle {
+  color: rgba(232, 223, 212, 0.72);
+}
+
+.dashboard-chart-overlay-toggle:hover {
+  color: #ffd76a;
+  background: rgba(255, 215, 106, 0.06);
+}
+
+.dashboard-chart-overlay-toggle[aria-pressed="true"] {
+  color: #ffd76a;
+  border-color: rgba(255, 215, 106, 0.4);
+  background: rgba(255, 215, 106, 0.08);
+}
+
+/* ─── Asset/Timeframe selector: cleaner spacing, brighter class label ─── */
+.dashboard-asset-selector__class {
+  color: #e0d6ca;
+}
+
+.dashboard-timeframe-selector {
+  margin-top: clamp(30px, 2.6vw, 44px);
+}
+
+/* ─── Chart inspector: slightly brighter note text ─── */
+.dashboard-chart-inspector__note {
+  color: #c5b9ad;
+}
+
+.dashboard-chart-inspector__why {
+  color: #b8afa6;
+}
+
+.dashboard-chart-inspector__caution {
+  color: #d4a853;
+}
+
+/* ─── Panel scrollbar: amber/gold thumb for premium feel ─── */
+.dashboard-precision-content-slot--body {
+  scrollbar-color: rgba(212, 168, 83, 0.28) transparent;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.28);
+  border-radius: 3px;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 83, 0.45);
+}
+
+/* ─── Drawer scrollbar: same premium treatment ─── */
+.dashboard-detail-drawer__body {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 168, 83, 0.25) transparent;
+}
+
+.dashboard-detail-drawer__body::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dashboard-detail-drawer__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dashboard-detail-drawer__body::-webkit-scrollbar-thumb {
+  background: rgba(212, 168, 83, 0.25);
+  border-radius: 3px;
+}
+
+.dashboard-detail-drawer__body::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 168, 83, 0.4);
+}
+
+/* ─── Drawer section spacing: slightly more breathing room ─── */
+.dashboard-detail-drawer__body .dashboard-precision-data-label {
+  color: #8a8178;
+}
+
+/* ─── Hover preview: brighter body text, tighter shadow ─── */
+.dashboard-hover-preview-floating {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-hover-preview-floating .dashboard-precision-body-text {
+  color: #e0d6ca;
+}
+
+/* ─── Data row active highlight: subtle gold left accent ─── */
+.dashboard-precision-data-row--active {
+  background: rgba(255, 215, 106, 0.04);
+  border-left: 2px solid rgba(255, 215, 106, 0.45);
+  padding-left: 6px;
+}
+
+/* ─── Panel control rail: ensure no text overlap at small sizes ─── */
+.dashboard-panel-control-rail {
+  max-width: 50%;
+}
+
+/* ─── Topbar badge: slightly brighter for readability ─── */
+.dashboard-precision-topbar-badge {
+  color: #e0d6ca;
+}
+
+.dashboard-precision-topbar-badge--fixture {
+  color: #d4a853;
+}
