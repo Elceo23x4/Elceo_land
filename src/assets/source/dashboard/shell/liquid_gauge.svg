@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="reference_aligned_liquid_gauge_svg" xmlns="http://www.w3.org/2000/svg" width="1536" height="857" viewBox="0 0 1536 857" fill="none">
+  <title>Reference Aligned Liquid Gauge - Editable SVG</title>
+  <desc>Recreated semi-circular liquid gauge with transparent liquid chamber, dark tinted transparent acrylic frame and hair section, retained 0/50/100 labels only, and separated vertical fluid layers for animation.</desc>
+  <defs>
+    <linearGradient id="acrylicRimFill" x1="768" y1="96" x2="768" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#273C43" stop-opacity="0.54"/>
+      <stop offset="0.48" stop-color="#1B2E35" stop-opacity="0.48"/>
+      <stop offset="1" stop-color="#071317" stop-opacity="0.66"/>
+    </linearGradient>
+    <linearGradient id="acrylicBodyFill" x1="768" y1="126" x2="768" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1D333A" stop-opacity="0.28"/>
+      <stop offset="0.52" stop-color="#0F252D" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#051116" stop-opacity="0.34"/>
+    </linearGradient>
+    <linearGradient id="acrylicEdgeStroke" x1="768" y1="96" x2="768" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6B858C" stop-opacity="0.68"/>
+      <stop offset="0.56" stop-color="#384F56" stop-opacity="0.56"/>
+      <stop offset="1" stop-color="#0E2229" stop-opacity="0.88"/>
+    </linearGradient>
+    <linearGradient id="tickGlowGradient" x1="0" y1="0" x2="32" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#72F5FF" stop-opacity="0.12"/>
+      <stop offset="0.50" stop-color="#A9FFFF" stop-opacity="1"/>
+      <stop offset="1" stop-color="#72F5FF" stop-opacity="0.12"/>
+    </linearGradient>
+
+    <linearGradient id="liquidCyanCrest" x1="313" y1="340" x2="1181" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#26FAFF"/>
+      <stop offset="0.50" stop-color="#0CE5EF"/>
+      <stop offset="1" stop-color="#4FFFF2"/>
+    </linearGradient>
+    <linearGradient id="liquidCyanBody" x1="322" y1="365" x2="1118" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16BEEB" stop-opacity="0.93"/>
+      <stop offset="0.56" stop-color="#08D6F2" stop-opacity="0.80"/>
+      <stop offset="1" stop-color="#12D8C0" stop-opacity="0.61"/>
+    </linearGradient>
+    <linearGradient id="liquidCyanBase" x1="309" y1="430" x2="1159" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0E91D0" stop-opacity="0.50"/>
+      <stop offset="0.58" stop-color="#0869A0" stop-opacity="0.73"/>
+      <stop offset="1" stop-color="#02365F" stop-opacity="0.90"/>
+    </linearGradient>
+    <linearGradient id="liquidDeepShadow" x1="316" y1="585" x2="1214" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#06345A" stop-opacity="0.92"/>
+      <stop offset="0.58" stop-color="#03233F" stop-opacity="0.96"/>
+      <stop offset="1" stop-color="#021827" stop-opacity="0.98"/>
+    </linearGradient>
+
+    <!-- Animation-state gradients: below 40 red, 40-65 amber, 65-100 green. -->
+    <linearGradient id="liquidStateRed" x1="320" y1="350" x2="1170" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF5555"/>
+      <stop offset="0.55" stop-color="#FF3030"/>
+      <stop offset="1" stop-color="#B60D14"/>
+    </linearGradient>
+    <linearGradient id="liquidStateAmber" x1="320" y1="350" x2="1170" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE25E"/>
+      <stop offset="0.52" stop-color="#FFA331"/>
+      <stop offset="1" stop-color="#D76C18"/>
+    </linearGradient>
+    <linearGradient id="liquidStateGreen" x1="320" y1="350" x2="1170" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38FFD9"/>
+      <stop offset="0.50" stop-color="#15F18E"/>
+      <stop offset="1" stop-color="#09963F"/>
+    </linearGradient>
+
+    <linearGradient id="liquidHighlight" x1="337" y1="374" x2="1056" y2="647" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B8FFFF" stop-opacity="0.72"/>
+      <stop offset="0.52" stop-color="#66FFFF" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.62"/>
+    </linearGradient>
+    <linearGradient id="innerArcGlow" x1="440" y1="706" x2="1096" y2="706" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22F3D1" stop-opacity="0.84"/>
+      <stop offset="0.50" stop-color="#30FFD0" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#0AD8C5" stop-opacity="0.18"/>
+    </linearGradient>
+
+    <filter id="cyanGlowSmall" x="-70%" y="-70%" width="240%" height="240%">
+      <feGaussianBlur stdDeviation="5.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="liquidGlowLarge" x="-25%" y="-35%" width="150%" height="170%">
+      <feGaussianBlur stdDeviation="16" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="liquidGlowSmall" x="-25%" y="-45%" width="150%" height="190%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <clipPath id="liquidChamberClip">
+      <path id="liquid_chamber_clip_path" d="M 307.00 706.00 A 461.00 372.00 0 0 1 1229.00 706.00 L 994.00 706.00 A 226.00 205.00 0 0 0 542.00 706.00 Z"/>
+    </clipPath>
+
+    <path id="percentage_value_host_path" d="M 635 222 C 713 193 823 193 901 222"/>
+
+    <style><![CDATA[
+      /* Hook these classes in code to recolor active meter hairs with the same fill state. */
+      #gauge_ticks_low_zone.is-active line { stroke:#FF6A54; }
+      #gauge_ticks_mid_zone.is-active line { stroke:#FFB547; }
+      #gauge_ticks_high_zone.is-active line { stroke:#64FFD2; }
+
+      /* Color-state hook for the main liquid crest/body:
+         <40: use url(#liquidStateRed)
+         40-65: use url(#liquidStateAmber)
+         65-100: use url(#liquidStateGreen)
+      */
+      .percentage-host { font-family: Inter, Arial, sans-serif; font-size:76px; fill:#DFFFFF; letter-spacing:-1px; }
+    ]]></style>
+  </defs>
+
+  <g id="gauge_acrylic_frame_group">
+    <path id="gauge_outer_dark_acrylic_rim_path" d="M 183.00 706.00 A 585.00 610.00 0 0 1 1353.00 706.00 L 1303.00 706.00 A 535.00 560.00 0 0 0 233.00 706.00 Z" fill="url(#acrylicRimFill)" stroke="url(#acrylicEdgeStroke)" stroke-width="2.5"/>
+    <path id="gauge_inner_dark_acrylic_body_path" d="M 233.00 706.00 A 535.00 560.00 0 0 1 1303.00 706.00 L 1224.00 706.00 A 456.00 482.00 0 0 0 312.00 706.00 Z" fill="url(#acrylicBodyFill)" opacity="1"/>
+    <path id="gauge_outer_highlight_arc_path" d="M 183.00 706.00 A 585.00 610.00 0 0 1 1353.00 706.00" stroke="#6F8990" stroke-opacity="0.52" stroke-width="5.5" stroke-linecap="round"/>
+    <path id="gauge_inner_shadow_arc_path" d="M 233.00 706.00 A 535.00 560.00 0 0 1 1303.00 706.00" stroke="#061116" stroke-opacity="0.72" stroke-width="3" stroke-linecap="round"/>
+    <path id="gauge_lower_floor_line_path" d="M 187 706 L 309 706 M 1219 706 L 1349 706" stroke="#0B1C23" stroke-opacity="0.56" stroke-width="4" stroke-linecap="round"/>
+
+    <g id="gauge_ticks_low_zone">
+      <line id="meter_hair_000" x1="235.00" y1="706.00" x2="193.00" y2="706.00" stroke="#9BF9FF" stroke-opacity="0.95" stroke-width="4.2" stroke-linecap="round"/>
+<line id="meter_hair_001" x1="210.28" y1="687.69" x2="200.28" y2="687.37" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_002" x1="211.10" y1="669.39" x2="201.12" y2="668.77" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_003" x1="212.48" y1="651.13" x2="202.52" y2="650.19" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_004" x1="214.40" y1="632.93" x2="204.48" y2="631.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_005" x1="228.72" y1="616.68" x2="205.02" y2="612.92" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_006" x1="219.88" y1="596.76" x2="210.06" y2="594.88" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_007" x1="223.44" y1="578.82" x2="213.68" y2="576.64" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_008" x1="227.53" y1="561.01" x2="217.84" y2="558.53" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_009" x1="232.16" y1="543.35" x2="222.55" y2="540.56" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_010" x1="248.72" y1="529.55" x2="225.90" y2="522.13" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_011" x1="242.99" y1="508.52" x2="233.58" y2="505.13" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_012" x1="249.18" y1="491.38" x2="239.89" y2="487.70" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_013" x1="255.89" y1="474.46" x2="246.72" y2="470.49" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_014" x1="263.11" y1="457.77" x2="254.06" y2="453.51" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_015" x1="281.51" y1="446.77" x2="260.13" y2="435.88" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_016" x1="279.02" y1="425.14" x2="270.26" y2="420.32" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_017" x1="287.71" y1="409.23" x2="279.10" y2="404.14" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_018" x1="296.87" y1="393.61" x2="288.42" y2="388.25" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_019" x1="306.49" y1="378.31" x2="298.22" y2="372.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_020" x1="326.28" y1="370.37" x2="306.86" y2="356.27" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_021" x1="327.09" y1="348.68" x2="319.19" y2="342.55" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_022" x1="338.05" y1="334.38" x2="330.35" y2="328.01" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_023" x1="349.44" y1="320.46" x2="341.94" y2="313.84" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_024" x1="361.24" y1="306.91" x2="353.95" y2="300.06" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_025" x1="381.92" y1="302.24" x2="364.95" y2="285.27" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_026" x1="386.02" y1="281.01" x2="379.18" y2="273.72" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_027" x1="398.99" y1="268.69" x2="392.37" y2="261.18" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_028" x1="412.32" y1="256.79" x2="405.94" y2="249.09" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_029" x1="426.00" y1="245.34" x2="419.87" y2="237.44" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_030" x1="447.07" y1="244.05" x2="432.96" y2="224.63" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_031" x1="454.36" y1="223.81" x2="448.74" y2="215.54" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_032" x1="469.01" y1="213.76" x2="463.65" y2="205.31" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_033" x1="483.95" y1="204.19" x2="478.86" y2="195.58" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_034" x1="499.18" y1="195.11" x2="494.36" y2="186.35" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_035" x1="520.12" y1="197.24" x2="509.23" y2="175.85" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_036" x1="530.42" y1="178.49" x2="526.16" y2="169.44" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_037" x1="546.39" y1="170.95" x2="542.42" y2="161.77" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_038" x1="562.59" y1="163.94" x2="558.91" y2="154.64" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_039" x1="578.98" y1="157.47" x2="575.60" y2="148.06" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_040" x1="599.28" y1="162.95" x2="591.86" y2="140.12" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+    </g>
+    <g id="gauge_ticks_mid_zone">
+      <line id="meter_hair_041" x1="612.32" y1="146.15" x2="609.53" y2="136.55" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_042" x1="629.23" y1="141.32" x2="626.74" y2="131.63" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_043" x1="646.28" y1="137.04" x2="644.09" y2="127.28" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_044" x1="663.44" y1="133.33" x2="661.57" y2="123.50" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_045" x1="682.59" y1="142.03" x2="678.83" y2="118.33" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_046" x1="698.06" y1="127.60" x2="696.81" y2="117.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_047" x1="715.49" y1="125.59" x2="714.55" y2="115.63" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_048" x1="732.96" y1="124.15" x2="732.33" y2="114.17" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_049" x1="750.47" y1="123.29" x2="750.16" y2="113.29" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_050" x1="768.00" y1="148.00" x2="768.00" y2="106.00" stroke="#9BF9FF" stroke-opacity="0.95" stroke-width="4.2" stroke-linecap="round"/>
+<line id="meter_hair_051" x1="785.53" y1="123.29" x2="785.84" y2="113.29" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_052" x1="803.04" y1="124.15" x2="803.67" y2="114.17" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_053" x1="820.51" y1="125.59" x2="821.45" y2="115.63" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_054" x1="837.94" y1="127.60" x2="839.19" y2="117.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_055" x1="853.41" y1="142.03" x2="857.17" y2="118.33" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_056" x1="872.56" y1="133.33" x2="874.43" y2="123.50" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_057" x1="889.72" y1="137.04" x2="891.91" y2="127.28" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_058" x1="906.77" y1="141.32" x2="909.26" y2="131.63" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_059" x1="923.68" y1="146.15" x2="926.47" y2="136.55" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_060" x1="936.72" y1="162.95" x2="944.14" y2="140.12" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_061" x1="957.02" y1="157.47" x2="960.40" y2="148.06" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_062" x1="973.41" y1="163.94" x2="977.09" y2="154.64" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_063" x1="989.61" y1="170.95" x2="993.58" y2="161.77" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_064" x1="1005.58" y1="178.49" x2="1009.84" y2="169.44" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_065" x1="1015.88" y1="197.24" x2="1026.77" y2="175.85" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+    </g>
+    <g id="gauge_ticks_high_zone">
+      <line id="meter_hair_066" x1="1036.82" y1="195.11" x2="1041.64" y2="186.35" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_067" x1="1052.05" y1="204.19" x2="1057.14" y2="195.58" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_068" x1="1066.99" y1="213.76" x2="1072.35" y2="205.31" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_069" x1="1081.64" y1="223.81" x2="1087.26" y2="215.54" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_070" x1="1088.93" y1="244.05" x2="1103.04" y2="224.63" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_071" x1="1110.00" y1="245.34" x2="1116.13" y2="237.44" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_072" x1="1123.68" y1="256.79" x2="1130.06" y2="249.09" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_073" x1="1137.01" y1="268.69" x2="1143.63" y2="261.18" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_074" x1="1149.98" y1="281.01" x2="1156.82" y2="273.72" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_075" x1="1154.08" y1="302.24" x2="1171.05" y2="285.27" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_076" x1="1174.76" y1="306.91" x2="1182.05" y2="300.06" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_077" x1="1186.56" y1="320.46" x2="1194.06" y2="313.84" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_078" x1="1197.95" y1="334.38" x2="1205.65" y2="328.01" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_079" x1="1208.91" y1="348.68" x2="1216.81" y2="342.55" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_080" x1="1209.72" y1="370.37" x2="1229.14" y2="356.27" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_081" x1="1229.51" y1="378.31" x2="1237.78" y2="372.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_082" x1="1239.13" y1="393.61" x2="1247.58" y2="388.25" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_083" x1="1248.29" y1="409.23" x2="1256.90" y2="404.14" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_084" x1="1256.98" y1="425.14" x2="1265.74" y2="420.32" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_085" x1="1254.49" y1="446.77" x2="1275.87" y2="435.88" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_086" x1="1272.89" y1="457.77" x2="1281.94" y2="453.51" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_087" x1="1280.11" y1="474.46" x2="1289.28" y2="470.49" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_088" x1="1286.82" y1="491.38" x2="1296.11" y2="487.70" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_089" x1="1293.01" y1="508.52" x2="1302.42" y2="505.13" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_090" x1="1287.28" y1="529.55" x2="1310.10" y2="522.13" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_091" x1="1303.84" y1="543.35" x2="1313.45" y2="540.56" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_092" x1="1308.47" y1="561.01" x2="1318.16" y2="558.53" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_093" x1="1312.56" y1="578.82" x2="1322.32" y2="576.64" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_094" x1="1316.12" y1="596.76" x2="1325.94" y2="594.88" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_095" x1="1307.28" y1="616.68" x2="1330.98" y2="612.92" stroke="#9BF9FF" stroke-opacity="0.68" stroke-width="2.0" stroke-linecap="round"/>
+<line id="meter_hair_096" x1="1321.60" y1="632.93" x2="1331.52" y2="631.68" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_097" x1="1323.52" y1="651.13" x2="1333.48" y2="650.19" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_098" x1="1324.90" y1="669.39" x2="1334.88" y2="668.77" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_099" x1="1325.72" y1="687.69" x2="1335.72" y2="687.37" stroke="#9BF9FF" stroke-opacity="0.38" stroke-width="1.15" stroke-linecap="round"/>
+<line id="meter_hair_100" x1="1301.00" y1="706.00" x2="1343.00" y2="706.00" stroke="#9BF9FF" stroke-opacity="0.95" stroke-width="4.2" stroke-linecap="round"/>
+    </g>
+
+    <g id="gauge_major_glow_marks">
+      <rect id="major_meter_glow_000" x="-16.00" y="-3.50" width="32" height="7" rx="2" fill="url(#tickGlowGradient)" transform="translate(197.00 706.00) rotate(90.00)" filter="url(#cyanGlowSmall)"/>
+<rect id="major_meter_glow_050" x="-16.00" y="-3.50" width="32" height="7" rx="2" fill="url(#tickGlowGradient)" transform="translate(768.00 111.00) rotate(0.00)" filter="url(#cyanGlowSmall)"/>
+<rect id="major_meter_glow_100" x="-16.00" y="-3.50" width="32" height="7" rx="2" fill="url(#tickGlowGradient)" transform="translate(1339.00 706.00) rotate(-90.00)" filter="url(#cyanGlowSmall)"/>
+    </g>
+
+    <g id="gauge_scale_numbers_group" font-family="Inter, Arial, sans-serif" font-size="26" fill="#BDF9FF" opacity="0.84">
+      <text id="scale_label_0" x="243" y="696" text-anchor="middle">0</text>
+      <text id="scale_label_50" x="768" y="184" text-anchor="middle">50</text>
+      <text id="scale_label_100" x="1280" y="696" text-anchor="middle">100</text>
+    </g>
+
+    <g id="percentage_value_host_group" opacity="0">
+      <text id="percentage_value_host_text" class="percentage-host">
+        <textPath id="percentage_value_text_path" href="#percentage_value_host_path" startOffset="50%" text-anchor="middle"></textPath>
+      </text>
+    </g>
+  </g>
+
+  <!-- Liquid chamber is transparent: only the liquid layers below are drawn. -->
+  <g id="liquid_fill_master_group" clip-path="url(#liquidChamberClip)">
+    <g id="liquid_vertical_hierarchy_stack_group">
+      <path id="liquid_floor_back_layer_path" d="M 309 706 L 1217 706 L 1214 628 C 1165 604 1124 604 1074 612 C 1014 622 958 644 887 635 C 812 626 759 599 686 607 C 603 617 544 644 479 657 C 403 672 348 664 309 681 Z" fill="url(#liquidCyanBase)" opacity="0.42"/>
+      <path id="liquid_deep_shadow_layer_path" d="M 316 706 L 1214 706 L 1210 588 C 1167 579 1127 582 1082 598 C 1026 618 1002 657 995 706 L 542 706 C 539 660 555 621 590 588 C 521 611 472 644 440 675 C 408 704 367 709 316 706 Z" fill="url(#liquidDeepShadow)" opacity="0.94"/>
+      <path id="liquid_base_layer_path" d="M 309 706 L 309 661 C 339 642 356 612 367 573 C 382 522 415 493 461 464 C 509 433 558 404 608 377 C 665 346 720 333 781 338 C 836 342 876 364 929 358 C 974 354 1010 374 1047 407 C 1093 449 1122 505 1138 568 C 1149 613 1154 662 1159 706 Z" fill="url(#liquidCyanBase)" opacity="0.78" filter="url(#liquidGlowLarge)"/>
+      <path id="liquid_mid_body_layer_path" d="M 322 706 L 322 655 C 354 635 372 594 393 552 C 417 501 465 472 520 440 C 580 405 640 379 707 368 C 775 357 831 367 893 374 C 948 380 989 390 1034 424 C 1076 459 1102 510 1114 571 C 1123 617 1122 665 1118 706 Z" fill="url(#liquidCyanBody)" opacity="0.86" filter="url(#liquidGlowLarge)"/>
+      <path id="liquid_front_crest_layer_path" d="M 313 706 L 313 654 C 350 629 361 591 378 553 C 396 512 431 487 477 458 C 536 421 594 391 655 367 C 704 348 753 345 806 354 C 852 362 888 377 929 361 C 966 348 1002 358 1033 382 C 1055 400 1072 419 1100 427 L 1181 394 L 1132 449 C 1102 481 1066 516 1048 557 C 1025 610 1017 662 1013 706 Z" fill="url(#liquidCyanCrest)" opacity="0.96" filter="url(#liquidGlowLarge)"/>
+      <path id="liquid_top_highlight_path" d="M 337 647 C 389 604 420 531 493 479 C 582 416 654 380 746 374 C 818 369 879 396 949 384 C 989 377 1021 390 1056 418" stroke="url(#liquidHighlight)" stroke-width="13" stroke-linecap="round" fill="none" opacity="0.38" filter="url(#liquidGlowSmall)"/>
+      <path id="liquid_inner_arc_glow_path" d="M 440 706 A 328 254 0 0 1 1096 706" stroke="url(#innerArcGlow)" stroke-width="17" stroke-linecap="round" fill="none" opacity="0.70" filter="url(#liquidGlowSmall)"/>
+      <path id="liquid_floor_glow_path" d="M 309 706 L 1219 706" stroke="#78FFFF" stroke-width="5.5" stroke-linecap="round" opacity="0.80" filter="url(#liquidGlowSmall)"/>
+      <path id="liquid_vertical_depth_left_path" d="M 456 706 C 460 625 500 520 585 456" stroke="#0B4258" stroke-width="3" stroke-opacity="0.28" fill="none"/>
+      <path id="liquid_vertical_depth_right_path" d="M 1000 706 C 1000 625 1021 532 1078 473" stroke="#0B4258" stroke-width="3" stroke-opacity="0.28" fill="none"/>
+      <path id="liquid_sidewall_right_path" d="M 1118 706 C 1122 623 1105 536 1128 463" stroke="#0B4258" stroke-width="3" stroke-opacity="0.28" fill="none"/>
+    </g>
+  </g>
+
+  <g id="liquid_arrow_tip_group">
+    <path id="liquid_arrow_tip_path" d="M 1118 423 L 1181 394 L 1144 454 C 1136 467 1124 475 1100 486 L 1113 455 C 1119 441 1120 431 1118 423 Z" fill="url(#liquidCyanCrest)" opacity="0.90" filter="url(#liquidGlowSmall)"/>
+  </g>
+
+  <g id="gauge_end_caps_group" filter="url(#cyanGlowSmall)">
+    <rect id="gauge_left_floor_cap" x="187" y="700" width="29" height="8" rx="2" fill="#8CFFFF" opacity="0.92"/>
+    <rect id="gauge_right_floor_cap" x="1320" y="700" width="29" height="8" rx="2" fill="#8CFFFF" opacity="0.92"/>
+  </g>
+</svg>
