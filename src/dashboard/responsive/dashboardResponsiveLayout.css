@@ -1042,42 +1042,78 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   PANEL ALERT BELL (scoped — per-panel market alert toggle)
+   PANEL CONTROL RAIL + ALERT BELL (scoped — per-panel controls)
    ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-panel-control-rail {
+  position: absolute;
+  top: clamp(6px, 1.2%, 12px);
+  right: clamp(8px, 1.6%, 14px);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(5px, 0.45vw, 8px);
+  pointer-events: auto;
+}
+
+.dashboard-panel-control-rail .dashboard-panel-expand-button {
+  position: static;
+  flex: 0 0 auto;
+}
 
 .dashboard-panel-alert-button {
   all: unset;
   box-sizing: border-box;
-  position: absolute;
-  top: clamp(3px, 0.3vw, 6px);
-  right: clamp(22px, 2vw, 36px);
-  z-index: 5;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: clamp(16px, 1.2vw, 22px);
-  height: clamp(16px, 1.2vw, 22px);
-  border-radius: 3px;
+  width: clamp(18px, 1.65cqi, 24px);
+  height: clamp(18px, 1.65cqi, 24px);
+  min-width: 18px;
+  min-height: 18px;
+  padding: 0;
+  border-radius: 999px;
   background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(138, 129, 120, 0.15);
-  color: rgba(184, 175, 166, 0.5);
+  border: 1px solid rgba(138, 129, 120, 0.18);
+  color: rgba(184, 175, 166, 0.45);
   cursor: pointer;
   pointer-events: auto;
+  user-select: none;
+  touch-action: manipulation;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
 }
 
+.dashboard-panel-alert-button svg,
+.dashboard-panel-alert-button svg * {
+  pointer-events: none;
+}
+
+.dashboard-panel-alert-button svg {
+  width: 62%;
+  height: 62%;
+}
+
 .dashboard-panel-alert-button:hover {
-  border-color: rgba(255, 215, 106, 0.3);
-  color: rgba(255, 215, 106, 0.7);
+  border-color: rgba(255, 215, 106, 0.72);
+  color: #ffd76a;
+  background: rgba(255, 215, 106, 0.08);
+}
+
+.dashboard-panel-alert-button:focus-visible {
+  outline: 1px solid rgba(255, 215, 106, 0.65);
+  outline-offset: 2px;
 }
 
 .dashboard-panel-alert-button--armed {
   color: #ffd76a;
-  border-color: rgba(255, 215, 106, 0.4);
-  background: rgba(255, 215, 106, 0.06);
+  border-color: rgba(255, 215, 106, 0.72);
+  background: rgba(255, 215, 106, 0.10);
 }
 
 .dashboard-panel-alert-button--armed:hover {
   color: #ffe590;
-  border-color: rgba(255, 215, 106, 0.55);
+  border-color: rgba(255, 215, 106, 0.85);
+  background: rgba(255, 215, 106, 0.14);
 }

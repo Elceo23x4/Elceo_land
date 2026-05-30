@@ -938,12 +938,9 @@
 }
 
 /* Expand button — inside panel, top-right, fixed size */
+/* Expand button — now positioned via .dashboard-panel-control-rail */
 .dashboard-panel-group__expand-btn {
-  position: absolute;
-  top: clamp(6px, 1.2%, 12px);
-  right: clamp(8px, 1.6%, 14px);
-  z-index: 20;
-  pointer-events: auto;
+  display: none;
 }
 
 /* ─── Panel Expansion — rect-based (no transform scale) ─── */
