@@ -1233,3 +1233,176 @@
 .dashboard-precision-topbar-badge--fixture {
   color: #d4a853;
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   LIQUID GAUGE — Premium arc score visualization
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-liquid-gauge {
+  position: relative;
+  width: 141px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-liquid-gauge__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.dashboard-liquid-gauge__frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-liquid-gauge__liquid {
+  position: absolute;
+  inset: 15% 12% 25% 12%;
+  overflow: hidden;
+  border-radius: 50% 50% 4px 4px;
+  pointer-events: none;
+}
+
+.dashboard-liquid-gauge__wave {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 0;
+  top: var(--gauge-fill-percent, 50%);
+  transition: top 0.6s ease;
+}
+
+.dashboard-liquid-gauge__wave--1 {
+  background: var(--gauge-liquid-primary, rgba(92, 186, 110, 0.7));
+  border-radius: 40% 42% 0 0;
+  animation: dashboardLiquidWave1 5s ease-in-out infinite;
+}
+
+.dashboard-liquid-gauge__wave--2 {
+  background: var(--gauge-liquid-secondary, rgba(60, 150, 80, 0.5));
+  border-radius: 38% 44% 0 0;
+  animation: dashboardLiquidWave2 6.5s ease-in-out infinite;
+  top: calc(var(--gauge-fill-percent, 50%) + 4%);
+}
+
+@keyframes dashboardLiquidWave1 {
+  0%, 100% { border-radius: 40% 42% 0 0; transform: translateX(0); }
+  50% { border-radius: 44% 38% 0 0; transform: translateX(3%); }
+}
+
+@keyframes dashboardLiquidWave2 {
+  0%, 100% { border-radius: 38% 44% 0 0; transform: translateX(0); }
+  50% { border-radius: 42% 40% 0 0; transform: translateX(-3%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-liquid-gauge__wave--1,
+  .dashboard-liquid-gauge__wave--2 {
+    animation: none;
+  }
+}
+
+.dashboard-liquid-gauge__score {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.dashboard-liquid-gauge__value {
+  font-family: var(--font-mono);
+  font-size: var(--dashboard-font-md);
+  font-weight: 700;
+  color: #e8dfd4;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-liquid-gauge__label {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-body);
+  font-size: var(--dashboard-font-xs);
+  color: #8a8178;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.dashboard-liquid-gauge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 141px));
+  gap: clamp(6px, 0.55vw, 10px);
+  align-items: start;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   METER BAR — Premium CSS progress bar
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-meter-bar {
+  position: relative;
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(6, 4, 2, 0.7);
+  border: 1px solid rgba(212, 168, 83, 0.15);
+  overflow: hidden;
+  margin: 3px 0;
+}
+
+.dashboard-meter-bar--compact {
+  height: 5px;
+}
+
+.dashboard-meter-bar__fill {
+  position: relative;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+  overflow: hidden;
+}
+
+.dashboard-meter-bar__fill--green {
+  background: linear-gradient(90deg, rgba(60, 150, 80, 0.8), rgba(92, 186, 110, 0.9));
+}
+
+.dashboard-meter-bar__fill--amber {
+  background: linear-gradient(90deg, rgba(180, 130, 50, 0.8), rgba(212, 168, 83, 0.9));
+}
+
+.dashboard-meter-bar__fill--red {
+  background: linear-gradient(90deg, rgba(180, 50, 50, 0.8), rgba(224, 85, 85, 0.9));
+}
+
+.dashboard-meter-bar__fill--neutral {
+  background: linear-gradient(90deg, rgba(100, 95, 88, 0.7), rgba(138, 129, 120, 0.8));
+}
+
+.dashboard-meter-bar__shimmer {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.06) 4px,
+    rgba(255, 255, 255, 0.06) 8px
+  );
+  animation: dashboardMeterShimmer 3s linear infinite;
+}
+
+@keyframes dashboardMeterShimmer {
+  from { transform: translateX(-16px); }
+  to { transform: translateX(16px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-meter-bar__shimmer {
+    animation: none;
+  }
+}

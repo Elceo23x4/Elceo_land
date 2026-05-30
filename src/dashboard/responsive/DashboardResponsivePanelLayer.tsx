@@ -20,6 +20,8 @@ import {
   sourceStatusFixture, timeframeContextByValue,
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
+import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
+import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
 import PrecisionPanelGroup from "./PrecisionPanelGroup";
@@ -171,17 +173,17 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Confidence", "Contradiction", "Freshness", "Data Quality"]} active={confMode} onSelect={setConfMode} />
           {confMode === 0 && (
-            <div className="dashboard-two-col">
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.confidenceScore} tone={cognition.confidenceScore >= 60 ? "positive" : cognition.confidenceScore >= 45 ? "neutral" : "warning"} /><div style={{ flex: 1 }}><DataRow label="Confidence" value={`${cognition.confidenceScore}%`} tone={cognition.confidenceScore >= 60 ? "positive" : "neutral"} /></div></div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.contradictionScore} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} /><div style={{ flex: 1 }}><DataRow label="Contradiction" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} /></div></div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} /><div style={{ flex: 1 }}><DataRow label="Freshness" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} /></div></div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.zoneStrengthScore} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} /><div style={{ flex: 1 }}><DataRow label="Zone strength" value={`${cognition.zoneStrengthScore}%`} tone={cognition.zoneStrengthScore >= 60 ? "positive" : "neutral"} /></div></div>
-              <div style={{ display: "flex", alignItems: "center", gap: "6px" }}><MiniDonutScore score={cognition.evidenceWeight} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} /><div style={{ flex: 1 }}><DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} /></div></div>
+            <div className="dashboard-liquid-gauge-grid">
+              <DashboardLiquidGauge value={cognition.confidenceScore} label="Confidence" />
+              <DashboardLiquidGauge value={cognition.contradictionScore} label="Contradiction" />
+              <DashboardLiquidGauge value={cognition.freshnessScore} label="Freshness" />
+              <DashboardLiquidGauge value={cognition.zoneStrengthScore} label="Zone Strength" />
+              <DashboardLiquidGauge value={cognition.evidenceWeight} label="Evidence" />
             </div>
           )}
           {confMode === 1 && (<>
             <DataRow label="Contradiction score" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
-            <MiniMeter score={cognition.contradictionScore} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
+            <DashboardMeterBar value={cognition.contradictionScore} label="Contradiction" />
             {scenario.contradictionItems.map((c) => (
               <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />
             ))}
@@ -190,7 +192,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {confMode === 2 && (<>
             <DataRow label="Freshness score" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
-            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <DashboardMeterBar value={sourceFreshness.overallScore} label="Freshness" />
             <DataRow label="Strongest" value={`${sourceFreshness.strongestLayer.label}: ${sourceFreshness.strongestLayer.score}%`} tone="positive" />
             <DataRow label="Weakest" value={`${sourceFreshness.weakestLayer.label}: ${sourceFreshness.weakestLayer.score}%`} tone={sourceFreshness.weakestLayer.tone} />
             <DataRow label="Stale risk" value={sourceFreshness.staleRisk} tone={sourceFreshness.overallScore >= 60 ? "neutral" : "warning"} />
@@ -198,7 +200,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {confMode === 3 && (<>
             <DataRow label="Evidence quality" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallScore >= 65 ? "positive" : "neutral"} />
-            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallScore >= 65 ? "positive" : "neutral"} />
+            <DashboardMeterBar value={sourceFreshness.overallScore} label="Evidence quality" />
             <DataRow label="State" value={sourceFreshness.overallState.replace(/_/g, " ")} tone={sourceFreshness.overallState === "fresh" ? "positive" : "neutral"} />
             {sourceFreshness.evidenceQuality.map((eq) => <DataRow key={eq.id} label={eq.label} value={`${eq.score}%`} tone={eq.tone} />)}
             <p className="dashboard-precision-note">{sourceFreshness.confidenceImpact}</p>
@@ -259,7 +261,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Cross-asset" value={crossAsset.dominantDriver} tone={cognition.scenarioTone} />
             <div style={{ marginTop: "6px", borderTop: "1px solid rgba(138,129,120,0.1)", paddingTop: "4px" }}>
               <DataRow label="Aggregate conviction" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} mono />
-              <MiniMeter score={cognition.evidenceWeight} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
+              <DashboardMeterBar value={cognition.evidenceWeight} label="Evidence conviction" />
             </div>
           </>)}
           {evidMode === 1 && (<>
@@ -280,7 +282,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {evidMode === 3 && (<>
             <DataRow label="Overall freshness" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
-            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <DashboardMeterBar value={sourceFreshness.overallScore} label="Source freshness" />
             {sourceFreshness.missingContext.length > 0 && sourceFreshness.missingContext.map((mc) => (
               <DataRow key={mc.id} label={mc.label} value={mc.detail} tone={mc.tone} />
             ))}
@@ -356,7 +358,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {coachMode === 2 && (<>
             <DataRow label="Readiness score" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
-            <MiniMeter score={reviewWorkflow.readinessScore} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
+            <DashboardMeterBar value={reviewWorkflow.readinessScore} label="Readiness" />
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "discipline" || c.linkedArea === "scenario" || c.linkedArea === "evidence").map((c) => (
               <DataRow key={c.id} label={c.label} value={c.status} tone={c.tone} />
             ))}

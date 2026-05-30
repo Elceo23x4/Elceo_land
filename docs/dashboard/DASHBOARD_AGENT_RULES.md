@@ -146,6 +146,15 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 
 ---
 
+## Visual component rules
+
+- Liquid gauge must be component-based and must not edit source SVG.
+- Dashboard meter bars must be custom accessible components (role="progressbar").
+- Native/generic progress appearance should not be used in dashboard panels.
+- Respect reduced motion (prefers-reduced-motion: reduce) for liquid/meter animations.
+
+---
+
 ## Font rules
 
 - Do not use Tribes, Trybes, Offbit, Space Grotesk, or decorative/geometric dashboard fonts.
