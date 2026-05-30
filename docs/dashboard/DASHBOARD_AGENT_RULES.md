@@ -136,6 +136,16 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 
 ---
 
+## Typography rules
+
+- Dashboard runtime text must not go below 0.78rem.
+- Dashboard uses rem-based scale tokens: xs (0.78rem), sm (0.88rem), md (1.1rem), lg (1.2rem), xl (1.4rem).
+- Expanded panels must not enlarge font size unless explicitly requested.
+- Secondary panel eyebrow/title blocks should remain removed unless explicitly restored.
+- Do not reintroduce forbidden fonts.
+
+---
+
 ## Font rules
 
 - Do not use Tribes, Trybes, Offbit, Space Grotesk, or decorative/geometric dashboard fonts.
