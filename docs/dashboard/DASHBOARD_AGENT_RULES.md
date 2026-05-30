@@ -113,6 +113,19 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ---
 
+## Dashboard panel alert rules
+
+- Panel market alert toggles are allowed in the dashboard.
+- They are per-panel market condition toggles, not notification preference management.
+- Dashboard may show Email/WhatsApp as channel labels only.
+- Dashboard must not expose account/security/billing information.
+- Full alert channel configuration belongs to a future Settings/Notification Preferences page.
+- Do not invent backend endpoints.
+- If backend contract is unavailable, use fixture-mode service with no network and document it.
+- No localStorage/sessionStorage in fixture alert batches.
+
+---
+
 ## Copy rules
 
 **Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, take position, stop loss, entry, exit.

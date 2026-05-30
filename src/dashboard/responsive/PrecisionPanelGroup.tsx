@@ -31,6 +31,9 @@ interface PrecisionPanelGroupProps {
   headerContent: ReactNode;
   bodyContent: ReactNode;
   linked?: boolean;
+  alertArmed?: boolean;
+  alertSummary?: string;
+  onToggleAlert?: () => void;
 }
 
 /** Expansion scale per panel */
@@ -120,6 +123,9 @@ export default function PrecisionPanelGroup({
   headerContent,
   bodyContent,
   linked,
+  alertArmed,
+  alertSummary,
+  onToggleAlert,
 }: PrecisionPanelGroupProps) {
   const frameRect = PANEL_FRAME_RECTS[panelId];
   const contentRects = PANEL_CONTENT_RECTS[panelId];
@@ -162,6 +168,22 @@ export default function PrecisionPanelGroup({
       <div className="dashboard-panel-group__expand-btn">
         <PanelExpandButton expanded={expanded} onToggle={onToggleExpand} />
       </div>
+
+      {/* Alert bell toggle - inside panel */}
+      {onToggleAlert && (
+        <button
+          type="button"
+          className={`dashboard-panel-alert-button${alertArmed ? " dashboard-panel-alert-button--armed" : ""}`}
+          onClick={onToggleAlert}
+          aria-label={alertArmed ? `Panel alert armed: ${alertSummary ?? ""}` : `Panel alert off: ${alertSummary ?? ""}`}
+          title={alertArmed ? `Alert armed — ${alertSummary ?? ""}` : `Alert off — ${alertSummary ?? ""}`}
+        >
+          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5c0 2.5-1 3.5-1.5 4h12c-.5-.5-1.5-1.5-1.5-4A4.5 4.5 0 0 0 8 1.5Z" fill="currentColor" opacity={alertArmed ? 1 : 0.4} />
+            <path d="M6.5 13a1.5 1.5 0 0 0 3 0" stroke="currentColor" strokeWidth="1" fill="none" opacity={alertArmed ? 1 : 0.4} />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }
