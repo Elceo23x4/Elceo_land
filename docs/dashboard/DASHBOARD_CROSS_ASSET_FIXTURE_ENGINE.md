@@ -83,6 +83,12 @@ All 12 ELCEO assets have unique cross-asset profiles:
 | **Market Regime (Volatility)** | volatilityLink, regime watch, caution |
 | **Market Regime (Correlation)** | correlationNote, aligned/diverging/inverse assets |
 | **News/Macro (Currency)** | usdLink, correlationNote, aligned/inverse assets |
+| **Watchlist (Featured)** | dominantDriver row |
+| **Watchlist (FX Majors)** | usdLink, aligned asset links |
+| **Watchlist (Alerts/Watch)** | dominantDriver as cross-asset pressure row |
+| **Watchlist (Scenario Map)** | correlationNote |
+| **Evidence (Stack)** | dominantDriver row |
+| **Evidence (Insights)** | dominantDriver, correlationNote, cautionNote |
 
 ---
 
@@ -102,6 +108,8 @@ Each overlay type includes concise cross-asset context in the watch line:
 |--------|-------------------|
 | **Regime** | Full cross-asset detail: driver, risk, USD, liquidity, volatility, aligned/diverging/inverse, pressure map |
 | **News** | Dominant driver, USD link, risk tone, caution note |
+| **Watchlist** | Cross-Asset Relationship section: driver, USD link, risk tone, correlation, aligned/diverging/inverse |
+| **Evidence** | Cross-Asset Evidence section: driver, USD link, correlation, caution, top pressure items |
 
 ---
 

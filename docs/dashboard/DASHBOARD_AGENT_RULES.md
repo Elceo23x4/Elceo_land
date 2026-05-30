@@ -105,7 +105,9 @@ Read this file before making any changes to the ELCEO dashboard.
 
 ## Copy rules
 
-**Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, signal to enter, take position, stop loss, entry, exit.
+**Avoid:** buy, sell, hold, profit, guaranteed, risk-free, trade now, take position, stop loss, entry, exit.
+
+The banned term "signal" may appear only in this rules file as a reference to what is banned. It must not appear in runtime dashboard files, fixtures, comments, registry labels, or asset manifest copy.
 
 **Use:** bias, scenario, evidence, confidence, contradiction, freshness, structure, liquidity, review, confirmation, caution, source status, market data state, fixture mode.
 
