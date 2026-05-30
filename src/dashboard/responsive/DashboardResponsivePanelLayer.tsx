@@ -483,7 +483,6 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Session" value={assetCockpitFixture.session} tone="positive" />
           </DrawerSection>
         </>)}
-        </>)}
         {drawerPanel === "news" && (<>
           <DrawerSection title="Macro Scenario Context">
             <DataRow label="Active asset" value={activeAsset} tone="positive" />
