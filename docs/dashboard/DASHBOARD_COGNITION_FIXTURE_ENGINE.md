@@ -134,4 +134,10 @@ The scenario fixture engine (`dashboardScenarioFixtureEngine.ts`) consumes `Dash
 
 ---
 
+## Source Freshness Engine Integration
+
+The source freshness engine (`dashboardSourceFreshnessFixtureEngine.ts`) consumes cognition output to explain how freshness and evidence quality affect confidence. It derives per-layer freshness scores from `cognition.freshnessScore` and uses `cognition.evidenceWeight` and `cognition.contradictionScore` to assess evidence quality.
+
+---
+
 _This document is the reference for the cognition fixture engine. Safe language only. No trading instructions._

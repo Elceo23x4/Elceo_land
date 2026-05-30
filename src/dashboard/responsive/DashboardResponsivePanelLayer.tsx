@@ -31,6 +31,7 @@ import { getDashboardScenarioSnapshot } from "./dashboardScenarioFixtureEngine";
 import { getDashboardReviewWorkflowSnapshot } from "./dashboardReviewWorkflowFixtureEngine";
 import { getDashboardConditionWatchSnapshot } from "./dashboardConditionWatchFixtureEngine";
 import { getDashboardCrossAssetSnapshot } from "./dashboardCrossAssetFixtureEngine";
+import { getDashboardSourceFreshnessSnapshot } from "./dashboardSourceFreshnessFixtureEngine";
 import type { LinkedPanel } from "./chartIntelligenceFixture";
 import type { ReactNode } from "react";
 
@@ -73,6 +74,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
   const reviewWorkflow = getDashboardReviewWorkflowSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario);
   const conditionWatch = getDashboardConditionWatchSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, reviewWorkflow);
   const crossAsset = getDashboardCrossAssetSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, conditionWatch);
+  const sourceFreshness = getDashboardSourceFreshnessSnapshot(activeAsset, activeTimeframe || "1H", cognition, scenario, conditionWatch, crossAsset);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerTitle, setDrawerTitle] = useState("");
   const [drawerEyebrow, setDrawerEyebrow] = useState("");
@@ -172,21 +174,19 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Caution" value={scenario.cautionNote} tone={cognition.cautionTone} />
           </>)}
           {confMode === 2 && (<>
-            <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
-            <MiniMeter score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
-            <DataRow label="Sensitivity" value={tfCtx?.freshnessSensitivity ?? ""} tone="neutral" />
-            <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
-            <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
-            <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
+            <DataRow label="Freshness score" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <DataRow label="Strongest" value={`${sourceFreshness.strongestLayer.label}: ${sourceFreshness.strongestLayer.score}%`} tone="positive" />
+            <DataRow label="Weakest" value={`${sourceFreshness.weakestLayer.label}: ${sourceFreshness.weakestLayer.score}%`} tone={sourceFreshness.weakestLayer.tone} />
+            <DataRow label="Stale risk" value={sourceFreshness.staleRisk} tone={sourceFreshness.overallScore >= 60 ? "neutral" : "warning"} />
+            <DataRow label="Review cue" value={sourceFreshness.reviewCue} tone="neutral" />
           </>)}
           {confMode === 3 && (<>
-            <DataRow label="Data quality" value={`${confidenceFixture.dataQuality}%`} tone="positive" />
-            <MiniMeter score={confidenceFixture.dataQuality} tone="positive" />
-            <DataRow label="Active asset" value={activeAsset} tone="positive" />
-            <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
-            <DataRow label="Evidence coverage" value="8 of 10 categories active" tone="positive" />
-            <DataRow label="Staleness risk" value="Low-moderate" tone="neutral" />
-            <p className="dashboard-precision-note">{assetCtx?.cautionNote ?? confidenceFixture.summary}</p>
+            <DataRow label="Evidence quality" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallScore >= 65 ? "positive" : "neutral"} />
+            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallScore >= 65 ? "positive" : "neutral"} />
+            <DataRow label="State" value={sourceFreshness.overallState.replace(/_/g, " ")} tone={sourceFreshness.overallState === "fresh" ? "positive" : "neutral"} />
+            {sourceFreshness.evidenceQuality.map((eq) => <DataRow key={eq.id} label={eq.label} value={`${eq.score}%`} tone={eq.tone} />)}
+            <p className="dashboard-precision-note">{sourceFreshness.confidenceImpact}</p>
           </>)}
           <ActionBar onExpand={() => openDrawer("Matrix", "Confidence Detail", "confidence")} />
         </>} />
@@ -253,25 +253,25 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Cross-asset driver" value={crossAsset.dominantDriver} tone="neutral" />
             <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
             <DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
+            <DataRow label="Source freshness" value={sourceFreshness.summary} tone={sourceFreshness.overallState === "fresh" ? "positive" : "neutral"} />
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label="Contradicts" value={c.summary} tone={c.tone} />)}
             <p className="dashboard-precision-note">{crossAsset.cautionNote}</p>
           </>)}
           {evidMode === 2 && (<>
-            <DataRow label="Market data" value={sourceStatusFixture.marketData} tone="warning" />
-            <DataRow label="News" value={sourceStatusFixture.news} tone="neutral" />
-            <DataRow label="Macro" value={sourceStatusFixture.macro} tone="neutral" />
-            <DataRow label="Extraction" value={sourceStatusFixture.extraction} tone="warning" />
-            <DataRow label="Chart data" value={sourceStatusFixture.chartData} tone="neutral" />
-            <DataRow label="Source freshness" value={sourceStatusFixture.sourceFreshness} tone="neutral" />
-            <StatusLabel label="Market Data Pending" />
+            {sourceFreshness.layers.slice(0, 5).map((l) => (
+              <DataRow key={l.id} label={l.label} value={`${l.state.replace(/_/g, " ")} (${l.score}%)`} tone={l.tone} />
+            ))}
+            <StatusLabel label="Fixture Mode" />
           </>)}
           {evidMode === 3 && (<>
-            <DataRow label="Freshness score" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
-            <MiniMeter score={cognition.freshnessScore} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
-            <DataRow label="Stale risk" value={cognition.freshnessScore >= 70 ? "Low" : cognition.freshnessScore >= 55 ? "Low-moderate" : "Moderate"} tone={cognition.freshnessScore >= 60 ? "neutral" : "warning"} />
+            <DataRow label="Overall freshness" value={`${sourceFreshness.overallScore}%`} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <MiniMeter score={sourceFreshness.overallScore} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            {sourceFreshness.missingContext.length > 0 && sourceFreshness.missingContext.map((mc) => (
+              <DataRow key={mc.id} label={mc.label} value={mc.detail} tone={mc.tone} />
+            ))}
+            <DataRow label="Stale risk" value={sourceFreshness.staleRisk} tone={sourceFreshness.overallScore >= 60 ? "neutral" : "warning"} />
             {conditionWatch.freshnessWatch.map((w) => <DataRow key={w.id} label="Freshness watch" value={w.detail} tone={w.tone} />)}
-            <DataRow label="Next review cue" value={cognition.reviewWindow} tone="neutral" />
-            <p className="dashboard-precision-note">{cognition.freshnessReason}</p>
+            <DataRow label="Review cue" value={sourceFreshness.reviewCue} tone="neutral" />
           </>)}
           <ActionBar onExpand={() => openDrawer("Evidence", "Evidence Chain", "evidence")} />
         </>} />
@@ -418,11 +418,13 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Scenario confidence" value={`${scenario.scenarioConfidence}%`} tone={scenario.scenarioConfidence >= 55 ? "positive" : "neutral"} />
             <DataRow label="Readiness" value={`${reviewWorkflow.readinessScore}%`} tone={reviewWorkflow.readinessScore >= 60 ? "positive" : "neutral"} />
             <DataRow label="Contradiction" value={`${cognition.contradictionScore}%`} tone={cognition.contradictionScore >= 40 ? "warning" : "positive"} />
-            <DataRow label="Freshness" value={`${cognition.freshnessScore}%`} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
             <p className="dashboard-precision-note">{cognition.confidenceReason}</p>
           </DrawerSection>
-          <DrawerSection title="Review Checklist">
-            {reviewWorkflow.checklist.filter(c => c.linkedArea === "contradiction" || c.linkedArea === "freshness").map((c) => <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />)}
+          <DrawerSection title="Source Freshness">
+            <DataRow label="Overall" value={`${sourceFreshness.overallScore}% — ${sourceFreshness.overallState.replace(/_/g, " ")}`} tone={sourceFreshness.overallState === "fresh" ? "positive" : "warning"} />
+            <DataRow label="Strongest" value={`${sourceFreshness.strongestLayer.label} (${sourceFreshness.strongestLayer.score}%)`} tone="positive" />
+            <DataRow label="Weakest" value={`${sourceFreshness.weakestLayer.label} (${sourceFreshness.weakestLayer.score}%)`} tone={sourceFreshness.weakestLayer.tone} />
+            <p className="dashboard-precision-note">{sourceFreshness.confidenceImpact}</p>
           </DrawerSection>
           <DrawerSection title="Contradiction Drilldown">
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
@@ -432,16 +434,19 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           <DrawerSection title="Evidence Drilldown">
             {scenario.evidenceItems.map((e) => <DataRow key={e.id} label={`${e.category}: ${e.label}`} value={e.summary} tone={e.tone} />)}
           </DrawerSection>
+          <DrawerSection title="Source Freshness Layers">
+            {sourceFreshness.layers.map((l) => <DataRow key={l.id} label={l.label} value={`${l.state.replace(/_/g, " ")} (${l.score}%)`} tone={l.tone} />)}
+          </DrawerSection>
+          <DrawerSection title="Missing Context">
+            {sourceFreshness.missingContext.length > 0
+              ? sourceFreshness.missingContext.map((mc) => <DataRow key={mc.id} label={mc.label} value={mc.detail} tone={mc.tone} />)
+              : <DataRow label="Status" value="No missing context — layers adequate" tone="positive" />
+            }
+            <DataRow label="Stale risk" value={sourceFreshness.staleRisk} tone={sourceFreshness.overallScore >= 60 ? "neutral" : "warning"} />
+          </DrawerSection>
           <DrawerSection title="Cross-Asset Evidence">
             <DataRow label="Dominant driver" value={crossAsset.dominantDriver} tone="neutral" />
-            <DataRow label="USD link" value={crossAsset.usdLink} tone="neutral" />
             <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
-            <DataRow label="Caution" value={crossAsset.cautionNote} tone={cognition.cautionTone} />
-            {crossAsset.pressureMap.slice(0, 2).map((p) => <DataRow key={p.id} label={p.label} value={`${p.value} — ${p.detail}`} tone={p.tone} />)}
-          </DrawerSection>
-          <DrawerSection title="Contradiction Items">
-            {scenario.contradictionItems.map((c) => <DataRow key={c.id} label={c.label} value={c.summary} tone={c.tone} />)}
-            {conditionWatch.contradictionWatch.map((w) => <DataRow key={w.id} label={w.label} value={w.detail} tone={w.tone} />)}
           </DrawerSection>
         </>)}
         {drawerPanel === "coaching" && (<>
