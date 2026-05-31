@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" id="sidebar_revb_svg_root" width="45" height="731" viewBox="0 0 45 731" fill="none" role="img" aria-label="ELCEO sidebar RevB normalized to 45 by 731"><defs>
+  <linearGradient id="sidebar_revb_orange_stroke" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#8f3d0b" stop-opacity="0.35" />
+    <stop offset="18%" stop-color="#ff7a18" stop-opacity="0.95" />
+    <stop offset="50%" stop-color="#ffb13b" stop-opacity="0.95" />
+    <stop offset="82%" stop-color="#ff6a00" stop-opacity="0.9" />
+    <stop offset="100%" stop-color="#7a2d08" stop-opacity="0.4" />
+  </linearGradient>
+  <linearGradient id="sidebar_revb_panel_edge" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#ff9f2d" stop-opacity="0.85" />
+    <stop offset="38%" stop-color="#c35a13" stop-opacity="0.45" />
+    <stop offset="70%" stop-color="#ff7a18" stop-opacity="0.75" />
+    <stop offset="100%" stop-color="#542000" stop-opacity="0.35" />
+  </linearGradient>
+  <radialGradient id="sidebar_revb_radial_soft" cx="50%" cy="47%" r="55%">
+    <stop offset="0%" stop-color="#ff9b24" stop-opacity="0.10" />
+    <stop offset="42%" stop-color="#ff7a18" stop-opacity="0.05" />
+    <stop offset="76%" stop-color="#ff7a18" stop-opacity="0.035" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+  </radialGradient>
+  <filter id="sidebar_revb_orange_aura" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur" />
+    <feColorMatrix in="blur" type="matrix" values="1 0 0 0 1  0 0.35 0 0 0.35  0 0 0.1 0 0  0 0 0 0.8 0" />
+    <feMerge><feMergeNode /><feMergeNode in="SourceGraphic" /></feMerge>
+  </filter>
+  <filter id="sidebar_revb_soft_line" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.15" result="blur" />
+    <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+  </filter>
+  <pattern id="sidebar_revb_micro_grid" width="32" height="32" patternUnits="userSpaceOnUse">
+    <path d="M32 0H0V32" fill="none" stroke="#ff7a18" stroke-width="0.35" stroke-opacity="0.07" id="sidebar_revb_micro_grid_path" />
+  </pattern>
+</defs>
+
+
+<style>
+  .el-bg { fill:#030302; }
+  .hud-primary { fill:none; stroke:url(#sidebar_revb_orange_stroke); stroke-width:1.45; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-heavy { fill:none; stroke:#ff8a1e; stroke-opacity:.80; stroke-width:2.7; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-medium { fill:none; stroke:#e86813; stroke-opacity:.62; stroke-width:1.55; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-fine { fill:none; stroke:#ffb13b; stroke-opacity:.38; stroke-width:.72; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-hair { fill:none; stroke:#ff7a18; stroke-opacity:.22; stroke-width:.45; stroke-linejoin:round; stroke-linecap:round; }
+  .hud-dim { fill:none; stroke:#8f3d0b; stroke-opacity:.35; stroke-width:1; stroke-linejoin:round; stroke-linecap:round; }
+  .panel-fill { fill:#080604; fill-opacity:.50; }
+  .slot-fill { fill:#050403; fill-opacity:.18; }
+  .hot-fill { fill:#ff7a18; fill-opacity:.10; }
+  .dark-fill { fill:#000; fill-opacity:.35; }
+  .icon { fill:none; stroke:#ff9a26; stroke-opacity:.85; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round; }
+  .icon-secondary { fill:none; stroke:#ff9a26; stroke-opacity:.48; stroke-width:1.25; stroke-linecap:round; stroke-linejoin:round; }
+  .terminal { fill:#0a0501; stroke:#ff8a1e; stroke-width:1.45; stroke-opacity:.78; }
+  .terminal-inner { fill:#ff9f2d; fill-opacity:.75; }
+  .tick-heavy { stroke:#ff9a26; stroke-opacity:.85; stroke-width:2.1; stroke-linecap:round; }
+  .tick-fine { stroke:#ff9a26; stroke-opacity:.32; stroke-width:.65; stroke-linecap:round; }
+  .ring-base { fill:none; stroke:#6d2a08; stroke-opacity:.48; stroke-width:1; }
+  .ring-active { fill:none; stroke:#ff841a; stroke-opacity:.82; stroke-width:2.15; stroke-linecap:round; }
+  .ring-thin { fill:none; stroke:#ff9a26; stroke-opacity:.36; stroke-width:.75; stroke-linecap:round; }
+  .ring-faint { fill:none; stroke:#ff7a18; stroke-opacity:.18; stroke-width:.45; stroke-linecap:round; }
+</style>
+
+
+<g id="sidebar_revb_left_sidebar_equal_spacing">
+<path id="sidebar_revb_outer_chamfer_rail" d="M 9.8077 0 L 35.1923 0 L 45 15.6907 L 45 715.3093 L 35.1923 731 L 9.8077 731 L 0 715.3093 L 0 15.6907 L 9.8077 0 Z" class="hud-primary" />
+<path id="sidebar_revb_inner_fine_rail" d="M 10.9615 7.3838 L 34.0385 7.3838 L 40.9615 18.4596 L 40.9615 712.5404 L 34.0385 723.6162 L 10.9615 723.6162 L 4.0385 712.5404 L 4.0385 18.4596 L 10.9615 7.3838 Z" class="hud-hair" />
+<path id="sidebar_revb_active_slot_empty" d="M 10.3846 32.3043 L 34.6154 32.3043 L 40.3846 41.5341 L 40.3846 80.2992 L 34.6154 89.529 L 10.3846 89.529 L 4.6154 80.2992 L 4.6154 41.5341 L 10.3846 32.3043 Z" class="hud-heavy" />
+<path id="sidebar_revb_active_slot_inner" d="M 12.1154 37.8422 L 32.8846 37.8422 L 36.9231 44.303 L 36.9231 77.5303 L 32.8846 83.9912 L 12.1154 83.9912 L 8.0769 77.5303 L 8.0769 44.303 L 12.1154 37.8422 Z" class="hud-hair" />
+<g id="sidebar_revb_icon_01" data-equal-spacing-y="60.9167">
+<rect x="15.8654" y="50.3024" width="5.1923" height="8.3068" rx="1.0385" class="icon" ry="1.6614" id="sidebar_revb_icon_01_rect_01" />
+<rect x="15.8654" y="63.2241" width="5.1923" height="8.3068" rx="1.0385" class="icon" ry="1.6614" id="sidebar_revb_icon_01_rect_02" />
+<rect x="23.9423" y="50.3024" width="5.1923" height="8.3068" rx="1.0385" class="icon" ry="1.6614" id="sidebar_revb_icon_01_rect_03" />
+<rect x="23.9423" y="63.2241" width="5.1923" height="8.3068" rx="1.0385" class="icon" ry="1.6614" id="sidebar_revb_icon_01_rect_04" />
+</g>
+<g id="sidebar_revb_icon_02" data-equal-spacing-y="127.3712">
+<ellipse cx="22.5" cy="127.3712" class="icon" rx="9.2308" ry="14.7677" id="sidebar_revb_icon_02_ellipse_01" />
+<path d="M 13.2692 127.3712 H 31.7308 M 22.5 112.6035 C 17.3077 121.8333 17.3077 132.9091 22.5 142.1389 M 22.5 112.6035 C 27.6923 121.8333 27.6923 132.9091 22.5 142.1389" class="icon-secondary" id="sidebar_revb_icon_02_path_01" />
+</g>
+<g id="sidebar_revb_icon_03" data-equal-spacing-y="193.8258">
+<path d="M 15 196.5947 C 11.5385 186.4419 17.3077 177.2121 22.5 181.827 C 27.1154 176.2891 33.4615 186.4419 30 196.5947 C 34.0385 204.9015 27.1154 212.2854 22.5 205.8245 C 17.8846 212.2854 10.9615 204.9015 15 196.5947 Z" class="icon" id="sidebar_revb_icon_03_path_01" />
+<path d="M 22.5 181.827 V 205.8245 M 16.7308 191.9798 H 28.2692 M 18.4615 201.2096 H 26.5385" class="icon-secondary" id="sidebar_revb_icon_03_path_02" />
+</g>
+<g id="sidebar_revb_icon_04" data-equal-spacing-y="260.2803">
+<polygon points="22.5,244.5896 24.8654,255.0193 31.8462,255.3885 26.3654,262.3109 28.2692,273.0174 22.5,266.7412 16.7308,273.0174 18.6346,262.3109 13.1538,255.3885 20.1346,255.0193" class="icon" id="sidebar_revb_icon_04_polygon_01" />
+</g>
+<g id="sidebar_revb_icon_05" data-equal-spacing-y="326.7348">
+<path d="M 14.4231 335.0417 H 30.5769 C 28.2692 331.3497 27.6923 324.8889 27.6923 319.351 C 27.6923 312.8902 17.3077 312.8902 17.3077 319.351 C 17.3077 324.8889 16.7308 331.3497 14.4231 335.0417 Z" class="icon" id="sidebar_revb_icon_05_path_01" />
+<path d="M 19.6154 338.7336 C 21.3462 342.4255 23.6538 342.4255 25.3846 338.7336" class="icon-secondary" id="sidebar_revb_icon_05_path_02" />
+</g>
+<g id="sidebar_revb_icon_06" data-equal-spacing-y="393.1894">
+<rect x="12.6923" y="383.9596" width="19.6154" height="22.1515" rx="1.7308" class="icon" ry="2.7689" id="sidebar_revb_icon_06_rect_01" />
+<path d="M 18.4615 383.9596 V 378.4217 H 26.5385 V 383.9596 M 12.6923 391.3434 H 32.3077" class="icon-secondary" id="sidebar_revb_icon_06_path_01" />
+</g>
+<g id="sidebar_revb_icon_07" data-equal-spacing-y="459.6439">
+<path d="M 15.5769 443.9533 H 26.5385 L 30.5769 450.4141 V 475.3346 H 15.5769 Z" class="icon" id="sidebar_revb_icon_07_path_01" />
+<path d="M 26.5385 443.9533 V 450.4141 H 30.5769 M 19.0385 456.875 H 26.5385 M 19.0385 464.2588 H 26.5385" class="icon-secondary" id="sidebar_revb_icon_07_path_02" />
+</g>
+<g id="sidebar_revb_icon_08" data-equal-spacing-y="526.0985">
+<rect x="13.2692" y="514.0997" width="18.4615" height="25.8434" rx="1.7308" class="icon" ry="2.7689" id="sidebar_revb_icon_08_rect_01" />
+<path d="M 13.2692 521.4836 H 31.7308 M 17.8846 509.4848 V 516.8687 M 27.1154 509.4848 V 516.8687" class="icon-secondary" id="sidebar_revb_icon_08_path_01" />
+</g>
+<g id="sidebar_revb_icon_09" data-equal-spacing-y="592.553">
+<path d="M 12.1154 588.8611 L 22.5 579.6313 L 32.8846 588.8611 L 22.5 598.0909 Z" class="icon" id="sidebar_revb_icon_09_path_01" />
+<path d="M 16.7308 594.399 V 602.7058 C 20.7692 607.3207 24.2308 607.3207 28.2692 602.7058 V 594.399" class="icon-secondary" id="sidebar_revb_icon_09_path_02" />
+</g>
+<g id="sidebar_revb_icon_10" data-equal-spacing-y="659.0076">
+<ellipse cx="22.5" cy="659.0076" class="icon-secondary" rx="3.4615" ry="5.5379" id="sidebar_revb_icon_10_ellipse_01" />
+<path d="M 22.5 647.9318 L 22.5 642.3939" class="icon" id="sidebar_revb_icon_10_path_01" />
+<path d="M 27.4038 651.1622 L 29.8269 647.2857" class="icon" id="sidebar_revb_icon_10_path_02" />
+<path d="M 29.4231 659.0076 L 32.8846 659.0076" class="icon" id="sidebar_revb_icon_10_path_03" />
+<path d="M 27.4038 666.8529 L 29.8269 670.7294" class="icon" id="sidebar_revb_icon_10_path_04" />
+<path d="M 22.5 670.0833 L 22.5 675.6212" class="icon" id="sidebar_revb_icon_10_path_05" />
+<path d="M 17.5962 666.8529 L 15.1731 670.7294" class="icon" id="sidebar_revb_icon_10_path_06" />
+<path d="M 15.5769 659.0076 L 12.1154 659.0076" class="icon" id="sidebar_revb_icon_10_path_07" />
+<path d="M 17.5962 651.1622 L 15.1731 647.2857" class="icon" id="sidebar_revb_icon_10_path_08" />
+</g>
+<path id="sidebar_revb_top_cap_accent" d="M 11.5385 0.923 H 33.4615" class="hud-heavy" />
+<path id="sidebar_revb_bottom_cap_accent" d="M 11.5385 730.077 H 33.4615" class="hud-heavy" />
+</g>
+</svg>
