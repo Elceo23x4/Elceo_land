@@ -24,6 +24,8 @@ import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
 import DirectionalBiasRadar from "./panelContent/DirectionalBiasRadar";
 import NewsImpactBadge from "./panelContent/NewsImpactBadge";
 import MarketPulseCard from "./panelContent/MarketPulseCard";
+import MarketRegimeTable from "./panelContent/MarketRegimeTable";
+import type { MarketRegimeTableRow } from "./panelContent/MarketRegimeTable";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
@@ -411,9 +413,12 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Cross-Asset", "Liquidity", "Volatility", "Correlation"]} active={regimeMode} onSelect={setRegimeMode} />
           {regimeMode === 0 && (<>
-            <DataRow label="Driver" value={crossAsset.dominantDriver} tone="neutral" />
-            <DataRow label="Risk tone" value={crossAsset.riskTone} tone={cognition.scenarioTone} />
-            {crossAsset.pressureMap.map((p) => <DataRow key={p.id} label={p.label} value={p.value} tone={p.tone} />)}
+            <MarketRegimeTable rows={[
+              { driver: crossAsset.dominantDriver, riskTone: crossAsset.riskTone, usdLink: crossAsset.usdLink, liquidity: crossAsset.liquidityLink, volatility: crossAsset.volatilityLink, relationship: crossAsset.correlationNote, tone: cognition.scenarioTone },
+              ...crossAsset.alignedAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↗`, riskTone: a.relationship, usdLink: a.driver, liquidity: crossAsset.liquidityLink, volatility: crossAsset.volatilityLink, relationship: a.implication, tone: a.tone })),
+              ...crossAsset.divergingAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↔`, riskTone: a.relationship, usdLink: a.driver, liquidity: crossAsset.liquidityLink, volatility: crossAsset.volatilityLink, relationship: a.implication, tone: a.tone })),
+              ...crossAsset.inverseAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↘`, riskTone: a.relationship, usdLink: a.driver, liquidity: crossAsset.liquidityLink, volatility: crossAsset.volatilityLink, relationship: a.implication, tone: a.tone })),
+            ]} />
           </>)}
           {regimeMode === 1 && (<>
             <DataRow label="Liquidity" value={crossAsset.liquidityLink} tone="positive" />
@@ -429,9 +434,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {regimeMode === 3 && (<>
             <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
-            {crossAsset.alignedAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↗`} value={a.driver} tone={a.tone} />)}
-            {crossAsset.divergingAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↔`} value={a.driver} tone={a.tone} />)}
-            {crossAsset.inverseAssets.map((a) => <DataRow key={a.id} label={`${a.asset} ↘`} value={a.driver} tone={a.tone} />)}
+            <MarketRegimeTable compact rows={[
+              ...crossAsset.alignedAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↗`, riskTone: a.relationship, usdLink: a.driver, liquidity: `${a.strength}%`, volatility: a.reviewCue, relationship: a.implication, tone: a.tone })),
+              ...crossAsset.divergingAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↔`, riskTone: a.relationship, usdLink: a.driver, liquidity: `${a.strength}%`, volatility: a.reviewCue, relationship: a.implication, tone: a.tone })),
+              ...crossAsset.inverseAssets.map((a): MarketRegimeTableRow => ({ driver: `${a.asset} ↘`, riskTone: a.relationship, usdLink: a.driver, liquidity: `${a.strength}%`, volatility: a.reviewCue, relationship: a.implication, tone: a.tone })),
+            ]} />
           </>)}
           <ActionBar onExpand={() => openDrawer("Regime", "Market Regime Detail", "regime")} />
         </>} />

@@ -164,6 +164,9 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - Watchlist Featured assets should use Market Pulse Card visual system when available.
 - Market pulse card SVG source must not be edited.
 - Card grids must wrap responsively and avoid horizontal overflow.
+- Market Regime cross-asset information should prefer table/structured comparison format.
+- Tables must collapse responsively and must not force horizontal overflow.
+- Dashboard table text must not go below 0.78rem.
 
 ---
 

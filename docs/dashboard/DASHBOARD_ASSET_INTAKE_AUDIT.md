@@ -308,4 +308,21 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 ---
 
+## V1B-7 — Market Regime Cross-Asset Table Conversion
+
+| Item | Detail |
+|------|--------|
+| Cross-Asset mode | Converted from scattered DataRows to 6-column table |
+| Headings | Driver, Risk Tone, USD Link, Liquidity, Volatility, Relationship |
+| Correlation mode | Also uses compact table (4-column, hides Liquidity/Volatility) |
+| Responsive | Container queries: 380px→3col, 260px→2col. Ellipsis on overflow. |
+| Component | `src/dashboard/responsive/panelContent/MarketRegimeTable.tsx` |
+| Table class | `.dashboard-regime-table` |
+| Tone styling | Uses Chip component for Risk Tone column |
+| Drawer changes | None (skipped — low risk tolerance) |
+| No geometry changes | Confirmed |
+| No intelligence logic changes | Confirmed |
+
+---
+
 _This document is the implementation contract for the V1B visual elevation phase. Do not implement until the corresponding batch is started._
