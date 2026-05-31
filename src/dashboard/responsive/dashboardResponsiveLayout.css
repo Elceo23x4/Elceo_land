@@ -1453,3 +1453,166 @@
     animation: none;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DIRECTIONAL BIAS RADAR — V1B-4C Arrow Overlay + Neutral Scan Animation
+   Uses elceo-radar.svg at intended 141×130 display size.
+   Arrow overlay uses actual elceo-svg-14-arrow-up/down SVGs.
+   Neutral/Watching state shows a realistic radar scan over the core.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-bias-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(8px, 1.2cqi, 14px);
+}
+
+.dashboard-bias-content-main {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.dashboard-bias-content-visual {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Radar container (position context for overlays) ─── */
+.dashboard-directional-bias-radar {
+  position: relative;
+  width: min(141px, 36cqi);
+  aspect-ratio: 141 / 130;
+  height: auto;
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+/* ─── Radar asset layer (z-index: 1) ─── */
+.dashboard-directional-bias-radar__asset {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.dashboard-directional-bias-radar__asset svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Neutral scan overlay (z-index: 2) ─── */
+.dashboard-directional-bias-radar__neutral-scan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Core glow pulse */
+.dashboard-directional-bias-radar__scan-core {
+  opacity: 0.42;
+  animation: dashboardRadarScanCorePulse 2.4s ease-in-out infinite;
+}
+
+/* Rotating scan wedge — rotation handled by SVG animateTransform */
+.dashboard-directional-bias-radar__scan-rotor {
+  opacity: 0.48;
+}
+
+/* ─── Arrow overlay layer (z-index: 3) ─── */
+.dashboard-directional-bias-radar__arrow {
+  position: absolute;
+  inset: 28%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.88;
+  animation: dashboardRadarArrowFloat 2.8s ease-in-out infinite;
+}
+
+.dashboard-directional-bias-radar__arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Radar core animation — pulse/brightness ─── */
+.dashboard-directional-bias-radar__asset svg #svg14_radar_core {
+  animation: dashboardDirectionalRadarCore 2.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ─── First ring animation — subtle breath ─── */
+.dashboard-directional-bias-radar__asset svg #svg14_first_ring_layer {
+  animation: dashboardDirectionalRadarInner 4.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ─── Outer ring animation — slow opacity pulse ─── */
+.dashboard-directional-bias-radar__asset svg #svg14_outer_ring_layer {
+  animation: dashboardDirectionalRadarOuter 6.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ─── Keyframes: Radar Core — pulse brightness ─── */
+@keyframes dashboardDirectionalRadarCore {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.78; filter: brightness(1.12); }
+}
+
+/* ─── Keyframes: Inner ring — breath scale ─── */
+@keyframes dashboardDirectionalRadarInner {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.84; transform: scale(0.98); }
+}
+
+/* ─── Keyframes: Outer ring — slow mild opacity ─── */
+@keyframes dashboardDirectionalRadarOuter {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+/* ─── Keyframes: Arrow float — subtle directional drift ─── */
+@keyframes dashboardRadarArrowFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.88; }
+  50% { transform: translateY(-1px); opacity: 0.94; }
+}
+
+/* ─── Keyframes: Neutral scan core pulse ─── */
+@keyframes dashboardRadarScanCorePulse {
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 0.28; }
+}
+
+/* ─── Reduced motion: disable all radar/arrow/scan animation ─── */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-directional-bias-radar__asset svg #svg14_radar_core,
+  .dashboard-directional-bias-radar__asset svg #svg14_first_ring_layer,
+  .dashboard-directional-bias-radar__asset svg #svg14_outer_ring_layer {
+    animation: none;
+  }
+
+  .dashboard-directional-bias-radar__arrow {
+    animation: none;
+  }
+
+  .dashboard-directional-bias-radar__scan-core {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  /* SVG animateTransform cannot be paused via CSS — hide rotor, keep static glow */
+  .dashboard-directional-bias-radar__scan-rotor {
+    display: none;
+  }
+}

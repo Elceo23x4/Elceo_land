@@ -260,4 +260,20 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 ---
 
+## V1B-4 — Directional Bias Radar Clean Restart
+
+| Item | Detail |
+|------|--------|
+| Asset used | `src/assets/source/dashboard/arrows/elceo-radar.svg` |
+| Old asset NOT used | `elceo-svg-14-radar-ring.svg` — not imported in this batch |
+| SVG source edits | None — asset used as-is |
+| Custom recreation | None — no hand-drawn paths/circles/polygons |
+| Display size | 141×130px (responsive via `min(141px, 36cqi)` with `aspect-ratio: 141/130`) |
+| Placement | Right side of Directional Bias panel, Bias mode (biasMode 0) |
+| Animation | Subtle core pulse on `#svg14_radar_core` group, disabled under `prefers-reduced-motion` |
+| Component | `src/dashboard/responsive/panelContent/DirectionalBiasRadar.tsx` |
+| Layout classes | `.dashboard-bias-content-row`, `.dashboard-bias-content-main`, `.dashboard-bias-content-visual` |
+
+---
+
 _This document is the implementation contract for the V1B visual elevation phase. Do not implement until the corresponding batch is started._
