@@ -1457,13 +1457,13 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DIRECTIONAL BIAS VISUAL — Real SVG-14 radar + arrow (panel-scoped)
+   DIRECTIONAL BIAS VISUAL — Actual SVG-14 radar + arrow only (panel-scoped)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-directional-bias-visual {
   position: relative;
-  width: clamp(72px, 12cqi, 108px);
-  height: clamp(72px, 12cqi, 108px);
+  width: clamp(78px, 13cqi, 118px);
+  height: clamp(78px, 13cqi, 118px);
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -1472,7 +1472,6 @@
   position: absolute;
   inset: 0;
   z-index: 1;
-  opacity: 0.7;
 }
 
 .dashboard-directional-bias-visual__radar svg {
@@ -1481,30 +1480,29 @@
   display: block;
 }
 
+/* Animate actual SVG-14 internal groups */
 .dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"] {
-  animation: dashboardRadarCorePulse 2.6s ease-in-out infinite;
+  animation: dashboardRadarCorePulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.dashboard-directional-bias-visual__scan {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
+.dashboard-directional-bias-visual__radar svg [id="svg14_first_ring_layer"] {
+  animation: dashboardRadarInnerBreath 4.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
-.dashboard-directional-bias-visual__scan-rotor {
-  transform-origin: 256px 256px;
-  animation: dashboardRadarScanRotate 3.8s linear infinite;
-}
-
-.dashboard-directional-bias-visual__scan-center {
-  animation: dashboardRadarCenterPulse 2.4s ease-in-out infinite;
+.dashboard-directional-bias-visual__radar svg [id="svg14_outer_ring_layer"] {
+  animation: dashboardRadarOuterBreath 6.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 .dashboard-directional-bias-visual__arrow {
   position: absolute;
-  inset: 26%;
-  z-index: 3;
+  inset: 28%;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -1514,45 +1512,31 @@
   display: block;
 }
 
-.dashboard-directional-bias-visual--positive .dashboard-directional-bias-visual__radar {
-  opacity: 0.75;
-}
-
-.dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar {
-  opacity: 0.6;
-}
-
-.dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar {
-  opacity: 0.55;
-}
-
-.dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar {
-  opacity: 0.4;
-}
-
-@keyframes dashboardRadarScanRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* Tone-based radar presence */
+.dashboard-directional-bias-visual--positive .dashboard-directional-bias-visual__radar { opacity: 1; }
+.dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar { opacity: 0.85; }
+.dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar { opacity: 0.85; }
+.dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar { opacity: 0.75; }
 
 @keyframes dashboardRadarCorePulse {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.06); }
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 
-@keyframes dashboardRadarCenterPulse {
-  0%, 100% { opacity: 0.8; r: 6; }
-  50% { opacity: 1; r: 8; }
+@keyframes dashboardRadarInnerBreath {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.025); }
+}
+
+@keyframes dashboardRadarOuterBreath {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.015); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dashboard-directional-bias-visual__scan-rotor {
-    animation: none;
-  }
-  .dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"] {
-    animation: none;
-  }
-  .dashboard-directional-bias-visual__scan-center {
+  .dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"],
+  .dashboard-directional-bias-visual__radar svg [id="svg14_first_ring_layer"],
+  .dashboard-directional-bias-visual__radar svg [id="svg14_outer_ring_layer"] {
     animation: none;
   }
 }
