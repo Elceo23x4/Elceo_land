@@ -1513,7 +1513,7 @@
   height: 100%;
   z-index: 2;
   pointer-events: none;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* Core glow pulse */
@@ -1522,12 +1522,9 @@
   animation: dashboardRadarScanCorePulse 2.4s ease-in-out infinite;
 }
 
-/* Rotating scan wedge */
+/* Rotating scan wedge — rotation handled by SVG animateTransform */
 .dashboard-directional-bias-radar__scan-rotor {
-  transform-box: fill-box;
-  transform-origin: 70.5px 63.5px;
   opacity: 0.48;
-  animation: dashboardRadarScanRotate 3.2s linear infinite;
 }
 
 /* ─── Arrow overlay layer (z-index: 3) ─── */
@@ -1597,12 +1594,6 @@
   50% { opacity: 0.28; }
 }
 
-/* ─── Keyframes: Neutral scan sweep rotation ─── */
-@keyframes dashboardRadarScanRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* ─── Reduced motion: disable all radar/arrow/scan animation ─── */
 @media (prefers-reduced-motion: reduce) {
   .dashboard-directional-bias-radar__asset svg #svg14_radar_core,
@@ -1620,8 +1611,8 @@
     opacity: 0.3;
   }
 
+  /* SVG animateTransform cannot be paused via CSS — hide rotor, keep static glow */
   .dashboard-directional-bias-radar__scan-rotor {
-    animation: none;
-    opacity: 0.25;
+    display: none;
   }
 }
