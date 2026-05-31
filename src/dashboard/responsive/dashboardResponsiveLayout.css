@@ -1453,3 +1453,111 @@
     animation: none;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   DIRECTIONAL BIAS VISUAL — Actual SVG-14 radar + arrow only (panel-scoped)
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-directional-bias-visual {
+  position: relative;
+  width: clamp(92px, 15cqi, 140px);
+  height: clamp(92px, 15cqi, 140px);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.dashboard-directional-bias-visual__radar {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 1;
+}
+
+.dashboard-directional-bias-visual__radar svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Animate actual SVG-14 internal groups */
+.dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"] {
+  animation: dashboardRadarCorePulse 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dashboard-directional-bias-visual__radar svg [id="svg14_first_ring_layer"] {
+  animation: dashboardRadarInnerBreath 4.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dashboard-directional-bias-visual__radar svg [id="svg14_outer_ring_layer"] {
+  animation: dashboardRadarOuterBreath 6.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dashboard-directional-bias-visual__arrow {
+  position: absolute;
+  inset: 36%;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.78;
+}
+
+.dashboard-directional-bias-visual__arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Tone-based radar presence — radar dominates visually */
+.dashboard-directional-bias-visual--positive .dashboard-directional-bias-visual__radar { opacity: 1; }
+.dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar { opacity: 0.9; }
+.dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar { opacity: 0.9; }
+.dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar { opacity: 0.8; }
+
+@keyframes dashboardRadarCorePulse {
+  0%, 100% { opacity: 0.88; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes dashboardRadarInnerBreath {
+  0%, 100% { opacity: 0.82; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.02); }
+}
+
+@keyframes dashboardRadarOuterBreath {
+  0%, 100% { opacity: 0.72; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.012); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"],
+  .dashboard-directional-bias-visual__radar svg [id="svg14_first_ring_layer"],
+  .dashboard-directional-bias-visual__radar svg [id="svg14_outer_ring_layer"] {
+    animation: none;
+  }
+}
+
+/* Layout helper for bias panel: text left, visual right */
+.dashboard-bias-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(6px, 1cqi, 12px);
+}
+
+.dashboard-bias-content-row__text {
+  flex: 1;
+  min-width: 0;
+}
+
+.dashboard-bias-content-row__visual {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
