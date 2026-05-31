@@ -273,6 +273,8 @@
 }
 
 .dashboard-section-nav__item {
+  all: unset;
+  box-sizing: border-box;
   font-family: var(--font-mono);
   font-size: var(--dashboard-font-xs);
   font-weight: 700;
@@ -292,41 +294,70 @@
   border-bottom-color: rgba(212, 168, 83, 0.6);
 }
 
-/* ─── Section Nav Arrows ─── */
-.dashboard-section-nav-arrow {
+/* ─── Premium Section Nav Scroll Cue (V1B-8B) ─── */
+.dashboard-section-nav-cue {
   all: unset;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  border-radius: 50%;
-  background: rgba(10, 8, 4, 0.6);
-  border: 1px solid rgba(212, 168, 83, 0.25);
-  color: #d4a853;
+  position: relative;
+  width: 24px;
+  height: 20px;
+  flex: 0 0 24px;
   cursor: pointer;
-  z-index: 2;
-  transition: border-color 0.12s, background 0.12s;
-}
-
-.dashboard-section-nav-arrow:hover {
-  border-color: rgba(255, 215, 106, 0.55);
-  background: rgba(212, 168, 83, 0.08);
-}
-
-.dashboard-section-nav-arrow:focus-visible {
-  outline: 1px solid rgba(212, 168, 83, 0.6);
-  outline-offset: 1px;
-}
-
-.dashboard-section-nav-arrow--left {
-  margin-right: 4px;
-}
-
-.dashboard-section-nav-arrow--right {
   margin-left: 4px;
+  clip-path: polygon(12% 0%, 88% 0%, 100% 30%, 100% 70%, 88% 100%, 12% 100%, 0% 70%, 0% 30%);
+  background: linear-gradient(135deg, rgba(8, 6, 4, 0.85), rgba(20, 14, 6, 0.75));
+  border: 1px solid rgba(255, 191, 74, 0.38);
+  z-index: 2;
+  overflow: hidden;
+  transition: border-color 0.12s;
+}
+
+.dashboard-section-nav-cue:hover {
+  border-color: rgba(255, 215, 106, 0.65);
+}
+
+.dashboard-section-nav-cue:focus-visible {
+  outline: 1.5px solid rgba(255, 191, 74, 0.6);
+  outline-offset: 2px;
+}
+
+.dashboard-section-nav-cue--left {
+  margin-left: 0;
+  margin-right: 4px;
+  order: -1;
+}
+
+.dashboard-section-nav-cue__glyph {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffd76a;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-section-nav-cue__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 191, 74, 0.12) 50%, transparent 70%);
+  animation: sectionNavCueShine 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sectionNavCueShine {
+  0%, 100% { transform: translateX(-100%); opacity: 0.4; }
+  50% { transform: translateX(100%); opacity: 0.8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-section-nav-cue__shine {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 /* Legacy: keep old class name working if referenced anywhere */
@@ -842,7 +873,7 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   CUSTOM SCROLL FRAME — ELCEO HUD scroll indicator
+   CUSTOM SCROLL FRAME — ELCEO HUD premium scroll indicator (V1B-8B)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-scroll-frame {
@@ -859,6 +890,7 @@
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  scroll-behavior: smooth;
 }
 
 .dashboard-scroll-frame__viewport::-webkit-scrollbar {
@@ -866,27 +898,71 @@
   height: 0;
 }
 
-.dashboard-scroll-frame__rail--y {
+/* ─── Edge Fades (context indicators) ─── */
+.dashboard-scroll-frame__fade {
   position: absolute;
-  top: 4px;
+  left: 0;
+  right: 8px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.dashboard-scroll-frame__fade--top {
+  top: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 4, 0.55), transparent);
+}
+
+.dashboard-scroll-frame__fade--bottom {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(5, 5, 4, 0.55), transparent);
+}
+
+/* ─── Premium Scroll Rail ─── */
+.dashboard-scroll-frame__rail {
+  position: absolute;
+  top: 6px;
   right: 1px;
-  bottom: 4px;
-  width: 3px;
+  bottom: 6px;
+  width: 5px;
   border-radius: 999px;
-  background: linear-gradient(180deg, transparent, rgba(255, 191, 74, 0.08), transparent);
+  background: rgba(255, 138, 18, 0.04);
   pointer-events: none;
   z-index: 18;
 }
 
+/* ─── Premium Scroll Capsule Thumb ─── */
 .dashboard-scroll-frame__thumb {
   position: absolute;
   left: 0;
   right: 0;
-  min-height: 8px;
+  min-height: 14px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 214, 126, 0.75), rgba(255, 106, 0, 0.35));
-  box-shadow: 0 0 6px rgba(255, 136, 32, 0.18);
-  transition: opacity 0.2s;
+  background: rgba(8, 6, 4, 0.7);
+  border: 1px solid rgba(255, 191, 74, 0.4);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 214, 126, 0.15),
+    0 0 6px rgba(255, 136, 32, 0.15);
+  transition: opacity 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.dashboard-scroll-frame__thumb-core {
+  display: block;
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 20%;
+  bottom: 20%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 214, 126, 0.7), rgba(255, 106, 0, 0.4));
+}
+
+.dashboard-scroll-frame:hover .dashboard-scroll-frame__thumb {
+  border-color: rgba(255, 215, 106, 0.6);
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 214, 126, 0.25),
+    0 0 10px rgba(255, 136, 32, 0.25);
 }
 
 

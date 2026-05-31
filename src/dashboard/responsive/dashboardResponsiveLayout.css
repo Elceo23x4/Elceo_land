@@ -758,23 +758,8 @@
 }
 
 .dashboard-precision-content-slot--body {
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
+  overflow: hidden;
   min-height: 0;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar {
-  width: 4px;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
-  background: rgba(138, 129, 120, 0.3);
-  border-radius: 2px;
 }
 
 /* ─── Topbar ─── */
@@ -1297,19 +1282,7 @@
   color: #d4a853;
 }
 
-/* ─── Panel scrollbar: amber/gold thumb for premium feel ─── */
-.dashboard-precision-content-slot--body {
-  scrollbar-color: rgba(212, 168, 83, 0.28) transparent;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
-  background: rgba(212, 168, 83, 0.28);
-  border-radius: 3px;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.45);
-}
+/* ─── Panel scrollbar: handled by ScrollFrame — native bar hidden ─── */
 
 /* ─── Drawer scrollbar: same premium treatment ─── */
 .dashboard-detail-drawer__body {
@@ -2239,40 +2212,6 @@
   }
 }
 
-/* ─── Panel body: prefer vertical scroll, never horizontal ─── */
-.dashboard-precision-content-slot--body {
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+/* ─── Panel body scroll: owned by ScrollFrame, body slot is overflow:hidden ─── */
 
-/* ─── Smooth scroll behavior for panel bodies ─── */
-.dashboard-precision-content-slot--body {
-  scroll-behavior: smooth;
-}
-
-/* ─── Panel body scroll edge fade (top/bottom) ─── */
-.dashboard-panel-group__body {
-  position: relative;
-}
-
-.dashboard-panel-group__body::before,
-.dashboard-panel-group__body::after {
-  content: "";
-  position: sticky;
-  left: 0;
-  right: 0;
-  height: 12px;
-  pointer-events: none;
-  z-index: 5;
-  display: block;
-}
-
-.dashboard-panel-group__body::before {
-  top: 0;
-  background: linear-gradient(180deg, rgba(5, 5, 4, 0.6), transparent);
-}
-
-.dashboard-panel-group__body::after {
-  bottom: 0;
-  background: linear-gradient(0deg, rgba(5, 5, 4, 0.6), transparent);
-}
+/* ─── Panel body scroll edge fade — handled by ScrollFrame internally ─── */

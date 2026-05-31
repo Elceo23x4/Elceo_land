@@ -1,13 +1,13 @@
 /**
  * PanelSectionNav.tsx
  *
- * V1B-8: Scrollable section nav with overflow arrows + framer-motion.
- * Detects overflow, shows left/right arrows, scrolls to reveal hidden tabs.
- * Active tab auto-scrolls into view.
+ * V1B-8B: Scrollable section nav with single adaptive premium scroll cue.
+ * Detects overflow, shows one HUD-style cue that changes direction.
+ * Uses useReducedMotion for accessibility.
  */
 
 import { useRef, useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export interface PanelSectionNavProps {
   items: string[];
@@ -19,6 +19,7 @@ export default function PanelSectionNav({ items, active, onSelect }: PanelSectio
   const railRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
+  const reduceMotion = useReducedMotion();
 
   const checkOverflow = useCallback(() => {
     const el = railRef.current;
@@ -46,72 +47,72 @@ export default function PanelSectionNav({ items, active, onSelect }: PanelSectio
     if (!el) return;
     const activeTab = el.children[active] as HTMLElement | undefined;
     if (activeTab) {
-      activeTab.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+      const tabLeft = activeTab.offsetLeft;
+      const tabRight = tabLeft + activeTab.offsetWidth;
+      const visibleLeft = el.scrollLeft;
+      const visibleRight = visibleLeft + el.clientWidth;
+      if (tabLeft < visibleLeft || tabRight > visibleRight) {
+        activeTab.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+      }
     }
   }, [active]);
 
-  const scrollBy = useCallback((dir: 1 | -1) => {
+  /* Single adaptive cue: right when can scroll right, left when at end */
+  const cueDirection: "right" | "left" | null =
+    canScrollRight ? "right" : canScrollLeft ? "left" : null;
+
+  const handleCueClick = useCallback(() => {
     const el = railRef.current;
     if (!el) return;
-    el.scrollBy({ left: dir * el.clientWidth * 0.6, behavior: "smooth" });
-  }, []);
+    if (cueDirection === "right") {
+      el.scrollBy({ left: el.clientWidth * 0.7, behavior: "smooth" });
+    } else {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }, [cueDirection]);
+
+  const cueLabel = cueDirection === "right"
+    ? "Reveal more section tabs"
+    : "Return to earlier section tabs";
 
   return (
     <div className="dashboard-section-nav-shell">
-      {/* Left arrow */}
-      <AnimatePresence>
-        {canScrollLeft && (
-          <motion.button
-            key="arrow-left"
-            className="dashboard-section-nav-arrow dashboard-section-nav-arrow--left"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 0.15 }}
-            onClick={() => scrollBy(-1)}
-            aria-label="Scroll tabs left"
-            type="button"
-          >
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-              <path d="M7 1L3 5L7 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
       {/* Tab rail */}
       <div ref={railRef} className="dashboard-section-nav-scroll">
         {items.map((item, i) => (
-          <span
+          <button
             key={item}
+            type="button"
             className={`dashboard-section-nav__item${i === active ? " dashboard-section-nav__item--active" : ""}`}
             onClick={() => onSelect(i)}
             role="tab"
-            tabIndex={0}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onSelect(i); }}
+            aria-selected={i === active}
+            tabIndex={i === active ? 0 : -1}
           >
             {item}
-          </span>
+          </button>
         ))}
       </div>
 
-      {/* Right arrow */}
+      {/* Single adaptive premium scroll cue */}
       <AnimatePresence>
-        {canScrollRight && (
+        {cueDirection && (
           <motion.button
-            key="arrow-right"
-            className="dashboard-section-nav-arrow dashboard-section-nav-arrow--right"
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7 }}
-            transition={{ duration: 0.15 }}
-            onClick={() => scrollBy(1)}
-            aria-label="Scroll tabs right"
+            key="section-cue"
+            className={`dashboard-section-nav-cue dashboard-section-nav-cue--${cueDirection}`}
+            initial={reduceMotion ? { opacity: 1 } : { opacity: 0, x: cueDirection === "right" ? -4 : 4 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: cueDirection === "right" ? 4 : -4 }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 0.15, ease: "easeOut" }}
+            onClick={handleCueClick}
+            aria-label={cueLabel}
+            title={cueLabel}
             type="button"
           >
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-              <path d="M3 1L7 5L3 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span className="dashboard-section-nav-cue__glyph" aria-hidden="true">
+              {cueDirection === "right" ? "»" : "«"}
+            </span>
+            <span className="dashboard-section-nav-cue__shine" aria-hidden="true" />
           </motion.button>
         )}
       </AnimatePresence>
