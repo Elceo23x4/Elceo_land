@@ -1,8 +1,9 @@
 /**
  * DashboardAlertBellIcon.tsx
  *
- * Designed bell icon extracted from elceo-svg-09-arrows-alerts-rings.svg.
- * Normalized to 24x24 viewBox. Uses currentColor. No source SVG edits.
+ * Designed bell icon for panel alert buttons.
+ * Sized to fill ~70% of button area. Uses currentColor.
+ * No source SVG edits. Stroke-based for clarity.
  */
 
 export interface DashboardAlertBellIconProps {
@@ -12,23 +13,24 @@ export interface DashboardAlertBellIconProps {
 
 export default function DashboardAlertBellIcon({ className }: DashboardAlertBellIconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden="true">
+    <svg viewBox="0 0 20 20" fill="none" className={className} aria-hidden="true">
       <path
-        d="M10.2 17.5 C10.8 14.2 11.5 11.5 12 11.2 C12.5 11.5 13.2 14.2 13.8 17.5"
+        d="M6.5 14 C6.5 14 7.2 12.5 7.5 10.5 C7.8 8.5 8.2 6.2 10 5.5 C11.8 6.2 12.2 8.5 12.5 10.5 C12.8 12.5 13.5 14 13.5 14"
         stroke="currentColor"
-        strokeWidth="1.6"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.5 14 H14.5"
+        stroke="currentColor"
+        strokeWidth="1.8"
         strokeLinecap="round"
       />
       <path
-        d="M9.2 17.5 H14.8"
+        d="M8.8 16.2 Q10 17.5 11.2 16.2"
         stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-      <path
-        d="M11.1 19 Q12 20 12.9 19"
-        stroke="currentColor"
-        strokeWidth="1.2"
+        strokeWidth="1.4"
         strokeLinecap="round"
         fill="none"
       />
