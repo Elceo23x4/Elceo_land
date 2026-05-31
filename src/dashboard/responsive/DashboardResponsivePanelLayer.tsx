@@ -22,6 +22,7 @@ import {
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
 import DirectionalBiasRadar from "./panelContent/DirectionalBiasRadar";
+import NewsImpactBadge from "./panelContent/NewsImpactBadge";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
@@ -317,19 +318,19 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Headlines", "Events", "Currency", "Macro Pulse"]} active={newsMode} onSelect={setNewsMode} />
           {newsMode === 0 && (
-            <div className="dashboard-news-timeline">
-              {newsFixture.map((h, i) => (
-                <HoverPreviewCard key={h.title} className={i % 2 === 0 ? "dashboard-news-timeline__left" : "dashboard-news-timeline__right"}
-                  trigger={<div className="dashboard-news-timeline__item"><span className={`dashboard-news-timeline__dot dashboard-news-timeline__dot--${h.impact}`} /><span className="dashboard-precision-body-text" style={{ margin: 0, flex: 1 }}>{h.title}</span><Chip value={h.impact} tone={h.impact === "high" ? "negative" : h.impact === "medium" ? "positive" : "warning"} /></div>}
+            <div className="dashboard-news-headline-grid">
+              {newsFixture.map((h) => (
+                <HoverPreviewCard key={h.title}
+                  trigger={<article className="dashboard-news-headline-card"><NewsImpactBadge impact={h.impact} /><div className="dashboard-news-headline-card__text"><strong className="dashboard-news-headline-card__title">{h.title}</strong><span className="dashboard-news-headline-card__meta">{h.source} · {h.time}</span></div></article>}
                   preview={<><p className="dashboard-precision-body-text">Source: {h.source} — {h.time}</p><Chip value={`Impact: ${h.impact}`} tone={h.impact === "high" ? "negative" : h.impact === "medium" ? "positive" : "warning"} /></>} />
               ))}
             </div>
           )}
           {newsMode === 1 && (
-            <div className="dashboard-events-flow">
-              {macroEvents.map((ev) => (
-                <HoverPreviewCard key={ev.label} className={`dashboard-event-node dashboard-event-node--${ev.impact}`}
-                  trigger={<div className="dashboard-event-node__content"><span className="dashboard-precision-metadata">{ev.time}</span><span className="dashboard-precision-body-text" style={{ margin: 0 }}>{ev.label}</span><div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}><Chip value={ev.impact} tone={ev.impact === "high" ? "negative" : ev.impact === "medium" ? "positive" : "warning"} /><Chip value={ev.status} tone="neutral" /></div></div>}
+            <div className="dashboard-news-event-timeline--split">
+              {macroEvents.map((ev, i) => (
+                <HoverPreviewCard key={ev.label} className={`dashboard-event-split-item dashboard-event-split-item--${i % 2 === 0 ? "left" : "right"}`}
+                  trigger={<div className="dashboard-event-split-item__content"><span className={`dashboard-event-split-item__dot dashboard-event-split-item__dot--${ev.impact}`} /><div className="dashboard-event-split-item__body"><span className="dashboard-precision-metadata">{ev.time}</span><span className="dashboard-precision-body-text" style={{ margin: 0 }}>{ev.label}</span><div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}><NewsImpactBadge impact={ev.impact} /><Chip value={ev.status} tone="neutral" /></div></div></div>}
                   preview={<p className="dashboard-precision-body-text">{ev.label} — {ev.status}. Scheduled macro catalyst.</p>} />
               ))}
             </div>
