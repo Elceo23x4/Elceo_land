@@ -147,7 +147,16 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
                 <p className="dashboard-precision-note">{scenario.cautionNote}</p>
               </div>
               <div className="dashboard-bias-content-visual">
-                <DirectionalBiasRadar />
+                <DirectionalBiasRadar
+                  direction={
+                    scenario.scenarioTone === "positive" && cognition.confidenceScore >= 55 && cognition.contradictionScore < 60
+                      ? "up"
+                      : scenario.scenarioTone === "negative" || cognition.contradictionScore > 62
+                        ? "down"
+                        : "neutral"
+                  }
+                  confidence={cognition.confidenceScore}
+                />
               </div>
             </div>
           </>)}
