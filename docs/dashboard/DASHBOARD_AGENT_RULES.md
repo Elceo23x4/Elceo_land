@@ -155,6 +155,9 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - Sidebar and alert icons should use approved dashboard SVG assets when available.
 - Sprite assets must be extracted into component-safe icons without modifying source SVG files.
 - Alert bell button must remain square-bordered unless explicitly changed.
+- If a user supplies a correctly scaled SVG for a panel visual, do not reinterpret it as an icon.
+- Do not recreate supplied SVG visuals with hand-drawn paths.
+- Directional Bias radar must use "elceo-radar.svg" unless explicitly changed.
 
 ---
 

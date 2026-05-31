@@ -21,6 +21,7 @@ import {
 } from "./responsivePanelFixtures";
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
+import DirectionalBiasRadar from "./panelContent/DirectionalBiasRadar";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
@@ -130,18 +131,25 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Bias", "Scenario", "Drivers", "Asset"]} active={biasMode} onSelect={setBiasMode} />
           {biasMode === 0 && (<>
-            <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
-              <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" /><Chip value={activeTimeframe || "1H"} tone="neutral" />
+            <div className="dashboard-bias-content-row">
+              <div className="dashboard-bias-content-main">
+                <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
+                  <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" /><Chip value={activeTimeframe || "1H"} tone="neutral" />
+                </div>
+                <p className="dashboard-precision-metric">{assetCtx?.bias ?? biasFixture.direction}</p>
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
+                  <Chip value={`Confidence: ${scenario.scenarioConfidence}%`} tone={scenario.scenarioTone} />
+                  <Chip value={biasFixture.condition} tone={biasFixture.conditionTone} />
+                  <StatusLabel label={biasFixture.status} />
+                </div>
+                <p className="dashboard-precision-body-text">{scenario.primaryScenario}</p>
+                <p className="dashboard-precision-note">Review window: {scenario.reviewWindow}</p>
+                <p className="dashboard-precision-note">{scenario.cautionNote}</p>
+              </div>
+              <div className="dashboard-bias-content-visual">
+                <DirectionalBiasRadar />
+              </div>
             </div>
-            <p className="dashboard-precision-metric">{assetCtx?.bias ?? biasFixture.direction}</p>
-            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
-              <Chip value={`Confidence: ${scenario.scenarioConfidence}%`} tone={scenario.scenarioTone} />
-              <Chip value={biasFixture.condition} tone={biasFixture.conditionTone} />
-              <StatusLabel label={biasFixture.status} />
-            </div>
-            <p className="dashboard-precision-body-text">{scenario.primaryScenario}</p>
-            <p className="dashboard-precision-note">Review window: {scenario.reviewWindow}</p>
-            <p className="dashboard-precision-note">{scenario.cautionNote}</p>
           </>)}
           {biasMode === 1 && (<>
             <DataRow label="Primary" value={scenario.primaryScenario} tone={scenario.scenarioTone} />
