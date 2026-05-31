@@ -1925,6 +1925,13 @@
    Structured comparison: Driver | Risk Tone | USD Link | Liquidity | Volatility | Relationship
    ═══════════════════════════════════════════════════════════════════════════════ */
 
+/* ─── Local container shell for panel-scoped container queries ─── */
+.dashboard-regime-table-shell {
+  container-type: inline-size;
+  width: 100%;
+  min-width: 0;
+}
+
 .dashboard-regime-table {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));

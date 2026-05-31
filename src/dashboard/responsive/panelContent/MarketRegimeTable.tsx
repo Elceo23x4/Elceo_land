@@ -30,6 +30,7 @@ const HEADINGS = ["Driver", "Risk Tone", "USD Link", "Liquidity", "Volatility", 
 
 export default function MarketRegimeTable({ rows, compact = false }: MarketRegimeTableProps) {
   return (
+    <div className="dashboard-regime-table-shell">
     <div className={`dashboard-regime-table${compact ? " dashboard-regime-table--compact" : ""}`} role="table" aria-label="Cross-asset market regime">
       {/* Header row */}
       <div className="dashboard-regime-table__header" role="row">
@@ -51,6 +52,7 @@ export default function MarketRegimeTable({ rows, compact = false }: MarketRegim
           <span className="dashboard-regime-table__cell dashboard-regime-table__cell--rel" role="cell">{row.relationship}</span>
         </div>
       ))}
+    </div>
     </div>
   );
 }
