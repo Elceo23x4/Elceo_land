@@ -6,6 +6,8 @@
  * Uses currentColor for stroke. No source SVG edits.
  */
 
+import type { ReactNode } from "react";
+
 export type DashboardSidebarIconName =
   | "cockpit"
   | "chart"
@@ -20,7 +22,7 @@ export interface DashboardSidebarIconProps {
   className?: string;
 }
 
-const ICON_PATHS: Record<DashboardSidebarIconName, JSX.Element> = {
+const ICON_PATHS: Record<DashboardSidebarIconName, ReactNode> = {
   cockpit: (
     <>
       <rect x="12" y="12" width="10" height="10" rx="2" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
