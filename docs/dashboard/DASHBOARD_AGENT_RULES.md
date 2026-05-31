@@ -158,6 +158,9 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - If a user supplies a correctly scaled SVG for a panel visual, do not reinterpret it as an icon.
 - Do not recreate supplied SVG visuals with hand-drawn paths.
 - Directional Bias radar must use "elceo-radar.svg" unless explicitly changed.
+- News headlines should not use timeline styling unless explicitly requested.
+- News impact labels must use High/Medium/Low with red/green/amber mapping.
+- SVG badge sprite assets must be extracted safely without modifying source SVG.
 
 ---
 

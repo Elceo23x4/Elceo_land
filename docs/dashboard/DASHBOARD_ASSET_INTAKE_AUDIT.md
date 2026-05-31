@@ -276,4 +276,19 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 ---
 
+## V1B-5 — News & Macro Impact Badges + Side-by-Side Event Timeline
+
+| Item | Detail |
+|------|--------|
+| Asset referenced | `src/assets/source/dashboard/evidence/elceo-svg-08-news-impact-badges.svg` |
+| SVG source edits | None — visual language extracted into component-safe inline SVG |
+| Headlines layout | Grid cards with inline impact badge (no timeline styling) |
+| Events layout | Side-by-side two-column timeline with center rail |
+| Impact colors | High=#ff3e3e (red), Medium=#22e46f (green), Low=#ffb23a (amber) |
+| Component | `src/dashboard/responsive/panelContent/NewsImpactBadge.tsx` |
+| Layout classes | `.dashboard-news-headline-grid`, `.dashboard-news-headline-card`, `.dashboard-news-event-timeline--split` |
+| Drawer changes | None (skipped — low risk tolerance) |
+
+---
+
 _This document is the implementation contract for the V1B visual elevation phase. Do not implement until the corresponding batch is started._
