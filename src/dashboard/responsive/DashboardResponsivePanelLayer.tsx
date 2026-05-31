@@ -22,6 +22,7 @@ import {
 import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, StatusLabel } from "./panelContent/PanelPrimitives";
 import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
+import DirectionalBiasVisual from "./panelContent/DirectionalBiasVisual";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
 import PrecisionPanelGroup from "./PrecisionPanelGroup";
@@ -130,14 +131,21 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Bias", "Scenario", "Drivers", "Asset"]} active={biasMode} onSelect={setBiasMode} />
           {biasMode === 0 && (<>
-            <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
-              <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" /><Chip value={activeTimeframe || "1H"} tone="neutral" />
-            </div>
-            <p className="dashboard-precision-metric">{assetCtx?.bias ?? biasFixture.direction}</p>
-            <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
-              <Chip value={`Confidence: ${scenario.scenarioConfidence}%`} tone={scenario.scenarioTone} />
-              <Chip value={biasFixture.condition} tone={biasFixture.conditionTone} />
-              <StatusLabel label={biasFixture.status} />
+            <div className="dashboard-bias-content-row">
+              <div className="dashboard-bias-content-row__text">
+                <div style={{ display: "flex", gap: "6px", alignItems: "center", margin: "2px 0 4px" }}>
+                  <SessionBadge session={biasFixture.session} /><Chip value={activeAsset} tone="positive" /><Chip value={activeTimeframe || "1H"} tone="neutral" />
+                </div>
+                <p className="dashboard-precision-metric">{assetCtx?.bias ?? biasFixture.direction}</p>
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap", margin: "4px 0" }}>
+                  <Chip value={`Confidence: ${scenario.scenarioConfidence}%`} tone={scenario.scenarioTone} />
+                  <Chip value={biasFixture.condition} tone={biasFixture.conditionTone} />
+                  <StatusLabel label={biasFixture.status} />
+                </div>
+              </div>
+              <div className="dashboard-bias-content-row__visual">
+                <DirectionalBiasVisual direction={scenario.scenarioTone === "positive" && cognition.confidenceScore >= 55 && cognition.contradictionScore < 55 ? "up" : scenario.scenarioTone === "negative" || cognition.contradictionScore > 60 ? "down" : "neutral"} confidence={scenario.scenarioConfidence} tone={scenario.scenarioTone} />
+              </div>
             </div>
             <p className="dashboard-precision-body-text">{scenario.primaryScenario}</p>
             <p className="dashboard-precision-note">Review window: {scenario.reviewWindow}</p>
