@@ -1237,7 +1237,7 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   LIQUID GAUGE — Premium arc score visualization
+   LIQUID GAUGE — SVG-native clipped arc score visualization
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-liquid-gauge {
@@ -1250,9 +1250,17 @@
   justify-content: center;
 }
 
+.dashboard-liquid-gauge__native-liquid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .dashboard-liquid-gauge__frame {
   position: absolute;
   inset: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -1262,56 +1270,15 @@
   display: block;
 }
 
-.dashboard-liquid-gauge__liquid {
-  position: absolute;
-  inset: 15% 12% 25% 12%;
-  overflow: hidden;
-  border-radius: 50% 50% 4px 4px;
-  pointer-events: none;
-}
-
-.dashboard-liquid-gauge__wave {
-  position: absolute;
-  left: -10%;
-  right: -10%;
-  bottom: 0;
-  top: var(--gauge-fill-percent, 50%);
-  transition: top 0.6s ease;
-}
-
-.dashboard-liquid-gauge__wave--1 {
-  background: var(--gauge-liquid-primary, rgba(92, 186, 110, 0.7));
-  border-radius: 40% 42% 0 0;
-  animation: dashboardLiquidWave1 5s ease-in-out infinite;
-}
-
-.dashboard-liquid-gauge__wave--2 {
-  background: var(--gauge-liquid-secondary, rgba(60, 150, 80, 0.5));
-  border-radius: 38% 44% 0 0;
-  animation: dashboardLiquidWave2 6.5s ease-in-out infinite;
-  top: calc(var(--gauge-fill-percent, 50%) + 4%);
-}
-
-@keyframes dashboardLiquidWave1 {
-  0%, 100% { border-radius: 40% 42% 0 0; transform: translateX(0); }
-  50% { border-radius: 44% 38% 0 0; transform: translateX(3%); }
-}
-
-@keyframes dashboardLiquidWave2 {
-  0%, 100% { border-radius: 38% 44% 0 0; transform: translateX(0); }
-  50% { border-radius: 42% 40% 0 0; transform: translateX(-3%); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dashboard-liquid-gauge__wave--1,
-  .dashboard-liquid-gauge__wave--2 {
-    animation: none;
-  }
+/* Hide original static liquid from imported SVG */
+.dashboard-liquid-gauge__frame svg [id="liquid_fill_master_group"],
+.dashboard-liquid-gauge__frame svg [id="liquid_arrow_tip_group"] {
+  opacity: 0 !important;
 }
 
 .dashboard-liquid-gauge__score {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
 }
 
@@ -1320,17 +1287,60 @@
   font-size: var(--dashboard-font-md);
   font-weight: 700;
   color: #e8dfd4;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .dashboard-liquid-gauge__label {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   font-family: var(--font-body);
   font-size: var(--dashboard-font-xs);
   color: #8a8178;
   text-align: center;
   margin-top: 2px;
+}
+
+/* Liquid motion animations */
+.dashboard-liquid-gauge__flow-slow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dashboardGaugeFlowSlow 7s ease-in-out infinite;
+}
+
+.dashboard-liquid-gauge__flow-mid {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dashboardGaugeFlowMid 5.5s ease-in-out infinite;
+}
+
+.dashboard-liquid-gauge__crest {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dashboardGaugeCrest 4.8s ease-in-out infinite;
+}
+
+@keyframes dashboardGaugeFlowSlow {
+  0%, 100% { transform: translateX(0); opacity: 0.5; }
+  50% { transform: translateX(8px); opacity: 0.65; }
+}
+
+@keyframes dashboardGaugeFlowMid {
+  0%, 100% { transform: translateX(0); opacity: 0.85; }
+  50% { transform: translateX(-12px); opacity: 0.75; }
+}
+
+@keyframes dashboardGaugeCrest {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.95; }
+  33% { transform: translateX(14px) translateY(-3px); opacity: 0.85; }
+  66% { transform: translateX(-10px) translateY(2px); opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-liquid-gauge__flow-slow,
+  .dashboard-liquid-gauge__flow-mid,
+  .dashboard-liquid-gauge__crest {
+    animation: none;
+  }
 }
 
 .dashboard-liquid-gauge-grid {
