@@ -1240,12 +1240,18 @@
    LIQUID GAUGE — SVG-native clipped arc score visualization
    ═══════════════════════════════════════════════════════════════════════════════ */
 
+.dashboard-liquid-gauge-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 141px;
+}
+
 .dashboard-liquid-gauge {
   position: relative;
   width: 141px;
   height: 75px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -1286,59 +1292,90 @@
   font-family: var(--font-mono);
   font-size: var(--dashboard-font-md);
   font-weight: 700;
-  color: #e8dfd4;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  color: #f5f2ec;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.8), 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Label — below gauge, off-white, centered */
 .dashboard-liquid-gauge__label {
-  position: relative;
-  z-index: 3;
   font-family: var(--font-body);
   font-size: var(--dashboard-font-xs);
-  color: #8a8178;
+  font-weight: 500;
+  color: rgba(245, 242, 236, 0.88);
   text-align: center;
-  margin-top: 2px;
+  margin-top: 4px;
+  line-height: 1.2;
 }
 
-/* Liquid motion animations */
-.dashboard-liquid-gauge__flow-slow {
+/* ─── Liquid layer motion — sloshing/breathing feel ─── */
+.dashboard-liquid-gauge__layer-deep {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeFlowSlow 7s ease-in-out infinite;
+  animation: dashboardGaugeDeep 8.8s ease-in-out infinite;
 }
 
-.dashboard-liquid-gauge__flow-mid {
+.dashboard-liquid-gauge__layer-base {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeFlowMid 5.5s ease-in-out infinite;
+  animation: dashboardGaugeBase 7.5s ease-in-out infinite;
 }
 
-.dashboard-liquid-gauge__crest {
+.dashboard-liquid-gauge__layer-mid {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeCrest 4.8s ease-in-out infinite;
+  animation: dashboardGaugeMid 6.2s ease-in-out infinite;
 }
 
-@keyframes dashboardGaugeFlowSlow {
-  0%, 100% { transform: translateX(0); opacity: 0.5; }
-  50% { transform: translateX(8px); opacity: 0.65; }
+.dashboard-liquid-gauge__layer-crest {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dashboardGaugeCrest 5.1s ease-in-out infinite;
 }
 
-@keyframes dashboardGaugeFlowMid {
-  0%, 100% { transform: translateX(0); opacity: 0.85; }
-  50% { transform: translateX(-12px); opacity: 0.75; }
+.dashboard-liquid-gauge__layer-highlight {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dashboardGaugeHighlight 9.4s ease-in-out infinite;
+}
+
+@keyframes dashboardGaugeDeep {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.5; }
+  40% { transform: translateX(6px) translateY(2px); opacity: 0.55; }
+  70% { transform: translateX(-4px) translateY(-1px); opacity: 0.48; }
+}
+
+@keyframes dashboardGaugeBase {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.72; }
+  35% { transform: translateX(-10px) translateY(-4px); opacity: 0.68; }
+  65% { transform: translateX(8px) translateY(3px); opacity: 0.76; }
+}
+
+@keyframes dashboardGaugeMid {
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.84; }
+  30% { transform: translateX(12px) translateY(-5px); opacity: 0.78; }
+  60% { transform: translateX(-8px) translateY(4px); opacity: 0.88; }
+  85% { transform: translateX(4px) translateY(-2px); opacity: 0.82; }
 }
 
 @keyframes dashboardGaugeCrest {
-  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.95; }
-  33% { transform: translateX(14px) translateY(-3px); opacity: 0.85; }
-  66% { transform: translateX(-10px) translateY(2px); opacity: 0.9; }
+  0%, 100% { transform: translateX(0) translateY(0); opacity: 0.94; }
+  25% { transform: translateX(-16px) translateY(-6px); opacity: 0.86; }
+  50% { transform: translateX(14px) translateY(3px); opacity: 0.92; }
+  75% { transform: translateX(-6px) translateY(-4px); opacity: 0.88; }
+}
+
+@keyframes dashboardGaugeHighlight {
+  0%, 100% { transform: translateX(0); opacity: 0.25; }
+  40% { transform: translateX(20px); opacity: 0.5; }
+  80% { transform: translateX(-14px); opacity: 0.3; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dashboard-liquid-gauge__flow-slow,
-  .dashboard-liquid-gauge__flow-mid,
-  .dashboard-liquid-gauge__crest {
+  .dashboard-liquid-gauge__layer-deep,
+  .dashboard-liquid-gauge__layer-base,
+  .dashboard-liquid-gauge__layer-mid,
+  .dashboard-liquid-gauge__layer-crest,
+  .dashboard-liquid-gauge__layer-highlight {
     animation: none;
   }
 }
@@ -1346,7 +1383,7 @@
 .dashboard-liquid-gauge-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 141px));
-  gap: clamp(6px, 0.55vw, 10px);
+  gap: clamp(6px, 0.55vw, 12px);
   align-items: start;
   justify-content: center;
 }

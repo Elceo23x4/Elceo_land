@@ -2,6 +2,7 @@
  * DashboardLiquidGauge.tsx
  *
  * Premium SVG-native liquid gauge. Fill is clipped to the real arc chamber.
+ * Label appears below the gauge. Liquid has active sloshing motion.
  * Uses unique IDs per instance via useId. No SVG source edits.
  * Accessible: role="meter". Respects reduced motion.
  */
@@ -29,14 +30,13 @@ const TONE_GRADIENTS = {
   green: { top: "#64ffd2", mid: "#15f18e", bottom: "#087d3a" },
 };
 
-// Chamber clip path from source SVG
 const CHAMBER_PATH = "M 307.00 706.00 A 461.00 372.00 0 0 1 1229.00 706.00 L 994.00 706.00 A 226.00 205.00 0 0 0 542.00 706.00 Z";
 
-// Liquid layer paths from source SVG (recolored dynamically)
+const LIQUID_FLOOR = "M 309 706 L 1217 706 L 1214 628 C 1165 604 1124 604 1074 612 C 1014 622 958 644 887 635 C 812 626 759 599 686 607 C 603 617 544 644 479 657 C 403 672 348 664 309 681 Z";
 const LIQUID_BASE = "M 309 706 L 309 661 C 339 642 356 612 367 573 C 382 522 415 493 461 464 C 509 433 558 404 608 377 C 665 346 720 333 781 338 C 836 342 876 364 929 358 C 974 354 1010 374 1047 407 C 1093 449 1122 505 1138 568 C 1149 613 1154 662 1159 706 Z";
 const LIQUID_MID = "M 322 706 L 322 655 C 354 635 372 594 393 552 C 417 501 465 472 520 440 C 580 405 640 379 707 368 C 775 357 831 367 893 374 C 948 380 989 390 1034 424 C 1076 459 1102 510 1114 571 C 1123 617 1122 665 1118 706 Z";
 const LIQUID_CREST = "M 313 706 L 313 654 C 350 629 361 591 378 553 C 396 512 431 487 477 458 C 536 421 594 391 655 367 C 704 348 753 345 806 354 C 852 362 888 377 929 361 C 966 348 1002 358 1033 382 C 1055 400 1072 419 1100 427 L 1181 394 L 1132 449 C 1102 481 1066 516 1048 557 C 1025 610 1017 662 1013 706 Z";
-const LIQUID_FLOOR = "M 309 706 L 1217 706 L 1214 628 C 1165 604 1124 604 1074 612 C 1014 622 958 644 887 635 C 812 626 759 599 686 607 C 603 617 544 644 479 657 C 403 672 348 664 309 681 Z";
+const LIQUID_HIGHLIGHT = "M 420 520 C 480 490 560 475 660 470 C 760 465 840 480 920 500 C 880 485 800 472 720 475 C 620 479 530 498 420 520 Z";
 
 const CHAMBER_TOP_Y = 334;
 const CHAMBER_BOTTOM_Y = 706;
@@ -46,7 +46,6 @@ export default function DashboardLiquidGauge({ value, label, tone, className }: 
   const resolvedTone = getTone(clamped, tone);
   const colors = TONE_GRADIENTS[resolvedTone];
 
-  // Unique IDs per instance
   const rawId = useId();
   const safeId = rawId.replace(/:/g, "");
   const chamberClipId = `lc-${safeId}`;
@@ -54,61 +53,73 @@ export default function DashboardLiquidGauge({ value, label, tone, className }: 
   const gradBaseId = `gb-${safeId}`;
   const gradMidId = `gm-${safeId}`;
   const gradCrestId = `gc-${safeId}`;
+  const gradHighId = `gh-${safeId}`;
 
-  // Fill level in SVG coordinates
   const fillY = CHAMBER_BOTTOM_Y - (clamped / 100) * (CHAMBER_BOTTOM_Y - CHAMBER_TOP_Y);
 
   return (
-    <div
-      className={`dashboard-liquid-gauge ${className ?? ""}`}
-      role="meter"
-      aria-valuemin={0}
-      aria-valuemax={100}
-      aria-valuenow={clamped}
-      aria-label={`${label}: ${clamped}%`}
-    >
-      {/* SVG-native clipped liquid layer — behind frame */}
-      <svg className="dashboard-liquid-gauge__native-liquid" viewBox="0 0 1536 857" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <defs>
-          <clipPath id={chamberClipId}>
-            <path d={CHAMBER_PATH} />
-          </clipPath>
-          <clipPath id={fillClipId}>
-            <rect x="260" y={fillY} width="1020" height={CHAMBER_BOTTOM_Y - fillY + 40} />
-          </clipPath>
-          <linearGradient id={gradBaseId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={colors.top} stopOpacity="0.6" />
-            <stop offset="100%" stopColor={colors.bottom} stopOpacity="0.9" />
-          </linearGradient>
-          <linearGradient id={gradMidId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={colors.top} stopOpacity="0.7" />
-            <stop offset="60%" stopColor={colors.mid} stopOpacity="0.85" />
-            <stop offset="100%" stopColor={colors.bottom} stopOpacity="0.95" />
-          </linearGradient>
-          <linearGradient id={gradCrestId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={colors.top} stopOpacity="0.9" />
-            <stop offset="100%" stopColor={colors.mid} stopOpacity="0.7" />
-          </linearGradient>
-        </defs>
-        <g clipPath={`url(#${chamberClipId})`}>
-          <g clipPath={`url(#${fillClipId})`}>
-            <path className="dashboard-liquid-gauge__flow-slow" d={LIQUID_FLOOR} fill={`url(#${gradBaseId})`} opacity="0.5" />
-            <path className="dashboard-liquid-gauge__flow-slow" d={LIQUID_BASE} fill={`url(#${gradBaseId})`} opacity="0.75" />
-            <path className="dashboard-liquid-gauge__flow-mid" d={LIQUID_MID} fill={`url(#${gradMidId})`} opacity="0.85" />
-            <path className="dashboard-liquid-gauge__crest" d={LIQUID_CREST} fill={`url(#${gradCrestId})`} opacity="0.95" />
+    <div className={`dashboard-liquid-gauge-wrapper ${className ?? ""}`}>
+      {/* Gauge visual container */}
+      <div
+        className="dashboard-liquid-gauge"
+        role="meter"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={clamped}
+        aria-label={`${label}: ${clamped}%`}
+      >
+        {/* SVG-native clipped liquid — behind frame */}
+        <svg className="dashboard-liquid-gauge__native-liquid" viewBox="0 0 1536 857" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <clipPath id={chamberClipId}>
+              <path d={CHAMBER_PATH} />
+            </clipPath>
+            <clipPath id={fillClipId}>
+              <rect x="260" y={fillY} width="1020" height={CHAMBER_BOTTOM_Y - fillY + 40} />
+            </clipPath>
+            <linearGradient id={gradBaseId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={colors.top} stopOpacity="0.55" />
+              <stop offset="100%" stopColor={colors.bottom} stopOpacity="0.85" />
+            </linearGradient>
+            <linearGradient id={gradMidId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={colors.top} stopOpacity="0.65" />
+              <stop offset="50%" stopColor={colors.mid} stopOpacity="0.8" />
+              <stop offset="100%" stopColor={colors.bottom} stopOpacity="0.92" />
+            </linearGradient>
+            <linearGradient id={gradCrestId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor={colors.top} stopOpacity="0.92" />
+              <stop offset="100%" stopColor={colors.mid} stopOpacity="0.65" />
+            </linearGradient>
+            <linearGradient id={gradHighId} x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor={colors.top} stopOpacity="0" />
+              <stop offset="40%" stopColor={colors.top} stopOpacity="0.4" />
+              <stop offset="60%" stopColor={colors.top} stopOpacity="0.35" />
+              <stop offset="100%" stopColor={colors.top} stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <g clipPath={`url(#${chamberClipId})`}>
+            <g clipPath={`url(#${fillClipId})`}>
+              <path className="dashboard-liquid-gauge__layer-deep" d={LIQUID_FLOOR} fill={`url(#${gradBaseId})`} opacity="0.5" />
+              <path className="dashboard-liquid-gauge__layer-base" d={LIQUID_BASE} fill={`url(#${gradBaseId})`} opacity="0.72" />
+              <path className="dashboard-liquid-gauge__layer-mid" d={LIQUID_MID} fill={`url(#${gradMidId})`} opacity="0.84" />
+              <path className="dashboard-liquid-gauge__layer-crest" d={LIQUID_CREST} fill={`url(#${gradCrestId})`} opacity="0.94" />
+              <path className="dashboard-liquid-gauge__layer-highlight" d={LIQUID_HIGHLIGHT} fill={`url(#${gradHighId})`} opacity="0.4" />
+            </g>
           </g>
-        </g>
-      </svg>
+        </svg>
 
-      {/* SVG frame (acrylic rim, ticks, scale) — above liquid */}
-      <div className="dashboard-liquid-gauge__frame" aria-hidden="true">
-        <LiquidGaugeSvg preserveAspectRatio="xMidYMid meet" />
+        {/* SVG frame — above liquid */}
+        <div className="dashboard-liquid-gauge__frame" aria-hidden="true">
+          <LiquidGaugeSvg preserveAspectRatio="xMidYMid meet" />
+        </div>
+
+        {/* Score text — topmost */}
+        <div className="dashboard-liquid-gauge__score">
+          <span className="dashboard-liquid-gauge__value">{clamped}%</span>
+        </div>
       </div>
 
-      {/* Score text — above all */}
-      <div className="dashboard-liquid-gauge__score">
-        <span className="dashboard-liquid-gauge__value">{clamped}%</span>
-      </div>
+      {/* Label — BELOW the gauge, outside gauge area */}
       <div className="dashboard-liquid-gauge__label">{label}</div>
     </div>
   );
