@@ -2163,3 +2163,116 @@
     display: none;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-8: RESPONSIVE PANEL BODY CONTENT — Container Query Collapse Rules
+   Ensures panel content adapts on smaller displays without horizontal overflow.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Two-column layouts collapse to single column when narrow ─── */
+@container (max-width: 340px) {
+  .dashboard-news-headline-grid,
+  .dashboard-news-event-timeline--split {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-news-event-timeline--split::before {
+    display: none;
+  }
+
+  .dashboard-bias-content-row {
+    flex-direction: column;
+    gap: clamp(6px, 0.8cqi, 10px);
+  }
+
+  .dashboard-bias-content-visual {
+    align-self: center;
+  }
+}
+
+/* ─── Watchlist card grid: already has container queries, reinforce ─── */
+@container (max-width: 300px) {
+  .dashboard-watchlist-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ─── Liquid gauge grid: collapse gracefully ─── */
+@container (max-width: 320px) {
+  .dashboard-liquid-gauge-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@container (max-width: 220px) {
+  .dashboard-liquid-gauge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── DataRow: stack label/value when very narrow ─── */
+@container (max-width: 240px) {
+  .dashboard-precision-data-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .dashboard-precision-data-value,
+  .dashboard-precision-data-value--mono {
+    padding-left: 0;
+  }
+}
+
+/* ─── Regime table: already has container queries (380px→3col, 260px→2col) ─── */
+/* Additional safety for very narrow panels */
+@container (max-width: 200px) {
+  .dashboard-regime-table {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-regime-table__th:nth-child(n+2),
+  .dashboard-regime-table__cell:nth-child(n+2) {
+    display: none;
+  }
+}
+
+/* ─── Panel body: prefer vertical scroll, never horizontal ─── */
+.dashboard-precision-content-slot--body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* ─── Smooth scroll behavior for panel bodies ─── */
+.dashboard-precision-content-slot--body {
+  scroll-behavior: smooth;
+}
+
+/* ─── Panel body scroll edge fade (top/bottom) ─── */
+.dashboard-panel-group__body {
+  position: relative;
+}
+
+.dashboard-panel-group__body::before,
+.dashboard-panel-group__body::after {
+  content: "";
+  position: sticky;
+  left: 0;
+  right: 0;
+  height: 12px;
+  pointer-events: none;
+  z-index: 5;
+  display: block;
+}
+
+.dashboard-panel-group__body::before {
+  top: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 4, 0.6), transparent);
+}
+
+.dashboard-panel-group__body::after {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(5, 5, 4, 0.6), transparent);
+}

@@ -24,6 +24,26 @@
   font-synthesis: none;
 }
 
+/* ─── Responsive typography scale for smaller viewports (V1B-8) ─── */
+/* xs stays at 0.78rem minimum — never goes below readable threshold */
+@media (max-width: 1366px) {
+  .dashboard-precision-viewport {
+    --dashboard-font-sm: 0.82rem;
+    --dashboard-font-md: 1rem;
+    --dashboard-font-lg: 1.1rem;
+    --dashboard-font-xl: 1.25rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .dashboard-precision-viewport {
+    --dashboard-font-sm: 0.8rem;
+    --dashboard-font-md: 0.95rem;
+    --dashboard-font-lg: 1.05rem;
+    --dashboard-font-xl: 1.18rem;
+  }
+}
+
 /* ─── Hover Preview Font Override (body font for all preview content) ─── */
 .dashboard-hover-preview-floating,
 .dashboard-hover-preview-floating * {
@@ -227,13 +247,29 @@
   white-space: nowrap;
 }
 
-/* ─── Section Nav (INCREASED for visibility — R5C) ─── */
-.dashboard-section-nav {
+/* ─── Section Nav Shell (scrollable with overflow arrows — V1B-8) ─── */
+.dashboard-section-nav-shell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(4px, 0.35vw, 8px);
+}
+
+.dashboard-section-nav-scroll {
   display: flex;
   gap: clamp(5px, 0.4vw, 10px);
-  margin-bottom: clamp(4px, 0.35vw, 8px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   border-bottom: 1px solid rgba(138, 129, 120, 0.1);
   padding-bottom: 3px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.dashboard-section-nav-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .dashboard-section-nav__item {
@@ -246,12 +282,60 @@
   cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .dashboard-section-nav__item:hover { color: #c4a868; }
 .dashboard-section-nav__item--active {
   color: #d4a853;
   border-bottom-color: rgba(212, 168, 83, 0.6);
+}
+
+/* ─── Section Nav Arrows ─── */
+.dashboard-section-nav-arrow {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  border-radius: 50%;
+  background: rgba(10, 8, 4, 0.6);
+  border: 1px solid rgba(212, 168, 83, 0.25);
+  color: #d4a853;
+  cursor: pointer;
+  z-index: 2;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.dashboard-section-nav-arrow:hover {
+  border-color: rgba(255, 215, 106, 0.55);
+  background: rgba(212, 168, 83, 0.08);
+}
+
+.dashboard-section-nav-arrow:focus-visible {
+  outline: 1px solid rgba(212, 168, 83, 0.6);
+  outline-offset: 1px;
+}
+
+.dashboard-section-nav-arrow--left {
+  margin-right: 4px;
+}
+
+.dashboard-section-nav-arrow--right {
+  margin-left: 4px;
+}
+
+/* Legacy: keep old class name working if referenced anywhere */
+.dashboard-section-nav {
+  display: flex;
+  gap: clamp(5px, 0.4vw, 10px);
+  margin-bottom: clamp(4px, 0.35vw, 8px);
+  border-bottom: 1px solid rgba(138, 129, 120, 0.1);
+  padding-bottom: 3px;
 }
 
 /* ─── Panel Action Bar ─── */
@@ -974,4 +1058,18 @@
 
 .dashboard-precision-board *::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(255, 220, 130, 0.75), rgba(255, 106, 0, 0.56));
+}
+
+
+
+/* ─── Panel Content Transition (V1B-8) ─── */
+.dashboard-panel-content-transition {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-panel-content-transition {
+    animation: none !important;
+    transition: none !important;
+  }
 }

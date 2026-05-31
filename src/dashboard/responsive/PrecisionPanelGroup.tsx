@@ -21,6 +21,7 @@ import {
 import PanelExpandButton from "./panelContent/PanelExpandButton";
 import DashboardAlertBellIcon from "./DashboardAlertBellIcon";
 import ScrollFrame from "./panelContent/ScrollFrame";
+import PanelContentTransition from "./panelContent/PanelContentTransition";
 
 export type PanelId = keyof typeof PANEL_FRAME_RECTS;
 
@@ -35,6 +36,8 @@ interface PrecisionPanelGroupProps {
   alertArmed?: boolean;
   alertSummary?: string;
   onToggleAlert?: () => void;
+  /** Key that changes on tab/mode switch — triggers content transition */
+  activeSectionKey?: string;
 }
 
 /** Expansion scale per panel */
@@ -127,6 +130,7 @@ export default function PrecisionPanelGroup({
   alertArmed,
   alertSummary,
   onToggleAlert,
+  activeSectionKey,
 }: PrecisionPanelGroupProps) {
   const frameRect = PANEL_FRAME_RECTS[panelId];
   const contentRects = PANEL_CONTENT_RECTS[panelId];
@@ -161,7 +165,11 @@ export default function PrecisionPanelGroup({
         style={relativeRectStyle(contentRects.body, frameRect)}
       >
         <ScrollFrame>
-          {bodyContent}
+          {activeSectionKey ? (
+            <PanelContentTransition sectionKey={activeSectionKey}>
+              {bodyContent}
+            </PanelContentTransition>
+          ) : bodyContent}
         </ScrollFrame>
       </div>
 

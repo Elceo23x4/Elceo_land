@@ -33,15 +33,10 @@ export function MiniMeter({ score, tone }: { score: number; tone: Tone }) {
   );
 }
 
-/* ─── SectionNav ─── */
+/* ─── SectionNav (delegates to PanelSectionNav with overflow arrows) ─── */
+import PanelSectionNav from "./PanelSectionNav";
 export function SectionNav({ items, active, onSelect }: { items: string[]; active: number; onSelect: (i: number) => void }) {
-  return (
-    <div className="dashboard-section-nav">
-      {items.map((item, i) => (
-        <span key={item} className={`dashboard-section-nav__item${i === active ? " dashboard-section-nav__item--active" : ""}`} onClick={() => onSelect(i)} role="tab" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onSelect(i); }}>{item}</span>
-      ))}
-    </div>
-  );
+  return <PanelSectionNav items={items} active={active} onSelect={onSelect} />;
 }
 
 /* ─── ActionBar ─── */
