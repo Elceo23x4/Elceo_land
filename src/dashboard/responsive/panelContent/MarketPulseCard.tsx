@@ -12,12 +12,15 @@
  *   Sparkline: polyline with tone color
  */
 
+/** Accepted tone values — includes "stale" from broader dashboard Tone type */
+type MarketPulseCardTone = "positive" | "warning" | "negative" | "neutral" | "stale";
+
 export interface MarketPulseCardProps {
   symbol: string;
   label?: string;
   assetClass?: string;
   bias?: string;
-  tone?: "positive" | "warning" | "negative" | "neutral";
+  tone?: MarketPulseCardTone;
   active?: boolean;
   metric?: string;
   note?: string;
@@ -25,11 +28,12 @@ export interface MarketPulseCardProps {
   className?: string;
 }
 
-const TONE_COLORS: Record<string, string> = {
+const TONE_COLORS: Record<MarketPulseCardTone, string> = {
   positive: "#1de074",
   warning: "#f0a11a",
   negative: "#ff4d5e",
   neutral: "#7b6650",
+  stale: "#8a8178",
 };
 
 function MiniSparklinePath({ data, color }: { data: number[]; color: string }) {
@@ -51,7 +55,8 @@ function MiniSparklinePath({ data, color }: { data: number[]; color: string }) {
 }
 
 function ScoreArc({ tone, className }: { tone: string; className?: string }) {
-  const color = TONE_COLORS[tone] ?? TONE_COLORS.neutral;
+  const resolvedTone = tone === "stale" ? "neutral" : tone;
+  const color = TONE_COLORS[resolvedTone as MarketPulseCardTone] ?? TONE_COLORS.neutral;
   /* Arc length varies by tone to suggest confidence level */
   const arcEnd: Record<string, string> = {
     positive: "M 0 -12 A 12 12 0 1 1 -10.4 6",    /* ~270° */
@@ -62,7 +67,7 @@ function ScoreArc({ tone, className }: { tone: string; className?: string }) {
   return (
     <svg className={`dashboard-pulse-card__score-ring ${className ?? ""}`} viewBox="-16 -16 32 32" aria-hidden="true">
       <circle cx="0" cy="0" r="12" fill="none" stroke="#1b150d" strokeWidth="3.5" opacity="0.95" />
-      <path d={arcEnd[tone] ?? arcEnd.neutral} fill="none" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+      <path d={arcEnd[resolvedTone] ?? arcEnd.neutral} fill="none" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
       <circle cx="0" cy="0" r="9" fill="none" stroke="#2a1a0b" strokeWidth="0.6" opacity="0.55" />
     </svg>
   );
