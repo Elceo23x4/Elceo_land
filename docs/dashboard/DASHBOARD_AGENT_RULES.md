@@ -161,6 +161,9 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - News headlines should not use timeline styling unless explicitly requested.
 - News impact labels must use High/Medium/Low with red/green/amber mapping.
 - SVG badge sprite assets must be extracted safely without modifying source SVG.
+- Watchlist Featured assets should use Market Pulse Card visual system when available.
+- Market pulse card SVG source must not be edited.
+- Card grids must wrap responsively and avoid horizontal overflow.
 
 ---
 
