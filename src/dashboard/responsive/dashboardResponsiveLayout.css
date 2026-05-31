@@ -1074,7 +1074,7 @@
   min-width: 18px;
   min-height: 18px;
   padding: 0;
-  border-radius: 999px;
+  border-radius: 3px;
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(138, 129, 120, 0.18);
   color: rgba(184, 175, 166, 0.45);

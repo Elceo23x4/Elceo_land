@@ -19,6 +19,7 @@ import {
   type BoardRect,
 } from "./dashboardResponsiveGeometry";
 import PanelExpandButton from "./panelContent/PanelExpandButton";
+import DashboardAlertBellIcon from "./DashboardAlertBellIcon";
 import ScrollFrame from "./panelContent/ScrollFrame";
 
 export type PanelId = keyof typeof PANEL_FRAME_RECTS;
@@ -175,10 +176,7 @@ export default function PrecisionPanelGroup({
             aria-pressed={alertArmed}
             title={alertArmed ? `Alert armed — ${alertSummary ?? ""}` : `Alert off — ${alertSummary ?? ""}`}
           >
-            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M8 1.5a4.5 4.5 0 0 0-4.5 4.5c0 2.5-1 3.5-1.5 4h12c-.5-.5-1.5-1.5-1.5-4A4.5 4.5 0 0 0 8 1.5Z" fill="currentColor" />
-              <path d="M6.5 13a1.5 1.5 0 0 0 3 0" stroke="currentColor" strokeWidth="1" fill="none" />
-            </svg>
+            <DashboardAlertBellIcon armed={alertArmed} />
           </button>
         )}
         <PanelExpandButton expanded={expanded} onToggle={onToggleExpand} />

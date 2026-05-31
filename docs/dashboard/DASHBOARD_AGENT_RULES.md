@@ -152,6 +152,9 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - Dashboard meter bars must be custom accessible components (role="progressbar").
 - Native/generic progress appearance should not be used in dashboard panels.
 - Respect reduced motion (prefers-reduced-motion: reduce) for liquid/meter animations.
+- Sidebar and alert icons should use approved dashboard SVG assets when available.
+- Sprite assets must be extracted into component-safe icons without modifying source SVG files.
+- Alert bell button must remain square-bordered unless explicitly changed.
 
 ---
 
