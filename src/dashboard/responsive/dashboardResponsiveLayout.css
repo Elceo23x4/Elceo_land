@@ -1311,31 +1311,31 @@
 .dashboard-liquid-gauge__layer-deep {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeDeep 8.8s ease-in-out infinite;
+  animation: dashboardGaugeDeep 6.8s ease-in-out infinite;
 }
 
 .dashboard-liquid-gauge__layer-base {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeBase 7.5s ease-in-out infinite;
+  animation: dashboardGaugeBase 5.8s ease-in-out infinite;
 }
 
 .dashboard-liquid-gauge__layer-mid {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeMid 6.2s ease-in-out infinite;
+  animation: dashboardGaugeMid 4.8s ease-in-out infinite;
 }
 
 .dashboard-liquid-gauge__layer-crest {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeCrest 5.1s ease-in-out infinite;
+  animation: dashboardGaugeCrest 3.9s ease-in-out infinite;
 }
 
 .dashboard-liquid-gauge__layer-highlight {
   transform-box: fill-box;
   transform-origin: center;
-  animation: dashboardGaugeHighlight 9.4s ease-in-out infinite;
+  animation: dashboardGaugeHighlight 7.2s ease-in-out infinite;
 }
 
 @keyframes dashboardGaugeDeep {
@@ -1359,9 +1359,9 @@
 
 @keyframes dashboardGaugeCrest {
   0%, 100% { transform: translateX(0) translateY(0); opacity: 0.94; }
-  25% { transform: translateX(-16px) translateY(-6px); opacity: 0.86; }
-  50% { transform: translateX(14px) translateY(3px); opacity: 0.92; }
-  75% { transform: translateX(-6px) translateY(-4px); opacity: 0.88; }
+  25% { transform: translateX(-18px) translateY(-6px); opacity: 0.86; }
+  50% { transform: translateX(16px) translateY(3px); opacity: 0.92; }
+  75% { transform: translateX(-8px) translateY(-4px); opacity: 0.88; }
 }
 
 @keyframes dashboardGaugeHighlight {
