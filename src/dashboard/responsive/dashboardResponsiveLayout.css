@@ -1462,8 +1462,8 @@
 
 .dashboard-directional-bias-visual {
   position: relative;
-  width: clamp(78px, 13cqi, 118px);
-  height: clamp(78px, 13cqi, 118px);
+  width: clamp(92px, 15cqi, 140px);
+  height: clamp(92px, 15cqi, 140px);
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -1472,6 +1472,7 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  opacity: 1;
 }
 
 .dashboard-directional-bias-visual__radar svg {
@@ -1501,9 +1502,10 @@
 
 .dashboard-directional-bias-visual__arrow {
   position: absolute;
-  inset: 28%;
+  inset: 36%;
   z-index: 2;
   pointer-events: none;
+  opacity: 0.78;
 }
 
 .dashboard-directional-bias-visual__arrow svg {
@@ -1512,25 +1514,25 @@
   display: block;
 }
 
-/* Tone-based radar presence */
+/* Tone-based radar presence — radar dominates visually */
 .dashboard-directional-bias-visual--positive .dashboard-directional-bias-visual__radar { opacity: 1; }
-.dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar { opacity: 0.85; }
-.dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar { opacity: 0.85; }
-.dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar { opacity: 0.75; }
+.dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar { opacity: 0.9; }
+.dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar { opacity: 0.9; }
+.dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar { opacity: 0.8; }
 
 @keyframes dashboardRadarCorePulse {
-  0%, 100% { opacity: 0.85; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); }
+  0%, 100% { opacity: 0.88; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
 }
 
 @keyframes dashboardRadarInnerBreath {
-  0%, 100% { opacity: 0.8; transform: scale(1); }
-  50% { opacity: 0.95; transform: scale(1.025); }
+  0%, 100% { opacity: 0.82; transform: scale(1); }
+  50% { opacity: 0.95; transform: scale(1.02); }
 }
 
 @keyframes dashboardRadarOuterBreath {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 0.85; transform: scale(1.015); }
+  0%, 100% { opacity: 0.72; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.012); }
 }
 
 @media (prefers-reduced-motion: reduce) {
