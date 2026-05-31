@@ -1917,3 +1917,107 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   MARKET REGIME — V1B-7 Cross-Asset Intelligence Table
+   Structured comparison: Driver | Risk Tone | USD Link | Liquidity | Volatility | Relationship
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-regime-table {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0;
+  border: 1px solid rgba(57, 32, 6, 0.45);
+  border-radius: 6px;
+  overflow: hidden;
+  background: rgba(5, 5, 4, 0.5);
+}
+
+/* ─── Header row ─── */
+.dashboard-regime-table__header {
+  display: contents;
+}
+
+.dashboard-regime-table__th {
+  font-family: var(--font-body);
+  font-size: var(--dashboard-font-xs, 0.78rem);
+  font-weight: 700;
+  color: rgba(212, 168, 83, 0.85);
+  padding: clamp(4px, 0.4cqi, 6px) clamp(4px, 0.4cqi, 6px);
+  background: rgba(57, 32, 6, 0.2);
+  border-bottom: 1px solid rgba(57, 32, 6, 0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Data rows ─── */
+.dashboard-regime-table__row {
+  display: contents;
+}
+
+.dashboard-regime-table__cell {
+  font-family: var(--font-body);
+  font-size: var(--dashboard-font-xs, 0.78rem);
+  color: rgba(232, 223, 212, 0.88);
+  padding: clamp(3px, 0.35cqi, 5px) clamp(4px, 0.4cqi, 6px);
+  border-bottom: 1px solid rgba(57, 32, 6, 0.15);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.dashboard-regime-table__cell--driver {
+  font-weight: 600;
+  color: rgba(245, 242, 236, 0.95);
+}
+
+.dashboard-regime-table__cell--rel {
+  color: rgba(204, 194, 178, 0.72);
+}
+
+.dashboard-regime-table__cell--tone {
+  display: flex;
+  align-items: center;
+}
+
+/* ─── Compact mode (fewer columns visible, tighter spacing) ─── */
+.dashboard-regime-table--compact {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dashboard-regime-table--compact .dashboard-regime-table__th:nth-child(4),
+.dashboard-regime-table--compact .dashboard-regime-table__th:nth-child(5) {
+  display: none;
+}
+
+.dashboard-regime-table--compact .dashboard-regime-table__cell:nth-child(4),
+.dashboard-regime-table--compact .dashboard-regime-table__cell:nth-child(5) {
+  display: none;
+}
+
+/* ─── Responsive collapse: narrow containers show 3 columns ─── */
+@container (max-width: 380px) {
+  .dashboard-regime-table {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dashboard-regime-table__th:nth-child(n+4),
+  .dashboard-regime-table__cell:nth-child(n+4) {
+    display: none;
+  }
+}
+
+@container (max-width: 260px) {
+  .dashboard-regime-table {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-regime-table__th:nth-child(n+3),
+  .dashboard-regime-table__cell:nth-child(n+3) {
+    display: none;
+  }
+}
