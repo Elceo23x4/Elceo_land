@@ -1457,13 +1457,13 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DIRECTIONAL BIAS VISUAL — Radar ring + arrow (panel-scoped)
+   DIRECTIONAL BIAS VISUAL — Real SVG-14 radar + arrow (panel-scoped)
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-directional-bias-visual {
   position: relative;
-  width: clamp(48px, 8cqi, 72px);
-  height: clamp(48px, 8cqi, 72px);
+  width: clamp(72px, 12cqi, 108px);
+  height: clamp(72px, 12cqi, 108px);
   flex-shrink: 0;
   pointer-events: none;
 }
@@ -1471,8 +1471,8 @@
 .dashboard-directional-bias-visual__radar {
   position: absolute;
   inset: 0;
-  opacity: 0.55;
-  animation: dashboardRadarPulse 8s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.7;
 }
 
 .dashboard-directional-bias-visual__radar svg {
@@ -1481,35 +1481,78 @@
   display: block;
 }
 
+.dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"] {
+  animation: dashboardRadarCorePulse 2.6s ease-in-out infinite;
+}
+
+.dashboard-directional-bias-visual__scan {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dashboard-directional-bias-visual__scan-rotor {
+  transform-origin: 256px 256px;
+  animation: dashboardRadarScanRotate 3.8s linear infinite;
+}
+
+.dashboard-directional-bias-visual__scan-center {
+  animation: dashboardRadarCenterPulse 2.4s ease-in-out infinite;
+}
+
 .dashboard-directional-bias-visual__arrow {
   position: absolute;
-  inset: 18%;
-  z-index: 1;
+  inset: 26%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.dashboard-directional-bias-visual__arrow svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .dashboard-directional-bias-visual--positive .dashboard-directional-bias-visual__radar {
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .dashboard-directional-bias-visual--negative .dashboard-directional-bias-visual__radar {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 .dashboard-directional-bias-visual--warning .dashboard-directional-bias-visual__radar {
-  opacity: 0.45;
+  opacity: 0.55;
 }
 
 .dashboard-directional-bias-visual--neutral .dashboard-directional-bias-visual__radar {
-  opacity: 0.35;
+  opacity: 0.4;
 }
 
-@keyframes dashboardRadarPulse {
-  0%, 100% { opacity: 0.55; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.03); }
+@keyframes dashboardRadarScanRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dashboardRadarCorePulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes dashboardRadarCenterPulse {
+  0%, 100% { opacity: 0.8; r: 6; }
+  50% { opacity: 1; r: 8; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dashboard-directional-bias-visual__radar {
+  .dashboard-directional-bias-visual__scan-rotor {
+    animation: none;
+  }
+  .dashboard-directional-bias-visual__radar svg [id="svg14_radar_core"] {
+    animation: none;
+  }
+  .dashboard-directional-bias-visual__scan-center {
     animation: none;
   }
 }
