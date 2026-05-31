@@ -19,7 +19,7 @@ import MarketRegimeFrame from "../../assets/source/dashboard/panels/panel_market
 
 // --- Shell/chrome assets ---
 import TopSystemBarFrame from "../../assets/source/dashboard/shell/top-system-bar-frame.svg?react";
-import SidebarRailFrame from "../../assets/source/dashboard/shell/sidebar-rail-frame.svg?react";
+import SidebarRailFrame from "../../assets/source/dashboard/shell/elceo-sidebar-uni.svg?react";
 import CentralWheel from "../../assets/source/dashboard/shell/central-wheel.svg?react";
 
 // --- Chart asset ---

@@ -1,16 +1,15 @@
 /**
  * DashboardResponsiveSidebar.tsx
  *
- * R6C: Market cockpit navigation only.
- * Uses designed icons from SVG-04 nav icons asset (extracted).
+ * Sidebar using elceo-sidebar-uni.svg as visual source of truth.
+ * Icons are baked into the SVG asset. Button overlay layer provides
+ * click targets aligned over the asset's icon positions.
  */
 
 import { SidebarRailFrame } from "./dashboardResponsiveAssets";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
-import DashboardSidebarIcon from "./DashboardSidebarIcon";
-import type { DashboardSidebarIconName } from "./DashboardSidebarIcon";
 
-const SIDEBAR_BUTTONS: { id: DashboardSidebarIconName; title: string; active: boolean }[] = [
+const SIDEBAR_BUTTONS: { id: string; title: string; active: boolean }[] = [
   { id: "cockpit", title: "Market Cockpit", active: true },
   { id: "chart", title: "Chart Context", active: false },
   { id: "assets", title: "Watchlist Assets", active: false },
@@ -37,9 +36,7 @@ export default function DashboardResponsiveSidebar() {
             className={`dashboard-sidebar-btn${btn.active ? " dashboard-sidebar-btn--active" : ""}`}
             aria-label={btn.title}
             title={btn.title}
-          >
-            <DashboardSidebarIcon name={btn.id} />
-          </button>
+          />
         ))}
       </div>
     </div>
