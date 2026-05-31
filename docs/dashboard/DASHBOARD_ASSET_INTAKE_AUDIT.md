@@ -291,4 +291,21 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 ---
 
+## V1B-6 — Watchlist Featured Market Pulse Cards
+
+| Item | Detail |
+|------|--------|
+| Asset referenced | `src/assets/source/dashboard/watchlist/elceo-svg-09-market-pulse-cards.svg` |
+| SVG source edits | None — visual language extracted into CSS + inline SVG component |
+| Card layout | 4-column grid (responsive: 3→2→1 via container queries) |
+| Active highlight | Amber/gold border + subtle box-shadow on active asset card |
+| Card design | Dark bg (#050504), amber border (#392006), rx=11, accent bar, sparkline, score arc ring |
+| Tone colors | positive=#1de074, negative=#ff4d5e, warning=#f0a11a, neutral=#7b6650 |
+| Component | `src/dashboard/responsive/panelContent/MarketPulseCard.tsx` |
+| Layout class | `.dashboard-watchlist-card-grid` |
+| Drawer changes | None (skipped — low risk tolerance) |
+| No geometry changes | Confirmed |
+
+---
+
 _This document is the implementation contract for the V1B visual elevation phase. Do not implement until the corresponding batch is started._

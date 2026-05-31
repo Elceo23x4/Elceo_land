@@ -1767,3 +1767,151 @@
   gap: 2px;
   min-width: 0;
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   WATCHLIST — V1B-6 Market Pulse Cards
+   Visual language from elceo-svg-09-market-pulse-cards.svg.
+   Max 4 cards per row, responsive wrapping, active asset highlight.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Card Grid ─── */
+.dashboard-watchlist-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(4px, 0.5cqi, 8px);
+}
+
+/* Responsive: drop to fewer columns at tight sizes */
+@container (max-width: 480px) {
+  .dashboard-watchlist-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@container (max-width: 340px) {
+  .dashboard-watchlist-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@container (max-width: 220px) {
+  .dashboard-watchlist-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Card Frame (faithful to source: dark bg, amber border, rx=11) ─── */
+.dashboard-pulse-card {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.3cqi, 5px);
+  padding: clamp(5px, 0.5cqi, 8px);
+  border-radius: 11px;
+  background: #050504;
+  border: 1px solid #392006;
+  overflow: hidden;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.dashboard-pulse-card:hover {
+  border-color: rgba(224, 160, 26, 0.45);
+}
+
+/* ─── Active asset highlight ─── */
+.dashboard-pulse-card--active {
+  border-color: rgba(255, 215, 106, 0.65);
+  box-shadow: inset 0 0 0 1px rgba(255, 215, 106, 0.12), 0 0 8px rgba(255, 215, 106, 0.08);
+}
+
+/* ─── Accent bar (colored tone indicator from source) ─── */
+.dashboard-pulse-card__accent {
+  width: clamp(36px, 60%, 66px);
+  height: 3px;
+  border-radius: 2px;
+  opacity: 0.82;
+}
+
+/* ─── Header ─── */
+.dashboard-pulse-card__header {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.dashboard-pulse-card__symbol {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.5cqi, 11px);
+  font-weight: 700;
+  color: #f5f2ec;
+  white-space: nowrap;
+}
+
+.dashboard-pulse-card__class {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.35cqi, 8px);
+  color: #7b6650;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ─── Sparkline ─── */
+.dashboard-pulse-card__sparkline {
+  width: 100%;
+  height: clamp(16px, 2.5cqi, 26px);
+  display: block;
+}
+
+/* ─── Body ─── */
+.dashboard-pulse-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.dashboard-pulse-card__bias {
+  font-family: var(--font-body);
+  font-size: clamp(7px, 0.4cqi, 9.5px);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dashboard-pulse-card__metric {
+  font-family: var(--font-mono);
+  font-size: clamp(7px, 0.4cqi, 9px);
+  color: #b8afa6;
+}
+
+.dashboard-pulse-card__note {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34cqi, 8px);
+  color: #7b6650;
+}
+
+/* ─── Footer (score arc + label) ─── */
+.dashboard-pulse-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+}
+
+.dashboard-pulse-card__score-ring {
+  width: clamp(20px, 2.2cqi, 30px);
+  height: clamp(20px, 2.2cqi, 30px);
+  flex: 0 0 auto;
+}
+
+.dashboard-pulse-card__label {
+  font-family: var(--font-body);
+  font-size: clamp(6.5px, 0.34cqi, 8px);
+  color: #8a8178;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

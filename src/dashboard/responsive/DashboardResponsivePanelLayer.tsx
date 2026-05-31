@@ -23,6 +23,7 @@ import { Chip, DataRow, MiniMeter, SectionNav, ActionBar, SlideStripWrapper, Sta
 import DashboardLiquidGauge from "./panelContent/DashboardLiquidGauge";
 import DirectionalBiasRadar from "./panelContent/DirectionalBiasRadar";
 import NewsImpactBadge from "./panelContent/NewsImpactBadge";
+import MarketPulseCard from "./panelContent/MarketPulseCard";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
@@ -233,11 +234,21 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
         bodyContent={<>
           <SectionNav items={["Featured", "FX Majors", "Alerts", "Scenario Map"]} active={watchMode} onSelect={setWatchMode} />
           {watchMode === 0 && (<>
-            {watchlistFixture.map((a) => (
-              <HoverPreviewCard key={a.ticker}
-                trigger={<div className={`dashboard-precision-data-row${a.ticker === activeAsset ? " dashboard-precision-data-row--active" : ""}`}><span className="dashboard-watchlist-ticker" style={{ minWidth: "52px" }}>{a.ticker}</span><MiniSparkline data={a.sparkline} tone={a.changeTone} /><span className="dashboard-precision-data-value--mono" style={{ color: a.changeTone === "positive" ? "#5cba6e" : a.changeTone === "negative" ? "#e05555" : "#8a8178", minWidth: "42px", textAlign: "right" }}>{a.change}</span><Chip value={a.bias} tone={a.biasTone} /></div>}
-                preview={<><p className="dashboard-precision-body-text">{a.name} — {a.last}</p><DataRow label="Confidence" value={a.confidence} tone={a.biasTone} />{a.ticker === activeAsset && <DataRow label="Status" value="Active asset" tone="positive" />}</>} />
-            ))}
+            <div className="dashboard-watchlist-card-grid">
+              {watchlistFixture.map((a) => (
+                <MarketPulseCard
+                  key={a.ticker}
+                  symbol={a.ticker}
+                  label={a.name}
+                  bias={a.bias}
+                  tone={a.biasTone}
+                  active={a.ticker === activeAsset}
+                  metric={a.change}
+                  note={a.confidence}
+                  sparkline={a.sparkline}
+                />
+              ))}
+            </div>
             <DataRow label="Cross-asset" value={crossAsset.dominantDriver} tone={cognition.scenarioTone} />
           </>)}
           {watchMode === 1 && (<>
