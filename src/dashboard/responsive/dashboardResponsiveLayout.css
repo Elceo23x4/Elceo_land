@@ -782,22 +782,9 @@
   overflow: hidden;
 }
 
+/* Separator line removed — topbar simplified */
 .dashboard-precision-topbar::after {
-  content: "";
-  position: absolute;
-  left: 1.2%;
-  right: 1.2%;
-  bottom: 0;
-  height: max(1px, 0.12cqh);
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 106, 0, 0.36),
-    rgba(255, 191, 74, 0.5),
-    rgba(255, 106, 0, 0.32),
-    transparent
-  );
-  opacity: 0.9;
-  pointer-events: none;
+  display: none;
 }
 
 .dashboard-precision-topbar-frame {
@@ -812,11 +799,37 @@
   display: block;
 }
 
+/* Thicken topbar border strokes by 1.7x at runtime */
+.dashboard-precision-topbar-frame svg path[stroke-width],
+.dashboard-precision-topbar-frame svg line[stroke-width],
+.dashboard-precision-topbar-frame svg rect[stroke-width] {
+  stroke-width: 1.53px;
+}
+
+.dashboard-precision-topbar-frame svg [stroke-width="0.45"],
+.dashboard-precision-topbar-frame svg [stroke-width=".45"] {
+  stroke-width: 0.765px;
+}
+
+.dashboard-precision-topbar-frame svg [stroke-width="0.9"],
+.dashboard-precision-topbar-frame svg [stroke-width=".9"] {
+  stroke-width: 1.53px;
+}
+
+/* Hide internal separator/divider lines inside topbar SVG */
+.dashboard-precision-topbar-frame svg [id*="divider"],
+.dashboard-precision-topbar-frame svg [id*="separator"],
+.dashboard-precision-topbar-frame svg [id*="internal_line"],
+.dashboard-precision-topbar-frame svg [id*="slot_divider"] {
+  display: none !important;
+}
+
 .dashboard-precision-topbar-content {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
   padding: 0 clamp(8px, 1cqi, 20px);
@@ -881,54 +894,176 @@
 }
 
 
-/* ─── Sidebar Button Layer ─── */
-.dashboard-sidebar-button-layer {
+/* ─── Sidebar Hitbox Layer (transparent click targets only) ─── */
+.dashboard-sidebar-hitbox-layer {
   position: absolute;
-  inset: 7% 0 7% 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: auto;
-  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
 }
 
-.dashboard-sidebar-btn {
+.dashboard-sidebar-hitbox {
   all: unset;
-  box-sizing: border-box;
-  width: clamp(18px, 1.9cqi, 32px);
-  height: clamp(18px, 1.9cqi, 32px);
-  display: grid;
-  place-items: center;
-  border-radius: 4px;
-  background: rgba(20, 18, 16, 0.5);
-  border: 1px solid rgba(138, 129, 120, 0.25);
-  color: rgba(212, 168, 83, 0.7);
+  position: absolute;
+  left: 50%;
+  width: clamp(26px, 70%, 36px);
+  height: clamp(36px, 6.2%, 46px);
+  transform: translate(-50%, -50%);
   cursor: pointer;
   pointer-events: auto;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  border-radius: 8px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
-.dashboard-sidebar-btn svg {
-  width: 60%;
-  height: 60%;
+.dashboard-sidebar-hitbox:hover,
+.dashboard-sidebar-hitbox--active {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
-.dashboard-sidebar-btn:hover {
-  background: rgba(212, 168, 83, 0.1);
-  border-color: rgba(212, 168, 83, 0.45);
-  color: rgba(212, 168, 83, 1);
-}
-
-.dashboard-sidebar-btn:focus-visible {
-  outline: 2px solid rgba(212, 168, 83, 0.6);
+.dashboard-sidebar-hitbox:focus-visible {
+  outline: 1.5px solid rgba(255, 138, 30, 0.6);
   outline-offset: 2px;
+  border-radius: 6px;
 }
 
-.dashboard-sidebar-btn--active {
-  background: rgba(212, 168, 83, 0.12);
-  border-color: rgba(212, 168, 83, 0.5);
-  color: #d4a853;
+/* ─── Sidebar Active Side Marker (slim vertical accent, not overlay box) ─── */
+.dashboard-sidebar-active-selector {
+  position: absolute;
+  left: 3px;
+  width: 3px;
+  height: 34px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, transparent, #ffd76a, #ff6a00, transparent);
+  box-shadow: 0 0 8px rgba(255, 106, 0, 0.35);
+  transition: top 220ms ease;
+  z-index: 4;
+}
+
+/* ─── Hide static first-icon active slot baked into SVG ─── */
+.dashboard-precision-sidebar-frame svg #sidebar_revb_active_slot_empty,
+.dashboard-precision-sidebar-frame svg #sidebar_revb_active_slot_inner {
+  opacity: 0;
+}
+
+/* ─── Active SVG icon group styling ─── */
+/* Base: slightly dim inactive icons for contrast */
+.dashboard-precision-sidebar-frame svg [id^="sidebar_revb_icon_"] .icon {
+  transition: stroke-opacity 0.2s, filter 0.2s;
+}
+.dashboard-precision-sidebar-frame svg [id^="sidebar_revb_icon_"] .icon-secondary {
+  transition: stroke-opacity 0.2s, filter 0.2s;
+}
+
+/* Active icon: bright gold with glow */
+.dashboard-precision-sidebar--active-cockpit .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_01 .icon,
+.dashboard-precision-sidebar--active-cockpit .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_01 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-macro .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_02 .icon,
+.dashboard-precision-sidebar--active-macro .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_02 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-assets .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_03 .icon,
+.dashboard-precision-sidebar--active-assets .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_03 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-evidence .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_04 .icon,
+.dashboard-precision-sidebar--active-evidence .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_04 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-alerts .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_05 .icon,
+.dashboard-precision-sidebar--active-alerts .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_05 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-regime .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_06 .icon,
+.dashboard-precision-sidebar--active-regime .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_06 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-journal .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_07 .icon,
+.dashboard-precision-sidebar--active-journal .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_07 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-calendar .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_08 .icon,
+.dashboard-precision-sidebar--active-calendar .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_08 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-academy .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_09 .icon,
+.dashboard-precision-sidebar--active-academy .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_09 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+.dashboard-precision-sidebar--active-settings .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_10 .icon,
+.dashboard-precision-sidebar--active-settings .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_10 .icon-secondary {
+  stroke: #ffd76a !important;
+  stroke-opacity: 1 !important;
+  filter: drop-shadow(0 0 3px rgba(255, 138, 30, 0.55));
+}
+
+/* ─── Subtle active icon pulse (reduced motion safe) ─── */
+@keyframes dashboardSidebarActiveIconPulse {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(255, 138, 30, 0.35)); }
+  50% { filter: drop-shadow(0 0 5px rgba(255, 191, 74, 0.58)); }
+}
+
+.dashboard-precision-sidebar--active-cockpit .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_01,
+.dashboard-precision-sidebar--active-macro .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_02,
+.dashboard-precision-sidebar--active-assets .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_03,
+.dashboard-precision-sidebar--active-evidence .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_04,
+.dashboard-precision-sidebar--active-alerts .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_05,
+.dashboard-precision-sidebar--active-regime .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_06,
+.dashboard-precision-sidebar--active-journal .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_07,
+.dashboard-precision-sidebar--active-calendar .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_08,
+.dashboard-precision-sidebar--active-academy .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_09,
+.dashboard-precision-sidebar--active-settings .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_10 {
+  animation: dashboardSidebarActiveIconPulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-precision-sidebar--active-cockpit .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_01,
+  .dashboard-precision-sidebar--active-macro .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_02,
+  .dashboard-precision-sidebar--active-assets .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_03,
+  .dashboard-precision-sidebar--active-evidence .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_04,
+  .dashboard-precision-sidebar--active-alerts .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_05,
+  .dashboard-precision-sidebar--active-regime .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_06,
+  .dashboard-precision-sidebar--active-journal .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_07,
+  .dashboard-precision-sidebar--active-calendar .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_08,
+  .dashboard-precision-sidebar--active-academy .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_09,
+  .dashboard-precision-sidebar--active-settings .dashboard-precision-sidebar-frame svg #sidebar_revb_icon_10 {
+    animation: none;
+  }
 }
 
 
