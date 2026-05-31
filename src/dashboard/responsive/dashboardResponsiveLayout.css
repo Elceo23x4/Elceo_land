@@ -1457,9 +1457,10 @@
 
 
 /* ═══════════════════════════════════════════════════════════════════════════════
-   DIRECTIONAL BIAS RADAR — V1B-4B Arrow Overlay + Animation
+   DIRECTIONAL BIAS RADAR — V1B-4C Arrow Overlay + Neutral Scan Animation
    Uses elceo-radar.svg at intended 141×130 display size.
    Arrow overlay uses actual elceo-svg-14-arrow-up/down SVGs.
+   Neutral/Watching state shows a realistic radar scan over the core.
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 .dashboard-bias-content-row {
@@ -1480,7 +1481,7 @@
   justify-content: center;
 }
 
-/* ─── Radar container (position context for arrow overlay) ─── */
+/* ─── Radar container (position context for overlays) ─── */
 .dashboard-directional-bias-radar {
   position: relative;
   width: min(141px, 36cqi);
@@ -1490,7 +1491,7 @@
   pointer-events: none;
 }
 
-/* ─── Radar asset layer ─── */
+/* ─── Radar asset layer (z-index: 1) ─── */
 .dashboard-directional-bias-radar__asset {
   position: relative;
   width: 100%;
@@ -1504,7 +1505,32 @@
   display: block;
 }
 
-/* ─── Arrow overlay layer ─── */
+/* ─── Neutral scan overlay (z-index: 2) ─── */
+.dashboard-directional-bias-radar__neutral-scan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Core glow pulse */
+.dashboard-directional-bias-radar__scan-core {
+  opacity: 0.42;
+  animation: dashboardRadarScanCorePulse 2.4s ease-in-out infinite;
+}
+
+/* Rotating scan wedge */
+.dashboard-directional-bias-radar__scan-rotor {
+  transform-box: fill-box;
+  transform-origin: 70.5px 63.5px;
+  opacity: 0.48;
+  animation: dashboardRadarScanRotate 3.2s linear infinite;
+}
+
+/* ─── Arrow overlay layer (z-index: 3) ─── */
 .dashboard-directional-bias-radar__arrow {
   position: absolute;
   inset: 28%;
@@ -1565,7 +1591,19 @@
   50% { transform: translateY(-1px); opacity: 0.94; }
 }
 
-/* ─── Reduced motion: disable all radar/arrow animation ─── */
+/* ─── Keyframes: Neutral scan core pulse ─── */
+@keyframes dashboardRadarScanCorePulse {
+  0%, 100% { opacity: 0.42; }
+  50% { opacity: 0.28; }
+}
+
+/* ─── Keyframes: Neutral scan sweep rotation ─── */
+@keyframes dashboardRadarScanRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Reduced motion: disable all radar/arrow/scan animation ─── */
 @media (prefers-reduced-motion: reduce) {
   .dashboard-directional-bias-radar__asset svg #svg14_radar_core,
   .dashboard-directional-bias-radar__asset svg #svg14_first_ring_layer,
@@ -1575,5 +1613,15 @@
 
   .dashboard-directional-bias-radar__arrow {
     animation: none;
+  }
+
+  .dashboard-directional-bias-radar__scan-core {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .dashboard-directional-bias-radar__scan-rotor {
+    animation: none;
+    opacity: 0.25;
   }
 }
