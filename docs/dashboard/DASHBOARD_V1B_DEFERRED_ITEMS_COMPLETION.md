@@ -61,7 +61,12 @@ Uses `elceo-svg-10-horizontal-light-streaks.svg` clipped as a decorative separat
 - Overflow: hidden (clips the 1920×1080 asset)
 - Default opacity: 0.35
 - Pointer-events: none
-- Usage: between major content groups in selected panels
+
+**Applied in panels (V1B-10B):**
+- Evidence → Insights mode: between source freshness and contradiction rows (opacity 0.25)
+- Coaching → Journal Note mode: between note summary and evidence/contradiction lines (opacity 0.22)
+- Coaching → Behavior mode: between review state and checklist rows (opacity 0.2)
+- News & Macro → Macro Pulse mode: between regime pressure and macro watch rows (opacity 0.22)
 
 ### Insight Text Block
 
@@ -74,6 +79,10 @@ Blog-like readable presentation for long insight/summary text:
 - Body text: line-height 1.55, proper paragraph spacing
 - Dense mode for tighter contexts
 - No text below 0.78rem
+
+**Applied in panels (V1B-10B):**
+- Evidence → Insights mode: caution note wrapped with eyebrow="Caution", tone from cognition
+- Coaching → Journal Note mode: note summary wrapped with tone="positive", dense mode
 
 ---
 

@@ -282,8 +282,8 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 | 9 | Guides/anchors SVG | `DashboardChartVisualGuides.tsx` — faint decorative layer (opacity 0.18, mix-blend-mode: screen) behind chart overlay. Respects Zones toggle. |
 | 10 | Market structure markers SVG | Same component — renders alongside guides, respects Zones toggle. |
 | 11 | Projection paths SVG | Same component — respects Scenario toggle. |
-| 17 | Blog-like readable sections | `InsightTextBlock.tsx` — left accent line, eyebrow, title, line-height 1.55 body text. |
-| 19 | Horizontal light streaks | `HorizontalLightStreak.tsx` — clipped to 14–24px height, low opacity decorative separator. |
+| 17 | Blog-like readable sections | `InsightTextBlock.tsx` — applied in Evidence Insights (caution) + Coaching Journal Note (summary). |
+| 19 | Horizontal light streaks | `HorizontalLightStreak.tsx` — applied in 4 panel locations (Evidence, Coaching×2, News Macro Pulse). |
 
 ---
 

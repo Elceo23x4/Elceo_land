@@ -26,6 +26,8 @@ import NewsImpactBadge from "./panelContent/NewsImpactBadge";
 import MarketPulseCard from "./panelContent/MarketPulseCard";
 import MarketRegimeTable from "./panelContent/MarketRegimeTable";
 import type { MarketRegimeTableRow } from "./panelContent/MarketRegimeTable";
+import HorizontalLightStreak from "./panelContent/HorizontalLightStreak";
+import InsightTextBlock from "./panelContent/InsightTextBlock";
 import DashboardMeterBar from "./panelContent/DashboardMeterBar";
 import HoverPreviewCard from "./panelContent/HoverPreviewCard";
 import { MiniSparkline, MiniDonutScore, EvidenceWeightBar, SessionBadge, CrossAssetMiniPulse } from "./panelContent/MiniVisuals";
@@ -302,8 +304,11 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Correlation" value={crossAsset.correlationNote} tone="neutral" />
             <DataRow label="Evidence weight" value={`${cognition.evidenceWeight}%`} tone={cognition.evidenceWeight >= 55 ? "positive" : "neutral"} />
             <DataRow label="Source freshness" value={sourceFreshness.summary} tone={sourceFreshness.overallState === "fresh" ? "positive" : "neutral"} />
+            <HorizontalLightStreak opacity={0.25} />
             {scenario.contradictionItems.map((c) => <DataRow key={c.id} label="Contradicts" value={c.summary} tone={c.tone} />)}
-            <p className="dashboard-precision-note">{crossAsset.cautionNote}</p>
+            <InsightTextBlock tone={cognition.cautionTone} eyebrow="Caution" dense>
+              <p>{crossAsset.cautionNote}</p>
+            </InsightTextBlock>
           </>)}
           {evidMode === 2 && (<>
             {sourceFreshness.layers.slice(0, 5).map((l) => (
@@ -358,6 +363,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
             <DataRow label="Review lens" value={tfCtx?.reviewLens ?? ""} tone="neutral" />
             <DataRow label="Macro sensitivity" value={cognition.macroSensitivity} tone="neutral" />
             <DataRow label="Regime pressure" value={cognition.regimePressure} tone={cognition.scenarioTone} />
+            <HorizontalLightStreak opacity={0.22} />
             {conditionWatch.macroWatch.map((w) => <DataRow key={w.id} label="Macro watch" value={w.detail} tone={w.tone} />)}
             <DataRow label="Liquidity" value={cognition.liquidityCondition} tone="positive" />
             <StatusLabel label="Fixture Mode" />
@@ -380,7 +386,10 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           </>)}
           {coachMode === 1 && (<>
             <DataRow label="Note" value={reviewWorkflow.noteDraft.title} tone="positive" />
-            <p className="dashboard-precision-body-text">{reviewWorkflow.noteDraft.summary}</p>
+            <InsightTextBlock tone="positive" dense>
+              <p>{reviewWorkflow.noteDraft.summary}</p>
+            </InsightTextBlock>
+            <HorizontalLightStreak opacity={0.22} />
             <DataRow label="Evidence" value={reviewWorkflow.noteDraft.evidenceLine} tone="positive" />
             <DataRow label="Contradiction" value={reviewWorkflow.noteDraft.contradictionLine} tone="warning" />
             <DataRow label="Freshness" value={reviewWorkflow.noteDraft.freshnessLine} tone={cognition.freshnessScore >= 65 ? "positive" : "warning"} />
@@ -398,6 +407,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
           {coachMode === 3 && (<>
             <DataRow label="Review state" value={reviewWorkflow.reviewState.replace(/_/g, " ")} tone={reviewWorkflow.reviewTone} />
             <DataRow label="Top condition" value={conditionWatch.items[0]?.detail ?? ""} tone={conditionWatch.items[0]?.tone ?? "neutral"} />
+            <HorizontalLightStreak opacity={0.2} />
             {reviewWorkflow.checklist.filter(c => c.linkedArea === "contradiction" || c.linkedArea === "freshness").map((c) => (
               <DataRow key={c.id} label={c.label} value={c.detail} tone={c.tone} />
             ))}
