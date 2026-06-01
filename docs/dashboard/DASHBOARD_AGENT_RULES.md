@@ -193,6 +193,15 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 
 ---
 
+## Type contract rules
+
+- Dashboard runtime must use one shared tone contract (`Tone` from `responsivePanelFixtures.ts`).
+- Do not create narrower duplicate tone unions unless they are intentionally converted before UI rendering.
+- `npm run build` TypeScript errors cannot be ignored in freeze audits.
+- A freeze audit cannot pass if `tsc -b` fails.
+
+---
+
 ## Validation rules
 
 Every dashboard batch must report:

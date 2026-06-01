@@ -8,7 +8,10 @@
  * No live data. Safe language only.
  */
 
-export type DashboardCognitionTone = "positive" | "warning" | "negative" | "neutral";
+import type { Tone } from "./responsivePanelFixtures";
+
+/** Aligned to shared Tone contract — all dashboard tone fields are compatible */
+export type DashboardCognitionTone = Tone;
 
 export interface DashboardCognitionSnapshot {
   asset: string;
