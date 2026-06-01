@@ -273,11 +273,17 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 | # | Item | Reason |
 |---|------|--------|
-| 9 | Guides/anchors SVG | V2 chart overlay batch (requires chart geometry awareness) |
-| 10 | Market structure markers SVG | V2 chart overlay batch |
-| 11 | Projection paths SVG | V2 chart overlay batch |
-| 17 | Blog-like readable long sections | V2 readability/typography pass |
-| 19 | Horizontal light streaks | V2 decorative polish pass |
+| 13 | Arrows-alerts-rings score ring extraction | V2 polish — MarketPulseCard already has inline score arcs; sprite extraction is medium risk with low added value |
+
+### V1B-10 — Completed Deferred Items
+
+| # | Item | Implementation |
+|---|------|---------------|
+| 9 | Guides/anchors SVG | `DashboardChartVisualGuides.tsx` — faint decorative layer (opacity 0.18, mix-blend-mode: screen) behind chart overlay. Respects Zones toggle. |
+| 10 | Market structure markers SVG | Same component — renders alongside guides, respects Zones toggle. |
+| 11 | Projection paths SVG | Same component — respects Scenario toggle. |
+| 17 | Blog-like readable sections | `InsightTextBlock.tsx` — applied in Evidence Insights (caution) + Coaching Journal Note (summary). |
+| 19 | Horizontal light streaks | `HorizontalLightStreak.tsx` — applied in 4 panel locations (Evidence, Coaching×2, News Macro Pulse). |
 
 ---
 

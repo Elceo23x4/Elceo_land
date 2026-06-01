@@ -10,6 +10,7 @@ import { CentralWheel, ChartConsoleFrame } from "./dashboardResponsiveAssets";
 import { ChartContainer, fixtureNormalizedOhlcData } from "../chart";
 import { boardRectStyle, SHELL_RECTS } from "./dashboardResponsiveGeometry";
 import { assetContextBySymbol } from "./responsivePanelFixtures";
+import DashboardChartVisualGuides from "./DashboardChartVisualGuides";
 import DashboardChartIntelligenceOverlay from "./DashboardChartIntelligenceOverlay";
 import DashboardChartOverlayInspector from "./DashboardChartOverlayInspector";
 import DashboardAssetSelector from "./DashboardAssetSelector";
@@ -73,6 +74,9 @@ export default function DashboardResponsiveChartZone({ activeAsset, activeTimefr
 
       <div className="dashboard-precision-chart-display" style={{ ...boardRectStyle(SHELL_RECTS.chartDisplay), zIndex: 10 }}>
         <ChartContainer data={fixtureNormalizedOhlcData} mode="fixture_only" />
+
+        {/* Decorative chart visual guides — behind interactive overlay */}
+        <DashboardChartVisualGuides showZones={showZones} showScenario={showScenario} />
 
         <DashboardChartIntelligenceOverlay
           showZones={showZones}
