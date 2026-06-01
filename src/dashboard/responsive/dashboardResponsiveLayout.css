@@ -2099,7 +2099,22 @@
 
 .dashboard-regime-table__cell--tone {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Scope chip containment inside regime table tone cell only */
+.dashboard-regime-table__cell--tone .dashboard-precision-chip {
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  text-align: left;
+  line-height: 1.2;
+  padding-inline: clamp(3px, 0.35cqi, 6px);
 }
 
 /* ─── Compact mode (fewer columns visible, tighter spacing) ─── */
