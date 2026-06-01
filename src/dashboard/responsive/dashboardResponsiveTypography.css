@@ -899,6 +899,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
+  padding-right: clamp(10px, 1.4cqi, 16px);
+  box-sizing: border-box;
 }
 
 .dashboard-scroll-frame__viewport::-webkit-scrollbar {

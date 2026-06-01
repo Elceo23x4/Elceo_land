@@ -202,6 +202,15 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 
 ---
 
+## Visual freeze rules
+
+- Freeze audits must check earlier user visual requirements, not only current code health.
+- Panel hover glow must be inline stroke enhancement, not outer glow or drop-shadow.
+- Coaching panel expanded scale is intentionally 1.5 unless user changes it.
+- Deferred V2 items (chart overlay sprites, light streaks, blog readability) must not block V1B freeze.
+
+---
+
 ## Validation rules
 
 Every dashboard batch must report:

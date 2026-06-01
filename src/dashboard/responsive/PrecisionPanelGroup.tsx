@@ -47,7 +47,7 @@ const PANEL_EXPANSION_SCALE: Record<PanelId, number> = {
   watchlist: 1.5,
   evidenceStackReasoningEngine: 1.25,
   newsMacroIntelligence: 1.25,
-  coachingInsights: 1.25,
+  coachingInsights: 1.5,
   marketRegimeCrossAssetPulse: 1.25,
 };
 

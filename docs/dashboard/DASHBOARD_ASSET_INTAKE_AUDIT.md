@@ -260,6 +260,27 @@ Main titles remain. Header slot geometry may need vertical adjustment.
 
 ---
 
+## V1B-9B — Forgotten Visual Requirements Audit + Patches
+
+| Item | Detail |
+|------|--------|
+| Coaching expansion | Fixed from 1.25 → 1.5 (20% increase as requested) |
+| Panel hover inline glow | Implemented: 9 ID-suffix selectors across 3 tiers (heavy/medium/fine). Inline stroke enhancement, no outer glow. Activates on :hover and :focus-within. |
+| No geometry changes | Confirmed |
+| No SVG source edits | Confirmed |
+
+### Deferred V2 Items (not blocking freeze)
+
+| # | Item | Reason |
+|---|------|--------|
+| 9 | Guides/anchors SVG | V2 chart overlay batch (requires chart geometry awareness) |
+| 10 | Market structure markers SVG | V2 chart overlay batch |
+| 11 | Projection paths SVG | V2 chart overlay batch |
+| 17 | Blog-like readable long sections | V2 readability/typography pass |
+| 19 | Horizontal light streaks | V2 decorative polish pass |
+
+---
+
 ## V1B-4 — Directional Bias Radar Clean Restart
 
 | Item | Detail |
