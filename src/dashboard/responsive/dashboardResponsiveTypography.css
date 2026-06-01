@@ -1158,3 +1158,76 @@
     transition: none !important;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-8D: FINAL SCROLLBAR SUPPRESSION — overrides board-wide * rules above
+   ScrollFrame owns panel body scroll. Section nav uses cue buttons.
+   No native scrollbar should be visible on these elements.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── ScrollFrame viewport: custom slider only ─── */
+.dashboard-precision-board .dashboard-scroll-frame__viewport {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.dashboard-precision-board .dashboard-scroll-frame__viewport::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.dashboard-precision-board .dashboard-scroll-frame__viewport::-webkit-scrollbar-track,
+.dashboard-precision-board .dashboard-scroll-frame__viewport::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ─── Section nav scroll rail: cue buttons only, no native bar ─── */
+.dashboard-precision-board .dashboard-section-nav-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.dashboard-precision-board .dashboard-section-nav-scroll::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.dashboard-precision-board .dashboard-section-nav-scroll::-webkit-scrollbar-track,
+.dashboard-precision-board .dashboard-section-nav-scroll::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+/* ─── Panel body slot: never scrollable itself ─── */
+.dashboard-precision-board .dashboard-precision-content-slot--body {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.dashboard-precision-board .dashboard-precision-content-slot--body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+.dashboard-precision-board .dashboard-precision-content-slot--body::-webkit-scrollbar-track,
+.dashboard-precision-board .dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
