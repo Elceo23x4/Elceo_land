@@ -207,7 +207,11 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - Freeze audits must check earlier user visual requirements, not only current code health.
 - Panel hover glow must be inline stroke enhancement, not outer glow or drop-shadow.
 - Coaching panel expanded scale is intentionally 1.5 unless user changes it.
-- Deferred V2 items (chart overlay sprites, light streaks, blog readability) must not block V1B freeze.
+- Deferred user-requested visual requirements must be tracked and closed before freeze.
+- Display-safe chart SVGs may be used only as overlays/decorative guides without changing chart geometry.
+- Horizontal light streaks should remain decorative separators, not layout drivers.
+- Long insight sections should use readable blog-like presentation where applicable.
+- Arrows-alerts-rings score ring extraction is deferred to V2 (MarketPulseCard handles arcs inline).
 
 ---
 

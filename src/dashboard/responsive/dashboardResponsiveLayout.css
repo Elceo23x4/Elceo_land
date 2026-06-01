@@ -2309,3 +2309,115 @@
 .dashboard-precision-data-row {
   min-width: 0;
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-10: CHART VISUAL GUIDES — Decorative SVG overlay layer
+   Faint backdrop behind interactive intelligence overlay.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-chart-visual-guides {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.18;
+  mix-blend-mode: screen;
+}
+
+.dashboard-chart-visual-guides__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard-chart-visual-guides__layer svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dashboard-chart-visual-guides__layer--guides {
+  opacity: 0.6;
+}
+
+.dashboard-chart-visual-guides__layer--markers {
+  opacity: 0.5;
+}
+
+.dashboard-chart-visual-guides__layer--paths {
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-10: HORIZONTAL LIGHT STREAK SEPARATOR
+   Decorative panel section divider using elceo-svg-10 asset (clipped).
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-light-streak {
+  width: 100%;
+  height: clamp(14px, 2cqi, 24px);
+  overflow: hidden;
+  pointer-events: none;
+  margin: clamp(4px, 0.5cqi, 8px) 0;
+}
+
+.dashboard-light-streak svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-10: INSIGHT TEXT BLOCK — Blog-like readable long text presentation
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+.dashboard-insight-block {
+  border-left: 2px solid rgba(138, 129, 120, 0.3);
+  padding-left: clamp(8px, 1cqi, 14px);
+  margin: clamp(4px, 0.5cqi, 8px) 0;
+}
+
+.dashboard-insight-block--dense {
+  padding-left: clamp(6px, 0.7cqi, 10px);
+  margin: clamp(2px, 0.3cqi, 5px) 0;
+}
+
+.dashboard-insight-block__eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--dashboard-font-xs, 0.78rem);
+  font-weight: 600;
+  color: rgba(212, 168, 83, 0.7);
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.dashboard-insight-block__title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--dashboard-font-sm, 0.88rem);
+  font-weight: 700;
+  color: rgba(245, 242, 236, 0.92);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.dashboard-insight-block__body {
+  font-family: var(--font-body);
+  font-size: var(--dashboard-font-xs, 0.78rem);
+  color: rgba(232, 223, 212, 0.85);
+  line-height: 1.55;
+}
+
+.dashboard-insight-block__body p {
+  margin: 0 0 clamp(6px, 0.6cqi, 10px);
+}
+
+.dashboard-insight-block__body p:last-child {
+  margin-bottom: 0;
+}
