@@ -167,6 +167,11 @@ The banned term "signal" may appear only in this rules file as a reference to wh
 - Market Regime cross-asset information should prefer table/structured comparison format.
 - Tables must collapse responsively and must not force horizontal overflow.
 - Dashboard table text must not go below 0.78rem.
+- Framer Motion is approved for panel navigation, scroll transitions, sidebar active marker, and future transitions.
+- Do not add new animation packages while framer-motion exists.
+- Section heading rails must show scroll arrows only when overflow exists.
+- Panel content must collapse responsively and must not force horizontal overflow.
+- Text must not go below 0.78rem at any viewport size.
 
 ---
 

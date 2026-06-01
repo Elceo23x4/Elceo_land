@@ -130,7 +130,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ DIRECTIONAL BIAS — Bias / Scenario / Drivers / Asset ═══ */}
-      <PrecisionPanelGroup panelId="directionalBiasSummary" expanded={expandedPanel === "directionalBiasSummary"} onToggleExpand={() => toggleExpand("directionalBiasSummary")} linked={linkedPanelId === "directionalBiasSummary"} alertArmed={getAlertForPanel("directionalBiasSummary")?.enabled} alertSummary={getAlertForPanel("directionalBiasSummary")?.summary} onToggleAlert={() => togglePanelAlert("directionalBiasSummary")} frameSvg={<DirectionalBiasFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="directionalBiasSummary" expanded={expandedPanel === "directionalBiasSummary"} onToggleExpand={() => toggleExpand("directionalBiasSummary")} linked={linkedPanelId === "directionalBiasSummary"} alertArmed={getAlertForPanel("directionalBiasSummary")?.enabled} alertSummary={getAlertForPanel("directionalBiasSummary")?.summary} onToggleAlert={() => togglePanelAlert("directionalBiasSummary")} frameSvg={<DirectionalBiasFrame preserveAspectRatio="none" />} activeSectionKey={`bias-${biasMode}`}
         headerContent={<h3 className="dashboard-precision-title">Directional Bias</h3>}
         bodyContent={<>
           <SectionNav items={["Bias", "Scenario", "Drivers", "Asset"]} active={biasMode} onSelect={setBiasMode} />
@@ -189,7 +189,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ CONFIDENCE — Confidence / Contradiction / Freshness / Data Quality ═══ */}
-      <PrecisionPanelGroup panelId="confidenceContextMatrix" expanded={expandedPanel === "confidenceContextMatrix"} onToggleExpand={() => toggleExpand("confidenceContextMatrix")} linked={linkedPanelId === "confidenceContextMatrix"} alertArmed={getAlertForPanel("confidenceContextMatrix")?.enabled} alertSummary={getAlertForPanel("confidenceContextMatrix")?.summary} onToggleAlert={() => togglePanelAlert("confidenceContextMatrix")} frameSvg={<ConfidenceMatrixFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="confidenceContextMatrix" expanded={expandedPanel === "confidenceContextMatrix"} onToggleExpand={() => toggleExpand("confidenceContextMatrix")} linked={linkedPanelId === "confidenceContextMatrix"} alertArmed={getAlertForPanel("confidenceContextMatrix")?.enabled} alertSummary={getAlertForPanel("confidenceContextMatrix")?.summary} onToggleAlert={() => togglePanelAlert("confidenceContextMatrix")} frameSvg={<ConfidenceMatrixFrame preserveAspectRatio="none" />} activeSectionKey={`conf-${confMode}`}
         headerContent={<h3 className="dashboard-precision-title">Confidence &amp; Context</h3>}
         bodyContent={<>
           <SectionNav items={["Confidence", "Contradiction", "Freshness", "Data Quality"]} active={confMode} onSelect={setConfMode} />
@@ -231,7 +231,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ WATCHLIST — Featured / FX Majors / Alerts / Scenario Map ═══ */}
-      <PrecisionPanelGroup panelId="watchlist" expanded={expandedPanel === "watchlist"} onToggleExpand={() => toggleExpand("watchlist")} linked={linkedPanelId === "watchlist"} alertArmed={getAlertForPanel("watchlist")?.enabled} alertSummary={getAlertForPanel("watchlist")?.summary} onToggleAlert={() => togglePanelAlert("watchlist")} frameSvg={<WatchlistFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="watchlist" expanded={expandedPanel === "watchlist"} onToggleExpand={() => toggleExpand("watchlist")} linked={linkedPanelId === "watchlist"} alertArmed={getAlertForPanel("watchlist")?.enabled} alertSummary={getAlertForPanel("watchlist")?.summary} onToggleAlert={() => togglePanelAlert("watchlist")} frameSvg={<WatchlistFrame preserveAspectRatio="none" />} activeSectionKey={`watch-${watchMode}`}
         headerContent={<h3 className="dashboard-precision-title">Watchlist</h3>}
         bodyContent={<>
           <SectionNav items={["Featured", "FX Majors", "Alerts", "Scenario Map"]} active={watchMode} onSelect={setWatchMode} />
@@ -281,7 +281,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ EVIDENCE — Stack / Insights / Source Status / Source Freshness ═══ */}
-      <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} linked={linkedPanelId === "evidenceStackReasoningEngine"} alertArmed={getAlertForPanel("evidenceStackReasoningEngine")?.enabled} alertSummary={getAlertForPanel("evidenceStackReasoningEngine")?.summary} onToggleAlert={() => togglePanelAlert("evidenceStackReasoningEngine")} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="evidenceStackReasoningEngine" expanded={expandedPanel === "evidenceStackReasoningEngine"} onToggleExpand={() => toggleExpand("evidenceStackReasoningEngine")} linked={linkedPanelId === "evidenceStackReasoningEngine"} alertArmed={getAlertForPanel("evidenceStackReasoningEngine")?.enabled} alertSummary={getAlertForPanel("evidenceStackReasoningEngine")?.summary} onToggleAlert={() => togglePanelAlert("evidenceStackReasoningEngine")} frameSvg={<EvidenceStackFrame preserveAspectRatio="none" />} activeSectionKey={`evid-${evidMode}`}
         headerContent={<h3 className="dashboard-precision-title">Evidence · Insights</h3>}
         bodyContent={<>
           <SectionNav items={["Stack", "Insights", "Source Status", "Freshness"]} active={evidMode} onSelect={setEvidMode} />
@@ -326,7 +326,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ NEWS & MACRO — Headlines / Events / Currency / Macro Pulse ═══ */}
-      <PrecisionPanelGroup panelId="newsMacroIntelligence" expanded={expandedPanel === "newsMacroIntelligence"} onToggleExpand={() => toggleExpand("newsMacroIntelligence")} linked={linkedPanelId === "newsMacroIntelligence"} alertArmed={getAlertForPanel("newsMacroIntelligence")?.enabled} alertSummary={getAlertForPanel("newsMacroIntelligence")?.summary} onToggleAlert={() => togglePanelAlert("newsMacroIntelligence")} frameSvg={<NewsMacroFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="newsMacroIntelligence" expanded={expandedPanel === "newsMacroIntelligence"} onToggleExpand={() => toggleExpand("newsMacroIntelligence")} linked={linkedPanelId === "newsMacroIntelligence"} alertArmed={getAlertForPanel("newsMacroIntelligence")?.enabled} alertSummary={getAlertForPanel("newsMacroIntelligence")?.summary} onToggleAlert={() => togglePanelAlert("newsMacroIntelligence")} frameSvg={<NewsMacroFrame preserveAspectRatio="none" />} activeSectionKey={`news-${newsMode}`}
         headerContent={<h3 className="dashboard-precision-title">News &amp; Macro</h3>}
         bodyContent={<>
           <SectionNav items={["Headlines", "Events", "Currency", "Macro Pulse"]} active={newsMode} onSelect={setNewsMode} />
@@ -367,7 +367,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ COACHING — Coaching / Journal Note / Discipline / Behavior ═══ */}
-      <PrecisionPanelGroup panelId="coachingInsights" expanded={expandedPanel === "coachingInsights"} onToggleExpand={() => toggleExpand("coachingInsights")} linked={linkedPanelId === "coachingInsights"} alertArmed={getAlertForPanel("coachingInsights")?.enabled} alertSummary={getAlertForPanel("coachingInsights")?.summary} onToggleAlert={() => togglePanelAlert("coachingInsights")} frameSvg={<CoachingFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="coachingInsights" expanded={expandedPanel === "coachingInsights"} onToggleExpand={() => toggleExpand("coachingInsights")} linked={linkedPanelId === "coachingInsights"} alertArmed={getAlertForPanel("coachingInsights")?.enabled} alertSummary={getAlertForPanel("coachingInsights")?.summary} onToggleAlert={() => togglePanelAlert("coachingInsights")} frameSvg={<CoachingFrame preserveAspectRatio="none" />} activeSectionKey={`coach-${coachMode}`}
         headerContent={<h3 className="dashboard-precision-title">Coaching · Journal</h3>}
         bodyContent={<>
           <SectionNav items={["Coaching", "Journal Note", "Discipline", "Behavior"]} active={coachMode} onSelect={setCoachMode} />
@@ -408,7 +408,7 @@ export default function DashboardResponsivePanelLayer({ activeAsset, activeTimef
 
 
       {/* ═══ MARKET REGIME — Cross-Asset / Liquidity / Volatility / Correlation ═══ */}
-      <PrecisionPanelGroup panelId="marketRegimeCrossAssetPulse" expanded={expandedPanel === "marketRegimeCrossAssetPulse"} onToggleExpand={() => toggleExpand("marketRegimeCrossAssetPulse")} linked={linkedPanelId === "marketRegimeCrossAssetPulse"} alertArmed={getAlertForPanel("marketRegimeCrossAssetPulse")?.enabled} alertSummary={getAlertForPanel("marketRegimeCrossAssetPulse")?.summary} onToggleAlert={() => togglePanelAlert("marketRegimeCrossAssetPulse")} frameSvg={<MarketRegimeFrame preserveAspectRatio="none" />}
+      <PrecisionPanelGroup panelId="marketRegimeCrossAssetPulse" expanded={expandedPanel === "marketRegimeCrossAssetPulse"} onToggleExpand={() => toggleExpand("marketRegimeCrossAssetPulse")} linked={linkedPanelId === "marketRegimeCrossAssetPulse"} alertArmed={getAlertForPanel("marketRegimeCrossAssetPulse")?.enabled} alertSummary={getAlertForPanel("marketRegimeCrossAssetPulse")?.summary} onToggleAlert={() => togglePanelAlert("marketRegimeCrossAssetPulse")} frameSvg={<MarketRegimeFrame preserveAspectRatio="none" />} activeSectionKey={`regime-${regimeMode}`}
         headerContent={<h3 className="dashboard-precision-title">Market Regime</h3>}
         bodyContent={<>
           <SectionNav items={["Cross-Asset", "Liquidity", "Volatility", "Correlation"]} active={regimeMode} onSelect={setRegimeMode} />

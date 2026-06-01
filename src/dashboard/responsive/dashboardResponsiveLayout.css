@@ -758,23 +758,8 @@
 }
 
 .dashboard-precision-content-slot--body {
-  overflow: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(138, 129, 120, 0.3) transparent;
+  overflow: hidden;
   min-height: 0;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar {
-  width: 4px;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
-  background: rgba(138, 129, 120, 0.3);
-  border-radius: 2px;
 }
 
 /* ─── Topbar ─── */
@@ -1297,19 +1282,7 @@
   color: #d4a853;
 }
 
-/* ─── Panel scrollbar: amber/gold thumb for premium feel ─── */
-.dashboard-precision-content-slot--body {
-  scrollbar-color: rgba(212, 168, 83, 0.28) transparent;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
-  background: rgba(212, 168, 83, 0.28);
-  border-radius: 3px;
-}
-
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 168, 83, 0.45);
-}
+/* ─── Panel scrollbar: handled by ScrollFrame — native bar hidden ─── */
 
 /* ─── Drawer scrollbar: same premium treatment ─── */
 .dashboard-detail-drawer__body {
@@ -2163,3 +2136,82 @@
     display: none;
   }
 }
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-8: RESPONSIVE PANEL BODY CONTENT — Container Query Collapse Rules
+   Ensures panel content adapts on smaller displays without horizontal overflow.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Two-column layouts collapse to single column when narrow ─── */
+@container (max-width: 340px) {
+  .dashboard-news-headline-grid,
+  .dashboard-news-event-timeline--split {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-news-event-timeline--split::before {
+    display: none;
+  }
+
+  .dashboard-bias-content-row {
+    flex-direction: column;
+    gap: clamp(6px, 0.8cqi, 10px);
+  }
+
+  .dashboard-bias-content-visual {
+    align-self: center;
+  }
+}
+
+/* ─── Watchlist card grid: already has container queries, reinforce ─── */
+@container (max-width: 300px) {
+  .dashboard-watchlist-card-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ─── Liquid gauge grid: collapse gracefully ─── */
+@container (max-width: 320px) {
+  .dashboard-liquid-gauge-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
+
+@container (max-width: 220px) {
+  .dashboard-liquid-gauge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── DataRow: stack label/value when very narrow ─── */
+@container (max-width: 240px) {
+  .dashboard-precision-data-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+
+  .dashboard-precision-data-value,
+  .dashboard-precision-data-value--mono {
+    padding-left: 0;
+  }
+}
+
+/* ─── Regime table: already has container queries (380px→3col, 260px→2col) ─── */
+/* Additional safety for very narrow panels */
+@container (max-width: 200px) {
+  .dashboard-regime-table {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-regime-table__th:nth-child(n+2),
+  .dashboard-regime-table__cell:nth-child(n+2) {
+    display: none;
+  }
+}
+
+/* ─── Panel body scroll: owned by ScrollFrame, body slot is overflow:hidden ─── */
+
+/* ─── Panel body scroll edge fade — handled by ScrollFrame internally ─── */
