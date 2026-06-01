@@ -754,12 +754,12 @@
 }
 
 /* ─── Custom Flat Modern Scrollbars (R5D) ─── */
+/* Panel body slot excluded — ScrollFrame owns panel scroll with custom thumb */
 .dashboard-panel-scroll-y,
 .dashboard-panel-scroll-x,
 .dashboard-slide-strip,
 .dashboard-detail-drawer__body,
-.dashboard-news-timeline,
-.dashboard-precision-content-slot--body {
+.dashboard-news-timeline {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 172, 76, 0.32) transparent;
 }
@@ -768,8 +768,7 @@
 .dashboard-panel-scroll-x::-webkit-scrollbar,
 .dashboard-slide-strip::-webkit-scrollbar,
 .dashboard-detail-drawer__body::-webkit-scrollbar,
-.dashboard-news-timeline::-webkit-scrollbar,
-.dashboard-precision-content-slot--body::-webkit-scrollbar {
+.dashboard-news-timeline::-webkit-scrollbar {
   width: 4px;
   height: 4px;
 }
@@ -778,8 +777,7 @@
 .dashboard-panel-scroll-x::-webkit-scrollbar-track,
 .dashboard-slide-strip::-webkit-scrollbar-track,
 .dashboard-detail-drawer__body::-webkit-scrollbar-track,
-.dashboard-news-timeline::-webkit-scrollbar-track,
-.dashboard-precision-content-slot--body::-webkit-scrollbar-track {
+.dashboard-news-timeline::-webkit-scrollbar-track {
   background: transparent;
 }
 
@@ -787,8 +785,7 @@
 .dashboard-panel-scroll-x::-webkit-scrollbar-thumb,
 .dashboard-slide-strip::-webkit-scrollbar-thumb,
 .dashboard-detail-drawer__body::-webkit-scrollbar-thumb,
-.dashboard-news-timeline::-webkit-scrollbar-thumb,
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb {
+.dashboard-news-timeline::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, rgba(255, 191, 74, 0.36), rgba(255, 106, 0, 0.26));
   border-radius: 999px;
 }
@@ -797,9 +794,20 @@
 .dashboard-panel-scroll-x::-webkit-scrollbar-thumb:hover,
 .dashboard-slide-strip::-webkit-scrollbar-thumb:hover,
 .dashboard-detail-drawer__body::-webkit-scrollbar-thumb:hover,
-.dashboard-news-timeline::-webkit-scrollbar-thumb:hover,
-.dashboard-precision-content-slot--body::-webkit-scrollbar-thumb:hover {
+.dashboard-news-timeline::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, rgba(255, 191, 74, 0.56), rgba(255, 106, 0, 0.42));
+}
+
+/* Panel body slot: no native scrollbar — ScrollFrame handles all panel scroll */
+.dashboard-precision-content-slot--body {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.dashboard-precision-content-slot--body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
 }
 
 
@@ -896,6 +904,7 @@
 .dashboard-scroll-frame__viewport::-webkit-scrollbar {
   width: 0;
   height: 0;
+  display: none;
 }
 
 /* ─── Edge Fades (context indicators) ─── */
