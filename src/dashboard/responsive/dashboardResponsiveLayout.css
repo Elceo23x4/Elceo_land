@@ -2215,3 +2215,61 @@
 /* ─── Panel body scroll: owned by ScrollFrame, body slot is overflow:hidden ─── */
 
 /* ─── Panel body scroll edge fade — handled by ScrollFrame internally ─── */
+
+
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   V1B-9B: PANEL FRAME HOVER INLINE GLOW
+   Targets named border/accent path IDs inside panel frame SVGs.
+   Activates on hover and keyboard focus-within.
+   Inline stroke enhancement only — no outer drop-shadow.
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Heavy/primary strokes: bright gold on hover ─── */
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="primary_top_heavy"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="corner_diagonal_emphasis"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="bottom_main_medium"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="primary_top_heavy"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="corner_diagonal_emphasis"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="bottom_main_medium"] {
+  stroke: rgba(255, 191, 74, 0.95) !important;
+  stroke-opacity: 1 !important;
+  transition: stroke 0.25s ease, stroke-opacity 0.25s ease;
+}
+
+/* ─── Medium strokes: warm amber on hover ─── */
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="secondary_top_medium"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="bottom_right_accent"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="bottom_left_accent"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="secondary_top_medium"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="bottom_right_accent"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="bottom_left_accent"] {
+  stroke: rgba(255, 160, 50, 0.82) !important;
+  stroke-opacity: 0.9 !important;
+  transition: stroke 0.25s ease, stroke-opacity 0.25s ease;
+}
+
+/* ─── Fine/hair strokes: subtle lift on hover ─── */
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="right_edge_fine"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="left_edge_lower_hair"],
+.dashboard-panel-group:hover .dashboard-panel-group__frame svg [id$="left_edge_upper_fine"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="right_edge_fine"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="left_edge_lower_hair"],
+.dashboard-panel-group:focus-within .dashboard-panel-group__frame svg [id$="left_edge_upper_fine"] {
+  stroke: rgba(255, 191, 74, 0.55) !important;
+  stroke-opacity: 0.7 !important;
+  transition: stroke 0.25s ease, stroke-opacity 0.25s ease;
+}
+
+/* ─── Default: smooth transition out ─── */
+.dashboard-panel-group__frame svg [id$="primary_top_heavy"],
+.dashboard-panel-group__frame svg [id$="corner_diagonal_emphasis"],
+.dashboard-panel-group__frame svg [id$="bottom_main_medium"],
+.dashboard-panel-group__frame svg [id$="secondary_top_medium"],
+.dashboard-panel-group__frame svg [id$="bottom_right_accent"],
+.dashboard-panel-group__frame svg [id$="bottom_left_accent"],
+.dashboard-panel-group__frame svg [id$="right_edge_fine"],
+.dashboard-panel-group__frame svg [id$="left_edge_lower_hair"],
+.dashboard-panel-group__frame svg [id$="left_edge_upper_fine"] {
+  transition: stroke 0.3s ease, stroke-opacity 0.3s ease;
+}
