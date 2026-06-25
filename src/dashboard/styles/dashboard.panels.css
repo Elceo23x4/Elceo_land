@@ -1,7 +1,8 @@
-/* ELCEO Dashboard Panel Content — Batch 6 + 6A + 6B typography/alignment */
+/* ELCEO Dashboard Panel Content — Batch 7D */
 
 .cockpit-panel-content-layer { z-index: 30; pointer-events: none; }
-.cockpit-panel-content-slot { box-sizing: border-box; pointer-events: auto; overflow: visible; background: transparent; border: none; }
+.cockpit-panel-content-slot,
+.cockpit-panel-slot { box-sizing: border-box; pointer-events: auto; overflow: hidden; background: transparent; border: none; }
 
 /* ─── Panel Frame (transparent content compositor, no visible border) ─── */
 .elceo-panel-frame { width: 100%; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; padding: 0; margin: 0; background: transparent; border: none; box-shadow: none; overflow: visible; }
@@ -44,14 +45,20 @@
 .elceo-panel-detail-button:focus-visible { outline: 1px solid var(--elceo-orange); outline-offset: 1px; }
 
 /* ─── Cockpit-scoped workspace overrides ─── */
-.cockpit-panel-content-slot .elceo-workspace { border: none; background: transparent; box-shadow: none; }
-.cockpit-panel-content-slot .elceo-workspace__header { display: none; }
-.cockpit-panel-content-slot .elceo-workspace__body { padding: 0; }
-.cockpit-panel-content-slot .elceo-tabs { border-bottom-color: rgba(255, 106, 0, 0.1); margin-bottom: 6px; }
-.cockpit-panel-content-slot .elceo-tabs__btn { padding: 3px 6px; font-size: 7px; }
+.cockpit-panel-content-slot .elceo-workspace,
+.cockpit-panel-slot .elceo-workspace { border: none; background: transparent; box-shadow: none; }
+.cockpit-panel-content-slot .elceo-workspace__header,
+.cockpit-panel-slot .elceo-workspace__header { display: none; }
+.cockpit-panel-content-slot .elceo-workspace__body,
+.cockpit-panel-slot .elceo-workspace__body { padding: 0; }
+.cockpit-panel-content-slot .elceo-tabs,
+.cockpit-panel-slot .elceo-tabs { border-bottom-color: rgba(255, 106, 0, 0.1); margin-bottom: 6px; }
+.cockpit-panel-content-slot .elceo-tabs__btn,
+.cockpit-panel-slot .elceo-tabs__btn { padding: 3px 6px; font-size: 7px; }
 
 /* ─── Cockpit-scoped popover overrides (no glow, transparent bg) ─── */
-.cockpit-panel-content-slot .elceo-popover {
+.cockpit-panel-content-slot .elceo-popover,
+.cockpit-panel-slot .elceo-popover {
   background: rgba(5, 3, 2, 0.82);
   box-shadow: none;
   border: 1px solid rgba(255, 106, 0, 0.22);
@@ -60,9 +67,12 @@
   min-width: 160px;
   padding: 8px 10px;
 }
-.cockpit-panel-content-slot .elceo-popover-trigger { font-size: 7px; }
-.cockpit-panel-content-slot .elceo-popover__title { font-size: 8px; }
-.cockpit-panel-content-slot .elceo-popover__summary { font-size: 7px; }
+.cockpit-panel-content-slot .elceo-popover-trigger,
+.cockpit-panel-slot .elceo-popover-trigger { font-size: clamp(6px, 0.48cqi, 8px); }
+.cockpit-panel-content-slot .elceo-popover__title,
+.cockpit-panel-slot .elceo-popover__title { font-size: clamp(7px, 0.52cqi, 9px); }
+.cockpit-panel-content-slot .elceo-popover__summary,
+.cockpit-panel-slot .elceo-popover__summary { font-size: clamp(6px, 0.48cqi, 8px); }
 
 /* ─── Cockpit-scoped status list compact ─── */
 .cockpit-panel-content-slot .elceo-status-list__item { padding: 3px 0; font-size: 8px; }

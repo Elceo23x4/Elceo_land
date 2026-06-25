@@ -1,43 +1,25 @@
 import type { ReactNode } from "react";
-import useCockpitScale, { STAGE_W, STAGE_H } from "../hooks/useCockpitScale";
+import useCockpitScale from "../hooks/useCockpitScale";
 
 interface DashboardViewportProps {
   children: ReactNode;
 }
 
 /**
- * Dashboard viewport — scales the 1920×1080 logical stage to fit
- * the browser viewport while preserving 16:9 aspect ratio.
+ * Dashboard Viewport — Batch 7D Responsive Board Model
  *
- * Batch 4: Fixed centering approach. The stage is scaled from top-left,
- * and the wrapper div is sized to the scaled dimensions so flexbox
- * centering works correctly (no visual offset).
+ * The board uses CSS aspect-ratio: 1920/1080 to maintain proportions.
+ * It fits inside the viewport via max-width/max-height constraints.
+ * No JS-driven transform scaling. Pure CSS responsive containment.
+ * All internal layers use percentage-based positioning relative to the board.
  */
 export default function DashboardViewport({ children }: DashboardViewportProps) {
-  const { containerRef, cockpitScale } = useCockpitScale();
-  const { scale } = cockpitScale;
+  const { boardRef } = useCockpitScale();
 
   return (
-    <div className="cockpit-viewport" ref={containerRef}>
-      <div
-        className="cockpit-stage-wrapper"
-        style={{
-          width: STAGE_W * scale,
-          height: STAGE_H * scale,
-          overflow: "hidden",
-        }}
-      >
-        <div
-          className="cockpit-stage"
-          style={{
-            width: STAGE_W,
-            height: STAGE_H,
-            transform: `scale(${scale})`,
-            transformOrigin: "top left",
-          }}
-        >
-          {children}
-        </div>
+    <div className="cockpit-viewport">
+      <div className="cockpit-board" ref={boardRef}>
+        {children}
       </div>
     </div>
   );

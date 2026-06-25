@@ -16,7 +16,7 @@ import DashboardGeometryCalibrationOverlay from "./DashboardGeometryCalibrationO
  * ELCEO Dashboard Cockpit — Batch 6O
  *
  * Adjusted RevB SVG is the official visible panel shell (full-stage).
- * DashboardCustomPanelShellLayer removed from runtime (generic redraw rejected).
+ * Custom panel shell removed (generic redraw rejected).
  * SVG-06 borders disabled. Connectors disabled. Calibration overlay disabled.
  */
 const SHOW_PANEL_SLOT_DEBUG = false;

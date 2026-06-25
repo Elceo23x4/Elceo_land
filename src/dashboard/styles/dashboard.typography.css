@@ -1,0 +1,183 @@
+/* ELCEO Dashboard Typography — Batch 7D Responsive */
+/* 3-font premium intelligence interface system with clamp() scaling */
+
+/* ─── Font Stack Variables ─── */
+:root {
+  --elceo-font-display: 'Space Grotesk', var(--elceo-font-ui), sans-serif;
+  --elceo-font-body: 'Inter', var(--elceo-font-ui), sans-serif;
+  --elceo-font-mono: 'IBM Plex Mono', monospace;
+}
+
+/* ─── Shared Panel Typography Hierarchy (responsive via cqi) ─── */
+
+/* Micro eyebrow: responsive 7–10px */
+.elceo-typo-eyebrow {
+  font-family: var(--elceo-font-mono);
+  font-size: clamp(7px, 0.55cqi, 10px);
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(180, 160, 140, 0.7);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Panel title: responsive 11–15px */
+.elceo-typo-title {
+  font-family: var(--elceo-font-display);
+  font-size: clamp(11px, 0.82cqi, 15px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: rgba(255, 200, 140, 0.92);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Key value / hero metric: responsive 18–26px */
+.elceo-typo-hero {
+  font-family: var(--elceo-font-display);
+  font-size: clamp(18px, 1.4cqi, 26px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgba(240, 235, 228, 0.95);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.elceo-typo-hero--sm {
+  font-family: var(--elceo-font-display);
+  font-size: clamp(14px, 1.05cqi, 19px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: rgba(240, 235, 228, 0.95);
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* Standard body / table rows: responsive 9–12px */
+.elceo-typo-body {
+  font-family: var(--elceo-font-body);
+  font-size: clamp(9px, 0.65cqi, 12px);
+  font-weight: 400;
+  color: rgba(210, 200, 190, 0.85);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.elceo-typo-body--strong {
+  font-family: var(--elceo-font-body);
+  font-size: clamp(9px, 0.65cqi, 12px);
+  font-weight: 600;
+  color: rgba(230, 220, 210, 0.92);
+  line-height: 1.45;
+}
+
+/* Secondary helper text: responsive 8–11px */
+.elceo-typo-secondary {
+  font-family: var(--elceo-font-body);
+  font-size: clamp(8px, 0.58cqi, 11px);
+  font-weight: 400;
+  color: rgba(160, 145, 130, 0.75);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Mono metadata / tickers / tags: responsive 7–10px */
+.elceo-typo-mono {
+  font-family: var(--elceo-font-mono);
+  font-size: clamp(7px, 0.55cqi, 10px);
+  font-weight: 400;
+  color: rgba(190, 175, 160, 0.8);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.elceo-typo-mono--sm {
+  font-family: var(--elceo-font-mono);
+  font-size: clamp(6px, 0.48cqi, 9px);
+  font-weight: 400;
+  color: rgba(190, 175, 160, 0.8);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+/* ─── Color Utility Classes ─── */
+.elceo-color-bullish { color: #4ee87b !important; }
+.elceo-color-bearish { color: #f25c54 !important; }
+.elceo-color-amber { color: #f0a848 !important; }
+.elceo-color-neutral { color: rgba(180, 170, 160, 0.8) !important; }
+.elceo-color-muted { color: rgba(140, 130, 120, 0.65) !important; }
+.elceo-color-accent { color: rgba(255, 160, 60, 0.9) !important; }
+
+/* ─── Metric Chip (responsive) ─── */
+.elceo-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: clamp(1px, 0.1cqi, 3px) clamp(3px, 0.3cqi, 7px);
+  border-radius: 3px;
+  font-family: var(--elceo-font-mono);
+  font-size: clamp(7px, 0.5cqi, 9px);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.elceo-chip--positive {
+  background: rgba(78, 232, 123, 0.1);
+  border: 1px solid rgba(78, 232, 123, 0.3);
+  color: #4ee87b;
+}
+
+.elceo-chip--negative {
+  background: rgba(242, 92, 84, 0.1);
+  border: 1px solid rgba(242, 92, 84, 0.3);
+  color: #f25c54;
+}
+
+.elceo-chip--warning {
+  background: rgba(240, 168, 72, 0.1);
+  border: 1px solid rgba(240, 168, 72, 0.3);
+  color: #f0a848;
+}
+
+.elceo-chip--neutral {
+  background: rgba(160, 150, 140, 0.08);
+  border: 1px solid rgba(160, 150, 140, 0.2);
+  color: rgba(180, 170, 160, 0.8);
+}
+
+/* ─── Score Chip (responsive) ─── */
+.elceo-score-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(24px, 1.8cqi, 34px);
+  padding: clamp(2px, 0.15cqi, 4px) clamp(4px, 0.4cqi, 9px);
+  border-radius: 3px;
+  font-family: var(--elceo-font-mono);
+  font-size: clamp(8px, 0.6cqi, 11px);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: rgba(255, 140, 40, 0.08);
+  border: 1px solid rgba(255, 140, 40, 0.35);
+  color: rgba(255, 180, 100, 0.92);
+}
+
+/* ─── Section Divider ─── */
+.elceo-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 140, 40, 0.3) 0%, rgba(255, 140, 40, 0.05) 100%);
+  margin: clamp(3px, 0.3cqi, 6px) 0;
+  border: none;
+}
+
+.elceo-divider--subtle {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 140, 40, 0.15) 0%, transparent 100%);
+  margin: clamp(2px, 0.2cqi, 4px) 0;
+  border: none;
+}
